@@ -1041,7 +1041,7 @@ export default function App() {
               : [track1];
 
           const trackDirections = ["up", "down", "up"];
-          const trackDurations = ["60s", "70s", "65s"];
+          const trackDurations = ["110s", "120s", "115s"];
 
           const renderCard = (s: typeof services[0], filled: boolean) => {
             const tc = filled ? C.deepForest : C.paleGold;
