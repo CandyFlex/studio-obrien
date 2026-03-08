@@ -1,0 +1,4 @@
+node_modules
+*.png
+screenshots
+test-results
