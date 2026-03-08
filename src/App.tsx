@@ -320,6 +320,12 @@ const css = `
 @keyframes hg-track-up{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
 @keyframes hg-track-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
 .craft-track:hover .craft-track-inner{animation-play-state:paused}
+@keyframes pw-scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pw-scroll-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes pw-scroll-up{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+@keyframes pw-scroll-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
+.pw-row:hover .pw-inner{animation-play-state:paused}
+.pw-col:hover .pw-inner{animation-play-state:paused}
 `;
 
 function injectStyles() {
@@ -510,15 +516,13 @@ function LeafReveal({
   );
 
   return (
-    <div ref={ref} className="relative overflow-hidden">
+    <div ref={ref} className="relative overflow-hidden" style={{ background: "#080e08" }}>
       {children}
       <motion.div
         className="absolute z-20 pointer-events-none"
         style={{
           top: 0,
           bottom: 0,
-          /* Anchor to the trailing edge so natural leaf tips are visible;
-             the excess extends past the exit side, clipped by the wrapper. */
           ...(side === "left"
             ? { right: 0 }
             : { left: 0 }),
@@ -664,6 +668,7 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== "undefined" && window.innerWidth < 640,
   );
+
   const [screenW, setScreenW] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 1440,
   );
@@ -763,6 +768,47 @@ export default function App() {
     },
   ];
 
+  // ── VARIANT 5: 5-Step Pentagon Process ──
+  const jProcess = [
+    { num: 1, label: ["Discovery", "& Research"], note: "We learn your business, your customers, and your competition before touching any design." },
+    { num: 2, label: ["Strategy", "& Planning"], note: "Architecture, content direction, and SEO targeting mapped out in advance." },
+    { num: 3, label: ["Design", "& Build"], note: "Multiple design options built and tested at every screen size." },
+    { num: 4, label: ["Testing", "& Validation"], note: "Quality checked on real phones, tablets, and desktops before launch." },
+    { num: 5, label: ["Ongoing", "Support"], note: "Revisions, monitoring, and growth tracking included with every project." },
+  ];
+
+  // Pentagon geometry — self-contained SVG layout
+  const pCx = 500, pCy = 530, pR = 260, pCr = 210;
+  const pAngles = [-90, -18, 54, 126, 198];
+  const pCircles = pAngles.map(a => ({
+    x: pCx + pR * Math.cos((a * Math.PI) / 180),
+    y: pCy + pR * Math.sin((a * Math.PI) / 180),
+  }));
+  // Badges pushed OUTWARD from each circle (just past the edge)
+  const pBadgePush = pCr + 30;
+  const pBadges = pAngles.map((a, i) => {
+    const rad = (a * Math.PI) / 180;
+    return {
+      x: pCircles[i].x + pBadgePush * Math.cos(rad),
+      y: pCircles[i].y + pBadgePush * Math.sin(rad),
+    };
+  });
+  const pAdj: [number, number][] = [[0,1],[1,2],[2,3],[3,4],[4,0]];
+  const pMids = pAdj.map(([a, b]) => ({
+    x: (pCircles[a].x + pCircles[b].x) / 2,
+    y: (pCircles[a].y + pCircles[b].y) / 2,
+  }));
+  const pInterLabels = ["Define", "Brief", "Review", "Monitor", "Iterate"];
+  // Label positions inside circles — pushed outward from center
+  const pLabelPush = 80;
+  const pLabels = pAngles.map((a, i) => {
+    const rad = (a * Math.PI) / 180;
+    return {
+      x: pCircles[i].x + pLabelPush * Math.cos(rad),
+      y: pCircles[i].y + pLabelPush * Math.sin(rad),
+    };
+  });
+
   return (
     <div className="min-h-screen" style={{ fontFamily: F.body }}>
       <Grain />
@@ -779,54 +825,30 @@ export default function App() {
         }}
       />
 
-      {/* ── STICKY HEADER ── */}
-      <motion.nav
-        style={{ opacity: headerBlur, y: headerY }}
-        className="fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 md:left-8 md:right-8 z-50 flex justify-between items-center px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3"
-      >
-        <div
-          className="absolute inset-0 rounded-full border"
-          style={{
-            background: C.ivory,
-            borderColor: `${C.gold}25`,
-            boxShadow: "0 2px 20px rgba(0,0,0,0.06)",
-          }}
-        />
-        <img
-          src="/images/logo.webp"
-          alt="Studio O'Brien"
-          className="relative z-10 h-7 sm:h-8 md:h-10 w-auto"
-        />
-        <div
-          className="relative z-10 hidden md:flex gap-8 text-sm tracking-[0.15em] uppercase font-bold"
-          style={{ fontFamily: F.heading, color: C.deepForest }}
-        >
-          <a href="#craft" className="transition-colors duration-300 hover:text-[#c9a84c]">Our Craft</a>
-          <a href="#journey" className="transition-colors duration-300 hover:text-[#c9a84c]">The Journey</a>
-          <a href="#investment" className="transition-colors duration-300 hover:text-[#c9a84c]">Investment</a>
-        </div>
-        <div className="relative z-10 flex items-center gap-3 sm:gap-4">
-          <a
-            href="#login"
-            className="text-[11px] sm:text-xs md:text-sm tracking-[0.12em] uppercase font-bold transition-colors duration-300 hover:text-[#c9a84c]"
-            style={{ fontFamily: F.heading, color: C.deepForest }}
-          >
-            Login
-          </a>
-          <a
-            href="#contact"
-            className="px-4 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 text-[11px] sm:text-xs md:text-sm tracking-[0.12em] uppercase font-bold rounded-full transition-all duration-300 hover:scale-105"
-            style={{
-              fontFamily: F.heading,
-              border: `1.5px solid ${C.gold}`,
-              color: C.gold,
-              background: "transparent",
-            }}
-          >
-            Inquire
-          </a>
-        </div>
-      </motion.nav>
+      {/* ── STICKY HEADER — 10 Variants ── */}
+      {(() => {
+        const navLinks = [
+          { label: "Our Craft", href: "#craft" },
+          { label: "The Journey", href: "#journey" },
+          { label: "Portfolio", href: "#portfolio" },
+        ];
+        const hF = { fontFamily: F.heading };
+
+        return (
+          <motion.nav style={{ opacity: headerBlur, y: headerY }} className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
+            <div className="w-full flex justify-between items-center px-6 md:px-12 py-3" style={{ background: C.parchment, borderBottom: `1px solid ${C.gold}15` }}>
+              <div className="hidden md:flex gap-7 text-xs tracking-[0.2em] uppercase font-bold" style={{ ...hF, color: C.deepForest }}>
+                {navLinks.map(l => <a key={l.label} href={l.href} className="hover:text-[#c9a84c] transition-colors duration-300">{l.label}</a>)}
+              </div>
+              <img src="/images/logo.webp" alt="Studio O'Brien" className="h-8 md:h-10 w-auto absolute left-1/2 -translate-x-1/2" />
+              <div className="flex items-center gap-4 ml-auto">
+                <a href="#login" className="text-xs tracking-[0.15em] uppercase font-bold hover:text-[#c9a84c] transition-colors duration-300" style={{ ...hF, color: C.deepForest }}>Login</a>
+                <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Book a Call</a>
+              </div>
+            </div>
+          </motion.nav>
+        );
+      })()}
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section
@@ -923,12 +945,12 @@ export default function App() {
           >
             <motion.a
               href="#craft"
-              className="group relative inline-block px-10 py-4 text-sm tracking-[0.2em] uppercase rounded-full overflow-hidden"
+              className="group relative inline-block px-12 py-5 text-sm tracking-[0.2em] uppercase rounded-full overflow-hidden"
               style={{
                 fontFamily: F.heading,
-                border: `1.5px solid ${C.gold}`,
+                border: `2px solid ${C.gold}`,
                 color: C.gold,
-                background: "transparent",
+                background: `${C.gold}10`,
               }}
             >
               <span className="relative z-10 transition-colors duration-700 ease-out group-hover:text-white">
@@ -945,9 +967,9 @@ export default function App() {
 
             <motion.a
               href="#contact"
-              className="text-sm tracking-[0.15em] uppercase transition-all duration-300"
-              style={{ fontFamily: F.heading, color: C.sage, opacity: 0.6 }}
-              whileHover={{ color: C.gold, opacity: 1, letterSpacing: "0.2em" }}
+              className="text-sm tracking-[0.2em] uppercase font-bold transition-all duration-300"
+              style={{ fontFamily: F.heading, color: C.gold, opacity: 0.7 }}
+              whileHover={{ opacity: 1, letterSpacing: "0.25em" }}
             >
               Let&#8217;s Create
             </motion.a>
@@ -1191,112 +1213,24 @@ export default function App() {
       </section>
 
       {/* ═══════════════════ PHILOSOPHY ═══════════════════ */}
-      <Section
-        bg={C.ivory}
-        color={C.forest}
-        overlay={
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: leafPattern,
-              backgroundSize: "80px 80px",
-            }}
-          />
-        }
-      >
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={vp}
-            className="w-full md:w-1/2"
-          >
-            <div
-              className="relative w-full aspect-[4/5] rounded-sm overflow-hidden"
-              style={{ border: `1px solid ${C.gold}30` }}
-            >
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(135deg, ${C.deepForest}, ${C.emerald}80)`,
-                }}
-              />
-              {/* Decorative monogram */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span
-                  className="text-[12rem] md:text-[16rem] opacity-10"
-                  style={{ fontFamily: F.display, color: C.gold }}
-                >
-                  O
-                </span>
-              </div>
-              <CornerAccents color={C.gold} />
+      <Section bg={C.deepForest} color={C.parchment} overlay={<div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />}>
+        <div className="flex flex-col md:flex-row items-start gap-10 md:gap-14">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-full md:w-[29%] flex-shrink-0">
+            <div className="relative aspect-[3/4] rounded-sm overflow-hidden" style={{ border: `2px solid ${C.gold}` }}>
+              <img src="/images/portrait.webp" alt="J. O'Brien, Founder" className="w-full h-full object-cover" loading="lazy" decoding="async" width={700} height={700} />
+              <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: `linear-gradient(to top, ${C.deepForest}, transparent)` }} />
+            </div>
+            <div className="mt-4 text-center">
+              <span className="block text-sm tracking-wider uppercase" style={{ fontFamily: F.heading, color: C.parchment }}>J. O'Brien</span>
+              <span className="text-xs opacity-50">Founder</span>
             </div>
           </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={vp}
-            transition={{ delay: 0.2 }}
-            className="w-full md:w-1/2"
-          >
-            <p
-              className="text-xs tracking-[0.4em] uppercase mb-4"
-              style={{ fontFamily: F.heading, color: C.gold }}
-            >
-              Our Philosophy
-            </p>
-            <h2
-              className="text-3xl md:text-5xl tracking-tight mb-6"
-              style={{ fontFamily: F.display }}
-            >
-              Old World
-              <br />
-              <span style={{ color: C.gold }}>New Vision</span>
-            </h2>
-            <p
-              className="text-lg md:text-xl leading-relaxed mb-6 opacity-80"
-              style={{ fontWeight: 300, fontStyle: "italic" }}
-            >
-              We believe the finest digital craft is born where human artistry
-              meets artificial intelligence — where timeless design principles
-              are amplified by modern enchantment.
-            </p>
-            <p
-              className="text-base leading-relaxed opacity-60"
-              style={{ fontWeight: 300 }}
-            >
-              Studio O'Brien merges centuries of design tradition with
-              cutting-edge AI to forge digital experiences that feel both
-              ancient and revolutionary. Every pixel placed with purpose, every
-              interaction designed to enchant.
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center text-sm tracking-wider"
-                style={{
-                  fontFamily: F.heading,
-                  border: `1.5px solid ${C.gold}`,
-                  color: C.gold,
-                }}
-              >
-                JO
-              </div>
-              <div>
-                <span
-                  className="block text-sm tracking-wider uppercase"
-                  style={{ fontFamily: F.heading }}
-                >
-                  J. O'Brien
-                </span>
-                <span className="text-xs opacity-50">
-                  Founder & Lead Artisan
-                </span>
-              </div>
-            </div>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }} className="flex-1 md:pt-8">
+            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+            <h2 className="text-3xl md:text-5xl tracking-tight mb-8" style={{ fontFamily: F.display, color: C.parchment }}>Craft Before<br /><span style={{ color: C.gold }}>Everything</span></h2>
+            <div className="mb-6"><p className="text-lg md:text-xl leading-relaxed opacity-80" style={{ fontWeight: 300, fontStyle: "italic" }}><span className="float-left text-6xl leading-none mr-3 mt-1" style={{ fontFamily: F.display, color: C.gold, fontStyle: "normal" }}>W</span>e believe the finest digital craft is born where human artistry meets purposeful technology. Timeless design principles, amplified by modern tools and relentless attention to detail.</p></div>
+            <p className="text-base leading-relaxed opacity-60 mb-8" style={{ fontWeight: 300 }}>Studio O'Brien merges deep design tradition with cutting-edge capability to forge digital experiences that feel both enduring and fresh. Every pixel placed with purpose, every interaction designed to resonate.</p>
+            <Ornament className="w-32 md:w-48" color={C.gold} />
           </motion.div>
         </div>
       </Section>
@@ -1317,193 +1251,223 @@ export default function App() {
           />
         }
       >
+        {/* ── Section Header ── */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={vp}
-          transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <p
-            className="text-xs tracking-[0.4em] uppercase mb-4"
-            style={{ fontFamily: F.heading, color: C.gold }}
-          >
-            How We Work
-          </p>
-          <h2
-            className="text-4xl md:text-6xl lg:text-7xl tracking-tight"
-            style={{ fontFamily: F.display }}
-          >
-            The Journey
-          </h2>
-          <div className="w-40 mx-auto mt-6">
-            <Ornament />
+          <div className="flex items-center justify-center gap-5 md:gap-8">
+            <div
+              className="w-16 md:w-28 h-px"
+              style={{ background: `linear-gradient(to right, transparent, ${C.gold}60)` }}
+            />
+            <h2
+              className="text-xl md:text-2xl lg:text-3xl tracking-[0.35em] uppercase"
+              style={{ fontFamily: F.heading, color: C.gold }}
+            >
+              Our Process
+            </h2>
+            <div
+              className="w-16 md:w-28 h-px"
+              style={{ background: `linear-gradient(to left, transparent, ${C.gold}60)` }}
+            />
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {steps.map((s, i) => (
+        {/* ── Process: Large Diagram + 5-Column Strip Below ── */}
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }}>
+          {/* Mobile: stacked */}
+          <div className="md:hidden">
+            <div className="max-w-sm mx-auto mb-8">
+              <svg viewBox="-10 0 1020 970" className="w-full h-auto" role="img" aria-label="Interconnected process diagram">
+                <defs>
+                  <pattern id="proc-hatch" width={7} height={7} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1={0} y1={0} x2={0} y2={7} stroke={C.parchment} strokeWidth={0.8} opacity={0.22} />
+                  </pattern>
+                  {pCircles.map((_c, i) => (
+                    <clipPath key={i} id={`pc-${i}`}><circle cx={pCircles[i].x} cy={pCircles[i].y} r={pCr} /></clipPath>
+                  ))}
+                </defs>
+                {pBadges.map((b, i) => { const next = pBadges[(i + 1) % 5]; return (<line key={`pl-${i}`} x1={b.x} y1={b.y} x2={next.x} y2={next.y} stroke={C.gold} strokeWidth={1} strokeDasharray="6 4" opacity={0.3} />); })}
+                <polygon points={pBadges.map((b) => `${b.x},${b.y}`).join(" ")} fill={C.gold} fillOpacity={0.04} stroke="none" />
+                {pCircles.map((c, i) => (<circle key={`co-${i}`} cx={c.x} cy={c.y} r={pCr} fill="none" stroke={C.parchment} strokeWidth={1.5} opacity={0.25} />))}
+                {pAdj.map(([a, b]) => (<circle key={`hz-${a}-${b}`} cx={pCircles[a].x} cy={pCircles[a].y} r={pCr} fill="url(#proc-hatch)" clipPath={`url(#pc-${b})`} />))}
+                {pLabels.map((l, i) => (
+                  <text key={`lt-${i}`} x={l.x} y={l.y - 12} textAnchor="middle" fill={C.parchment} fontSize={26} fontFamily={F.heading} letterSpacing="0.04em" fontWeight="bold" opacity={0.85}>
+                    <tspan x={l.x} dy="0">{jProcess[i].label[0]}</tspan>
+                    <tspan x={l.x} dy="30">{jProcess[i].label[1]}</tspan>
+                  </text>
+                ))}
+                {pBadges.map((b, i) => (<g key={`bg-${i}`}><circle cx={b.x} cy={b.y} r={24} fill={C.gold} /><text x={b.x} y={b.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.deepForest} fontSize={18} fontWeight="bold" fontFamily={F.heading}>{jProcess[i].num}</text></g>))}
+                {pMids.map((m, i) => (<text key={`il-${i}`} x={m.x} y={m.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.gold} fontSize={20} fontFamily={F.heading} letterSpacing="0.06em" fontWeight="bold" opacity={0.7}>{pInterLabels[i]}</text>))}
+              </svg>
+            </div>
+            <div className="grid grid-cols-1 gap-5">
+              {jProcess.map((p, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: C.gold, color: C.deepForest, fontFamily: F.heading }}>{p.num}</div>
+                  <div>
+                    <p className="text-base tracking-wider uppercase mb-1" style={{ fontFamily: F.heading, color: C.paleGold }}>{p.label.join(" ")}</p>
+                    <p className="text-sm leading-relaxed opacity-50" style={{ fontWeight: 300 }}>{p.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Desktop: diagram + 5-column strip */}
+          <div className="hidden md:block">
+            <div className="max-w-5xl mx-auto">
+              <svg viewBox="-10 0 1020 970" className="w-full h-auto" role="img" aria-label="Interconnected process diagram">
+                <defs>
+                  <pattern id="proc-hatch-d" width={7} height={7} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1={0} y1={0} x2={0} y2={7} stroke={C.parchment} strokeWidth={0.8} opacity={0.22} />
+                  </pattern>
+                  {pCircles.map((_c, i) => (
+                    <clipPath key={i} id={`pcd-${i}`}><circle cx={pCircles[i].x} cy={pCircles[i].y} r={pCr} /></clipPath>
+                  ))}
+                </defs>
+                {pBadges.map((b, i) => { const next = pBadges[(i + 1) % 5]; return (<line key={`pl-${i}`} x1={b.x} y1={b.y} x2={next.x} y2={next.y} stroke={C.gold} strokeWidth={1} strokeDasharray="6 4" opacity={0.3} />); })}
+                <polygon points={pBadges.map((b) => `${b.x},${b.y}`).join(" ")} fill={C.gold} fillOpacity={0.04} stroke="none" />
+                {pCircles.map((c, i) => (<circle key={`co-${i}`} cx={c.x} cy={c.y} r={pCr} fill="none" stroke={C.parchment} strokeWidth={1.5} opacity={0.25} />))}
+                {pAdj.map(([a, b]) => (<circle key={`hz-${a}-${b}`} cx={pCircles[a].x} cy={pCircles[a].y} r={pCr} fill="url(#proc-hatch-d)" clipPath={`url(#pcd-${b})`} />))}
+                {pLabels.map((l, i) => (
+                  <text key={`lt-${i}`} x={l.x} y={l.y - 12} textAnchor="middle" fill={C.parchment} fontSize={26} fontFamily={F.heading} letterSpacing="0.04em" fontWeight="bold" opacity={0.85}>
+                    <tspan x={l.x} dy="0">{jProcess[i].label[0]}</tspan>
+                    <tspan x={l.x} dy="30">{jProcess[i].label[1]}</tspan>
+                  </text>
+                ))}
+                {pBadges.map((b, i) => (<g key={`bg-${i}`}><circle cx={b.x} cy={b.y} r={24} fill={C.gold} /><text x={b.x} y={b.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.deepForest} fontSize={18} fontWeight="bold" fontFamily={F.heading}>{jProcess[i].num}</text></g>))}
+                {pMids.map((m, i) => (<text key={`il-${i}`} x={m.x} y={m.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.gold} fontSize={20} fontFamily={F.heading} letterSpacing="0.06em" fontWeight="bold" opacity={0.7}>{pInterLabels[i]}</text>))}
+              </svg>
+            </div>
+            <div className="max-w-6xl mx-auto mt-12">
+              <div className="grid grid-cols-5 gap-0">
+                {jProcess.map((p, i) => (
+                  <div key={i} className="text-left px-5 py-5" style={{ borderRight: i < 4 ? `1px solid ${C.gold}15` : "none" }}>
+                    <div className="h-0.5 w-full mb-4" style={{ background: C.gold, opacity: 0.35 }} />
+                    <span className="text-2xl font-bold block mb-2" style={{ color: C.gold, fontFamily: F.heading }}>{p.num}</span>
+                    <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ fontFamily: F.heading, color: C.paleGold }}>{p.label.join(" ")}</p>
+                    <p className="text-xs leading-relaxed opacity-80" style={{ fontWeight: 300, color: C.parchment }}>{p.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </Section>
+      </LeafReveal>
+
+      {/* ═══════════════════ PORTFOLIO / PAST WORK — Roller Conveyor ═══════════════════ */}
+      {(() => {
+        const pieces = [
+          { src: "/images/portfolio/crestview-property.webp", name: "Crestview Property Group", tag: "Real Estate" },
+          { src: "/images/portfolio/carolina-arcade.webp", name: "Carolina Arcade Museum", tag: "Entertainment" },
+          { src: "/images/portfolio/mason-jar.webp", name: "The Mason Jar Provisions", tag: "Restaurant" },
+          { src: "/images/portfolio/foothills-chiro.webp", name: "Foothills Family Chiropractic", tag: "Healthcare" },
+          { src: "/images/portfolio/wahoos-sports.webp", name: "Wahoo's Sports & Collectibles", tag: "Retail" },
+          { src: "/images/portfolio/keller-built.webp", name: "Keller Built", tag: "Construction" },
+          { src: "/images/portfolio/carolina-brewing.webp", name: "Carolina Craft Brewing Co.", tag: "Brewery" },
+          { src: "/images/portfolio/hoot-nannie.webp", name: "The Hoot Nannie", tag: "Restaurant" },
+          { src: "/images/portfolio/morningside-coffee.webp", name: "Morningside Coffee", tag: "Cafe" },
+          { src: "/images/portfolio/pinnacle-realty.webp", name: "Pinnacle Realty", tag: "Real Estate" },
+          { src: "/images/portfolio/hickory-dental.webp", name: "Hickory Dental Arts", tag: "Healthcare" },
+          { src: "/images/portfolio/iron-peak.webp", name: "Iron Peak Fitness", tag: "Fitness" },
+          { src: "/images/portfolio/summit-legal.webp", name: "Summit Legal Group", tag: "Legal" },
+          { src: "/images/portfolio/trailhead-outfitters.webp", name: "Trailhead Outfitters", tag: "Retail" },
+          { src: "/images/portfolio/uptown-shelby.webp", name: "Uptown Shelby", tag: "Community" },
+        ];
+
+        /* 4 rows, alternating left/right — large cards filling the same vertical space */
+        const rowConfigs = [
+          { start: 0, count: 6, h: "h-[280px] md:h-[370px]", speed: "44s", dir: "left" as const },
+          { start: 3, count: 6, h: "h-[280px] md:h-[370px]", speed: "52s", dir: "right" as const },
+          { start: 7, count: 6, h: "h-[280px] md:h-[370px]", speed: "38s", dir: "left" as const },
+          { start: 1, count: 6, h: "h-[280px] md:h-[370px]", speed: "48s", dir: "right" as const },
+        ];
+
+        return (
+          <section
+            id="portfolio"
+            className="relative overflow-hidden pt-24 md:pt-36"
+            style={{ background: C.deepForest }}
+          >
+            {/* Background texture */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }}
+            />
+
+            {/* Heading */}
             <motion.div
-              key={s.num}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={vp}
-              transition={{ duration: 0.7, delay: i * 0.15 }}
-              className="relative p-8 md:p-10 text-center rounded-sm"
-              style={{
-                background: `${C.deepForest}80`,
-                border: `1px solid ${C.gold}20`,
-              }}
+              className="relative z-10 flex flex-col items-center px-6 mb-16 md:mb-20"
             >
-              <CornerAccents color={`${C.gold}30`} />
-              <span
-                className="block text-5xl md:text-6xl mb-4 opacity-30"
-                style={{ fontFamily: F.display, color: C.gold }}
+              <h2
+                className="text-5xl md:text-7xl lg:text-8xl tracking-tight"
+                style={{ fontFamily: F.display, color: C.parchment }}
               >
-                {s.num}
-              </span>
-              <h3
-                className="text-xl md:text-2xl tracking-wider mb-3"
-                style={{ fontFamily: F.heading, color: C.paleGold }}
-              >
-                {s.title}
-              </h3>
-              <p
-                className="text-base leading-relaxed opacity-60"
-                style={{ fontWeight: 300 }}
-              >
-                {s.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-      </LeafReveal>
-
-      {/* ═══════════════════ PRICING / THE INVESTMENT ═══════════════════ */}
-      <LeafReveal side="right">
-      <Section
-        id="investment"
-        bg={C.ivory}
-        color={C.forest}
-        overlay={
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: leafPattern,
-              backgroundSize: "80px 80px",
-            }}
-          />
-        }
-      >
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={vp}
-          transition={{ duration: 1 }}
-          className="text-center mb-16"
-        >
-          <p
-            className="text-xs tracking-[0.4em] uppercase mb-4"
-            style={{ fontFamily: F.heading, color: C.gold }}
-          >
-            Pricing
-          </p>
-          <h2
-            className="text-4xl md:text-6xl lg:text-7xl tracking-tight"
-            style={{ fontFamily: F.display }}
-          >
-            The Investment
-          </h2>
-          <div className="w-40 mx-auto mt-6">
-            <Ornament color={C.emerald} />
-          </div>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={vp}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative max-w-2xl mx-auto p-10 md:p-16 rounded-sm text-center"
-          style={{
-            background: C.deepForest,
-            color: C.parchment,
-            border: `1px solid ${C.gold}30`,
-          }}
-        >
-          <CornerAccents color={C.gold} />
-
-          <p
-            className="text-xs tracking-[0.3em] uppercase mb-6 opacity-60"
-            style={{ fontFamily: F.heading }}
-          >
-            All-Inclusive Retainer
-          </p>
-
-          <div
-            className="text-6xl md:text-8xl tracking-tight mb-2"
-            style={{ fontFamily: F.display, color: C.gold }}
-          >
-            $3,500
-          </div>
-          <p className="text-base mb-10 opacity-50" style={{ fontWeight: 300 }}>
-            per month — everything included
-          </p>
-
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-left mb-10 max-w-sm mx-auto">
-            {[
-              "Custom Website",
-              "AI Chatbot",
-              "SEO & Content",
-              "Marketing",
-              "Automation",
-              "Analytics",
-              "Revisions",
-              "Support",
-            ].map((f) => (
-              <div
-                key={f}
-                className="flex items-center gap-2 text-sm"
-                style={{ fontWeight: 400 }}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full shrink-0"
-                  style={{ background: C.gold }}
-                />
-                {f}
+                Portfolio
+              </h2>
+              <div className="flex items-center gap-4 mt-5 mb-0">
+                <div className="h-px w-10 md:w-16" style={{ background: `${C.gold}40` }} />
+                <p
+                  className="text-[11px] md:text-xs tracking-[0.45em] uppercase"
+                  style={{ fontFamily: F.heading, color: C.gold, fontWeight: 400 }}
+                >
+                  A selection of past work
+                </p>
+                <div className="h-px w-10 md:w-16" style={{ background: `${C.gold}40` }} />
               </div>
-            ))}
-          </div>
+            </motion.div>
 
-          <div className="w-32 mx-auto mb-8">
-            <Ornament />
-          </div>
-
-          <motion.a
-            href="#contact"
-            className="inline-block px-10 py-4 text-sm tracking-[0.2em] uppercase rounded-full transition-all duration-500 hover:scale-105"
-            style={{
-              fontFamily: F.heading,
-              background: `linear-gradient(135deg, ${C.gold}, ${C.brightGold})`,
-              color: C.deepForest,
-            }}
-          >
-            Begin Your Journey
-          </motion.a>
-        </motion.div>
-      </Section>
-      </LeafReveal>
+            {/* Roller rows */}
+            <div className="space-y-2">
+              {rowConfigs.map((cfg, ri) => {
+                const rowPieces = Array.from({ length: cfg.count }, (_, i) => pieces[(cfg.start + i) % pieces.length]);
+                const track = [...rowPieces, ...rowPieces, ...rowPieces];
+                return (
+                  <div key={ri} className="pw-row overflow-hidden w-full">
+                    <div
+                      className="pw-inner flex gap-2"
+                      style={{
+                        animation: `pw-scroll-${cfg.dir} ${cfg.speed} linear infinite`,
+                        width: "max-content",
+                      }}
+                    >
+                      {track.map((p, i) => (
+                        <div key={i} className={`w-[440px] md:w-[580px] flex-shrink-0 ${cfg.h}`}>
+                          <div className="relative overflow-hidden group w-full h-full">
+                            <img src={p.src} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+                            <div
+                              className="absolute inset-0 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                              style={{ background: `linear-gradient(to top, ${C.deepForest}ee 0%, transparent 50%)` }}
+                            >
+                              <span className="text-[10px] tracking-[0.3em] uppercase" style={{ color: C.gold, fontFamily: F.heading }}>{p.tag}</span>
+                              <span className="text-xs font-medium leading-tight" style={{ color: C.parchment, fontFamily: F.heading }}>{p.name}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ═══════════════════ CTA ═══════════════════ */}
       <LeafReveal side="left">
       <section
         id="contact"
-        className="relative py-32 md:py-44 px-6 md:px-16 lg:px-20 overflow-hidden text-center"
+        className="relative pt-24 md:pt-32 pb-32 md:pb-44 px-6 md:px-16 lg:px-20 overflow-hidden text-center"
         style={{ background: C.deepForest, color: C.parchment }}
       >
         <div
@@ -1562,11 +1526,12 @@ export default function App() {
             viewport={vp}
             transition={{ duration: 0.8, delay: 0.4 }}
             href="mailto:hello@studioobrien.com"
-            className="inline-block mt-10 px-12 py-5 text-base tracking-[0.2em] uppercase rounded-full transition-all duration-500 hover:scale-105"
+            className="inline-block mt-10 px-14 py-6 text-base tracking-[0.2em] uppercase font-bold rounded-full transition-all duration-500 hover:scale-105"
             style={{
               fontFamily: F.heading,
-              background: `linear-gradient(135deg, ${C.gold}, ${C.brightGold})`,
+              background: C.parchment,
               color: C.deepForest,
+              boxShadow: `0 4px 24px rgba(0,0,0,0.3)`,
             }}
           >
             Contact Us
@@ -1576,39 +1541,46 @@ export default function App() {
       </LeafReveal>
 
       {/* ═══════════════════ FOOTER ═══════════════════ */}
-      <footer
-        className="py-8 px-6 md:px-16"
-        style={{
-          background: C.darkBark,
-          color: C.parchment,
-          borderTop: `1px solid ${C.gold}15`,
-        }}
-      >
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <img
-            src="/images/logo.webp"
-            alt="Studio O'Brien"
-            className="h-7 w-auto brightness-110"
-          />
-          <div
-            className="flex gap-8 text-xs tracking-[0.2em] uppercase opacity-40"
-            style={{ fontFamily: F.heading }}
-          >
-            {["Our Craft", "The Journey", "Investment"].map((l) => (
-              <a
-                key={l}
-                href={`#${l === "Our Craft" ? "craft" : l === "The Journey" ? "journey" : "investment"}`}
-                className="hover:opacity-100 transition-opacity"
-              >
-                {l}
-              </a>
-            ))}
-          </div>
-          <span className="text-xs opacity-30">
-            © {new Date().getFullYear()} Studio O'Brien
-          </span>
-        </div>
-      </footer>
+      {/* ═══════════════════ FOOTER — Grand Banner ═══════════════════ */}
+      {(() => {
+        const navLinks = [
+          { label: "Our Craft", href: "#craft" },
+          { label: "The Journey", href: "#journey" },
+          { label: "Portfolio", href: "#portfolio" },
+          { label: "Contact", href: "#contact" },
+        ];
+        const yr = new Date().getFullYear();
+        const fStyle = { fontFamily: F.heading };
+        const socials = ["Twitter", "Instagram", "LinkedIn"];
+
+        return (
+          <footer className="py-16 md:py-24 px-6 md:px-16" style={{ background: C.parchment, color: C.deepForest }}>
+            <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+              <Ornament className="w-40 md:w-56 mb-8" color={C.gold} />
+              <img src="/images/logo.webp" alt="Studio O'Brien" className="h-12 md:h-16 w-auto mb-6" />
+              <p className="text-sm md:text-base italic opacity-60 max-w-md mb-10" style={{ fontWeight: 400, color: C.forest }}>
+                Where timeless craft meets the art of the digital age.
+              </p>
+              <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-xs tracking-[0.25em] uppercase mb-10" style={fStyle}>
+                {navLinks.map((l) => (
+                  <a key={l.label} href={l.href} className="opacity-70 hover:opacity-100 transition-all duration-300" style={{ color: C.deepForest }}>{l.label}</a>
+                ))}
+              </div>
+              <div className="flex gap-8 text-xs tracking-[0.2em] uppercase opacity-50 mb-10" style={{ ...fStyle, color: C.deepForest }}>
+                {socials.map((s) => <a key={s} href="#" className="hover:opacity-100 transition-opacity">{s}</a>)}
+              </div>
+              <Ornament className="w-32 md:w-40 mb-6" color={C.gold} />
+              <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs opacity-40" style={{ color: C.deepForest }}>
+                <span>&copy; {yr} Studio O'Brien</span>
+                <span className="hidden md:inline">&middot;</span>
+                <span>Shelby, NC</span>
+                <span className="hidden md:inline">&middot;</span>
+                <span>All rights reserved</span>
+              </div>
+            </div>
+          </footer>
+        );
+      })()}
     </div>
   );
 }
