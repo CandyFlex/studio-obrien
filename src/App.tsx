@@ -993,16 +993,16 @@ export default function App() {
 
   // ── VARIANT 5: 5-Step Pentagon Process ──
   const proc = [
-    { n: "01", name: "Listen", desc: "We sit down and talk — about your customers, your competitors, and the gap between where you are and where you want to be. No intake forms. Just a real conversation." },
-    { n: "02", name: "Research", desc: "Your competitors have blind spots. We find them. Market analysis, audience profiling, and keyword mapping build the strategic foundation before a single pixel moves." },
-    { n: "03", name: "Architect", desc: "Sitemaps. Content hierarchy. User journeys. The invisible scaffolding that separates sites people use from sites people leave. This gets locked before design begins." },
-    { n: "04", name: "Design", desc: "You see three distinct creative directions — not one guess. Each one tailored to your brand, your audience, and the outcomes you need. You pick the winner." },
-    { n: "05", name: "Build", desc: "Every line written by hand. Zero templates, zero page builders. The result loads fast, reads clean on every screen, and scores where search engines look." },
-    { n: "06", name: "Refine", desc: "This is where good becomes undeniable. Spacing gets tighter. Transitions get smoother. We iterate until the details feel inevitable — not decorated." },
-    { n: "07", name: "Test", desc: "iPhones, Androids, Chrome, Safari, slow connections, screen readers — nothing ships until it works everywhere real people actually browse." },
-    { n: "08", name: "Launch", desc: "Domain, hosting, SSL, analytics, search indexing — all configured and deployed. You never touch a dashboard. It just goes live, and it works." },
-    { n: "09", name: "Measure", desc: "Real traffic data from day one. We track what visitors do, where they drop off, and which pages convert — so every next move is backed by evidence." },
-    { n: "10", name: "Evolve", desc: "Your business changes. Your site keeps pace. New pages, seasonal campaigns, performance tuning — an ongoing partnership, not a one-and-done handoff." },
+    { n: "01", name: "Listen", desc: "Who are your best customers? What makes them call you instead of the other guy? We start with a real conversation. Not a questionnaire. The answers shape everything that follows." },
+    { n: "02", name: "Research", desc: "We pull up your top five competitors and find what they're missing. Keyword gaps, slow load times, weak calls to action. Their blind spots become your advantages." },
+    { n: "03", name: "Architect", desc: "Every page needs a job. We map the sitemap, decide what goes where, and plan how a visitor moves from landing to contact. Skipping this step is why most sites underperform." },
+    { n: "04", name: "Design", desc: "You see three different creative directions, not one take-it-or-leave-it mockup. Each one is built around your brand and your audience. You pick the winner. We refine from there." },
+    { n: "05", name: "Build", desc: "Hand-written code. No WordPress, no Squarespace, no drag-and-drop page builders. The result loads in under two seconds, works on every screen size, and scores 90+ on Google PageSpeed." },
+    { n: "06", name: "Refine", desc: "Pixel-level adjustments. Button spacing, font weights, color contrast, scroll timing. This is where a site stops looking \"made\" and starts looking like it was always supposed to exist." },
+    { n: "07", name: "Test", desc: "We open it on iPhones, Androids, Chrome, Safari, Firefox, and a throttled 3G connection. If something breaks on a six-year-old phone, we fix it before you ever see it." },
+    { n: "08", name: "Launch", desc: "Domain connected. SSL certificate active. Google Analytics and Search Console configured. Sitemap submitted. You don't touch a single dashboard. It goes live and it works." },
+    { n: "09", name: "Measure", desc: "Within the first week, real data starts coming in. Which pages get traffic, where people leave, what they click. Every decision after launch is based on what visitors actually do." },
+    { n: "10", name: "Evolve", desc: "Your business will change. New services, new locations, seasonal pushes. Your site stays current. Monthly updates, performance checks, and fresh content keep it working as hard as you do." },
   ];
 
   /* ─── Constellation Geometry (static, used for tour zoom) ─── */
