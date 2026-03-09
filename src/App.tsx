@@ -1499,21 +1499,21 @@ export default function App() {
       {/* ═══════════════════ PORTFOLIO / PAST WORK — Roller Conveyor ═══════════════════ */}
       {(() => {
         const pieces = [
-          { src: "/images/portfolio/crestview-property.webp", name: "Crestview Property Group", tag: "Real Estate" },
-          { src: "/images/portfolio/carolina-arcade.webp", name: "Carolina Arcade Museum", tag: "Entertainment" },
-          { src: "/images/portfolio/mason-jar.webp", name: "The Mason Jar Provisions", tag: "Restaurant" },
-          { src: "/images/portfolio/foothills-chiro.webp", name: "Foothills Family Chiropractic", tag: "Healthcare" },
-          { src: "/images/portfolio/wahoos-sports.webp", name: "Wahoo's Sports & Collectibles", tag: "Retail" },
-          { src: "/images/portfolio/keller-built.webp", name: "Keller Built", tag: "Construction" },
-          { src: "/images/portfolio/carolina-brewing.webp", name: "Carolina Craft Brewing Co.", tag: "Brewery" },
-          { src: "/images/portfolio/hoot-nannie.webp", name: "The Hoot Nannie", tag: "Restaurant" },
-          { src: "/images/portfolio/morningside-coffee.webp", name: "Morningside Coffee", tag: "Cafe" },
-          { src: "/images/portfolio/pinnacle-realty.webp", name: "Pinnacle Realty", tag: "Real Estate" },
-          { src: "/images/portfolio/hickory-dental.webp", name: "Hickory Dental Arts", tag: "Healthcare" },
-          { src: "/images/portfolio/iron-peak.webp", name: "Iron Peak Fitness", tag: "Fitness" },
-          { src: "/images/portfolio/summit-legal.webp", name: "Summit Legal Group", tag: "Legal" },
-          { src: "/images/portfolio/trailhead-outfitters.webp", name: "Trailhead Outfitters", tag: "Retail" },
-          { src: "/images/portfolio/uptown-shelby.webp", name: "Uptown Shelby", tag: "Community" },
+          { src: "/images/portfolio/crestview-property.webp", name: "Crestview Property Group", tag: "Real Estate", href: "/mock-sites/crestview-property.html" },
+          { src: "/images/portfolio/carolina-arcade.webp", name: "Carolina Arcade Museum", tag: "Entertainment", href: "/mock-sites/carolina-arcade.html" },
+          { src: "/images/portfolio/mason-jar.webp", name: "The Mason Jar Provisions", tag: "Restaurant", href: "/mock-sites/mason-jar.html" },
+          { src: "/images/portfolio/foothills-chiro.webp", name: "Foothills Family Chiropractic", tag: "Healthcare", href: "/mock-sites/foothills-chiro.html" },
+          { src: "/images/portfolio/wahoos-sports.webp", name: "Wahoo's Sports & Collectibles", tag: "Retail", href: "/mock-sites/wahoos-sports.html" },
+          { src: "/images/portfolio/keller-built.webp", name: "Keller Built", tag: "Construction", href: "/mock-sites/keller-built.html" },
+          { src: "/images/portfolio/carolina-brewing.webp", name: "Carolina Craft Brewing Co.", tag: "Brewery", href: "/mock-sites/carolina-brewing.html" },
+          { src: "/images/portfolio/hoot-nannie.webp", name: "The Hoot Nannie", tag: "Restaurant", href: "/mock-sites/hoot-nannie.html" },
+          { src: "/images/portfolio/morningside-coffee.webp", name: "Morningside Coffee", tag: "Cafe", href: "/mock-sites/morningside-coffee.html" },
+          { src: "/images/portfolio/pinnacle-realty.webp", name: "Pinnacle Realty", tag: "Real Estate", href: "/mock-sites/pinnacle-realty.html" },
+          { src: "/images/portfolio/hickory-dental.webp", name: "Hickory Dental Arts", tag: "Healthcare", href: "/mock-sites/hickory-dental.html" },
+          { src: "/images/portfolio/iron-peak.webp", name: "Iron Peak Fitness", tag: "Fitness", href: "/mock-sites/iron-peak.html" },
+          { src: "/images/portfolio/summit-legal.webp", name: "Summit Legal Group", tag: "Legal", href: "/mock-sites/summit-legal.html" },
+          { src: "/images/portfolio/trailhead-outfitters.webp", name: "Trailhead Outfitters", tag: "Retail", href: "/mock-sites/trailhead-outfitters.html" },
+          { src: "/images/portfolio/uptown-shelby.webp", name: "Uptown Shelby", tag: "Community", href: "/mock-sites/uptown-shelby.html" },
         ];
 
         /* 4 rows, alternating left/right — large cards filling the same vertical space */
@@ -1577,18 +1577,19 @@ export default function App() {
                       }}
                     >
                       {track.map((p, i) => (
-                        <div key={i} className={`w-[440px] md:w-[580px] flex-shrink-0 ${cfg.h}`}>
+                        <a key={i} href={p.href} target="_blank" rel="noopener noreferrer" className={`w-[440px] md:w-[580px] flex-shrink-0 ${cfg.h} block cursor-pointer`}>
                           <div className="relative overflow-hidden group w-full h-full">
-                            <img src={p.src} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+                            <img src={p.src} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                             <div
-                              className="absolute inset-0 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                              className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                               style={{ background: `linear-gradient(to top, ${C.deepForest}ee 0%, transparent 50%)` }}
                             >
                               <span className="text-[10px] tracking-[0.3em] uppercase" style={{ color: C.gold, fontFamily: F.heading }}>{p.tag}</span>
-                              <span className="text-xs font-medium leading-tight" style={{ color: C.parchment, fontFamily: F.heading }}>{p.name}</span>
+                              <span className="text-sm font-medium leading-tight" style={{ color: C.parchment, fontFamily: F.heading }}>{p.name}</span>
+                              <span className="text-[10px] tracking-[0.2em] uppercase mt-2 opacity-60" style={{ color: C.paleGold, fontFamily: F.heading }}>View Project &rarr;</span>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </div>
