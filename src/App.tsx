@@ -1062,7 +1062,7 @@ export default function App() {
       setTourStep(step);
       setStepInfoVisible(false);
 
-      // Info appears after zoom (0.7s)
+      // Info appears after zoom settles (1.2s)
       schedule(() => {
         setStepInfoVisible(true);
         // Hold for reading (2.4s), then hide
@@ -1078,7 +1078,7 @@ export default function App() {
             }
           }, 350);
         }, 2400);
-      }, 700);
+      }, 1200);
     };
 
     // Start tour after initial reveal
@@ -1104,9 +1104,11 @@ export default function App() {
   const aspectX = svgSize / screenW; // 1 on landscape, >1 on portrait
   const aspectY = svgSize / screenH; // >1 on landscape, 1 on portrait
   const targetY = 38; // node lands between title and info panel
-  const tourTx = tourStep === -1 ? 0 : (50 - 50) + zoomScale * (50 - nodeXPct) * aspectX;
+  /* Overview: scale down so full diagram fits below the header text */
+  const overviewScale = Math.min(screenW, screenH) / svgSize * 0.72;
+  const tourTx = tourStep === -1 ? 0 : zoomScale * (50 - nodeXPct) * aspectX;
   const tourTy = tourStep === -1 ? 0 : (targetY - 50) + zoomScale * (50 - nodeYPct) * aspectY;
-  const tourScale = tourStep === -1 ? 1 : zoomScale;
+  const tourScale = tourStep === -1 ? overviewScale : zoomScale;
   const tourRotate = 0;
 
   return (
@@ -1368,8 +1370,8 @@ export default function App() {
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="relative z-30 pt-[282px] sm:pt-[357px] pb-6 px-6">
           <div className="text-center">
             <p className="text-[13px] tracking-[0.6em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What We Do</p>
-            <div className="relative">
-              <h2 className="text-[8.4rem] sm:text-[12rem] md:text-[19.2rem] tracking-[0.14em] uppercase leading-[0.85] font-bold" style={{
+            <div className="relative" style={{ marginTop: "31px" }}>
+              <h2 className="text-[4.5rem] sm:text-[12rem] md:text-[19.2rem] tracking-[0.14em] uppercase leading-[0.85] font-bold" style={{
                 fontFamily: F.heading,
                 color: C.gold,
                 maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
@@ -1544,7 +1546,7 @@ export default function App() {
                   const dur = trackDurations[colIdx] ?? "35s";
 
                   return (
-                    <div key={colIdx} className="craft-track relative" style={{ width: `${cardW}px`, maskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)" }}>
+                    <div key={colIdx} className="craft-track relative" style={{ width: `${cardW}px`, overflow: "hidden", maskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)" }}>
                       <div
                         className="craft-track-inner flex flex-col"
                         style={{
@@ -1737,8 +1739,8 @@ export default function App() {
           <div className="absolute inset-0" style={{ zIndex: 1 }}>
             {/* Transformable SVG wrapper — zooms & rotates to each node */}
             <motion.div
-              animate={{ scale: tourScale, x: `${tourTx}%`, y: `${tourTy}%`, rotate: tourRotate }}
-              transition={{ duration: 0.7, ease: [0.33, 0, 0.2, 1] }}
+              animate={{ scale: tourScale, x: `${tourTx}%`, y: `${tourTy}%` }}
+              transition={{ duration: tourStep === -1 ? 1 : 1.1, ease: [0.4, 0, 0.1, 1] }}
               className="absolute inset-0 flex items-center justify-center"
               style={{ willChange: "transform", transformOrigin: "50% 50%", backfaceVisibility: "hidden" as const }}
             >
@@ -1915,18 +1917,16 @@ export default function App() {
                     >{p.label}</text>
                   ))}
 
-                  {/* Active node glow ring — pulses when zoomed in */}
-                  {tourStep >= 0 && (
-                    <motion.circle
-                      key={`glow-${tourStep}`}
-                      cx={cNodes[tourStep].x} cy={cNodes[tourStep].y} r="36"
+                  {/* Active node glow rings — CSS transitions only, no remount */}
+                  {cNodes.map((node, i) => (
+                    <circle
+                      key={`glow-${i}`}
+                      cx={node.x} cy={node.y} r="36"
                       fill="url(#nodeGlow)" stroke={C.brightGold} strokeWidth="1"
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: [0, 0.5, 0.25, 0.5], scale: [0.85, 1.05, 0.95, 1.05] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      style={{ transformOrigin: `${cNodes[tourStep].x}px ${cNodes[tourStep].y}px` }}
+                      opacity={tourStep === i ? 0.45 : 0}
+                      style={{ transition: "opacity 0.6s ease" }}
                     />
-                  )}
+                  ))}
 
                   {/* Node badges at each decagon vertex */}
                   {cNodes.map((node, i) => {
@@ -1962,21 +1962,19 @@ export default function App() {
                     );
                   })}
 
-                  {/* Connecting arc highlight for active phase */}
-                  {tourStep >= 0 && (() => {
-                    const phaseIdx = Math.floor(tourStep / 2);
-                    const phase = cPhases[phaseIdx];
+                  {/* Connecting arc highlight for active phase — CSS transition only */}
+                  {cPhases.map((phase, pi) => {
                     const n1 = cNodes[phase.from], n2 = cNodes[phase.to];
+                    const isActive = tourStep >= 0 && Math.floor(tourStep / 2) === pi;
                     return (
-                      <motion.line
+                      <line key={`arc-${pi}`}
                         x1={n1.x} y1={n1.y} x2={n2.x} y2={n2.y}
                         stroke={C.brightGold} strokeWidth="1.5" strokeDasharray="4 4"
-                        initial={{ opacity: 0, pathLength: 0 }}
-                        animate={{ opacity: 0.4, pathLength: 1 }}
-                        transition={{ duration: 0.8 }}
+                        opacity={isActive ? 0.4 : 0}
+                        style={{ transition: "opacity 0.5s ease" }}
                       />
                     );
-                  })()}
+                  })}
                 </svg>
             </motion.div>
           </div>
@@ -2011,10 +2009,9 @@ export default function App() {
                       className="text-left pointer-events-none mx-auto"
                       style={{
                         width: "min(380px, 90%)",
-                        background: `linear-gradient(135deg, ${C.deepForest}f5, ${C.darkBark}f2)`,
+                        background: `linear-gradient(135deg, ${C.deepForest}, ${C.darkBark})`,
                         borderLeft: `2px solid ${C.gold}`,
-                        backdropFilter: "blur(16px)",
-                        boxShadow: `0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px ${C.gold}0a`,
+                        boxShadow: `0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px ${C.gold}0a`,
                         padding: "20px 24px 18px",
                       }}
                       initial={{ y: 14, opacity: 0.8 }} animate={{ y: stepInfoVisible ? 0 : 14, opacity: stepInfoVisible ? 1 : 0.8 }} transition={{ duration: 0.28, ease: "easeOut" }}
@@ -2023,10 +2020,10 @@ export default function App() {
                       <div className="flex items-end gap-4 mb-3">
                         <span style={{ fontFamily: "'Cormorant Garamond', serif", color: C.gold, fontSize: "34px", fontWeight: 300, lineHeight: 0.85, letterSpacing: "-1px" }}>{num}</span>
                         <div style={{ paddingBottom: "2px" }}>
-                          <p style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontSize: "8px", letterSpacing: "3.5px", lineHeight: 1, marginBottom: "3px", opacity: 0.7 }}>{phase}</p>
+                          <p style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontSize: "10px", letterSpacing: "3px", lineHeight: 1, marginBottom: "4px", opacity: 0.75 }}>{phase}</p>
                           <div className="flex items-center gap-1.5">
                             {Array.from({ length: 10 }, (_, i) => (
-                              <div key={i} style={{ width: i === tourStep ? "12px" : "4px", height: "2px", borderRadius: "1px", background: i === tourStep ? C.gold : `${C.gold}30`, transition: "all 0.3s ease" }} />
+                              <div key={i} style={{ width: i === tourStep ? "14px" : "5px", height: "3px", borderRadius: "1.5px", background: i === tourStep ? C.gold : `${C.gold}35`, transition: "all 0.3s ease" }} />
                             ))}
                           </div>
                         </div>
@@ -2036,7 +2033,7 @@ export default function App() {
                       {/* Gold rule */}
                       <div style={{ width: "32px", height: "1px", background: `linear-gradient(to right, ${C.gold}50, ${C.gold}00)`, marginBottom: "10px" }} />
                       {/* Description */}
-                      <p style={{ fontFamily: "'Crimson Text', serif", color: C.parchment, fontSize: "13.5px", lineHeight: 1.75, opacity: 0.7, fontWeight: 400 }}>{desc}</p>
+                      <p style={{ fontFamily: "'DM Sans', sans-serif", color: C.parchment, fontSize: "13.5px", lineHeight: 1.7, opacity: 0.78, fontWeight: 400 }}>{desc}</p>
                     </motion.div>
                   );
                 })()}
