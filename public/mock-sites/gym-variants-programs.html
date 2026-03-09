@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Gym - Programs Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --red: #e63226;
+      --red-glow: rgba(230, 50, 38, 0.3);
+      --neon-green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.25);
+      --orange: #ff6b2b;
+      --yellow: #ffc831;
+      --white: #f0f0f0;
+      --muted: #777777;
+      --border: #2a2a2a;
+      --steel: #333333;
+    }
+
+    /* ============ PICKER BAR ============ */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--neon-green); margin-right: 12px; text-transform: uppercase;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 8px; border: 2px solid #333;
+      background: #161616; color: #f0f0f0; font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--red); background: var(--red); color: #fff; transform: scale(1.08);
+    }
+
+    .variant { display: none; min-height: 100vh; }
+    .variant.active { display: block; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0 140px; }
+    .text-center { text-align: center; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', sans-serif; text-transform: uppercase;
+      line-height: 1.05; letter-spacing: 0.02em; font-weight: 700;
+    }
+
+    /* ===========================
+       VARIANT 1 - 2x2 Grid Cards (Original)
+       =========================== */
+    .v1-programs { background: var(--dark); position: relative; overflow: hidden; }
+    .v1-programs::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,255,255,0.015) 100px, rgba(255,255,255,0.015) 101px);
+    }
+    .v1-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v1-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v1-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v1-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; position: relative; z-index: 2;
+    }
+    .v1-card {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 40px 32px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;
+    }
+    .v1-card:hover { transform: translateY(-4px); }
+    .v1-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .v1-card:nth-child(1)::before { background: var(--red); }
+    .v1-card:nth-child(2)::before { background: var(--neon-green); }
+    .v1-card:nth-child(3)::before { background: var(--orange); }
+    .v1-card:nth-child(4)::before { background: var(--yellow); }
+    .v1-card:nth-child(1):hover { border-color: var(--red); }
+    .v1-card:nth-child(2):hover { border-color: var(--neon-green); }
+    .v1-card:nth-child(3):hover { border-color: var(--orange); }
+    .v1-card:nth-child(4):hover { border-color: var(--yellow); }
+    .v1-icon {
+      width: 56px; height: 56px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px;
+    }
+    .v1-card:nth-child(1) .v1-icon { background: rgba(230,50,38,0.12); color: var(--red); }
+    .v1-card:nth-child(2) .v1-icon { background: rgba(57,255,20,0.1); color: var(--neon-green); }
+    .v1-card:nth-child(3) .v1-icon { background: rgba(255,107,43,0.12); color: var(--orange); }
+    .v1-card:nth-child(4) .v1-icon { background: rgba(255,200,49,0.12); color: var(--yellow); }
+    .v1-card h3 { font-size: 1.6rem; color: var(--white); margin-bottom: 12px; }
+    .v1-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    @media (max-width: 768px) { .v1-grid { grid-template-columns: 1fr; } }
+
+    /* ===========================
+       VARIANT 2 - Horizontal Scroll Cards
+       =========================== */
+    .v2-programs { background: var(--black); position: relative; overflow: hidden; }
+    .v2-programs::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(230,50,38,0.04) 0%, transparent 70%);
+    }
+    .v2-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v2-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v2-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v2-scroll {
+      display: flex; gap: 24px; overflow-x: auto; padding-bottom: 20px;
+      scrollbar-width: thin; scrollbar-color: var(--red) var(--dark-card);
+      position: relative; z-index: 2;
+    }
+    .v2-scroll::-webkit-scrollbar { height: 6px; }
+    .v2-scroll::-webkit-scrollbar-track { background: var(--dark-card); border-radius: 3px; }
+    .v2-scroll::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+    .v2-card {
+      min-width: 320px; flex-shrink: 0;
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 40px 32px; position: relative; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .v2-card:hover { border-color: var(--red); }
+    .v2-card-num {
+      font-family: 'Anton', sans-serif; font-size: 4rem; color: rgba(230,50,38,0.1);
+      position: absolute; top: 16px; right: 20px; line-height: 1;
+    }
+    .v2-card:nth-child(2) .v2-card-num { color: rgba(57,255,20,0.1); }
+    .v2-card:nth-child(3) .v2-card-num { color: rgba(255,107,43,0.1); }
+    .v2-card:nth-child(4) .v2-card-num { color: rgba(255,200,49,0.1); }
+    .v2-card h3 { font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+    .v2-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    .v2-card-tag {
+      display: inline-block; margin-top: 16px; padding: 6px 16px;
+      border: 1px solid var(--border); border-radius: 50px;
+      font-size: 0.75rem; color: var(--neon-green); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+
+    /* ===========================
+       VARIANT 3 - Stacked Full-Width Rows
+       =========================== */
+    .v3-programs { background: var(--dark); position: relative; overflow: hidden; }
+    .v3-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v3-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 48px; }
+    .v3-rows { position: relative; z-index: 2; }
+    .v3-row {
+      display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: center;
+      padding: 32px 0; border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .v3-row:hover { background: rgba(255,255,255,0.02); }
+    .v3-row:last-child { border-bottom: none; }
+    .v3-row-num {
+      font-family: 'Anton', sans-serif; font-size: 3rem; line-height: 1;
+    }
+    .v3-row:nth-child(1) .v3-row-num { color: var(--red); }
+    .v3-row:nth-child(2) .v3-row-num { color: var(--neon-green); }
+    .v3-row:nth-child(3) .v3-row-num { color: var(--orange); }
+    .v3-row:nth-child(4) .v3-row-num { color: var(--yellow); }
+    .v3-row-content h3 { font-size: 1.6rem; color: var(--white); margin-bottom: 8px; }
+    .v3-row-content p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 700px; }
+    @media (max-width: 640px) {
+      .v3-row { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    /* ===========================
+       VARIANT 4 - Color-Block Cards
+       =========================== */
+    .v4-programs { background: var(--black); position: relative; overflow: hidden; }
+    .v4-programs::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle 1px at 40px 40px, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .v4-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v4-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v4-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v4-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; z-index: 2;
+    }
+    .v4-card {
+      border-radius: 12px; padding: 36px 24px; text-align: center;
+      position: relative; overflow: hidden; transition: transform 0.3s;
+    }
+    .v4-card:hover { transform: translateY(-6px); }
+    .v4-card:nth-child(1) { background: var(--red); }
+    .v4-card:nth-child(2) { background: #1a3a1a; border: 1px solid rgba(57,255,20,0.2); }
+    .v4-card:nth-child(3) { background: #3a1a00; border: 1px solid rgba(255,107,43,0.2); }
+    .v4-card:nth-child(4) { background: #2a2a00; border: 1px solid rgba(255,200,49,0.2); }
+    .v4-card-icon {
+      font-size: 2.2rem; margin-bottom: 16px;
+    }
+    .v4-card:nth-child(1) .v4-card-icon { color: #fff; }
+    .v4-card:nth-child(2) .v4-card-icon { color: var(--neon-green); }
+    .v4-card:nth-child(3) .v4-card-icon { color: var(--orange); }
+    .v4-card:nth-child(4) .v4-card-icon { color: var(--yellow); }
+    .v4-card h3 {
+      font-size: 1.2rem; margin-bottom: 12px;
+    }
+    .v4-card:nth-child(1) h3 { color: #fff; }
+    .v4-card:nth-child(2) h3 { color: var(--neon-green); }
+    .v4-card:nth-child(3) h3 { color: var(--orange); }
+    .v4-card:nth-child(4) h3 { color: var(--yellow); }
+    .v4-card p {
+      font-size: 0.85rem; line-height: 1.6;
+    }
+    .v4-card:nth-child(1) p { color: rgba(255,255,255,0.8); }
+    .v4-card:nth-child(2) p { color: rgba(57,255,20,0.6); }
+    .v4-card:nth-child(3) p { color: rgba(255,107,43,0.6); }
+    .v4-card:nth-child(4) p { color: rgba(255,200,49,0.6); }
+    @media (max-width: 900px) { .v4-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .v4-grid { grid-template-columns: 1fr; } }
+
+    /* ===========================
+       VARIANT 5 - Bento Grid
+       =========================== */
+    .v5-programs { background: var(--dark); position: relative; overflow: hidden; }
+    .v5-programs::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.01) 60px, rgba(255,255,255,0.01) 61px);
+    }
+    .v5-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v5-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 48px; }
+    .v5-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      position: relative; z-index: 2;
+    }
+    .v5-bento-card {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 36px 28px; position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .v5-bento-card:hover { transform: translateY(-4px); }
+    .v5-bento-card:nth-child(1) { grid-column: span 2; }
+    .v5-bento-card:nth-child(4) { grid-column: span 2; }
+    .v5-bento-card:nth-child(1):hover { border-color: var(--red); }
+    .v5-bento-card:nth-child(2):hover { border-color: var(--neon-green); }
+    .v5-bento-card:nth-child(3):hover { border-color: var(--orange); }
+    .v5-bento-card:nth-child(4):hover { border-color: var(--yellow); }
+    .v5-bento-icon {
+      font-size: 1.8rem; margin-bottom: 16px;
+    }
+    .v5-bento-card:nth-child(1) .v5-bento-icon { color: var(--red); }
+    .v5-bento-card:nth-child(2) .v5-bento-icon { color: var(--neon-green); }
+    .v5-bento-card:nth-child(3) .v5-bento-icon { color: var(--orange); }
+    .v5-bento-card:nth-child(4) .v5-bento-icon { color: var(--yellow); }
+    .v5-bento-card h3 { font-size: 1.5rem; color: var(--white); margin-bottom: 10px; }
+    .v5-bento-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    .v5-bento-tag {
+      position: absolute; top: 20px; right: 20px;
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 4px;
+    }
+    .v5-bento-card:nth-child(1) .v5-bento-tag { background: rgba(230,50,38,0.15); color: var(--red); }
+    .v5-bento-card:nth-child(2) .v5-bento-tag { background: rgba(57,255,20,0.1); color: var(--neon-green); }
+    .v5-bento-card:nth-child(3) .v5-bento-tag { background: rgba(255,107,43,0.12); color: var(--orange); }
+    .v5-bento-card:nth-child(4) .v5-bento-tag { background: rgba(255,200,49,0.12); color: var(--yellow); }
+    @media (max-width: 768px) {
+      .v5-bento { grid-template-columns: 1fr; }
+      .v5-bento-card:nth-child(1), .v5-bento-card:nth-child(4) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - 2x2 Grid -->
+  <div class="variant active" id="v1">
+    <section class="v1-programs section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v1-label">What We Do</div>
+          <h2 class="v1-heading">Training That Works</h2>
+          <p class="v1-sub">No gimmicks. No machines gathering dust. Every workout has a purpose, every movement makes you better.</p>
+        </div>
+        <div class="v1-grid">
+          <div class="v1-card">
+            <div class="v1-icon">&#9879;</div>
+            <h3>Group Classes</h3>
+            <p>Programmed workouts in a team setting. Every class is coached, scalable, and different. Show up, work hard, get better. That is the formula.</p>
+          </div>
+          <div class="v1-card">
+            <div class="v1-icon">&#9733;</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one coaching built around your goals. Whether you are brand new or chasing competition-level performance, your program is yours alone.</p>
+          </div>
+          <div class="v1-card">
+            <div class="v1-icon">&#9881;</div>
+            <h3>Open Gym</h3>
+            <p>Full access to the floor and equipment on your own time. For members who know their way around a barbell and want the freedom to train independently.</p>
+          </div>
+          <div class="v1-card">
+            <div class="v1-icon">&#9889;</div>
+            <h3>Functional Fitness</h3>
+            <p>Everything we do has a purpose. Lifting, running, jumping, pulling. You will train movements that make you stronger, faster, and harder to break in everyday life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 - Horizontal Scroll -->
+  <div class="variant" id="v2">
+    <section class="v2-programs section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v2-label">What We Do</div>
+          <h2 class="v2-heading">Training That Works</h2>
+          <p class="v2-sub">No gimmicks. No machines gathering dust. Every workout has a purpose, every movement makes you better.</p>
+        </div>
+        <div class="v2-scroll">
+          <div class="v2-card">
+            <div class="v2-card-num">01</div>
+            <h3>Group Classes</h3>
+            <p>Programmed workouts in a team setting. Every class is coached, scalable, and different. Show up, work hard, get better. That is the formula.</p>
+            <span class="v2-card-tag">Team Training</span>
+          </div>
+          <div class="v2-card">
+            <div class="v2-card-num">02</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one coaching built around your goals. Whether you are brand new or chasing competition-level performance, your program is yours alone.</p>
+            <span class="v2-card-tag">1-on-1 Coaching</span>
+          </div>
+          <div class="v2-card">
+            <div class="v2-card-num">03</div>
+            <h3>Open Gym</h3>
+            <p>Full access to the floor and equipment on your own time. For members who know their way around a barbell and want the freedom to train independently.</p>
+            <span class="v2-card-tag">Self-Guided</span>
+          </div>
+          <div class="v2-card">
+            <div class="v2-card-num">04</div>
+            <h3>Functional Fitness</h3>
+            <p>Everything we do has a purpose. Lifting, running, jumping, pulling. You will train movements that make you stronger, faster, and harder to break in everyday life.</p>
+            <span class="v2-card-tag">Full Body</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 - Stacked Rows -->
+  <div class="variant" id="v3">
+    <section class="v3-programs section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v3-label">What We Do</div>
+          <h2 class="v3-heading">Training That Works</h2>
+        </div>
+        <div class="v3-rows">
+          <div class="v3-row">
+            <div class="v3-row-num">01</div>
+            <div class="v3-row-content">
+              <h3>Group Classes</h3>
+              <p>Programmed workouts in a team setting. Every class is coached, scalable, and different. Show up, work hard, get better. That is the formula.</p>
+            </div>
+          </div>
+          <div class="v3-row">
+            <div class="v3-row-num">02</div>
+            <div class="v3-row-content">
+              <h3>Personal Training</h3>
+              <p>One-on-one coaching built around your goals. Whether you are brand new or chasing competition-level performance, your program is yours alone.</p>
+            </div>
+          </div>
+          <div class="v3-row">
+            <div class="v3-row-num">03</div>
+            <div class="v3-row-content">
+              <h3>Open Gym</h3>
+              <p>Full access to the floor and equipment on your own time. For members who know their way around a barbell and want the freedom to train independently.</p>
+            </div>
+          </div>
+          <div class="v3-row">
+            <div class="v3-row-num">04</div>
+            <div class="v3-row-content">
+              <h3>Functional Fitness</h3>
+              <p>Everything we do has a purpose. Lifting, running, jumping, pulling. You will train movements that make you stronger, faster, and harder to break in everyday life.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - Color-Block Cards -->
+  <div class="variant" id="v4">
+    <section class="v4-programs section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v4-label">What We Do</div>
+          <h2 class="v4-heading">Training That Works</h2>
+          <p class="v4-sub">No gimmicks. No machines gathering dust. Every workout has a purpose, every movement makes you better.</p>
+        </div>
+        <div class="v4-grid">
+          <div class="v4-card">
+            <div class="v4-card-icon">&#9879;</div>
+            <h3>Group Classes</h3>
+            <p>Coached, scalable, different every day. Show up and put in the work.</p>
+          </div>
+          <div class="v4-card">
+            <div class="v4-card-icon">&#9733;</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one coaching built around your goals and your schedule.</p>
+          </div>
+          <div class="v4-card">
+            <div class="v4-card-icon">&#9881;</div>
+            <h3>Open Gym</h3>
+            <p>Full access to the floor. Train on your own time, your own way.</p>
+          </div>
+          <div class="v4-card">
+            <div class="v4-card-icon">&#9889;</div>
+            <h3>Functional Fitness</h3>
+            <p>Real movements that translate to real life. Strength with purpose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 - Bento Grid -->
+  <div class="variant" id="v5">
+    <section class="v5-programs section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v5-label">What We Do</div>
+          <h2 class="v5-heading">Training That Works</h2>
+        </div>
+        <div class="v5-bento">
+          <div class="v5-bento-card">
+            <span class="v5-bento-tag">Team Training</span>
+            <div class="v5-bento-icon">&#9879;</div>
+            <h3>Group Classes</h3>
+            <p>Programmed workouts in a team setting. Every class is coached, scalable, and different. Show up, work hard, get better. That is the formula.</p>
+          </div>
+          <div class="v5-bento-card">
+            <span class="v5-bento-tag">1-on-1</span>
+            <div class="v5-bento-icon">&#9733;</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one coaching built around your goals. Your program is yours alone.</p>
+          </div>
+          <div class="v5-bento-card">
+            <span class="v5-bento-tag">Self-Guided</span>
+            <div class="v5-bento-icon">&#9881;</div>
+            <h3>Open Gym</h3>
+            <p>Full access to the floor and equipment on your own time.</p>
+          </div>
+          <div class="v5-bento-card">
+            <span class="v5-bento-tag">Full Body</span>
+            <div class="v5-bento-icon">&#9889;</div>
+            <h3>Functional Fitness</h3>
+            <p>Everything we do has a purpose. Lifting, running, jumping, pulling. You will train movements that make you stronger, faster, and harder to break in everyday life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Programs Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

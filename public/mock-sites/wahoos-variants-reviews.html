@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Reviews Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e8e8;
+      background: #0d0d1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blue: #1a3a8f;
+      --blue-dark: #0f2560;
+      --red: #d32f2f;
+      --red-light: #e85353;
+      --white: #ffffff;
+      --charcoal: #0d0d1a;
+      --charcoal-light: #161628;
+      --charcoal-card: #1a1a2e;
+      --gold: #f59e0b;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    .locked-nav {
+      background: var(--charcoal); border-bottom: 3px solid var(--blue);
+      padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .locked-nav-logo { display: flex; align-items: center; gap: 10px; }
+    .locked-nav-logo img { width: 36px; height: 36px; border-radius: 6px; object-fit: contain; background: #fff; padding: 2px; }
+    .locked-nav-logo span { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); line-height: 1.2; }
+    .locked-nav-info { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: #111125; border-top: 2px solid var(--blue);
+      padding: 14px 24px; display: flex; align-items: center;
+      justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .picker-btn {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 20px;
+      border-radius: 8px; border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6);
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .picker-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .picker-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+    .picker-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-right: 8px; }
+
+    .sec-label { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--red); margin-bottom: 12px; }
+    .sec-heading { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; margin-bottom: 20px; color: var(--white); }
+    .sec-sub { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .accent { color: var(--red); }
+    .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
+
+    /* ============ V1: Three Column Cards ============ */
+    .v1-section {
+      background: var(--charcoal-light); position: relative; overflow: hidden;
+    }
+    .v1-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle 2px at 30px 30px, rgba(255,255,255,0.025) 2px, transparent 2px);
+      background-size: 60px 60px;
+    }
+    .v1-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      position: relative; z-index: 1;
+    }
+    .v1-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; padding: 36px 28px; transition: transform 0.25s, border-color 0.25s;
+    }
+    .v1-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.3); }
+    .v1-card .stars { margin-bottom: 18px; }
+    .v1-card .review-text {
+      font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.75);
+      margin-bottom: 22px; font-style: italic;
+    }
+    .v1-card .review-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.82rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.35);
+    }
+
+    /* ============ V2: Single Spotlight Review ============ */
+    .v2-section { background: var(--charcoal); }
+    .v2-spotlight {
+      text-align: center; max-width: 740px; margin: 0 auto;
+    }
+    .v2-big-quote {
+      font-size: 4rem; color: var(--red); line-height: 1; margin-bottom: 8px;
+      font-family: Georgia, serif;
+    }
+    .v2-spotlight .stars { margin-bottom: 28px; font-size: 1.4rem; }
+    .v2-spotlight-text {
+      font-size: clamp(1.2rem, 3vw, 1.6rem); color: rgba(255,255,255,0.8);
+      font-style: italic; line-height: 1.6; margin-bottom: 24px;
+    }
+    .v2-spotlight-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35);
+      margin-bottom: 48px;
+    }
+    .v2-dots { display: flex; justify-content: center; gap: 10px; margin-bottom: 48px; }
+    .v2-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); cursor: pointer;
+      transition: background 0.2s; border: none;
+    }
+    .v2-dot.active { background: var(--red); }
+    .v2-small-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto;
+    }
+    .v2-small-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 24px 20px;
+    }
+    .v2-small-card .stars { margin-bottom: 12px; font-size: 0.9rem; }
+    .v2-small-card p {
+      font-size: 0.88rem; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.6; margin-bottom: 12px;
+    }
+    .v2-small-card .review-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3);
+    }
+
+    /* ============ V3: Side-by-Side with Photo ============ */
+    .v3-section { background: var(--charcoal-light); }
+    .v3-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .v3-photo {
+      border-radius: 20px; overflow: hidden; border: 2px solid rgba(255,255,255,0.06);
+    }
+    .v3-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .v3-reviews-col { display: flex; flex-direction: column; gap: 24px; }
+    .v3-review {
+      background: rgba(255,255,255,0.04); border-radius: 16px; padding: 28px 24px;
+      border-left: 4px solid var(--red);
+    }
+    .v3-review .stars { margin-bottom: 12px; }
+    .v3-review p {
+      font-size: 0.95rem; color: rgba(255,255,255,0.7); font-style: italic; line-height: 1.7; margin-bottom: 12px;
+    }
+    .v3-review .review-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.35);
+    }
+
+    /* ============ V4: Large Quote Blocks ============ */
+    .v4-section { background: var(--charcoal); position: relative; }
+    .v4-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.01) 40px, rgba(255,255,255,0.01) 42px);
+    }
+    .v4-stack {
+      display: flex; flex-direction: column; gap: 32px;
+      max-width: 800px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .v4-block {
+      background: var(--charcoal-card); border-radius: 24px; padding: 48px 40px;
+      border: 1px solid rgba(255,255,255,0.06); position: relative;
+      transition: transform 0.3s;
+    }
+    .v4-block:hover { transform: translateX(8px); }
+    .v4-block-quote {
+      position: absolute; top: 20px; left: 28px; font-size: 3.5rem;
+      color: var(--red); opacity: 0.3; font-family: Georgia, serif; line-height: 1;
+    }
+    .v4-block .stars { margin-bottom: 16px; }
+    .v4-block-text {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75); font-style: italic;
+      line-height: 1.7; margin-bottom: 16px;
+    }
+    .v4-block-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.35);
+    }
+
+    /* ============ V5: Horizontal Scroll Reviews ============ */
+    .v5-section { background: var(--charcoal-light); overflow: hidden; }
+    .v5-scroll-wrap {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; padding-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .v5-scroll-wrap::-webkit-scrollbar { display: none; }
+    .v5-scroll {
+      display: flex; gap: 24px; padding: 0 24px; width: max-content;
+    }
+    .v5-card {
+      width: 400px; flex-shrink: 0; scroll-snap-align: start;
+      background: var(--blue-dark); border-radius: 24px; padding: 40px 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative; overflow: hidden;
+    }
+    .v5-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+    }
+    .v5-card .stars { margin-bottom: 20px; }
+    .v5-card-text {
+      font-size: 1.05rem; color: rgba(255,255,255,0.8); font-style: italic;
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .v5-card-author {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.4);
+    }
+    .v5-card-source {
+      display: inline-block; background: rgba(255,255,255,0.08); padding: 4px 12px;
+      border-radius: 50px; font-size: 0.72rem; color: rgba(255,255,255,0.45);
+      margin-top: 8px; font-family: 'Oswald', sans-serif; text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .v5-hint {
+      text-align: center; margin-top: 20px;
+      font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .v1-grid { grid-template-columns: 1fr; }
+      .v3-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .v2-small-grid { grid-template-columns: 1fr; }
+      .v4-block { padding: 36px 24px; }
+      .section-pad { padding: 64px 0; }
+    }
+    @media (max-width: 560px) {
+      .v5-card { width: 300px; padding: 32px 24px; }
+      .picker-btn { font-size: 0.75rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="locked-nav">
+    <div class="locked-nav-logo">
+      <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's" width="150" height="150" loading="lazy" />
+      <span>Wahoo's Sports<br />&amp; Collectibles</span>
+    </div>
+    <div class="locked-nav-info">Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM</div>
+  </div>
+
+  <!-- ============ V1: Three Column Cards ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">What People Are Saying</p>
+        <h2 class="sec-heading">Straight from the Collectors</h2>
+        <p class="sec-sub">Don't take our word for it. Here's what customers say after walking through the door.</p>
+      </div>
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+            <div class="review-author">Google Review</div>
+          </div>
+          <div class="v1-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair &amp; knowledgeable."</p>
+            <div class="review-author">Google Review</div>
+          </div>
+          <div class="v1-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well."</p>
+            <div class="review-author">Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2: Spotlight + Small Cards ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">What People Are Saying</p>
+        <h2 class="sec-heading">Straight from the Collectors</h2>
+      </div>
+      <div class="container">
+        <div class="v2-spotlight">
+          <div class="v2-big-quote">"</div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="v2-spotlight-text">"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+          <div class="v2-spotlight-author">Google Review</div>
+          <div class="v2-dots">
+            <button class="v2-dot active"></button>
+            <button class="v2-dot"></button>
+            <button class="v2-dot"></button>
+          </div>
+          <div class="v2-small-grid">
+            <div class="v2-small-card">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc."</p>
+              <div class="review-author">Google Review</div>
+            </div>
+            <div class="v2-small-card">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"I love this store. This is my go to store when it comes to buying cards to add to my collection."</p>
+              <div class="review-author">Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3: Side-by-Side with Photo ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">What People Are Saying</p>
+        <h2 class="sec-heading">Straight from the Collectors</h2>
+        <p class="sec-sub">Don't take our word for it. Here's what customers say.</p>
+      </div>
+      <div class="container">
+        <div class="v3-layout">
+          <div class="v3-photo">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-socks-briefs.webp" alt="Supreme merchandise display" width="640" height="640" loading="lazy" />
+          </div>
+          <div class="v3-reviews-col">
+            <div class="v3-review">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+              <div class="review-author">Google Review</div>
+            </div>
+            <div class="v3-review">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair &amp; knowledgeable."</p>
+              <div class="review-author">Google Review</div>
+            </div>
+            <div class="v3-review">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well."</p>
+              <div class="review-author">Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V4: Large Quote Blocks (Stacked) ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">What People Are Saying</p>
+        <h2 class="sec-heading">Straight from the Collectors</h2>
+        <p class="sec-sub">Every review is 5 stars. Here's why.</p>
+      </div>
+      <div class="container">
+        <div class="v4-stack">
+          <div class="v4-block">
+            <div class="v4-block-quote">"</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v4-block-text">"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+            <div class="v4-block-author">Google Review</div>
+          </div>
+          <div class="v4-block">
+            <div class="v4-block-quote">"</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v4-block-text">"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair &amp; knowledgeable."</p>
+            <div class="v4-block-author">Google Review</div>
+          </div>
+          <div class="v4-block">
+            <div class="v4-block-quote">"</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v4-block-text">"I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well."</p>
+            <div class="v4-block-author">Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5: Horizontal Scroll Cards ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">What People Are Saying</p>
+        <h2 class="sec-heading">Straight from the Collectors</h2>
+        <p class="sec-sub">Scroll through what real customers have to say.</p>
+      </div>
+      <div class="v5-scroll-wrap">
+        <div class="v5-scroll">
+          <div class="v5-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v5-card-text">"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+            <div class="v5-card-author">Google Review</div>
+            <span class="v5-card-source">5-Star Review</span>
+          </div>
+          <div class="v5-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v5-card-text">"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair &amp; knowledgeable."</p>
+            <div class="v5-card-author">Google Review</div>
+            <span class="v5-card-source">5-Star Review</span>
+          </div>
+          <div class="v5-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v5-card-text">"I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well."</p>
+            <div class="v5-card-author">Google Review</div>
+            <span class="v5-card-source">5-Star Review</span>
+          </div>
+          <div class="v5-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v5-card-text">"The atmosphere is warm and welcoming, and the shop is run by a friendly and knowledgeable owner who is always happy to help customers find what they're looking for."</p>
+            <div class="v5-card-author">Nextdoor Review</div>
+            <span class="v5-card-source">Community Review</span>
+          </div>
+          <div class="v5-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="v5-card-text">"A great place to spend time browsing and chatting about your favorite sports teams and players."</p>
+            <div class="v5-card-author">Nextdoor Review</div>
+            <span class="v5-card-source">Community Review</span>
+          </div>
+        </div>
+      </div>
+      <p class="v5-hint">Swipe to read more &rarr;</p>
+    </div>
+  </section>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-label">Reviews:</span>
+    <button class="picker-btn active" data-target="v1">1. Three Cards</button>
+    <button class="picker-btn" data-target="v2">2. Spotlight</button>
+    <button class="picker-btn" data-target="v3">3. Photo + Stack</button>
+    <button class="picker-btn" data-target="v4">4. Quote Blocks</button>
+    <button class="picker-btn" data-target="v5">5. Scroll Cards</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('.picker-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

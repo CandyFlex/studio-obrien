@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit Legal Partners | Shelby, NC</title>
+  <meta name="description" content="Thirty years of trial experience protecting businesses, families, and futures across the Carolina foothills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@300;400;500;600&family=Spectral:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================
+       DARK CITADEL DESIGN SYSTEM
+       Summit Legal Partners
+       ========================================= */
+
+    /* --- Reset & Base --- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --obsidian: #0a0a0f;
+      --charcoal: #141418;
+      --slate: #1e1e25;
+      --crimson: #8b0000;
+      --blood-red: #c41e3a;
+      --ember-glow: #ff4444;
+      --bone-white: #e8e4dc;
+      --ash-gray: #6b6b78;
+      --iron-gray: #3a3a45;
+      --dark-silver: #8a8a95;
+
+      --font-display: 'Cinzel', serif;
+      --font-heading: 'Spectral', serif;
+      --font-body: 'Source Serif 4', serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--bone-white);
+      background-color: var(--obsidian);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* --- Utility --- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    /* --- Stone Texture (fine horizontal lines) --- */
+    .stone-texture {
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(138,138,149,0.03) 3px,
+          rgba(138,138,149,0.03) 4px
+        );
+    }
+
+    /* --- Diagonal Slash Pattern --- */
+    .slash-pattern {
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 12px,
+          rgba(139,0,0,0.025) 12px,
+          rgba(139,0,0,0.025) 13px
+        );
+    }
+
+    /* --- Iron Grid Pattern --- */
+    .iron-grid {
+      background-image:
+        linear-gradient(rgba(58,58,69,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,58,69,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* --- Iron Rule Divider --- */
+    .iron-rule {
+      position: relative;
+      height: 3px;
+      background: var(--crimson);
+      border: none;
+      margin: 2rem auto;
+      max-width: 180px;
+    }
+    .iron-rule::before,
+    .iron-rule::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .iron-rule::before {
+      left: -8px;
+      transform: translateY(-50%);
+      border-width: 5px 8px 5px 0;
+      border-color: transparent var(--crimson) transparent transparent;
+    }
+    .iron-rule::after {
+      right: -8px;
+      transform: translateY(-50%);
+      border-width: 5px 0 5px 8px;
+      border-color: transparent transparent transparent var(--crimson);
+    }
+
+    /* --- Torch Glow --- */
+    .torch-glow {
+      position: relative;
+    }
+    .torch-glow::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(139,0,0,0.15) 0%,
+        rgba(139,0,0,0.07) 30%,
+        rgba(196,30,58,0.03) 55%,
+        transparent 75%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+    .torch-glow > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Angular Corner Brackets --- */
+    .angular-corners {
+      position: relative;
+    }
+    .angular-corners::before,
+    .angular-corners::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      transition: border-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+    }
+    .angular-corners::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid var(--crimson);
+      border-left: 2px solid var(--crimson);
+    }
+    .angular-corners::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid var(--crimson);
+      border-right: 2px solid var(--crimson);
+    }
+
+    /* --- Scroll Reveal --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.from-left {
+      transform: translateX(-40px) translateY(0);
+    }
+    .reveal.from-right {
+      transform: translateX(40px) translateY(0);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
+
+    /* Stagger children */
+    .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+    .stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+    /* =========================================
+       HEADER / NAV
+       ========================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--obsidian);
+      border-bottom: 2px solid var(--crimson);
+      padding: 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 0;
+    }
+
+    .site-logo {
+      font-family: var(--font-display);
+      font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bone-white);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .site-logo span {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      color: var(--dark-silver);
+      margin-top: 2px;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      list-style: none;
+    }
+
+    .main-nav a {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark-silver);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--crimson);
+      transition: width 0.3s ease;
+    }
+    .main-nav a:hover {
+      color: var(--bone-white);
+    }
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bone-white);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* =========================================
+       HERO
+       ========================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--obsidian);
+      overflow: hidden;
+    }
+
+    .hero-bg-slash {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 18px,
+          rgba(139,0,0,0.02) 18px,
+          rgba(139,0,0,0.02) 19px
+        );
+      pointer-events: none;
+    }
+
+    .hero-torch {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(800px, 90vw);
+      height: 500px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(139,0,0,0.18) 0%,
+        rgba(196,30,58,0.08) 30%,
+        rgba(255,68,68,0.02) 55%,
+        transparent 75%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle vertical light streaks like torchlight on stone walls */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(139,0,0,0.08) 40%,
+        rgba(139,0,0,0.08) 60%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1rem;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--dark-silver);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      color: var(--bone-white);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--dark-silver);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero .iron-rule {
+      margin: 0 auto 2.5rem;
+    }
+
+    /* --- CTA Button --- */
+    .btn-cta {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bone-white);
+      background: var(--crimson);
+      border: 2px solid var(--crimson);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-cta:hover {
+      background: var(--blood-red);
+      border-color: var(--blood-red);
+      box-shadow: 0 0 30px rgba(255,68,68,0.25), 0 0 60px rgba(196,30,58,0.1);
+    }
+    .btn-cta:active {
+      transform: translateY(1px);
+    }
+
+    /* Secondary / outline button */
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bone-white);
+      background: transparent;
+      border: 1px solid var(--iron-gray);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-outline:hover {
+      border-color: var(--crimson);
+      box-shadow: 0 0 20px rgba(139,0,0,0.15);
+    }
+
+    /* Hero scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scroll-indicator span {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ash-gray);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--crimson), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.3); }
+    }
+
+    /* =========================================
+       PRACTICE AREAS
+       ========================================= */
+    .practice-areas {
+      position: relative;
+      background: var(--obsidian);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--dark-silver);
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--bone-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtext {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--ash-gray);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      line-height: 1.75;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .practice-card {
+      position: relative;
+      background: var(--charcoal);
+      border: 1px solid var(--iron-gray);
+      padding: clamp(2rem, 4vw, 2.75rem);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+      /* Stone texture */
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(138,138,149,0.025) 3px,
+          rgba(138,138,149,0.025) 4px
+        );
+      background-color: var(--charcoal);
+    }
+    .practice-card:hover {
+      border-color: var(--crimson);
+      box-shadow: 0 0 30px rgba(139,0,0,0.1);
+    }
+    .practice-card:hover .angular-corners::before,
+    .practice-card:hover .angular-corners::after {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Angular corners overlay element inside card */
+    .practice-card .corner-decor {
+      position: absolute;
+      inset: 8px;
+      pointer-events: none;
+    }
+    .practice-card .corner-decor::before,
+    .practice-card .corner-decor::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      transition: width 0.35s ease, height 0.35s ease, border-color 0.35s ease;
+    }
+    .practice-card .corner-decor::before {
+      top: 0;
+      left: 0;
+      border-top: 2px solid rgba(139,0,0,0.4);
+      border-left: 2px solid rgba(139,0,0,0.4);
+    }
+    .practice-card .corner-decor::after {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid rgba(139,0,0,0.4);
+      border-right: 2px solid rgba(139,0,0,0.4);
+    }
+    .practice-card:hover .corner-decor::before,
+    .practice-card:hover .corner-decor::after {
+      width: 22px;
+      height: 22px;
+      border-color: var(--crimson);
+    }
+
+    .practice-card-number {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--crimson);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .practice-card h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--bone-white);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.01em;
+    }
+
+    .practice-card p {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--ash-gray);
+      line-height: 1.75;
+    }
+
+    /* =========================================
+       FIRM PROFILE
+       ========================================= */
+    .firm-profile {
+      position: relative;
+      background: var(--slate);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      overflow: hidden;
+    }
+
+    /* Iron grid texture on this section */
+    .firm-profile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(58,58,69,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,58,69,0.045) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .firm-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(3rem, 6vw, 5rem);
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .firm-text .section-eyebrow {
+      margin-bottom: 1rem;
+    }
+
+    .firm-text .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .firm-text p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--ash-gray);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Decorative vertical crimson line */
+    .firm-text-inner {
+      border-left: 2px solid rgba(139,0,0,0.3);
+      padding-left: 2rem;
+    }
+
+    .firm-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding-top: 1rem;
+    }
+
+    .stat-item {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 4px;
+      height: 32px;
+      background: var(--crimson);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--blood-red);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dark-silver);
+      margin-top: 0.4rem;
+    }
+
+    /* =========================================
+       CTA SECTION
+       ========================================= */
+    .cta-section {
+      position: relative;
+      background: var(--obsidian);
+      padding: clamp(5rem, 12vw, 9rem) 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-torch {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(700px, 100vw);
+      height: 450px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(139,0,0,0.16) 0%,
+        rgba(196,30,58,0.06) 35%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--bone-white);
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--crimson);
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-phone {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--bone-white);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .cta-phone:hover {
+      color: var(--ember-glow);
+      text-shadow: 0 0 30px rgba(255,68,68,0.3);
+    }
+
+    .cta-address {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ash-gray);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .site-footer {
+      background: var(--obsidian);
+      border-top: 2px solid var(--iron-gray);
+      padding: 3rem 0 2.5rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bone-white);
+    }
+
+    .footer-disclaimer {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--ash-gray);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    .footer-copyright {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--iron-gray);
+    }
+
+    .footer-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--iron-gray);
+      border: none;
+    }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 900px) {
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+      .firm-grid {
+        grid-template-columns: 1fr;
+      }
+      .firm-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .stat-item {
+        flex: 1;
+        min-width: 140px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--obsidian);
+        border-bottom: 2px solid var(--crimson);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+      }
+      .main-nav.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      .hero-title {
+        font-size: clamp(1.8rem, 9vw, 2.8rem);
+      }
+      .firm-stats {
+        flex-direction: column;
+      }
+      .firm-text-inner {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid rgba(139,0,0,0.3);
+        padding-top: 1.5rem;
+      }
+    }
+
+    /* =========================================
+       KEYFRAMES
+       ========================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .hero-torch {
+      animation: heroGlow 6s ease-in-out infinite;
+    }
+
+    /* Initial hero content animation */
+    .hero-content .hero-eyebrow {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    .hero-content .hero-title {
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+    .hero-content .hero-subtitle {
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+    .hero-content .iron-rule {
+      animation: fadeInUp 0.8s ease-out 0.7s both;
+    }
+    .hero-content .btn-cta {
+      animation: fadeInUp 0.8s ease-out 0.85s both;
+    }
+    .scroll-indicator {
+      animation: fadeInUp 0.8s ease-out 1.2s both;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER / NAV
+       ========================================== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="site-logo">
+          Summit Legal<span>Partners</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.main-nav').classList.toggle('open');">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul class="main-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#practice-areas">Practice Areas</a></li>
+            <li><a href="#firm">Attorneys</a></li>
+            <li><a href="#firm">Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <section class="hero">
+    <div class="hero-bg-slash"></div>
+    <div class="hero-torch"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Shelby, North Carolina</p>
+      <h1 class="hero-title">Counsel Forged<br>in Conviction</h1>
+      <p class="hero-subtitle">Thirty years of trial experience protecting businesses, families, and futures across the Carolina foothills.</p>
+      <div class="iron-rule"></div>
+      <a href="#contact" class="btn-cta">Schedule a Consultation</a>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PRACTICE AREAS
+       ========================================== -->
+  <section class="practice-areas stone-texture" id="practice-areas">
+    <div class="container">
+      <p class="section-eyebrow reveal">Areas of Practice</p>
+      <h2 class="section-heading reveal">What We Do</h2>
+      <p class="section-subtext reveal">Focused counsel across four core disciplines, each backed by decades of courtroom experience.</p>
+
+      <div class="practice-grid stagger">
+
+        <div class="practice-card reveal">
+          <div class="corner-decor"></div>
+          <span class="practice-card-number">01</span>
+          <h3>Business Law</h3>
+          <p>Formation, contracts, disputes, and compliance. We protect what you've built.</p>
+        </div>
+
+        <div class="practice-card reveal">
+          <div class="corner-decor"></div>
+          <span class="practice-card-number">02</span>
+          <h3>Estate Planning</h3>
+          <p>Wills, trusts, and succession strategies for families and business owners.</p>
+        </div>
+
+        <div class="practice-card reveal">
+          <div class="corner-decor"></div>
+          <span class="practice-card-number">03</span>
+          <h3>Real Estate</h3>
+          <p>Commercial and residential transactions, zoning, and title disputes.</p>
+        </div>
+
+        <div class="practice-card reveal">
+          <div class="corner-decor"></div>
+          <span class="practice-card-number">04</span>
+          <h3>Litigation</h3>
+          <p>Civil and commercial trial practice. We don't settle for less.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FIRM PROFILE
+       ========================================== -->
+  <section class="firm-profile" id="firm">
+    <div class="container">
+      <div class="firm-grid">
+
+        <div class="firm-text">
+          <p class="section-eyebrow reveal">Our Practice</p>
+          <h2 class="section-heading reveal">The Firm</h2>
+          <div class="firm-text-inner reveal from-left">
+            <p>Summit Legal Partners was founded on a straightforward principle: clients deserve attorneys who prepare every case as though it will go to trial. That discipline shows in our results.</p>
+            <p>We have represented businesses and individuals across Cleveland, Rutherford, and Gaston counties for over three decades. Our attorneys live in the communities they serve.</p>
+          </div>
+        </div>
+
+        <div class="firm-stats stagger">
+          <div class="stat-item reveal from-right">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Years of Practice</div>
+          </div>
+          <div class="stat-item reveal from-right">
+            <div class="stat-number">2,400+</div>
+            <div class="stat-label">Cases Resolved</div>
+          </div>
+          <div class="stat-item reveal from-right">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Client Retention</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CTA
+       ========================================== -->
+  <section class="cta-section" id="contact">
+    <div class="cta-torch"></div>
+    <div class="container">
+      <div class="cta-content">
+        <p class="section-eyebrow reveal">Get in Touch</p>
+        <h2 class="cta-heading reveal">Your Case Deserves<br>a Firm That Fights</h2>
+        <div class="cta-divider reveal"></div>
+        <a href="tel:7045550142" class="cta-phone reveal">(704) 555-0142</a>
+        <p class="cta-address reveal">112 N. Washington Street, Suite 200<br>Shelby, NC 28150</p>
+        <a href="#" class="btn-cta reveal">Request a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Summit Legal Partners</div>
+        <hr class="footer-rule">
+        <p class="footer-disclaimer">This website is for informational purposes only and does not constitute legal advice. Contacting Summit Legal Partners through this site does not establish an attorney-client relationship.</p>
+        <p class="footer-copyright">&copy; 2026 Summit Legal Partners. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCROLL REVEAL SCRIPT
+       ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>

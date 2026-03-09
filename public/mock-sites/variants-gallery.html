@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Gallery Section Variants</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-light: #aaa;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* CRT scanline overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--yellow-dim);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo {
+      font-family: var(--font-pixel);
+      font-size: 0.7rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    /* Placeholder block for sections above */
+    .placeholder-above {
+      margin-top: 52px;
+      background: var(--darker);
+      border-bottom: 1px solid var(--gray-dark);
+      padding: 3rem 2rem;
+      text-align: center;
+      min-height: 100px;
+    }
+    .placeholder-above p {
+      font-family: var(--font-pixel);
+      font-size: 0.45rem;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      line-height: 2;
+    }
+
+    /* Shared section styles */
+    .gallery-variant { display: none; }
+    .gallery-variant.active { display: block; }
+
+    .gallery-section {
+      padding: 5rem 2rem;
+      position: relative;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--yellow-dim);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: 1.4rem;
+      color: var(--white);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      text-wrap: balance;
+    }
+
+    /* Shared image styling */
+    .gallery-img {
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+      background: var(--darker);
+    }
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-img:hover img { transform: scale(1.05); }
+
+    /* ============================================================
+       V1: MASONRY GRID
+       Asymmetric heights with one featured large image.
+       CSS columns create organic masonry flow.
+       ============================================================ */
+    .gallery-v1 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v1-masonry {
+      columns: 3;
+      column-gap: 12px;
+    }
+
+    .v1-masonry .gallery-img {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    /* Featured image gets extra height emphasis */
+    .v1-masonry .gallery-img.featured {
+      border-color: var(--yellow-dim);
+      box-shadow: 0 0 20px rgba(245,214,35,0.08);
+    }
+    .v1-masonry .gallery-img.featured::after {
+      content: '\2605 FEATURED';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--yellow);
+      background: rgba(10,10,10,0.85);
+      padding: 4px 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .v1-masonry .gallery-img.featured { position: relative; }
+
+    @media (max-width: 900px) {
+      .v1-masonry { columns: 2; }
+    }
+    @media (max-width: 560px) {
+      .v1-masonry { columns: 1; }
+    }
+
+    /* ============================================================
+       V2: HORIZONTAL SCROLL STRIP
+       Full-bleed horizontal scroll of all photos.
+       ============================================================ */
+    .gallery-v2 { background: var(--dark); }
+
+    .v2-scroll-wrapper {
+      position: relative;
+      margin: 0 -2rem;
+      padding: 0 2rem;
+    }
+
+    .v2-scroll-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 0 1.5rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--yellow-dim) var(--darker);
+    }
+    .v2-scroll-track::-webkit-scrollbar { height: 6px; }
+    .v2-scroll-track::-webkit-scrollbar-track { background: var(--darker); }
+    .v2-scroll-track::-webkit-scrollbar-thumb { background: var(--yellow-dim); border-radius: 3px; }
+
+    .v2-scroll-track .gallery-img {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      height: 380px;
+      border: 1px solid var(--gray-dark);
+    }
+    .v2-scroll-track .gallery-img.landscape { width: 540px; }
+    .v2-scroll-track .gallery-img.portrait { width: 280px; }
+    .v2-scroll-track .gallery-img.square { width: 380px; }
+
+    .v2-scroll-hint {
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 0.8rem;
+      text-align: right;
+    }
+    .v2-scroll-hint .arrow {
+      display: inline-block;
+      animation: scroll-nudge 1.5s ease-in-out infinite;
+    }
+    @keyframes scroll-nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    @media (max-width: 900px) {
+      .v2-scroll-track .gallery-img { height: 280px; }
+      .v2-scroll-track .gallery-img.landscape { width: 400px; }
+      .v2-scroll-track .gallery-img.portrait { width: 200px; }
+      .v2-scroll-track .gallery-img.square { width: 280px; }
+    }
+    @media (max-width: 560px) {
+      .v2-scroll-track .gallery-img { height: 220px; }
+      .v2-scroll-track .gallery-img.landscape { width: 320px; }
+      .v2-scroll-track .gallery-img.portrait { width: 160px; }
+      .v2-scroll-track .gallery-img.square { width: 220px; }
+    }
+
+    /* ============================================================
+       V3: BENTO GRID
+       Mixed sizes: 1 large, 2 medium, 3 small in bento layout.
+       ============================================================ */
+    .gallery-v3 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v3-bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 280px 200px 240px;
+      gap: 10px;
+    }
+
+    /* Large: spans 2 cols, 2 rows */
+    .v3-bento .bento-lg {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    /* Medium items */
+    .v3-bento .bento-md-1 {
+      grid-column: 3 / 5;
+      grid-row: 1 / 2;
+    }
+    .v3-bento .bento-md-2 {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+    }
+
+    /* Small items */
+    .v3-bento .bento-sm-1 {
+      grid-column: 4 / 5;
+      grid-row: 2 / 3;
+    }
+    .v3-bento .bento-sm-2 {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+    }
+    .v3-bento .bento-sm-3 {
+      grid-column: 3 / 5;
+      grid-row: 3 / 4;
+    }
+
+    /* Additional bento items on second row set */
+    .v3-bento-extra {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 220px;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .v3-bento-extra .gallery-img:first-child { grid-column: 1 / 3; }
+    .v3-bento-extra .gallery-img:nth-child(2) { grid-column: 3 / 4; }
+    .v3-bento-extra .gallery-img:nth-child(3) { grid-column: 4 / 6; }
+    /* 4th and 5th items for remaining photos */
+    .v3-bento-extra .gallery-img:nth-child(4) { grid-column: 1 / 2; }
+    .v3-bento-extra .gallery-img:nth-child(5) { grid-column: 2 / 4; }
+
+    .v3-bento-extra-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .v3-bento {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 260px 200px 200px 200px;
+      }
+      .v3-bento .bento-lg { grid-column: 1 / 3; grid-row: 1 / 2; }
+      .v3-bento .bento-md-1 { grid-column: 1 / 3; grid-row: 2 / 3; }
+      .v3-bento .bento-md-2 { grid-column: 1 / 2; grid-row: 3 / 4; }
+      .v3-bento .bento-sm-1 { grid-column: 2 / 3; grid-row: 3 / 4; }
+      .v3-bento .bento-sm-2 { grid-column: 1 / 2; grid-row: 4 / 5; }
+      .v3-bento .bento-sm-3 { grid-column: 2 / 3; grid-row: 4 / 5; }
+      .v3-bento-extra { grid-template-columns: repeat(2, 1fr); grid-template-rows: 200px 200px; }
+      .v3-bento-extra .gallery-img:first-child { grid-column: 1 / 3; }
+      .v3-bento-extra .gallery-img:nth-child(2) { grid-column: 1 / 2; }
+      .v3-bento-extra .gallery-img:nth-child(3) { grid-column: 2 / 3; }
+      .v3-bento-extra .gallery-img:nth-child(4) { grid-column: 1 / 2; }
+      .v3-bento-extra .gallery-img:nth-child(5) { grid-column: 2 / 3; }
+      .v3-bento-extra-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .v3-bento {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 200px);
+      }
+      .v3-bento .bento-lg,
+      .v3-bento .bento-md-1,
+      .v3-bento .bento-md-2,
+      .v3-bento .bento-sm-1,
+      .v3-bento .bento-sm-2,
+      .v3-bento .bento-sm-3 {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+      .v3-bento-extra { grid-template-columns: 1fr; grid-template-rows: repeat(5, 180px); }
+      .v3-bento-extra .gallery-img { grid-column: 1 / -1 !important; }
+      .v3-bento-extra-row { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       V4: FILMSTRIP
+       Photos in filmstrip frames with sprocket holes.
+       ============================================================ */
+    .gallery-v4 { background: var(--dark); }
+
+    .v4-filmstrip-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -2rem;
+      padding: 0 2rem 1.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--yellow-dim) var(--darker);
+    }
+    .v4-filmstrip-container::-webkit-scrollbar { height: 6px; }
+    .v4-filmstrip-container::-webkit-scrollbar-track { background: var(--darker); }
+    .v4-filmstrip-container::-webkit-scrollbar-thumb { background: var(--yellow-dim); border-radius: 3px; }
+
+    .v4-filmstrip {
+      display: flex;
+      background: var(--gray-dark);
+      border: 3px solid var(--gray-dark);
+      border-radius: 2px;
+      position: relative;
+      min-width: max-content;
+    }
+
+    /* Sprocket holes - top */
+    .v4-filmstrip::before,
+    .v4-filmstrip::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 28px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 16px,
+          var(--black) 16px,
+          var(--black) 28px,
+          transparent 28px,
+          transparent 56px
+        );
+      z-index: 2;
+      pointer-events: none;
+    }
+    .v4-filmstrip::before { top: 0; }
+    .v4-filmstrip::after { bottom: 0; }
+
+    .v4-frame {
+      flex: 0 0 auto;
+      width: 360px;
+      padding: 36px 12px;
+      position: relative;
+    }
+
+    .v4-frame .gallery-img {
+      height: 280px;
+      border: 2px solid var(--gray-dark);
+    }
+
+    .v4-frame-number {
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--yellow-dim);
+      opacity: 0.6;
+      letter-spacing: 2px;
+    }
+
+    .v4-scroll-hint {
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 1rem;
+      text-align: right;
+    }
+    .v4-scroll-hint .arrow {
+      display: inline-block;
+      animation: scroll-nudge 1.5s ease-in-out infinite;
+    }
+
+    @media (max-width: 900px) {
+      .v4-frame { width: 300px; padding: 36px 10px; }
+      .v4-frame .gallery-img { height: 220px; }
+    }
+    @media (max-width: 560px) {
+      .v4-frame { width: 260px; padding: 34px 8px; }
+      .v4-frame .gallery-img { height: 180px; }
+      .v4-filmstrip::before,
+      .v4-filmstrip::after { height: 22px; }
+      .v4-frame { padding: 28px 8px; }
+    }
+
+    /* ============================================================
+       V5: LIGHTBOX GRID
+       Clean even grid with hover overlay showing photo descriptions.
+       ============================================================ */
+    .gallery-v5 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v5-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .v5-cell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--darker);
+    }
+    .v5-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .v5-cell:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.5);
+    }
+
+    .v5-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 50%, transparent 100%);
+    }
+    .v5-cell:hover .v5-overlay { opacity: 1; }
+
+    .v5-overlay-title {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+    .v5-overlay-desc {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+
+    .v5-zoom-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      color: var(--white);
+      font-size: 1.4rem;
+    }
+    .v5-cell:hover .v5-zoom-icon {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Span larger items */
+    .v5-grid .v5-wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 900px) {
+      .v5-grid { grid-template-columns: repeat(2, 1fr); }
+      .v5-grid .v5-wide { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .v5-grid { grid-template-columns: 1fr; }
+      .v5-grid .v5-wide { grid-column: span 1; }
+      .v5-overlay { opacity: 1; }
+      .v5-zoom-icon { display: none; }
+    }
+
+    /* Scroll context */
+    .scroll-context {
+      background: var(--darker);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(245,214,35,0.1);
+    }
+    .scroll-context p {
+      font-family: var(--font-pixel);
+      font-size: 0.45rem;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    /* PICKER */
+    .picker {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10000;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(16px);
+      border-top: 2px solid var(--yellow);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .picker-label {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+    .picker-section {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      margin-right: 12px;
+    }
+    .picker-btn {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      background: var(--dark);
+      color: var(--gray);
+      border: 1px solid var(--gray-dark);
+      padding: 8px 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .picker-btn:hover { border-color: var(--yellow-dim); color: var(--white); }
+    .picker-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .picker-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .picker-desc {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-left: auto;
+      max-width: 480px;
+      line-height: 1.4;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+  </nav>
+
+  <!-- PLACEHOLDER ABOVE -->
+  <div class="placeholder-above">
+    <p>Hero + Pricing + Games sections above</p>
+  </div>
+
+  <!-- ===== V1: MASONRY GRID ===== -->
+  <section class="gallery-variant gallery-section gallery-v1 active" data-gallery="v1">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+      <div class="v1-masonry">
+        <div class="gallery-img featured">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the full arcade floor" loading="lazy" width="1189" height="787">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Vertical overhead of the arcade" loading="lazy" width="901" height="1600">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade room" loading="lazy" width="1600" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball machine" loading="lazy" width="675" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1400" height="1055">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball with player" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes arcade cabinet" loading="lazy" width="1200" height="675">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child at pinball" loading="lazy" width="1400" height="788">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="Simpsons cabinet and interior" loading="lazy" width="1189" height="787">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V2: HORIZONTAL SCROLL STRIP ===== -->
+  <section class="gallery-variant gallery-section gallery-v2" data-gallery="v2">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+    </div>
+    <div class="v2-scroll-wrapper">
+      <div class="v2-scroll-track">
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the full arcade floor" loading="lazy" width="1189" height="787">
+        </div>
+        <div class="gallery-img portrait">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Vertical overhead of the arcade" loading="lazy" width="901" height="1600">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade room" loading="lazy" width="1600" height="1200">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1400" height="1055">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img square">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="1200">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball with player" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes arcade cabinet" loading="lazy" width="1200" height="675">
+        </div>
+        <div class="gallery-img portrait">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball machine" loading="lazy" width="675" height="1200">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child at pinball" loading="lazy" width="1400" height="788">
+        </div>
+        <div class="gallery-img landscape">
+          <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="Simpsons cabinet and interior" loading="lazy" width="1189" height="787">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p class="v2-scroll-hint">Scroll to explore <span class="arrow">&rarr;</span></p>
+    </div>
+  </section>
+
+  <!-- ===== V3: BENTO GRID ===== -->
+  <section class="gallery-variant gallery-section gallery-v3" data-gallery="v3">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+      <div class="v3-bento">
+        <!-- Large: 2 cols, 2 rows -->
+        <div class="gallery-img bento-lg">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade room" loading="lazy" width="1600" height="1200">
+        </div>
+        <!-- Medium top-right -->
+        <div class="gallery-img bento-md-1">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the full arcade floor" loading="lazy" width="1189" height="787">
+        </div>
+        <!-- Medium bottom of right col -->
+        <div class="gallery-img bento-md-2">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904">
+        </div>
+        <!-- Small items -->
+        <div class="gallery-img bento-sm-1">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="1200">
+        </div>
+        <div class="gallery-img bento-sm-2">
+          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child at pinball" loading="lazy" width="1400" height="788">
+        </div>
+        <div class="gallery-img bento-sm-3">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1400" height="1055">
+        </div>
+      </div>
+      <div class="v3-bento-extra">
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball with player" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball machine" loading="lazy" width="675" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes arcade cabinet" loading="lazy" width="1200" height="675">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Vertical overhead of the arcade" loading="lazy" width="901" height="1600">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="Simpsons cabinet and interior" loading="lazy" width="1189" height="787">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V4: FILMSTRIP ===== -->
+  <section class="gallery-variant gallery-section gallery-v4" data-gallery="v4">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+    </div>
+    <div class="v4-filmstrip-container">
+      <div class="v4-filmstrip">
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the full arcade floor" loading="lazy" width="1189" height="787">
+          </div>
+          <span class="v4-frame-number">01</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade room" loading="lazy" width="1600" height="1200">
+          </div>
+          <span class="v4-frame-number">02</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904">
+          </div>
+          <span class="v4-frame-number">03</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="1200">
+          </div>
+          <span class="v4-frame-number">04</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1400" height="1055">
+          </div>
+          <span class="v4-frame-number">05</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball with player" loading="lazy" width="1200" height="904">
+          </div>
+          <span class="v4-frame-number">06</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes arcade cabinet" loading="lazy" width="1200" height="675">
+          </div>
+          <span class="v4-frame-number">07</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball machine" loading="lazy" width="675" height="1200">
+          </div>
+          <span class="v4-frame-number">08</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child at pinball" loading="lazy" width="1400" height="788">
+          </div>
+          <span class="v4-frame-number">09</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Vertical overhead of the arcade" loading="lazy" width="901" height="1600">
+          </div>
+          <span class="v4-frame-number">10</span>
+        </div>
+        <div class="v4-frame">
+          <div class="gallery-img">
+            <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="Simpsons cabinet and interior" loading="lazy" width="1189" height="787">
+          </div>
+          <span class="v4-frame-number">11</span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p class="v4-scroll-hint">Drag to advance film <span class="arrow">&rarr;</span></p>
+    </div>
+  </section>
+
+  <!-- ===== V5: LIGHTBOX GRID ===== -->
+  <section class="gallery-variant gallery-section gallery-v5" data-gallery="v5">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+      <div class="v5-grid">
+        <div class="v5-cell v5-wide">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the full arcade floor" loading="lazy" width="1189" height="787">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">The Main Floor</p>
+            <p class="v5-overlay-desc">105+ machines from every era, all powered up and set to freeplay.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Pinball Alley</p>
+            <p class="v5-overlay-desc">A full row of classic and modern pinball tables.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="1200">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Star Wars Corner</p>
+            <p class="v5-overlay-desc">Star Wars pinball with a life-size Stormtrooper standing guard.</p>
+          </div>
+        </div>
+        <div class="v5-cell v5-wide">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade room" loading="lazy" width="1600" height="1200">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">The Blacklight Basement</p>
+            <p class="v5-overlay-desc">Vintage 80s carpet, UV lighting, and a curated set of cabinets downstairs.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1400" height="1055">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Basement Wide View</p>
+            <p class="v5-overlay-desc">The full blacklight room glowing under UV.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child at pinball" loading="lazy" width="1400" height="788">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Family Friendly</p>
+            <p class="v5-overlay-desc">All ages welcome. Great for families, date nights, and groups.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball with player" loading="lazy" width="1200" height="904">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Star Wars Pinball</p>
+            <p class="v5-overlay-desc">One of the most popular machines on the floor.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes arcade cabinet" loading="lazy" width="1200" height="675">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Bad Dudes</p>
+            <p class="v5-overlay-desc">Classic beat-em-up cabinet, fully restored and playable.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball machine" loading="lazy" width="675" height="1200">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">The Munsters</p>
+            <p class="v5-overlay-desc">Themed pinball with detailed playfield and classic TV art.</p>
+          </div>
+        </div>
+        <div class="v5-cell">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Vertical overhead of the arcade" loading="lazy" width="901" height="1600">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">Bird's Eye View</p>
+            <p class="v5-overlay-desc">Looking down at rows and rows of classic cabinets.</p>
+          </div>
+        </div>
+        <div class="v5-cell v5-wide">
+          <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="Simpsons cabinet and interior" loading="lazy" width="1189" height="787">
+          <div class="v5-zoom-icon">+</div>
+          <div class="v5-overlay">
+            <p class="v5-overlay-title">The Simpsons & More</p>
+            <p class="v5-overlay-desc">Walk in and the cabinets are right there waiting. No tokens, no quarters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scroll-context"><p>Next Section Below</p></div>
+
+  <!-- PICKER -->
+  <div class="picker" role="toolbar" aria-label="Gallery variant picker">
+    <span class="picker-label">Variant:</span>
+    <span class="picker-section">Gallery</span>
+    <button class="picker-btn active" data-pick="v1" aria-pressed="true">1</button>
+    <button class="picker-btn" data-pick="v2" aria-pressed="false">2</button>
+    <button class="picker-btn" data-pick="v3" aria-pressed="false">3</button>
+    <button class="picker-btn" data-pick="v4" aria-pressed="false">4</button>
+    <button class="picker-btn" data-pick="v5" aria-pressed="false">5</button>
+    <span class="picker-desc" id="picker-desc">Masonry Grid: Asymmetric heights with featured large image, organic column flow</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      v1: "Masonry Grid: Asymmetric heights with featured large image, organic column flow",
+      v2: "Horizontal Scroll Strip: Full-bleed horizontal scroll of all 11 photos with snap points",
+      v3: "Bento Grid: Mixed sizes (1 large, 2 medium, 3 small) in a bento-box layout",
+      v4: "Filmstrip: Photos in filmstrip frames with sprocket hole borders, horizontal scroll",
+      v5: "Lightbox Grid: Clean even grid with hover overlay showing photo descriptions",
+    };
+    const btns = document.querySelectorAll(".picker-btn");
+    const sections = document.querySelectorAll(".gallery-variant");
+    const desc = document.getElementById("picker-desc");
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const v = btn.dataset.pick;
+        sections.forEach(s => s.classList.remove("active"));
+        btns.forEach(b => {
+          b.classList.toggle("active", b.dataset.pick === v);
+          b.setAttribute("aria-pressed", b.dataset.pick === v ? "true" : "false");
+        });
+        document.querySelector(`[data-gallery="${v}"]`)?.classList.add("active");
+        desc.textContent = descriptions[v] || "";
+        document.querySelector(`[data-gallery="${v}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+
+</body>
+</html>

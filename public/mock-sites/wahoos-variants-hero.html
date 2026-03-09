@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e8e8;
+      background: #0d0d1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blue: #1a3a8f;
+      --blue-dark: #0f2560;
+      --red: #d32f2f;
+      --red-light: #e85353;
+      --white: #ffffff;
+      --charcoal: #0d0d1a;
+      --charcoal-light: #161628;
+      --charcoal-card: #1a1a2e;
+      --gold: #f59e0b;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 36px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+    .btn-primary { background: var(--red); color: var(--white); }
+    .btn-primary:hover { background: var(--red-light); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+    /* ============ LOCKED NAV ============ */
+    .locked-nav {
+      background: var(--charcoal);
+      border-bottom: 3px solid var(--blue);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%;
+    }
+    .locked-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .locked-nav-logo img {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      object-fit: contain;
+      background: #fff;
+      padding: 2px;
+    }
+    .locked-nav-logo span {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.2;
+    }
+    .locked-nav-info {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============ VARIANT SECTIONS ============ */
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============ PICKER BAR ============ */
+    .picker-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: #111125;
+      border-top: 2px solid var(--blue);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .picker-btn {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .picker-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: var(--white);
+    }
+    .picker-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+    .picker-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.3);
+      margin-right: 8px;
+    }
+
+    /* ============ HERO VARIANT 1 - Split Grid (Original) ============ */
+    .v1-hero {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v1-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 32px);
+    }
+    .v1-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(26,58,143,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(211,47,47,0.1) 0%, transparent 50%);
+    }
+    .v1-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 120px 0 100px;
+    }
+    .v1-badge {
+      display: inline-block;
+      background: rgba(211,47,47,0.15);
+      color: var(--red-light);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(211,47,47,0.25);
+    }
+    .v1-hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .v1-hero h1 .accent { color: var(--red); }
+    .v1-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .v1-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .v1-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+    .v1-cat {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.65);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .v1-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .v1-img-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.06);
+    }
+    .v1-img-wrap img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; }
+    .v1-img-wrap:first-child { grid-row: span 2; }
+    .v1-img-wrap:first-child img { aspect-ratio: auto; height: 100%; }
+
+    /* ============ HERO VARIANT 2 - Full Bleed Image with Overlay ============ */
+    .v2-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .v2-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .v2-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .v2-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,13,26,0.92) 0%, rgba(13,13,26,0.6) 50%, rgba(13,13,26,0.85) 100%);
+    }
+    .v2-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 120px 24px 120px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .v2-logo-top {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      margin: 0 auto 28px;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .v2-hero h1 {
+      font-size: clamp(3rem, 9vw, 6rem);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .v2-hero h1 .accent { color: var(--red); }
+    .v2-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .v2-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .v2-cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .v2-cat {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 22px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    /* ============ HERO VARIANT 3 - Card Collage Mosaic ============ */
+    .v3-hero {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v3-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 2px at 40px 40px, rgba(211,47,47,0.06) 2px, transparent 2px);
+      background-size: 80px 80px;
+    }
+    .v3-inner {
+      position: relative;
+      z-index: 2;
+      padding: 100px 0 100px;
+    }
+    .v3-top {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .v3-loc {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .v3-hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .v3-hero h1 .accent { color: var(--red); }
+    .v3-tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+    .v3-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .v3-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 60px;
+    }
+    .v3-tile {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s;
+    }
+    .v3-tile:hover { transform: scale(1.04); }
+    .v3-tile img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    .v3-tile:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .v3-tile:first-child img {
+      aspect-ratio: 1;
+      height: 100%;
+    }
+
+    /* ============ HERO VARIANT 4 - Marquee Takeover ============ */
+    .v4-hero {
+      background: var(--blue-dark);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .v4-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255,255,255,0.015) 50px, rgba(255,255,255,0.015) 52px);
+    }
+    .v4-marquee-top, .v4-marquee-bottom {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .v4-marquee-track {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      animation: marquee 25s linear infinite;
+    }
+    .v4-marquee-top .v4-marquee-track {
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: rgba(255,255,255,0.06);
+    }
+    .v4-marquee-bottom .v4-marquee-track {
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: var(--red);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .v4-center {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .v4-hero h1 {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--white);
+      margin-bottom: 8px;
+      text-shadow: 4px 4px 0 rgba(211,47,47,0.3);
+    }
+    .v4-hero h1 .accent { color: var(--red); }
+    .v4-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 36px;
+    }
+    .v4-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .v4-addr {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+    .v4-img-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      padding: 16px 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .v4-img-thumb {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .v4-img-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ============ HERO VARIANT 5 - Two Column Bold Type ============ */
+    .v5-hero {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v5-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 89deg, rgba(255,255,255,0.02) 89deg, rgba(255,255,255,0.02) 91deg, transparent 91deg) 0 0/80px 80px;
+    }
+    .v5-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 100px 0 100px;
+    }
+    .v5-text {}
+    .v5-badge {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 4px;
+    }
+    .v5-hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 0.95;
+    }
+    .v5-hero h1 .accent {
+      color: var(--charcoal);
+      -webkit-text-stroke: 2px var(--red);
+      text-stroke: 2px var(--red);
+    }
+    .v5-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .v5-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v5-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .v5-img-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .v5-img-wrap img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    .v5-img-wrap.tall { grid-row: span 2; }
+    .v5-img-wrap.tall img { aspect-ratio: auto; height: 100%; }
+    .v5-cats-bottom {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 0 60px;
+    }
+    .v5-cat-pill {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 20px;
+      border-radius: 50px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .v1-grid, .v5-grid { grid-template-columns: 1fr; gap: 40px; }
+      .v1-grid { padding: 80px 0 60px; text-align: center; }
+      .v1-btns { justify-content: center; }
+      .v1-cats { justify-content: center; }
+      .v1-tagline { margin-left: auto; margin-right: auto; }
+      .v1-images, .v5-images { max-width: 480px; margin: 0 auto; }
+      .v3-mosaic { grid-template-columns: repeat(2, 1fr); }
+      .v4-img-row { flex-wrap: wrap; }
+      .v4-img-thumb { width: 100px; height: 100px; }
+      .v5-grid { padding: 80px 0 40px; text-align: center; }
+      .v5-desc { margin-left: auto; margin-right: auto; }
+      .v5-btns { justify-content: center; }
+    }
+    @media (max-width: 560px) {
+      .v1-images { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .v1-img-wrap:first-child { grid-row: span 1; }
+      .v1-img-wrap:first-child img { aspect-ratio: 1; }
+      .v2-logo-top { width: 60px; height: 60px; }
+      .v3-mosaic { grid-template-columns: 1fr 1fr; }
+      .v3-tile:first-child { grid-column: span 2; grid-row: span 1; }
+      .v3-tile:first-child img { aspect-ratio: 16/9; }
+      .v4-img-thumb { width: 80px; height: 80px; }
+      .v5-images { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .v5-img-wrap.tall { grid-row: span 1; }
+      .v5-img-wrap.tall img { aspect-ratio: 1; }
+      .picker-btn { font-size: 0.75rem; padding: 8px 14px; }
+    }
+
+    /* bottom spacer for picker bar */
+    body { padding-bottom: 80px; }
+  </style>
+</head>
+<body>
+
+  <!-- LOCKED NAV -->
+  <div class="locked-nav">
+    <div class="locked-nav-logo">
+      <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's logo" width="150" height="150" loading="lazy" />
+      <span>Wahoo's Sports<br />&amp; Collectibles</span>
+    </div>
+    <div class="locked-nav-info">Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM</div>
+  </div>
+
+  <!-- ============ VARIANT 1: Split Grid ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-hero">
+      <div class="container">
+        <div class="v1-grid">
+          <div>
+            <div class="v1-badge">128 E Main St, Forest City, NC</div>
+            <h1>You Never Know<br /><span class="accent">What You'll Find</span></h1>
+            <p class="v1-tagline">Sneakers, streetwear, vintage sports memorabilia, and sports cards. All under one roof on Main Street in downtown Forest City.</p>
+            <div class="v1-btns">
+              <a href="#" class="btn btn-primary">Come Find Out</a>
+              <a href="#" class="btn btn-outline">See What We Carry</a>
+            </div>
+            <div class="v1-cats">
+              <span class="v1-cat">Sports Cards</span>
+              <span class="v1-cat">Sneakers</span>
+              <span class="v1-cat">Streetwear</span>
+              <span class="v1-cat">Vintage Apparel</span>
+              <span class="v1-cat">Memorabilia</span>
+              <span class="v1-cat">NASCAR</span>
+            </div>
+          </div>
+          <div class="v1-images">
+            <div class="v1-img-wrap">
+              <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Charlotte Hornets crewneck and NASCAR racing jacket" width="640" height="789" loading="lazy" />
+            </div>
+            <div class="v1-img-wrap">
+              <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Nike Sacai Blazer Low sneaker" width="640" height="640" loading="lazy" />
+            </div>
+            <div class="v1-img-wrap">
+              <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme skate deck" width="640" height="640" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VARIANT 2: Full Bleed Image Overlay ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-hero">
+      <div class="v2-bg">
+        <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Store display" width="640" height="789" loading="lazy" />
+      </div>
+      <div class="v2-content">
+        <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's logo" class="v2-logo-top" width="150" height="150" loading="lazy" />
+        <h1>You Never Know<br /><span class="accent">What You'll Find</span></h1>
+        <p class="v2-sub">Sneakers, streetwear, vintage memorabilia, and sports cards. All on Main Street in Forest City, NC.</p>
+        <div class="v2-btns">
+          <a href="#" class="btn btn-primary">Come Find Out</a>
+          <a href="#" class="btn btn-outline">See What We Carry</a>
+        </div>
+        <div class="v2-cats">
+          <span class="v2-cat">Sports Cards</span>
+          <span class="v2-cat">Sneakers</span>
+          <span class="v2-cat">Streetwear</span>
+          <span class="v2-cat">Vintage Apparel</span>
+          <span class="v2-cat">Memorabilia</span>
+          <span class="v2-cat">NASCAR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VARIANT 3: Card Collage Mosaic ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-hero">
+      <div class="container">
+        <div class="v3-inner">
+          <div class="v3-top">
+            <p class="v3-loc">128 E Main St, Forest City, NC</p>
+            <h1>Wahoo's Sports<br /><span class="accent">&amp; Collectibles</span></h1>
+            <p class="v3-tagline">You never know what you will find. Sneakers, streetwear, vintage apparel, sports cards, and memorabilia.</p>
+            <div class="v3-btns">
+              <a href="#" class="btn btn-primary">Come Find Out</a>
+              <a href="#" class="btn btn-outline">See What We Carry</a>
+            </div>
+          </div>
+          <div class="v3-mosaic">
+            <div class="v3-tile">
+              <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Charlotte Hornets crewneck and NASCAR jacket" width="640" height="789" loading="lazy" />
+            </div>
+            <div class="v3-tile">
+              <img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Air Jordan 10 Retro" width="640" height="640" loading="lazy" />
+            </div>
+            <div class="v3-tile">
+              <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme skate deck" width="640" height="640" loading="lazy" />
+            </div>
+            <div class="v3-tile">
+              <img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Hats on display" width="640" height="640" loading="lazy" />
+            </div>
+            <div class="v3-tile">
+              <img src="/mock-sites/assets/wahoos-sports/bravest-studios-socks.webp" alt="Bravest Studios socks" width="640" height="640" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VARIANT 4: Marquee Takeover ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-hero">
+      <div class="v4-marquee-top">
+        <div class="v4-marquee-track">WAHOO'S SPORTS &amp; COLLECTIBLES &bull; WAHOO'S SPORTS &amp; COLLECTIBLES &bull; WAHOO'S SPORTS &amp; COLLECTIBLES &bull; WAHOO'S SPORTS &amp; COLLECTIBLES &bull;&nbsp;</div>
+      </div>
+      <div class="v4-center">
+        <h1>You Never<br />Know <span class="accent">What<br />You'll Find</span></h1>
+        <p class="v4-subtitle">Forest City, NC &bull; 128 E Main St</p>
+        <div class="v4-btns">
+          <a href="#" class="btn btn-primary">Come Find Out</a>
+          <a href="#" class="btn btn-outline">See What We Carry</a>
+        </div>
+      </div>
+      <div class="v4-img-row">
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage apparel" width="640" height="789" loading="lazy" /></div>
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Sneakers" width="640" height="640" loading="lazy" /></div>
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Streetwear" width="640" height="640" loading="lazy" /></div>
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Jordans" width="640" height="640" loading="lazy" /></div>
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Hats" width="640" height="640" loading="lazy" /></div>
+        <div class="v4-img-thumb"><img src="/mock-sites/assets/wahoos-sports/bravest-studios-socks.webp" alt="Accessories" width="640" height="640" loading="lazy" /></div>
+      </div>
+      <div class="v4-marquee-bottom">
+        <div class="v4-marquee-track">Cards &#9733; Sneakers &#9733; Supreme &#9733; Jordans &#9733; Vintage &#9733; NASCAR &#9733; Pokemon &#9733; Memorabilia &#9733; Cards &#9733; Sneakers &#9733; Supreme &#9733; Jordans &#9733; Vintage &#9733; NASCAR &#9733; Pokemon &#9733; Memorabilia &#9733;&nbsp;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VARIANT 5: Bold Type + Side Images ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-hero">
+      <div class="container">
+        <div class="v5-grid">
+          <div class="v5-text">
+            <div class="v5-badge">Forest City, NC</div>
+            <h1>You<br />Never<br />Know<br /><span class="accent">What<br />You'll<br />Find</span></h1>
+            <p class="v5-desc">Sneakers, streetwear, vintage sports memorabilia, and sports cards. The only shop of its kind in Rutherford County.</p>
+            <div class="v5-btns">
+              <a href="#" class="btn btn-primary">Come Find Out</a>
+              <a href="#" class="btn btn-outline">See What We Carry</a>
+            </div>
+          </div>
+          <div class="v5-images">
+            <div class="v5-img-wrap tall">
+              <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage apparel" width="640" height="789" loading="lazy" />
+            </div>
+            <div class="v5-img-wrap">
+              <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Sneakers" width="640" height="640" loading="lazy" />
+            </div>
+            <div class="v5-img-wrap">
+              <img src="/mock-sites/assets/wahoos-sports/supreme-accessories.webp" alt="Supreme accessories" width="640" height="640" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="v5-cats-bottom">
+          <span class="v5-cat-pill">Sports Cards</span>
+          <span class="v5-cat-pill">Sneakers</span>
+          <span class="v5-cat-pill">Streetwear</span>
+          <span class="v5-cat-pill">Vintage Apparel</span>
+          <span class="v5-cat-pill">Memorabilia</span>
+          <span class="v5-cat-pill">NASCAR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PICKER BAR ============ -->
+  <div class="picker-bar">
+    <span class="picker-label">Hero:</span>
+    <button class="picker-btn active" data-target="v1">1. Split Grid</button>
+    <button class="picker-btn" data-target="v2">2. Full Bleed</button>
+    <button class="picker-btn" data-target="v3">3. Mosaic</button>
+    <button class="picker-btn" data-target="v4">4. Marquee</button>
+    <button class="picker-btn" data-target="v5">5. Bold Type</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('.picker-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

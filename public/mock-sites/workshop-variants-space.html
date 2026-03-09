@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkShop Vintage Market - Space / History Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf6ef;
+      color: #3a2e25;
+      overflow-x: hidden;
+      padding-bottom: 72px;
+    }
+    :root {
+      --cream: #faf6ef;
+      --brown: #5c4033;
+      --sage: #8a9a7b;
+      --gold: #c4a35a;
+      --terracotta: #c17c5e;
+      --linen: #f0ead6;
+      --dark: #3a2e25;
+      --sage-light: #a8b69b;
+      --gold-light: #ddc480;
+      --terracotta-light: #d9a08a;
+    }
+    .variant { display: none; min-height: 100vh; }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #3a2e25;
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar .label {
+      color: #c4a35a; font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 700; margin-right: 16px;
+    }
+    .pick-btn {
+      width: 48px; height: 40px;
+      border: 2px solid rgba(196,163,90,0.3);
+      background: transparent; color: #faf6ef;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .pick-btn:hover {
+      border-color: #c4a35a;
+      background: rgba(196,163,90,0.1);
+    }
+    .pick-btn.active {
+      background: #c17c5e;
+      color: #fff;
+      border-color: #c17c5e;
+    }
+
+    /* ================================================================
+       VARIANT 1 - TIMELINE
+       1937 on left, 2018 on right, connected by decorative line
+       ================================================================ */
+    .v1-section {
+      padding: 6rem 2rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .v1-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(138,154,123,0.06) 59px, rgba(138,154,123,0.06) 60px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(138,154,123,0.06) 59px, rgba(138,154,123,0.06) 60px);
+      pointer-events: none;
+    }
+    .v1-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+    .v1-label {
+      text-align: center;
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--sage); font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .v1-heading {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--dark);
+      margin-bottom: 3.5rem; line-height: 1.15;
+    }
+    .v1-timeline {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+      min-height: 480px;
+    }
+    .v1-left, .v1-right { padding: 2rem; }
+    .v1-left { text-align: right; }
+    .v1-right { text-align: left; }
+
+    .v1-year {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .v1-left .v1-year { color: var(--brown); }
+    .v1-right .v1-year { color: var(--terracotta); }
+
+    .v1-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .v1-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--brown);
+      max-width: 360px;
+    }
+    .v1-left .v1-text { margin-left: auto; }
+
+    /* The connecting spine */
+    .v1-spine {
+      width: 3px;
+      background: linear-gradient(to bottom, var(--sage), var(--gold), var(--terracotta));
+      position: relative;
+      margin: 0 2rem;
+    }
+    .v1-spine::before, .v1-spine::after {
+      content: '';
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      background: var(--cream);
+    }
+    .v1-spine::before { top: 2rem; }
+    .v1-spine::after { bottom: 2rem; }
+
+    .v1-spine-diamond {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 14px; height: 14px;
+      background: var(--gold);
+    }
+
+    /* Stats row below timeline */
+    .v1-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-top: 3rem; padding-top: 2.5rem;
+      border-top: 1px solid rgba(92,64,51,0.1);
+      flex-wrap: wrap;
+    }
+    .v1-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--gold);
+    }
+    .v1-stat-label {
+      font-size: 0.8rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--brown);
+      margin-top: 0.25rem;
+    }
+    .v1-stat { text-align: center; }
+
+    /* Body text below */
+    .v1-body {
+      max-width: 680px; margin: 3rem auto 0;
+      font-size: 1rem; line-height: 1.85;
+      color: var(--brown); text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .v1-timeline { grid-template-columns: auto 1fr; min-height: auto; }
+      .v1-left { display: none; }
+      .v1-right { text-align: left; }
+      .v1-spine { margin: 0 1.5rem 0 0; }
+      .v1-right .v1-year-top {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem; font-weight: 900;
+        color: var(--brown); margin-bottom: 1.5rem;
+      }
+      .v1-stats { gap: 1.5rem; }
+    }
+
+    /* ================================================================
+       VARIANT 2 - WATERMARK
+       Large "1937" as background watermark, text overlaid
+       ================================================================ */
+    .v2-section {
+      padding: 6rem 2rem;
+      background: var(--linen);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex; align-items: center;
+    }
+    .v2-watermark {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(14rem, 30vw, 28rem);
+      font-weight: 900;
+      color: rgba(92,64,51,0.04);
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .v2-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .v2-label {
+      font-size: 0.75rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--sage);
+      font-weight: 700; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .v2-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--sage);
+      opacity: 0.3;
+    }
+    .v2-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.1; margin-bottom: 2rem;
+    }
+    .v2-heading span { color: var(--terracotta); }
+
+    .v2-split {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .v2-body {
+      font-size: 1.05rem; line-height: 1.9;
+      color: var(--brown);
+    }
+
+    /* Right side: decorative card */
+    .v2-card {
+      background: var(--cream);
+      border: 1px solid rgba(92,64,51,0.1);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(58,46,37,0.08);
+    }
+    .v2-card::before {
+      content: '';
+      position: absolute; top: -1px; left: 2rem; right: 2rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--gold), var(--terracotta));
+      border-radius: 0 0 3px 3px;
+    }
+    .v2-card-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem; color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .v2-card-stats { display: flex; flex-direction: column; gap: 1.25rem; }
+    .v2-card-row {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(92,64,51,0.06);
+    }
+    .v2-card-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .v2-card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--terracotta);
+      min-width: 80px;
+    }
+    .v2-card-desc {
+      font-size: 0.88rem; color: var(--brown);
+      line-height: 1.5;
+    }
+
+    /* Decorative texture behind card */
+    .v2-card-wrap { position: relative; }
+    .v2-card-wrap::before {
+      content: '';
+      position: absolute;
+      top: 1rem; left: 1rem; right: -1rem; bottom: -1rem;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent, transparent 8px,
+        rgba(138,154,123,0.08) 8px,
+        rgba(138,154,123,0.08) 9px
+      );
+      border-radius: 16px;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .v2-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .v2-watermark { font-size: 10rem; }
+    }
+
+    /* ================================================================
+       VARIANT 3 - DARK ELEGANT
+       Dark background, gold accent numbers as focal points
+       ================================================================ */
+    .v3-section {
+      padding: 6rem 2rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .v3-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(196,163,90,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(193,124,94,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    /* Subtle grain */
+    .v3-section::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .v3-inner {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .v3-label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700;
+      text-align: center; margin-bottom: 2rem;
+    }
+    /* Big numbers row */
+    .v3-numbers {
+      display: flex; justify-content: center; align-items: baseline;
+      gap: 2rem; margin-bottom: 1rem;
+    }
+    .v3-big-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .v3-num-1937 { font-size: clamp(5rem, 12vw, 9rem); }
+    .v3-num-dot {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--terracotta);
+      -webkit-text-fill-color: var(--terracotta);
+    }
+    .v3-num-2018 { font-size: clamp(5rem, 12vw, 9rem); }
+
+    .v3-subhead {
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--terracotta-light);
+      margin-bottom: 3rem;
+    }
+    .v3-divider {
+      width: 100px; height: 1px; margin: 0 auto 3rem;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .v3-body {
+      max-width: 700px; margin: 0 auto 3.5rem;
+      font-size: 1.05rem; line-height: 1.9;
+      color: rgba(250,246,239,0.75);
+      text-align: center;
+    }
+
+    /* Stats grid */
+    .v3-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(196,163,90,0.15);
+      border: 1px solid rgba(196,163,90,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .v3-stat-cell {
+      background: rgba(58,46,37,0.95);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .v3-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .v3-stat-lbl {
+      font-size: 0.78rem; text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(250,246,239,0.45);
+    }
+
+    /* Decorative corner ornaments */
+    .v3-corner {
+      position: absolute; width: 60px; height: 60px;
+      border-color: rgba(196,163,90,0.2);
+      border-style: solid;
+      z-index: 2;
+    }
+    .v3-corner-tl { top: 2rem; left: 2rem; border-width: 2px 0 0 2px; }
+    .v3-corner-tr { top: 2rem; right: 2rem; border-width: 2px 2px 0 0; }
+    .v3-corner-bl { bottom: 2rem; left: 2rem; border-width: 0 0 2px 2px; }
+    .v3-corner-br { bottom: 2rem; right: 2rem; border-width: 0 2px 2px 0; }
+
+    @media (max-width: 768px) {
+      .v3-stats { grid-template-columns: repeat(2, 1fr); }
+      .v3-numbers { gap: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .v3-numbers { flex-direction: column; align-items: center; gap: 0.5rem; }
+    }
+
+    /* ================================================================
+       VARIANT 4 - EDITORIAL / MAGAZINE
+       Pull quotes, large stats, asymmetric grid
+       ================================================================ */
+    .v4-section {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream);
+      position: relative;
+    }
+    .v4-inner { max-width: 1100px; margin: 0 auto; }
+    .v4-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+      align-items: end;
+    }
+    .v4-label {
+      font-size: 0.7rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--sage);
+      font-weight: 700; margin-bottom: 1rem;
+    }
+    .v4-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.05;
+    }
+    .v4-heading em {
+      font-style: italic; color: var(--terracotta);
+    }
+    .v4-intro {
+      font-size: 1.15rem; line-height: 1.8;
+      color: var(--brown);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+    }
+
+    /* Horizontal rule with ornament */
+    .v4-rule {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    .v4-rule-line { flex: 1; height: 1px; background: rgba(92,64,51,0.12); }
+    .v4-rule-diamond {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* Pull quote */
+    .v4-pull {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic;
+      color: var(--brown);
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      position: relative;
+      padding: 0 2rem;
+      line-height: 1.4;
+    }
+    .v4-pull::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem; left: -0.5rem;
+      font-size: 5rem; line-height: 1;
+      color: var(--gold);
+      opacity: 0.3;
+      font-style: normal;
+    }
+
+    /* Stats strip */
+    .v4-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      margin-bottom: 4rem;
+    }
+    .v4-stat-block {
+      padding: 2rem 1rem;
+      text-align: center;
+      border-right: 1px solid rgba(92,64,51,0.08);
+      position: relative;
+    }
+    .v4-stat-block:last-child { border-right: none; }
+    .v4-stat-block:nth-child(odd) { background: rgba(138,154,123,0.06); }
+    .v4-stat-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .v4-stat-sm {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--brown);
+      line-height: 1.4;
+    }
+
+    /* Body columns */
+    .v4-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .v4-body-col p {
+      font-size: 0.98rem; line-height: 1.85;
+      color: var(--brown); margin-bottom: 1rem;
+    }
+    .v4-dropcap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      float: left; line-height: 0.85;
+      margin-right: 0.6rem; margin-top: 0.15rem;
+      color: var(--terracotta);
+    }
+
+    /* Image placeholder */
+    .v4-img-block {
+      width: 100%; aspect-ratio: 21/9;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--linen), rgba(138,154,123,0.2), var(--linen));
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .v4-img-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(92,64,51,0.015) 3px, rgba(92,64,51,0.015) 4px);
+    }
+    .v4-img-block::after {
+      content: 'Uptown Shelby, NC';
+      position: absolute; bottom: 1.25rem; right: 1.5rem;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem; color: rgba(92,64,51,0.3);
+    }
+
+    @media (max-width: 900px) {
+      .v4-top { grid-template-columns: 1fr; gap: 2rem; }
+      .v4-stats-strip { grid-template-columns: repeat(3, 1fr); }
+      .v4-body-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .v4-stats-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ================================================================
+       VARIANT 5 - LAYERED PAPER / CARD STACK
+       History unfolding in stacked paper cards
+       ================================================================ */
+    .v5-section {
+      padding: 5rem 2rem 6rem;
+      background: #eae4d8;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .v5-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(196,163,90,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(138,154,123,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v5-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+
+    .v5-label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--sage); font-weight: 700;
+      text-align: center; margin-bottom: 0.75rem;
+    }
+    .v5-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900; color: var(--dark);
+      text-align: center; margin-bottom: 3.5rem;
+      line-height: 1.1;
+    }
+
+    /* Card stack */
+    .v5-stack { display: flex; flex-direction: column; gap: 0; position: relative; }
+
+    .v5-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(58,46,37,0.08), 0 1px 3px rgba(58,46,37,0.04);
+      margin-bottom: -1.5rem;
+      transform-origin: center top;
+    }
+    .v5-card:nth-child(1) { z-index: 5; transform: rotate(-0.5deg); }
+    .v5-card:nth-child(2) { z-index: 4; transform: rotate(0.3deg); margin-left: 1rem; }
+    .v5-card:nth-child(3) { z-index: 3; transform: rotate(-0.2deg); margin-left: -0.5rem; }
+    .v5-card:nth-child(4) { z-index: 2; transform: rotate(0.4deg); margin-left: 0.5rem; }
+    .v5-card:last-child { margin-bottom: 0; }
+
+    .v5-card-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .v5-card-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .v5-card-text {
+      font-size: 0.95rem; line-height: 1.8;
+      color: var(--brown);
+    }
+
+    /* Decorative tape effect on first card */
+    .v5-card:first-child::before {
+      content: '';
+      position: absolute; top: -8px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+      width: 80px; height: 24px;
+      background: rgba(196,163,90,0.25);
+      border-radius: 2px;
+    }
+
+    /* Pin/dot on subsequent cards */
+    .v5-card:not(:first-child)::before {
+      content: '';
+      position: absolute; top: 1.5rem; left: -8px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--sage);
+      background: var(--cream);
+    }
+
+    /* Connecting line */
+    .v5-connector {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--sage) 0px, var(--sage) 6px,
+        transparent 6px, transparent 12px
+      );
+      opacity: 0.3;
+      margin-left: -1px;
+      z-index: 1;
+    }
+
+    /* Bottom summary stats */
+    .v5-summary {
+      display: flex; justify-content: center; gap: 2.5rem;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--dark);
+      border-radius: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 6;
+    }
+    .v5-sum-item { text-align: center; }
+    .v5-sum-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--gold);
+    }
+    .v5-sum-lbl {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: rgba(250,246,239,0.5);
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .v5-card {
+        padding: 2rem;
+        margin-left: 0 !important;
+        transform: none !important;
+      }
+      .v5-summary { gap: 1.5rem; }
+    }
+    @media (max-width: 560px) {
+      .v5-card { padding: 1.5rem; }
+      .v5-card:not(:first-child)::before { display: none; }
+      .v5-connector { display: none; }
+    }
+
+    /* ===== RESPONSIVE TWEAKS GLOBAL ===== */
+    @media (max-width: 1200px) {
+      .v1-section, .v2-section, .v3-section, .v4-section, .v5-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (max-width: 560px) {
+      .v1-stats { gap: 1rem; }
+      .v3-stat-cell { padding: 1.5rem 1rem; }
+      .picker-bar { padding: 10px 12px; gap: 8px; }
+      .picker-bar .label { margin-right: 8px; font-size: 11px; }
+      .pick-btn { width: 42px; height: 36px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     VARIANT 1 - TIMELINE LAYOUT
+     1937 on left, 2018 on right, connected by a decorative spine
+     ============================================================ -->
+<section class="variant" id="v1" style="display:block;">
+  <div class="v1-section">
+    <div class="v1-inner">
+      <p class="v1-label">Our History</p>
+      <h2 class="v1-heading">Built in 1937. Reborn in 2018.</h2>
+
+      <div class="v1-timeline">
+        <!-- Left: 1937 -->
+        <div class="v1-left">
+          <div class="v1-year">1937</div>
+          <div class="v1-subtitle">Where it all began</div>
+          <p class="v1-text">
+            Kester-Groome Furniture Co. opened its doors at this address and called it home for the next 63 years. The building became part of the fabric of Uptown Shelby.
+          </p>
+        </div>
+
+        <!-- Spine -->
+        <div class="v1-spine">
+          <div class="v1-spine-diamond"></div>
+        </div>
+
+        <!-- Right: 2018 -->
+        <div class="v1-right">
+          <div class="v1-year">2018</div>
+          <div class="v1-subtitle">A second life</div>
+          <p class="v1-text">
+            Kellie and Wren reopened these doors as WorkShop Vintage Market, filling 6,000 square feet and two full floors with vendors, vintage finds, and new energy.
+          </p>
+        </div>
+      </div>
+
+      <div class="v1-stats">
+        <div class="v1-stat">
+          <div class="v1-stat-num">63</div>
+          <div class="v1-stat-label">Years as Furniture Co.</div>
+        </div>
+        <div class="v1-stat">
+          <div class="v1-stat-num">6,000</div>
+          <div class="v1-stat-label">Square Feet</div>
+        </div>
+        <div class="v1-stat">
+          <div class="v1-stat-num">80+</div>
+          <div class="v1-stat-label">Vendors</div>
+        </div>
+        <div class="v1-stat">
+          <div class="v1-stat-num">2</div>
+          <div class="v1-stat-label">Full Floors</div>
+        </div>
+      </div>
+
+      <p class="v1-body">
+        This building has been part of Uptown Shelby for nearly a century. It started as Kester-Groome Furniture Co., which called this address home for 63 years. When Kellie and Wren opened WorkShop in 2018, they gave the space a second life. Today, 6,000 square feet and two full floors are packed with vendors, vintage finds, and that feeling you get when you walk into a place that has real history in its walls.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VARIANT 2 - WATERMARK
+     Large "1937" as background, text overlaid with stat card
+     ============================================================ -->
+<section class="variant" id="v2">
+  <div class="v2-section">
+    <div class="v2-watermark">1937</div>
+    <div class="v2-inner">
+      <div class="v2-label">Our History</div>
+      <h2 class="v2-heading">Built in 1937.<br><span>Reborn in 2018.</span></h2>
+
+      <div class="v2-split">
+        <div class="v2-body">
+          <p>This building has been part of Uptown Shelby for nearly a century. It started as Kester-Groome Furniture Co., which called this address home for 63 years.</p>
+          <br>
+          <p>When Kellie and Wren opened WorkShop in 2018, they gave the space a second life. Today, 6,000 square feet and two full floors are packed with vendors, vintage finds, and that feeling you get when you walk into a place that has real history in its walls.</p>
+        </div>
+
+        <div class="v2-card-wrap">
+          <div class="v2-card">
+            <div class="v2-card-title">By the numbers</div>
+            <div class="v2-card-stats">
+              <div class="v2-card-row">
+                <div class="v2-card-num">1937</div>
+                <div class="v2-card-desc">Year the building was constructed in Uptown Shelby</div>
+              </div>
+              <div class="v2-card-row">
+                <div class="v2-card-num">63</div>
+                <div class="v2-card-desc">Years as Kester-Groome Furniture Co.</div>
+              </div>
+              <div class="v2-card-row">
+                <div class="v2-card-num">6,000</div>
+                <div class="v2-card-desc">Square feet across two full floors</div>
+              </div>
+              <div class="v2-card-row">
+                <div class="v2-card-num">80+</div>
+                <div class="v2-card-desc">Vendors filling the space today</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VARIANT 3 - DARK ELEGANT
+     Dark background, gold numbers, corner ornaments
+     ============================================================ -->
+<section class="variant" id="v3">
+  <div class="v3-section">
+    <div class="v3-corner v3-corner-tl"></div>
+    <div class="v3-corner v3-corner-tr"></div>
+    <div class="v3-corner v3-corner-bl"></div>
+    <div class="v3-corner v3-corner-br"></div>
+
+    <div class="v3-inner">
+      <p class="v3-label">Our History</p>
+
+      <div class="v3-numbers">
+        <span class="v3-big-num v3-num-1937">1937</span>
+        <span class="v3-num-dot">&bull;</span>
+        <span class="v3-big-num v3-num-2018">2018</span>
+      </div>
+
+      <p class="v3-subhead">From furniture showroom to vintage market</p>
+      <div class="v3-divider"></div>
+
+      <p class="v3-body">
+        This building has been part of Uptown Shelby for nearly a century. It started as Kester-Groome Furniture Co., which called this address home for 63 years. When Kellie and Wren opened WorkShop in 2018, they gave the space a second life. Today, 6,000 square feet and two full floors are packed with vendors, vintage finds, and that feeling you get when you walk into a place that has real history in its walls.
+      </p>
+
+      <div class="v3-stats">
+        <div class="v3-stat-cell">
+          <div class="v3-stat-val">1937</div>
+          <div class="v3-stat-lbl">Year Built</div>
+        </div>
+        <div class="v3-stat-cell">
+          <div class="v3-stat-val">6,000</div>
+          <div class="v3-stat-lbl">Square Feet</div>
+        </div>
+        <div class="v3-stat-cell">
+          <div class="v3-stat-val">80+</div>
+          <div class="v3-stat-lbl">Vendors</div>
+        </div>
+        <div class="v3-stat-cell">
+          <div class="v3-stat-val">2</div>
+          <div class="v3-stat-lbl">Floors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VARIANT 4 - EDITORIAL / MAGAZINE
+     Pull quotes, drop cap, stat strip, asymmetric layout
+     ============================================================ -->
+<section class="variant" id="v4">
+  <div class="v4-section">
+    <div class="v4-inner">
+      <div class="v4-top">
+        <div>
+          <div class="v4-label">Our History</div>
+          <h2 class="v4-heading">Built in 1937.<br><em>Reborn in 2018.</em></h2>
+        </div>
+        <p class="v4-intro">
+          A century-old building. A 63-year furniture legacy. Two founders who saw something worth saving. This is how WorkShop Vintage Market came to be.
+        </p>
+      </div>
+
+      <div class="v4-rule">
+        <div class="v4-rule-line"></div>
+        <div class="v4-rule-diamond"></div>
+        <div class="v4-rule-line"></div>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="v4-stats-strip">
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">1937</div>
+          <div class="v4-stat-sm">Year Built</div>
+        </div>
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">2018</div>
+          <div class="v4-stat-sm">Year Reborn</div>
+        </div>
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">63</div>
+          <div class="v4-stat-sm">Years as<br>Furniture Co.</div>
+        </div>
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">6,000</div>
+          <div class="v4-stat-sm">Square Feet</div>
+        </div>
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">80+</div>
+          <div class="v4-stat-sm">Vendors</div>
+        </div>
+        <div class="v4-stat-block">
+          <div class="v4-stat-big">2</div>
+          <div class="v4-stat-sm">Full Floors</div>
+        </div>
+      </div>
+
+      <!-- Pull quote -->
+      <div class="v4-pull">
+        That feeling you get when you walk into a place that has real history in its walls.
+      </div>
+
+      <!-- Body columns -->
+      <div class="v4-body-grid">
+        <div class="v4-body-col">
+          <p class="v4-dropcap">This building has been part of Uptown Shelby for nearly a century. It started as Kester-Groome Furniture Co., which called this address home for 63 years. The showroom floors, the bones of the building, the presence you feel when you step inside. All of that comes from decades of being a place people came to.</p>
+        </div>
+        <div class="v4-body-col">
+          <p>When Kellie and Wren opened WorkShop in 2018, they gave the space a second life. Today, 6,000 square feet and two full floors are packed with vendors, vintage finds, and something harder to name. Not nostalgia, exactly. More like proof that the right building, with the right people, keeps going.</p>
+        </div>
+      </div>
+
+      <!-- Wide image placeholder -->
+      <div class="v4-img-block"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VARIANT 5 - LAYERED PAPER / CARD STACK
+     History unfolding in stacked paper cards
+     ============================================================ -->
+<section class="variant" id="v5">
+  <div class="v5-section">
+    <div class="v5-inner">
+      <p class="v5-label">Our History</p>
+      <h2 class="v5-heading">Built in 1937. Reborn in 2018.</h2>
+
+      <div class="v5-stack" style="position:relative;">
+        <div class="v5-connector"></div>
+
+        <div class="v5-card">
+          <div class="v5-card-year">1937</div>
+          <div class="v5-card-subtitle">The beginning</div>
+          <p class="v5-card-text">
+            The building goes up in Uptown Shelby. Kester-Groome Furniture Co. makes it their home, and they will stay for the next six decades. These walls see their first customers, their first displays, their first life.
+          </p>
+        </div>
+
+        <div class="v5-card">
+          <div class="v5-card-year">1937 - 2000</div>
+          <div class="v5-card-subtitle">63 years of furniture</div>
+          <p class="v5-card-text">
+            For 63 years, Kester-Groome Furniture Co. called this address home. The building became part of Shelby's identity. Generation after generation walked through those doors. The floors wore in. The building settled. History stacked up.
+          </p>
+        </div>
+
+        <div class="v5-card">
+          <div class="v5-card-year">2018</div>
+          <div class="v5-card-subtitle">A second life</div>
+          <p class="v5-card-text">
+            Kellie and Wren saw what this building could become and opened WorkShop Vintage Market. They kept the bones, honored the history, and filled the space with something new: vendors, vintage finds, and fresh energy running through old walls.
+          </p>
+        </div>
+
+        <div class="v5-card">
+          <div class="v5-card-year">Today</div>
+          <div class="v5-card-subtitle">Still going</div>
+          <p class="v5-card-text">
+            6,000 square feet. Two full floors. 80+ vendors. And that feeling you get when you walk into a place that has real history in its walls. The building has been here for nearly a century, and it is not done yet.
+          </p>
+        </div>
+      </div>
+
+      <div class="v5-summary">
+        <div class="v5-sum-item">
+          <div class="v5-sum-val">1937</div>
+          <div class="v5-sum-lbl">Year Built</div>
+        </div>
+        <div class="v5-sum-item">
+          <div class="v5-sum-val">63</div>
+          <div class="v5-sum-lbl">Years as Furniture Co.</div>
+        </div>
+        <div class="v5-sum-item">
+          <div class="v5-sum-val">6,000</div>
+          <div class="v5-sum-lbl">Square Feet</div>
+        </div>
+        <div class="v5-sum-item">
+          <div class="v5-sum-val">80+</div>
+          <div class="v5-sum-lbl">Vendors</div>
+        </div>
+        <div class="v5-sum-item">
+          <div class="v5-sum-val">2</div>
+          <div class="v5-sum-lbl">Full Floors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Space Variants</span>
+  <button onclick="show(1)" class="pick-btn active">1</button>
+  <button onclick="show(2)" class="pick-btn">2</button>
+  <button onclick="show(3)" class="pick-btn">3</button>
+  <button onclick="show(4)" class="pick-btn">4</button>
+  <button onclick="show(5)" class="pick-btn">5</button>
+</div>
+
+<script>
+  function show(n) {
+    document.querySelectorAll('.variant').forEach(function(v) { v.style.display = 'none'; });
+    document.getElementById('v' + n).style.display = 'block';
+    document.querySelectorAll('.pick-btn').forEach(function(b, i) {
+      b.classList.toggle('active', i === n - 1);
+    });
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>

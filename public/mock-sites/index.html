@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio O'Brien - Mock Site Review</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1a1a2e;
+      color: #fef9ef;
+      min-height: 100vh;
+      padding: 40px 24px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .header h1 span { color: #ff5f5d; }
+    .header p {
+      color: #c4b5fd;
+      font-size: 1rem;
+    }
+    .section-label {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c8f542;
+      margin: 48px 0 20px;
+      padding-left: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #2b2d6e;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      border-bottom: 3px solid #ff5f5d;
+    }
+    .card-thumb.placeholder {
+      background: linear-gradient(135deg, #3b3d7e, #1a1a2e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .card-body {
+      padding: 16px 20px 20px;
+    }
+    .card-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #1a1a2e;
+      background: #c8f542;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card-tag.real { background: #ff5f5d; color: #fff; }
+    .card-desc {
+      font-size: 0.85rem;
+      color: #a0a0c0;
+      line-height: 1.5;
+    }
+    .stats {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin: 24px 0 0;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2rem;
+      color: #c8f542;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: #a0a0c0;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .instructions {
+      max-width: 700px;
+      margin: 48px auto 0;
+      text-align: center;
+      padding: 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .instructions p {
+      font-size: 0.9rem;
+      color: #a0a0c0;
+      line-height: 1.6;
+    }
+    .instructions code {
+      background: rgba(200,245,66,0.15);
+      color: #c8f542;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Mock Site <span>Review</span></h1>
+    <p>Click any card to open the full site in a new tab</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Total Sites</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Real Businesses</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Portfolio Demos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Real Business Targets (Built from Scraped Data)</div>
+  <div class="grid">
+    <a class="card" href="carolina-arcade.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/carolina-arcade.webp" alt="Carolina Arcade Museum" />
+      <div class="card-body">
+        <span class="card-tag real">Real Business</span>
+        <div class="card-name">Carolina Arcade Museum</div>
+        <div class="card-desc">145 E Main St, Forest City, NC. 100+ vintage arcade and pinball machines on freeplay. Owner: Dave Walker. No existing website.</div>
+      </div>
+    </a>
+    <a class="card" href="wahoos-sports.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/wahoos-sports.webp" alt="Wahoo's Sports" />
+      <div class="card-body">
+        <span class="card-tag real">Real Business</span>
+        <div class="card-name">Wahoo's Sports & Collectibles</div>
+        <div class="card-desc">128 E Main St, Forest City, NC. Sneakers, streetwear, vintage sports cards, Supreme, NASCAR memorabilia. Owner: Bill. No existing website.</div>
+      </div>
+    </a>
+    <a class="card" href="hoot-nannie.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/hoot-nannie.webp" alt="The Hoot Nannie" />
+      <div class="card-body">
+        <span class="card-tag real">Real Business</span>
+        <div class="card-name">The Hoot Nannie</div>
+        <div class="card-desc">164 E Main St, Forest City, NC. Farm-raised steaks, whole hog BBQ, 68 bourbons. Owners: Johnny Ray + Neighbor Steve. No existing website.</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="section-label">Portfolio Demo Sites (Fictional Businesses)</div>
+  <div class="grid">
+    <a class="card" href="crestview-property.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/crestview-property.webp" alt="Crestview Property Group" />
+      <div class="card-body">
+        <span class="card-tag">Real Estate</span>
+        <div class="card-name">Crestview Property Group</div>
+        <div class="card-desc">Property management and real estate in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="mason-jar.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/mason-jar.webp" alt="The Mason Jar Provisions" />
+      <div class="card-body">
+        <span class="card-tag">Restaurant</span>
+        <div class="card-name">The Mason Jar Provisions</div>
+        <div class="card-desc">Farm-to-table goods from the Carolina Foothills.</div>
+      </div>
+    </a>
+    <a class="card" href="foothills-chiro.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/foothills-chiro.webp" alt="Foothills Family Chiropractic" />
+      <div class="card-body">
+        <span class="card-tag">Healthcare</span>
+        <div class="card-name">Foothills Family Chiropractic</div>
+        <div class="card-desc">Family chiropractic care in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="keller-built.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/keller-built.webp" alt="Keller Built" />
+      <div class="card-body">
+        <span class="card-tag">Construction</span>
+        <div class="card-name">Keller Built</div>
+        <div class="card-desc">Custom construction and renovations in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="carolina-brewing.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/carolina-brewing.webp" alt="Carolina Craft Brewing Co." />
+      <div class="card-body">
+        <span class="card-tag">Brewery</span>
+        <div class="card-name">Carolina Craft Brewing Co.</div>
+        <div class="card-desc">Brewed in the Foothills.</div>
+      </div>
+    </a>
+    <a class="card" href="morningside-coffee.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/morningside-coffee.webp" alt="Morningside Coffee" />
+      <div class="card-body">
+        <span class="card-tag">Cafe</span>
+        <div class="card-name">Morningside Coffee</div>
+        <div class="card-desc">Small-batch roastery in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="pinnacle-realty.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/pinnacle-realty.webp" alt="Pinnacle Homes Realty" />
+      <div class="card-body">
+        <span class="card-tag">Real Estate</span>
+        <div class="card-name">Pinnacle Homes Realty</div>
+        <div class="card-desc">Luxury real estate in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="hickory-dental.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/hickory-dental.webp" alt="Hickory Creek Dental" />
+      <div class="card-body">
+        <span class="card-tag">Healthcare</span>
+        <div class="card-name">Hickory Creek Dental</div>
+        <div class="card-desc">Family dentist in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="iron-peak.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/iron-peak.webp" alt="Iron Peak Fitness" />
+      <div class="card-body">
+        <span class="card-tag">Fitness</span>
+        <div class="card-name">Iron Peak Fitness</div>
+        <div class="card-desc">Shelby's premier training facility.</div>
+      </div>
+    </a>
+    <a class="card" href="summit-legal.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/summit-legal.webp" alt="Summit Legal Partners" />
+      <div class="card-body">
+        <span class="card-tag">Legal</span>
+        <div class="card-name">Summit Legal Partners</div>
+        <div class="card-desc">Trial experience protecting businesses and families in the Foothills.</div>
+      </div>
+    </a>
+    <a class="card" href="trailhead-outfitters.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/trailhead-outfitters.webp" alt="Trailhead Outfitters" />
+      <div class="card-body">
+        <span class="card-tag">Retail</span>
+        <div class="card-name">Trailhead Outfitters</div>
+        <div class="card-desc">Gear for the Foothills in Shelby, NC.</div>
+      </div>
+    </a>
+    <a class="card" href="uptown-shelby.html" target="_blank">
+      <img class="card-thumb" src="/images/portfolio/uptown-shelby.webp" alt="Uptown Shelby Alliance" />
+      <div class="card-body">
+        <span class="card-tag">Community</span>
+        <div class="card-name">Uptown Shelby Alliance</div>
+        <div class="card-desc">Heart of downtown Shelby, NC.</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="instructions">
+    <p>
+      Review each site by clicking the cards above. They open in new tabs.<br />
+      The <strong>3 real business sites</strong> are built from actual scraped data.<br />
+      The <strong>12 demo sites</strong> show range across industries.
+    </p>
+  </div>
+</body>
+</html>

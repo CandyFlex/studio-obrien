@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoot Nannie - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #111; color: #FFF8F0; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --brick: #8B2500; --brick-dark: #6B1C00; --amber: #D4A017; --amber-light: #E8C547;
+      --charcoal: #1a1410; --charcoal-light: #2a2218; --cream: #FFF8F0; --cream-dark: #F5EDE0;
+      --wood: #3E2723; --wood-light: #5D4037;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,20,16,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--amber); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,23,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--amber); background: rgba(212,160,23,0.1); }
+    .picker-btn.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+
+    /* ===== SHARED ===== */
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .hero-section { min-height: 100vh; position: relative; overflow: hidden; }
+    .hero-section img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+    /* ===== VARIANT 1: Centered Classic ===== */
+    .v1 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(26,20,16,0.4), rgba(26,20,16,0.35) 40%, rgba(26,20,16,0.75) 80%, rgba(26,20,16,1));
+    }
+    .v1 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v1 .tag { font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 1.5rem; }
+    .v1 h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem,8vw,6rem); font-weight: 900; line-height: 0.95; margin-bottom: 1.5rem; text-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+    .v1 h1 em { font-style: italic; color: var(--amber); display: block; font-size: 0.55em; margin-top: 0.25em; }
+    .v1 .sub { font-size: 1.15rem; color: var(--cream-dark); opacity: 0.85; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .v1 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-p { padding: 0.85rem 2rem; background: var(--brick); color: var(--cream); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn-p:hover { background: var(--brick-dark); }
+    .btn-s { padding: 0.85rem 2rem; background: transparent; color: var(--amber); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; border-radius: 4px; border: 2px solid var(--amber); cursor: pointer; transition: all 0.2s; }
+    .btn-s:hover { background: var(--amber); color: var(--charcoal); }
+
+    /* ===== VARIANT 2: Split Layout ===== */
+    .v2 { display: none; }
+    .v2.active { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .v2 .left {
+      background: var(--charcoal); display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 3rem; position: relative;
+    }
+    .v2 .left::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 4px;
+      background: linear-gradient(to bottom, var(--amber), var(--brick));
+    }
+    .v2 .tag { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 1.25rem; }
+    .v2 h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,4vw,4.5rem); font-weight: 900; line-height: 1; margin-bottom: 1rem; }
+    .v2 h1 em { color: var(--amber); font-style: italic; display: block; font-size: 0.5em; margin-top: 0.3em; }
+    .v2 .sub { font-size: 1rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.7; margin-bottom: 2rem; max-width: 450px; }
+    .v2 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v2 .right { position: relative; overflow: hidden; }
+    .v2 .right img { width: 100%; height: 100%; object-fit: cover; }
+    .v2 .right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--charcoal) 0%, transparent 30%); }
+    .v2 .stats {
+      display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(212,160,23,0.15);
+    }
+    .v2 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .v2 .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream-dark); opacity: 0.6; margin-top: 0.2rem; }
+
+    /* ===== VARIANT 3: Full Bleed Typography ===== */
+    .v3 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: rgba(26,20,16,0.7);
+    }
+    .v3 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      min-height: 100vh; padding: 4rem 3rem 6rem;
+    }
+    .v3 .big-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem,12vw,10rem);
+      text-transform: uppercase; line-height: 0.85; letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v3 .big-title span { color: var(--amber); }
+    .v3 .sub-line {
+      font-family: 'Playfair Display', serif; font-size: clamp(1rem,2.5vw,1.75rem);
+      font-style: italic; color: var(--amber); margin-bottom: 1.5rem;
+    }
+    .v3 .desc { font-size: 1rem; color: var(--cream-dark); opacity: 0.8; max-width: 500px; line-height: 1.7; margin-bottom: 2rem; }
+    .v3 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v3 .corner-badge {
+      position: absolute; top: 2rem; right: 2rem; z-index: 2;
+      background: var(--brick); padding: 1rem 1.25rem; border-radius: 50%;
+      text-align: center; width: 100px; height: 100px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .v3 .corner-badge .num { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .v3 .corner-badge .lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream); opacity: 0.8; }
+
+    /* ===== VARIANT 4: Mosaic Grid ===== */
+    .v4 { display: none; background: var(--charcoal); }
+    .v4.active { display: block; }
+    .v4 .grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 100vh;
+    }
+    .v4 .img-cell { position: relative; overflow: hidden; }
+    .v4 .img-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .v4 .img-cell::after { content: ''; position: absolute; inset: 0; background: rgba(26,20,16,0.4); }
+    .v4 .center-cell {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem; background: var(--charcoal);
+      border-left: 1px solid rgba(212,160,23,0.1); border-right: 1px solid rgba(212,160,23,0.1);
+    }
+    .v4 .tag { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 1.25rem; }
+    .v4 h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,3.5vw,3.5rem); font-weight: 900; line-height: 1; margin-bottom: 0.75rem; }
+    .v4 h1 em { color: var(--amber); font-style: italic; display: block; font-size: 0.55em; margin-top: 0.3em; }
+    .v4 .divider { width: 40px; height: 2px; background: var(--amber); margin: 1.25rem auto; }
+    .v4 .sub { font-size: 0.95rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.7; margin-bottom: 2rem; max-width: 300px; }
+    .v4 .btns { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 220px; }
+    .v4 .btns .btn-p, .v4 .btns .btn-s { width: 100%; text-align: center; }
+
+    /* ===== VARIANT 5: Cinematic Banner ===== */
+    .v5 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(26,20,16,0.9) 0%, rgba(26,20,16,0.4) 50%, rgba(139,37,0,0.3) 100%);
+    }
+    .v5 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v5 .top-bar {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 2rem; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--cream-dark); opacity: 0.6;
+    }
+    .v5 .badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 0.5rem 1.25rem; border: 1px solid rgba(212,160,23,0.3);
+      border-radius: 100px; margin-bottom: 2rem;
+    }
+    .v5 .badge .dot { width: 8px; height: 8px; background: var(--amber); border-radius: 50%; }
+    .v5 .badge span { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+    .v5 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3.5rem,9vw,7rem);
+      font-weight: 900; line-height: 0.9; margin-bottom: 0.5rem;
+    }
+    .v5 h1 .line2 { display: block; color: var(--amber); font-style: italic; font-size: 0.4em; margin-top: 0.3em; letter-spacing: 0.05em; }
+    .v5 .separator { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+    .v5 .separator .line { width: 60px; height: 1px; background: var(--amber); opacity: 0.4; }
+    .v5 .separator .diamond { width: 8px; height: 8px; background: var(--amber); transform: rotate(45deg); }
+    .v5 .sub { font-size: 1.1rem; color: var(--cream-dark); opacity: 0.85; max-width: 550px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .v5 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v5 .bottom-stats {
+      position: absolute; bottom: 2.5rem; left: 0; right: 0; z-index: 3;
+      display: flex; justify-content: center; gap: 3rem;
+    }
+    .v5 .bstat { text-align: center; }
+    .v5 .bstat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--amber); }
+    .v5 .bstat-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream-dark); opacity: 0.6; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v2.active { grid-template-columns: 1fr; }
+      .v2 .right { height: 40vh; }
+      .v2 .left { padding: 2rem; }
+      .v2 .right::after { background: linear-gradient(to top, var(--charcoal) 0%, transparent 30%); }
+      .v4 .grid { grid-template-columns: 1fr; }
+      .v4 .img-cell { height: 30vh; }
+      .v3 .corner-badge { width: 80px; height: 80px; }
+      .v3 .corner-badge .num { font-size: 1.3rem; }
+      .v5 .bottom-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Centered Classic -->
+<div class="variant v1 active" id="v1">
+  <section class="hero-section">
+    <img class="bg" src="/mock-sites/assets/hoot-nannie/interior-evening.webp" alt="Interior" loading="lazy" />
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="tag">The Farmer &amp; The Pitmaster</div>
+      <h1>The Hoot Nannie<em>A Five Spur Steakhouse</em></h1>
+      <p class="sub">Farm-raised steaks. Whole hog BBQ. Legendary cheese curds. 68 bourbons. All on Main Street in Forest City, NC.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">See the Menu</a>
+        <a href="#" class="btn-s">Plan Your Visit</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VARIANT 2: Split Layout -->
+<div class="variant v2" id="v2">
+  <div class="left">
+    <div class="tag">Forest City, NC &bull; Est. 2021</div>
+    <h1>The Hoot Nannie<em>A Five Spur Steakhouse</em></h1>
+    <p class="sub">Where the farmer meets the pitmaster. Farm-raised steaks, whole hog BBQ, legendary fried cheese curds, and the best bourbon bar in western North Carolina.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">See the Menu</a>
+      <a href="#" class="btn-s">Plan Your Visit</a>
+    </div>
+    <div class="stats">
+      <div><div class="stat-num">68</div><div class="stat-label">Bourbons</div></div>
+      <div><div class="stat-num">126</div><div class="stat-label">Farm Acres</div></div>
+      <div><div class="stat-num">150</div><div class="stat-label">lbs Curds/Wk</div></div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Dirty Sanchez Burger" loading="lazy" />
+  </div>
+</div>
+
+<!-- VARIANT 3: Full Bleed Typography -->
+<div class="variant v3" id="v3">
+  <section class="hero-section">
+    <img class="bg" src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak and mac" loading="lazy" />
+    <div class="overlay"></div>
+    <div class="corner-badge">
+      <div class="num">68</div>
+      <div class="lbl">Bourbons</div>
+    </div>
+    <div class="content">
+      <div class="big-title">The Hoot<br /><span>Nannie</span></div>
+      <div class="sub-line">A Five Spur Steakhouse, Forest City NC</div>
+      <p class="desc">Farm-raised steaks from Beam Farms. Whole hog BBQ smoked on site. 150 pounds of cheese curds every week. A bourbon bar with 68 selections. This is Main Street dining at its best.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">See the Menu</a>
+        <a href="#" class="btn-s">Our Story</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VARIANT 4: Mosaic Grid -->
+<div class="variant v4" id="v4">
+  <div class="grid">
+    <div class="img-cell">
+      <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy" />
+    </div>
+    <div class="center-cell">
+      <div class="tag">The Farmer &amp; The Pitmaster</div>
+      <h1>The Hoot Nannie<em>A Five Spur Steakhouse</em></h1>
+      <div class="divider"></div>
+      <p class="sub">Farm-raised steaks, whole hog BBQ, legendary cheese curds, and 68 bourbons on Main Street in Forest City.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">See the Menu</a>
+        <a href="#" class="btn-s">Plan Your Visit</a>
+      </div>
+    </div>
+    <div class="img-cell">
+      <img src="/mock-sites/assets/hoot-nannie/bar-crowd.webp" alt="Bar area" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 5: Cinematic Banner -->
+<div class="variant v5" id="v5">
+  <section class="hero-section">
+    <img class="bg" src="/mock-sites/assets/hoot-nannie/dining-atmosphere.webp" alt="Dining atmosphere" loading="lazy" />
+    <div class="overlay"></div>
+    <div class="top-bar">
+      <span>164 E Main St, Forest City, NC</span>
+      <span>(828) 229-3016</span>
+    </div>
+    <div class="content">
+      <div class="badge">
+        <span class="dot"></span>
+        <span>Est. 2021 &bull; Main Street</span>
+      </div>
+      <h1>The Hoot Nannie<span class="line2">A Five Spur Steakhouse</span></h1>
+      <div class="separator">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+      <p class="sub">Where farm-raised steaks meet whole hog BBQ. Legendary cheese curds, smoked wings, and the best bourbon selection in western North Carolina.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">Explore the Menu</a>
+        <a href="#" class="btn-s">Our Story</a>
+      </div>
+    </div>
+    <div class="bottom-stats">
+      <div class="bstat"><div class="bstat-num">68</div><div class="bstat-lbl">Bourbons</div></div>
+      <div class="bstat"><div class="bstat-num">150</div><div class="bstat-lbl">lbs Curds/Wk</div></div>
+      <div class="bstat"><div class="bstat-num">126</div><div class="bstat-lbl">Farm Acres</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Hero Variant</span>
+  <button class="picker-btn active" data-v="1">1</button>
+  <button class="picker-btn" data-v="2">2</button>
+  <button class="picker-btn" data-v="3">3</button>
+  <button class="picker-btn" data-v="4">4</button>
+  <button class="picker-btn" data-v="5">5</button>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.picker-btn');
+  const variants = document.querySelectorAll('.variant');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = btn.dataset.v;
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      variants.forEach(el => el.classList.remove('active'));
+      document.getElementById('v' + v).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

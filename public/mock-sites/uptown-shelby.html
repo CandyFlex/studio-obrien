@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uptown Shelby Alliance | Heart of Downtown Shelby, NC</title>
+  <meta name="description" content="The Uptown Shelby Alliance promotes downtown Shelby, NC businesses, hosts community events, and preserves the heritage of Cleveland County's historic district since 1987." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CIVIC BANNER DESIGN SYSTEM
+       Uptown Shelby Alliance
+       ============================================= */
+
+    /* --- TOKENS --- */
+    :root {
+      --brick:      #9b2335;
+      --brick-dark: #7a1c29;
+      --brick-light:#c43040;
+      --cream:      #faf3e0;
+      --cream-dark: #f0e6c8;
+      --navy:       #1b3a4b;
+      --navy-light: #234d63;
+      --gold:       #c9a94e;
+      --gold-light: #dfc07a;
+      --gray:       #6b6b6b;
+      --dark:       #1a1a1a;
+
+      --font-display: 'Oswald', sans-serif;
+      --font-body:    'Merriweather', serif;
+
+      --pattern-diamond: conic-gradient(
+        rgba(155,35,53,0.03) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(155,35,53,0.03) 50%,
+        rgba(155,35,53,0.03) 75%,
+        transparent 75%
+      );
+      --pattern-navy-diamond: conic-gradient(
+        rgba(201,169,78,0.04) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(201,169,78,0.04) 50%,
+        rgba(201,169,78,0.04) 75%,
+        transparent 75%
+      );
+    }
+
+    /* --- RESET --- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--dark);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* --- UTILITY --- */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-label.dark {
+      color: var(--brick);
+    }
+
+    /* --- SCROLL REVEAL --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* =============================================
+       HEADER / NAV
+       ============================================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 3px solid var(--brick);
+      box-shadow: 0 2px 12px rgba(27,58,75,0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-shield {
+      width: 42px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-main {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brick);
+    }
+
+    .logo-sub {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .site-nav a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding: 8px 14px;
+      border-radius: 2px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .site-nav a:hover {
+      color: var(--brick);
+      background: rgba(155,35,53,0.06);
+    }
+
+    .nav-join {
+      background: var(--brick) !important;
+      color: var(--cream) !important;
+      padding: 9px 20px !important;
+      border-radius: 3px !important;
+      margin-left: 8px;
+    }
+
+    .nav-join:hover {
+      background: var(--brick-dark) !important;
+      color: var(--cream) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--navy);
+      transition: all 0.3s ease;
+      border-radius: 1px;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dark);
+      padding: 12px 0 20px;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(27,58,75,0.06);
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+      color: var(--brick);
+    }
+
+    /* =============================================
+       HERO SECTION
+       ============================================= */
+
+    .hero {
+      min-height: 100vh;
+      background-color: var(--cream);
+      background-image: var(--pattern-diamond);
+      background-size: 30px 30px;
+      background-position: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(250,243,224,0.6) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-shield {
+      width: 96px;
+      height: 112px;
+      margin: 0 auto 32px;
+      filter: drop-shadow(0 4px 16px rgba(27,58,75,0.18));
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      color: var(--brick);
+      font-style: normal;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--gray);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--brick);
+      padding: 15px 38px;
+      border-radius: 3px;
+      border: 2px solid var(--brick);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--brick-dark);
+      border-color: var(--brick-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: transparent;
+      padding: 14px 36px;
+      border-radius: 3px;
+      border: 2px solid var(--cream);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--cream);
+      color: var(--brick);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      margin-top: 52px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brick);
+      letter-spacing: 0.04em;
+      display: block;
+    }
+
+    .hero-stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-stat-divider {
+      width: 1px;
+      height: 48px;
+      background: rgba(107,107,107,0.25);
+      align-self: center;
+    }
+
+    /* =============================================
+       BANNER RIBBON (shared card decoration)
+       ============================================= */
+
+    .ribbon-header {
+      position: relative;
+      background: var(--brick);
+      padding: 14px 24px 18px;
+      color: var(--cream);
+    }
+
+    .ribbon-header::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: var(--brick);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 18px 100%);
+    }
+
+    .ribbon-header.gold {
+      background: var(--gold);
+    }
+
+    .ribbon-header.gold::after {
+      background: var(--gold);
+    }
+
+    .ribbon-header.navy {
+      background: var(--navy);
+    }
+
+    .ribbon-header.navy::after {
+      background: var(--navy);
+    }
+
+    /* =============================================
+       EVENTS SECTION
+       ============================================= */
+
+    .events-section {
+      background-color: var(--navy);
+      background-image: var(--pattern-navy-diamond);
+      background-size: 30px 30px;
+      padding: 100px 0 110px;
+      position: relative;
+    }
+
+    .events-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .events-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .events-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .events-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: rgba(250,243,224,0.7);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .event-card {
+      background: rgba(250,243,224,0.04);
+      border: 1px solid rgba(201,169,78,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+
+    .event-card-header {
+      background: var(--brick);
+      padding: 20px 24px 28px;
+      position: relative;
+    }
+
+    .event-card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: var(--brick);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%);
+    }
+
+    .event-date-badge {
+      display: inline-block;
+      background: rgba(250,243,224,0.15);
+      border: 1px solid rgba(250,243,224,0.3);
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .event-card-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .event-card-body {
+      padding: 32px 24px 28px;
+    }
+
+    .event-time {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .event-desc {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(250,243,224,0.75);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .event-link {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .event-link:hover {
+      gap: 10px;
+    }
+
+    .event-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .events-footer {
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    /* =============================================
+       DIRECTORY SECTION
+       ============================================= */
+
+    .directory-section {
+      background: var(--cream);
+      background-image: var(--pattern-diamond);
+      background-size: 30px 30px;
+      padding: 100px 0 110px;
+    }
+
+    .directory-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .directory-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .directory-title em {
+      color: var(--brick);
+      font-style: normal;
+    }
+
+    .directory-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .directory-count {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brick);
+      text-align: center;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .directory-count-label {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .dir-card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(27,58,75,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dir-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(27,58,75,0.14);
+    }
+
+    .dir-card-ribbon {
+      position: relative;
+      padding: 18px 24px 26px;
+    }
+
+    .dir-card-ribbon.brick {
+      background: var(--brick);
+    }
+
+    .dir-card-ribbon.navy {
+      background: var(--navy);
+    }
+
+    .dir-card-ribbon.gold {
+      background: var(--gold);
+    }
+
+    .dir-card-ribbon::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%);
+    }
+
+    .dir-card-ribbon.brick::after {
+      background: var(--brick);
+    }
+
+    .dir-card-ribbon.navy::after {
+      background: var(--navy);
+    }
+
+    .dir-card-ribbon.gold::after {
+      background: var(--gold);
+    }
+
+    .dir-card-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .dir-card-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .dir-card-ribbon.gold .dir-card-title {
+      color: var(--dark);
+    }
+
+    .dir-card-body {
+      padding: 30px 24px 28px;
+    }
+
+    .dir-card-count {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--brick);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .dir-card-count-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .dir-card-desc {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .dir-link {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brick);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .dir-link:hover {
+      gap: 10px;
+    }
+
+    .dir-link svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .directory-cta {
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    .btn-navy {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--navy);
+      padding: 15px 38px;
+      border-radius: 3px;
+      border: 2px solid var(--navy);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-navy:hover {
+      background: var(--navy-light);
+      border-color: var(--navy-light);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
+       ABOUT SECTION
+       ============================================= */
+
+    .about-section {
+      background-color: var(--navy);
+      background-image: var(--pattern-navy-diamond);
+      background-size: 30px 30px;
+      padding: 100px 0 110px;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text-col {
+    }
+
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .about-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .about-divider {
+      width: 50px;
+      height: 3px;
+      background: var(--gold);
+      margin: 20px 0 28px;
+    }
+
+    .about-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: rgba(250,243,224,0.8);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .mission-box {
+      background: rgba(201,169,78,0.1);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin-top: 28px;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .mission-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .mission-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.92rem;
+      color: var(--cream);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .about-stats-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-block {
+      background: rgba(250,243,224,0.04);
+      border: 1px solid rgba(201,169,78,0.2);
+      border-radius: 4px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .stat-block:hover {
+      background: rgba(250,243,224,0.07);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(250,243,224,0.65);
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       JOIN CTA SECTION
+       ============================================= */
+
+    .join-section {
+      background: var(--brick);
+      padding: 100px 0 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .join-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: conic-gradient(
+        rgba(250,243,224,0.04) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(250,243,224,0.04) 50%,
+        rgba(250,243,224,0.04) 75%,
+        transparent 75%
+      );
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .join-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .join-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250,243,224,0.65);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .join-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .join-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: rgba(250,243,224,0.8);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .join-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+
+    .join-contact {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid rgba(250,243,224,0.2);
+    }
+
+    .join-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(250,243,224,0.12);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--cream);
+    }
+
+    .contact-info {
+      text-align: left;
+    }
+
+    .contact-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,243,224,0.55);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+
+    .site-footer {
+      background: var(--dark);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-shield {
+      width: 28px;
+      height: 32px;
+      opacity: 0.7;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,243,224,0.55);
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(250,243,224,0.12);
+      margin: 0 auto 20px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(250,243,224,0.35);
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,243,224,0.35);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 900px) {
+      .site-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .events-grid,
+      .directory-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-stats-col {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .hero-meta {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .events-grid,
+      .directory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats-col {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .join-contact {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .hero-stat-divider {
+        display: none;
+      }
+
+      .logo-sub {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       HEADER
+       ============================================= -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="#" class="logo-lockup">
+          <!-- Small shield in header -->
+          <svg class="logo-shield" viewBox="0 0 42 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 2 L40 10 L40 28 C40 38 21 46 21 46 C21 46 2 38 2 28 L2 10 Z"
+              fill="none" stroke="#9b2335" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M21 2 L40 10 L40 28 C40 38 21 46 21 46 C21 46 2 38 2 28 L2 10 Z"
+              fill="rgba(155,35,53,0.06)"/>
+            <path d="M21 8 L35 14.5 L35 28 C35 35.5 21 42 21 42" stroke="#c9a94e" stroke-width="1" opacity="0.6" fill="none"/>
+            <path d="M21 8 L7 14.5 L7 28 C7 35.5 21 42 21 42" stroke="#c9a94e" stroke-width="1" opacity="0.6" fill="none"/>
+            <line x1="21" y1="8" x2="21" y2="42" stroke="#9b2335" stroke-width="1" opacity="0.35"/>
+            <line x1="7" y1="21" x2="35" y2="21" stroke="#9b2335" stroke-width="1" opacity="0.35"/>
+            <polygon points="21,14 23,19 28.5,19 24,22.5 25.5,28 21,24.5 16.5,28 18,22.5 13.5,19 19,19"
+              fill="#9b2335" opacity="0.7"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-main">Uptown Shelby</span>
+            <span class="logo-sub">Alliance &nbsp;|&nbsp; Est. 1987</span>
+          </div>
+        </a>
+
+        <nav class="site-nav">
+          <a href="#hero">Home</a>
+          <a href="#events">Events</a>
+          <a href="#directory">Directory</a>
+          <a href="#about">About</a>
+          <a href="#join" class="nav-join">Join Us</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#hero">Home</a>
+      <a href="#events">Events</a>
+      <a href="#directory">Directory</a>
+      <a href="#about">About</a>
+      <a href="#join">Join Us</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+
+      <!-- Shield Crest SVG -->
+      <svg class="hero-shield" viewBox="0 0 96 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer shield -->
+        <path d="M48 4 L92 22 L92 64 C92 88 48 108 48 108 C48 108 4 88 4 64 L4 22 Z"
+          fill="rgba(155,35,53,0.08)" stroke="#9b2335" stroke-width="3" stroke-linejoin="round"/>
+        <!-- Inner shield border -->
+        <path d="M48 12 L84 27 L84 63 C84 83 48 100 48 100 C48 100 12 83 12 63 L12 27 Z"
+          fill="none" stroke="#c9a94e" stroke-width="1.5" opacity="0.7"/>
+        <!-- Horizontal division line -->
+        <line x1="12" y1="55" x2="84" y2="55" stroke="#9b2335" stroke-width="1.5" opacity="0.4"/>
+        <!-- Vertical division line -->
+        <line x1="48" y1="12" x2="48" y2="100" stroke="#9b2335" stroke-width="1.5" opacity="0.4"/>
+        <!-- Top-left quadrant: star -->
+        <polygon points="30,25 32.5,32 40,32 34,36.5 36,43.5 30,39 24,43.5 26,36.5 20,32 27.5,32"
+          fill="#9b2335" opacity="0.75"/>
+        <!-- Top-right quadrant: stripe lines -->
+        <line x1="56" y1="22" x2="78" y2="22" stroke="#1b3a4b" stroke-width="2.5" opacity="0.4"/>
+        <line x1="56" y1="30" x2="78" y2="30" stroke="#1b3a4b" stroke-width="2.5" opacity="0.4"/>
+        <line x1="56" y1="38" x2="78" y2="38" stroke="#1b3a4b" stroke-width="2.5" opacity="0.4"/>
+        <line x1="56" y1="46" x2="78" y2="46" stroke="#1b3a4b" stroke-width="2.5" opacity="0.4"/>
+        <!-- Bottom text band -->
+        <rect x="20" y="70" width="56" height="18" rx="1"
+          fill="#9b2335" opacity="0.1" stroke="#9b2335" stroke-width="1" opacity="0.3"/>
+        <text x="48" y="82" text-anchor="middle" font-family="Oswald,sans-serif"
+          font-size="8" font-weight="700" fill="#9b2335" letter-spacing="2" opacity="0.8">
+          SHELBY NC
+        </text>
+      </svg>
+
+      <span class="hero-eyebrow">Shelby, NC &nbsp;|&nbsp; Cleveland County &nbsp;|&nbsp; Est. 1987</span>
+
+      <h1 class="hero-title">
+        The <em>Heart</em> of<br>Downtown Shelby
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-subtitle">
+        Promoting the businesses, events, and traditions that make Uptown Shelby a destination worth visiting and a community worth calling home.
+      </p>
+
+      <a href="#events" class="btn-primary">Explore Our District</a>
+
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <span class="hero-stat-number">37</span>
+          <span class="hero-stat-label">Years of Service</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">75+</span>
+          <span class="hero-stat-label">Member Businesses</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">12</span>
+          <span class="hero-stat-label">Annual Events</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">50K+</span>
+          <span class="hero-stat-label">Yearly Visitors</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       EVENTS
+       ============================================= -->
+  <section class="events-section" id="events">
+    <div class="container">
+
+      <div class="events-header reveal">
+        <span class="section-label">What's Happening</span>
+        <h2 class="events-title">Upcoming <em>Events</em></h2>
+        <p class="events-subtitle">
+          From weekly gatherings to annual traditions, there's always something worth showing up for in Uptown Shelby.
+        </p>
+      </div>
+
+      <div class="events-grid">
+
+        <!-- Event 1 -->
+        <article class="event-card reveal reveal-delay-1">
+          <div class="event-card-header">
+            <div class="event-date-badge">Friday, March 7, 2026</div>
+            <h3 class="event-card-title">Shelby First Friday</h3>
+          </div>
+          <div class="event-card-body">
+            <div class="event-time">6:00 PM &ndash; 9:00 PM &nbsp;|&nbsp; Uptown District</div>
+            <p class="event-desc">
+              The first Friday of every month, Uptown comes alive. Extended store hours, live music on the corner of South Washington Street, food trucks, and friendly faces from across the foothills.
+            </p>
+            <a href="#" class="event-link">
+              Learn more
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 7h12M8 3l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Event 2 -->
+        <article class="event-card reveal reveal-delay-2">
+          <div class="event-card-header">
+            <div class="event-date-badge">Saturday, May 17, 2026</div>
+            <h3 class="event-card-title">Cleveland County Heritage Festival</h3>
+          </div>
+          <div class="event-card-body">
+            <div class="event-time">10:00 AM &ndash; 6:00 PM &nbsp;|&nbsp; Marion Street</div>
+            <p class="event-desc">
+              A full day celebrating the people, crafts, and stories of Cleveland County. Local artisans, historical society exhibits, gospel music, and food that has been cooking in these hills for generations.
+            </p>
+            <a href="#" class="event-link">
+              Learn more
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 7h12M8 3l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Event 3 -->
+        <article class="event-card reveal reveal-delay-3">
+          <div class="event-card-header">
+            <div class="event-date-badge">Saturday, November 22, 2026</div>
+            <h3 class="event-card-title">Uptown Holiday Market</h3>
+          </div>
+          <div class="event-card-body">
+            <div class="event-time">11:00 AM &ndash; 7:00 PM &nbsp;|&nbsp; Courthouse Square</div>
+            <p class="event-desc">
+              Shop local before the holiday rush. Forty-plus vendors set up around the Cleveland County Courthouse. Hand-poured candles, woodwork, baked goods, and more. Hosted with hot cider and lights.
+            </p>
+            <a href="#" class="event-link">
+              Learn more
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 7h12M8 3l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="events-footer reveal">
+        <a href="#" class="btn-outline">View Full Calendar</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       DIRECTORY
+       ============================================= -->
+  <section class="directory-section" id="directory">
+    <div class="container">
+
+      <div class="directory-header reveal">
+        <span class="section-label dark">Business Directory</span>
+        <h2 class="directory-title"><em>75+</em> Local Businesses</h2>
+        <p class="directory-subtitle">
+          Every dollar spent Uptown stays in our community. Find what you need right here in Shelby.
+        </p>
+      </div>
+
+      <div class="directory-grid">
+
+        <!-- Dining -->
+        <div class="dir-card reveal reveal-delay-1">
+          <div class="dir-card-ribbon brick">
+            <div class="dir-card-icon">&#127869;</div>
+            <div class="dir-card-title">Dining &amp; Entertainment</div>
+          </div>
+          <div class="dir-card-body">
+            <span class="dir-card-count">28</span>
+            <div class="dir-card-count-label">Member Businesses</div>
+            <p class="dir-card-desc">
+              From long-running family diners to newer kitchens bringing something different to the table, Uptown Shelby has a meal for every appetite. Bar seats, back patios, and everything between.
+            </p>
+            <a href="#" class="dir-link">
+              Browse listings
+              <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 6.5h11M7.5 2.5l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Retail -->
+        <div class="dir-card reveal reveal-delay-2">
+          <div class="dir-card-ribbon navy">
+            <div class="dir-card-icon">&#127978;</div>
+            <div class="dir-card-title">Retail &amp; Services</div>
+          </div>
+          <div class="dir-card-body">
+            <span class="dir-card-count">31</span>
+            <div class="dir-card-count-label">Member Businesses</div>
+            <p class="dir-card-desc">
+              Boutiques, barbers, jewelers, specialty shops, and professional services operating out of Uptown's historic storefronts. Real people who know your name and stand behind what they sell.
+            </p>
+            <a href="#" class="dir-link">
+              Browse listings
+              <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 6.5h11M7.5 2.5l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Arts -->
+        <div class="dir-card reveal reveal-delay-3">
+          <div class="dir-card-ribbon gold">
+            <div class="dir-card-icon">&#127912;</div>
+            <div class="dir-card-title">Arts &amp; Culture</div>
+          </div>
+          <div class="dir-card-body">
+            <span class="dir-card-count">16</span>
+            <div class="dir-card-count-label">Member Businesses</div>
+            <p class="dir-card-desc">
+              Galleries, studios, theater, and music venues rooted in the creative tradition of the Carolina foothills. Supporting local artists and giving people a reason to linger a little longer Uptown.
+            </p>
+            <a href="#" class="dir-link">
+              Browse listings
+              <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 6.5h11M7.5 2.5l4 4-4 4"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="directory-cta reveal">
+        <a href="#" class="btn-navy">Search All Businesses</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       ABOUT
+       ============================================= -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-text-col reveal">
+          <span class="section-label">About the Alliance</span>
+          <h2 class="about-title">Built by<br><em>This Community</em></h2>
+          <div class="about-divider"></div>
+
+          <p class="about-body">
+            The Uptown Shelby Alliance was formed in 1987 by a group of downtown business owners who believed in the long-term future of their historic district. Cleveland County's courthouse square had seen better days, and they decided to do something about it.
+          </p>
+          <p class="about-body">
+            Nearly four decades later, the Alliance coordinates marketing, events, beautification, and advocacy for more than 75 member businesses operating in the heart of Shelby. The work is local, practical, and ongoing.
+          </p>
+          <p class="about-body">
+            We are part of the NC Main Street program, recognized statewide for preservation and economic development work. But the pride is Cleveland County's. It always has been.
+          </p>
+
+          <div class="mission-box">
+            <span class="mission-label">Our Mission</span>
+            <p class="mission-text">
+              "To strengthen and promote the economic vitality, historic character, and civic identity of Uptown Shelby, for the benefit of everyone who lives, works, and visits here."
+            </p>
+          </div>
+        </div>
+
+        <div class="about-stats-col reveal reveal-delay-2">
+          <div class="stat-block">
+            <span class="stat-number">37</span>
+            <div class="stat-label">Years serving the Uptown district</div>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">75+</span>
+            <div class="stat-label">Active member businesses</div>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">12</span>
+            <div class="stat-label">Annual community events</div>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">50K+</span>
+            <div class="stat-label">Visitors to Uptown each year</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       JOIN CTA
+       ============================================= -->
+  <section class="join-section" id="join">
+    <div class="join-inner">
+
+      <span class="join-eyebrow reveal">Membership</span>
+      <h2 class="join-title reveal">Become Part<br>of the Story</h2>
+      <p class="join-body reveal">
+        Alliance membership connects your business to the full network of Uptown Shelby, from event participation and directory listings to shared marketing and advocacy at the city level. Good for your business, good for the district.
+      </p>
+
+      <div class="join-actions reveal reveal-delay-1">
+        <a href="mailto:info@uptownshelby.org" class="btn-outline">Apply for Membership</a>
+        <a href="mailto:info@uptownshelby.org" class="btn-primary" style="background:var(--cream); color:var(--brick); border-color:var(--cream);">Get More Info</a>
+      </div>
+
+      <div class="join-contact reveal reveal-delay-2">
+
+        <div class="join-contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8 19.79 19.79 0 01.07 3.18 2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.36-.36a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Phone</span>
+            <div class="contact-value">(704) 555-0315</div>
+          </div>
+        </div>
+
+        <div class="join-contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Address</span>
+            <div class="contact-value">100 W. Warren Street<br>Shelby, NC 28150</div>
+          </div>
+        </div>
+
+        <div class="join-contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <div class="contact-value">info@uptownshelby.org</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-logo">
+        <svg class="footer-shield" viewBox="0 0 42 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 2 L40 10 L40 28 C40 38 21 46 21 46 C21 46 2 38 2 28 L2 10 Z"
+            fill="none" stroke="rgba(250,243,224,0.35)" stroke-width="2.5" stroke-linejoin="round"/>
+          <polygon points="21,14 23,19 28.5,19 24,22.5 25.5,28 21,24.5 16.5,28 18,22.5 13.5,19 19,19"
+            fill="rgba(250,243,224,0.25)"/>
+        </svg>
+        <span class="footer-name">Uptown Shelby Alliance</span>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <p class="footer-copy">
+        Copyright &copy; 2026 Uptown Shelby Alliance. All rights reserved.<br>
+        100 W. Warren Street, Shelby, NC 28150 &nbsp;|&nbsp; (704) 555-0315
+      </p>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#events">Events</a>
+        <a href="#directory">Directory</a>
+        <a href="#about">About</a>
+        <a href="#join">Join Us</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT
+       ============================================= -->
+  <script>
+    // --- Hamburger menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    // --- Scroll reveal ---
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // --- Smooth anchor offset for sticky header ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const headerHeight = document.querySelector('.site-header').offsetHeight;
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

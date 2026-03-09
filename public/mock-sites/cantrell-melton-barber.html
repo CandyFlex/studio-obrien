@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantrell & Melton Barber Shop | Uptown Shelby, NC Since the 1960s</title>
+  <meta name="description" content="Cantrell & Melton Barber Shop. 60+ years of honest cuts and good conversation in Uptown Shelby, NC. Walk-ins welcome. Cash only. (704) 482-5418." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e0d4;
+      background: #1a1a1e;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============ TOKENS ============ */
+    :root {
+      --charcoal: #1a1a1e;
+      --deep-navy: #0f1626;
+      --card-dark: #22222a;
+      --gold: #c9a84c;
+      --gold-light: #e0c872;
+      --gold-muted: rgba(201, 168, 76, 0.15);
+      --cream: #e8e0d4;
+      --cream-muted: #b0a898;
+      --barber-red: #c41e3a;
+      --barber-blue: #1e3a5f;
+      --barber-white: #f0ece4;
+      --stripe-red: rgba(196, 30, 58, 0.12);
+      --stripe-blue: rgba(30, 58, 95, 0.12);
+      --border: #333340;
+    }
+
+    /* ============ UTILITY ============ */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.1;
+      color: var(--cream);
+    }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--cream-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #111;
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ============ BARBER POLE STRIPE ============ */
+    .barber-stripe {
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--barber-red) 0px,
+        var(--barber-red) 20px,
+        var(--barber-white) 20px,
+        var(--barber-white) 40px,
+        var(--barber-blue) 40px,
+        var(--barber-blue) 60px
+      );
+      background-size: 60px 6px;
+    }
+    .barber-stripe-animated {
+      animation: stripe-scroll 8s linear infinite;
+    }
+    @keyframes stripe-scroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 60px 0; }
+    }
+
+    /* ============ DIVIDER ============ */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 0;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-divider .ornament {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--deep-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(30, 58, 95, 0.15) 0%, transparent 50%),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 80px,
+          rgba(201, 168, 76, 0.03) 80px,
+          rgba(201, 168, 76, 0.03) 81px
+        );
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 60px 24px;
+    }
+    .hero-est {
+      font-family: 'Old Standard TT', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .ampersand {
+      font-family: 'Old Standard TT', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .hero-tagline {
+      font-family: 'Old Standard TT', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--cream-muted);
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .hero-location {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-bottom: 40px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    /* Decorative scissors */
+    .hero-scissors {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+    /* Decorative corner borders */
+    .hero-frame {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1.5px solid rgba(201, 168, 76, 0.2);
+    }
+    .hero-frame.tl { top: 40px; left: 40px; border-right: none; border-bottom: none; }
+    .hero-frame.tr { top: 40px; right: 40px; border-left: none; border-bottom: none; }
+    .hero-frame.bl { bottom: 40px; left: 40px; border-right: none; border-top: none; }
+    .hero-frame.br { bottom: 40px; right: 40px; border-left: none; border-top: none; }
+
+    /* ============ MARQUEE ============ */
+    .marquee-bar {
+      background: var(--charcoal);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 14px 0;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-slide 25s linear infinite;
+    }
+    @keyframes marquee-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track span {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      padding: 0 32px;
+    }
+    .marquee-track .dot {
+      color: var(--barber-red);
+    }
+
+    /* ============ SERVICES ============ */
+    .services {
+      padding: 100px 0;
+      background: var(--charcoal);
+      position: relative;
+    }
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent 0px,
+        transparent 40px,
+        rgba(201, 168, 76, 0.015) 40px,
+        rgba(201, 168, 76, 0.015) 41px
+      );
+      pointer-events: none;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      position: relative;
+    }
+    .service-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--barber-red), var(--gold), var(--barber-blue));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      filter: grayscale(0.2);
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+    }
+
+    /* ============ ABOUT ============ */
+    .about {
+      padding: 100px 0;
+      background: var(--deep-navy);
+      position: relative;
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      background: var(--card-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 48px;
+      text-align: center;
+      position: relative;
+    }
+    .about-frame .year-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 12vw, 8rem);
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .about-frame .year-label {
+      font-family: 'Old Standard TT', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .about-stat {
+      background: rgba(201, 168, 76, 0.06);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+    }
+    .about-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .about-stat .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-top: 4px;
+    }
+    .about-text h2 {
+      margin-bottom: 24px;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--cream-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-text p strong {
+      color: var(--cream);
+    }
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 40px;
+      padding: 10px 24px 10px 14px;
+      margin-top: 12px;
+    }
+    .about-badge .star {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    .about-badge .badge-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ============ REVIEWS ============ */
+    .reviews {
+      padding: 100px 0;
+      background: var(--charcoal);
+      position: relative;
+    }
+    .reviews::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 90%, rgba(196, 30, 58, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(30, 58, 95, 0.06) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
+    .reviews-rating .stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+    }
+    .reviews-rating .rating-text {
+      font-size: 0.85rem;
+      color: var(--cream-muted);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+      position: relative;
+    }
+    .review-card .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .review-card p {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .review-card .reviewer {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .review-card .review-stars {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      margin-top: 4px;
+    }
+
+    /* ============ VISIT ============ */
+    .visit {
+      padding: 100px 0;
+      background: var(--deep-navy);
+      position: relative;
+    }
+    .visit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 120px,
+        rgba(201, 168, 76, 0.02) 120px,
+        rgba(201, 168, 76, 0.02) 121px
+      );
+      pointer-events: none;
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .visit-info h2 {
+      margin-bottom: 24px;
+    }
+    .visit-address {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .visit-phone {
+      font-size: 1.4rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .visit-note {
+      font-size: 0.95rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .visit-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .visit-badge {
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hours-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px;
+    }
+    .hours-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(51, 51, 64, 0.5);
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+    .hours-row .day {
+      color: var(--cream);
+      font-weight: 500;
+    }
+    .hours-row .time {
+      color: var(--cream-muted);
+    }
+    .hours-row.closed .time {
+      color: var(--barber-red);
+      font-weight: 500;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: #111118;
+      padding: 48px 0 32px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .footer-brand span {
+      font-family: 'Old Standard TT', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .footer-details {
+      font-size: 0.8rem;
+      color: var(--cream-muted);
+      text-align: right;
+      line-height: 1.8;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      margin-top: 32px;
+      border-top: 1px solid rgba(51, 51, 64, 0.4);
+    }
+    .footer-bottom p {
+      font-size: 0.7rem;
+      color: rgba(176, 168, 152, 0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-frame { display: none; }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer-details { text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.6rem; }
+      .about-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-frame tl"></div>
+    <div class="hero-frame tr"></div>
+    <div class="hero-frame bl"></div>
+    <div class="hero-frame br"></div>
+    <div class="hero-inner">
+      <div class="hero-scissors">&#9986;</div>
+      <div class="hero-est">Est. 1960s &middot; Uptown Shelby</div>
+      <h1>Cantrell <span class="ampersand">&amp;</span> Melton</h1>
+      <p class="hero-tagline">Barber Shop</p>
+      <p class="hero-location">213 S Washington St &bull; Shelby, NC 28150</p>
+      <div class="hero-buttons">
+        <a href="#visit" class="btn btn-gold">Walk In Today</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARBER STRIPE -->
+  <div class="barber-stripe barber-stripe-animated"></div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>Voted Best Barber Shop in Cleveland County</span>
+      <span class="dot">&bull;</span>
+      <span>Walk-Ins Welcome</span>
+      <span class="dot">&bull;</span>
+      <span>60+ Years of Honest Cuts</span>
+      <span class="dot">&bull;</span>
+      <span>Straight Razor Shaves</span>
+      <span class="dot">&bull;</span>
+      <span>Open Monday through Saturday</span>
+      <span class="dot">&bull;</span>
+      <span>Uptown Shelby, NC</span>
+      <span class="dot">&bull;</span>
+      <span>Voted Best Barber Shop in Cleveland County</span>
+      <span class="dot">&bull;</span>
+      <span>Walk-Ins Welcome</span>
+      <span class="dot">&bull;</span>
+      <span>60+ Years of Honest Cuts</span>
+      <span class="dot">&bull;</span>
+      <span>Straight Razor Shaves</span>
+      <span class="dot">&bull;</span>
+      <span>Open Monday through Saturday</span>
+      <span class="dot">&bull;</span>
+      <span>Uptown Shelby, NC</span>
+      <span class="dot">&bull;</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-heading">Straightforward Barbering<br />Done Right</h2>
+      <p class="section-sub">No gimmicks, no frills. Just a clean cut from people who have been doing this for decades.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">&#9986;</div>
+          <h3>Men's Haircut</h3>
+          <p>Classic cuts, tapers, and fades. Whatever you need, we get it right. Sit down, tell us what you want, and walk out looking sharp.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128136;</div>
+          <h3>Beard Trim</h3>
+          <p>Cleaned up and shaped by hand. Quick, precise, and always looking natural. We keep it tight without overdoing it.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#129683;</div>
+          <h3>Straight Razor Shave</h3>
+          <p>Hot towel, warm lather, straight blade. The way it was always meant to be done. A proper shave from people who know how to handle a razor.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128116;</div>
+          <h3>Senior Haircut</h3>
+          <p>Same great service at a fair price. You have been coming here for years and we appreciate that. Always will.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="container">
+    <div class="section-divider">
+      <span class="ornament">&#9986;</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-frame">
+            <div class="year-big">1967</div>
+            <div class="year-label">The year it all started</div>
+          </div>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="num">60+</div>
+              <div class="label">Years in Business</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">3</div>
+              <div class="label">Skilled Barbers</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">4.6</div>
+              <div class="label">Star Rating</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">1000s</div>
+              <div class="label">Haircuts a Year</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-heading">60+ Years<br />in the Chair</h2>
+          <p>Don Melton walked into his first barber shop in 1962. Five years later he became co-owner of Cantrell &amp; Melton in Uptown Shelby. That was 1967. <strong>The chairs have been filled ever since.</strong></p>
+          <p>This is not a trendy salon. It is a real barber shop where people come to sit down, catch up, and leave looking sharp. Every barber here takes the craft seriously. And yes, we still use a straight razor.</p>
+          <p>Born and raised in Casar, NC, Don has spent his entire career serving Cleveland County. Cantrell &amp; Melton is more than a business. It is a gathering place, a neighborhood fixture, and a cornerstone of Uptown Shelby.</p>
+          <div class="about-badge">
+            <span class="star">&#9733;</span>
+            <span class="badge-text">Voted Best Barber Shop, Cleveland County</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARBER STRIPE -->
+  <div class="barber-stripe barber-stripe-animated"></div>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reviews-header">
+        <p class="section-label">What They Say</p>
+        <h2 class="section-heading">Trusted by Shelby</h2>
+      </div>
+      <div class="reviews-rating">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="rating-text">4.6 stars from 61+ reviews</span>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else. Talk, socialize, get caught up on local business and politics, and get a good haircut too.</p>
+          <div class="reviewer">Satisfied Customer</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Best good old fashioned barber shop in Shelby. Haircuts and conversations are the best.</p>
+          <div class="reviewer">Local Regular</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Walked in and was welcomed with smiles. They gave me a great cut. Will definitely be coming back.</p>
+          <div class="reviewer">First-Time Visitor</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Always does an awesome job with haircuts. Would not go anywhere else.</p>
+          <div class="reviewer">Loyal Customer</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Joni and Ken are always welcoming. Great cuts every single time.</p>
+          <div class="reviewer">Regular Client</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+        <div class="review-card">
+          <div class="quote-mark">&ldquo;</div>
+          <p>Been going here for years. Honest pricing, good people, and you always leave looking sharp.</p>
+          <div class="reviewer">Cleveland County Resident</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="container">
+    <div class="section-divider">
+      <span class="ornament">&#9986;</span>
+    </div>
+  </div>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-info">
+          <p class="section-label">Come See Us</p>
+          <h2 class="section-heading">In the Heart of<br />Uptown Shelby</h2>
+          <p class="visit-address">213-2 S Washington St<br />Shelby, NC 28150</p>
+          <p class="visit-phone">(704) 482-5418</p>
+          <p class="visit-note">Located in Uptown Shelby, right on Washington Street. No appointment needed. Just walk in, grab a seat, and we will get to you. We keep things simple around here.</p>
+          <div class="visit-badges">
+            <span class="visit-badge">Walk-Ins Welcome</span>
+            <span class="visit-badge">Cash Only</span>
+            <span class="visit-badge">No Appointment Needed</span>
+          </div>
+        </div>
+        <div class="hours-card">
+          <h3>Hours</h3>
+          <div class="hours-row">
+            <span class="day">Monday</span>
+            <span class="time">7:00 AM &ndash; 5:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Tuesday</span>
+            <span class="time">7:00 AM &ndash; 5:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Wednesday</span>
+            <span class="time">7:00 AM &ndash; 5:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Thursday</span>
+            <span class="time">7:00 AM &ndash; 5:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Friday</span>
+            <span class="time">7:00 AM &ndash; 3:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Saturday</span>
+            <span class="time">7:30 AM &ndash; 1:00 PM</span>
+          </div>
+          <div class="hours-row closed">
+            <span class="day">Sunday</span>
+            <span class="time">Closed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARBER STRIPE -->
+  <div class="barber-stripe barber-stripe-animated"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Cantrell <span>&amp;</span> Melton</div>
+          <div style="font-size:0.75rem;color:var(--cream-muted);margin-top:6px;">Barber Shop &middot; Uptown Shelby since the 1960s</div>
+        </div>
+        <div class="footer-details">
+          213-2 S Washington St, Shelby, NC 28150<br />
+          (704) 482-5418<br />
+          Cleveland County, NC
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cantrell &amp; Melton Barber Shop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

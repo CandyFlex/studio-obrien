@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet House Bakery - Visit/Order Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #fdf8f3; color: #4a3728; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blush: #f4a0b5; --blush-light: #fce4ec; --blush-dark: #d4708a;
+      --gold: #d4a056; --gold-light: #f0d89a; --gold-dark: #b8863c;
+      --cream: #fdf8f3; --cream-dark: #f5ebe0;
+      --warm-brown: #4a3728; --warm-brown-light: #6b5344;
+      --chocolate: #3e2723; --white: #ffffff;
+      --sage: #a8b89c; --peach: #f8c9a0;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(62,39,35,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,86,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,86,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(212,160,86,0.1); }
+    .picker-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blush-dark); font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    .btn-p {
+      display: inline-block; padding: 0.9rem 2.25rem; background: var(--blush); color: var(--white);
+      font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 100px; border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-p:hover { background: var(--blush-dark); transform: translateY(-1px); }
+    .btn-s {
+      display: inline-block; padding: 0.9rem 2.25rem; background: transparent; color: var(--chocolate);
+      font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 100px; border: 2px solid var(--gold); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-s:hover { background: var(--gold); color: var(--white); }
+
+    /* Map placeholder */
+    .map-ph {
+      background: linear-gradient(135deg, var(--cream-dark), var(--blush-light));
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+    }
+    .map-ph .pin { font-size: 3rem; }
+    .map-ph .addr {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--warm-brown);
+      text-align: center; line-height: 1.4;
+    }
+    .map-ph .small { font-size: 0.85rem; color: var(--warm-brown-light); }
+
+    /* ===== V1: Classic Split - Info Left, Map Right ===== */
+    .v1 {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream);
+      min-height: 100vh;
+    }
+    .v1 .container {
+      max-width: 1100px; margin: 0 auto; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    .v1 .info h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.5rem;
+    }
+    .v1 .info h2 em { color: var(--blush-dark); font-style: italic; }
+    .v1 .info > p {
+      font-size: 1.05rem; color: var(--warm-brown-light); line-height: 1.7; margin-bottom: 2rem;
+    }
+    .v1 .details { display: flex; flex-direction: column; gap: 1.5rem; }
+    .v1 .detail {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .v1 .detail-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .v1 .di-loc { background: var(--blush-light); }
+    .v1 .di-hrs { background: rgba(240,216,154,0.4); }
+    .v1 .di-phn { background: rgba(168,184,156,0.3); }
+    .v1 .di-soc { background: var(--blush-light); }
+    .v1 .detail h4 {
+      font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--chocolate);
+      margin-bottom: 0.2rem;
+    }
+    .v1 .detail p { font-size: 0.95rem; color: var(--warm-brown-light); line-height: 1.5; }
+    .v1 .detail a { color: var(--blush-dark); font-weight: 700; }
+    .v1 .cta-box {
+      margin-top: 2rem; padding: 2rem; background: var(--blush-light); border-radius: 16px; text-align: center;
+    }
+    .v1 .cta-box h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--chocolate); }
+    .v1 .cta-box p { font-size: 0.95rem; color: var(--warm-brown-light); margin-bottom: 1.25rem; }
+    .v1 .map-wrap {
+      border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px rgba(62,39,35,0.1);
+      border: 1px solid rgba(212,160,86,0.1);
+    }
+    .v1 .map-wrap .map-ph { height: 100%; min-height: 500px; }
+
+    /* ===== V2: Cards Grid Layout ===== */
+    .v2 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+    }
+    .v2 .container { max-width: 1100px; margin: 0 auto; }
+    .v2 .header { text-align: center; margin-bottom: 3rem; }
+    .v2 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v2 .header h2 em { color: var(--blush-dark); font-style: italic; }
+    .v2 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .v2 .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+    }
+    .v2 .card {
+      background: var(--cream); border-radius: 20px; padding: 2rem; text-align: center;
+      border: 1px solid rgba(212,160,86,0.08);
+      transition: transform 0.3s;
+    }
+    .v2 .card:hover { transform: translateY(-4px); }
+    .v2 .card .icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .v2 .ci-1 { background: var(--blush-light); }
+    .v2 .ci-2 { background: rgba(240,216,154,0.4); }
+    .v2 .ci-3 { background: rgba(168,184,156,0.3); }
+    .v2 .card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--chocolate); margin-bottom: 0.5rem;
+    }
+    .v2 .card p { font-size: 0.95rem; color: var(--warm-brown-light); line-height: 1.6; }
+    .v2 .card a { color: var(--blush-dark); font-weight: 700; }
+    .v2 .map-section {
+      border-radius: 20px; overflow: hidden; height: 280px;
+      box-shadow: 0 8px 30px rgba(62,39,35,0.08);
+    }
+    .v2 .map-section .map-ph { height: 100%; }
+    .v2 .cta-bar {
+      margin-top: 2rem; text-align: center; padding: 2rem;
+      background: var(--blush-light); border-radius: 20px;
+    }
+    .v2 .cta-bar h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--chocolate); margin-bottom: 0.75rem; }
+    .v2 .cta-bar p { font-size: 1rem; color: var(--warm-brown-light); margin-bottom: 1.25rem; }
+    .v2 .cta-bar .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== V3: Dark Contact Section ===== */
+    .v3 {
+      padding: 5rem 2rem 6rem;
+      background: linear-gradient(135deg, var(--chocolate), #5d3a2a);
+      min-height: 100vh; color: var(--cream);
+      position: relative; overflow: hidden;
+    }
+    .v3::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(240,216,154,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .v3 .container {
+      max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .v3 .text .section-label { color: var(--gold-light); }
+    .v3 .text h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1.5rem;
+    }
+    .v3 .text h2 em { color: var(--blush); font-style: italic; }
+    .v3 .info-blocks { display: flex; flex-direction: column; gap: 1.5rem; }
+    .v3 .info-block {
+      padding: 1.5rem; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(212,160,86,0.1); border-radius: 16px;
+    }
+    .v3 .info-block h4 {
+      font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .v3 .info-block p { font-size: 0.95rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.5; }
+    .v3 .info-block a { color: var(--blush); font-weight: 700; }
+    .v3 .right-side {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .v3 .map-wrap {
+      border-radius: 20px; overflow: hidden; height: 280px;
+      border: 1px solid rgba(212,160,86,0.15);
+    }
+    .v3 .map-wrap .map-ph { height: 100%; }
+    .v3 .cta-card {
+      padding: 2rem; background: rgba(244,160,181,0.15);
+      border: 1px solid rgba(244,160,181,0.2); border-radius: 16px; text-align: center;
+    }
+    .v3 .cta-card h4 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v3 .cta-card p { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.8; margin-bottom: 1rem; }
+    .v3 .btn-p-alt {
+      display: inline-block; padding: 0.85rem 2rem; background: var(--gold); color: var(--white);
+      font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 100px; border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .v3 .btn-p-alt:hover { background: var(--gold-dark); }
+
+    /* ===== V4: Full-Width CTA + Compact Info ===== */
+    .v4 {
+      min-height: 100vh;
+      background: var(--cream-dark);
+    }
+    .v4 .cta-hero {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--blush-light), var(--peach));
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .v4 .cta-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(212,160,86,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .v4 .cta-hero > * { position: relative; z-index: 1; }
+    .v4 .cta-hero h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,6vw,4rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 1rem;
+    }
+    .v4 .cta-hero h2 em { color: var(--blush-dark); font-style: italic; }
+    .v4 .cta-hero p {
+      font-size: 1.15rem; color: var(--warm-brown-light); max-width: 550px;
+      margin: 0 auto 2rem; line-height: 1.7;
+    }
+    .v4 .cta-hero .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .v4 .info-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px; margin: -2rem auto 0; position: relative; z-index: 2;
+    }
+    .v4 .info-tile {
+      background: var(--white); padding: 2rem; text-align: center;
+      border: 1px solid rgba(212,160,86,0.05);
+    }
+    .v4 .info-tile:first-child { border-radius: 16px 0 0 16px; }
+    .v4 .info-tile:last-child { border-radius: 0 16px 16px 0; }
+    .v4 .info-tile .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .v4 .info-tile h4 {
+      font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--blush-dark);
+      margin-bottom: 0.4rem;
+    }
+    .v4 .info-tile p { font-size: 0.9rem; color: var(--warm-brown-light); line-height: 1.5; }
+    .v4 .info-tile a { color: var(--blush-dark); font-weight: 700; }
+    .v4 .map-full {
+      max-width: 1100px; margin: 2rem auto 0; border-radius: 20px;
+      overflow: hidden; height: 250px;
+      box-shadow: 0 8px 30px rgba(62,39,35,0.08);
+    }
+    .v4 .map-full .map-ph { height: 100%; }
+
+    /* ===== V5: Minimal Centered ===== */
+    .v5 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .v5 .container { max-width: 700px; text-align: center; }
+    .v5 .container h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,6vw,4rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.5rem;
+    }
+    .v5 .container h2 em { color: var(--blush-dark); font-style: italic; display: block; font-size: 0.6em; margin-top: 0.2em; }
+    .v5 .divider { width: 50px; height: 2px; background: var(--gold); margin: 1.5rem auto; }
+    .v5 .container > p {
+      font-size: 1.1rem; color: var(--warm-brown-light); line-height: 1.7;
+      max-width: 500px; margin: 0 auto 2.5rem;
+    }
+    .v5 .info-row {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+      text-align: left; margin-bottom: 2.5rem;
+    }
+    .v5 .info-card {
+      padding: 1.5rem; background: var(--cream); border-radius: 16px;
+      border: 1px solid rgba(212,160,86,0.08);
+    }
+    .v5 .info-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .v5 .info-card h4 {
+      font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--chocolate);
+      margin-bottom: 0.3rem;
+    }
+    .v5 .info-card p { font-size: 0.9rem; color: var(--warm-brown-light); line-height: 1.5; }
+    .v5 .info-card a { color: var(--blush-dark); font-weight: 700; }
+    .v5 .map-circle {
+      width: 250px; height: 250px; border-radius: 50%; overflow: hidden;
+      margin: 0 auto 2rem; box-shadow: 0 12px 40px rgba(62,39,35,0.1);
+      border: 4px solid var(--gold-light);
+    }
+    .v5 .map-circle .map-ph { height: 100%; }
+    .v5 .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v1 .container { grid-template-columns: 1fr; }
+      .v1 .map-wrap .map-ph { min-height: 300px; }
+      .v2 .cards { grid-template-columns: 1fr; }
+      .v3 .container { grid-template-columns: 1fr; }
+      .v4 .info-strip { grid-template-columns: repeat(2, 1fr); }
+      .v4 .info-tile:first-child { border-radius: 16px 0 0 0; }
+      .v4 .info-tile:nth-child(2) { border-radius: 0 16px 0 0; }
+      .v4 .info-tile:nth-child(3) { border-radius: 0 0 0 16px; }
+      .v4 .info-tile:last-child { border-radius: 0 0 16px 0; }
+      .v5 .info-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1: Classic Split -->
+  <div class="variant v1 active" id="v1">
+    <div class="container">
+      <div class="info">
+        <div class="section-label">Come See Us</div>
+        <h2>Visit the <em>Sweet House</em></h2>
+        <p>Stop by our Uptown Shelby location for fresh cupcakes, cookies, and treats. For custom cake orders, give us a call or send us a message on Instagram.</p>
+        <div class="details">
+          <div class="detail">
+            <div class="detail-icon di-loc">&#128205;</div>
+            <div>
+              <h4>Location</h4>
+              <p>203 W Marion St<br/>Shelby, NC 28150</p>
+            </div>
+          </div>
+          <div class="detail">
+            <div class="detail-icon di-hrs">&#128336;</div>
+            <div>
+              <h4>Hours</h4>
+              <p>Tue - Fri: 10am - 6pm<br/>Saturday: 10am - 4pm<br/>Sun &amp; Mon: Closed</p>
+            </div>
+          </div>
+          <div class="detail">
+            <div class="detail-icon di-phn">&#128222;</div>
+            <div>
+              <h4>Phone</h4>
+              <p><a href="tel:7046164017">(704) 616-4017</a></p>
+            </div>
+          </div>
+          <div class="detail">
+            <div class="detail-icon di-soc">&#128247;</div>
+            <div>
+              <h4>Follow Us</h4>
+              <p><a href="https://instagram.com/sweethousebakeryshoppe" target="_blank">@sweethousebakeryshoppe</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="cta-box">
+          <h4>Ready to Order?</h4>
+          <p>Call us for custom cake orders. We can handle short-notice requests too!</p>
+          <a href="tel:7046164017" class="btn-p">Call (704) 616-4017</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <div class="map-ph">
+          <span class="pin">&#128205;</span>
+          <span class="addr">Sweet House Bakery</span>
+          <span class="small">203 W Marion St, Shelby, NC 28150</span>
+          <a href="https://maps.google.com/?q=203+W+Marion+St+Shelby+NC+28150" target="_blank" class="btn-p" style="margin-top:1rem;font-size:0.8rem;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2: Cards Grid -->
+  <div class="variant v2" id="v2">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">Come See Us</div>
+        <h2>Visit the <em>Sweet House</em></h2>
+        <p>Find us in Uptown Shelby. Walk in for a treat or call ahead for custom orders.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon ci-1">&#128205;</div>
+          <h3>Find Us</h3>
+          <p>203 W Marion St<br/>Shelby, NC 28150<br/><br/><a href="https://maps.google.com/?q=203+W+Marion+St+Shelby+NC+28150" target="_blank">Get Directions</a></p>
+        </div>
+        <div class="card">
+          <div class="icon ci-2">&#128336;</div>
+          <h3>Hours</h3>
+          <p>Tue - Fri: 10am - 6pm<br/>Saturday: 10am - 4pm<br/>Sun &amp; Mon: Closed</p>
+        </div>
+        <div class="card">
+          <div class="icon ci-3">&#128222;</div>
+          <h3>Get in Touch</h3>
+          <p>Phone: <a href="tel:7046164017">(704) 616-4017</a><br/><br/>Instagram:<br/><a href="https://instagram.com/sweethousebakeryshoppe" target="_blank">@sweethousebakeryshoppe</a></p>
+        </div>
+      </div>
+      <div class="map-section">
+        <div class="map-ph">
+          <span class="pin">&#128205;</span>
+          <span class="addr">Sweet House Bakery</span>
+          <span class="small">Uptown Shelby, NC</span>
+        </div>
+      </div>
+      <div class="cta-bar">
+        <h3>Ready to Order Your Cake?</h3>
+        <p>Custom cakes for birthdays, weddings, and every celebration. Call us today!</p>
+        <div class="btns">
+          <a href="tel:7046164017" class="btn-p">Call Now</a>
+          <a href="https://instagram.com/sweethousebakeryshoppe" target="_blank" class="btn-s">Message on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3: Dark Contact -->
+  <div class="variant v3" id="v3">
+    <div class="container">
+      <div class="text">
+        <div class="section-label">Come See Us</div>
+        <h2>Visit the <em>Sweet House</em></h2>
+        <div class="info-blocks">
+          <div class="info-block">
+            <h4>Location</h4>
+            <p>203 W Marion St, Shelby, NC 28150</p>
+          </div>
+          <div class="info-block">
+            <h4>Hours</h4>
+            <p>Tue - Fri: 10am - 6pm<br/>Saturday: 10am - 4pm<br/>Sun &amp; Mon: Closed</p>
+          </div>
+          <div class="info-block">
+            <h4>Contact</h4>
+            <p>Phone: <a href="tel:7046164017">(704) 616-4017</a><br/>Instagram: <a href="https://instagram.com/sweethousebakeryshoppe" target="_blank">@sweethousebakeryshoppe</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="map-wrap">
+          <div class="map-ph">
+            <span class="pin">&#128205;</span>
+            <span class="addr">Sweet House Bakery</span>
+            <span class="small">Uptown Shelby, NC</span>
+          </div>
+        </div>
+        <div class="cta-card">
+          <h4>Order Your Custom Cake</h4>
+          <p>Call us for custom orders. We can handle short notice too!</p>
+          <a href="tel:7046164017" class="btn-p-alt">Call (704) 616-4017</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V4: Full-Width CTA + Info Strip -->
+  <div class="variant v4" id="v4">
+    <div class="cta-hero">
+      <div class="section-label">Come See Us</div>
+      <h2>Visit the <em>Sweet House</em></h2>
+      <p>Fresh cupcakes, custom cakes, and treats waiting for you in Uptown Shelby. Walk in or call ahead for special orders.</p>
+      <div class="btns">
+        <a href="tel:7046164017" class="btn-p">Call (704) 616-4017</a>
+        <a href="https://maps.google.com/?q=203+W+Marion+St+Shelby+NC+28150" target="_blank" class="btn-s">Get Directions</a>
+      </div>
+    </div>
+    <div class="info-strip">
+      <div class="info-tile">
+        <div class="icon">&#128205;</div>
+        <h4>Location</h4>
+        <p>203 W Marion St<br/>Shelby, NC 28150</p>
+      </div>
+      <div class="info-tile">
+        <div class="icon">&#128336;</div>
+        <h4>Weekday Hours</h4>
+        <p>Tue - Fri<br/>10am - 6pm</p>
+      </div>
+      <div class="info-tile">
+        <div class="icon">&#127847;</div>
+        <h4>Saturday</h4>
+        <p>10am - 4pm</p>
+      </div>
+      <div class="info-tile">
+        <div class="icon">&#128247;</div>
+        <h4>Follow Us</h4>
+        <p><a href="https://instagram.com/sweethousebakeryshoppe" target="_blank">@sweethousebakeryshoppe</a></p>
+      </div>
+    </div>
+    <div class="map-full">
+      <div class="map-ph">
+        <span class="pin">&#128205;</span>
+        <span class="addr">Sweet House Bakery</span>
+        <span class="small">203 W Marion St, Shelby, NC 28150</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- V5: Minimal Centered -->
+  <div class="variant v5" id="v5">
+    <div class="container">
+      <div class="section-label">Come See Us</div>
+      <h2>Sweet House<em>Bakery</em></h2>
+      <div class="divider"></div>
+      <p>Walk in for fresh treats or call ahead for your next celebration cake. We are in the heart of Uptown Shelby.</p>
+      <div class="map-circle">
+        <div class="map-ph">
+          <span class="pin">&#128205;</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="icon">&#128205;</div>
+          <h4>Address</h4>
+          <p>203 W Marion St<br/>Shelby, NC 28150</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">&#128336;</div>
+          <h4>Hours</h4>
+          <p>Tue - Fri: 10am - 6pm<br/>Sat: 10am - 4pm</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">&#128222;</div>
+          <h4>Phone</h4>
+          <p><a href="tel:7046164017">(704) 616-4017</a></p>
+        </div>
+        <div class="info-card">
+          <div class="icon">&#128247;</div>
+          <h4>Instagram</h4>
+          <p><a href="https://instagram.com/sweethousebakeryshoppe" target="_blank">@sweethousebakeryshoppe</a></p>
+        </div>
+      </div>
+      <div class="btns">
+        <a href="tel:7046164017" class="btn-p">Call to Order</a>
+        <a href="https://maps.google.com/?q=203+W+Marion+St+Shelby+NC+28150" target="_blank" class="btn-s">Get Directions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="label">Visit Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hoot Nannie — Website Concept by Studio O'Brien</title>
+  <meta name="description" content="A custom website concept built for The Hoot Nannie restaurant in Forest City, NC by Studio O'Brien." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest: #0d2818;
+      --gold: #c9a84c;
+      --parchment: #f5f0e1;
+      --bg: #0a0f0d;
+    }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--bg);
+      color: var(--parchment);
+      line-height: 1.7;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--forest) 0%, var(--bg) 100%);
+    }
+    .hero .badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 20px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--parchment);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero .sub {
+      font-size: 1.15rem;
+      font-style: italic;
+      opacity: 0.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Preview */
+    .preview {
+      margin: 48px auto 0;
+      max-width: 800px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .preview-bar {
+      background: #1a1a1a;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
+    .preview-dot:first-child { background: #ff5f56; }
+    .preview-dot:nth-child(2) { background: #ffbd2e; }
+    .preview-dot:nth-child(3) { background: #27c93f; }
+    .preview-url {
+      margin-left: 12px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .preview img {
+      width: 100%;
+      display: block;
+    }
+    .preview-cta {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+    }
+    .preview-cta a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 12px 32px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .preview-cta a:hover { background: var(--gold); color: var(--forest); }
+
+    /* Sections */
+    .section { padding: 64px 24px; }
+    .section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .section p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 16px; }
+
+    /* Problem */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (max-width: 600px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .problem-card .label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .problem-card .label.now { color: #e55; }
+    .problem-card .label.after { color: #5e5; }
+    .problem-card p { font-size: 1rem; opacity: 0.7; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .feature {
+      background: rgba(201,168,76,0.04);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .feature h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--parchment);
+      margin-bottom: 6px;
+    }
+    .feature p { font-size: 0.9rem; opacity: 0.6; margin: 0; }
+
+    /* Quote */
+    .quote {
+      text-align: center;
+      padding: 48px 24px;
+      font-size: 1.3rem;
+      font-style: italic;
+      opacity: 0.5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 80px 24px;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--forest) 100%);
+    }
+    .cta h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--parchment);
+      margin-bottom: 16px;
+    }
+    .cta h2 span { color: var(--gold); }
+    .cta p {
+      font-size: 1.1rem;
+      opacity: 0.6;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .cta-btn.primary { background: var(--gold); color: var(--forest); }
+    .cta-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .cta-btn.secondary { border: 1px solid rgba(201,168,76,0.3); color: var(--gold); }
+    .cta-btn.secondary:hover { background: rgba(201,168,76,0.1); }
+
+    /* Footer */
+    .foot {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      opacity: 0.3;
+    }
+    .foot a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="container">
+      <div class="badge">Built for You</div>
+      <h1>A Website for <span>The Hoot Nannie</span></h1>
+      <p class="sub">We built this concept using your real business information — menu, bourbon list, story, and customer reviews. No templates. No stock photos of someone else's restaurant.</p>
+    </div>
+
+    <div class="preview">
+      <div class="preview-bar">
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <span class="preview-url">thehootnannie.com</span>
+      </div>
+      <img src="/images/portfolio/hoot-nannie.webp" alt="The Hoot Nannie website concept" loading="lazy" />
+      <div class="preview-cta">
+        <a href="/mock-sites/hoot-nannie.html" target="_blank">View the Full Interactive Site &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2>The Problem</h2>
+      <p>Right now, someone searching "BBQ Forest City" or "bourbon bar near me" finds your Yelp page, TripAdvisor listing, and directory results. No website. No way to see your full menu, bourbon selection, or event schedule without scrolling through Facebook posts. You have 657+ Google reviews and a feature in Our State Magazine — but no home base on the web.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="label now">Right Now</div>
+          <p>No website. Customers looking for your menu, hours, or bourbon list have to dig through Facebook. Many give up and go somewhere with a real site.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label now">Right Now</div>
+          <p>Event inquiries, wing night details, and reservation questions all come through Facebook DMs or phone calls with no clear info up front. Time wasted on repeat questions.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label after">With This Site</div>
+          <p>Full menu, 68-bourbon bar list, weekly specials, and event calendar — all on one site. Every question answered before they pick up the phone.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label after">With This Site</div>
+          <p>Shows up in Google searches. Ranks for "BBQ near me," "bourbon bar Forest City," and "restaurants in Forest City NC." Your Our State feature and 657+ reviews finally have a home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2>What's Included</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Full Menu Showcase</h3>
+          <p>Farm-raised steaks, whole hog BBQ, and every dish — organized, photographed, and easy to browse on any device.</p>
+        </div>
+        <div class="feature">
+          <h3>Bourbon Bar Section</h3>
+          <p>All 68 bourbons with tasting notes and pricing. Let customers explore your selection before they walk in the door.</p>
+        </div>
+        <div class="feature">
+          <h3>Events &amp; Specials</h3>
+          <p>Thursday wing nights, live music, seasonal specials — an always-updated calendar so customers never miss what's happening.</p>
+        </div>
+        <div class="feature">
+          <h3>Farm-to-Table Story</h3>
+          <p>Johnny Ray's pitmaster craft and Chef Steve's kitchen — your story told the way it deserves. Not buried in a Facebook "About" section.</p>
+        </div>
+        <div class="feature">
+          <h3>Online Reservations</h3>
+          <p>A simple inquiry form for reservations, private events, and large party bookings. No more phone tag during the dinner rush.</p>
+        </div>
+        <div class="feature">
+          <h3>SEO Built In</h3>
+          <p>Structured for Google from day one. Your hours, location, menu, and reviews show up in local search results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    "If comfort food and good vibes ever had a rowdy little love child, its name would be Hoot Nannie."<br />
+    <span style="font-size: 0.85rem; color: var(--gold); font-style: normal;">— Yelp Reviewer</span>
+  </div>
+
+  <div class="cta">
+    <div class="container">
+      <h2>Ready to Make <span>This Real?</span></h2>
+      <p>This concept was built specifically for The Hoot Nannie. If you like what you see, let's talk about making it your actual website.</p>
+      <div class="cta-buttons">
+        <a href="https://studioobrien.com/#contact" class="cta-btn primary">Get in Touch</a>
+        <a href="mailto:hello@studioobrien.com?subject=The%20Hoot%20Nannie%20Website" class="cta-btn secondary">Email Us Directly</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Built by <a href="https://studioobrien.com">Studio O'Brien</a> &middot; Shelby, NC
+  </div>
+
+</body>
+</html>

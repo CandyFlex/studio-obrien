@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mason Jar Provisions | Farm-to-Table Goods from the Carolina Foothills</title>
+  <meta name="description" content="Small-batch preserves, local produce, and handcrafted pantry goods from the Carolina foothills. Visit us on Main Street in Shelby, NC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== Design Tokens ===== */
+    :root {
+      --ink-black: #1c1917;
+      --parchment: #f5f0e1;
+      --warm-cream: #faf5e8;
+      --burnt-umber: #8b4513;
+      --oxblood: #6b1c23;
+      --faded-gold: #bfa662;
+      --ash-gray: #9c9585;
+
+      --font-display: 'Uncial Antiqua', serif;
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'EB Garamond', serif;
+    }
+
+    /* ===== Parchment Noise Overlay ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ===== Base ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--ink-black);
+      background-color: var(--parchment);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Fade-in Animation ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-section {
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+    }
+
+    /* ===== Corner Flourishes ===== */
+    .flourish-corner {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.25;
+    }
+
+    .flourish-tl {
+      top: 12px;
+      left: 12px;
+    }
+
+    .flourish-tr {
+      top: 12px;
+      right: 12px;
+      transform: scaleX(-1);
+    }
+
+    .flourish-bl {
+      bottom: 12px;
+      left: 12px;
+      transform: scaleY(-1);
+    }
+
+    .flourish-br {
+      bottom: 12px;
+      right: 12px;
+      transform: scale(-1, -1);
+    }
+
+    /* ===== Ornamental Divider ===== */
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--burnt-umber);
+      opacity: 0.35;
+    }
+
+    .ornament-rule .diamond {
+      width: 6px;
+      height: 6px;
+      background-color: var(--burnt-umber);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin: 0 12px;
+      opacity: 0.4;
+    }
+
+    /* ===== Header / Nav ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--parchment);
+      border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .site-logo {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--ink-black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-black);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.4s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--burnt-umber);
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background-color: var(--ink-black);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      color: var(--ink-black);
+      line-height: 1.2;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+      max-width: 700px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--ash-gray);
+      max-width: 520px;
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+
+    .hero .ornament-rule {
+      margin-bottom: 48px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      background-color: var(--burnt-umber);
+      padding: 16px 44px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .hero-cta:hover {
+      background-color: var(--ink-black);
+      color: var(--parchment);
+    }
+
+    /* ===== Section Common ===== */
+    .section-padding {
+      padding: 100px 24px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--ink-black);
+      text-align: center;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-rule {
+      margin-bottom: 64px;
+    }
+
+    /* ===== Featured Categories ===== */
+    .categories {
+      background-color: var(--parchment);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      background-color: var(--warm-cream);
+      padding: 48px 36px 44px;
+      text-align: center;
+      border-bottom: 2px solid rgba(139, 69, 19, 0.25);
+      transition: border-color 0.4s ease;
+    }
+
+    .category-card:hover {
+      border-bottom-color: var(--burnt-umber);
+    }
+
+    .category-name {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-black);
+      margin-bottom: 20px;
+    }
+
+    .category-desc {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--ash-gray);
+      line-height: 1.8;
+    }
+
+    /* ===== Our Story ===== */
+    .story {
+      background-color: var(--warm-cream);
+    }
+
+    .story-content {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .story-text {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 2;
+      color: var(--ink-black);
+      margin-bottom: 32px;
+    }
+
+    .story-text:last-of-type {
+      margin-bottom: 40px;
+    }
+
+    /* Drop Cap */
+    .drop-cap::first-letter {
+      float: left;
+      font-family: var(--font-display);
+      font-size: 4.2em;
+      line-height: 0.75;
+      padding-right: 12px;
+      padding-top: 8px;
+      color: var(--oxblood);
+    }
+
+    .story-attribution {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--faded-gold);
+      text-align: center;
+      letter-spacing: 0.06em;
+      margin-top: 48px;
+    }
+
+    /* ===== Call to Action ===== */
+    .cta-section {
+      background-color: var(--parchment);
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-family: var(--font-heading);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--ink-black);
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-detail {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--ink-black);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .cta-detail:last-of-type {
+      color: var(--ash-gray);
+      margin-bottom: 0;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      padding: 48px 24px;
+      text-align: center;
+      background-color: var(--parchment);
+    }
+
+    .footer-rule {
+      max-width: 200px;
+      margin: 0 auto 36px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--ink-black);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--ash-gray);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background-color: var(--parchment);
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 480px;
+      }
+
+      .hero-tagline {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+      }
+
+      .section-padding {
+        padding: 72px 24px;
+      }
+
+      .flourish-corner {
+        width: 50px;
+        height: 50px;
+        opacity: 0.15;
+      }
+
+      .story-text {
+        font-size: 17px;
+      }
+
+      .drop-cap::first-letter {
+        font-size: 3.4em;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .categories-grid {
+        gap: 28px;
+      }
+
+      .category-card {
+        padding: 40px 28px 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corner Flourishes -->
+  <svg class="flourish-corner flourish-tl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4 L4 30 Q4 40 14 40 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <path d="M4 4 L30 4 Q40 4 40 14 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <circle cx="4" cy="4" r="2" fill="#bfa662"/>
+    <path d="M12 12 L12 24 Q12 28 16 28 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <path d="M12 12 L24 12 Q28 12 28 16 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <circle cx="12" cy="12" r="1.2" fill="#bfa662" opacity="0.6"/>
+  </svg>
+
+  <svg class="flourish-corner flourish-tr" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4 L4 30 Q4 40 14 40 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <path d="M4 4 L30 4 Q40 4 40 14 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <circle cx="4" cy="4" r="2" fill="#bfa662"/>
+    <path d="M12 12 L12 24 Q12 28 16 28 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <path d="M12 12 L24 12 Q28 12 28 16 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <circle cx="12" cy="12" r="1.2" fill="#bfa662" opacity="0.6"/>
+  </svg>
+
+  <svg class="flourish-corner flourish-bl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4 L4 30 Q4 40 14 40 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <path d="M4 4 L30 4 Q40 4 40 14 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <circle cx="4" cy="4" r="2" fill="#bfa662"/>
+    <path d="M12 12 L12 24 Q12 28 16 28 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <path d="M12 12 L24 12 Q28 12 28 16 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <circle cx="12" cy="12" r="1.2" fill="#bfa662" opacity="0.6"/>
+  </svg>
+
+  <svg class="flourish-corner flourish-br" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4 L4 30 Q4 40 14 40 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <path d="M4 4 L30 4 Q40 4 40 14 L40 40" stroke="#bfa662" stroke-width="1" fill="none"/>
+    <circle cx="4" cy="4" r="2" fill="#bfa662"/>
+    <path d="M12 12 L12 24 Q12 28 16 28 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <path d="M12 12 L24 12 Q28 12 28 16 L28 28" stroke="#bfa662" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <circle cx="12" cy="12" r="1.2" fill="#bfa662" opacity="0.6"/>
+  </svg>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="site-logo">The Mason Jar Provisions</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Our Story</a>
+        <a href="#">Recipes</a>
+        <a href="#">Find Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero fade-section">
+    <h1 class="hero-tagline">From These Hills<br>to Your Table</h1>
+    <p class="hero-subtitle">Small-batch preserves, local produce, and handcrafted pantry goods from the Carolina foothills.</p>
+    <div class="ornament-rule">
+      <span class="diamond"></span>
+    </div>
+    <a href="#" class="hero-cta">Visit Our Shop</a>
+  </section>
+
+  <!-- ===== Featured Categories ===== -->
+  <section class="categories section-padding fade-section">
+    <h2 class="section-title">Our Provisions</h2>
+    <div class="ornament-rule section-rule">
+      <span class="diamond"></span>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card">
+        <h3 class="category-name">Pantry Staples</h3>
+        <p class="category-desc">Stone-ground grits, raw honey, heritage flour, and preserves put up the old way. The foundation of every good kitchen.</p>
+      </div>
+      <div class="category-card">
+        <h3 class="category-name">Seasonal Preserves</h3>
+        <p class="category-desc">What the land gives, we keep. Strawberry in spring, peach in summer, apple butter when the leaves turn. Always in small batches.</p>
+      </div>
+      <div class="category-card">
+        <h3 class="category-name">Baked Goods</h3>
+        <p class="category-desc">Sourdough loaves, buttermilk biscuits, and hand pies made fresh each morning. Best enjoyed the same day, still warm if you can manage it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Our Story ===== -->
+  <section class="story section-padding fade-section">
+    <div class="story-content">
+      <h2 class="section-title">Our Story</h2>
+      <div class="ornament-rule section-rule">
+        <span class="diamond"></span>
+      </div>
+      <p class="story-text drop-cap">We started with a simple belief: that the food on your table should come from hands you could shake. Every jar on our shelves carries a story. The farmer who grew the tomatoes. The beekeeper who tends the hives three miles up the mountain road. We know them all by name, and we think you should too.</p>
+      <p class="story-text">Our shop sits on Main Street in Shelby, right where it has for the last twelve years. Stop in on a Saturday morning and you'll find fresh bread cooling on the counter and coffee from a roaster just down the road.</p>
+      <p class="story-attribution">Est. 2014, Shelby, NC</p>
+    </div>
+  </section>
+
+  <!-- ===== Call to Action ===== -->
+  <section class="cta-section section-padding fade-section">
+    <h2 class="cta-heading">Come Find Us</h2>
+    <div class="ornament-rule section-rule">
+      <span class="diamond"></span>
+    </div>
+    <p class="cta-detail">218 S. Lafayette Street, Shelby, NC 28150</p>
+    <p class="cta-detail">Tuesday through Saturday, 8am to 6pm</p>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="ornament-rule footer-rule">
+      <span class="diamond"></span>
+    </div>
+    <p class="footer-logo">The Mason Jar Provisions</p>
+    <p class="footer-copy">&copy; 2024 The Mason Jar Provisions. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Scroll Fade-In Script ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sections = document.querySelectorAll('.fade-section');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+      } else {
+        // Fallback: just show everything
+        sections.forEach(function (section) {
+          section.classList.add('visible');
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Sports and Collectibles | Forest City, NC</title>
+  <meta name="description" content="Sneakers, streetwear, vintage sports memorabilia, and sports cards on Main Street in Forest City, NC. You never know what you'll find at Wahoo's." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e8e8;
+      background: #0d0d1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============ TOKENS ============ */
+    :root {
+      --blue: #1a3a8f;
+      --blue-dark: #0f2560;
+      --red: #d32f2f;
+      --red-light: #e85353;
+      --red-glow: rgba(211,47,47,0.3);
+      --white: #ffffff;
+      --charcoal: #0d0d1a;
+      --charcoal-light: #161628;
+      --charcoal-card: #1a1a2e;
+      --light-gray: #f4f5f7;
+      --mid-gray: #2a2a3e;
+      --gold: #f59e0b;
+      --accent-teal: #0fd9b0;
+    }
+
+    /* ============ UTILITY ============ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 36px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--red-light); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+    }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .btn-blue:hover { background: var(--blue-dark); }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--charcoal);
+      border-bottom: 3px solid var(--blue);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+      padding: 2px;
+    }
+    .nav-logo-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.25;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      flex-wrap: wrap;
+    }
+    .nav-info a {
+      font-weight: 600;
+      color: var(--red-light);
+    }
+    .nav-info a:hover { color: var(--white); }
+    .nav-hours-pill {
+      background: rgba(255,255,255,0.08);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 30px,
+          rgba(255,255,255,0.015) 30px,
+          rgba(255,255,255,0.015) 32px
+        );
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(26,58,143,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(211,47,47,0.1) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 120px 0 100px;
+    }
+    .hero-text { position: relative; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(211,47,47,0.15);
+      color: var(--red-light);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(211,47,47,0.25);
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.05;
+    }
+    .hero h1 .accent { color: var(--red); }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-cat {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.65);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-images {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .hero-img-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .hero-img-wrap:hover {
+      transform: scale(1.03);
+      border-color: rgba(211,47,47,0.3);
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1;
+    }
+    .hero-img-wrap:first-child {
+      grid-row: span 2;
+    }
+    .hero-img-wrap:first-child img {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+
+    /* ============ MARQUEE STRIP ============ */
+    .marquee-strip {
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-strip.blue { background: var(--blue); }
+    .marquee-strip.dark { background: var(--charcoal-card); color: rgba(255,255,255,0.4); }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============ WHAT WE CARRY ============ */
+    .carry { background: var(--charcoal-light); }
+    .carry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .carry-card {
+      background: var(--charcoal-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .carry-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(211,47,47,0.3);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .carry-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .carry-card-body {
+      padding: 24px 22px 28px;
+    }
+    .carry-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .carry-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .carry-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+
+    /* ============ ABOUT ============ */
+    .about { background: var(--charcoal); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-image-stack {
+      position: relative;
+    }
+    .about-img-main {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.06);
+    }
+    .about-img-main img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .about-img-float {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 180px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid var(--charcoal);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .about-img-float img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    .about-text h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .about-text h2 .accent { color: var(--red); }
+    .about-text p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+    .about-stat-row {
+      display: flex;
+      gap: 40px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .about-stat { text-align: center; }
+    .about-stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .about-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* ============ REVIEWS ============ */
+    .reviews {
+      background: var(--charcoal-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .reviews::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 2px at 30px 30px, rgba(255,255,255,0.025) 2px, transparent 2px);
+      background-size: 60px 60px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,158,11,0.3);
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .review-author {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ============ BUY/SELL/TRADE CTA ============ */
+    .bst { background: var(--charcoal); }
+    .bst-card {
+      background: var(--blue);
+      border-radius: 28px;
+      padding: 72px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bst-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.02) 40px,
+          rgba(255,255,255,0.02) 42px
+        );
+    }
+    .bst-card > * { position: relative; z-index: 1; }
+    .bst-three {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .bst-pill {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 36px;
+      border-radius: 50px;
+    }
+    .bst-pill.buy { background: var(--red); color: var(--white); }
+    .bst-pill.sell { background: var(--gold); color: var(--charcoal); }
+    .bst-pill.trade { background: var(--white); color: var(--blue); }
+    .bst-card h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .bst-card p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* ============ VISIT US ============ */
+    .visit { background: var(--charcoal-light); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .visit-info-block { margin-bottom: 36px; }
+    .visit-info-block h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--red-light);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .visit-info-block p,
+    .visit-info-block a {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    .visit-info-block a {
+      color: var(--red-light);
+      font-weight: 600;
+    }
+    .visit-info-block a:hover { color: var(--white); }
+    .visit-hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .visit-hours-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .visit-hours-table td {
+      padding: 11px 0;
+      font-size: 0.92rem;
+    }
+    .visit-hours-table td:first-child {
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      width: 140px;
+    }
+    .visit-hours-table td:last-child {
+      color: rgba(255,255,255,0.5);
+    }
+    .visit-hours-table .closed td:last-child { color: var(--red); }
+    .visit-map-card {
+      background: var(--charcoal-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .visit-map-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .visit-map-body {
+      padding: 28px;
+    }
+    .visit-map-body h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .visit-map-body p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+    .visit-insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--red-light);
+      transition: color 0.2s;
+    }
+    .visit-insta-link:hover { color: var(--white); }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.4);
+      padding: 56px 0 36px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-logo .accent { color: var(--red); }
+    .footer-tagline {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 28px auto;
+      max-width: 400px;
+    }
+    .footer-credit {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-credit a {
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+    }
+    .footer-credit a:hover { color: var(--white); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1200px) {
+      .carry-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 100px 0 60px;
+      }
+      .hero-text { text-align: center; }
+      .hero-btns { justify-content: center; }
+      .hero-cats { justify-content: center; }
+      .hero-tagline { margin-left: auto; margin-right: auto; }
+      .hero-images {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 10px 16px;
+      }
+      .nav-links { display: none; }
+      .nav-info {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .carry-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 64px 0; }
+      .about-img-float {
+        width: 120px;
+        bottom: -12px;
+        right: -8px;
+      }
+    }
+    @media (max-width: 560px) {
+      .hero-grid { padding: 80px 0 50px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-images { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .hero-img-wrap:first-child { grid-row: span 1; }
+      .hero-img-wrap:first-child img { aspect-ratio: 1; }
+      .bst-card { padding: 48px 20px; }
+      .bst-pill { font-size: 1.1rem; padding: 10px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's logo" class="nav-logo-img" width="150" height="150" loading="lazy" />
+        <div class="nav-logo-text">Wahoo's Sports<br />&amp; Collectibles</div>
+      </a>
+      <div class="nav-links">
+        <a href="#carry">What We Carry</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div class="nav-info">
+        <a href="tel:8282236060">(828) 223-6060</a>
+        <span class="nav-hours-pill">Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-badge">128 E Main St, Forest City, NC</div>
+          <h1>You Never Know<br /><span class="accent">What You'll Find</span></h1>
+          <p class="hero-tagline">Sneakers, streetwear, vintage sports memorabilia, and sports cards. All under one roof on Main Street in downtown Forest City.</p>
+          <div class="hero-btns">
+            <a href="#visit" class="btn btn-primary">Come Find Out</a>
+            <a href="#carry" class="btn btn-outline">See What We Carry</a>
+          </div>
+          <div class="hero-cats">
+            <span class="hero-cat">Sports Cards</span>
+            <span class="hero-cat">Sneakers</span>
+            <span class="hero-cat">Streetwear</span>
+            <span class="hero-cat">Vintage Apparel</span>
+            <span class="hero-cat">Memorabilia</span>
+            <span class="hero-cat">NASCAR</span>
+          </div>
+        </div>
+        <div class="hero-images">
+          <div class="hero-img-wrap">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Charlotte Hornets crewneck and NASCAR racing jacket on display" width="640" height="789" loading="eager" />
+          </div>
+          <div class="hero-img-wrap">
+            <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Nike Sacai Blazer Low sneaker on box" width="640" height="640" loading="eager" />
+          </div>
+          <div class="hero-img-wrap">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme skate deck with chain pattern" width="640" height="640" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      Cards &#9733; Sneakers &#9733; Supreme &#9733; Jordans &#9733; Vintage &#9733; NASCAR &#9733; Pokemon &#9733; Memorabilia &#9733; Streetwear &#9733; Hype &#9733; Cards &#9733; Sneakers &#9733; Supreme &#9733; Jordans &#9733; Vintage &#9733; NASCAR &#9733; Pokemon &#9733; Memorabilia &#9733; Streetwear &#9733; Hype &#9733;&nbsp;
+    </div>
+  </div>
+
+  <!-- ============ WHAT WE CARRY ============ -->
+  <section class="carry section-pad" id="carry">
+    <div class="container text-center">
+      <p class="section-label">The Collection</p>
+      <h2 class="section-heading">What We Carry</h2>
+      <p class="section-sub">From wax packs to Jordans, vintage tees to Supreme decks. If it's collectible, it's probably in here somewhere.</p>
+    </div>
+    <div class="container">
+      <div class="carry-grid">
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/vintage-tees-cards.webp" alt="Vintage NFL and college sports t-shirts displayed with sports cards" class="carry-card-img" width="640" height="640" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#127183;</span>
+            <h3>Sports Cards</h3>
+            <p>New packs and vintage singles. Baseball, football, basketball, racing, and Pokemon. Whether you're ripping or hunting that one card, we've got boxes to dig through.</p>
+          </div>
+        </div>
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Air Jordan 10 Retro sneaker on box in store" class="carry-card-img" width="640" height="640" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#128095;</span>
+            <h3>Sneakers</h3>
+            <p>Nike, Jordan, and collectible releases. From heat you can rock to pairs you'll want to keep on ice. Deadstock and lightly worn, always authentic.</p>
+          </div>
+        </div>
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/supreme-accessories.webp" alt="Supreme accessories in glass display case" class="carry-card-img" width="640" height="640" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#128085;</span>
+            <h3>Streetwear</h3>
+            <p>Supreme clothing, accessories, skate decks, hats, socks, and bags. Fear of God, Bravest Studios, and more. Real hype, small-town prices.</p>
+          </div>
+        </div>
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Charlotte Hornets crewneck and NASCAR Texaco Havoline racing jacket" class="carry-card-img" width="640" height="789" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#127941;</span>
+            <h3>Vintage Sports Apparel</h3>
+            <p>Charlotte Hornets, NFL teams, college gear, and that perfect 80s or 90s jacket you forgot existed. If it has a vintage tag and a team logo, we're into it.</p>
+          </div>
+        </div>
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Supreme and Atlanta hats on glass display case with sports cards" class="carry-card-img" width="640" height="640" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#127937;</span>
+            <h3>NASCAR Memorabilia</h3>
+            <p>Racing jackets, Texaco/Havoline Winston Cup gear, die-cast cars, and more. This is NASCAR country and we stock it like it.</p>
+          </div>
+        </div>
+        <div class="carry-card">
+          <img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Fear of God hat on glass case with signed baseball bat underneath" class="carry-card-img" width="640" height="640" loading="lazy" />
+          <div class="carry-card-body">
+            <span class="carry-card-icon">&#9997;&#65039;</span>
+            <h3>Signed Memorabilia</h3>
+            <p>Autographed items, signed bats, and collectible pieces. Plus local Rutherford County sports finds you won't see anywhere else.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee-strip blue">
+    <div class="marquee-track">
+      Buy &#9733; Sell &#9733; Trade &#9733; Collect &#9733; Hunt &#9733; Discover &#9733; Buy &#9733; Sell &#9733; Trade &#9733; Collect &#9733; Hunt &#9733; Discover &#9733; Buy &#9733; Sell &#9733; Trade &#9733; Collect &#9733; Hunt &#9733; Discover &#9733;&nbsp;
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about section-pad" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-stack">
+          <div class="about-img-main">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme skate deck on display in the shop" width="640" height="640" loading="lazy" />
+          </div>
+          <div class="about-img-float">
+            <img src="/mock-sites/assets/wahoos-sports/bravest-studios-socks.webp" alt="Bravest Studios designer socks in display case" width="640" height="640" loading="lazy" />
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-label">The Shop Story</p>
+          <h2>A Main Street<br /><span class="accent">Treasure Hunt</span></h2>
+          <p>Wahoo's is a one-man operation on Main Street in downtown Forest City, NC. Owner Bill runs the shop with the hours of someone doing it for the love of it, not the paycheck.</p>
+          <p>The store started as a sports card and memorabilia shop, rooted in Rutherford County sports heritage and NASCAR country collecting. Over time it evolved to carry sneakers, Supreme streetwear, and vintage sports apparel too. That blend of old-school hobby shop culture with newer hype and resale culture is what makes Wahoo's feel different.</p>
+          <p>This is the only shop of its kind in Rutherford County. No pretense, no velvet ropes. Just glass display cases, slatwall fixtures, and cardboard boxes full of finds waiting to be discovered.</p>
+          <div class="about-stat-row">
+            <div class="about-stat">
+              <div class="about-stat-num">128</div>
+              <div class="about-stat-label">E Main Street</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">1</div>
+              <div class="about-stat-label">Of a Kind in the County</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">6</div>
+              <div class="about-stat-label">Categories of Finds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="reviews section-pad" id="reviews">
+    <div class="container text-center">
+      <p class="section-label">What People Are Saying</p>
+      <h2 class="section-heading">Straight from the Collectors</h2>
+      <p class="section-sub">Don't take our word for it. Here's what customers say after walking through the door.</p>
+    </div>
+    <div class="container">
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"</p>
+          <div class="review-author">Google Review</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Owner is friendly; has new packs &amp; some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair &amp; knowledgeable."</p>
+          <div class="review-author">Google Review</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well."</p>
+          <div class="review-author">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee-strip dark">
+    <div class="marquee-track">
+      Forest City, NC &#9733; 128 E Main St &#9733; Since Day One &#9733; The Only One in the County &#9733; Forest City, NC &#9733; 128 E Main St &#9733; Since Day One &#9733; The Only One in the County &#9733;&nbsp;
+    </div>
+  </div>
+
+  <!-- ============ BUY / SELL / TRADE CTA ============ -->
+  <section class="bst section-pad" id="bst">
+    <div class="container">
+      <div class="bst-card">
+        <div class="bst-three">
+          <span class="bst-pill buy">Buy</span>
+          <span class="bst-pill sell">Sell</span>
+          <span class="bst-pill trade">Trade</span>
+        </div>
+        <h2>Got Cards, Kicks, or Gear?</h2>
+        <p>Wahoo's buys older cards and does trading too. If you've got a collection gathering dust, vintage sports gear in the closet, or sneakers you're ready to move, bring them by. Bill is fair, knowledgeable, and always willing to take a look.</p>
+        <a href="tel:8282236060" class="btn btn-primary">Call (828) 223-6060</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT US ============ -->
+  <section class="visit section-pad" id="visit">
+    <div class="container text-center">
+      <p class="section-label">Come See Us</p>
+      <h2 class="section-heading">Visit Wahoo's</h2>
+      <p class="section-sub">We're right on Main Street in downtown Forest City. Park, walk in, and start digging.</p>
+    </div>
+    <div class="container">
+      <div class="visit-grid">
+        <div>
+          <div class="visit-info-block">
+            <h3>&#128205; Address</h3>
+            <p>128 E Main St<br />Forest City, NC 28043</p>
+          </div>
+          <div class="visit-info-block">
+            <h3>&#128222; Phone</h3>
+            <a href="tel:8282236060">(828) 223-6060</a>
+          </div>
+          <div class="visit-info-block">
+            <h3>&#128339; Hours</h3>
+            <table class="visit-hours-table">
+              <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+              <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+              <tr class="closed"><td>Tuesday</td><td>Closed</td></tr>
+              <tr><td>Wednesday</td><td>2:15 PM - 6:00 PM</td></tr>
+              <tr><td>Thursday</td><td>2:15 PM - 6:00 PM</td></tr>
+              <tr><td>Friday</td><td>2:15 PM - 6:00 PM</td></tr>
+              <tr><td>Saturday</td><td>12:15 PM - 4:30 PM</td></tr>
+            </table>
+          </div>
+          <div class="visit-info-block">
+            <h3>&#128247; Follow Along</h3>
+            <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener" class="visit-insta-link">@wahoossports on Instagram &rarr;</a>
+          </div>
+        </div>
+        <div class="visit-map-card">
+          <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Store interior with sneakers and merchandise" class="visit-map-img" width="640" height="640" loading="lazy" />
+          <div class="visit-map-body">
+            <h3>Downtown Forest City</h3>
+            <p>128 E Main St, Forest City, NC 28043<br />Right in the heart of downtown. Street parking available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Wahoo<span class="accent">'s</span></div>
+      <p class="footer-tagline">"You never know what you will find at Wahoo's."</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#carry">What We Carry</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#bst">Buy/Sell/Trade</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <hr class="footer-divider" />
+      <p class="footer-credit">
+        &copy; 2026 Wahoo's Sports and Collectibles. 128 E Main St, Forest City, NC 28043.
+        <br />
+        Website designed by <a href="#">Studio O'Brien</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

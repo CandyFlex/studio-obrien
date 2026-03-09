@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slim's Bar & Grill - Vibe Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --dark-card: #1e1e1e;
+      --neon-red: #ff3333;
+      --neon-orange: #ff6b2b;
+      --neon-yellow: #ffc831;
+      --neon-green: #39ff14;
+      --amber: #d4860b;
+      --white: #f0f0f0;
+      --muted: #888888;
+      --smoke: #2a2a2a;
+      --border: #333333;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(17,17,17,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      letter-spacing: 0.1em; color: var(--neon-orange); margin-right: 12px;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 12px;
+      border: 2px solid #333; background: #1a1a1a; color: #f0f0f0;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--neon-red); background: var(--neon-red); color: #fff;
+      transform: scale(1.08);
+    }
+
+    .variant { display: none; padding-bottom: 80px; }
+    .variant.active { display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--neon-orange); margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white); margin-bottom: 20px; text-transform: uppercase; line-height: 1;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 580px; margin: 0 auto 48px; line-height: 1.7;
+    }
+
+    /* ===========================
+       V1 - Split Grid + Tiles (Original)
+       =========================== */
+    .v1-vibe { background: var(--black); position: relative; overflow: hidden; }
+    .v1-vibe::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255,107,43,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,51,51,0.04) 0%, transparent 50%);
+    }
+    .v1-vibe > * { position: relative; z-index: 1; }
+    .v1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .v1-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white); margin-bottom: 24px;
+    }
+    .v1-text h2 span { color: var(--neon-red); }
+    .v1-text p { font-size: 1.05rem; color: var(--muted); margin-bottom: 18px; line-height: 1.8; }
+    .v1-quote {
+      margin-top: 32px; padding: 24px 28px;
+      background: var(--dark-card); border-left: 3px solid var(--neon-orange);
+      border-radius: 0 12px 12px 0;
+    }
+    .v1-quote p { font-size: 1.1rem; color: var(--white); font-style: italic; margin: 0; }
+    .v1-quote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--neon-orange); font-style: normal; }
+    .v1-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .v1-tile {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 20px; text-align: center;
+      transition: transform 0.25s, border-color 0.3s;
+    }
+    .v1-tile:hover { transform: translateY(-3px); border-color: var(--neon-red); }
+    .v1-tile:nth-child(1) { border-top: 3px solid var(--neon-red); }
+    .v1-tile:nth-child(2) { border-top: 3px solid var(--neon-orange); }
+    .v1-tile:nth-child(3) { border-top: 3px solid var(--neon-yellow); }
+    .v1-tile:nth-child(4) { border-top: 3px solid var(--neon-green); }
+    .v1-tile-icon { font-size: 2.4rem; margin-bottom: 12px; display: block; }
+    .v1-tile h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--white); margin-bottom: 6px; }
+    .v1-tile p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+    /* ===========================
+       V2 - Full-Width Statement
+       =========================== */
+    .v2-vibe { background: var(--dark); position: relative; overflow: hidden; }
+    .v2-vibe::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(255,51,51,0.06), transparent);
+    }
+    .v2-vibe > * { position: relative; z-index: 1; }
+    .v2-big-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white); line-height: 0.95;
+      text-align: center; margin-bottom: 48px;
+    }
+    .v2-big-text span { color: var(--neon-red); }
+    .v2-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 48px; }
+    .v2-col p { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+    .v2-strip {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+      padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .v2-strip-item { text-align: center; }
+    .v2-strip-icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .v2-strip-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem;
+      letter-spacing: 0.1em; color: var(--muted);
+    }
+
+    /* ===========================
+       V3 - Dark Card Mosaic
+       =========================== */
+    .v3-vibe { background: #0d0d0d; }
+    .v3-mosaic { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+    .v3-big-card {
+      background: linear-gradient(135deg, #1a1a1a, #222);
+      border: 1px solid #2a2a2a; border-radius: 24px;
+      padding: 48px; position: relative; overflow: hidden;
+    }
+    .v3-big-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 0% 100%, rgba(255,51,51,0.06), transparent);
+    }
+    .v3-big-card > * { position: relative; z-index: 1; }
+    .v3-big-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white); margin-bottom: 20px;
+    }
+    .v3-big-card h2 span { color: var(--neon-red); }
+    .v3-big-card p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; max-width: 520px; }
+    .v3-side-stack { display: flex; flex-direction: column; gap: 24px; }
+    .v3-side-card {
+      background: #151515; border: 1px solid #2a2a2a;
+      border-radius: 16px; padding: 28px; text-align: center;
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+      transition: border-color 0.3s;
+    }
+    .v3-side-card:hover { border-color: var(--neon-orange); }
+    .v3-side-icon { font-size: 2.2rem; margin-bottom: 10px; }
+    .v3-side-card h4 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .v3-side-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+    .v3-bottom-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 24px; }
+    .v3-bottom-card {
+      background: #151515; border: 1px solid #2a2a2a;
+      border-radius: 16px; padding: 24px 16px; text-align: center;
+      transition: border-color 0.3s;
+    }
+    .v3-bottom-card:hover { border-color: var(--neon-red); }
+    .v3-bottom-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .v3-bottom-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; color: var(--white); }
+    .v3-bottom-card p { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ===========================
+       V4 - Quote-Forward / Testimonial Vibe
+       =========================== */
+    .v4-vibe {
+      background: var(--black); position: relative; overflow: hidden;
+    }
+    .v4-vibe::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle 1px at 30px 30px, rgba(255,200,49,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .v4-vibe > * { position: relative; z-index: 1; }
+    .v4-center { max-width: 800px; margin: 0 auto; text-align: center; }
+    .v4-center h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white); margin-bottom: 32px;
+    }
+    .v4-center h2 span { color: var(--neon-red); }
+    .v4-big-quote {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--neon-yellow);
+      margin-bottom: 40px;
+      transform: rotate(-1deg);
+      line-height: 1.4;
+    }
+    .v4-body p {
+      font-size: 1.1rem; color: var(--muted);
+      line-height: 1.8; margin-bottom: 18px; text-align: left;
+    }
+    .v4-features {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 20px; margin-top: 40px;
+    }
+    .v4-feat {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: left;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .v4-feat-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+    .v4-feat h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+    .v4-feat p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+    /* ===========================
+       V5 - Neon Sign Aesthetic
+       =========================== */
+    .v5-vibe {
+      background: #0a0a0a; position: relative; overflow: hidden;
+      min-height: 90vh; display: flex; align-items: center;
+    }
+    .v5-vibe::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255,51,51,0.06), transparent);
+    }
+    .v5-vibe > * { position: relative; z-index: 1; }
+    .v5-content { max-width: 1000px; margin: 0 auto; padding: 80px 24px; }
+    .v5-neon-sign {
+      text-align: center; margin-bottom: 48px;
+      padding: 48px 32px;
+      border: 1px solid #222;
+      border-radius: 24px;
+      background: #111;
+      position: relative;
+    }
+    .v5-neon-sign::before {
+      content: ''; position: absolute; inset: -4px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,51,51,0.2), rgba(255,107,43,0.2), rgba(255,200,49,0.2));
+      filter: blur(30px); z-index: -1;
+    }
+    .v5-neon-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--neon-red);
+      text-shadow: 0 0 40px rgba(255,51,51,0.5), 0 0 80px rgba(255,51,51,0.2);
+      line-height: 1;
+    }
+    .v5-neon-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.3em;
+      color: var(--neon-orange);
+      text-shadow: 0 0 20px rgba(255,107,43,0.4);
+      margin-top: 4px;
+    }
+    .v5-neon-tag {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 15px rgba(255,200,49,0.4);
+      margin-top: 12px;
+    }
+    .v5-desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .v5-desc-col p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .v5-icon-row {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 32px; border-top: 1px solid #222;
+    }
+    .v5-icon-item { text-align: center; }
+    .v5-icon-item-icon {
+      font-size: 2rem; display: block; margin-bottom: 8px;
+    }
+    .v5-icon-item-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem;
+      letter-spacing: 0.1em; color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .v1-grid, .v2-cols, .v3-mosaic, .v4-features, .v5-desc-grid { grid-template-columns: 1fr; }
+      .v3-bottom-row { grid-template-columns: 1fr 1fr; }
+      .v1-tiles { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .v1-tiles, .v3-bottom-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1 - Split Grid + Tiles -->
+  <div class="variant active" id="v1">
+    <section class="v1-vibe section-pad">
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-text">
+            <p class="section-label">The Vibe</p>
+            <h2>Not Fancy.<br /><span>Just Good.</span></h2>
+            <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it. No pretense, no dress code, no overpriced plates.</p>
+            <p>Sitting right on East Main Street in downtown Forest City, this is a neighborhood spot through and through. Come for lunch with coworkers, grab dinner with the family, or close out the night with cold ones and good company.</p>
+            <p>The kitchen runs hot. The beer runs cold. And the burgers run exactly the way you want them to.</p>
+            <div class="v1-quote">
+              <p>"A build-your-own burger shop, which also features wings, Philly steak or chicken, and great appetizers."</p>
+              <cite>Rutherford County Tourism</cite>
+            </div>
+          </div>
+          <div class="v1-tiles">
+            <div class="v1-tile"><span class="v1-tile-icon">&#128293;</span><h4>Grill Fired</h4><p>Cooked fresh to order, every single time</p></div>
+            <div class="v1-tile"><span class="v1-tile-icon">&#127866;</span><h4>Full Bar</h4><p>Cold beer, good drinks, nothing complicated</p></div>
+            <div class="v1-tile"><span class="v1-tile-icon">&#127963;&#65039;</span><h4>Main Street</h4><p>Heart of downtown Forest City</p></div>
+            <div class="v1-tile"><span class="v1-tile-icon">&#129309;</span><h4>Neighborhood</h4><p>Where locals eat, drink, and hang out</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V2 - Full-Width Statement -->
+  <div class="variant" id="v2">
+    <section class="v2-vibe section-pad">
+      <div class="container">
+        <p class="section-label text-center">The Vibe</p>
+        <h2 class="v2-big-text">Walk In. <span>Sit Down.</span><br />Eat Something <span>Good.</span></h2>
+        <div class="v2-cols">
+          <div class="v2-col">
+            <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it. No pretense, no dress code, no overpriced plates.</p>
+          </div>
+          <div class="v2-col">
+            <p>Right on East Main Street in downtown Forest City, this is a neighborhood spot through and through. Come for lunch, dinner, or late night. The kitchen runs hot and the beer runs cold.</p>
+          </div>
+          <div class="v2-col">
+            <p>Build-your-own burgers, crispy wings, loaded Philly steak and chicken, and great appetizers. Simple food made by people who take it seriously.</p>
+          </div>
+        </div>
+        <div class="v2-strip">
+          <div class="v2-strip-item"><span class="v2-strip-icon">&#128293;</span><span class="v2-strip-label">Grill Fired</span></div>
+          <div class="v2-strip-item"><span class="v2-strip-icon">&#127866;</span><span class="v2-strip-label">Full Bar</span></div>
+          <div class="v2-strip-item"><span class="v2-strip-icon">&#127963;&#65039;</span><span class="v2-strip-label">Main Street</span></div>
+          <div class="v2-strip-item"><span class="v2-strip-icon">&#129309;</span><span class="v2-strip-label">Neighborhood</span></div>
+          <div class="v2-strip-item"><span class="v2-strip-icon">&#128170;</span><span class="v2-strip-label">No Shortcuts</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V3 - Dark Card Mosaic -->
+  <div class="variant" id="v3">
+    <section class="v3-vibe section-pad">
+      <div class="container text-center">
+        <p class="section-label">The Vibe</p>
+        <h2 class="section-heading">What Makes Slim's Different</h2>
+        <p class="section-sub">No pretense. No dress code. Just good food and good company on Main Street.</p>
+      </div>
+      <div class="container">
+        <div class="v3-mosaic">
+          <div class="v3-big-card">
+            <h2>Not Fancy.<br /><span>Just Good.</span></h2>
+            <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it.</p>
+            <p>Right on East Main Street in downtown Forest City, this is a neighborhood spot through and through. Come for lunch with coworkers, grab dinner with the family, or close out the night with cold ones.</p>
+          </div>
+          <div class="v3-side-stack">
+            <div class="v3-side-card">
+              <div class="v3-side-icon">&#128293;</div>
+              <h4>Fresh Off the Grill</h4>
+              <p>Every burger cooked to order</p>
+            </div>
+            <div class="v3-side-card">
+              <div class="v3-side-icon">&#127866;</div>
+              <h4>Cold Beer on Tap</h4>
+              <p>Plus bottles and soft drinks</p>
+            </div>
+          </div>
+        </div>
+        <div class="v3-bottom-row">
+          <div class="v3-bottom-card"><div class="v3-bottom-icon">&#127963;&#65039;</div><h4>Downtown</h4><p>East Main St</p></div>
+          <div class="v3-bottom-card"><div class="v3-bottom-icon">&#129309;</div><h4>Local Spot</h4><p>Neighborhood favorite</p></div>
+          <div class="v3-bottom-card"><div class="v3-bottom-icon">&#127828;</div><h4>Build Your Own</h4><p>Your burger, your way</p></div>
+          <div class="v3-bottom-card"><div class="v3-bottom-icon">&#128170;</div><h4>No Shortcuts</h4><p>Simple food done well</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V4 - Quote-Forward -->
+  <div class="variant" id="v4">
+    <section class="v4-vibe section-pad">
+      <div class="container">
+        <div class="v4-center">
+          <p class="section-label">The Vibe</p>
+          <h2>Not Fancy.<br /><span>Just Good.</span></h2>
+          <div class="v4-big-quote">"The kitchen runs hot. The beer runs cold. And the burgers run exactly the way you want them to."</div>
+          <div class="v4-body">
+            <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it. No pretense, no dress code, no overpriced plates.</p>
+            <p>Sitting right on East Main Street in downtown Forest City, this is a neighborhood spot through and through. Come for lunch with coworkers, grab dinner with the family, or close out the night with cold ones and good company.</p>
+          </div>
+          <div class="v4-features">
+            <div class="v4-feat"><span class="v4-feat-icon">&#128293;</span><div><h4>Grill Fired</h4><p>Cooked fresh to order, every single time</p></div></div>
+            <div class="v4-feat"><span class="v4-feat-icon">&#127866;</span><div><h4>Full Bar</h4><p>Cold beer, good drinks, nothing complicated</p></div></div>
+            <div class="v4-feat"><span class="v4-feat-icon">&#127963;&#65039;</span><div><h4>Main Street</h4><p>Heart of downtown Forest City, NC</p></div></div>
+            <div class="v4-feat"><span class="v4-feat-icon">&#129309;</span><div><h4>Neighborhood Spot</h4><p>Where locals eat, drink, and hang out</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V5 - Neon Sign Aesthetic -->
+  <div class="variant" id="v5">
+    <section class="v5-vibe section-pad">
+      <div class="v5-content">
+        <div class="v5-neon-sign">
+          <div class="v5-neon-name">SLIM'S</div>
+          <div class="v5-neon-sub">Bar & Grill</div>
+          <div class="v5-neon-tag">est. Forest City, NC</div>
+        </div>
+        <div class="container text-center">
+          <p class="section-label">The Vibe</p>
+          <h2 class="section-heading">Not Fancy. Just Good.</h2>
+        </div>
+        <div class="v5-desc-grid" style="max-width: 900px; margin: 0 auto;">
+          <div class="v5-desc-col">
+            <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it. No pretense, no dress code, no overpriced plates.</p>
+            <p>The kitchen runs hot. The beer runs cold. And the burgers run exactly the way you want them to.</p>
+          </div>
+          <div class="v5-desc-col">
+            <p>Sitting right on East Main Street in downtown Forest City, this is a neighborhood spot through and through.</p>
+            <p>Come for lunch with coworkers, grab dinner with the family, or close out the night with cold ones and good company. Simple food, good times.</p>
+          </div>
+        </div>
+        <div class="v5-icon-row">
+          <div class="v5-icon-item"><span class="v5-icon-item-icon">&#128293;</span><span class="v5-icon-item-label">Grill Fired</span></div>
+          <div class="v5-icon-item"><span class="v5-icon-item-icon">&#127866;</span><span class="v5-icon-item-label">Full Bar</span></div>
+          <div class="v5-icon-item"><span class="v5-icon-item-icon">&#127963;&#65039;</span><span class="v5-icon-item-label">Main Street</span></div>
+          <div class="v5-icon-item"><span class="v5-icon-item-icon">&#129309;</span><span class="v5-icon-item-label">Neighborhood</span></div>
+          <div class="v5-icon-item"><span class="v5-icon-item-icon">&#127828;</span><span class="v5-icon-item-label">Build Your Own</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Vibe Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

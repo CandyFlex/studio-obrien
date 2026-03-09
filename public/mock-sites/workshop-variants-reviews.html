@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkShop Vintage Market - Reviews Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #faf6ef; color: #3a2e25; overflow-x: hidden; padding-bottom: 80px; }
+
+    :root {
+      --cream: #faf6ef;
+      --brown: #5c4033;
+      --sage: #8a9a7b;
+      --gold: #c4a35a;
+      --terracotta: #c17c5e;
+      --linen: #f0ead6;
+      --dark: #3a2e25;
+    }
+
+    .variant { display: none; }
+    #v1 { display: block; }
+
+    /* ================================================
+       PICKER BAR
+       ================================================ */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #3a2e25; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar .bar-label {
+      color: #c4a35a; font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 700; margin-right: 16px;
+    }
+    .pick-btn {
+      width: 48px; height: 40px;
+      border: 2px solid rgba(196,163,90,0.3); background: transparent;
+      color: #faf6ef; font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .pick-btn:hover { border-color: #c4a35a; background: rgba(196,163,90,0.15); }
+    .pick-btn.active { background: #c17c5e; color: #fff; border-color: #c17c5e; }
+
+    /* ================================================
+       V1: 3-COLUMN CARD GRID
+       Cream bg, gold accents, decorative quote marks
+       ================================================ */
+    .v1-section {
+      background: var(--cream);
+      padding: 100px 40px 120px;
+      min-height: 100vh;
+    }
+    .v1-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .v1-label {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .v1-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .v1-divider {
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+      margin: 24px auto 0;
+      border-radius: 2px;
+    }
+    .v1-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .v1-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 32px 32px;
+      position: relative;
+      border: 1px solid rgba(196,163,90,0.15);
+      box-shadow: 0 4px 24px rgba(92,64,51,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .v1-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(92,64,51,0.12);
+    }
+    .v1-card::before {
+      content: "\201C";
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .v1-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--brown);
+      position: relative;
+      z-index: 1;
+    }
+    .v1-card .v1-stars {
+      margin-top: 20px;
+      display: flex;
+      gap: 4px;
+    }
+    .v1-star {
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    @media (max-width: 1200px) {
+      .v1-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
+    }
+    @media (max-width: 768px) {
+      .v1-section { padding: 72px 24px 100px; }
+      .v1-heading { font-size: 36px; }
+      .v1-grid { grid-template-columns: 1fr; max-width: 540px; }
+    }
+    @media (max-width: 560px) {
+      .v1-heading { font-size: 30px; }
+      .v1-card { padding: 32px 24px 24px; }
+    }
+
+    /* ================================================
+       V2: FEATURED QUOTE SPOTLIGHT
+       Sage background, one big quote + smaller ones below
+       ================================================ */
+    .v2-section {
+      background: var(--sage);
+      padding: 100px 40px 120px;
+      min-height: 100vh;
+    }
+    .v2-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .v2-label {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--linen);
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+    .v2-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .v2-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .v2-featured {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 64px 56px;
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .v2-featured::before,
+    .v2-featured::after {
+      font-family: 'Playfair Display', serif;
+      font-size: 180px;
+      color: rgba(255,255,255,0.08);
+      position: absolute;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .v2-featured::before {
+      content: "\201C";
+      top: -20px;
+      left: 24px;
+    }
+    .v2-featured::after {
+      content: "\201D";
+      bottom: -60px;
+      right: 24px;
+    }
+    .v2-featured p {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.5;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .v2-featured .v2-attr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      color: var(--linen);
+      opacity: 0.7;
+      margin-top: 24px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .v2-small-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .v2-small-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: background 0.3s ease;
+    }
+    .v2-small-card:hover {
+      background: rgba(255,255,255,0.18);
+    }
+    .v2-small-card .v2-quote-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--linen);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .v2-small-card p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.9);
+    }
+    .v2-small-card .v2-small-stars {
+      margin-top: 16px;
+      display: flex;
+      gap: 3px;
+    }
+    .v2-small-star {
+      width: 12px;
+      height: 12px;
+      background: var(--linen);
+      opacity: 0.6;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    @media (max-width: 1200px) {
+      .v2-small-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .v2-featured { padding: 48px 36px; }
+      .v2-featured p { font-size: 24px; }
+    }
+    @media (max-width: 768px) {
+      .v2-section { padding: 72px 24px 100px; }
+      .v2-heading { font-size: 36px; }
+      .v2-featured { padding: 40px 28px; }
+      .v2-featured p { font-size: 22px; }
+      .v2-small-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      .v2-heading { font-size: 30px; }
+      .v2-featured p { font-size: 20px; }
+      .v2-featured::before, .v2-featured::after { font-size: 100px; }
+    }
+
+    /* ================================================
+       V3: DARK ELEGANT MASONRY
+       Dark brown bg, gold oversized quotes, serif typography
+       ================================================ */
+    .v3-section {
+      background: var(--dark);
+      padding: 100px 40px 120px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .v3-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(196,163,90,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(193,124,94,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v3-header {
+      text-align: center;
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+    .v3-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .v3-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+    .v3-heading-rule {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px auto 0;
+    }
+    .v3-masonry {
+      max-width: 1160px;
+      margin: 0 auto;
+      columns: 3;
+      column-gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .v3-item {
+      break-inside: avoid;
+      margin-bottom: 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(196,163,90,0.12);
+      border-radius: 8px;
+      padding: 36px 30px;
+      position: relative;
+      transition: border-color 0.3s ease;
+    }
+    .v3-item:hover {
+      border-color: rgba(196,163,90,0.35);
+    }
+    .v3-item .v3-big-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 0.8;
+      margin-bottom: 8px;
+    }
+    .v3-item p {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.7;
+      color: rgba(250,246,239,0.85);
+    }
+    .v3-item .v3-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.3;
+      margin-top: 20px;
+    }
+    .v3-item:nth-child(2) { padding: 48px 30px; }
+    .v3-item:nth-child(4) { padding: 28px 30px; }
+    .v3-item:nth-child(5) { padding: 44px 30px; }
+
+    @media (max-width: 1200px) {
+      .v3-masonry { columns: 2; max-width: 800px; }
+    }
+    @media (max-width: 768px) {
+      .v3-section { padding: 72px 24px 100px; }
+      .v3-heading { font-size: 38px; }
+      .v3-masonry { columns: 1; max-width: 540px; }
+    }
+    @media (max-width: 560px) {
+      .v3-heading { font-size: 30px; }
+      .v3-item { padding: 28px 22px; }
+      .v3-item .v3-big-quote { font-size: 52px; }
+    }
+
+    /* ================================================
+       V4: HORIZONTAL STACKED, ALTERNATING L/R
+       Linen texture bg, alternating alignment
+       ================================================ */
+    .v4-section {
+      background: var(--linen);
+      padding: 100px 40px 120px;
+      min-height: 100vh;
+      position: relative;
+    }
+    .v4-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(92,64,51,0.03) 39px,
+          rgba(92,64,51,0.03) 40px
+        );
+      pointer-events: none;
+    }
+    .v4-header {
+      text-align: center;
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+    .v4-label {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+    .v4-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .v4-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .v4-ornament span {
+      width: 40px;
+      height: 1px;
+      background: var(--brown);
+      opacity: 0.3;
+    }
+    .v4-ornament .v4-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--terracotta);
+      transform: rotate(45deg);
+    }
+    .v4-stack {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .v4-card {
+      display: flex;
+      align-items: stretch;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(92,64,51,0.06);
+      border: 1px solid rgba(92,64,51,0.08);
+      transition: box-shadow 0.3s ease;
+    }
+    .v4-card:hover {
+      box-shadow: 0 8px 32px rgba(92,64,51,0.12);
+    }
+    .v4-card:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .v4-card-accent {
+      width: 6px;
+      flex-shrink: 0;
+    }
+    .v4-card:nth-child(1) .v4-card-accent { background: var(--gold); }
+    .v4-card:nth-child(2) .v4-card-accent { background: var(--terracotta); }
+    .v4-card:nth-child(3) .v4-card-accent { background: var(--sage); }
+    .v4-card:nth-child(4) .v4-card-accent { background: var(--gold); }
+    .v4-card:nth-child(5) .v4-card-accent { background: var(--terracotta); }
+    .v4-card:nth-child(6) .v4-card-accent { background: var(--sage); }
+    .v4-card:nth-child(7) .v4-card-accent { background: var(--gold); }
+    .v4-card:nth-child(8) .v4-card-accent { background: var(--terracotta); }
+    .v4-card-body {
+      padding: 32px 36px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .v4-card:nth-child(even) .v4-card-body {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    .v4-card-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      color: var(--terracotta);
+      opacity: 0.2;
+      line-height: 0.8;
+      flex-shrink: 0;
+    }
+    .v4-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--brown);
+    }
+    .v4-card .v4-card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--linen);
+      flex-shrink: 0;
+      width: 56px;
+      text-align: center;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .v4-card-body { padding: 24px 28px; }
+      .v4-card .v4-card-number { display: none; }
+    }
+    @media (max-width: 768px) {
+      .v4-section { padding: 72px 24px 100px; }
+      .v4-heading { font-size: 36px; }
+      .v4-card:nth-child(even) { flex-direction: row-reverse; }
+    }
+    @media (max-width: 560px) {
+      .v4-heading { font-size: 30px; }
+      .v4-card-body { flex-direction: column !important; text-align: left !important; gap: 12px; padding: 24px 20px; }
+      .v4-card-quote-mark { font-size: 44px; }
+    }
+
+    /* ================================================
+       V5: MAGAZINE EDITORIAL
+       Full-width pull-quote, then 2x3 grid, terracotta accents
+       ================================================ */
+    .v5-section {
+      background: var(--cream);
+      padding: 100px 40px 120px;
+      min-height: 100vh;
+    }
+    .v5-header {
+      max-width: 1160px;
+      margin: 0 auto 72px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      border-bottom: 2px solid var(--dark);
+      padding-bottom: 24px;
+    }
+    .v5-header-left {}
+    .v5-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .v5-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.05;
+    }
+    .v5-header-right {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: var(--terracotta);
+      white-space: nowrap;
+      padding-bottom: 4px;
+    }
+    .v5-pull-quote {
+      max-width: 1160px;
+      margin: 0 auto 64px;
+      padding: 56px 0;
+      border-top: 1px solid rgba(58,46,37,0.1);
+      border-bottom: 1px solid rgba(58,46,37,0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .v5-pull-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 140px;
+      color: var(--terracotta);
+      line-height: 0.75;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .v5-pull-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--dark);
+    }
+    .v5-pull-attr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    .v5-grid {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .v5-cell {
+      padding: 36px 32px;
+      border: 1px solid rgba(58,46,37,0.08);
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .v5-cell:hover {
+      background: rgba(193,124,94,0.04);
+    }
+    .v5-cell .v5-cell-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--terracotta);
+      opacity: 0.12;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      line-height: 1;
+    }
+    .v5-cell p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--brown);
+      position: relative;
+      z-index: 1;
+    }
+    .v5-cell .v5-cell-rule {
+      width: 24px;
+      height: 2px;
+      background: var(--terracotta);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 1200px) {
+      .v5-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .v5-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .v5-pull-text { font-size: 26px; }
+      .v5-pull-mark { font-size: 100px; }
+    }
+    @media (max-width: 768px) {
+      .v5-section { padding: 72px 24px 100px; }
+      .v5-heading { font-size: 40px; }
+      .v5-pull-quote { flex-direction: column; gap: 16px; padding: 40px 0; }
+      .v5-pull-mark { font-size: 80px; line-height: 0.6; }
+      .v5-pull-text { font-size: 24px; }
+      .v5-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      .v5-heading { font-size: 32px; }
+      .v5-pull-text { font-size: 21px; }
+      .v5-cell { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       VARIANT 1: 3-COLUMN CARD GRID
+       Cream bg, gold accents, decorative quote marks
+       ============================================ -->
+  <section class="variant" id="v1">
+    <div class="v1-section">
+      <div class="v1-header">
+        <div class="v1-label">What People Say</div>
+        <h2 class="v1-heading">Don't Take Our Word for It</h2>
+        <div class="v1-divider"></div>
+      </div>
+      <div class="v1-grid">
+        <div class="v1-card">
+          <p>All I can say is WOW this place is out of this world, a certain must when in Shelby!</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+        <div class="v1-card">
+          <p>Wonderful shop! Good prices! Will definitely be a regular stop!</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+        <div class="v1-card">
+          <p>Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+        <div class="v1-card">
+          <p>A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big.</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+        <div class="v1-card">
+          <p>Fun vintage market with very unique and interesting finds.</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+        <div class="v1-card">
+          <p>Fun place to shop with unique furnishings, antiques and decor at reasonable pricing and excellent customer service.</p>
+          <div class="v1-stars"><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div><div class="v1-star"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       VARIANT 2: FEATURED QUOTE SPOTLIGHT
+       Sage bg, one large featured quote, smaller grid below
+       ============================================ -->
+  <section class="variant" id="v2">
+    <div class="v2-section">
+      <div class="v2-header">
+        <div class="v2-label">What People Say</div>
+        <h2 class="v2-heading">Don't Take Our Word for It</h2>
+      </div>
+      <div class="v2-container">
+        <div class="v2-featured">
+          <p>A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big.</p>
+          <div class="v2-attr">Verified Visitor</div>
+        </div>
+        <div class="v2-small-grid">
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>All I can say is WOW this place is out of this world, a certain must when in Shelby!</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>Wonderful shop! Good prices! Will definitely be a regular stop!</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>Always something new, great prices, super friendly staff.</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>Every person I interacted with was kind and helpful.</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+          <div class="v2-small-card">
+            <div class="v2-quote-icon">"</div>
+            <p>Fun vintage market with very unique and interesting finds.</p>
+            <div class="v2-small-stars"><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div><div class="v2-small-star"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       VARIANT 3: DARK ELEGANT MASONRY
+       Dark brown bg, gold oversized quotes, serif, masonry
+       ============================================ -->
+  <section class="variant" id="v3">
+    <div class="v3-section">
+      <div class="v3-header">
+        <div class="v3-label">What People Say</div>
+        <h2 class="v3-heading">Don't Take Our Word for It</h2>
+        <div class="v3-heading-rule"></div>
+      </div>
+      <div class="v3-masonry">
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>All I can say is WOW this place is out of this world, a certain must when in Shelby!</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Very unique, people are amazing.</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Wonderful shop! Good prices! Will definitely be a regular stop!</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big.</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Fun place to shop with unique furnishings, antiques and decor at reasonable pricing and excellent customer service.</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Always something new, great prices, super friendly staff.</p>
+          <div class="v3-rule"></div>
+        </div>
+        <div class="v3-item">
+          <div class="v3-big-quote">"</div>
+          <p>Local artist and antique booths with a bit of something for everyone.</p>
+          <div class="v3-rule"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       VARIANT 4: HORIZONTAL STACKED, ALTERNATING L/R
+       Linen texture bg, alternating alignment
+       ============================================ -->
+  <section class="variant" id="v4">
+    <div class="v4-section">
+      <div class="v4-header">
+        <div class="v4-label">What People Say</div>
+        <h2 class="v4-heading">Don't Take Our Word for It</h2>
+        <div class="v4-ornament">
+          <span></span>
+          <div class="v4-diamond"></div>
+          <span></span>
+        </div>
+      </div>
+      <div class="v4-stack">
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>All I can say is WOW this place is out of this world, a certain must when in Shelby!</p>
+            <div class="v4-card-number">01</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!</p>
+            <div class="v4-card-number">02</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big.</p>
+            <div class="v4-card-number">03</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>Wonderful shop! Good prices! Will definitely be a regular stop!</p>
+            <div class="v4-card-number">04</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>Fun vintage market with very unique and interesting finds.</p>
+            <div class="v4-card-number">05</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>Every person I interacted with was kind and helpful.</p>
+            <div class="v4-card-number">06</div>
+          </div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-accent"></div>
+          <div class="v4-card-body">
+            <div class="v4-card-quote-mark">"</div>
+            <p>Fun place to shop with unique furnishings, antiques and decor at reasonable pricing and excellent customer service.</p>
+            <div class="v4-card-number">07</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       VARIANT 5: MAGAZINE EDITORIAL
+       Full-width pull-quote, then 2x3 grid, terracotta accents
+       ============================================ -->
+  <section class="variant" id="v5">
+    <div class="v5-section">
+      <div class="v5-header">
+        <div class="v5-header-left">
+          <div class="v5-label">What People Say</div>
+          <h2 class="v5-heading">Don't Take<br>Our Word for It</h2>
+        </div>
+        <div class="v5-header-right">10 real reviews from real visitors</div>
+      </div>
+      <div class="v5-pull-quote">
+        <div class="v5-pull-mark">"</div>
+        <div>
+          <div class="v5-pull-text">A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big.</div>
+          <div class="v5-pull-attr">Featured Review</div>
+        </div>
+      </div>
+      <div class="v5-grid">
+        <div class="v5-cell">
+          <span class="v5-cell-num">01</span>
+          <p>All I can say is WOW this place is out of this world, a certain must when in Shelby!</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+        <div class="v5-cell">
+          <span class="v5-cell-num">02</span>
+          <p>Wonderful shop! Good prices! Will definitely be a regular stop!</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+        <div class="v5-cell">
+          <span class="v5-cell-num">03</span>
+          <p>Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+        <div class="v5-cell">
+          <span class="v5-cell-num">04</span>
+          <p>Very unique, people are amazing.</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+        <div class="v5-cell">
+          <span class="v5-cell-num">05</span>
+          <p>Fun vintage market with very unique and interesting finds.</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+        <div class="v5-cell">
+          <span class="v5-cell-num">06</span>
+          <p>Always something new, great prices, super friendly staff.</p>
+          <div class="v5-cell-rule"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#3a2e25;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;">
+    <span style="color:#c4a35a;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;margin-right:16px;">Reviews Variants</span>
+    <button onclick="show(1)" class="pick-btn active">1</button>
+    <button onclick="show(2)" class="pick-btn">2</button>
+    <button onclick="show(3)" class="pick-btn">3</button>
+    <button onclick="show(4)" class="pick-btn">4</button>
+    <button onclick="show(5)" class="pick-btn">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.style.display = 'none');
+      document.getElementById('v' + n).style.display = 'block';
+      document.querySelectorAll('.pick-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

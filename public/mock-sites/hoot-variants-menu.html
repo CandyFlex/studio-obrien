@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoot Nannie - Menu Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #1a1410; color: #FFF8F0; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --brick: #8B2500; --brick-dark: #6B1C00; --amber: #D4A017; --amber-light: #E8C547;
+      --charcoal: #1a1410; --charcoal-light: #2a2218; --cream: #FFF8F0; --cream-dark: #F5EDE0;
+      --wood: #3E2723; --wood-light: #5D4037;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,20,16,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); font-weight: 700; margin-right: 1rem; }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,23,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--amber); background: rgba(212,160,23,0.1); }
+    .picker-btn.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+
+    .variant { display: none; padding-bottom: 5rem; }
+    .variant.active { display: block; }
+
+    .section-label { font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 0.75rem; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--cream); margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--cream-dark); opacity: 0.8; max-width: 600px; line-height: 1.7; }
+
+    /* ===== V1: Horizontal Cards with Image ===== */
+    .v1-section { padding: 5rem 2rem; }
+    .v1-container { max-width: 1200px; margin: 0 auto; }
+    .v1-header { text-align: center; margin-bottom: 4rem; }
+    .v1-header .section-sub { margin: 0 auto; }
+    .v1-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+    .v1-card {
+      display: flex; gap: 1.25rem; padding: 1.5rem; background: var(--charcoal-light);
+      border-radius: 8px; border: 1px solid rgba(212,160,23,0.08); transition: border-color 0.3s, transform 0.3s;
+    }
+    .v1-card:hover { border-color: rgba(212,160,23,0.25); transform: translateY(-2px); }
+    .v1-card img { width: 110px; height: 110px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+    .v1-card-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); background: rgba(212,160,23,0.1); padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: 0.4rem; }
+    .v1-card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .v1-card-desc { font-size: 0.88rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.6; }
+
+    /* ===== V2: Large Feature Cards ===== */
+    .v2-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v2-container { max-width: 1100px; margin: 0 auto; }
+    .v2-header { text-align: center; margin-bottom: 4rem; }
+    .v2-header .section-sub { margin: 0 auto; }
+    .v2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .v2-card {
+      position: relative; border-radius: 12px; overflow: hidden; min-height: 320px;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
+    }
+    .v2-card img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .v2-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,20,16,0.92) 0%, rgba(26,20,16,0.3) 60%, transparent 100%); z-index: 1; }
+    .v2-card-content { position: relative; z-index: 2; }
+    .v2-card-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); margin-bottom: 0.4rem; }
+    .v2-card-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .v2-card-desc { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.6; }
+    .v2-card.featured { grid-column: span 2; min-height: 380px; }
+
+    /* ===== V3: Numbered List Layout ===== */
+    .v3-section { padding: 5rem 2rem; }
+    .v3-container { max-width: 900px; margin: 0 auto; }
+    .v3-header { text-align: center; margin-bottom: 4rem; }
+    .v3-header .section-sub { margin: 0 auto; }
+    .v3-items { display: flex; flex-direction: column; gap: 0; }
+    .v3-item {
+      display: grid; grid-template-columns: 60px 140px 1fr; gap: 1.5rem; align-items: center;
+      padding: 1.75rem 0; border-bottom: 1px solid rgba(212,160,23,0.08);
+    }
+    .v3-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--amber); opacity: 0.3; text-align: center; }
+    .v3-item img { width: 140px; height: 100px; object-fit: cover; border-radius: 6px; }
+    .v3-item-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 0.25rem; }
+    .v3-item-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .v3-item-desc { font-size: 0.88rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.5; }
+
+    /* ===== V4: Tab-based categories ===== */
+    .v4-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v4-container { max-width: 1100px; margin: 0 auto; }
+    .v4-header { text-align: center; margin-bottom: 2rem; }
+    .v4-header .section-sub { margin: 0 auto; }
+    .v4-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .v4-tab {
+      padding: 0.5rem 1.25rem; background: transparent; border: 1px solid rgba(212,160,23,0.2);
+      border-radius: 100px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--cream-dark); cursor: pointer; transition: all 0.2s;
+    }
+    .v4-tab:hover { border-color: var(--amber); }
+    .v4-tab.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+    .v4-panel { display: none; }
+    .v4-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .v4-card { border-radius: 10px; overflow: hidden; background: var(--charcoal-light); border: 1px solid rgba(212,160,23,0.06); transition: transform 0.3s; }
+    .v4-card:hover { transform: translateY(-3px); }
+    .v4-card img { width: 100%; height: 200px; object-fit: cover; }
+    .v4-card-body { padding: 1.25rem; }
+    .v4-card-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .v4-card-desc { font-size: 0.85rem; color: var(--cream-dark); opacity: 0.7; line-height: 1.5; }
+
+    /* ===== V5: Magazine / Editorial ===== */
+    .v5-section { padding: 5rem 2rem; }
+    .v5-container { max-width: 1200px; margin: 0 auto; }
+    .v5-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; border-bottom: 1px solid rgba(212,160,23,0.1); padding-bottom: 2rem; }
+    .v5-header-right { text-align: right; }
+    .v5-header-right p { font-size: 0.95rem; color: var(--cream-dark); opacity: 0.7; max-width: 350px; line-height: 1.6; }
+    .v5-feature { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-bottom: 3rem; align-items: center; }
+    .v5-feature img { width: 100%; height: 400px; object-fit: cover; border-radius: 10px; }
+    .v5-feature-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); margin-bottom: 0.5rem; }
+    .v5-feature-name { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; margin-bottom: 0.75rem; line-height: 1.1; }
+    .v5-feature-desc { font-size: 1rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.8; margin-bottom: 1.5rem; }
+    .v5-bottom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .v5-mini { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; }
+    .v5-mini img { width: 100%; height: 100%; object-fit: cover; }
+    .v5-mini::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,20,16,0.85) 0%, transparent 60%); }
+    .v5-mini-content { position: absolute; bottom: 1rem; left: 1rem; right: 1rem; z-index: 1; }
+    .v5-mini-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; }
+    .v5-mini-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+
+    @media (max-width: 768px) {
+      .v2-grid { grid-template-columns: 1fr; }
+      .v2-card.featured { grid-column: span 1; }
+      .v3-item { grid-template-columns: 40px 1fr; }
+      .v3-item img { display: none; }
+      .v4-panel.active { grid-template-columns: 1fr; }
+      .v5-feature { grid-template-columns: 1fr; }
+      .v5-bottom-grid { grid-template-columns: 1fr 1fr; }
+      .v5-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- V1: Horizontal Cards -->
+<div class="variant v1-section active" id="v1">
+  <div class="v1-container">
+    <div class="v1-header">
+      <div class="section-label">What We're Known For</div>
+      <h2 class="section-heading">The Menu Highlights</h2>
+      <p class="section-sub">Every plate is built from scratch. Our meats come from Honey Hog Farm and Beam Farms right here in Rutherford County.</p>
+    </div>
+    <div class="v1-grid">
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">Fan Favorite</div>
+          <div class="v1-card-name">Smoked Wings</div>
+          <p class="v1-card-desc">Smoked low and slow, then fried to crispy perfection. House-made sauces. Big, bold, and worth the trip.</p>
+        </div>
+      </div>
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">Farm Raised</div>
+          <div class="v1-card-name">Steaks</div>
+          <p class="v1-card-desc">From Beam Farms in Rutherford County. Petite sirloin, ribeye, prime rib when available.</p>
+        </div>
+      </div>
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">Signature</div>
+          <div class="v1-card-name">Dirty Sanchez Burger</div>
+          <p class="v1-card-desc">Pulled pork BBQ piled on a handmade beef patty with crispy onion rings.</p>
+        </div>
+      </div>
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/chicken-tenders.webp" alt="Tenders" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">150 lbs/week</div>
+          <div class="v1-card-name">Legendary Fried Cheese Curds</div>
+          <p class="v1-card-desc">Fresh curds from Brown Creek Creamery, hand-breaded and fried to order.</p>
+        </div>
+      </div>
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">Whole Hog</div>
+          <div class="v1-card-name">Pulled Pork BBQ</div>
+          <p class="v1-card-desc">Whole hog, smoked on site. Served with kettle chips and Texas toast.</p>
+        </div>
+      </div>
+      <div class="v1-card">
+        <img src="/mock-sites/assets/hoot-nannie/chicken-sandwich.webp" alt="Cuban" loading="lazy" />
+        <div>
+          <div class="v1-card-tag">Best in Town</div>
+          <div class="v1-card-name">Smokehouse Cuban</div>
+          <p class="v1-card-desc">Smoked ham, Swiss, mustard, homemade pork loin, and dill pickles. Pressed and golden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V2: Large Feature Cards -->
+<div class="variant v2-section" id="v2">
+  <div class="v2-container">
+    <div class="v2-header">
+      <div class="section-label">What We're Known For</div>
+      <h2 class="section-heading">The Menu Highlights</h2>
+      <p class="section-sub">Every plate is built from scratch. Our meats come from Honey Hog Farm and Beam Farms right here in Rutherford County.</p>
+    </div>
+    <div class="v2-grid">
+      <div class="v2-card featured">
+        <img class="bg" src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy" />
+        <div class="v2-card-content">
+          <div class="v2-card-tag">Fan Favorite</div>
+          <div class="v2-card-name">Smoked Wings</div>
+          <div class="v2-card-desc">Smoked low and slow, then fried to crispy perfection. House-made sauces. Thursday night specials are fifty cents each. The line starts early.</div>
+        </div>
+      </div>
+      <div class="v2-card">
+        <img class="bg" src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak" loading="lazy" />
+        <div class="v2-card-content">
+          <div class="v2-card-tag">Farm Raised</div>
+          <div class="v2-card-name">Steaks</div>
+          <div class="v2-card-desc">Beam Farms, Rutherford County. Grilled over open flame.</div>
+        </div>
+      </div>
+      <div class="v2-card">
+        <img class="bg" src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger" loading="lazy" />
+        <div class="v2-card-content">
+          <div class="v2-card-tag">Signature</div>
+          <div class="v2-card-name">Dirty Sanchez Burger</div>
+          <div class="v2-card-desc">Pulled pork BBQ, onion rings, handmade beef patty.</div>
+        </div>
+      </div>
+      <div class="v2-card">
+        <img class="bg" src="/mock-sites/assets/hoot-nannie/chicken-tenders.webp" alt="Cheese curds" loading="lazy" />
+        <div class="v2-card-content">
+          <div class="v2-card-tag">150 lbs/week</div>
+          <div class="v2-card-name">Legendary Cheese Curds</div>
+          <div class="v2-card-desc">Brown Creek Creamery. Hand-breaded. Fried to order.</div>
+        </div>
+      </div>
+      <div class="v2-card">
+        <img class="bg" src="/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork" loading="lazy" />
+        <div class="v2-card-content">
+          <div class="v2-card-tag">Whole Hog</div>
+          <div class="v2-card-name">Pulled Pork BBQ</div>
+          <div class="v2-card-desc">Smoked on site. Johnny Ray's signature sauces.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V3: Numbered List -->
+<div class="variant v3-section" id="v3">
+  <div class="v3-container">
+    <div class="v3-header">
+      <div class="section-label">What We're Known For</div>
+      <h2 class="section-heading">The Menu Highlights</h2>
+      <p class="section-sub">Every plate is built from scratch. Our meats come from Honey Hog Farm and Beam Farms right here in Rutherford County.</p>
+    </div>
+    <div class="v3-items">
+      <div class="v3-item">
+        <div class="v3-num">01</div>
+        <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Wings" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">Fan Favorite</div>
+          <div class="v3-item-name">Smoked Wings</div>
+          <p class="v3-item-desc">Smoked low and slow, then fried to crispy perfection. House-made sauces. Big, bold, and worth the trip.</p>
+        </div>
+      </div>
+      <div class="v3-item">
+        <div class="v3-num">02</div>
+        <img src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">Farm Raised</div>
+          <div class="v3-item-name">Farm-Raised Steaks</div>
+          <p class="v3-item-desc">From Beam Farms in Rutherford County. Petite sirloin, ribeye, prime rib when available. Grilled over open flame.</p>
+        </div>
+      </div>
+      <div class="v3-item">
+        <div class="v3-num">03</div>
+        <img src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">Signature</div>
+          <div class="v3-item-name">Dirty Sanchez Burger</div>
+          <p class="v3-item-desc">Pulled pork BBQ piled on a handmade beef patty with crispy onion rings. Messy in the best possible way.</p>
+        </div>
+      </div>
+      <div class="v3-item">
+        <div class="v3-num">04</div>
+        <img src="/mock-sites/assets/hoot-nannie/chicken-tenders.webp" alt="Curds" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">150 lbs/week</div>
+          <div class="v3-item-name">Legendary Fried Cheese Curds</div>
+          <p class="v3-item-desc">Fresh curds from Brown Creek Creamery, hand-breaded and fried to order. Served with house ranch and marinara.</p>
+        </div>
+      </div>
+      <div class="v3-item">
+        <div class="v3-num">05</div>
+        <img src="/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" alt="BBQ" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">Whole Hog</div>
+          <div class="v3-item-name">Pulled Pork BBQ</div>
+          <p class="v3-item-desc">Whole hog, smoked on site. Served with kettle chips and Texas toast. Johnny Ray's signature sauces on the side.</p>
+        </div>
+      </div>
+      <div class="v3-item">
+        <div class="v3-num">06</div>
+        <img src="/mock-sites/assets/hoot-nannie/chicken-sandwich.webp" alt="Cuban" loading="lazy" />
+        <div>
+          <div class="v3-item-tag">Best in Town</div>
+          <div class="v3-item-name">Smokehouse Cuban</div>
+          <p class="v3-item-desc">Smoked ham, Swiss, mustard, homemade pork loin, and dill pickles. Pressed on a toasted bun until golden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V4: Tab-based Categories -->
+<div class="variant v4-section" id="v4">
+  <div class="v4-container">
+    <div class="v4-header">
+      <div class="section-label">What We're Known For</div>
+      <h2 class="section-heading">The Menu Highlights</h2>
+      <p class="section-sub">Every plate is built from scratch. Our meats come from Honey Hog Farm and Beam Farms right here in Rutherford County.</p>
+    </div>
+    <div class="v4-tabs">
+      <button class="v4-tab active" data-panel="smoke">Smoke &amp; Grill</button>
+      <button class="v4-tab" data-panel="burgers">Burgers</button>
+      <button class="v4-tab" data-panel="plates">Southern Plates</button>
+    </div>
+    <div class="v4-panel active" id="panel-smoke">
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Wings" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Smoked Wings</div>
+          <p class="v4-card-desc">Smoked then fried. House-made sauces. Thursday nights, fifty cents each.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Farm-Raised Steaks</div>
+          <p class="v4-card-desc">Beam Farms, Rutherford County. Grilled over open flame.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" alt="BBQ" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Pulled Pork BBQ</div>
+          <p class="v4-card-desc">Whole hog, smoked on site. Kettle chips and Texas toast.</p>
+        </div>
+      </div>
+    </div>
+    <div class="v4-panel" id="panel-burgers">
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Dirty Sanchez Burger</div>
+          <p class="v4-card-desc">Pulled pork BBQ, onion rings, handmade beef patty. Messy in the best way.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/bbq-sandwich-mac.webp" alt="Sandwich" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Smashed Double Bacon</div>
+          <p class="v4-card-desc">Two handmade patties, double bacon, double cheese. No holding back.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/chicken-sandwich.webp" alt="Cuban" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Smokehouse Cuban</div>
+          <p class="v4-card-desc">Smoked ham, Swiss, mustard, pork loin, dill pickles. Pressed golden.</p>
+        </div>
+      </div>
+    </div>
+    <div class="v4-panel" id="panel-plates">
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/chicken-tenders.webp" alt="Tenders" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Legendary Cheese Curds</div>
+          <p class="v4-card-desc">Brown Creek Creamery. Hand-breaded. Fried to order. 150 lbs every week.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/pulled-pork-sandwich.webp" alt="Sandwich" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Country Fried Steak</div>
+          <p class="v4-card-desc">Golden, crispy, and smothered in cream gravy. Served with two sides.</p>
+        </div>
+      </div>
+      <div class="v4-card">
+        <img src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Plate" loading="lazy" />
+        <div class="v4-card-body">
+          <div class="v4-card-name">Shrimp and Grits</div>
+          <p class="v4-card-desc">Creamy stone-ground grits topped with sauteed shrimp and house seasoning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V5: Magazine / Editorial -->
+<div class="variant v5-section" id="v5">
+  <div class="v5-container">
+    <div class="v5-header">
+      <div>
+        <div class="section-label">What We're Known For</div>
+        <h2 class="section-heading">The Menu Highlights</h2>
+      </div>
+      <div class="v5-header-right">
+        <p>Every plate is built from scratch. Our meats come from Honey Hog Farm and Beam Farms right here in Rutherford County.</p>
+      </div>
+    </div>
+    <div class="v5-feature">
+      <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Wings" loading="lazy" />
+      <div>
+        <div class="v5-feature-tag">Fan Favorite / Thursday Specials</div>
+        <div class="v5-feature-name">Smoked Wings</div>
+        <p class="v5-feature-desc">Smoked low and slow on our pit, then fried to crispy perfection. Tossed in house-made sauces. Every Thursday night they are fifty cents each. Big, bold, and absolutely worth the trip. Get here early because the line builds fast.</p>
+      </div>
+    </div>
+    <div class="v5-bottom-grid">
+      <div class="v5-mini">
+        <img src="/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" alt="Steak" loading="lazy" />
+        <div class="v5-mini-content">
+          <div class="v5-mini-tag">Farm Raised</div>
+          <div class="v5-mini-name">Steaks</div>
+        </div>
+      </div>
+      <div class="v5-mini">
+        <img src="/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger" loading="lazy" />
+        <div class="v5-mini-content">
+          <div class="v5-mini-tag">Signature</div>
+          <div class="v5-mini-name">Dirty Sanchez</div>
+        </div>
+      </div>
+      <div class="v5-mini">
+        <img src="/mock-sites/assets/hoot-nannie/chicken-tenders.webp" alt="Curds" loading="lazy" />
+        <div class="v5-mini-content">
+          <div class="v5-mini-tag">150 lbs/week</div>
+          <div class="v5-mini-name">Cheese Curds</div>
+        </div>
+      </div>
+      <div class="v5-mini">
+        <img src="/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" alt="BBQ" loading="lazy" />
+        <div class="v5-mini-content">
+          <div class="v5-mini-tag">Whole Hog</div>
+          <div class="v5-mini-name">Pulled Pork</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Menu Variant</span>
+  <button class="picker-btn active" data-v="1">1</button>
+  <button class="picker-btn" data-v="2">2</button>
+  <button class="picker-btn" data-v="3">3</button>
+  <button class="picker-btn" data-v="4">4</button>
+  <button class="picker-btn" data-v="5">5</button>
+</div>
+
+<script>
+  // Picker
+  const btns = document.querySelectorAll('.picker-btn');
+  const variants = document.querySelectorAll('.variant');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      variants.forEach(el => el.classList.remove('active'));
+      document.getElementById('v' + btn.dataset.v).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // V4 tabs
+  document.querySelectorAll('.v4-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.v4-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.v4-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Product Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e8e8;
+      background: #0d0d1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blue: #1a3a8f;
+      --blue-dark: #0f2560;
+      --red: #d32f2f;
+      --red-light: #e85353;
+      --white: #ffffff;
+      --charcoal: #0d0d1a;
+      --charcoal-light: #161628;
+      --charcoal-card: #1a1a2e;
+      --gold: #f59e0b;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    /* LOCKED NAV */
+    .locked-nav {
+      background: var(--charcoal);
+      border-bottom: 3px solid var(--blue);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .locked-nav-logo { display: flex; align-items: center; gap: 10px; }
+    .locked-nav-logo img { width: 36px; height: 36px; border-radius: 6px; object-fit: contain; background: #fff; padding: 2px; }
+    .locked-nav-logo span { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); line-height: 1.2; }
+    .locked-nav-info { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    /* PICKER */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: #111125; border-top: 2px solid var(--blue);
+      padding: 14px 24px; display: flex; align-items: center;
+      justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .picker-btn {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 20px;
+      border-radius: 8px; border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6);
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .picker-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .picker-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+    .picker-label {
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-right: 8px;
+    }
+
+    /* Shared section header */
+    .sec-label {
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--red); margin-bottom: 12px;
+    }
+    .sec-heading {
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700;
+      margin-bottom: 20px; color: var(--white);
+    }
+    .sec-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.55);
+      max-width: 600px; margin: 0 auto 48px; line-height: 1.7;
+    }
+
+    /* ============ VARIANT 1: Image Cards Grid (3 col) ============ */
+    .v1-section { background: var(--charcoal-light); }
+    .v1-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .v1-card {
+      background: var(--charcoal-card); border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, border-color 0.3s;
+    }
+    .v1-card:hover { transform: translateY(-6px); border-color: rgba(211,47,47,0.3); }
+    .v1-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .v1-card-body { padding: 24px 22px 28px; }
+    .v1-card-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+    .v1-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+    .v1-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* ============ VARIANT 2: Large Feature + Side List ============ */
+    .v2-section { background: var(--charcoal); }
+    .v2-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .v2-feature {
+      border-radius: 20px; overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.06); position: relative;
+    }
+    .v2-feature img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .v2-feature-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(13,13,26,0.95));
+      padding: 40px 28px 28px;
+    }
+    .v2-feature-overlay h3 {
+      font-size: 1.6rem; color: var(--white); margin-bottom: 8px;
+    }
+    .v2-feature-overlay p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6;
+    }
+    .v2-list { display: flex; flex-direction: column; gap: 16px; }
+    .v2-list-item {
+      display: flex; gap: 20px; align-items: center;
+      background: var(--charcoal-card); border-radius: 16px;
+      padding: 16px 20px; border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.3s;
+    }
+    .v2-list-item:hover { border-color: rgba(211,47,47,0.3); }
+    .v2-list-img {
+      width: 80px; height: 80px; border-radius: 12px; overflow: hidden; flex-shrink: 0;
+    }
+    .v2-list-img img { width: 100%; height: 100%; object-fit: cover; }
+    .v2-list-text h3 { font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+    .v2-list-text p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+    /* ============ VARIANT 3: Horizontal Scroll Cards ============ */
+    .v3-section { background: var(--charcoal-light); overflow: hidden; }
+    .v3-scroll-wrap {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; padding-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .v3-scroll-wrap::-webkit-scrollbar { display: none; }
+    .v3-scroll {
+      display: flex; gap: 20px; padding: 0 24px;
+      width: max-content;
+    }
+    .v3-card {
+      width: 340px; flex-shrink: 0;
+      background: var(--charcoal-card); border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      scroll-snap-align: start;
+      transition: transform 0.3s;
+    }
+    .v3-card:hover { transform: translateY(-4px); }
+    .v3-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+    .v3-card-body { padding: 22px 20px 26px; }
+    .v3-card-body h3 {
+      font-size: 1.1rem; color: var(--white); margin-bottom: 6px;
+    }
+    .v3-card-body p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6;
+    }
+    .v3-hint {
+      text-align: center; margin-top: 24px;
+      font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ============ VARIANT 4: Icon Grid, No Photos ============ */
+    .v4-section { background: var(--charcoal); }
+    .v4-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .v4-card {
+      background: var(--charcoal-card); border-radius: 20px;
+      padding: 40px 28px; text-align: center;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .v4-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .v4-card:nth-child(1)::before { background: var(--blue); }
+    .v4-card:nth-child(2)::before { background: var(--red); }
+    .v4-card:nth-child(3)::before { background: var(--gold); }
+    .v4-card:nth-child(4)::before { background: #16a34a; }
+    .v4-card:nth-child(5)::before { background: var(--blue); }
+    .v4-card:nth-child(6)::before { background: var(--red); }
+    .v4-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); }
+    .v4-icon {
+      font-size: 3rem; margin-bottom: 16px; display: block;
+    }
+    .v4-card h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 12px; }
+    .v4-card p { font-size: 0.92rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* ============ VARIANT 5: Two-Row Masonry Gallery ============ */
+    .v5-section { background: var(--charcoal-light); }
+    .v5-row1 {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px;
+      margin-bottom: 16px;
+    }
+    .v5-row2 {
+      display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 16px;
+    }
+    .v5-item {
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s;
+    }
+    .v5-item:hover { transform: scale(1.02); }
+    .v5-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .v5-item-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(13,13,26,0.9));
+      padding: 36px 20px 20px;
+    }
+    .v5-item-overlay h3 { font-size: 1.1rem; color: var(--white); margin-bottom: 4px; }
+    .v5-item-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .v1-grid { grid-template-columns: repeat(2, 1fr); }
+      .v4-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .v2-layout { grid-template-columns: 1fr; gap: 32px; }
+      .v5-row1, .v5-row2 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: 1fr; }
+      .v4-grid { grid-template-columns: 1fr; }
+      .v5-row1, .v5-row2 { grid-template-columns: 1fr; }
+      .section-pad { padding: 64px 0; }
+    }
+    @media (max-width: 560px) {
+      .v3-card { width: 280px; }
+      .picker-btn { font-size: 0.75rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOCKED NAV -->
+  <div class="locked-nav">
+    <div class="locked-nav-logo">
+      <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's" width="150" height="150" loading="lazy" />
+      <span>Wahoo's Sports<br />&amp; Collectibles</span>
+    </div>
+    <div class="locked-nav-info">Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM</div>
+  </div>
+
+  <!-- ============ V1: Image Cards Grid ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">The Collection</p>
+        <h2 class="sec-heading">What We Carry</h2>
+        <p class="sec-sub">From wax packs to Jordans, vintage tees to Supreme decks. If it's collectible, it's probably in here somewhere.</p>
+      </div>
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-tees-cards.webp" alt="Sports cards and vintage tees" width="640" height="640" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#127183;</span>
+              <h3>Sports Cards</h3>
+              <p>New packs and vintage singles. Baseball, football, basketball, racing, and Pokemon.</p>
+            </div>
+          </div>
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Air Jordan 10 Retro" width="640" height="640" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#128095;</span>
+              <h3>Sneakers</h3>
+              <p>Nike, Jordan, and collectible releases. Deadstock and lightly worn, always authentic.</p>
+            </div>
+          </div>
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-accessories.webp" alt="Supreme accessories" width="640" height="640" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#128085;</span>
+              <h3>Streetwear</h3>
+              <p>Supreme, Fear of God, Bravest Studios. Hats, socks, skate decks, bags, and more.</p>
+            </div>
+          </div>
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Charlotte Hornets" width="640" height="789" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#127941;</span>
+              <h3>Vintage Sports Apparel</h3>
+              <p>Charlotte Hornets, NFL teams, college gear, and that perfect 80s or 90s piece.</p>
+            </div>
+          </div>
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Hats on display" width="640" height="640" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#127937;</span>
+              <h3>NASCAR Memorabilia</h3>
+              <p>Racing jackets, Winston Cup gear, die-cast cars. This is NASCAR country.</p>
+            </div>
+          </div>
+          <div class="v1-card">
+            <img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Fear of God hat with signed bat" width="640" height="640" loading="lazy" />
+            <div class="v1-card-body">
+              <span class="v1-card-icon">&#9997;&#65039;</span>
+              <h3>Signed Memorabilia</h3>
+              <p>Autographed bats, collectible pieces, and local Rutherford County finds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2: Feature + Side List ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">The Collection</p>
+        <h2 class="sec-heading">What We Carry</h2>
+        <p class="sec-sub">Six categories of finds, all under one roof on Main Street.</p>
+      </div>
+      <div class="container">
+        <div class="v2-layout">
+          <div class="v2-feature">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage Hornets crewneck and NASCAR jacket" width="640" height="789" loading="lazy" />
+            <div class="v2-feature-overlay">
+              <h3>Vintage Sports Apparel</h3>
+              <p>Charlotte Hornets, NFL teams, college gear, and that perfect 80s or 90s jacket you forgot existed. If it has a vintage tag and a team logo, we're into it.</p>
+            </div>
+          </div>
+          <div class="v2-list">
+            <div class="v2-list-item">
+              <div class="v2-list-img"><img src="/mock-sites/assets/wahoos-sports/vintage-tees-cards.webp" alt="Cards" width="640" height="640" loading="lazy" /></div>
+              <div class="v2-list-text"><h3>Sports Cards</h3><p>New packs and vintage singles. Baseball, football, basketball, racing, and Pokemon.</p></div>
+            </div>
+            <div class="v2-list-item">
+              <div class="v2-list-img"><img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Sneakers" width="640" height="640" loading="lazy" /></div>
+              <div class="v2-list-text"><h3>Sneakers</h3><p>Nike, Jordan, and collectible releases. Deadstock and lightly worn.</p></div>
+            </div>
+            <div class="v2-list-item">
+              <div class="v2-list-img"><img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Streetwear" width="640" height="640" loading="lazy" /></div>
+              <div class="v2-list-text"><h3>Streetwear</h3><p>Supreme, Fear of God, Bravest Studios. Real hype, small-town prices.</p></div>
+            </div>
+            <div class="v2-list-item">
+              <div class="v2-list-img"><img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="NASCAR" width="640" height="640" loading="lazy" /></div>
+              <div class="v2-list-text"><h3>NASCAR Memorabilia</h3><p>Racing jackets, die-cast cars, Winston Cup gear. NASCAR country.</p></div>
+            </div>
+            <div class="v2-list-item">
+              <div class="v2-list-img"><img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Signed items" width="640" height="640" loading="lazy" /></div>
+              <div class="v2-list-text"><h3>Signed Memorabilia</h3><p>Autographed bats and collectible pieces from local sports.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3: Horizontal Scroll ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">The Collection</p>
+        <h2 class="sec-heading">What We Carry</h2>
+        <p class="sec-sub">From wax packs to Jordans, vintage tees to Supreme decks. Scroll through what's in the shop.</p>
+      </div>
+      <div class="v3-scroll-wrap">
+        <div class="v3-scroll">
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-tees-cards.webp" alt="Sports cards" width="640" height="640" loading="lazy" />
+            <div class="v3-card-body"><h3>Sports Cards</h3><p>New packs and vintage singles. Baseball, football, basketball, racing, and Pokemon. Whether you're ripping or hunting that one card.</p></div>
+          </div>
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Sacai Blazer Low" width="640" height="640" loading="lazy" />
+            <div class="v3-card-body"><h3>Sneakers</h3><p>Nike, Jordan, and collectible releases. From heat you can rock to pairs you'll want to keep on ice. Always authentic.</p></div>
+          </div>
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme deck" width="640" height="640" loading="lazy" />
+            <div class="v3-card-body"><h3>Streetwear</h3><p>Supreme clothing, accessories, skate decks, hats, socks, and bags. Fear of God, Bravest Studios, and more.</p></div>
+          </div>
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage apparel" width="640" height="789" loading="lazy" />
+            <div class="v3-card-body"><h3>Vintage Sports Apparel</h3><p>Charlotte Hornets, NFL teams, college gear. The perfect 80s or 90s jacket you forgot existed.</p></div>
+          </div>
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Hats" width="640" height="640" loading="lazy" />
+            <div class="v3-card-body"><h3>NASCAR Memorabilia</h3><p>Racing jackets, Texaco/Havoline Winston Cup gear, die-cast cars. This is NASCAR country and we stock it like it.</p></div>
+          </div>
+          <div class="v3-card">
+            <img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Signed bat" width="640" height="640" loading="lazy" />
+            <div class="v3-card-body"><h3>Signed Memorabilia</h3><p>Autographed items, signed bats, and collectible pieces. Plus Rutherford County sports finds.</p></div>
+          </div>
+        </div>
+      </div>
+      <p class="v3-hint">Swipe to browse &rarr;</p>
+    </div>
+  </section>
+
+  <!-- ============ V4: Icon Grid (No Photos) ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">The Collection</p>
+        <h2 class="sec-heading">What We Carry</h2>
+        <p class="sec-sub">Six categories of finds. From wax packs to Jordans, vintage tees to Supreme decks. If it's collectible, it's probably in here somewhere.</p>
+      </div>
+      <div class="container">
+        <div class="v4-grid">
+          <div class="v4-card">
+            <span class="v4-icon">&#127183;</span>
+            <h3>Sports Cards</h3>
+            <p>New packs and vintage singles. Baseball, football, basketball, racing, and Pokemon. Whether you're ripping or hunting that one card, we've got boxes to dig through.</p>
+          </div>
+          <div class="v4-card">
+            <span class="v4-icon">&#128095;</span>
+            <h3>Sneakers</h3>
+            <p>Nike, Jordan, and collectible releases. From heat you can rock to pairs you'll want to keep on ice. Deadstock and lightly worn, always authentic.</p>
+          </div>
+          <div class="v4-card">
+            <span class="v4-icon">&#128085;</span>
+            <h3>Streetwear</h3>
+            <p>Supreme clothing, accessories, skate decks, hats, socks, and bags. Fear of God, Bravest Studios, and more. Real hype, small-town prices.</p>
+          </div>
+          <div class="v4-card">
+            <span class="v4-icon">&#127941;</span>
+            <h3>Vintage Sports Apparel</h3>
+            <p>Charlotte Hornets, NFL teams, college gear, and that perfect 80s or 90s jacket you forgot existed. Vintage tags and team logos.</p>
+          </div>
+          <div class="v4-card">
+            <span class="v4-icon">&#127937;</span>
+            <h3>NASCAR Memorabilia</h3>
+            <p>Racing jackets, Texaco/Havoline Winston Cup gear, die-cast cars, and more. This is NASCAR country and we stock it like it.</p>
+          </div>
+          <div class="v4-card">
+            <span class="v4-icon">&#9997;&#65039;</span>
+            <h3>Signed Memorabilia</h3>
+            <p>Autographed items, signed bats, and collectible pieces. Plus local Rutherford County sports finds you won't see anywhere else.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5: Masonry Gallery ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">The Collection</p>
+        <h2 class="sec-heading">What We Carry</h2>
+        <p class="sec-sub">Six categories under one roof. Hover over each to learn more.</p>
+      </div>
+      <div class="container">
+        <div class="v5-row1">
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-tees-cards.webp" alt="Sports cards and tees" width="640" height="640" loading="lazy" />
+            <div class="v5-item-overlay"><h3>Sports Cards</h3><p>New packs, vintage singles, baseball, football, basketball, racing, Pokemon.</p></div>
+          </div>
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Jordan 10 Retro" width="640" height="640" loading="lazy" />
+            <div class="v5-item-overlay"><h3>Sneakers</h3><p>Nike, Jordan, collectible releases. Always authentic.</p></div>
+          </div>
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme deck" width="640" height="640" loading="lazy" />
+            <div class="v5-item-overlay"><h3>Streetwear</h3><p>Supreme, Fear of God, Bravest Studios.</p></div>
+          </div>
+        </div>
+        <div class="v5-row2">
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Vintage apparel" width="640" height="789" loading="lazy" />
+            <div class="v5-item-overlay"><h3>Vintage Apparel</h3><p>80s and 90s team gear, from Hornets to NASCAR jackets.</p></div>
+          </div>
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/fear-of-god-hat.webp" alt="Signed bat and hat" width="640" height="640" loading="lazy" />
+            <div class="v5-item-overlay"><h3>Signed Memorabilia</h3><p>Autographed bats, photos, and collectible pieces.</p></div>
+          </div>
+          <div class="v5-item">
+            <img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Display case" width="640" height="640" loading="lazy" />
+            <div class="v5-item-overlay"><h3>NASCAR Memorabilia</h3><p>Racing jackets, Winston Cup gear, die-cast cars.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-label">Products:</span>
+    <button class="picker-btn active" data-target="v1">1. Image Grid</button>
+    <button class="picker-btn" data-target="v2">2. Feature + List</button>
+    <button class="picker-btn" data-target="v3">3. Scroll Cards</button>
+    <button class="picker-btn" data-target="v4">4. Icon Grid</button>
+    <button class="picker-btn" data-target="v5">5. Masonry</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('.picker-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

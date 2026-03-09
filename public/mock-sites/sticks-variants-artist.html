@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sticks & Stones - Artist Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e0d4;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --black: #0f0f0f;
+      --black-light: #1a1a1a;
+      --charcoal: #2a2a2a;
+      --cream: #f5f0e6;
+      --cream-dim: #e8e0d4;
+      --gold: #c4a35a;
+      --gold-light: #d4b96a;
+      --burgundy: #722F37;
+      --burgundy-light: #8a3a44;
+      --text-muted: #8a8278;
+      --text-body: #c4bdb2;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(15,15,15,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(196,163,90,0.2);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-label {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.2em; color: var(--gold); margin-right: 8px;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border: 2px solid rgba(196,163,90,0.3);
+      background: transparent; color: var(--cream-dim);
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .picker-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .picker-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
+    .picker-desc {
+      margin-left: 16px; font-size: 0.8rem; color: var(--text-muted); max-width: 300px;
+    }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.25em; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-pad { padding: 100px 0 140px; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+
+    /* ======== V1: Split with Image Left ======== */
+    .v1-sec { background: var(--black); }
+    .v1-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .v1-image {
+      aspect-ratio: 3/4; background: var(--charcoal); position: relative; overflow: hidden;
+    }
+    .v1-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
+    .v1-image-frame { position: absolute; inset: 12px; border: 1px solid rgba(196,163,90,0.2); pointer-events: none; }
+    .v1-image-label {
+      position: absolute; bottom: 24px; left: 24px; right: 24px; text-align: center;
+    }
+    .v1-image-label span {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--gold); background: rgba(15,15,15,0.85); padding: 8px 20px; display: inline-block;
+    }
+    .v1-text h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 28px; color: var(--cream);
+    }
+    .v1-text h2 span { color: var(--gold); font-style: italic; }
+    .v1-text p { font-size: 1.02rem; color: var(--text-body); margin-bottom: 20px; line-height: 1.8; }
+    .v1-stats {
+      display: flex; gap: 40px; margin-top: 40px; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .v1-stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .v1-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 6px; }
+
+    /* ======== V2: Centered Portrait with Full-Width Text ======== */
+    .v2-sec { background: var(--black); }
+    .v2-portrait {
+      width: 260px; height: 340px; margin: 0 auto 48px; background: var(--charcoal);
+      position: relative; overflow: hidden;
+    }
+    .v2-portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
+    .v2-portrait::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(transparent 60%, rgba(15,15,15,0.8) 100%);
+    }
+    .v2-portrait-name {
+      position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; z-index: 1;
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream);
+    }
+    .v2-columns {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 800px; margin: 0 auto;
+    }
+    .v2-columns p { font-size: 0.95rem; color: var(--text-body); line-height: 1.8; }
+    .v2-quote {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem; font-style: italic;
+      color: var(--gold); text-align: center; margin-top: 48px; max-width: 600px; margin-left: auto; margin-right: auto;
+      padding: 32px 0; border-top: 1px solid rgba(196,163,90,0.1); border-bottom: 1px solid rgba(196,163,90,0.1);
+    }
+
+    /* ======== V3: Timeline Style ======== */
+    .v3-sec { background: var(--black); }
+    .v3-header {
+      text-align: center; margin-bottom: 64px;
+    }
+    .v3-header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--cream); margin-bottom: 8px;
+    }
+    .v3-header h2 span { color: var(--gold); font-style: italic; }
+    .v3-header p { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .v3-timeline { max-width: 700px; margin: 0 auto; position: relative; padding-left: 60px; }
+    .v3-timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+      width: 1px; background: rgba(196,163,90,0.15);
+    }
+    .v3-event { position: relative; padding: 0 0 48px 0; }
+    .v3-event::before {
+      content: ''; position: absolute; left: -48px; top: 6px;
+      width: 10px; height: 10px; background: var(--gold);
+      border-radius: 50%;
+    }
+    .v3-event-year {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .v3-event h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 8px;
+    }
+    .v3-event p { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; }
+    .v3-stats-row {
+      display: flex; justify-content: center; gap: 60px; margin-top: 32px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .v3-stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); text-align: center; }
+    .v3-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); text-align: center; margin-top: 4px; }
+
+    /* ======== V4: Full-Width Image with Overlay Text ======== */
+    .v4-sec {
+      position: relative; min-height: 90vh; display: flex; align-items: center;
+      background: var(--black); overflow: hidden;
+    }
+    .v4-bg { position: absolute; inset: 0; }
+    .v4-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: grayscale(40%); }
+    .v4-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.7) 50%, rgba(15,15,15,0.4) 100%);
+    }
+    .v4-content { position: relative; z-index: 2; padding: 80px 64px; max-width: 600px; }
+    .v4-content h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--cream); margin-bottom: 28px; line-height: 1.1;
+    }
+    .v4-content h2 span { color: var(--gold); font-style: italic; }
+    .v4-content p { font-size: 1rem; color: var(--text-body); line-height: 1.8; margin-bottom: 18px; }
+    .v4-stats {
+      display: flex; gap: 40px; margin-top: 40px;
+    }
+    .v4-stat { padding: 20px 0; border-top: 1px solid rgba(196,163,90,0.15); }
+    .v4-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+    .v4-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 4px; }
+
+    /* ======== V5: Stacked Blocks ======== */
+    .v5-sec { background: var(--black); }
+    .v5-top {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 0; min-height: 400px;
+    }
+    .v5-top-text {
+      padding: 64px; background: var(--black-light);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .v5-top-text h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--cream); margin-bottom: 24px;
+    }
+    .v5-top-text h2 span { color: var(--gold); font-style: italic; }
+    .v5-top-text p { font-size: 1rem; color: var(--text-body); line-height: 1.8; margin-bottom: 16px; }
+    .v5-top-img {
+      background: var(--charcoal); overflow: hidden;
+    }
+    .v5-top-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); opacity: 0.6; }
+    .v5-bottom {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      border-top: 1px solid rgba(196,163,90,0.08);
+    }
+    .v5-block {
+      padding: 36px 28px; border-right: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+    }
+    .v5-block:last-child { border-right: none; }
+    .v5-block-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); }
+    .v5-block-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-top: 4px; }
+
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: 1fr; gap: 40px; }
+      .v1-image { aspect-ratio: 4/3; }
+      .v1-stats { gap: 24px; flex-wrap: wrap; }
+      .v2-columns { grid-template-columns: 1fr; }
+      .v3-timeline { padding-left: 40px; }
+      .v3-event::before { left: -28px; }
+      .v3-stats-row { gap: 32px; flex-wrap: wrap; }
+      .v4-content { padding: 60px 24px; }
+      .v4-stats { gap: 24px; flex-wrap: wrap; }
+      .v5-top { grid-template-columns: 1fr; }
+      .v5-top-text { padding: 40px 24px; }
+      .v5-bottom { grid-template-columns: 1fr 1fr; }
+      .picker-desc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ V1 ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-sec section-pad">
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-image">
+            <img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Sticks and Stones logo" />
+            <div class="v1-image-frame"></div>
+            <div class="v1-image-label"><span>Brandon Paul, Owner &amp; Artist</span></div>
+          </div>
+          <div class="v1-text">
+            <p class="section-label">The Artist</p>
+            <h2>Brandon <span>Paul</span></h2>
+            <p>Brandon Paul is a tattoo artist and oil painter with over 14 years of professional experience. After spending years in Colorado building his craft under the Sticks and Stones name, he returned to Shelby to open Uptown's first full-service tattoo shop.</p>
+            <p>His specialty is creating completely custom pieces of art, both on skin and on canvas. He works in every major style but gravitates toward portraits, detailed black and gray, and vivid full-color work.</p>
+            <p>Brandon takes one client per day. That is not a marketing line. It is how he works. The result is focused, unrushed, and worth the wait.</p>
+            <div class="v1-stats">
+              <div><div class="v1-stat-num">14+</div><div class="v1-stat-label">Years Experience</div></div>
+              <div><div class="v1-stat-num">1</div><div class="v1-stat-label">Client Per Day</div></div>
+              <div><div class="v1-stat-num">2</div><div class="v1-stat-label">Art Forms</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2 ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-sec section-pad">
+      <div class="container text-center">
+        <p class="section-label">The Artist</p>
+      </div>
+      <div class="container">
+        <div class="v2-portrait">
+          <img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Sticks and Stones" />
+          <div class="v2-portrait-name">Brandon Paul</div>
+        </div>
+        <div class="v2-columns">
+          <div>
+            <p>Brandon Paul is a tattoo artist and oil painter with over 14 years of professional experience. After spending years in Colorado honing his craft under the Sticks and Stones name, he returned to Shelby to open Uptown's first full-service tattoo shop.</p>
+          </div>
+          <div>
+            <p>His specialty is creating completely custom art, both on skin and on canvas. He gravitates toward portraits, detailed black and gray, and vivid full-color work. Every flash sheet is hand-drawn. Every custom piece is designed from scratch.</p>
+          </div>
+        </div>
+        <div class="v2-quote">"One client per day. Focused, unrushed, and worth the wait."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3 ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-sec section-pad">
+      <div class="container">
+        <div class="v3-header">
+          <p class="section-label">The Artist</p>
+          <h2>Brandon <span>Paul</span></h2>
+          <p>Tattoo Artist &bull; Oil Painter &bull; 14+ Years</p>
+        </div>
+        <div class="v3-timeline">
+          <div class="v3-event">
+            <div class="v3-event-year">Early Career</div>
+            <h3>Learning the Craft</h3>
+            <p>Brandon picked up a tattoo machine and never looked back. Over the following years, he developed his voice across portraits, black and gray, and full-color work while simultaneously pursuing oil painting.</p>
+          </div>
+          <div class="v3-event">
+            <div class="v3-event-year">Colorado</div>
+            <h3>Building the Brand</h3>
+            <p>Operating under the Sticks and Stones name in Bayfield, Colorado, Brandon refined his dual practice. Tattooing by day, painting by night. The name traveled with him.</p>
+          </div>
+          <div class="v3-event">
+            <div class="v3-event-year">2019</div>
+            <h3>Coming Home</h3>
+            <p>Brandon returned to Shelby, NC and opened Uptown's first full-service tattoo shop and art gallery. One space for both disciplines, right on Lafayette Street.</p>
+          </div>
+          <div class="v3-event">
+            <div class="v3-event-year">Today</div>
+            <h3>One Client, One Day</h3>
+            <p>Brandon takes one client per day. Larger projects that align with his style take priority. He is often booked more than a month out. The result is focused, unrushed, and worth the wait.</p>
+          </div>
+        </div>
+        <div class="v3-stats-row">
+          <div><div class="v3-stat-num">14+</div><div class="v3-stat-label">Years</div></div>
+          <div><div class="v3-stat-num">1</div><div class="v3-stat-label">Client / Day</div></div>
+          <div><div class="v3-stat-num">2019</div><div class="v3-stat-label">Established</div></div>
+          <div><div class="v3-stat-num">2</div><div class="v3-stat-label">Art Forms</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V4 ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-sec">
+      <div class="v4-bg">
+        <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Tattoo equipment" />
+      </div>
+      <div class="v4-overlay"></div>
+      <div class="v4-content">
+        <p class="section-label">The Artist</p>
+        <h2>Brandon <span>Paul</span></h2>
+        <p>A tattoo artist and oil painter with over 14 years of professional experience. After building his craft in Colorado under the Sticks and Stones name, he returned to Shelby to open Uptown's first full-service tattoo shop.</p>
+        <p>Custom work is the core. Portraits, black and gray, full color. Every flash sheet is hand-drawn. Every piece starts from scratch. One client per day, always.</p>
+        <div class="v4-stats">
+          <div class="v4-stat"><div class="v4-stat-num">14+</div><div class="v4-stat-label">Years</div></div>
+          <div class="v4-stat"><div class="v4-stat-num">1</div><div class="v4-stat-label">Client / Day</div></div>
+          <div class="v4-stat"><div class="v4-stat-num">2</div><div class="v4-stat-label">Art Forms</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5 ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-sec section-pad" style="padding-bottom:0;">
+      <div class="container text-center" style="margin-bottom:48px;">
+        <p class="section-label">The Artist</p>
+      </div>
+      <div class="v5-top">
+        <div class="v5-top-text">
+          <h2>Brandon <span>Paul</span></h2>
+          <p>Brandon Paul is a tattoo artist and oil painter with over 14 years of professional experience. After years in Colorado, he returned to Shelby to open Uptown's first full-service tattoo shop and art gallery.</p>
+          <p>Custom work is the priority. Portraits, black and gray, and vivid full color. Every flash sheet is hand-drawn. Brandon takes one client per day. Larger projects that align with his style take precedence, and he is often booked more than a month out.</p>
+        </div>
+        <div class="v5-top-img">
+          <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Tattoo equipment" />
+        </div>
+      </div>
+      <div class="v5-bottom">
+        <div class="v5-block"><div class="v5-block-num">14+</div><div class="v5-block-label">Years Experience</div></div>
+        <div class="v5-block"><div class="v5-block-num">1</div><div class="v5-block-label">Client Per Day</div></div>
+        <div class="v5-block"><div class="v5-block-num">2019</div><div class="v5-block-label">Established</div></div>
+        <div class="v5-block"><div class="v5-block-num">2</div><div class="v5-block-label">Art Forms</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PICKER BAR ============ -->
+  <div class="picker-bar">
+    <span class="picker-label">Artist</span>
+    <button class="picker-btn active" data-variant="1" onclick="showVariant(1)">1</button>
+    <button class="picker-btn" data-variant="2" onclick="showVariant(2)">2</button>
+    <button class="picker-btn" data-variant="3" onclick="showVariant(3)">3</button>
+    <button class="picker-btn" data-variant="4" onclick="showVariant(4)">4</button>
+    <button class="picker-btn" data-variant="5" onclick="showVariant(5)">5</button>
+    <span class="picker-desc" id="picker-desc">Split layout with framed image left</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      1: 'Split layout with framed image left',
+      2: 'Centered portrait with dual columns',
+      3: 'Timeline journey through career milestones',
+      4: 'Full-width image with text overlay',
+      5: 'Stacked blocks with stat bar below'
+    };
+    function showVariant(n) {
+      document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-variant="' + n + '"]').classList.add('active');
+      document.getElementById('picker-desc').textContent = descriptions[n];
+    }
+  </script>
+</body>
+</html>

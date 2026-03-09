@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trailhead Outfitters | Shelby, NC | Gear for the Foothills</title>
+  <meta name="description" content="Trailhead Outfitters equips hikers, campers, and climbers across Cleveland County and the Carolina foothills. Located in Shelby, NC since 2011.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       RESET & FOUNDATIONS
+       ========================================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --forest:       #2d4a22;
+      --sandstone:    #d4c5a9;
+      --sienna:       #c65d07;
+      --deep-forest:  #1a2e14;
+      --cream:        #f5f0e6;
+      --bark:         #3d2b1f;
+
+      --sienna-light: #e07030;
+      --sienna-dark:  #a04a05;
+      --forest-mid:   #3a5e2c;
+      --text-on-dark: #e8dfc8;
+      --text-muted:   #8a7d6a;
+
+      --font-heading: 'Cabin', sans-serif;
+      --font-body:    'Source Sans 3', sans-serif;
+
+      --max-width: 1140px;
+      --header-h:  70px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--bark);
+      background: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* =========================================
+       TOPOGRAPHIC PATTERN UTILITY
+       ========================================= */
+    .topo-pattern {
+      position: relative;
+    }
+    .topo-pattern::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(ellipse 520px 260px at 20% 35%, transparent 88%, rgba(255,255,255,0.06) 88.5%, transparent 89%),
+        radial-gradient(ellipse 420px 210px at 20% 35%, transparent 84%, rgba(255,255,255,0.05) 84.5%, transparent 85%),
+        radial-gradient(ellipse 320px 160px at 20% 35%, transparent 78%, rgba(255,255,255,0.07) 78.5%, transparent 79%),
+        radial-gradient(ellipse 220px 110px at 20% 35%, transparent 68%, rgba(255,255,255,0.05) 68.5%, transparent 69%),
+
+        radial-gradient(ellipse 600px 300px at 75% 65%, transparent 86%, rgba(255,255,255,0.05) 86.5%, transparent 87%),
+        radial-gradient(ellipse 480px 240px at 75% 65%, transparent 80%, rgba(255,255,255,0.06) 80.5%, transparent 81%),
+        radial-gradient(ellipse 360px 180px at 75% 65%, transparent 72%, rgba(255,255,255,0.05) 72.5%, transparent 73%),
+        radial-gradient(ellipse 240px 120px at 75% 65%, transparent 60%, rgba(255,255,255,0.07) 60.5%, transparent 61%),
+
+        radial-gradient(ellipse 700px 280px at 50% 15%, transparent 90%, rgba(255,255,255,0.04) 90.5%, transparent 91%),
+        radial-gradient(ellipse 560px 224px at 50% 15%, transparent 84%, rgba(255,255,255,0.05) 84.5%, transparent 85%);
+    }
+
+    .topo-pattern > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================================
+       STICKY HEADER
+       ========================================= */
+    #site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-h);
+      background: var(--forest);
+      border-bottom: 3px solid var(--sienna);
+      display: flex;
+      align-items: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    #site-header.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.68rem;
+      color: var(--sandstone);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .main-nav a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--sandstone);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .main-nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav-cta {
+      background: var(--sienna) !important;
+      color: #fff !important;
+      border-radius: 4px;
+      padding: 7px 18px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--sienna-light) !important;
+      box-shadow: 0 0 14px rgba(198, 93, 7, 0.45) !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--sandstone);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--deep-forest);
+      border-bottom: 2px solid var(--sienna);
+      padding: 16px 32px 24px;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--sandstone);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(212, 197, 169, 0.12);
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+      color: var(--sienna-light);
+      padding-top: 14px;
+    }
+
+    .mobile-nav a:hover {
+      color: #fff;
+    }
+
+    /* =========================================
+       HERO SECTION
+       ========================================= */
+    #hero {
+      min-height: 100vh;
+      background: var(--deep-forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 32px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sienna-light);
+      margin-bottom: 22px;
+      padding: 5px 14px;
+      border: 1px solid rgba(198, 93, 7, 0.4);
+      border-radius: 3px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      color: var(--sienna-light);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--text-on-dark);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--sienna);
+      padding: 14px 34px;
+      border-radius: 4px;
+      border: 2px solid var(--sienna);
+      transition: background 0.2s, box-shadow 0.25s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--sienna-light);
+      border-color: var(--sienna-light);
+      box-shadow: 0 0 24px rgba(198, 93, 7, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--sandstone);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(212, 197, 169, 0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: #fff;
+      border-color: rgba(212, 197, 169, 0.9);
+    }
+
+    .btn-ghost::after {
+      content: ' \2192';
+    }
+
+    .hero-compass-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.7;
+    }
+
+    .hero-since {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(212,197,169,0.15);
+    }
+
+    .since-item {
+      text-align: center;
+    }
+
+    .since-num {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--sienna-light);
+      line-height: 1;
+      display: block;
+    }
+
+    .since-label {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-on-dark);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .since-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(212,197,169,0.2);
+    }
+
+    /* =========================================
+       SECTION UTILITIES
+       ========================================= */
+    .section-inner {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 96px 32px;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .section-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* =========================================
+       PRODUCT CATEGORIES SECTION
+       ========================================= */
+    #categories {
+      background: var(--sandstone);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #categories::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sienna), var(--forest), var(--sienna));
+    }
+
+    .categories-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .categories-header .section-label {
+      color: var(--forest);
+    }
+
+    .categories-header .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--bark);
+      margin-bottom: 16px;
+    }
+
+    .categories-header .section-body {
+      font-size: 1.05rem;
+      color: #5c4f3d;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .cat-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(61, 43, 31, 0.15);
+      border-radius: 6px;
+      padding: 40px 32px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--sienna);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(61, 43, 31, 0.18);
+      border-color: rgba(198, 93, 7, 0.3);
+    }
+
+    .cat-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .cat-number {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 3.5rem;
+      color: var(--sienna);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .cat-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+    }
+
+    .cat-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--forest);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    .cat-desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: #5c4f3d;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .cat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      background: rgba(45, 74, 34, 0.09);
+      border: 1px solid rgba(45, 74, 34, 0.2);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .cat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--sienna);
+      margin-top: 20px;
+      border-bottom: 1px solid rgba(198, 93, 7, 0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .cat-link:hover {
+      color: var(--sienna-dark);
+      border-color: var(--sienna-dark);
+    }
+
+    /* =========================================
+       ADVENTURES SECTION
+       ========================================= */
+    #adventures {
+      background: var(--forest);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .adventures-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .adventures-header .section-label {
+      color: var(--sandstone);
+      opacity: 0.7;
+    }
+
+    .adventures-header .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .adventures-header .section-body {
+      font-size: 1.05rem;
+      color: var(--text-on-dark);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .adventures-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .adv-card {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .adv-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(198, 93, 7, 0.45);
+      transform: translateY(-4px);
+    }
+
+    .adv-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--sienna), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .adv-card:hover::after {
+      opacity: 1;
+    }
+
+    .adv-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .adv-badge {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .badge-easy {
+      background: rgba(200, 245, 66, 0.15);
+      color: #b5d93a;
+      border: 1px solid rgba(200, 245, 66, 0.25);
+    }
+
+    .badge-moderate {
+      background: rgba(198, 93, 7, 0.18);
+      color: var(--sienna-light);
+      border: 1px solid rgba(198, 93, 7, 0.3);
+    }
+
+    .badge-challenging {
+      background: rgba(220, 60, 40, 0.15);
+      color: #e07060;
+      border: 1px solid rgba(220, 60, 40, 0.25);
+    }
+
+    .adv-season {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.72rem;
+      color: var(--text-on-dark);
+      opacity: 0.65;
+      letter-spacing: 0.06em;
+    }
+
+    .adv-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .adv-location {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--sienna-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .adv-desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.94rem;
+      color: var(--text-on-dark);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .adv-details {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .adv-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .adv-detail-label {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-on-dark);
+      opacity: 0.6;
+    }
+
+    .adv-detail-value {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--sandstone);
+    }
+
+    /* =========================================
+       ABOUT SECTION
+       ========================================= */
+    #about {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--forest), var(--sienna), var(--forest));
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-photo-frame {
+      background: var(--sandstone);
+      border-radius: 4px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid rgba(61, 43, 31, 0.12);
+    }
+
+    .about-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 300px 200px at 30% 40%, transparent 78%, rgba(45,74,34,0.09) 78.5%, transparent 79%),
+        radial-gradient(ellipse 220px 150px at 30% 40%, transparent 70%, rgba(45,74,34,0.07) 70.5%, transparent 71%),
+        radial-gradient(ellipse 140px 100px at 30% 40%, transparent 58%, rgba(45,74,34,0.1) 58.5%, transparent 59%),
+        radial-gradient(ellipse 350px 230px at 70% 60%, transparent 82%, rgba(61,43,31,0.07) 82.5%, transparent 83%),
+        radial-gradient(ellipse 250px 170px at 70% 60%, transparent 72%, rgba(61,43,31,0.08) 72.5%, transparent 73%);
+    }
+
+    .about-placeholder-svg {
+      position: relative;
+      z-index: 1;
+      opacity: 0.25;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: var(--sienna);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--cream);
+    }
+
+    .about-badge-year {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .about-badge-label {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+
+    .about-content .section-label {
+      color: var(--sienna);
+    }
+
+    .about-content .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      color: var(--bark);
+      margin-bottom: 24px;
+    }
+
+    .about-content .section-title span {
+      color: var(--forest);
+    }
+
+    .about-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: #5c4f3d;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(61, 43, 31, 0.12);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--sienna);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: #7a6a58;
+      line-height: 1.4;
+    }
+
+    /* =========================================
+       CTA SECTION
+       ========================================= */
+    #cta {
+      background: var(--deep-forest);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-compass-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 100px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sienna-light);
+      margin-bottom: 20px;
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .cta-title span {
+      color: var(--sienna-light);
+    }
+
+    .cta-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-on-dark);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      line-height: 1.75;
+    }
+
+    .cta-contact-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .cta-contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-label {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-on-dark);
+      opacity: 0.6;
+    }
+
+    .contact-value {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--sandstone);
+      letter-spacing: 0.02em;
+    }
+
+    .contact-divider {
+      width: 1px;
+      height: 50px;
+      background: rgba(212,197,169,0.2);
+    }
+
+    .cta-hours {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text-on-dark);
+      opacity: 0.6;
+      letter-spacing: 0.04em;
+      margin-top: -20px;
+      margin-bottom: 40px;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sandstone);
+      padding: 13px 32px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(212, 197, 169, 0.4);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--sandstone);
+      color: #fff;
+      background: rgba(212,197,169,0.08);
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    #footer {
+      background: var(--bark);
+      padding: 48px 32px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--sandstone);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      color: rgba(212,197,169,0.55);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(212,197,169,0.5);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--sandstone);
+    }
+
+    .footer-divider {
+      width: 100%;
+      max-width: 400px;
+      height: 1px;
+      background: rgba(212,197,169,0.12);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.78rem;
+      color: rgba(212,197,169,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================
+       RESPONSIVE — 900px
+       ========================================= */
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .main-nav  { display: none; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-since {
+        justify-content: center;
+      }
+
+      .hero-compass-wrap {
+        display: none;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .adventures-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-visual {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE — 640px
+       ========================================= */
+    @media (max-width: 640px) {
+      :root {
+        --header-h: 62px;
+      }
+
+      .section-inner {
+        padding: 72px 20px;
+      }
+
+      .header-inner {
+        padding: 0 20px;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .adventures-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-contact-block {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .contact-divider {
+        width: 60px;
+        height: 1px;
+      }
+
+      .hero-since {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-inner {
+        padding: 60px 20px;
+      }
+
+      .since-divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+  <header id="site-header">
+    <div class="header-inner">
+
+      <a href="#" class="logo" aria-label="Trailhead Outfitters home">
+        <!-- Mountain peak / tent logo mark -->
+        <svg class="logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="19" cy="19" r="18" stroke="#c65d07" stroke-width="1.5" fill="none"/>
+          <polyline points="5,28 14,13 19,21 24,15 33,28" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="24" cy="11" r="2.5" fill="#c65d07"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">Trailhead Outfitters</span>
+          <span class="logo-sub">Shelby, NC</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#">Home</a>
+        <a href="#categories">Gear</a>
+        <a href="#adventures">Adventures</a>
+        <a href="#about">About</a>
+        <a href="#cta" class="nav-cta">Contact</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#">Home</a>
+      <a href="#categories">Gear</a>
+      <a href="#adventures">Adventures</a>
+      <a href="#about">About</a>
+      <a href="#cta">Contact Us</a>
+    </nav>
+  </header>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+  <section id="hero" class="topo-pattern">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <span class="hero-eyebrow reveal">Outfitting the Foothills Since 2011</span>
+
+        <h1 class="hero-title reveal reveal-delay-1">
+          Gear Up for<br>
+          <span>the Foothills</span>
+        </h1>
+
+        <p class="hero-subtitle reveal reveal-delay-2">
+          We outfit hikers, campers, and climbers across Cleveland County and the Carolina foothills.
+          From the South Mountains to Crowders Mountain, we know this terrain and we stock the gear it demands.
+        </p>
+
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#categories" class="btn-primary">Shop Our Gear</a>
+          <a href="#adventures" class="btn-ghost">See Guided Adventures</a>
+        </div>
+
+        <div class="hero-since reveal reveal-delay-4">
+          <div class="since-item">
+            <span class="since-num">14</span>
+            <span class="since-label">Years Open</span>
+          </div>
+          <div class="since-divider"></div>
+          <div class="since-item">
+            <span class="since-num">200+</span>
+            <span class="since-label">Guided Trips</span>
+          </div>
+          <div class="since-divider"></div>
+          <div class="since-item">
+            <span class="since-num">5.0</span>
+            <span class="since-label">Google Rating</span>
+          </div>
+          <div class="since-divider"></div>
+          <div class="since-item">
+            <span class="since-num">Local</span>
+            <span class="since-label">Owned + Staffed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compass Rose -->
+      <div class="hero-compass-wrap reveal reveal-delay-2">
+        <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Compass rose" role="img">
+          <!-- Outer ring -->
+          <circle cx="160" cy="160" r="155" stroke="rgba(212,197,169,0.25)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="140" stroke="rgba(212,197,169,0.12)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="110" stroke="rgba(212,197,169,0.18)" stroke-width="0.75"/>
+          <circle cx="160" cy="160" r="75" stroke="rgba(212,197,169,0.12)" stroke-width="0.75"/>
+          <circle cx="160" cy="160" r="45" stroke="rgba(212,197,169,0.2)" stroke-width="0.75"/>
+
+          <!-- Tick marks -->
+          <line x1="160" y1="5"   x2="160" y2="20"  stroke="rgba(212,197,169,0.4)" stroke-width="1.5"/>
+          <line x1="160" y1="300" x2="160" y2="315" stroke="rgba(212,197,169,0.4)" stroke-width="1.5"/>
+          <line x1="5"   y1="160" x2="20"  y2="160" stroke="rgba(212,197,169,0.4)" stroke-width="1.5"/>
+          <line x1="300" y1="160" x2="315" y2="160" stroke="rgba(212,197,169,0.4)" stroke-width="1.5"/>
+
+          <!-- Diagonal ticks -->
+          <line x1="110" y1="20"  x2="114" y2="34"  stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="210" y1="20"  x2="206" y2="34"  stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="20"  y1="110" x2="34"  y2="114" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="20"  y1="210" x2="34"  y2="206" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="300" y1="110" x2="286" y2="114" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="300" y1="210" x2="286" y2="206" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="110" y1="300" x2="114" y2="286" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+          <line x1="210" y1="300" x2="206" y2="286" stroke="rgba(212,197,169,0.2)" stroke-width="1"/>
+
+          <!-- Main cross lines -->
+          <line x1="160" y1="20" x2="160" y2="300" stroke="rgba(212,197,169,0.15)" stroke-width="0.75"/>
+          <line x1="20"  y1="160" x2="300" y2="160" stroke="rgba(212,197,169,0.15)" stroke-width="0.75"/>
+          <line x1="50"  y1="50"  x2="270" y2="270" stroke="rgba(212,197,169,0.08)" stroke-width="0.75"/>
+          <line x1="270" y1="50"  x2="50"  y2="270" stroke="rgba(212,197,169,0.08)" stroke-width="0.75"/>
+
+          <!-- N pointer (sienna, larger) -->
+          <polygon points="160,26 153,160 160,148 167,160" fill="#c65d07" opacity="0.9"/>
+          <!-- S pointer (white) -->
+          <polygon points="160,294 153,160 160,172 167,160" fill="rgba(212,197,169,0.5)"/>
+          <!-- E pointer -->
+          <polygon points="294,160 160,153 172,160 160,167" fill="rgba(212,197,169,0.45)"/>
+          <!-- W pointer -->
+          <polygon points="26,160 160,153 148,160 160,167" fill="rgba(212,197,169,0.45)"/>
+
+          <!-- Center dot -->
+          <circle cx="160" cy="160" r="6" fill="#c65d07" opacity="0.9"/>
+          <circle cx="160" cy="160" r="3" fill="#fff" opacity="0.8"/>
+
+          <!-- Cardinal letters -->
+          <text x="160" y="16" text-anchor="middle" font-family="'Cabin', sans-serif" font-weight="700" font-size="13" fill="rgba(255,255,255,0.85)" letter-spacing="1">N</text>
+          <text x="160" y="316" text-anchor="middle" font-family="'Cabin', sans-serif" font-weight="600" font-size="11" fill="rgba(212,197,169,0.55)" letter-spacing="1">S</text>
+          <text x="308" y="165" text-anchor="middle" font-family="'Cabin', sans-serif" font-weight="600" font-size="11" fill="rgba(212,197,169,0.55)" letter-spacing="1">E</text>
+          <text x="12"  y="165" text-anchor="middle" font-family="'Cabin', sans-serif" font-weight="600" font-size="11" fill="rgba(212,197,169,0.55)" letter-spacing="1">W</text>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       PRODUCT CATEGORIES
+       ===================================================== -->
+  <section id="categories">
+    <div class="section-inner">
+
+      <div class="categories-header">
+        <p class="section-label reveal">What We Carry</p>
+        <h2 class="section-title reveal reveal-delay-1">The Right Gear for Every Trail</h2>
+        <p class="section-body reveal reveal-delay-2">
+          We don't sell everything. We carry what actually works in the western Carolina backcountry,
+          tested by people who use it here.
+        </p>
+      </div>
+
+      <div class="categories-grid">
+
+        <!-- Card 1: Hiking -->
+        <div class="cat-card reveal">
+          <div class="cat-number">01</div>
+          <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 36 L20 12 L30 28 L36 20 L44 36Z" stroke="#2d4a22" stroke-width="2" fill="rgba(45,74,34,0.08)" stroke-linejoin="round"/>
+            <circle cx="36" cy="14" r="3" fill="#c65d07"/>
+            <line x1="4" y1="36" x2="44" y2="36" stroke="#3d2b1f" stroke-width="1.5" opacity="0.3"/>
+          </svg>
+          <h3 class="cat-title">Hiking and Trail</h3>
+          <p class="cat-desc">
+            Trail runners, hiking boots, trekking poles, hydration packs, and layering systems for
+            the South Mountains and Crowders Mountain terrain. Fit matters, and we fit you in person.
+          </p>
+          <div class="cat-tags">
+            <span class="tag">Footwear</span>
+            <span class="tag">Packs</span>
+            <span class="tag">Layering</span>
+            <span class="tag">Navigation</span>
+          </div>
+          <a href="#" class="cat-link">Browse Hiking Gear</a>
+        </div>
+
+        <!-- Card 2: Camping -->
+        <div class="cat-card reveal reveal-delay-1">
+          <div class="cat-number">02</div>
+          <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 36 L24 10 L42 36Z" stroke="#2d4a22" stroke-width="2" fill="rgba(45,74,34,0.08)" stroke-linejoin="round"/>
+            <path d="M18 36 L24 24 L30 36Z" stroke="#c65d07" stroke-width="1.5" fill="rgba(198,93,7,0.1)" stroke-linejoin="round"/>
+            <line x1="4" y1="36" x2="44" y2="36" stroke="#3d2b1f" stroke-width="1.5" opacity="0.3"/>
+          </svg>
+          <h3 class="cat-title">Camping and Shelter</h3>
+          <p class="cat-desc">
+            Three-season and four-season tents, sleeping bags rated for Carolina mountain nights,
+            lightweight stoves, and camp kitchen setups. We know what handles the humidity here.
+          </p>
+          <div class="cat-tags">
+            <span class="tag">Tents</span>
+            <span class="tag">Sleep Systems</span>
+            <span class="tag">Cooking</span>
+            <span class="tag">Lighting</span>
+          </div>
+          <a href="#" class="cat-link">Browse Camp Gear</a>
+        </div>
+
+        <!-- Card 3: Climbing -->
+        <div class="cat-card reveal reveal-delay-2">
+          <div class="cat-number">03</div>
+          <svg class="cat-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="38" cy="10" r="4" stroke="#c65d07" stroke-width="1.5" fill="none"/>
+            <path d="M38 14 L26 28 L18 22 L8 38" stroke="#2d4a22" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="22" r="2.5" fill="#c65d07"/>
+            <line x1="4" y1="38" x2="44" y2="38" stroke="#3d2b1f" stroke-width="1.5" opacity="0.3"/>
+          </svg>
+          <h3 class="cat-title">Climbing and Adventure</h3>
+          <p class="cat-desc">
+            Harnesses, ropes, helmets, and bouldering pads for granite faces around the foothills.
+            Plus water gear for the Broad River and Second Broad River paddling runs.
+          </p>
+          <div class="cat-tags">
+            <span class="tag">Ropes</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Paddling</span>
+            <span class="tag">Safety</span>
+          </div>
+          <a href="#" class="cat-link">Browse Climbing Gear</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       ADVENTURES
+       ===================================================== -->
+  <section id="adventures" class="topo-pattern">
+    <div class="section-inner">
+
+      <div class="adventures-header">
+        <p class="section-label reveal">Get Outside with Us</p>
+        <h2 class="section-title reveal reveal-delay-1">Guided Adventures</h2>
+        <p class="section-body reveal reveal-delay-2">
+          Small groups, local guides, and trails we've hiked more times than we can count.
+          All trips depart from Shelby or nearby trailheads.
+        </p>
+      </div>
+
+      <div class="adventures-grid">
+
+        <!-- Adventure 1 -->
+        <div class="adv-card reveal">
+          <div class="adv-meta">
+            <span class="adv-badge badge-easy">Easy</span>
+            <span class="adv-season">Apr &ndash; Nov</span>
+          </div>
+          <h3 class="adv-title">South Mountains Day Hike</h3>
+          <p class="adv-location">South Mountains State Park, Burke County</p>
+          <p class="adv-desc">
+            A guided loop through one of the best state parks in the Carolinas.
+            We cover High Shoals Falls, the backcountry ridge, and return views of the Piedmont.
+            Great for first-timers and families getting into the outdoors.
+          </p>
+          <div class="adv-details">
+            <div class="adv-detail">
+              <span class="adv-detail-label">Distance</span>
+              <span class="adv-detail-value">6.5 miles</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Duration</span>
+              <span class="adv-detail-value">Full Day</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Group Size</span>
+              <span class="adv-detail-value">Max 10</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adventure 2 -->
+        <div class="adv-card reveal reveal-delay-1">
+          <div class="adv-meta">
+            <span class="adv-badge badge-moderate">Moderate</span>
+            <span class="adv-season">Mar &ndash; Oct</span>
+          </div>
+          <h3 class="adv-title">Broad River Kayaking</h3>
+          <p class="adv-location">Broad River, Rutherford County</p>
+          <p class="adv-desc">
+            A half-day paddle on the Broad River through some of the quietest scenery in Cleveland and
+            Rutherford Counties. We supply the kayaks and safety gear. You bring a sense of adventure
+            and dry clothes for after.
+          </p>
+          <div class="adv-details">
+            <div class="adv-detail">
+              <span class="adv-detail-label">Distance</span>
+              <span class="adv-detail-value">8 miles</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Duration</span>
+              <span class="adv-detail-value">Half Day</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Group Size</span>
+              <span class="adv-detail-value">Max 8</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adventure 3 -->
+        <div class="adv-card reveal reveal-delay-2">
+          <div class="adv-meta">
+            <span class="adv-badge badge-challenging">Challenging</span>
+            <span class="adv-season">Sep &ndash; May</span>
+          </div>
+          <h3 class="adv-title">Crowders Mountain Scramble</h3>
+          <p class="adv-location">Crowders Mountain State Park, Gaston County</p>
+          <p class="adv-desc">
+            Bouldering and ridge scrambling on the quartzite ridgeline at Crowders. We cover route
+            reading, basic anchor setup, and movement technique. Stunning views of the Charlotte
+            skyline and Kings Mountain from the summit.
+          </p>
+          <div class="adv-details">
+            <div class="adv-detail">
+              <span class="adv-detail-label">Elevation</span>
+              <span class="adv-detail-value">1,625 ft</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Duration</span>
+              <span class="adv-detail-value">Full Day</span>
+            </div>
+            <div class="adv-detail">
+              <span class="adv-detail-label">Group Size</span>
+              <span class="adv-detail-value">Max 6</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       ABOUT
+       ===================================================== -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-inner">
+
+        <div class="about-visual reveal">
+          <div class="about-photo-frame">
+            <!-- Placeholder mountain illustration -->
+            <svg class="about-placeholder-svg" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M10 160 L70 50 L100 100 L130 60 L190 160Z" stroke="#2d4a22" stroke-width="3" fill="rgba(45,74,34,0.15)" stroke-linejoin="round"/>
+              <circle cx="130" cy="48" r="8" fill="#c65d07" opacity="0.6"/>
+              <path d="M55 160 L80 110 L100 130 L120 100 L145 160Z" fill="rgba(61,43,31,0.08)" stroke="#3d2b1f" stroke-width="1.5" stroke-linejoin="round"/>
+              <line x1="5" y1="162" x2="195" y2="162" stroke="#3d2b1f" stroke-width="1.5" opacity="0.15"/>
+              <path d="M0 162 Q50 155 100 162 Q150 169 200 162" stroke="#3d2b1f" stroke-width="1" fill="none" opacity="0.1"/>
+            </svg>
+            <div class="about-badge">
+              <span class="about-badge-year">2011</span>
+              <span class="about-badge-label">Est.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <p class="section-label reveal">Our Story</p>
+          <h2 class="section-title reveal reveal-delay-1">
+            Born on the <span>Trail</span>
+          </h2>
+
+          <p class="about-text reveal reveal-delay-2">
+            Trailhead Outfitters started in a rented storefront on Lafayette Street in 2011, founded by two
+            Cleveland County natives who kept driving two hours to Charlotte to buy decent hiking gear.
+            That felt wrong. The foothills have world-class trails. They should have a world-class shop.
+          </p>
+
+          <p class="about-text reveal reveal-delay-2">
+            We're not a big-box sporting goods store. We carry fewer products on purpose, and every one of
+            them has been used on local trails by someone on our staff. When you come in, you're talking to
+            people who were at South Mountains last weekend.
+          </p>
+
+          <p class="about-text reveal reveal-delay-3">
+            We're active in the Cleveland County community: trail maintenance with the Friends of South
+            Mountains, youth outdoor programming through the Foothills Conservancy, and a gear donation
+            program for local Boy Scout and Girl Scout troops. The trail takes care of us. We try to
+            take care of the trail.
+          </p>
+
+          <div class="about-stats reveal reveal-delay-3">
+            <div class="stat-item">
+              <span class="stat-number">14</span>
+              <span class="stat-desc">Years serving the Foothills</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">200+</span>
+              <span class="stat-desc">Guided trips completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5.0</span>
+              <span class="stat-desc">Google rating, 180+ reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">Local</span>
+              <span class="stat-desc">Owned and staffed, no corporate</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       CTA
+       ===================================================== -->
+  <section id="cta">
+    <!-- Faded compass rose in background -->
+    <svg class="cta-compass-bg" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="160" cy="160" r="155" stroke="white" stroke-width="1"/>
+      <circle cx="160" cy="160" r="140" stroke="white" stroke-width="0.75"/>
+      <circle cx="160" cy="160" r="110" stroke="white" stroke-width="0.75"/>
+      <circle cx="160" cy="160" r="75" stroke="white" stroke-width="0.75"/>
+      <circle cx="160" cy="160" r="45" stroke="white" stroke-width="0.75"/>
+      <line x1="160" y1="5"   x2="160" y2="315" stroke="white" stroke-width="0.5"/>
+      <line x1="5"   y1="160" x2="315" y2="160" stroke="white" stroke-width="0.5"/>
+      <line x1="46"  y1="46"  x2="274" y2="274" stroke="white" stroke-width="0.4"/>
+      <line x1="274" y1="46"  x2="46"  y2="274" stroke="white" stroke-width="0.4"/>
+      <polygon points="160,10 153,160 160,142 167,160" fill="white"/>
+      <polygon points="160,310 153,160 160,178 167,160" fill="white" opacity="0.6"/>
+      <polygon points="310,160 160,153 178,160 160,167" fill="white" opacity="0.6"/>
+      <polygon points="10,160 160,153 142,160 160,167" fill="white" opacity="0.6"/>
+      <circle cx="160" cy="160" r="6" fill="white"/>
+    </svg>
+
+    <div class="cta-inner">
+      <p class="cta-eyebrow reveal">Ready to Get Outside</p>
+      <h2 class="cta-title reveal reveal-delay-1">
+        Your Next Adventure<br>Starts <span>Right Here</span>
+      </h2>
+      <p class="cta-subtitle reveal reveal-delay-2">
+        Come by the shop, give us a call, or send a message. We'll help you find the right gear
+        for your next trip, whether it's Crowders Mountain or the AT.
+      </p>
+
+      <div class="cta-contact-block reveal reveal-delay-2">
+        <div class="cta-contact-item">
+          <span class="contact-label">Phone</span>
+          <a href="tel:7045550619" class="contact-value">(704) 555-0619</a>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="cta-contact-item">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">523 S. Lafayette St, Shelby NC 28150</span>
+        </div>
+      </div>
+
+      <p class="cta-hours reveal reveal-delay-3">
+        Mon &ndash; Sat 9am to 6pm &bull; Sunday 11am to 4pm
+      </p>
+
+      <div class="cta-btn-row reveal reveal-delay-3">
+        <a href="tel:7045550619" class="btn-primary">Call Us Now</a>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer id="footer">
+    <div class="footer-inner">
+
+      <div class="footer-logo">
+        <svg width="30" height="30" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="19" cy="19" r="17" stroke="rgba(212,197,169,0.4)" stroke-width="1.5" fill="none"/>
+          <polyline points="5,28 14,13 19,21 24,15 33,28" stroke="rgba(212,197,169,0.6)" stroke-width="1.75" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="24" cy="11" r="2.5" fill="rgba(198,93,7,0.7)"/>
+        </svg>
+        <span class="footer-logo-name">Trailhead Outfitters</span>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#">Home</a>
+        <a href="#categories">Gear</a>
+        <a href="#adventures">Adventures</a>
+        <a href="#about">About</a>
+        <a href="#cta">Contact</a>
+      </nav>
+
+      <div class="footer-divider"></div>
+
+      <p class="footer-tagline">523 S. Lafayette St, Shelby, NC 28150</p>
+
+      <p class="footer-copy">
+        &copy; 2026 Trailhead Outfitters. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+  <script>
+    // --- Sticky header shadow on scroll ---
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // --- Mobile hamburger ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav    = document.getElementById('mobile-nav');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close mobile nav on link click
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // --- Scroll reveal with IntersectionObserver ---
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Immediately reveal above-fold hero elements
+    const heroReveals = document.querySelectorAll('#hero .reveal');
+    heroReveals.forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  </script>
+
+</body>
+</html>

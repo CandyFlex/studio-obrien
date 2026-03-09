@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morningside Coffee | Small-Batch Roastery in Shelby, NC</title>
+  <meta name="description" content="Morningside Coffee is an artisan roastery and coffee shop in Shelby, NC. Small-batch roasting, seasonal single origins, and a warm space in the heart of the Carolina foothills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Reset ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== Design Tokens ===== */
+    :root {
+      --espresso:    #2c1810;
+      --cream:       #f7f0e3;
+      --copper:      #b76e3c;
+      --warm-brown:  #4a3428;
+      --latte:       #e8d5c0;
+      --dark-roast:  #1a0f08;
+
+      --font-display: 'Libre Baskerville', serif;
+      --font-body:    'Karla', sans-serif;
+
+      --transition: 0.25s ease;
+      --radius-sm: 4px;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--espresso);
+      background-color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== Utility ===== */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 0.75rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== Coffee Ring SVG ===== */
+    .coffee-ring {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+
+    /* ===== Bean Dot Pattern ===== */
+    .bean-dot-pattern {
+      background-image:
+        radial-gradient(circle, rgba(183,110,60,0.06) 3px, transparent 3px);
+      background-size: 25px 25px;
+    }
+
+    /* ===== Parchment Texture ===== */
+    .parchment-texture {
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(183,110,60,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(74,52,40,0.05) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(232,213,192,0.25) 0%, transparent 80%);
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: var(--espresso);
+      border-bottom: 3px solid var(--copper);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--latte);
+      margin-top: 3px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .site-nav a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--latte);
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--copper);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .site-nav a:hover {
+      color: var(--cream);
+    }
+
+    .site-nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--latte);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--espresso);
+      border-top: 1px solid rgba(183,110,60,0.3);
+      padding: 1.25rem 2rem 1.5rem;
+      gap: 1.1rem;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--latte);
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover {
+      color: var(--cream);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 65% 30%, rgba(183,110,60,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 70%, rgba(74,52,40,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 90%, rgba(232,213,192,0.4) 0%, transparent 50%);
+    }
+
+    /* Steam gradient rising from bottom */
+    .hero-steam {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background: linear-gradient(
+        to top,
+        rgba(232,213,192,0.45) 0%,
+        rgba(247,240,227,0.18) 40%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Coffee ring decorations */
+    .hero-ring-1 {
+      top: 12%;
+      right: 7%;
+      width: 260px;
+      height: 260px;
+    }
+
+    .hero-ring-2 {
+      bottom: 18%;
+      right: 18%;
+      width: 110px;
+      height: 110px;
+      opacity: 0.1;
+    }
+
+    .hero-ring-3 {
+      top: 55%;
+      left: 4%;
+      width: 80px;
+      height: 80px;
+      opacity: 0.09;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--copper);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--warm-brown);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--copper);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--copper);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--copper);
+      box-shadow: 0 0 0 3px rgba(183,110,60,0.2), 0 4px 18px rgba(183,110,60,0.22);
+    }
+
+    .btn-primary svg {
+      width: 15px;
+      height: 15px;
+      transition: transform var(--transition);
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .hero-scroll-hint span {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      opacity: 0.5;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--copper), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
+    }
+
+    /* ===== ROASTS SECTION ===== */
+    .roasts-section {
+      background-color: var(--espresso);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .roasts-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--copper), transparent);
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .section-heading.light {
+      color: var(--cream);
+    }
+
+    .section-heading.dark {
+      color: var(--espresso);
+    }
+
+    .section-intro {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .section-intro.light {
+      color: var(--latte);
+    }
+
+    .section-intro.dark {
+      color: var(--warm-brown);
+    }
+
+    .roasts-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .roasts-header .section-label {
+      color: var(--copper);
+    }
+
+    .roasts-header .section-intro {
+      max-width: 520px;
+      margin: 1.25rem auto 0;
+    }
+
+    .roasts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .roast-card {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .roast-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    .roast-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--copper);
+    }
+
+    .roast-card-ring {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      opacity: 0.06;
+    }
+
+    .roast-level {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--copper);
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .roast-card:nth-child(2) .roast-level {
+      background: var(--warm-brown);
+    }
+
+    .roast-card:nth-child(3) .roast-level {
+      background: var(--espresso);
+    }
+
+    .roast-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--espresso);
+      margin-bottom: 0.5rem;
+    }
+
+    .roast-origin {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.82rem;
+      color: var(--copper);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .roast-description {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--warm-brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .tasting-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .note-tag {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.72rem;
+      color: var(--espresso);
+      background: var(--latte);
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+      border: 1px solid rgba(183,110,60,0.2);
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu-section {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    .menu-section.bean-dot-pattern.parchment-texture {
+      /* combined utility classes */
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .menu-header .section-label {
+      color: var(--copper);
+    }
+
+    .menu-header .section-intro.dark {
+      max-width: 480px;
+      margin: 1.25rem auto 0;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+      background: #fff;
+      border: 1px solid var(--latte);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card:hover {
+      border-color: var(--copper);
+      box-shadow: 0 6px 24px rgba(183,110,60,0.12);
+    }
+
+    .menu-card-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      background: var(--latte);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-card-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .menu-card-body {
+      flex: 1;
+    }
+
+    .menu-card-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-item-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--espresso);
+    }
+
+    .menu-item-price {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--copper);
+    }
+
+    .menu-item-desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: var(--warm-brown);
+    }
+
+    /* ===== STORY SECTION ===== */
+    .story-section {
+      background-color: var(--warm-brown);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(183,110,60,0.5), transparent);
+    }
+
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .story-visual {
+      position: relative;
+    }
+
+    .story-image-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--espresso);
+      aspect-ratio: 4 / 5;
+      max-width: 420px;
+    }
+
+    /* Simulated image using gradients */
+    .story-image-fill {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(183,110,60,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 25%, rgba(74,52,40,0.5) 0%, transparent 50%),
+        linear-gradient(160deg, #2c1810 0%, #4a3428 50%, #2c1810 100%);
+    }
+
+    .story-image-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .story-image-text span {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: rgba(247,240,227,0.5);
+      letter-spacing: 0.1em;
+      font-style: italic;
+    }
+
+    .story-ring-decor {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+    }
+
+    .story-text {
+      padding-right: 1rem;
+    }
+
+    .story-text .section-label {
+      color: var(--latte);
+    }
+
+    .story-text .section-heading.light {
+      margin-bottom: 1.5rem;
+    }
+
+    .story-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: var(--latte);
+      margin-bottom: 1rem;
+    }
+
+    .story-body + .story-body {
+      margin-top: 0.75rem;
+    }
+
+    .story-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--copper);
+      padding-left: 1rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--latte);
+      opacity: 0.75;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      position: relative;
+      background-color: var(--dark-roast);
+      padding: 7rem 0 6rem;
+      overflow: hidden;
+    }
+
+    /* Steam gradient at top of CTA */
+    .cta-steam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(
+        to bottom,
+        rgba(74,52,40,0.5) 0%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(183,110,60,0.4), transparent);
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cta-inner .section-label {
+      color: var(--copper);
+    }
+
+    .cta-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-heading em {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .cta-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--latte);
+      max-width: 480px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-info-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .cta-info-block {
+      text-align: left;
+      min-width: 180px;
+    }
+
+    .cta-info-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-info-value {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.25rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--copper);
+      cursor: pointer;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-cta:hover {
+      background: var(--copper);
+      box-shadow: 0 0 24px rgba(183,110,60,0.3);
+    }
+
+    .cta-ring {
+      position: absolute;
+      opacity: 0.06;
+    }
+
+    .cta-ring-1 {
+      top: 10%;
+      left: 8%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .cta-ring-2 {
+      bottom: 15%;
+      right: 10%;
+      width: 140px;
+      height: 140px;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background-color: var(--espresso);
+      padding: 3.5rem 0 2.5rem;
+      border-top: 3px solid var(--copper);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--latte);
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--copper);
+      opacity: 0.4;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--latte);
+      opacity: 0.4;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .site-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .roasts-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .story-image-frame {
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .story-text {
+        padding-right: 0;
+      }
+
+      .cta-info-row {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-ring-1 {
+        width: 160px;
+        height: 160px;
+        right: 2%;
+        top: 18%;
+      }
+
+      .story-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .cta-heading {
+        font-size: 2rem;
+      }
+
+      .cta-info-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.75rem;
+      }
+
+      .cta-info-block {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="#top" class="logo">
+          <!-- Logo mark: stylized coffee bean / cup icon -->
+          <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="19" cy="19" r="18" stroke="#b76e3c" stroke-width="1.5" fill="none"/>
+            <!-- Cup silhouette -->
+            <path d="M12 15h14l-2 10H14L12 15Z" fill="#b76e3c" opacity="0.85"/>
+            <path d="M24 17.5c2 0 3.5 1 3.5 2.5s-1.5 2.5-3.5 2.5" stroke="#b76e3c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- Steam wisps -->
+            <path d="M16 12c0-1.5 2-1.5 2-3" stroke="#e8d5c0" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M19 11c0-1.5 2-1.5 2-3" stroke="#e8d5c0" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-name">Morningside</span>
+            <span class="logo-sub">Coffee &amp; Roastery</span>
+          </div>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#top">Home</a>
+          <a href="#roasts">Our Coffee</a>
+          <a href="#menu">Menu</a>
+          <a href="#story">Story</a>
+          <a href="#visit">Visit</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#top">Home</a>
+      <a href="#roasts">Our Coffee</a>
+      <a href="#menu">Menu</a>
+      <a href="#story">Story</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-steam"></div>
+
+    <!-- Coffee ring decorations -->
+    <svg class="coffee-ring hero-ring-1" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="130" cy="130" r="115"
+        stroke="#b76e3c"
+        stroke-width="18"
+        stroke-dasharray="500 180"
+        stroke-linecap="round"
+        fill="none"/>
+      <circle cx="130" cy="130" r="90"
+        stroke="#b76e3c"
+        stroke-width="6"
+        stroke-dasharray="280 120"
+        stroke-linecap="round"
+        fill="none"
+        opacity="0.5"/>
+    </svg>
+
+    <svg class="coffee-ring hero-ring-2" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="55" cy="55" r="48"
+        stroke="#b76e3c"
+        stroke-width="10"
+        stroke-dasharray="200 80"
+        stroke-linecap="round"
+        fill="none"/>
+    </svg>
+
+    <svg class="coffee-ring hero-ring-3" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="40" cy="40" r="34"
+        stroke="#4a3428"
+        stroke-width="8"
+        stroke-dasharray="120 80"
+        stroke-linecap="round"
+        fill="none"/>
+    </svg>
+
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow reveal">Shelby, NC. Est. 2018.</p>
+
+        <h1 class="hero-title reveal reveal-delay-1">
+          Roasted with<br><em>Intention</em>
+        </h1>
+
+        <p class="hero-subtitle reveal reveal-delay-2">
+          Small-batch coffee roasted by hand in Cleveland County. We source carefully, roast slowly, and serve every cup to the people of the Carolina foothills who deserve better than the usual.
+        </p>
+
+        <a href="#menu" class="btn-primary reveal reveal-delay-3">
+          See Our Menu
+          <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 7.5h11M8 3l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== ROASTS SECTION ===== -->
+  <section class="roasts-section" id="roasts">
+    <div class="container">
+
+      <div class="roasts-header">
+        <p class="section-label reveal" style="color: var(--copper);">What We Roast</p>
+        <h2 class="section-heading light reveal reveal-delay-1">Our Roasts</h2>
+        <p class="section-intro light reveal reveal-delay-2">
+          Three house roasts, dialed in over years of trial and genuine obsession. Each one consistent, honest, and worth your morning.
+        </p>
+      </div>
+
+      <div class="roasts-grid">
+
+        <!-- Card 1: Morning Light -->
+        <div class="roast-card reveal reveal-delay-1">
+          <svg class="roast-card-ring" width="140" height="140" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+            <circle cx="70" cy="70" r="60"
+              stroke="#b76e3c"
+              stroke-width="14"
+              stroke-dasharray="250 130"
+              stroke-linecap="round"
+              fill="none"/>
+          </svg>
+          <span class="roast-level">Light Roast</span>
+          <h3 class="roast-name">Morning Light</h3>
+          <p class="roast-origin">Ethiopia Yirgacheffe</p>
+          <p class="roast-description">
+            Bright and clean with a floral lift. Sourced from a cooperative in the Gedeo Zone and roasted light to preserve the origin character. Best as a pour-over or Chemex.
+          </p>
+          <div class="tasting-notes">
+            <span class="note-tag">Jasmine</span>
+            <span class="note-tag">Lemon zest</span>
+            <span class="note-tag">Peach</span>
+            <span class="note-tag">Light body</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Foothills Blend -->
+        <div class="roast-card reveal reveal-delay-2">
+          <svg class="roast-card-ring" width="140" height="140" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+            <circle cx="70" cy="70" r="60"
+              stroke="#4a3428"
+              stroke-width="14"
+              stroke-dasharray="250 130"
+              stroke-linecap="round"
+              fill="none"/>
+          </svg>
+          <span class="roast-level">Medium Roast</span>
+          <h3 class="roast-name">Foothills Blend</h3>
+          <p class="roast-origin">Colombia + Guatemala</p>
+          <p class="roast-description">
+            Our house blend and daily driver. Balanced, smooth, and consistent enough that regulars stop noticing it consciously, which is the whole point. A cup that just works.
+          </p>
+          <div class="tasting-notes">
+            <span class="note-tag">Brown sugar</span>
+            <span class="note-tag">Hazelnut</span>
+            <span class="note-tag">Red apple</span>
+            <span class="note-tag">Silky body</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Dark Mountain -->
+        <div class="roast-card reveal reveal-delay-3">
+          <svg class="roast-card-ring" width="140" height="140" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+            <circle cx="70" cy="70" r="60"
+              stroke="#2c1810"
+              stroke-width="14"
+              stroke-dasharray="250 130"
+              stroke-linecap="round"
+              fill="none"/>
+          </svg>
+          <span class="roast-level">Dark Roast</span>
+          <h3 class="roast-name">Dark Mountain</h3>
+          <p class="roast-origin">Sumatra Mandheling</p>
+          <p class="roast-description">
+            Deep, earthy, and unapologetically bold. Roasted to second crack and pulled at exactly the right moment to keep the sweetness. Not charred. Deliberately dark.
+          </p>
+          <div class="tasting-notes">
+            <span class="note-tag">Dark chocolate</span>
+            <span class="note-tag">Cedar</span>
+            <span class="note-tag">Molasses</span>
+            <span class="note-tag">Full body</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== MENU SECTION ===== -->
+  <section class="menu-section bean-dot-pattern parchment-texture" id="menu">
+    <div class="container">
+
+      <div class="menu-header">
+        <p class="section-label reveal" style="color: var(--copper);">What We Serve</p>
+        <h2 class="section-heading dark reveal reveal-delay-1">Menu Highlights</h2>
+        <p class="section-intro dark reveal reveal-delay-2">
+          The full menu lives at the shop. These are the ones people come back for.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+
+        <!-- Pour-Over -->
+        <div class="menu-card reveal reveal-delay-1">
+          <div class="menu-card-icon">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Chemex shape -->
+              <path d="M8 4h10l-3 9h-4L8 4Z" fill="#b76e3c" opacity="0.25"/>
+              <path d="M11 13l-3 9h8l-3-9" fill="#b76e3c" opacity="0.6"/>
+              <path d="M9 8h8" stroke="#b76e3c" stroke-width="1.2" stroke-linecap="round"/>
+              <!-- Steam -->
+              <path d="M11 2c0-1 1.5-1 1.5-2" stroke="#b76e3c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              <path d="M14 2c0-1 1.5-1 1.5-2" stroke="#b76e3c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <span class="menu-item-name">Pour-Over</span>
+              <span class="menu-item-price">$5.50</span>
+            </div>
+            <p class="menu-item-desc">Single-origin, ground fresh to order. Choose Morning Light or Foothills Blend. Takes about four minutes. Worth every second.</p>
+          </div>
+        </div>
+
+        <!-- Espresso -->
+        <div class="menu-card reveal reveal-delay-2">
+          <div class="menu-card-icon">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Espresso cup -->
+              <path d="M7 10h12l-1.5 8H8.5L7 10Z" fill="#b76e3c" opacity="0.55"/>
+              <path d="M7 10h12" stroke="#b76e3c" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M6 18h14" stroke="#b76e3c" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M4 20h18" stroke="#b76e3c" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Steam -->
+              <path d="M12 7c0-1.2 1.5-1.2 1.5-2.4" stroke="#b76e3c" stroke-width="1" stroke-linecap="round" opacity="0.45"/>
+            </svg>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <span class="menu-item-name">Espresso</span>
+              <span class="menu-item-price">$3.50</span>
+            </div>
+            <p class="menu-item-desc">Double shot, pulled on a La Marzocco. Clean, sweet, and balanced. Served with a small glass of sparkling water.</p>
+          </div>
+        </div>
+
+        <!-- Cold Brew -->
+        <div class="menu-card reveal reveal-delay-3">
+          <div class="menu-card-icon">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Mason jar-ish glass -->
+              <rect x="7" y="5" width="12" height="18" rx="2" stroke="#b76e3c" stroke-width="1.2" fill="none"/>
+              <path d="M7 9h12" stroke="#b76e3c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              <!-- Ice cubes suggestion -->
+              <rect x="9" y="12" width="3.5" height="3.5" rx="0.5" fill="#b76e3c" opacity="0.3"/>
+              <rect x="13.5" y="14" width="3.5" height="3.5" rx="0.5" fill="#b76e3c" opacity="0.3"/>
+              <!-- Straw -->
+              <line x1="17" y1="5" x2="15" y2="23" stroke="#b76e3c" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+            </svg>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <span class="menu-item-name">Cold Brew</span>
+              <span class="menu-item-price">$5.00</span>
+            </div>
+            <p class="menu-item-desc">Steeped 18 hours with Dark Mountain beans, then filtered cold. Smooth enough to drink straight. Strong enough to mean it.</p>
+          </div>
+        </div>
+
+        <!-- Pastries -->
+        <div class="menu-card reveal reveal-delay-4">
+          <div class="menu-card-icon">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Croissant-like shape -->
+              <path d="M5 17c2-5 6-9 10-9s6 4 4 8" stroke="#b76e3c" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+              <path d="M5 17c1 2 4 4 7 3" stroke="#b76e3c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <path d="M19 16c-1 2-4 4-7 4" stroke="#b76e3c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <!-- Plate suggestion -->
+              <path d="M4 21h18" stroke="#b76e3c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <span class="menu-item-name">Fresh Pastries</span>
+              <span class="menu-item-price">from $3.00</span>
+            </div>
+            <p class="menu-item-desc">Baked locally and delivered each morning. Croissants, scones, and a rotating seasonal option. Ask what just came in.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== STORY SECTION ===== -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-inner">
+
+        <!-- Visual column -->
+        <div class="story-visual reveal">
+          <div class="story-image-frame">
+            <div class="story-image-fill"></div>
+            <div class="story-image-text">
+              <!-- Coffee ring as visual centerpiece -->
+              <svg width="160" height="160" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+                <circle cx="80" cy="80" r="68"
+                  stroke="#b76e3c"
+                  stroke-width="22"
+                  stroke-dasharray="300 130"
+                  stroke-linecap="round"
+                  fill="none"
+                  opacity="0.35"/>
+                <circle cx="80" cy="80" r="42"
+                  stroke="#e8d5c0"
+                  stroke-width="8"
+                  stroke-dasharray="160 80"
+                  stroke-linecap="round"
+                  fill="none"
+                  opacity="0.2"/>
+              </svg>
+              <span>Shelby, NC</span>
+              <span style="font-size:0.7rem; opacity:0.4; font-style:normal; letter-spacing:0.12em; text-transform:uppercase;">Est. 2018</span>
+            </div>
+          </div>
+
+          <!-- Small decorative ring -->
+          <svg class="story-ring-decor" width="100" height="100" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="opacity:0.12;">
+            <circle cx="50" cy="50" r="42"
+              stroke="#b76e3c"
+              stroke-width="12"
+              stroke-dasharray="180 80"
+              stroke-linecap="round"
+              fill="none"/>
+          </svg>
+        </div>
+
+        <!-- Text column -->
+        <div class="story-text">
+          <p class="section-label reveal" style="color: var(--latte);">Who We Are</p>
+          <h2 class="section-heading light reveal reveal-delay-1">From Seed<br>to Cup</h2>
+
+          <p class="story-body reveal reveal-delay-2">
+            Morningside started in 2018 with a sample roaster, a secondhand Probat, and a genuine belief that Shelby deserved good coffee. Not drive-through coffee. Not grocery-store coffee. Coffee with a paper trail, roasted by someone who cares where it came from.
+          </p>
+
+          <p class="story-body reveal reveal-delay-3">
+            We source green beans direct from cooperatives in Ethiopia, Colombia, Guatemala, and Sumatra. Every lot gets tasted multiple times before it hits the roaster. Roasting happens weekly in small batches so nothing on our shelves is ever stale.
+          </p>
+
+          <p class="story-body reveal reveal-delay-4">
+            The shop on Warren Street is a community space first. Come in, sit down, and stay as long as you need. We grew up here. This is home.
+          </p>
+
+          <div class="story-stats">
+            <div class="stat-item reveal reveal-delay-1">
+              <div class="stat-number">2018</div>
+              <div class="stat-label">Founded in Shelby, NC</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-2">
+              <div class="stat-number">4</div>
+              <div class="stat-label">House roasts on rotation</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-3">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Continents sourced from</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-4">
+              <div class="stat-number">Weekly</div>
+              <div class="stat-label">Fresh roasting schedule</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CTA / VISIT SECTION ===== -->
+  <section class="cta-section" id="visit">
+    <div class="cta-steam"></div>
+
+    <!-- Decorative rings -->
+    <svg class="cta-ring cta-ring-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="100" cy="100" r="86"
+        stroke="#b76e3c"
+        stroke-width="20"
+        stroke-dasharray="350 180"
+        stroke-linecap="round"
+        fill="none"/>
+    </svg>
+
+    <svg class="cta-ring cta-ring-2" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="70" cy="70" r="58"
+        stroke="#b76e3c"
+        stroke-width="14"
+        stroke-dasharray="230 120"
+        stroke-linecap="round"
+        fill="none"/>
+    </svg>
+
+    <div class="container">
+      <div class="cta-inner">
+        <p class="section-label reveal" style="color: var(--copper);">Come Find Us</p>
+        <h2 class="cta-heading reveal reveal-delay-1">
+          Come Taste the<br><em>Difference</em>
+        </h2>
+        <p class="cta-subtitle reveal reveal-delay-2">
+          We are in the heart of Shelby, two blocks from the courthouse square. Parking is easy. The coffee is ready.
+        </p>
+
+        <div class="cta-info-row reveal reveal-delay-3">
+          <div class="cta-info-block">
+            <div class="cta-info-label">Hours</div>
+            <div class="cta-info-value">
+              Mon&ndash;Sat: 6AM to 6PM<br>
+              Sunday: 7AM to 2PM
+            </div>
+          </div>
+          <div class="cta-info-block">
+            <div class="cta-info-label">Phone</div>
+            <div class="cta-info-value">
+              <a href="tel:7045550742" style="color: inherit;">(704) 555-0742</a>
+            </div>
+          </div>
+          <div class="cta-info-block">
+            <div class="cta-info-label">Address</div>
+            <div class="cta-info-value">
+              218 W. Warren St<br>
+              Shelby, NC 28150
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:7045550742" class="btn-cta reveal reveal-delay-4">
+          Call Ahead
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2h3l1.5 3.5-2 1.2a8.5 8.5 0 0 0 3.8 3.8L9.5 8.5 13 10v3a1 1 0 0 1-1 1C5 14 0 9 0 3a1 1 0 0 1 1-1Z" fill="currentColor" opacity="0.85"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo">
+          <svg width="30" height="30" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="19" cy="19" r="18" stroke="#b76e3c" stroke-width="1.5" fill="none"/>
+            <path d="M12 15h14l-2 10H14L12 15Z" fill="#b76e3c" opacity="0.75"/>
+            <path d="M24 17.5c2 0 3.5 1 3.5 2.5s-1.5 2.5-3.5 2.5" stroke="#b76e3c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-name" style="font-family:'Libre Baskerville',serif; color:var(--cream); font-size:1rem;">Morningside Coffee</span>
+        </div>
+
+        <p class="footer-tagline">Small-batch roastery. Shelby, NC.</p>
+
+        <div class="footer-divider"></div>
+
+        <p class="footer-copy">
+          &copy; 2026 Morningside Coffee &amp; Roastery. All rights reserved.
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Hamburger menu toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // Close mobile nav when a link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealEls.forEach(el => observer.observe(el));
+    } else {
+      // Fallback: show everything immediately
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+</body>
+</html>

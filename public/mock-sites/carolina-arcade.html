@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum | Classic Arcade & Pinball in Forest City, NC</title>
+  <meta name="description" content="Over 100 classic arcade and pinball machines, all on freeplay. Located on Main Street in downtown Forest City, NC. Pay once, play all day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Preload hero image for fast LCP -->
+  <link rel="preload" as="image" type="image/webp" href="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp">
+  <style>
+    /* ========== RESET ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ========== TOKENS ========== */
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --magenta: #ff2eaa;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-dark: #333;
+
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { display: block; }
+
+    /* ========== SCANLINE OVERLAY ========== */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--yellow-dim);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-pixel);
+      font-size: 0.65rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--yellow); }
+
+    .nav-cta {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--red-glow); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(17,17,24,0.65) 50%, var(--dark) 100%);
+    }
+
+    /* Arcade grid pattern over hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(245,214,35,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,214,35,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+
+    .hero-badge {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-family: var(--font-pixel);
+      font-size: clamp(1.2rem, 4vw, 2.2rem);
+      color: var(--yellow);
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 30px rgba(245,214,35,0.3), 0 0 60px rgba(245,214,35,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.9;
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-primary {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(232,52,46,0.4);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      background: transparent;
+      color: var(--yellow);
+      border: 2px solid var(--yellow-dim);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(245,214,35,0.1);
+      border-color: var(--yellow);
+    }
+
+    /* Floating pixel decorations */
+    .pixel-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .pixel-dot:nth-child(3) { top: 20%; left: 15%; animation-delay: -1s; background: var(--red); }
+    .pixel-dot:nth-child(4) { top: 60%; right: 20%; animation-delay: -3s; background: var(--cyan); }
+    .pixel-dot:nth-child(5) { bottom: 25%; left: 25%; animation-delay: -2s; }
+    .pixel-dot:nth-child(6) { top: 35%; right: 12%; animation-delay: -4s; background: var(--magenta); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(45deg); }
+    }
+
+    /* ========== SECTIONS COMMON ========== */
+    section { padding: 5rem 2rem; position: relative; }
+
+    .section-label {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow);
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+      border-bottom: 1px solid rgba(245,214,35,0.1);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .price-card {
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow-dim);
+      transition: background 0.3s;
+    }
+
+    .price-card:hover {
+      border-color: var(--yellow-dim);
+      transform: translateY(-4px);
+    }
+
+    .price-card:hover::before { background: var(--yellow); }
+
+    .price-card.featured { border-color: var(--yellow-dim); }
+    .price-card.featured::before { background: var(--red); }
+
+    .price-amount {
+      font-family: var(--font-pixel);
+      font-size: 1.8rem;
+      color: var(--yellow);
+      margin: 0.5rem 0;
+    }
+
+    .price-name {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .price-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ========== GAMES SECTION ========== */
+    .games { background: var(--dark); }
+
+    .games-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .games-photo {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .games-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .games-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .games-detail-grid .detail-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .games-detail-grid .detail-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .games-detail-grid .detail-img:hover img { transform: scale(1.05); }
+
+    @media (max-width: 768px) {
+      .games-top { grid-template-columns: 1fr; }
+      .games-detail-grid { grid-template-columns: 1fr; }
+    }
+
+    .games-marquee {
+      overflow: hidden;
+      margin: 2.5rem 0;
+      border-top: 1px solid var(--gray-dark);
+      border-bottom: 1px solid var(--gray-dark);
+      padding: 1rem 0;
+    }
+
+    .games-marquee-inner {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-left 25s linear infinite;
+      width: max-content;
+    }
+
+    .game-name {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .game-name .dot { color: var(--red); margin: 0 0.5rem; }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .games-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-family: var(--font-pixel);
+      font-size: 1.5rem;
+      color: var(--green);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: 0.3rem;
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+      border-bottom: 1px solid rgba(245,214,35,0.1);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .gallery-img {
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .gallery-img:hover img { transform: scale(1.05); }
+
+    .gallery-img.featured {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    .gallery-img:not(.featured) { aspect-ratio: 4/3; }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-img.featured {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        aspect-ratio: 16/9;
+      }
+    }
+
+    /* ========== BIRTHDAY ========== */
+    .birthday {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .birthday-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .birthday-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .birthday-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(13,13,20,0.95) 0%, rgba(13,13,20,0.82) 100%);
+    }
+
+    .birthday > .container { position: relative; z-index: 1; }
+
+    .birthday-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .birthday-content { grid-template-columns: 1fr; }
+    }
+
+    .birthday-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .birthday-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .birthday-features li::before {
+      content: '>';
+      font-family: var(--font-pixel);
+      color: var(--green);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .birthday-price-box {
+      background: rgba(17,17,24,0.9);
+      border: 2px solid var(--red);
+      padding: 2.5rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .birthday-price-box .price-amount {
+      font-size: 2.5rem;
+      color: var(--red);
+      text-shadow: 0 0 30px rgba(232,52,46,0.3);
+    }
+
+    .birthday-price-box .price-note {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ========== STORY ========== */
+    .story { background: var(--dark); }
+
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .story-content { grid-template-columns: 1fr; }
+    }
+
+    .story-text p {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .story-quote {
+      border-left: 3px solid var(--yellow);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .story-quote p {
+      font-style: italic;
+      color: var(--white);
+      font-size: 1.05rem;
+    }
+
+    .story-quote cite {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--yellow-dim);
+      font-style: normal;
+      display: block;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .story-image {
+      aspect-ratio: 16/9;
+      background: var(--darker);
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pbs-badge {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.45rem;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 0.4rem 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+    }
+
+    /* ========== REVIEWS ========== */
+    .reviews {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+    }
+
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .reviews-rating .big-stars {
+      color: var(--yellow);
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+    }
+
+    .reviews-rating .rating-text {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      font-family: var(--font-pixel);
+      font-size: 2rem;
+      color: var(--yellow-dim);
+      opacity: 0.3;
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+    }
+
+    .review-stars {
+      color: var(--yellow);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .review-author {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .review-source {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ========== VISIT ========== */
+    .visit { background: var(--dark); }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .visit-grid { grid-template-columns: 1fr; }
+    }
+
+    .visit-info h3 {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .visit-info h3:first-child { margin-top: 0; }
+
+    .visit-info p, .visit-info a {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      text-decoration: none;
+    }
+
+    .visit-info a:hover { color: var(--yellow); }
+
+    .hours-list { list-style: none; }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .hours-list li .day { color: var(--white); font-weight: 500; }
+    .hours-list li.closed .time { color: var(--red); }
+
+    .visit-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .visit-photos .visit-photo {
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .visit-photos .visit-photo:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .visit-photos .visit-photo:not(:first-child) {
+      aspect-ratio: 4/3;
+    }
+
+    .visit-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visit-address {
+      text-align: center;
+      padding: 1rem;
+      background: var(--darker);
+      border: 1px solid var(--gray-dark);
+      border-top: 0;
+      grid-column: 1 / -1;
+    }
+
+    .visit-address a {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--yellow);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .visit-address a:hover { color: var(--white); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--black);
+      border-top: 2px solid var(--yellow-dim);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-contact {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .footer-contact a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover { color: var(--yellow); }
+
+    .footer-social { margin-top: 1rem; }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--cyan);
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: rgba(0,212,255,0.1);
+      color: var(--white);
+    }
+
+    .footer-credit {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.75rem;
+      color: var(--gray-dark);
+    }
+
+    .footer-credit a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    .footer-credit a:hover { color: var(--yellow); }
+
+    /* ========== SECTION DIVIDER ========== */
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--yellow), var(--green), var(--cyan), var(--magenta));
+      opacity: 0.4;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#parties">Parties</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#visit" class="nav-cta">Plan Your Visit</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <picture>
+        <source srcset="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" type="image/webp">
+        <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.jpg" alt="Inside Carolina Arcade Museum - rows of classic arcade cabinets and colorful banners" width="1189" height="787">
+      </picture>
+    </div>
+    <div class="pixel-dot"></div>
+    <div class="pixel-dot"></div>
+    <div class="pixel-dot"></div>
+    <div class="pixel-dot"></div>
+    <div class="pixel-dot"></div>
+
+    <p class="hero-badge fade-in">Forest City, NC &bull; Est. 2018</p>
+    <h1 class="fade-in delay-1">Classic Arcade<br>& Pinball.<br>All on Freeplay.</h1>
+    <p class="hero-sub fade-in delay-2">Over 100 vintage arcade and pinball machines in downtown Forest City. Pay once, play all day. No quarters needed.</p>
+    <div class="hero-buttons fade-in delay-3">
+      <a href="#pricing" class="btn-primary">See Pricing</a>
+      <a href="#visit" class="btn-secondary">Plan Your Visit</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <p class="section-label">Admission</p>
+      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
+      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <p class="price-name">Hourly Pass</p>
+          <p class="price-amount">$8</p>
+          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
+        </div>
+        <div class="price-card featured">
+          <p class="price-name">All-Day Pass</p>
+          <p class="price-amount">$13</p>
+          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
+        </div>
+        <div class="price-card">
+          <p class="price-name">Group Rate</p>
+          <p class="price-amount">$10</p>
+          <p class="price-desc">Per person for groups of 15 or more. All-day admission included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section class="games" id="games">
+    <div class="container">
+      <div class="games-top">
+        <div>
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">105+ Machines.<br>All Playable.</h2>
+          <p class="section-desc">From Pac-Man to pinball, every cabinet is powered up and waiting. Classics from the '70s, '80s, and '90s. Plus a downstairs room with blacklights and vintage 80s arcade carpet.</p>
+        </div>
+        <div class="games-photo">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball machine with someone playing at Carolina Arcade Museum" loading="lazy" width="1200" height="904">
+        </div>
+      </div>
+
+      <div class="games-detail-grid">
+        <div class="detail-img">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes vs Dragon Ninja arcade cabinet" loading="lazy" width="1200" height="675">
+        </div>
+        <div class="detail-img">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="The Munsters pinball machine" loading="lazy" width="675" height="1200">
+        </div>
+      </div>
+    </div>
+
+    <div class="games-marquee">
+      <div class="games-marquee-inner">
+        <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Double Dragon <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Centipede <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Whirlwind <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Mars Attacks!</span>
+        <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Double Dragon <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Centipede <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Whirlwind <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Mars Attacks!</span>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="games-stats">
+        <div class="stat-item">
+          <p class="stat-number">105+</p>
+          <p class="stat-label">Games on the floor</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">80+</p>
+          <p class="stat-label">More in rotation</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">100%</p>
+          <p class="stat-label">On freeplay</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">0</p>
+          <p class="stat-label">Quarters needed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+
+      <div class="gallery-grid">
+        <div class="gallery-img featured">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of Carolina Arcade Museum with dozens of machines and colorful banners" loading="lazy" width="1189" height="787">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement room with vintage 80s arcade carpet, foosball table, and arcade cabinets" loading="lazy" width="1600" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines including High Speed with person playing" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Overhead angle showing pinball machines and arcade cabinets with banners" loading="lazy" width="901" height="1600">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight arcade basement with glowing carpet and game screens" loading="lazy" width="1400" height="1055">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball machine with life-size Stormtrooper figure" loading="lazy" width="1200" height="1200">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIRTHDAY PARTIES -->
+  <section class="birthday" id="parties">
+    <div class="birthday-bg">
+      <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="" loading="lazy" width="1400" height="1055">
+    </div>
+    <div class="container">
+      <p class="section-label">Private Events</p>
+      <h2 class="section-title">Birthday Parties</h2>
+      <p class="section-desc">Give your kid (or yourself) the best party in the foothills. Two hours in our private party room with all-day game access.</p>
+
+      <div class="birthday-content">
+        <ul class="birthday-features">
+          <li>Private party room for 2 hours</li>
+          <li>15 all-day wristbands included</li>
+          <li>Additional wristbands just $8 each</li>
+          <li>Bring your own food, drinks, and decorations</li>
+          <li>Only people playing games need a wristband</li>
+          <li>$25 non-refundable deposit to reserve your date</li>
+          <li>Snacks and drinks also available at the museum</li>
+        </ul>
+
+        <div class="birthday-price-box">
+          <p class="price-name">Starting At</p>
+          <p class="price-amount">$150</p>
+          <p class="price-note">Plus tax. Includes party room and 15 all-day wristbands. That's $10 per person for unlimited arcade games all day.</p>
+          <a href="#visit" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Book a Party</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- OUR STORY -->
+  <section class="story" id="story">
+    <div class="container">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">More Than Just<br>a Screen</h2>
+
+      <div class="story-content">
+        <div class="story-text">
+          <p>Dave Walker opened Carolina Arcade Museum in August 2018 in a converted storefront right here on Main Street in downtown Forest City.</p>
+
+          <p>With over 100 classic arcade and pinball machines, all set to freeplay, the museum recreates the social experience of 1980s arcade culture. No tokens. No quarters. Just pay at the door and play everything.</p>
+
+          <div class="story-quote">
+            <p>"You have more feedback, and more fun when you're playing with somebody, and you're there physically. It's more than just a screen you're looking at."</p>
+            <cite>Dave Walker, Founder</cite>
+          </div>
+
+          <p>What started as a spot for 30-to-50-year-olds reliving their childhood quickly became a destination for families, teenagers, and anyone who wants to put down their phone and play side by side.</p>
+
+          <span class="pbs-badge">As seen on PBS North Carolina Weekend</span>
+        </div>
+
+        <div class="story-image">
+          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Dad with kid on his shoulders playing pinball at Carolina Arcade Museum" loading="lazy" width="1400" height="788">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <p class="section-label">What People Say</p>
+      <h2 class="section-title">Player Reviews</h2>
+      <div class="reviews-rating">
+        <span class="big-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="rating-text">4.9 stars on Google &bull; 40+ reviews</span>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"We were there for almost 9 hours! I was shocked. The children had a blast playing all the retro games. All of them were under 14 and had never seen any game except for the new ones. They didn't want to leave!"</p>
+          <p class="review-author">Amos Famous</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"A great way to spend a few hours in a small, quaint town. Our kids (10 &amp; 13) had a blast, and their grandparents (64 &amp; 74) found some old favorites."</p>
+          <p class="review-author">Stephanie Girard</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"Amazing attraction, by far the best way to spend an evening downtown. Huge selection of arcade and pinball machines, and it's never very crowded. The downstairs room has blacklights and 80s arcade carpet."</p>
+          <p class="review-author">Alex J</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"Reasonable admission and lots of options to play! We never had to wait for a game and could have spent all day here. Worth the drive from Charlotte for a day trip!"</p>
+          <p class="review-author">Jill B.</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"Hands down best arcade museum in the region! The owners are fantastic people. The machines are maintained well and the place is very clean!"</p>
+          <p class="review-author">James Donaldson</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"A really cool place to spend a Friday evening. Good selection of games, especially pinball including classics like The Munsters and Mars Attacks! I've already been several times."</p>
+          <p class="review-author">Christian Mabe</p>
+          <p class="review-source">Google Review</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <p class="section-label">Plan Your Visit</p>
+      <h2 class="section-title">Come Play</h2>
+
+      <div class="visit-grid">
+        <div class="visit-info">
+          <h3>Hours</h3>
+          <ul class="hours-list">
+            <li><span class="day">Monday</span><span class="time">12:00 PM - 8:00 PM</span></li>
+            <li><span class="day">Tuesday</span><span class="time">12:00 PM - 8:00 PM</span></li>
+            <li><span class="day">Wednesday</span><span class="time">12:00 PM - 8:00 PM</span></li>
+            <li><span class="day">Thursday</span><span class="time">12:00 PM - 8:00 PM</span></li>
+            <li><span class="day">Friday</span><span class="time">12:00 PM - 10:00 PM</span></li>
+            <li><span class="day">Saturday</span><span class="time">12:00 PM - 10:00 PM</span></li>
+            <li class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
+          </ul>
+
+          <h3>Contact</h3>
+          <p>
+            <a href="tel:8282293089">(828) 229-3089</a><br>
+            <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+          </p>
+
+          <h3>Location</h3>
+          <p>145 East Main Street<br>Forest City, NC 28043</p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem;">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+        </div>
+
+        <div class="visit-photos">
+          <div class="visit-photo">
+            <img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Carolina Arcade Museum storefront with Mario decal on window" loading="lazy" width="1200" height="900">
+          </div>
+          <div class="visit-photo">
+            <img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum sign and entrance on Main Street" loading="lazy" width="1200" height="900">
+          </div>
+          <div class="visit-photo">
+            <img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Carolina Arcade Museum with OPEN sign on sidewalk" loading="lazy" width="900" height="1200">
+          </div>
+          <div class="visit-address">
+            <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">Get Directions &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Carolina Arcade Museum</p>
+    <p class="footer-contact">
+      145 East Main Street, Forest City, NC 28043<br>
+      <a href="tel:8282293089">(828) 229-3089</a>
+    </p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener">
+        Follow on Facebook
+      </a>
+    </div>
+    <p class="footer-credit">
+      Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a>
+    </p>
+  </footer>
+
+</body>
+</html>

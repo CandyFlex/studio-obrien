@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantrell & Melton - Visit Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f14; color: #e8e0d4; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --charcoal: #1a1a1e;
+      --deep-navy: #0f1626;
+      --card-dark: #22222a;
+      --gold: #c9a84c;
+      --gold-light: #e0c872;
+      --cream: #e8e0d4;
+      --cream-muted: #b0a898;
+      --barber-red: #c41e3a;
+      --barber-blue: #1e3a5f;
+      --barber-white: #f0ece4;
+      --border: #333340;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(15,15,20,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333340; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-label { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: var(--gold); margin-right: 12px; }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 8px;
+      border: 2px solid #333340; background: #1a1a1e; color: #e8e0d4;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active { border-color: var(--gold); background: var(--gold); color: #111; transform: scale(1.08); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+    .btn {
+      display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 16px 36px; border-radius: 4px; border: none; cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-gold { background: var(--gold); color: #111; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .barber-stripe {
+      height: 6px;
+      background: repeating-linear-gradient(90deg, var(--barber-red) 0px, var(--barber-red) 20px, var(--barber-white) 20px, var(--barber-white) 40px, var(--barber-blue) 40px, var(--barber-blue) 60px);
+      background-size: 60px 6px;
+      animation: stripe-scroll 8s linear infinite;
+    }
+    @keyframes stripe-scroll { 0% { background-position: 0 0; } 100% { background-position: 60px 0; } }
+
+    /* Hours component (shared) */
+    .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(51,51,64,0.5); font-size: 0.9rem; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--cream); font-weight: 500; }
+    .hours-row .time { color: var(--cream-muted); }
+    .hours-row.closed .time { color: var(--barber-red); font-weight: 500; }
+
+    /* ===========================
+       VARIANT 1 - Two Column (Original)
+       =========================== */
+    .v1-visit { padding: 100px 0 140px; background: var(--deep-navy); position: relative; }
+    .v1-visit::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 120px, rgba(201,168,76,0.02) 120px, rgba(201,168,76,0.02) 121px);
+      pointer-events: none;
+    }
+    .v1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .v1-info h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 24px; line-height: 1.1; }
+    .v1-address { font-size: 1.1rem; color: var(--cream); margin-bottom: 8px; }
+    .v1-phone { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); margin-bottom: 24px; }
+    .v1-note { font-size: 0.95rem; color: var(--cream-muted); line-height: 1.7; margin-bottom: 32px; }
+    .v1-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+    .v1-badge {
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 40px; padding: 8px 20px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+    }
+    .v1-hours-card {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 6px; padding: 36px;
+    }
+    .v1-hours-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
+    }
+
+    /* ===========================
+       VARIANT 2 - Centered / Stacked
+       =========================== */
+    .v2-visit { padding: 100px 0 140px; background: var(--charcoal); position: relative; }
+    .v2-visit::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v2-center { max-width: 700px; margin: 0 auto; text-align: center; }
+    .v2-center h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 16px; line-height: 1.1; }
+    .v2-center .address-line {
+      font-size: 1.1rem; color: var(--cream-muted); margin-bottom: 8px;
+    }
+    .v2-center .phone-line {
+      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 32px;
+    }
+    .v2-hours-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;
+    }
+    .v2-hours-cell {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 8px; padding: 20px;
+    }
+    .v2-hours-cell .day-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .v2-hours-cell .hours-value { font-size: 0.9rem; color: var(--cream); }
+    .v2-hours-cell.closed .hours-value { color: var(--barber-red); }
+    .v2-note { font-size: 0.95rem; color: var(--cream-muted); margin-bottom: 32px; line-height: 1.7; }
+    .v2-buttons { display: flex; gap: 14px; justify-content: center; }
+    .v2-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+    .v2-badge { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); border-radius: 20px; padding: 6px 16px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+    /* ===========================
+       VARIANT 3 - Map Placeholder + Info Card
+       =========================== */
+    .v3-visit { padding: 100px 0 140px; background: var(--deep-navy); position: relative; }
+    .v3-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .v3-map-area {
+      background: linear-gradient(135deg, rgba(30,58,95,0.15), rgba(15,22,38,0.9)),
+                  repeating-linear-gradient(0deg, transparent 0px, transparent 20px, rgba(201,168,76,0.02) 20px, rgba(201,168,76,0.02) 21px),
+                  repeating-linear-gradient(90deg, transparent 0px, transparent 20px, rgba(201,168,76,0.02) 20px, rgba(201,168,76,0.02) 21px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px; position: relative;
+    }
+    .v3-map-pin {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--barber-red); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff; margin-bottom: 20px;
+      box-shadow: 0 0 0 12px rgba(196,30,58,0.15), 0 0 0 24px rgba(196,30,58,0.05);
+    }
+    .v3-map-label { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
+    .v3-map-sub { font-size: 0.85rem; color: var(--cream-muted); }
+    .v3-map-coords {
+      position: absolute; bottom: 16px; right: 16px;
+      font-size: 0.65rem; color: rgba(176,168,152,0.3); font-family: monospace;
+    }
+    .v3-info-panel { background: var(--card-dark); padding: 40px 32px; }
+    .v3-info-panel h2 {
+      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 24px; line-height: 1.1;
+    }
+    .v3-detail { margin-bottom: 24px; }
+    .v3-detail .dt { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .v3-detail .dd { font-size: 0.95rem; color: var(--cream); line-height: 1.6; }
+    .v3-detail .dd.phone { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+    .v3-hours-compact { margin-top: 20px; }
+    .v3-hours-row { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 6px 0; border-bottom: 1px solid rgba(51,51,64,0.4); }
+    .v3-hours-row:last-child { border-bottom: none; }
+    .v3-hours-row .day { color: var(--cream-muted); }
+    .v3-hours-row .time { color: var(--cream); }
+    .v3-hours-row.closed .time { color: var(--barber-red); }
+
+    /* ===========================
+       VARIANT 4 - CTA-Forward / Big Phone
+       =========================== */
+    .v4-visit { padding: 100px 0 140px; background: #111118; position: relative; }
+    .v4-visit::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(196,30,58,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v4-center { max-width: 800px; margin: 0 auto; text-align: center; }
+    .v4-scissors { font-size: 3rem; color: var(--gold); opacity: 0.3; margin-bottom: 24px; }
+    .v4-center h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,6vw,4rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 16px; line-height: 1.05;
+    }
+    .v4-center .sub {
+      font-family: 'Old Standard TT', serif; font-style: italic; font-size: 1.15rem;
+      color: var(--cream-muted); margin-bottom: 40px; line-height: 1.7;
+    }
+    .v4-phone-block {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 12px;
+      display: inline-block; padding: 32px 64px; margin-bottom: 32px;
+    }
+    .v4-phone-block .label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .v4-phone-block .phone {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,2.5rem);
+      font-weight: 900; color: var(--gold);
+    }
+    .v4-details-row {
+      display: flex; justify-content: center; gap: 48px; margin-bottom: 40px; flex-wrap: wrap;
+    }
+    .v4-detail .dt { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .v4-detail .dd { font-size: 0.95rem; color: var(--cream-muted); line-height: 1.6; }
+    .v4-hours-inline {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .v4-hours-inline .item { font-size: 0.8rem; color: var(--cream-muted); }
+    .v4-hours-inline .item strong { color: var(--cream); font-weight: 600; }
+
+    /* ===========================
+       VARIANT 5 - Split Card / Left Info Right Hours
+       =========================== */
+    .v5-visit { padding: 100px 0 140px; background: var(--deep-navy); position: relative; }
+    .v5-visit::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(201,168,76,0.01) 80px, rgba(201,168,76,0.01) 81px);
+      pointer-events: none;
+    }
+    .v5-card {
+      max-width: 900px; margin: 0 auto;
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    .v5-card-top {
+      background: linear-gradient(135deg, rgba(196,30,58,0.06), rgba(30,58,95,0.08));
+      padding: 40px 48px; text-align: center; border-bottom: 1px solid var(--border);
+    }
+    .v5-card-top h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 8px;
+    }
+    .v5-card-top .sub {
+      font-family: 'Old Standard TT', serif; font-style: italic; font-size: 1rem; color: var(--gold);
+    }
+    .v5-card-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .v5-left { padding: 40px; background: var(--card-dark); border-right: 1px solid var(--border); }
+    .v5-right { padding: 40px; background: rgba(34,34,42,0.6); }
+    .v5-left .detail { margin-bottom: 24px; }
+    .v5-left .detail .dt { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .v5-left .detail .dd { font-size: 1rem; color: var(--cream); line-height: 1.6; }
+    .v5-left .detail .dd.phone { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+    .v5-left .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+    .v5-left .badge {
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+    }
+    .v5-right h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .v5-card-footer {
+      background: rgba(17,17,24,0.6); padding: 20px 40px; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .v5-card-footer a {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); transition: color 0.2s;
+    }
+    .v5-card-footer a:hover { color: var(--gold-light); }
+
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: 1fr; gap: 40px; }
+      .v2-hours-grid { grid-template-columns: repeat(2, 1fr); }
+      .v3-grid { grid-template-columns: 1fr; }
+      .v4-details-row { flex-direction: column; gap: 24px; }
+      .v4-hours-inline { flex-direction: column; gap: 8px; }
+      .v4-phone-block { padding: 24px 32px; }
+      .v5-card-body { grid-template-columns: 1fr; }
+      .v5-left { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - Two Column -->
+  <div class="variant active" id="v1">
+    <section class="v1-visit">
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-info">
+            <p class="section-label">Come See Us</p>
+            <h2>In the Heart of<br />Uptown Shelby</h2>
+            <p class="v1-address">213-2 S Washington St<br />Shelby, NC 28150</p>
+            <p class="v1-phone">(704) 482-5418</p>
+            <p class="v1-note">Located in Uptown Shelby, right on Washington Street. No appointment needed. Just walk in, grab a seat, and we will get to you. We keep things simple around here.</p>
+            <div class="v1-badges">
+              <span class="v1-badge">Walk-Ins Welcome</span>
+              <span class="v1-badge">Cash Only</span>
+              <span class="v1-badge">No Appointment Needed</span>
+            </div>
+          </div>
+          <div class="v1-hours-card">
+            <h3>Hours</h3>
+            <div class="hours-row"><span class="day">Monday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Tuesday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Wednesday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Thursday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Friday</span><span class="time">7:00 AM &ndash; 3:30 PM</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">7:30 AM &ndash; 1:00 PM</span></div>
+            <div class="hours-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="barber-stripe"></div>
+  </div>
+
+  <!-- VARIANT 2 - Centered Stacked -->
+  <div class="variant" id="v2">
+    <section class="v2-visit">
+      <div class="container">
+        <div class="v2-center">
+          <p class="section-label">Come See Us</p>
+          <h2>In the Heart of Uptown Shelby</h2>
+          <p class="address-line">213-2 S Washington St, Shelby, NC 28150</p>
+          <p class="phone-line">(704) 482-5418</p>
+          <div class="v2-hours-grid">
+            <div class="v2-hours-cell">
+              <div class="day-label">Mon - Thu</div>
+              <div class="hours-value">7:00 AM &ndash; 5:00 PM</div>
+            </div>
+            <div class="v2-hours-cell">
+              <div class="day-label">Friday</div>
+              <div class="hours-value">7:00 AM &ndash; 3:30 PM</div>
+            </div>
+            <div class="v2-hours-cell">
+              <div class="day-label">Saturday</div>
+              <div class="hours-value">7:30 AM &ndash; 1:00 PM</div>
+            </div>
+          </div>
+          <p class="v2-note">No appointment needed. Just walk in, grab a seat, and we will get to you. We keep things simple around here.</p>
+          <div class="v2-buttons">
+            <a href="tel:7044825418" class="btn btn-gold">Call Now</a>
+            <a href="#" class="btn btn-outline">Get Directions</a>
+          </div>
+          <div class="v2-badges">
+            <span class="v2-badge">Walk-Ins Welcome</span>
+            <span class="v2-badge">Cash Only</span>
+            <span class="v2-badge">Uptown Shelby</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="barber-stripe"></div>
+  </div>
+
+  <!-- VARIANT 3 - Map + Info Panel -->
+  <div class="variant" id="v3">
+    <section class="v3-visit">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+          <p class="section-label">Come See Us</p>
+        </div>
+        <div class="v3-grid">
+          <div class="v3-map-area">
+            <div class="v3-map-pin">&#9986;</div>
+            <div class="v3-map-label">Cantrell &amp; Melton Barber Shop</div>
+            <div class="v3-map-sub">Uptown Shelby, NC</div>
+            <div class="v3-map-coords">35.2901&deg;N 81.5357&deg;W</div>
+          </div>
+          <div class="v3-info-panel">
+            <h2>Visit Us</h2>
+            <div class="v3-detail">
+              <div class="dt">Address</div>
+              <div class="dd">213-2 S Washington St<br />Shelby, NC 28150</div>
+            </div>
+            <div class="v3-detail">
+              <div class="dt">Phone</div>
+              <div class="dd phone">(704) 482-5418</div>
+            </div>
+            <div class="v3-detail">
+              <div class="dt">Policy</div>
+              <div class="dd">Walk-ins welcome. Cash only.<br />No appointment needed.</div>
+            </div>
+            <div class="v3-hours-compact">
+              <div class="v3-hours-row"><span class="day">Mon-Thu</span><span class="time">7:00 AM - 5:00 PM</span></div>
+              <div class="v3-hours-row"><span class="day">Friday</span><span class="time">7:00 AM - 3:30 PM</span></div>
+              <div class="v3-hours-row"><span class="day">Saturday</span><span class="time">7:30 AM - 1:00 PM</span></div>
+              <div class="v3-hours-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - CTA-Forward / Big Phone -->
+  <div class="variant" id="v4">
+    <section class="v4-visit">
+      <div class="container">
+        <div class="v4-center">
+          <div class="v4-scissors">&#9986;</div>
+          <p class="section-label">Come See Us</p>
+          <h2>Ready for a<br />Fresh Cut?</h2>
+          <p class="sub">No appointment needed. Walk in any day of the week. We will take care of the rest.</p>
+          <div class="v4-phone-block">
+            <div class="label">Call Us</div>
+            <div class="phone">(704) 482-5418</div>
+          </div>
+          <div class="v4-details-row">
+            <div class="v4-detail">
+              <div class="dt">Address</div>
+              <div class="dd">213-2 S Washington St<br />Shelby, NC 28150</div>
+            </div>
+            <div class="v4-detail">
+              <div class="dt">Location</div>
+              <div class="dd">Uptown Shelby<br />Cleveland County, NC</div>
+            </div>
+            <div class="v4-detail">
+              <div class="dt">Payment</div>
+              <div class="dd">Cash Only<br />Walk-Ins Welcome</div>
+            </div>
+          </div>
+          <div class="v4-hours-inline">
+            <span class="item"><strong>Mon-Thu</strong> 7am-5pm</span>
+            <span class="item"><strong>Fri</strong> 7am-3:30pm</span>
+            <span class="item"><strong>Sat</strong> 7:30am-1pm</span>
+            <span class="item"><strong>Sun</strong> Closed</span>
+          </div>
+          <a href="tel:7044825418" class="btn btn-gold">Call Now</a>
+        </div>
+      </div>
+    </section>
+    <div class="barber-stripe"></div>
+  </div>
+
+  <!-- VARIANT 5 - Split Card -->
+  <div class="variant" id="v5">
+    <section class="v5-visit">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+          <p class="section-label">Come See Us</p>
+        </div>
+        <div class="v5-card">
+          <div class="v5-card-top">
+            <h2>In the Heart of Uptown Shelby</h2>
+            <div class="sub">Walk-ins welcome. No appointment needed.</div>
+          </div>
+          <div class="v5-card-body">
+            <div class="v5-left">
+              <div class="detail">
+                <div class="dt">Address</div>
+                <div class="dd">213-2 S Washington St<br />Shelby, NC 28150</div>
+              </div>
+              <div class="detail">
+                <div class="dt">Phone</div>
+                <div class="dd phone">(704) 482-5418</div>
+              </div>
+              <div class="detail">
+                <div class="dt">About</div>
+                <div class="dd" style="color:var(--cream-muted);font-size:0.9rem;">Located in Uptown Shelby on Washington Street. No appointment needed. Just walk in, grab a seat, and we will get to you.</div>
+              </div>
+              <div class="badges">
+                <span class="badge">Walk-Ins</span>
+                <span class="badge">Cash Only</span>
+                <span class="badge">60+ Years</span>
+              </div>
+            </div>
+            <div class="v5-right">
+              <h3>Hours</h3>
+              <div class="hours-row"><span class="day">Monday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+              <div class="hours-row"><span class="day">Tuesday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+              <div class="hours-row"><span class="day">Wednesday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+              <div class="hours-row"><span class="day">Thursday</span><span class="time">7:00 AM &ndash; 5:00 PM</span></div>
+              <div class="hours-row"><span class="day">Friday</span><span class="time">7:00 AM &ndash; 3:30 PM</span></div>
+              <div class="hours-row"><span class="day">Saturday</span><span class="time">7:30 AM &ndash; 1:00 PM</span></div>
+              <div class="hours-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+            </div>
+          </div>
+          <div class="v5-card-footer">
+            <a href="tel:7044825418">Call (704) 482-5418 &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-label">Visit Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sticks & Stones - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e0d4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --black: #0f0f0f;
+      --black-light: #1a1a1a;
+      --charcoal: #2a2a2a;
+      --cream: #f5f0e6;
+      --cream-dim: #e8e0d4;
+      --gold: #c4a35a;
+      --gold-light: #d4b96a;
+      --burgundy: #722F37;
+      --burgundy-light: #8a3a44;
+      --text-muted: #8a8278;
+      --text-body: #c4bdb2;
+    }
+
+    /* ============ VARIANT SECTIONS ============ */
+    .variant-section {
+      display: none;
+      min-height: 100vh;
+    }
+    .variant-section.active {
+      display: block;
+    }
+
+    /* ============ PICKER BAR ============ */
+    .picker-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(15,15,15,0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(196,163,90,0.2);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .picker-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-right: 8px;
+    }
+    .picker-btn {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(196,163,90,0.3);
+      background: transparent;
+      color: var(--cream-dim);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .picker-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .picker-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+    .picker-desc {
+      margin-left: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      max-width: 300px;
+    }
+
+    /* ============ SHARED BUTTON STYLES ============ */
+    .btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 16px 40px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .btn-primary { background: var(--gold); color: var(--black); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(245,240,230,0.3); }
+    .btn-outline:hover { background: rgba(245,240,230,0.08); border-color: var(--cream); }
+    .btn-burgundy { background: var(--burgundy); color: var(--cream); }
+    .btn-burgundy:hover { background: var(--burgundy-light); }
+    .btn-white { background: var(--cream); color: var(--black); }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ======== V1: Cinematic Fade ======== */
+    .v1-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .v1-bg { position: absolute; inset: 0; z-index: 0; }
+    .v1-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.2; filter: grayscale(40%); }
+    .v1-gradient {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(15,15,15,0.3) 0%, rgba(15,15,15,0.6) 50%, rgba(15,15,15,0.95) 100%),
+        radial-gradient(ellipse at 50% 30%, rgba(196,163,90,0.08) 0%, transparent 70%);
+    }
+    .v1-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 120px 24px 100px; max-width: 900px; margin: 0 auto;
+    }
+    .v1-est {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em;
+      color: var(--gold); margin-bottom: 32px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .v1-est::before, .v1-est::after { content: ''; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .v1-hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 8px; line-height: 0.95;
+    }
+    .v1-hero h1 .sub {
+      font-style: italic; color: var(--gold); font-size: 0.45em; display: block; margin-top: 8px; letter-spacing: 0.06em;
+    }
+    .v1-tagline {
+      font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); margin: 28px auto 44px; max-width: 500px; line-height: 1.7;
+    }
+    .v1-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .v1-divider {
+      width: 1px; height: 80px; background: linear-gradient(transparent, var(--gold), transparent);
+      margin: 0 auto; position: absolute; bottom: 40px; left: 50%; z-index: 2; opacity: 0.4;
+    }
+
+    /* ======== V2: Split Layout ======== */
+    .v2-hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .v2-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px; position: relative; z-index: 2;
+    }
+    .v2-right {
+      position: relative; overflow: hidden;
+    }
+    .v2-right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: grayscale(30%); }
+    .v2-right::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--black) 0%, transparent 40%);
+    }
+    .v2-label {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .v2-hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900; color: var(--cream); line-height: 0.95; margin-bottom: 12px;
+    }
+    .v2-hero h1 em { color: var(--gold); font-style: italic; }
+    .v2-subtitle {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic;
+      color: var(--gold); margin-bottom: 28px;
+    }
+    .v2-text { font-size: 1rem; color: var(--text-muted); max-width: 440px; line-height: 1.7; margin-bottom: 40px; }
+    .v2-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v2-stats {
+      display: flex; gap: 40px; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .v2-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+    .v2-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 4px; }
+
+    /* ======== V3: Full-Screen Typography ======== */
+    .v3-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .v3-bg-text {
+      position: absolute; z-index: 0;
+      font-family: 'Playfair Display', serif; font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 900; color: rgba(196,163,90,0.03); text-transform: uppercase;
+      white-space: nowrap; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .v3-lines {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(196,163,90,0.03) 99px, rgba(196,163,90,0.03) 100px);
+    }
+    .v3-content {
+      position: relative; z-index: 2; text-align: center; padding: 80px 24px;
+    }
+    .v3-logo-display {
+      width: 280px; height: auto; margin: 0 auto 40px; filter: invert(1) brightness(0.85) sepia(0.3);
+      opacity: 0.9;
+    }
+    .v3-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 400; font-style: italic; color: var(--text-muted);
+      letter-spacing: 0.06em; margin-bottom: 16px;
+    }
+    .v3-divider-line {
+      width: 60px; height: 1px; background: var(--gold); margin: 24px auto; opacity: 0.5;
+    }
+    .v3-location {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em;
+      color: var(--gold); margin-bottom: 40px;
+    }
+    .v3-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ======== V4: Vertical Stack with Texture ======== */
+    .v4-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .v4-texture {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle 1px at 30px 30px, rgba(196,163,90,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .v4-accent-line {
+      position: absolute; top: 0; left: 50%; width: 1px; height: 100%;
+      background: linear-gradient(transparent, rgba(196,163,90,0.08), transparent);
+    }
+    .v4-side-text {
+      position: absolute; top: 50%; left: 40px; transform: rotate(-90deg) translateX(-50%);
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em;
+      color: rgba(196,163,90,0.2); transform-origin: left center; white-space: nowrap;
+    }
+    .v4-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 100px 24px; max-width: 700px; margin: 0 auto;
+    }
+    .v4-est {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.35em;
+      color: var(--gold); opacity: 0.6; margin-bottom: 40px;
+    }
+    .v4-hero h1 {
+      font-family: 'Playfair Display', serif;
+    }
+    .v4-hero h1 .line1 {
+      display: block; font-size: clamp(4rem, 12vw, 8rem); font-weight: 900;
+      color: var(--cream); line-height: 0.85; letter-spacing: -0.02em;
+    }
+    .v4-hero h1 .line2 {
+      display: block; font-size: clamp(4rem, 12vw, 8rem); font-weight: 900;
+      color: var(--cream); line-height: 0.85; letter-spacing: -0.02em;
+      -webkit-text-stroke: 2px var(--cream); color: transparent;
+    }
+    .v4-hero h1 .line3 {
+      display: block; font-size: clamp(1.2rem, 3vw, 1.8rem); font-style: italic;
+      font-weight: 400; color: var(--gold); margin-top: 12px; letter-spacing: 0.08em;
+    }
+    .v4-desc {
+      font-size: 0.95rem; color: var(--text-muted); max-width: 400px;
+      margin: 32px auto 44px; line-height: 1.7;
+    }
+    .v4-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .v4-bottom-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 48px;
+      padding: 24px; border-top: 1px solid rgba(255,255,255,0.04);
+      z-index: 2;
+    }
+    .v4-bottom-item {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted);
+    }
+
+    /* ======== V5: Burgundy Bleed ======== */
+    .v5-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--black) 0%, #1a0f11 40%, var(--burgundy) 200%);
+    }
+    .v5-img-cluster {
+      position: absolute; right: -5%; top: 10%; width: 50%; height: 80%; z-index: 0;
+    }
+    .v5-img-1 {
+      position: absolute; top: 0; right: 0; width: 65%; height: 70%;
+      background: var(--charcoal); overflow: hidden;
+      border: 1px solid rgba(196,163,90,0.1);
+    }
+    .v5-img-1 img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: grayscale(30%); }
+    .v5-img-2 {
+      position: absolute; bottom: 0; left: 5%; width: 55%; height: 55%;
+      background: var(--charcoal); overflow: hidden;
+      border: 1px solid rgba(196,163,90,0.1);
+    }
+    .v5-img-2 img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: grayscale(20%) sepia(10%); }
+    .v5-content {
+      position: relative; z-index: 2;
+      padding: 100px 64px; max-width: 600px;
+    }
+    .v5-badge {
+      display: inline-block; padding: 8px 20px;
+      border: 1px solid var(--gold); font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .v5-hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900; color: var(--cream); line-height: 0.95; margin-bottom: 12px;
+    }
+    .v5-hero h1 em {
+      font-size: 0.5em; color: var(--gold); display: block; margin-top: 8px;
+    }
+    .v5-text {
+      font-size: 1rem; color: var(--text-body); max-width: 420px; line-height: 1.7; margin-bottom: 40px;
+    }
+    .v5-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v5-scroll-line {
+      position: absolute; bottom: 32px; left: 64px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .v5-scroll-text {
+      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted);
+      writing-mode: vertical-lr;
+    }
+    .v5-scroll-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: 0.5;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .v2-hero { grid-template-columns: 1fr; }
+      .v2-left { padding: 80px 24px 60px; }
+      .v2-right { position: absolute; inset: 0; }
+      .v2-right::after { background: linear-gradient(0deg, var(--black) 30%, rgba(15,15,15,0.8) 100%); }
+      .v2-stats { gap: 24px; }
+      .v4-side-text { display: none; }
+      .v5-img-cluster { display: none; }
+      .v5-content { padding: 80px 24px; max-width: 100%; }
+      .picker-desc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ V1: Cinematic Fade ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-hero">
+      <div class="v1-bg">
+        <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Tattoo equipment" />
+      </div>
+      <div class="v1-gradient"></div>
+      <div class="v1-content">
+        <div class="v1-est">Uptown Shelby, NC &bull; Est. 2019</div>
+        <h1>
+          Sticks &amp; Stones
+          <span class="sub">Art &amp; Tattoo</span>
+        </h1>
+        <p class="v1-tagline">Uptown Shelby's first full-service tattoo shop and art gallery. Custom work, original flash, and fine art under one roof.</p>
+        <div class="v1-btns">
+          <a href="#" class="btn btn-primary">Book Your Session</a>
+          <a href="#" class="btn btn-outline">View the Work</a>
+        </div>
+      </div>
+      <div class="v1-divider"></div>
+    </div>
+  </section>
+
+  <!-- ============ V2: Split Layout ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-hero">
+      <div class="v2-left">
+        <div class="v2-label">Est. 2019 &bull; Uptown Shelby</div>
+        <h1>Sticks &amp;<br />Stones</h1>
+        <div class="v2-subtitle">Art &amp; Tattoo</div>
+        <p class="v2-text">Custom tattoos, original flash designs, and an art gallery featuring local oil paintings. One artist. One client. One masterpiece at a time.</p>
+        <div class="v2-btns">
+          <a href="#" class="btn btn-primary">Book a Session</a>
+          <a href="#" class="btn btn-outline">The Artist</a>
+        </div>
+        <div class="v2-stats">
+          <div>
+            <div class="v2-stat-num">14+</div>
+            <div class="v2-stat-label">Years</div>
+          </div>
+          <div>
+            <div class="v2-stat-num">1</div>
+            <div class="v2-stat-label">Client / Day</div>
+          </div>
+          <div>
+            <div class="v2-stat-num">100%</div>
+            <div class="v2-stat-label">Custom</div>
+          </div>
+        </div>
+      </div>
+      <div class="v2-right">
+        <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Tattoo station" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3: Logo-Centric ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-hero">
+      <div class="v3-bg-text">Sticks &amp; Stones</div>
+      <div class="v3-lines"></div>
+      <div class="v3-content">
+        <img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Sticks and Stones logo" class="v3-logo-display" />
+        <h1>Uptown Shelby's First Full-Service Tattoo Shop</h1>
+        <div class="v3-divider-line"></div>
+        <div class="v3-location">217 N Lafayette St &bull; Shelby, NC</div>
+        <div class="v3-btns">
+          <a href="#" class="btn btn-primary">Book Your Session</a>
+          <a href="#" class="btn btn-outline">Explore the Craft</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V4: Vertical Stack ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-hero">
+      <div class="v4-texture"></div>
+      <div class="v4-accent-line"></div>
+      <div class="v4-side-text">Art &amp; Tattoo &bull; 217 N Lafayette St &bull; Shelby NC 28150</div>
+      <div class="v4-content">
+        <div class="v4-est">Established 2019</div>
+        <h1>
+          <span class="line1">Sticks</span>
+          <span class="line2">Stones</span>
+          <span class="line3">Art &amp; Tattoo</span>
+        </h1>
+        <p class="v4-desc">Custom tattoos and original art in Uptown Shelby. One client per day. Booked a month out. Worth the wait.</p>
+        <div class="v4-btns">
+          <a href="#" class="btn btn-primary">Request a Consultation</a>
+          <a href="#" class="btn btn-outline">See the Work</a>
+        </div>
+      </div>
+      <div class="v4-bottom-bar">
+        <span class="v4-bottom-item">Custom Design</span>
+        <span class="v4-bottom-item">Portraits</span>
+        <span class="v4-bottom-item">Black &amp; Gray</span>
+        <span class="v4-bottom-item">Full Color</span>
+        <span class="v4-bottom-item">Art Gallery</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5: Burgundy Bleed ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-hero">
+      <div class="v5-img-cluster">
+        <div class="v5-img-1">
+          <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Tattoo equipment" />
+        </div>
+        <div class="v5-img-2">
+          <img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Shop logo" />
+        </div>
+      </div>
+      <div class="v5-content">
+        <div class="v5-badge">Uptown Shelby &bull; Est. 2019</div>
+        <h1>
+          Sticks &amp; Stones
+          <em>Art &amp; Tattoo</em>
+        </h1>
+        <p class="v5-text">14 years of craft. One client per day. Custom tattoos and original oil paintings in Uptown Shelby's first full-service tattoo shop.</p>
+        <div class="v5-btns">
+          <a href="#" class="btn btn-primary">Book a Session</a>
+          <a href="#" class="btn btn-burgundy">View Portfolio</a>
+        </div>
+      </div>
+      <div class="v5-scroll-line">
+        <span class="v5-scroll-text">Scroll</span>
+        <span class="v5-scroll-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PICKER BAR ============ -->
+  <div class="picker-bar">
+    <span class="picker-label">Hero</span>
+    <button class="picker-btn active" data-variant="1" onclick="showVariant(1)">1</button>
+    <button class="picker-btn" data-variant="2" onclick="showVariant(2)">2</button>
+    <button class="picker-btn" data-variant="3" onclick="showVariant(3)">3</button>
+    <button class="picker-btn" data-variant="4" onclick="showVariant(4)">4</button>
+    <button class="picker-btn" data-variant="5" onclick="showVariant(5)">5</button>
+    <span class="picker-desc" id="picker-desc">Cinematic fade with centered typography</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      1: 'Cinematic fade with centered typography',
+      2: 'Split layout with stats and image',
+      3: 'Logo-centric with ghost text background',
+      4: 'Oversized vertical type with outlined stroke',
+      5: 'Burgundy bleed with layered image cluster'
+    };
+    function showVariant(n) {
+      document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-variant="' + n + '"]').classList.add('active');
+      document.getElementById('picker-desc').textContent = descriptions[n];
+    }
+  </script>
+
+</body>
+</html>

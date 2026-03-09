@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Visit Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e8e8e8;
+      background: #0d0d1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blue: #1a3a8f;
+      --blue-dark: #0f2560;
+      --red: #d32f2f;
+      --red-light: #e85353;
+      --white: #ffffff;
+      --charcoal: #0d0d1a;
+      --charcoal-light: #161628;
+      --charcoal-card: #1a1a2e;
+      --gold: #f59e0b;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    .btn {
+      display: inline-block; font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 14px 36px; border-radius: 6px; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+    .btn-primary { background: var(--red); color: var(--white); }
+    .btn-primary:hover { background: var(--red-light); }
+
+    .locked-nav {
+      background: var(--charcoal); border-bottom: 3px solid var(--blue);
+      padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .locked-nav-logo { display: flex; align-items: center; gap: 10px; }
+    .locked-nav-logo img { width: 36px; height: 36px; border-radius: 6px; object-fit: contain; background: #fff; padding: 2px; }
+    .locked-nav-logo span { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); line-height: 1.2; }
+    .locked-nav-info { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: #111125; border-top: 2px solid var(--blue);
+      padding: 14px 24px; display: flex; align-items: center;
+      justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .picker-btn {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 20px;
+      border-radius: 8px; border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6);
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .picker-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .picker-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+    .picker-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-right: 8px; }
+
+    .sec-label { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--red); margin-bottom: 12px; }
+    .sec-heading { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; margin-bottom: 20px; color: var(--white); }
+    .sec-sub { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .accent { color: var(--red); }
+
+    /* shared hours table */
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .hours-table td { padding: 11px 0; font-size: 0.92rem; }
+    .hours-table td:first-child { font-weight: 600; color: rgba(255,255,255,0.8); width: 140px; }
+    .hours-table td:last-child { color: rgba(255,255,255,0.5); }
+    .hours-table .closed td:last-child { color: var(--red); }
+
+    /* ============ V1: Two-Column (Info + Photo Card) ============ */
+    .v1-section { background: var(--charcoal-light); }
+    .v1-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .v1-info-block { margin-bottom: 36px; }
+    .v1-info-block h3 {
+      font-size: 1.1rem; font-weight: 700; color: var(--red-light);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .v1-info-block p, .v1-info-block a {
+      font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7;
+    }
+    .v1-info-block a { color: var(--red-light); font-weight: 600; }
+    .v1-info-block a:hover { color: var(--white); }
+    .v1-map-card {
+      background: var(--charcoal-card); border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .v1-map-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .v1-map-body { padding: 28px; }
+    .v1-map-body h3 {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); margin-bottom: 8px;
+    }
+    .v1-map-body p { font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* ============ V2: Centered Full-Width Card ============ */
+    .v2-section { background: var(--charcoal); }
+    .v2-card {
+      background: var(--charcoal-card); border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .v2-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .v2-card-content { padding: 56px 48px; }
+    .v2-card-content h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--white); margin-bottom: 24px;
+    }
+    .v2-detail-row {
+      display: flex; gap: 8px; align-items: flex-start; margin-bottom: 20px;
+    }
+    .v2-detail-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .v2-detail-text h4 {
+      font-size: 0.9rem; color: var(--red-light); margin-bottom: 4px; text-transform: none;
+      letter-spacing: 0;
+    }
+    .v2-detail-text p, .v2-detail-text a {
+      font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.5;
+    }
+    .v2-detail-text a { color: var(--red-light); font-weight: 600; }
+    .v2-detail-text a:hover { color: var(--white); }
+    .v2-hours-compact {
+      margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .v2-hours-compact h4 {
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--red-light); margin-bottom: 12px;
+    }
+
+    /* ============ V3: Three Info Columns ============ */
+    .v3-section { background: var(--charcoal-light); }
+    .v3-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .v3-col {
+      background: var(--charcoal-card); border-radius: 20px; padding: 40px 28px;
+      text-align: center; border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .v3-col:hover { transform: translateY(-4px); border-color: rgba(211,47,47,0.3); }
+    .v3-col-icon { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+    .v3-col h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 16px; }
+    .v3-col p, .v3-col a { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .v3-col a { color: var(--red-light); font-weight: 600; display: block; margin-top: 8px; }
+    .v3-col a:hover { color: var(--white); }
+    .v3-hours-mini { text-align: left; margin-top: 8px; }
+    .v3-hours-mini .day { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.85rem; }
+    .v3-hours-mini .day-name { color: rgba(255,255,255,0.7); font-weight: 600; }
+    .v3-hours-mini .day-time { color: rgba(255,255,255,0.45); }
+    .v3-hours-mini .day-closed .day-time { color: var(--red); }
+    .v3-cta {
+      text-align: center; margin-top: 48px;
+    }
+
+    /* ============ V4: Map-First (Big Image + Overlay Info) ============ */
+    .v4-section { background: var(--charcoal); position: relative; overflow: hidden; }
+    .v4-bg {
+      position: absolute; inset: 0;
+    }
+    .v4-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .v4-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(13,13,26,0.95) 0%, rgba(13,13,26,0.7) 50%, rgba(13,13,26,0.95) 100%);
+    }
+    .v4-content {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .v4-left h2 { font-size: clamp(2rem, 5vw, 3.4rem); color: var(--white); margin-bottom: 16px; }
+    .v4-left p { font-size: 1.05rem; color: rgba(255,255,255,0.55); margin-bottom: 32px; line-height: 1.7; }
+    .v4-right {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 40px 32px; backdrop-filter: blur(8px);
+    }
+    .v4-detail { margin-bottom: 28px; }
+    .v4-detail:last-child { margin-bottom: 0; }
+    .v4-detail h3 {
+      font-size: 0.9rem; color: var(--red-light); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .v4-detail p, .v4-detail a {
+      font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6;
+    }
+    .v4-detail a { color: var(--red-light); font-weight: 600; }
+    .v4-detail a:hover { color: var(--white); }
+
+    /* ============ V5: Compact Bar + Photo Strip ============ */
+    .v5-section { background: var(--charcoal-light); }
+    .v5-top-bar {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .v5-top-left h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--white); margin-bottom: 12px; }
+    .v5-top-left p { font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 400px; line-height: 1.6; }
+    .v5-top-right {
+      display: flex; gap: 40px; flex-wrap: wrap;
+    }
+    .v5-info-col h4 {
+      font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--red-light); margin-bottom: 8px;
+    }
+    .v5-info-col p, .v5-info-col a {
+      font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.5;
+    }
+    .v5-info-col a { color: var(--red-light); font-weight: 600; }
+    .v5-info-col a:hover { color: var(--white); }
+    .v5-photo-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+    .v5-photo {
+      border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .v5-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .v5-bottom-bar {
+      margin-top: 48px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .v5-hours-inline {
+      font-size: 0.88rem; color: rgba(255,255,255,0.45);
+    }
+    .v5-hours-inline strong { color: rgba(255,255,255,0.7); }
+    .v5-insta {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.06em; color: var(--red-light);
+    }
+    .v5-insta:hover { color: var(--white); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .v1-grid { grid-template-columns: 1fr; gap: 40px; }
+      .v2-card { grid-template-columns: 1fr; }
+      .v3-cols { grid-template-columns: 1fr; }
+      .v4-content { grid-template-columns: 1fr; gap: 40px; }
+      .v5-photo-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .v2-card-content { padding: 36px 24px; }
+      .v5-top-bar { flex-direction: column; gap: 24px; }
+      .v5-top-right { gap: 24px; }
+      .section-pad { padding: 64px 0; }
+    }
+    @media (max-width: 560px) {
+      .v5-photo-strip { grid-template-columns: 1fr 1fr; }
+      .picker-btn { font-size: 0.75rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="locked-nav">
+    <div class="locked-nav-logo">
+      <img src="/mock-sites/assets/wahoos-sports/logo.webp" alt="Wahoo's" width="150" height="150" loading="lazy" />
+      <span>Wahoo's Sports<br />&amp; Collectibles</span>
+    </div>
+    <div class="locked-nav-info">Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM</div>
+  </div>
+
+  <!-- ============ V1: Two-Column (Info + Photo Card) ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="v1-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">Come See Us</p>
+        <h2 class="sec-heading">Visit Wahoo's</h2>
+        <p class="sec-sub">We're right on Main Street in downtown Forest City. Park, walk in, and start digging.</p>
+      </div>
+      <div class="container">
+        <div class="v1-grid">
+          <div>
+            <div class="v1-info-block">
+              <h3>&#128205; Address</h3>
+              <p>128 E Main St<br />Forest City, NC 28043</p>
+            </div>
+            <div class="v1-info-block">
+              <h3>&#128222; Phone</h3>
+              <a href="tel:8282236060">(828) 223-6060</a>
+            </div>
+            <div class="v1-info-block">
+              <h3>&#128339; Hours</h3>
+              <table class="hours-table">
+                <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+                <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+                <tr class="closed"><td>Tuesday</td><td>Closed</td></tr>
+                <tr><td>Wednesday</td><td>2:15 PM - 6:00 PM</td></tr>
+                <tr><td>Thursday</td><td>2:15 PM - 6:00 PM</td></tr>
+                <tr><td>Friday</td><td>2:15 PM - 6:00 PM</td></tr>
+                <tr><td>Saturday</td><td>12:15 PM - 4:30 PM</td></tr>
+              </table>
+            </div>
+            <div class="v1-info-block">
+              <h3>&#128247; Follow Along</h3>
+              <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener">@wahoossports on Instagram</a>
+            </div>
+          </div>
+          <div class="v1-map-card">
+            <img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Store interior" width="640" height="640" loading="lazy" />
+            <div class="v1-map-body">
+              <h3>Downtown Forest City</h3>
+              <p>128 E Main St, Forest City, NC 28043. Right in the heart of downtown. Street parking available.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2: Centered Full-Width Card ============ -->
+  <section class="variant-section" id="v2">
+    <div class="v2-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">Come See Us</p>
+        <h2 class="sec-heading">Visit Wahoo's</h2>
+        <p class="sec-sub">Main Street, Forest City. Park, walk in, and start digging.</p>
+      </div>
+      <div class="container">
+        <div class="v2-card">
+          <div class="v2-card-img">
+            <img src="/mock-sites/assets/wahoos-sports/jordan-10-retro.webp" alt="Store interior with Jordan sneakers" width="640" height="640" loading="lazy" />
+          </div>
+          <div class="v2-card-content">
+            <p class="sec-label">Find Us</p>
+            <h2>128 E Main St<br /><span class="accent">Forest City, NC</span></h2>
+            <div class="v2-detail-row">
+              <span class="v2-detail-icon">&#128205;</span>
+              <div class="v2-detail-text">
+                <h4>Address</h4>
+                <p>128 E Main St, Forest City, NC 28043</p>
+              </div>
+            </div>
+            <div class="v2-detail-row">
+              <span class="v2-detail-icon">&#128222;</span>
+              <div class="v2-detail-text">
+                <h4>Phone</h4>
+                <a href="tel:8282236060">(828) 223-6060</a>
+              </div>
+            </div>
+            <div class="v2-detail-row">
+              <span class="v2-detail-icon">&#128247;</span>
+              <div class="v2-detail-text">
+                <h4>Instagram</h4>
+                <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener">@wahoossports</a>
+              </div>
+            </div>
+            <div class="v2-hours-compact">
+              <h4>Hours</h4>
+              <table class="hours-table">
+                <tr class="closed"><td>Sun-Tue</td><td>Closed</td></tr>
+                <tr><td>Wed-Fri</td><td>2:15 PM - 6:00 PM</td></tr>
+                <tr><td>Saturday</td><td>12:15 PM - 4:30 PM</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3: Three Info Columns ============ -->
+  <section class="variant-section" id="v3">
+    <div class="v3-section section-pad">
+      <div class="container text-center">
+        <p class="sec-label">Come See Us</p>
+        <h2 class="sec-heading">Visit Wahoo's</h2>
+        <p class="sec-sub">Everything you need to know before you stop by.</p>
+      </div>
+      <div class="container">
+        <div class="v3-cols">
+          <div class="v3-col">
+            <span class="v3-col-icon">&#128205;</span>
+            <h3>Where We Are</h3>
+            <p>128 E Main St<br />Forest City, NC 28043</p>
+            <p>Right in the heart of downtown Forest City. Street parking available on Main Street.</p>
+          </div>
+          <div class="v3-col">
+            <span class="v3-col-icon">&#128339;</span>
+            <h3>When We're Open</h3>
+            <div class="v3-hours-mini">
+              <div class="day day-closed"><span class="day-name">Sun-Tue</span><span class="day-time">Closed</span></div>
+              <div class="day"><span class="day-name">Wednesday</span><span class="day-time">2:15 - 6:00 PM</span></div>
+              <div class="day"><span class="day-name">Thursday</span><span class="day-time">2:15 - 6:00 PM</span></div>
+              <div class="day"><span class="day-name">Friday</span><span class="day-time">2:15 - 6:00 PM</span></div>
+              <div class="day"><span class="day-name">Saturday</span><span class="day-time">12:15 - 4:30 PM</span></div>
+            </div>
+          </div>
+          <div class="v3-col">
+            <span class="v3-col-icon">&#128222;</span>
+            <h3>Get in Touch</h3>
+            <p>Questions about what's in stock? Want to see if we have something specific? Give us a call.</p>
+            <a href="tel:8282236060">(828) 223-6060</a>
+            <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener">@wahoossports</a>
+          </div>
+        </div>
+        <div class="v3-cta">
+          <a href="tel:8282236060" class="btn btn-primary">Call Before You Visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V4: Map-First (BG Image + Overlay) ============ -->
+  <section class="variant-section" id="v4">
+    <div class="v4-section section-pad">
+      <div class="v4-bg">
+        <img src="/mock-sites/assets/wahoos-sports/vintage-hornets-nascar.webp" alt="Store display background" width="640" height="789" loading="lazy" />
+      </div>
+      <div class="container">
+        <div class="v4-content">
+          <div class="v4-left">
+            <p class="sec-label">Come See Us</p>
+            <h2>Visit<br /><span class="accent">Wahoo's</span></h2>
+            <p>We're right on Main Street in downtown Forest City. Park, walk in, and start digging. You never know what you will find.</p>
+            <a href="tel:8282236060" class="btn btn-primary">Call (828) 223-6060</a>
+          </div>
+          <div class="v4-right">
+            <div class="v4-detail">
+              <h3>&#128205; Address</h3>
+              <p>128 E Main St<br />Forest City, NC 28043</p>
+            </div>
+            <div class="v4-detail">
+              <h3>&#128339; Hours</h3>
+              <table class="hours-table">
+                <tr class="closed"><td>Sun-Tue</td><td>Closed</td></tr>
+                <tr><td>Wed-Fri</td><td>2:15 PM - 6:00 PM</td></tr>
+                <tr><td>Saturday</td><td>12:15 PM - 4:30 PM</td></tr>
+              </table>
+            </div>
+            <div class="v4-detail">
+              <h3>&#128247; Instagram</h3>
+              <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener">@wahoossports</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5: Compact Bar + Photo Strip ============ -->
+  <section class="variant-section" id="v5">
+    <div class="v5-section section-pad">
+      <div class="container">
+        <div class="v5-top-bar">
+          <div class="v5-top-left">
+            <p class="sec-label">Come See Us</p>
+            <h2>Visit <span class="accent">Wahoo's</span></h2>
+            <p>Right on Main Street in downtown Forest City. Park, walk in, and start digging.</p>
+          </div>
+          <div class="v5-top-right">
+            <div class="v5-info-col">
+              <h4>Address</h4>
+              <p>128 E Main St<br />Forest City, NC 28043</p>
+            </div>
+            <div class="v5-info-col">
+              <h4>Phone</h4>
+              <a href="tel:8282236060">(828) 223-6060</a>
+            </div>
+            <div class="v5-info-col">
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener">@wahoossports</a>
+            </div>
+          </div>
+        </div>
+        <div class="v5-photo-strip">
+          <div class="v5-photo"><img src="/mock-sites/assets/wahoos-sports/sacai-blazer-low.webp" alt="Sneakers in store" width="640" height="640" loading="lazy" /></div>
+          <div class="v5-photo"><img src="/mock-sites/assets/wahoos-sports/supreme-skate-deck.webp" alt="Supreme deck" width="640" height="640" loading="lazy" /></div>
+          <div class="v5-photo"><img src="/mock-sites/assets/wahoos-sports/hats-display-case.webp" alt="Hats display" width="640" height="640" loading="lazy" /></div>
+          <div class="v5-photo"><img src="/mock-sites/assets/wahoos-sports/bravest-studios-socks.webp" alt="Bravest Studios socks" width="640" height="640" loading="lazy" /></div>
+        </div>
+        <div class="v5-bottom-bar">
+          <div class="v5-hours-inline">
+            <strong>Hours:</strong> Wed-Fri 2:15-6 PM &bull; Sat 12:15-4:30 PM &bull; Closed Sun-Tue
+          </div>
+          <a href="https://instagram.com/wahoossports" target="_blank" rel="noopener" class="v5-insta">Follow @wahoossports &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-label">Visit:</span>
+    <button class="picker-btn active" data-target="v1">1. Two-Column</button>
+    <button class="picker-btn" data-target="v2">2. Split Card</button>
+    <button class="picker-btn" data-target="v3">3. Three Cols</button>
+    <button class="picker-btn" data-target="v4">4. BG Image</button>
+    <button class="picker-btn" data-target="v5">5. Photo Strip</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('.picker-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

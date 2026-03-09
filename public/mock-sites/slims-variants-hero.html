@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slim's Bar & Grill - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --dark-card: #1e1e1e;
+      --neon-red: #ff3333;
+      --neon-orange: #ff6b2b;
+      --neon-yellow: #ffc831;
+      --neon-green: #39ff14;
+      --amber: #d4860b;
+      --white: #f0f0f0;
+      --muted: #888888;
+      --smoke: #2a2a2a;
+      --border: #333333;
+    }
+
+    /* ============ PICKER BAR ============ */
+    .picker-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid #333;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--neon-orange);
+      margin-right: 12px;
+    }
+    .picker-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 2px solid #333;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--neon-red);
+      background: var(--neon-red);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    /* Shared */
+    .variant { display: none; min-height: 100vh; }
+    .variant.active { display: block; }
+    .btn {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      padding: 16px 40px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,51,51,0.3); }
+    .btn-primary { background: var(--neon-red); color: #fff; }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid #444; }
+    .btn-outline:hover { border-color: var(--neon-orange); color: var(--neon-orange); }
+    .btn-amber { background: var(--amber); color: #111; }
+
+    /* ===========================
+       VARIANT 1 - Original / Classic Dark
+       =========================== */
+    .v1-hero {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v1-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,51,51,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,107,43,0.06) 0%, transparent 60%);
+    }
+    .v1-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 1.5px at 40px 40px, rgba(255,255,255,0.04) 1.5px, transparent 1.5px);
+      background-size: 80px 80px;
+    }
+    .v1-deco-1 { position: absolute; top: 10%; right: 5%; width: 200px; height: 200px; border: 2px solid rgba(255,107,43,0.12); border-radius: 50%; }
+    .v1-deco-2 { position: absolute; bottom: 15%; left: 3%; width: 120px; height: 120px; border: 2px solid rgba(255,51,51,0.1); transform: rotate(45deg); }
+    .v1-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .v1-badge {
+      display: inline-block;
+      border: 1px solid #333;
+      color: var(--neon-orange);
+      font-weight: 600; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      padding: 8px 24px; border-radius: 50px; margin-bottom: 32px;
+    }
+    .v1-content h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--white); line-height: 0.95; margin-bottom: 8px;
+    }
+    .v1-content h1 .accent { color: var(--neon-red); }
+    .v1-content h1 .accent-orange { color: var(--neon-orange); font-size: 0.65em; }
+    .v1-tagline { font-size: clamp(1rem,2vw,1.2rem); color: var(--muted); margin-bottom: 40px; }
+    .v1-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .v1-features { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .v1-feat { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.85rem; }
+    .v1-feat-icon { font-size: 1.3rem; }
+
+    /* ===========================
+       VARIANT 2 - Split / Neon Sign
+       =========================== */
+    .v2-hero {
+      background: #0d0d0d;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v2-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        conic-gradient(from 180deg at 50% 50%, rgba(255,51,51,0.04) 0deg, transparent 60deg, rgba(255,107,43,0.03) 120deg, transparent 180deg, rgba(255,200,49,0.02) 240deg, transparent 360deg);
+    }
+    .v2-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .v2-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95; color: var(--white); margin-bottom: 20px;
+    }
+    .v2-text h1 span { color: var(--neon-red); }
+    .v2-text .sub {
+      font-size: 1.1rem; color: var(--muted);
+      margin-bottom: 32px; line-height: 1.7; max-width: 480px;
+    }
+    .v2-text .v2-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v2-neon-box {
+      position: relative;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+    }
+    .v2-neon-box::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-orange), var(--neon-yellow));
+      z-index: -1;
+      opacity: 0.4;
+      filter: blur(20px);
+    }
+    .v2-neon-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--neon-red);
+      text-shadow: 0 0 40px rgba(255,51,51,0.4), 0 0 80px rgba(255,51,51,0.2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .v2-neon-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--neon-orange);
+      letter-spacing: 0.2em;
+      text-shadow: 0 0 20px rgba(255,107,43,0.3);
+    }
+    .v2-neon-items {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px;
+    }
+    .v2-neon-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #333;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ===========================
+       VARIANT 3 - Full-bleed Typographic
+       =========================== */
+    .v3-hero {
+      background: var(--neon-red);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .v3-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 80px,
+          rgba(0,0,0,0.06) 80px,
+          rgba(0,0,0,0.06) 82px
+        );
+    }
+    .v3-hero::after {
+      content: "SLIM'S SLIM'S SLIM'S SLIM'S SLIM'S SLIM'S SLIM'S SLIM'S ";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12rem;
+      color: rgba(0,0,0,0.06);
+      white-space: nowrap;
+      pointer-events: none;
+      line-height: 1;
+    }
+    .v3-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px;
+      max-width: 900px;
+    }
+    .v3-content h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      color: #fff; line-height: 0.9; margin-bottom: 16px;
+    }
+    .v3-content h1 .dark { color: #1a0000; }
+    .v3-sub {
+      font-size: 1.2rem; color: rgba(255,255,255,0.85);
+      margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .v3-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .v3-btn-dark {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem; letter-spacing: 0.1em;
+      padding: 16px 40px; border-radius: 6px; border: none;
+      cursor: pointer; background: #1a0000; color: #fff;
+      transition: transform 0.2s;
+    }
+    .v3-btn-dark:hover { transform: translateY(-2px); }
+    .v3-btn-white {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem; letter-spacing: 0.1em;
+      padding: 16px 40px; border-radius: 6px;
+      border: 2px solid #fff; background: transparent; color: #fff;
+      cursor: pointer; transition: transform 0.2s;
+    }
+    .v3-btn-white:hover { transform: translateY(-2px); background: #fff; color: var(--neon-red); }
+    .v3-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .v3-pill {
+      background: rgba(0,0,0,0.15);
+      color: #fff; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 20px; border-radius: 50px;
+    }
+    .v3-address {
+      margin-top: 40px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.6);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ===========================
+       VARIANT 4 - Handwritten / Casual
+       =========================== */
+    .v4-hero {
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v4-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 1px at 24px 24px, rgba(255,200,49,0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .v4-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .v4-scrawl {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--neon-yellow);
+      transform: rotate(-3deg);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .v4-content h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      color: var(--white); line-height: 0.9; margin-bottom: 24px;
+    }
+    .v4-content h1 span { color: var(--neon-red); }
+    .v4-desc {
+      font-size: 1.1rem; color: var(--muted);
+      margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+    .v4-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .v4-menu-strip {
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .v4-menu-chip {
+      background: #252525;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 140px;
+    }
+    .v4-menu-chip-icon { font-size: 2rem; margin-bottom: 6px; display: block; }
+    .v4-menu-chip-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; color: var(--white);
+      letter-spacing: 0.06em;
+    }
+
+    /* ===========================
+       VARIANT 5 - Stacked Bold / Industrial
+       =========================== */
+    .v5-hero {
+      background: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v5-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,255,255,0.02) 100px, rgba(255,255,255,0.02) 101px);
+    }
+    .v5-stripe {
+      position: absolute;
+      left: 0; right: 0;
+      height: 6px;
+    }
+    .v5-stripe-top { top: 0; background: var(--neon-red); }
+    .v5-stripe-bot { bottom: 0; background: var(--neon-orange); }
+    .v5-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 100px 24px;
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 60px; align-items: center;
+    }
+    .v5-side {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      color: var(--neon-orange);
+    }
+    .v5-main h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      color: var(--white);
+      line-height: 0.85;
+      margin-bottom: 8px;
+    }
+    .v5-main h1 span { color: var(--neon-red); }
+    .v5-main h1 .line2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.45em;
+      color: var(--muted);
+      display: block;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+    .v5-divider {
+      width: 80px; height: 3px;
+      background: var(--neon-red);
+      margin: 24px 0;
+    }
+    .v5-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 500px; line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .v5-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .v5-stats {
+      display: flex; gap: 40px;
+      padding-top: 28px;
+      border-top: 1px solid #222;
+    }
+    .v5-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--neon-red); line-height: 1;
+    }
+    .v5-stat-label {
+      font-size: 0.75rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .v2-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+      .v5-content { grid-template-columns: 1fr; gap: 20px; }
+      .v5-side { writing-mode: horizontal-tb; transform: none; }
+      .v3-content h1 { font-size: clamp(3rem, 14vw, 6rem); }
+      .v4-menu-strip { gap: 12px; }
+      .v4-menu-chip { min-width: 100px; padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 -->
+  <div class="variant active" id="v1">
+    <section class="v1-hero">
+      <div class="v1-deco-1"></div>
+      <div class="v1-deco-2"></div>
+      <div class="v1-content">
+        <div class="v1-badge">184 East Main St, Forest City, NC</div>
+        <h1>
+          <span class="accent">Build</span> Your<br />
+          <span class="accent-orange">Own Burger</span>
+        </h1>
+        <p class="v1-tagline">Burgers built your way. Wings done right. Cold drinks and good times on Main Street.</p>
+        <div class="v1-btns">
+          <a href="#" class="btn btn-primary">See the Menu</a>
+          <a href="#" class="btn btn-outline">Find Us</a>
+        </div>
+        <div class="v1-features">
+          <div class="v1-feat"><span class="v1-feat-icon">&#127828;</span> Custom Burgers</div>
+          <div class="v1-feat"><span class="v1-feat-icon">&#127831;</span> Wings</div>
+          <div class="v1-feat"><span class="v1-feat-icon">&#127866;</span> Cold Beer</div>
+          <div class="v1-feat"><span class="v1-feat-icon">&#127860;</span> Philly Steak</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 -->
+  <div class="variant" id="v2">
+    <section class="v2-hero">
+      <div class="v2-inner">
+        <div class="v2-text">
+          <h1>Slim's<br /><span>Bar & Grill</span></h1>
+          <p class="sub">Build-your-own burgers, loaded Phillys, crispy wings, and cold drinks. Right on Main Street in Forest City.</p>
+          <div class="v2-btns">
+            <a href="#" class="btn btn-primary">View Menu</a>
+            <a href="#" class="btn btn-outline">Get Directions</a>
+          </div>
+        </div>
+        <div class="v2-neon-box">
+          <div class="v2-neon-title">SLIM'S</div>
+          <div class="v2-neon-sub">Bar & Grill</div>
+          <div class="v2-neon-items">
+            <span class="v2-neon-item">&#127828; Burgers</span>
+            <span class="v2-neon-item">&#127831; Wings</span>
+            <span class="v2-neon-item">&#129386; Phillys</span>
+            <span class="v2-neon-item">&#127866; Beer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 -->
+  <div class="variant" id="v3">
+    <section class="v3-hero">
+      <div class="v3-content">
+        <h1>
+          <span class="dark">Slim's</span><br />
+          Bar & Grill
+        </h1>
+        <p class="v3-sub">Build-your-own burgers, wings, Philly steak and chicken, great appetizers, and cold drinks in downtown Forest City.</p>
+        <div class="v3-btns">
+          <a href="#" class="v3-btn-dark">See the Menu</a>
+          <a href="#" class="v3-btn-white">Visit Us</a>
+        </div>
+        <div class="v3-pills">
+          <span class="v3-pill">&#127828; Build Your Burger</span>
+          <span class="v3-pill">&#127831; Wings</span>
+          <span class="v3-pill">&#129386; Philly Steak</span>
+          <span class="v3-pill">&#127839; Appetizers</span>
+        </div>
+        <p class="v3-address">184 East Main St, Forest City, NC 28043</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 -->
+  <div class="variant" id="v4">
+    <section class="v4-hero">
+      <div class="v4-content">
+        <span class="v4-scrawl">downtown forest city, nc</span>
+        <h1>Slim's<br /><span>Bar & Grill</span></h1>
+        <p class="v4-desc">A build-your-own burger shop on East Main Street. Wings, Philly steak, Philly chicken, great appetizers, and cold ones on tap.</p>
+        <div class="v4-btns">
+          <a href="#" class="btn btn-primary">See the Menu</a>
+          <a href="#" class="btn btn-amber">Call to Order</a>
+        </div>
+        <div class="v4-menu-strip">
+          <div class="v4-menu-chip">
+            <span class="v4-menu-chip-icon">&#127828;</span>
+            <span class="v4-menu-chip-label">Build a Burger</span>
+          </div>
+          <div class="v4-menu-chip">
+            <span class="v4-menu-chip-icon">&#127831;</span>
+            <span class="v4-menu-chip-label">Wings</span>
+          </div>
+          <div class="v4-menu-chip">
+            <span class="v4-menu-chip-icon">&#129386;</span>
+            <span class="v4-menu-chip-label">Philly Steak</span>
+          </div>
+          <div class="v4-menu-chip">
+            <span class="v4-menu-chip-icon">&#127839;</span>
+            <span class="v4-menu-chip-label">Appetizers</span>
+          </div>
+          <div class="v4-menu-chip">
+            <span class="v4-menu-chip-icon">&#127866;</span>
+            <span class="v4-menu-chip-label">Cold Beer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 -->
+  <div class="variant" id="v5">
+    <section class="v5-hero">
+      <div class="v5-stripe v5-stripe-top"></div>
+      <div class="v5-stripe v5-stripe-bot"></div>
+      <div class="v5-content">
+        <div class="v5-side">184 East Main St, Forest City, NC</div>
+        <div class="v5-main">
+          <h1>
+            Slim's<br />
+            <span>Bar &<br />Grill</span>
+            <span class="line2">Build Your Own Burger Shop</span>
+          </h1>
+          <div class="v5-divider"></div>
+          <p class="v5-desc">Custom burgers built your way, crispy wings, loaded Philly steak and chicken, and a full bar. No frills, just good food in downtown Forest City.</p>
+          <div class="v5-btns">
+            <a href="#" class="btn btn-primary">See the Menu</a>
+            <a href="#" class="btn btn-outline">Find Us</a>
+          </div>
+          <div class="v5-stats">
+            <div>
+              <div class="v5-stat-num">184</div>
+              <div class="v5-stat-label">East Main St</div>
+            </div>
+            <div>
+              <div class="v5-stat-num">(828)</div>
+              <div class="v5-stat-label">382-0283</div>
+            </div>
+            <div>
+              <div class="v5-stat-num">7</div>
+              <div class="v5-stat-label">Days a Week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Hero Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

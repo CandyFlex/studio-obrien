@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Gym - Community Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --red: #e63226;
+      --red-glow: rgba(230, 50, 38, 0.3);
+      --neon-green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.25);
+      --orange: #ff6b2b;
+      --yellow: #ffc831;
+      --white: #f0f0f0;
+      --muted: #777777;
+      --border: #2a2a2a;
+      --steel: #333333;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--neon-green); margin-right: 12px; text-transform: uppercase;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 8px; border: 2px solid #333;
+      background: #161616; color: #f0f0f0; font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--red); background: var(--red); color: #fff; transform: scale(1.08);
+    }
+
+    .variant { display: none; min-height: 100vh; }
+    .variant.active { display: block; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0 140px; }
+    .text-center { text-align: center; }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 1.05; letter-spacing: 0.02em; font-weight: 700; }
+
+    /* ===========================
+       VARIANT 1 - Split Grid (Original)
+       =========================== */
+    .v1-community { background: var(--black); position: relative; overflow: hidden; }
+    .v1-community::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 30% 50%, rgba(230,50,38,0.04) 0%, transparent 70%); }
+    .v1-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .v1-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v1-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v1-text p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
+    .v1-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .v1-stat { background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; text-align: center; transition: border-color 0.3s; }
+    .v1-stat:hover { border-color: var(--neon-green); }
+    .v1-stat-num { font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--neon-green); line-height: 1; margin-bottom: 6px; }
+    .v1-stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+    @media (max-width: 768px) {
+      .v1-inner { grid-template-columns: 1fr; gap: 40px; }
+      .v1-text { text-align: center; }
+    }
+
+    /* ===========================
+       VARIANT 2 - Full-Width with Quote
+       =========================== */
+    .v2-community { background: var(--dark); position: relative; overflow: hidden; }
+    .v2-community::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 120px, rgba(255,255,255,0.012) 120px, rgba(255,255,255,0.012) 121px); }
+    .v2-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v2-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v2-sub { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto 48px; line-height: 1.8; }
+    .v2-quote-box {
+      background: var(--dark-card); border-left: 4px solid var(--red);
+      border-radius: 0 12px 12px 0; padding: 40px 48px;
+      max-width: 800px; margin: 0 auto 48px; position: relative; z-index: 2;
+    }
+    .v2-quote-mark {
+      font-family: 'Anton', sans-serif; font-size: 5rem; color: rgba(230,50,38,0.15);
+      line-height: 0.5; margin-bottom: 16px;
+    }
+    .v2-quote-text { font-size: 1.15rem; color: var(--white); line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+    .v2-quote-author { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .v2-stats-row {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+      position: relative; z-index: 2;
+    }
+    .v2-stat { text-align: center; }
+    .v2-stat-num { font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 700; color: var(--neon-green); line-height: 1; }
+    .v2-stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-top: 6px; }
+
+    /* ===========================
+       VARIANT 3 - Big Number Stack
+       =========================== */
+    .v3-community { background: var(--black); position: relative; overflow: hidden; }
+    .v3-community::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 40% at 70% 30%, rgba(57,255,20,0.03) 0%, transparent 70%); }
+    .v3-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v3-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 48px; }
+    .v3-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; position: relative; z-index: 2; }
+    .v3-copy p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
+    .v3-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .v3-num-item { text-align: center; padding: 32px 16px; }
+    .v3-num-item:nth-child(1) { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .v3-num-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+    .v3-num-item:nth-child(3) { border-right: 1px solid var(--border); }
+    .v3-num-val {
+      font-family: 'Anton', sans-serif; font-size: 4rem; line-height: 1;
+    }
+    .v3-num-item:nth-child(1) .v3-num-val { color: var(--red); }
+    .v3-num-item:nth-child(2) .v3-num-val { color: var(--neon-green); }
+    .v3-num-item:nth-child(3) .v3-num-val { color: var(--orange); }
+    .v3-num-item:nth-child(4) .v3-num-val { color: var(--yellow); }
+    .v3-num-text { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-top: 8px; }
+    @media (max-width: 768px) {
+      .v3-cols { grid-template-columns: 1fr; gap: 40px; }
+      .v3-copy { text-align: center; }
+    }
+
+    /* ===========================
+       VARIANT 4 - Card Testimonial Row
+       =========================== */
+    .v4-community { background: var(--dark); position: relative; overflow: hidden; }
+    .v4-community::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle 1px at 40px 40px, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; }
+    .v4-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v4-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v4-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v4-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; z-index: 2; }
+    .v4-card {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px 28px; position: relative; transition: border-color 0.3s, transform 0.3s;
+    }
+    .v4-card:hover { transform: translateY(-4px); }
+    .v4-card:nth-child(1) { border-top: 3px solid var(--red); }
+    .v4-card:nth-child(2) { border-top: 3px solid var(--neon-green); }
+    .v4-card:nth-child(3) { border-top: 3px solid var(--orange); }
+    .v4-card-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;
+    }
+    .v4-card:nth-child(1) .v4-card-avatar { background: rgba(230,50,38,0.15); color: var(--red); }
+    .v4-card:nth-child(2) .v4-card-avatar { background: rgba(57,255,20,0.1); color: var(--neon-green); }
+    .v4-card:nth-child(3) .v4-card-avatar { background: rgba(255,107,43,0.12); color: var(--orange); }
+    .v4-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+    .v4-card-name { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.1em; }
+    .v4-card-role { font-size: 0.75rem; color: var(--muted); }
+    @media (max-width: 768px) { .v4-cards { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }
+
+    /* ===========================
+       VARIANT 5 - Full-Bleed Red Community
+       =========================== */
+    .v5-community { background: var(--red); position: relative; overflow: hidden; }
+    .v5-community::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(0,0,0,0.04) 40px, rgba(0,0,0,0.04) 41px);
+    }
+    .v5-community::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+      background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+    }
+    .v5-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+    .v5-label-w { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+    .v5-heading-w { font-size: clamp(2.4rem,6vw,4rem); color: #fff; margin-bottom: 24px; }
+    .v5-copy p { color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
+    .v5-stats-w {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .v5-stat-w { text-align: center; }
+    .v5-stat-w-num { font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; }
+    .v5-stat-w-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - Split Grid -->
+  <div class="variant active" id="v1">
+    <section class="v1-community section-pad">
+      <div class="container">
+        <div class="v1-inner">
+          <div class="v1-text">
+            <div class="v1-label">The People</div>
+            <h2 class="v1-heading">More Than<br />a Gym</h2>
+            <p>This is not a place where people wear headphones and avoid eye contact. When you walk through the door, you are part of something. The person next to you will learn your name, push you through the last round, and high-five you when the clock stops.</p>
+            <p>We built this gym because the Foothills deserved better than treadmill farms and judgment-free zones. We believe in hard work, accountability, and showing up for each other. Every single day.</p>
+          </div>
+          <div class="v1-visual">
+            <div class="v1-stats">
+              <div class="v1-stat"><div class="v1-stat-num">100+</div><div class="v1-stat-label">Members</div></div>
+              <div class="v1-stat"><div class="v1-stat-num">20+</div><div class="v1-stat-label">Classes / Week</div></div>
+              <div class="v1-stat"><div class="v1-stat-num">3+</div><div class="v1-stat-label">Years Strong</div></div>
+              <div class="v1-stat"><div class="v1-stat-num">828</div><div class="v1-stat-label">Area Code Proud</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 - Full-Width with Quote -->
+  <div class="variant" id="v2">
+    <section class="v2-community section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v2-label">The People</div>
+          <h2 class="v2-heading">More Than a Gym</h2>
+          <p class="v2-sub">This is not a place where people wear headphones and avoid eye contact. When you walk through the door, you are part of something.</p>
+        </div>
+        <div class="v2-quote-box">
+          <div class="v2-quote-mark">&ldquo;</div>
+          <p class="v2-quote-text">We built this gym because the Foothills deserved better than treadmill farms and judgment-free zones. We believe in hard work, accountability, and showing up for each other. Every single day.</p>
+          <div class="v2-quote-author">The Garage Gym Team</div>
+        </div>
+        <div class="v2-stats-row">
+          <div class="v2-stat"><div class="v2-stat-num">100+</div><div class="v2-stat-label">Members</div></div>
+          <div class="v2-stat"><div class="v2-stat-num">20+</div><div class="v2-stat-label">Classes / Week</div></div>
+          <div class="v2-stat"><div class="v2-stat-num">3+</div><div class="v2-stat-label">Years Strong</div></div>
+          <div class="v2-stat"><div class="v2-stat-num">828</div><div class="v2-stat-label">Area Code Proud</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 - Big Number Stack -->
+  <div class="variant" id="v3">
+    <section class="v3-community section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v3-label">The People</div>
+          <h2 class="v3-heading">More Than a Gym</h2>
+        </div>
+        <div class="v3-cols">
+          <div class="v3-copy">
+            <p>This is not a place where people wear headphones and avoid eye contact. When you walk through the door, you are part of something. The person next to you will learn your name, push you through the last round, and high-five you when the clock stops.</p>
+            <p>We built this gym because the Foothills deserved better than treadmill farms and judgment-free zones. We believe in hard work, accountability, and showing up for each other. Every single day.</p>
+          </div>
+          <div class="v3-numbers">
+            <div class="v3-num-item"><div class="v3-num-val">100+</div><div class="v3-num-text">Members</div></div>
+            <div class="v3-num-item"><div class="v3-num-val">20+</div><div class="v3-num-text">Weekly Classes</div></div>
+            <div class="v3-num-item"><div class="v3-num-val">3+</div><div class="v3-num-text">Years Strong</div></div>
+            <div class="v3-num-item"><div class="v3-num-val">828</div><div class="v3-num-text">Area Code</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - Testimonial Cards -->
+  <div class="variant" id="v4">
+    <section class="v4-community section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v4-label">The People</div>
+          <h2 class="v4-heading">More Than a Gym</h2>
+          <p class="v4-sub">When you walk through the door, you are part of something. We believe in hard work, accountability, and showing up for each other.</p>
+        </div>
+        <div class="v4-cards">
+          <div class="v4-card">
+            <div class="v4-card-avatar">JT</div>
+            <p>"I walked in not knowing what to expect. Within a week, people knew my name. Within a month, I could not imagine training anywhere else."</p>
+            <div class="v4-card-name">Member since 2023</div>
+            <div class="v4-card-role">Group Classes</div>
+          </div>
+          <div class="v4-card">
+            <div class="v4-card-avatar">KR</div>
+            <p>"No mirrors. No egos. Just real people pushing each other to get better. This gym changed how I think about fitness."</p>
+            <div class="v4-card-name">Member since 2022</div>
+            <div class="v4-card-role">Unlimited Member</div>
+          </div>
+          <div class="v4-card">
+            <div class="v4-card-avatar">AM</div>
+            <p>"The coaching here is next level. Every movement is taught, corrected, and scaled. I am stronger at 45 than I was at 25."</p>
+            <div class="v4-card-name">Member since 2023</div>
+            <div class="v4-card-role">Personal Training</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 - Full-Bleed Red -->
+  <div class="variant" id="v5">
+    <section class="v5-community section-pad">
+      <div class="container">
+        <div class="v5-inner text-center">
+          <div class="v5-label-w">The People</div>
+          <h2 class="v5-heading-w">More Than a Gym</h2>
+          <div class="v5-copy">
+            <p>This is not a place where people wear headphones and avoid eye contact. When you walk through the door, you are part of something. The person next to you will learn your name, push you through the last round, and high-five you when the clock stops.</p>
+            <p>We built this gym because the Foothills deserved better than treadmill farms and judgment-free zones. We believe in hard work, accountability, and showing up for each other. Every single day.</p>
+          </div>
+          <div class="v5-stats-w">
+            <div class="v5-stat-w"><div class="v5-stat-w-num">100+</div><div class="v5-stat-w-label">Members</div></div>
+            <div class="v5-stat-w"><div class="v5-stat-w-num">20+</div><div class="v5-stat-w-label">Classes / Week</div></div>
+            <div class="v5-stat-w"><div class="v5-stat-w-num">3+</div><div class="v5-stat-w-label">Years Strong</div></div>
+            <div class="v5-stat-w"><div class="v5-stat-w-num">828</div><div class="v5-stat-w-label">Area Code</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Community Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

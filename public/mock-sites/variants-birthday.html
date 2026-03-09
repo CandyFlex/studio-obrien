@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Birthday/Parties Section Variants</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-light: #aaa;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 60px; }
+    img { display: block; max-width: 100%; }
+
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 2px solid var(--yellow-dim); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav .nav-logo { font-family: var(--font-pixel); font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    nav .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    nav .nav-links a { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+    nav .nav-links a:hover { color: var(--white); }
+    nav .nav-cta-wrap { display: flex; align-items: center; gap: 10px; }
+    nav .nav-cta-micro { font-family: var(--font-pixel); font-size: 0.35rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+    nav .nav-cta { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.2rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+
+    /* LOCKED SECTIONS PLACEHOLDER */
+    .locked-above { background: var(--darker); border-bottom: 1px solid rgba(245,214,35,0.1); min-height: 30vh; display: flex; align-items: center; justify-content: center; padding-top: 3rem; }
+    .locked-above p { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 3px; }
+
+    /* ========== PARTY VARIANTS ========== */
+    .party-variant { display: none; }
+    .party-variant.active { display: block; }
+
+    .party-section { padding: 5rem 2rem; position: relative; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label { font-family: var(--font-pixel); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 4px; color: var(--yellow-dim); margin-bottom: 0.8rem; }
+    .section-title { font-family: var(--font-pixel); font-size: 1.4rem; color: var(--white); line-height: 1.8; margin-bottom: 0.8rem; text-wrap: balance; }
+    .section-desc { color: var(--gray-light); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
+
+    /* CTA button shared */
+    .party-cta {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 1.5rem;
+    }
+    .party-cta:hover { background: var(--red-glow); transform: translateY(-2px); }
+
+    /* Photo shared */
+    .party-img { overflow: hidden; border: 1px solid var(--gray-dark); }
+    .party-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .party-img:hover img { transform: scale(1.03); }
+
+
+    /* ============================================================
+       V1: SPLIT LAYOUT - photo left, details right, price card
+       ============================================================ */
+    .party-v1 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v1-split {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .v1-photo { aspect-ratio: 4/3; }
+
+    .v1-details { padding-top: 0.5rem; }
+
+    .v1-price-card {
+      background: var(--dark);
+      border: 2px solid var(--yellow-dim);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+
+    .v1-price-card::before {
+      content: 'STARTING AT';
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: absolute;
+      top: -0.5rem;
+      left: 1rem;
+      background: var(--dark);
+      padding: 0 0.5rem;
+    }
+
+    .v1-price-amount {
+      font-family: var(--font-pixel);
+      font-size: 2rem;
+      color: var(--green);
+      text-shadow: 0 0 20px rgba(57,255,20,0.25);
+      margin-bottom: 0.3rem;
+    }
+
+    .v1-price-sub {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .v1-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .v1-includes li {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .v1-includes li::before {
+      content: '\25B6';
+      position: absolute;
+      left: 0;
+      color: var(--yellow-dim);
+      font-size: 0.6rem;
+      top: 0.2rem;
+    }
+
+    .v1-includes li strong { color: var(--white); }
+
+    .v1-note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-dark);
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .v1-note strong { color: var(--yellow-dim); }
+
+    @media (max-width: 900px) {
+      .v1-split { grid-template-columns: 1fr; }
+    }
+
+
+    /* ============================================================
+       V2: HERO PHOTO - full-bleed blacklight room, overlaid content
+       ============================================================ */
+    .party-v2 { position: relative; min-height: 85vh; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+
+    .v2-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .v2-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .v2-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 40%, rgba(10,10,10,0.3) 70%, rgba(10,10,10,0.15) 100%);
+    }
+
+    .v2-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 4rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .v2-text .section-desc { max-width: 480px; }
+
+    .v2-info-card {
+      background: rgba(17,17,24,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--yellow-dim);
+      padding: 2rem;
+    }
+
+    .v2-info-card .v2-price {
+      font-family: var(--font-pixel);
+      font-size: 1.8rem;
+      color: var(--green);
+      text-shadow: 0 0 20px rgba(57,255,20,0.3);
+      margin-bottom: 0.15rem;
+    }
+
+    .v2-info-card .v2-price-label {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .v2-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .v2-info-list li {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .v2-info-list li .v2-bullet {
+      color: var(--yellow);
+      font-size: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .v2-deposit {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--gray-dark);
+    }
+
+    @media (max-width: 900px) {
+      .v2-content { grid-template-columns: 1fr; padding-bottom: 3rem; }
+      .party-v2 { min-height: 70vh; }
+    }
+
+
+    /* ============================================================
+       V3: FEATURE LIST - clean card, checkmarks, price badge
+       ============================================================ */
+    .party-v3 { background: var(--dark); }
+
+    .v3-header { text-align: center; margin-bottom: 3rem; }
+    .v3-header .section-desc { margin: 0.5rem auto 0; max-width: 520px; }
+
+    .v3-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--darker);
+      border: 1px solid var(--gray-dark);
+      overflow: hidden;
+    }
+
+    .v3-card-photo { aspect-ratio: 21/9; }
+    .v3-card-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .v3-card-body { padding: 2.5rem; }
+
+    .v3-price-badge {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.2);
+      padding: 0.8rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .v3-price-badge .v3-amount {
+      font-family: var(--font-pixel);
+      font-size: 1.5rem;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(57,255,20,0.2);
+    }
+
+    .v3-price-badge .v3-plus {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--gray);
+    }
+
+    .v3-price-badge .v3-detail {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .v3-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .v3-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+
+    .v3-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(57,255,20,0.1);
+      border: 1px solid rgba(57,255,20,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
+    .v3-x {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(232,52,46,0.1);
+      border: 1px solid rgba(232,52,46,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--red);
+      margin-top: 2px;
+    }
+
+    .v3-features li strong { color: var(--white); }
+
+    .v3-deposit-note {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--yellow-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-dark);
+    }
+
+    .v3-card-body .party-cta { display: block; text-align: center; margin-top: 2rem; }
+
+
+    /* ============================================================
+       V4: TWO COLUMNS - details left, booking/price right, photo below
+       ============================================================ */
+    .party-v4 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v4-columns {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .v4-left .section-desc { margin-bottom: 1.5rem; }
+
+    .v4-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .v4-detail-item {
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      padding: 1.2rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .v4-detail-item:hover { border-color: var(--yellow-dim); }
+
+    .v4-detail-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      line-height: 1;
+    }
+
+    .v4-detail-value {
+      font-family: var(--font-pixel);
+      font-size: 0.7rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .v4-detail-label {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.6;
+    }
+
+    .v4-booking-card {
+      background: var(--dark);
+      border: 2px solid var(--yellow-dim);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .v4-booking-card::before {
+      content: 'BOOK NOW';
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--black);
+      background: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: absolute;
+      top: -0.5rem;
+      right: 1rem;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .v4-booking-price {
+      font-family: var(--font-pixel);
+      font-size: 2.2rem;
+      color: var(--green);
+      text-shadow: 0 0 20px rgba(57,255,20,0.25);
+      margin-bottom: 0.2rem;
+    }
+
+    .v4-booking-sub {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .v4-booking-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .v4-booking-list li {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .v4-booking-list li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 0.7rem;
+    }
+
+    .v4-booking-list li strong { color: var(--white); }
+
+    .v4-booking-rules {
+      border-top: 1px solid var(--gray-dark);
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .v4-booking-rules p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 0.3rem;
+    }
+
+    .v4-booking-rules .v4-deposit {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--yellow-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 0.8rem;
+    }
+
+    .v4-booking-card .party-cta { display: block; text-align: center; }
+
+    .v4-photo-strip {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .v4-photo-strip .party-img { aspect-ratio: 16/9; }
+
+    @media (max-width: 900px) {
+      .v4-columns { grid-template-columns: 1fr; }
+      .v4-photo-strip { grid-template-columns: 1fr 1fr; }
+      .v4-photo-strip .party-img:last-child { grid-column: 1 / -1; }
+    }
+
+
+    /* ============================================================
+       V5: ARCADE STYLE - "insert coin" game screen
+       ============================================================ */
+    .party-v5 { background: var(--black); overflow: hidden; }
+
+    .v5-screen {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--darker);
+      border: 3px solid var(--yellow-dim);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .v5-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.04) 3px,
+        rgba(0,0,0,0.04) 6px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .v5-screen-header {
+      background: var(--dark);
+      border-bottom: 2px solid var(--yellow-dim);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .v5-screen-header .v5-player {
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    .v5-screen-header .v5-title-main {
+      font-family: var(--font-pixel);
+      font-size: 1.2rem;
+      color: var(--yellow);
+      text-shadow: 0 0 20px rgba(245,214,35,0.3);
+      line-height: 2;
+    }
+
+    .v5-screen-header .v5-subtitle {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 0.4rem;
+    }
+
+    .v5-photo-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .v5-photo-bar .party-img { aspect-ratio: 16/9; border: none; }
+    .v5-photo-bar .party-img:first-child { border-right: 2px solid var(--yellow-dim); }
+
+    .v5-insert-coin {
+      text-align: center;
+      padding: 0.8rem;
+      background: var(--dark);
+      border-top: 2px solid var(--yellow-dim);
+      border-bottom: 2px solid var(--yellow-dim);
+    }
+
+    .v5-insert-coin p {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: blink-coin 1.2s ease-in-out infinite;
+    }
+
+    @keyframes blink-coin {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .v5-menu {
+      padding: 2rem;
+    }
+
+    .v5-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .v5-menu-item {
+      background: rgba(17,17,24,0.6);
+      border: 1px solid var(--gray-dark);
+      padding: 1.2rem;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .v5-menu-item:hover { border-color: var(--yellow-dim); background: rgba(245,214,35,0.03); }
+
+    .v5-menu-item.v5-highlight {
+      border-color: var(--green);
+      background: rgba(57,255,20,0.04);
+      grid-column: 1 / -1;
+    }
+
+    .v5-menu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      line-height: 1;
+    }
+
+    .v5-menu-value {
+      font-family: var(--font-pixel);
+      font-size: 0.8rem;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .v5-menu-item.v5-highlight .v5-menu-value {
+      font-size: 1.6rem;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(57,255,20,0.2);
+    }
+
+    .v5-menu-label {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.6;
+    }
+
+    .v5-rules {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--gray-dark);
+    }
+
+    .v5-rules-title {
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .v5-rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+
+    .v5-rules-grid .v5-rule {
+      font-size: 0.8rem;
+      color: var(--gray);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .v5-rule-ok { color: var(--green); font-size: 0.6rem; flex-shrink: 0; }
+    .v5-rule-no { color: var(--red); font-size: 0.6rem; flex-shrink: 0; }
+
+    .v5-bottom {
+      text-align: center;
+      padding: 1.5rem 2rem 2rem;
+      border-top: 2px solid var(--yellow-dim);
+      background: var(--dark);
+    }
+
+    .v5-deposit-note {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      color: var(--yellow-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .v5-bottom .party-cta { margin-top: 0; }
+
+    .v5-credits {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .v5-menu-grid { grid-template-columns: 1fr; }
+      .v5-menu-item.v5-highlight { grid-column: auto; }
+      .v5-rules-grid { grid-template-columns: 1fr; }
+      .v5-photo-bar { grid-template-columns: 1fr; }
+      .v5-photo-bar .party-img:first-child { border-right: none; border-bottom: 2px solid var(--yellow-dim); }
+    }
+
+
+    /* SCROLL CONTEXT */
+    .scroll-context { background: var(--darker); padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(245,214,35,0.1); min-height: 15vh; }
+    .scroll-context p { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 3px; }
+
+    /* PICKER */
+    .picker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10000; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); border-top: 2px solid var(--yellow); padding: 12px 24px; display: flex; align-items: center; gap: 12px; }
+    .picker-label { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; margin-right: 4px; }
+    .picker-section { font-family: var(--font-pixel); font-size: 0.55rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-right: 12px; }
+    .picker-btn { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--dark); color: var(--gray); border: 1px solid var(--gray-dark); padding: 8px 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
+    .picker-btn:hover { border-color: var(--yellow-dim); color: var(--white); }
+    .picker-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .picker-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .picker-desc { font-size: 0.75rem; color: var(--gray); margin-left: auto; max-width: 480px; line-height: 1.4; }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: 0s !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li><li><a href="#">Games</a></li><li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li><li><a href="#">Our Story</a></li><li><a href="#">Visit</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <span class="nav-cta-micro">Insert Coin &rsaquo;</span>
+      <a href="#" class="nav-cta">Press Start</a>
+    </div>
+  </nav>
+
+  <!-- LOCKED SECTIONS ABOVE -->
+  <div class="locked-above">
+    <p>Hero / Pricing / Games Sections Above</p>
+  </div>
+
+
+  <!-- ===== V1: SPLIT LAYOUT ===== -->
+  <section class="party-variant party-section party-v1 active" data-party="v1">
+    <div class="container">
+      <div class="v1-split">
+        <div class="party-img v1-photo">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Private party room with blacklights and arcade cabinets" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="v1-details">
+          <p class="section-label">Private Events</p>
+          <h2 class="section-title">Birthday<br>Parties</h2>
+          <p class="section-desc">Reserve the blacklight basement for your group. Two hours of private gaming in the coolest party room in the Foothills, complete with vintage arcade carpet and UV-lit cabinets.</p>
+          <div class="v1-price-card">
+            <p class="v1-price-amount">$150<span style="font-size:0.7rem; color:var(--gray); margin-left:4px;">+</span></p>
+            <p class="v1-price-sub">Plus tax &middot; 2 Hours in Party Room</p>
+            <ul class="v1-includes">
+              <li><strong>15 wristbands</strong> included (good for all day)</li>
+              <li>Additional wristbands <strong>$8 each</strong></li>
+              <li>Bring your own food, drinks, and decorations</li>
+            </ul>
+            <div class="v1-note">
+              <p><strong>$25 non-refundable deposit</strong> required to reserve.</p>
+              <p style="margin-top:0.4rem;">No confetti, noisemakers, or popcorn allowed in the party room.</p>
+            </div>
+          </div>
+          <a href="#" class="party-cta">Book a Party</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== V2: HERO PHOTO ===== -->
+  <section class="party-variant party-section party-v2" data-party="v2">
+    <div class="v2-bg">
+      <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Blacklight basement arcade room" loading="lazy" width="1200" height="904">
+    </div>
+    <div class="v2-content">
+      <div class="v2-text">
+        <p class="section-label">Private Events</p>
+        <h2 class="section-title">Level Up<br>Your Party</h2>
+        <p class="section-desc">Skip the bounce house. Reserve the blacklight basement for two hours of unlimited retro gaming. Vintage 80s carpet, UV-lit cabinets, and more fun than any kid (or adult) can handle.</p>
+        <a href="#" class="party-cta">Book Your Date</a>
+      </div>
+      <div class="v2-info-card">
+        <p class="v2-price">$150<span style="font-size:0.6rem; color:var(--gray);">+</span></p>
+        <p class="v2-price-label">Plus tax &middot; 2 Hours</p>
+        <ul class="v2-info-list">
+          <li><span class="v2-bullet">&#9654;</span> <strong style="color:var(--white);">15 wristbands</strong> included, good for all day</li>
+          <li><span class="v2-bullet">&#9654;</span> Extra wristbands: <strong style="color:var(--white);">$8 each</strong></li>
+          <li><span class="v2-bullet">&#9654;</span> Bring your own food, drinks, and decorations</li>
+          <li><span class="v2-bullet">&#9654;</span> No confetti, noisemakers, or popcorn</li>
+        </ul>
+        <p class="v2-deposit">$25 non-refundable deposit to reserve</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== V3: FEATURE LIST ===== -->
+  <section class="party-variant party-section party-v3" data-party="v3">
+    <div class="container">
+      <div class="v3-header">
+        <p class="section-label">Private Events</p>
+        <h2 class="section-title">Party Mode</h2>
+        <p class="section-desc">Everything you need for an unforgettable birthday, all in one room.</p>
+      </div>
+      <div class="v3-card">
+        <div class="v3-card-photo">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Blacklight party room panoramic" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="v3-card-body">
+          <div class="v3-price-badge">
+            <span class="v3-amount">$150</span>
+            <span class="v3-plus">+tax</span>
+            <span class="v3-detail">2 Hr Party Room</span>
+          </div>
+          <ul class="v3-features">
+            <li>
+              <span class="v3-check">&#10003;</span>
+              <span><strong>15 all-day wristbands</strong> included with every booking</span>
+            </li>
+            <li>
+              <span class="v3-check">&#10003;</span>
+              <span>Additional wristbands available for <strong>$8 each</strong></span>
+            </li>
+            <li>
+              <span class="v3-check">&#10003;</span>
+              <span><strong>Private blacklight basement</strong> with arcade cabinets and vintage decor</span>
+            </li>
+            <li>
+              <span class="v3-check">&#10003;</span>
+              <span>Bring your own <strong>food, drinks, cake,</strong> and decorations</span>
+            </li>
+            <li>
+              <span class="v3-check">&#10003;</span>
+              <span>All 105+ games on the main floor included with wristband</span>
+            </li>
+            <li>
+              <span class="v3-x">&#10005;</span>
+              <span>No confetti, noisemakers, or popcorn in the party room</span>
+            </li>
+          </ul>
+          <p class="v3-deposit-note">$25 non-refundable deposit required to reserve your date</p>
+          <a href="#" class="party-cta">Book a Party</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== V4: TWO COLUMNS ===== -->
+  <section class="party-variant party-section party-v4" data-party="v4">
+    <div class="container">
+      <div class="v4-columns">
+        <div class="v4-left">
+          <p class="section-label">Private Events</p>
+          <h2 class="section-title">Host Your<br>Next Party</h2>
+          <p class="section-desc">The blacklight basement is available for private events. Two hours of exclusive access to the coolest room in the building, plus all-day wristbands for the main floor.</p>
+          <div class="v4-detail-grid">
+            <div class="v4-detail-item">
+              <p class="v4-detail-icon" aria-hidden="true">&#x1F3AE;</p>
+              <p class="v4-detail-value">2 Hours</p>
+              <p class="v4-detail-label">Private Room<br>Access</p>
+            </div>
+            <div class="v4-detail-item">
+              <p class="v4-detail-icon" aria-hidden="true">&#x1F3AB;</p>
+              <p class="v4-detail-value">15</p>
+              <p class="v4-detail-label">All-Day<br>Wristbands</p>
+            </div>
+            <div class="v4-detail-item">
+              <p class="v4-detail-icon" aria-hidden="true">&#x1F579;</p>
+              <p class="v4-detail-value">105+</p>
+              <p class="v4-detail-label">Games<br>Included</p>
+            </div>
+            <div class="v4-detail-item">
+              <p class="v4-detail-icon" aria-hidden="true">&#x1F370;</p>
+              <p class="v4-detail-value">BYOB</p>
+              <p class="v4-detail-label">Food &amp;<br>Drinks</p>
+            </div>
+          </div>
+        </div>
+        <div class="v4-booking-card">
+          <p class="v4-booking-price">$150<span style="font-size:0.7rem; color:var(--gray);">+</span></p>
+          <p class="v4-booking-sub">Plus Tax &middot; Starting Price</p>
+          <ul class="v4-booking-list">
+            <li><strong>15 wristbands</strong> included (good for all day)</li>
+            <li>Additional wristbands: <strong>$8 each</strong></li>
+            <li>Bring your own food, drinks, and decorations</li>
+            <li>Private blacklight basement with arcade cabinets</li>
+          </ul>
+          <div class="v4-booking-rules">
+            <p>No confetti, noisemakers, or popcorn in the party room.</p>
+            <p class="v4-deposit">$25 non-refundable deposit to reserve</p>
+          </div>
+          <a href="#" class="party-cta">Reserve Your Date</a>
+        </div>
+      </div>
+      <div class="v4-photo-strip">
+        <div class="party-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight party room" loading="lazy" width="1200" height="904"></div>
+        <div class="party-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight room" loading="lazy" width="1200" height="904"></div>
+        <div class="party-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Dad and child playing pinball together" loading="lazy" width="1200" height="904"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== V5: ARCADE STYLE ===== -->
+  <section class="party-variant party-section party-v5" data-party="v5">
+    <div class="container">
+      <div class="v5-screen">
+        <div class="v5-screen-header">
+          <p class="v5-player">Player 1 &middot; Select Mode</p>
+          <h2 class="v5-title-main">Party Mode</h2>
+          <p class="v5-subtitle">Private Events at Carolina Arcade Museum</p>
+        </div>
+
+        <div class="v5-photo-bar">
+          <div class="party-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight party room" loading="lazy" width="1200" height="904"></div>
+          <div class="party-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Family playing pinball" loading="lazy" width="1200" height="904"></div>
+        </div>
+
+        <div class="v5-insert-coin">
+          <p>&#9733; Insert Coin to Reserve &#9733;</p>
+        </div>
+
+        <div class="v5-menu">
+          <div class="v5-menu-grid">
+            <div class="v5-menu-item v5-highlight">
+              <p class="v5-menu-icon" aria-hidden="true">&#x1FA99;</p>
+              <p class="v5-menu-value">$150<span style="font-size:0.5rem; color:var(--gray);">+tax</span></p>
+              <p class="v5-menu-label">Starting Price &middot; 2 Hours</p>
+            </div>
+            <div class="v5-menu-item">
+              <p class="v5-menu-icon" aria-hidden="true">&#x1F3AB;</p>
+              <p class="v5-menu-value">15</p>
+              <p class="v5-menu-label">All-Day<br>Wristbands</p>
+            </div>
+            <div class="v5-menu-item">
+              <p class="v5-menu-icon" aria-hidden="true">&#x2795;</p>
+              <p class="v5-menu-value">$8</p>
+              <p class="v5-menu-label">Extra<br>Wristbands</p>
+            </div>
+            <div class="v5-menu-item">
+              <p class="v5-menu-icon" aria-hidden="true">&#x1F370;</p>
+              <p class="v5-menu-value">BYO</p>
+              <p class="v5-menu-label">Food, Drinks<br>&amp; Decor</p>
+            </div>
+            <div class="v5-menu-item">
+              <p class="v5-menu-icon" aria-hidden="true">&#x1F3AE;</p>
+              <p class="v5-menu-value">105+</p>
+              <p class="v5-menu-label">Games on<br>Freeplay</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="v5-rules">
+          <p class="v5-rules-title">House Rules</p>
+          <div class="v5-rules-grid">
+            <p class="v5-rule"><span class="v5-rule-ok">&#10003;</span> Bring your own cake and food</p>
+            <p class="v5-rule"><span class="v5-rule-ok">&#10003;</span> Decorations welcome</p>
+            <p class="v5-rule"><span class="v5-rule-ok">&#10003;</span> Drinks and coolers OK</p>
+            <p class="v5-rule"><span class="v5-rule-no">&#10005;</span> No confetti</p>
+            <p class="v5-rule"><span class="v5-rule-no">&#10005;</span> No noisemakers</p>
+            <p class="v5-rule"><span class="v5-rule-no">&#10005;</span> No popcorn</p>
+          </div>
+        </div>
+
+        <div class="v5-bottom">
+          <p class="v5-deposit-note">$25 Non-Refundable Deposit Required</p>
+          <a href="#" class="party-cta">Press Start to Book</a>
+          <p class="v5-credits">Credits: 0 &middot; Insert Coin</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="scroll-context"><p>Next Section Preview</p></div>
+
+
+  <!-- PICKER -->
+  <div class="picker" role="toolbar" aria-label="Variant picker">
+    <span class="picker-label">Variant:</span>
+    <span class="picker-section">Parties</span>
+    <button class="picker-btn active" data-pick="v1" aria-pressed="true">1</button>
+    <button class="picker-btn" data-pick="v2" aria-pressed="false">2</button>
+    <button class="picker-btn" data-pick="v3" aria-pressed="false">3</button>
+    <button class="picker-btn" data-pick="v4" aria-pressed="false">4</button>
+    <button class="picker-btn" data-pick="v5" aria-pressed="false">5</button>
+    <span class="picker-desc" id="picker-desc">Split Layout: Photo left, price card right with detailed includes list</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      v1: "Split Layout: Photo left, price card right with detailed includes list",
+      v2: "Hero Photo: Full-bleed blacklight room with overlaid content and pricing card",
+      v3: "Feature List: Centered card with checkmark items, price badge, and wide photo",
+      v4: "Two Columns: Detail grid left, booking card right, photo strip below",
+      v5: "Arcade Style: Game screen UI with insert-coin header, menu grid, and house rules",
+    };
+    const btns = document.querySelectorAll(".picker-btn");
+    const sections = document.querySelectorAll(".party-variant");
+    const desc = document.getElementById("picker-desc");
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const v = btn.dataset.pick;
+        sections.forEach(s => s.classList.remove("active"));
+        btns.forEach(b => { b.classList.toggle("active", b.dataset.pick === v); b.setAttribute("aria-pressed", b.dataset.pick === v ? "true" : "false"); });
+        document.querySelector(`[data-party="${v}"]`)?.classList.add("active");
+        desc.textContent = descriptions[v] || "";
+        document.querySelector(`[data-party="${v}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoot Nannie - Bar Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #1a1410; color: #FFF8F0; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --brick: #8B2500; --brick-dark: #6B1C00; --amber: #D4A017; --amber-light: #E8C547;
+      --charcoal: #1a1410; --charcoal-light: #2a2218; --cream: #FFF8F0; --cream-dark: #F5EDE0;
+      --wood: #3E2723; --wood-light: #5D4037;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,20,16,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); font-weight: 700; margin-right: 1rem; }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,23,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--amber); background: rgba(212,160,23,0.1); }
+    .picker-btn.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+
+    .variant { display: none; padding-bottom: 5rem; }
+    .variant.active { display: block; }
+
+    .section-label { font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 0.75rem; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--cream); margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--cream-dark); opacity: 0.8; max-width: 600px; line-height: 1.7; }
+
+    /* ===== V1: Side by Side ===== */
+    .v1-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v1-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .v1-stats { display: flex; gap: 2.5rem; margin: 2.5rem 0; }
+    .v1-stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .v1-stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cream-dark); opacity: 0.7; margin-top: 0.25rem; }
+    .v1-features { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+    .v1-feature { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; color: var(--cream-dark); opacity: 0.85; }
+    .v1-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; flex-shrink: 0; }
+    .v1-images { display: grid; grid-template-rows: 1fr 1fr; gap: 1rem; }
+    .v1-images img { width: 100%; height: 240px; object-fit: cover; border-radius: 8px; }
+
+    /* ===== V2: Full-width immersive ===== */
+    .v2-section { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; }
+    .v2-bg { position: absolute; inset: 0; z-index: 0; }
+    .v2-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .v2-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,12,9,0.95) 0%, rgba(15,12,9,0.6) 50%, rgba(15,12,9,0.4) 100%); }
+    .v2-content { position: relative; z-index: 1; padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .v2-big-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem,15vw,12rem); color: var(--amber); opacity: 0.12; position: absolute; top: -1rem; right: 2rem; line-height: 1; z-index: 0; }
+    .v2-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .v2-card { text-align: center; padding: 2rem 1rem; background: rgba(26,20,16,0.5); backdrop-filter: blur(8px); border-radius: 10px; border: 1px solid rgba(212,160,23,0.1); }
+    .v2-card-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--amber); line-height: 1; margin-bottom: 0.25rem; }
+    .v2-card-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream-dark); opacity: 0.7; margin-bottom: 1rem; }
+    .v2-card-desc { font-size: 0.88rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.5; }
+
+    /* ===== V3: Horizontal scroll gallery ===== */
+    .v3-section { padding: 5rem 2rem; }
+    .v3-header { max-width: 1100px; margin: 0 auto 3rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .v3-header-right { max-width: 400px; }
+    .v3-scroll { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 2rem 2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .v3-scroll::-webkit-scrollbar { height: 4px; }
+    .v3-scroll::-webkit-scrollbar-track { background: var(--charcoal-light); }
+    .v3-scroll::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
+    .v3-slide { flex: 0 0 320px; scroll-snap-align: start; background: var(--charcoal-light); border-radius: 10px; overflow: hidden; border: 1px solid rgba(212,160,23,0.06); }
+    .v3-slide img { width: 100%; height: 220px; object-fit: cover; }
+    .v3-slide-body { padding: 1.5rem; }
+    .v3-slide-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .v3-slide-desc { font-size: 0.85rem; color: var(--cream-dark); opacity: 0.7; line-height: 1.5; }
+
+    /* ===== V4: Big stat + testimonial ===== */
+    .v4-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v4-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .v4-big-stat { font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem,12vw,10rem); color: var(--amber); line-height: 0.85; margin-bottom: 0.25rem; }
+    .v4-big-label { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--cream-dark); opacity: 0.8; margin-bottom: 3rem; }
+    .v4-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .v4-col { padding: 2rem; background: var(--charcoal-light); border-radius: 10px; border: 1px solid rgba(212,160,23,0.06); text-align: left; }
+    .v4-col-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--amber); margin-bottom: 0.5rem; }
+    .v4-col-desc { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.6; }
+    .v4-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; color: var(--cream); opacity: 0.7; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .v4-quote-attr { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); margin-top: 1rem; }
+    .v4-images { display: flex; gap: 1rem; margin-top: 3rem; justify-content: center; }
+    .v4-images img { width: 200px; height: 140px; object-fit: cover; border-radius: 8px; opacity: 0.8; }
+
+    /* ===== V5: Dark moody split ===== */
+    .v5-section { padding: 0; background: #0a0806; }
+    .v5-top { position: relative; height: 50vh; overflow: hidden; }
+    .v5-top img { width: 100%; height: 100%; object-fit: cover; }
+    .v5-top::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, #0a0806 100%); }
+    .v5-top-content { position: absolute; bottom: 3rem; left: 3rem; z-index: 1; }
+    .v5-bottom { padding: 3rem; max-width: 1100px; margin: 0 auto; }
+    .v5-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+    .v5-item {}
+    .v5-item-icon { font-size: 2rem; color: var(--amber); margin-bottom: 0.75rem; }
+    .v5-item-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .v5-item-desc { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.6; }
+    .v5-cta { text-align: center; margin-top: 3rem; }
+    .btn-amber { display: inline-block; padding: 0.85rem 2.25rem; background: var(--amber); color: var(--charcoal); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; border-radius: 4px; transition: opacity 0.2s; }
+    .btn-amber:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .v1-container { grid-template-columns: 1fr; gap: 2rem; }
+      .v2-grid { grid-template-columns: 1fr 1fr; }
+      .v4-cols { grid-template-columns: 1fr; }
+      .v4-images { flex-wrap: wrap; }
+      .v5-row { grid-template-columns: 1fr; }
+      .v3-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- V1: Side by Side -->
+<div class="variant v1-section active" id="v1">
+  <div class="v1-container">
+    <div>
+      <div class="section-label">Full Liquor Bar</div>
+      <h2 class="section-heading">The Bourbon Bar</h2>
+      <p class="section-sub">The best bourbon selection in western North Carolina. Seriously. Come sit at the bar and let us prove it.</p>
+      <div class="v1-stats">
+        <div><div class="v1-stat-num">68</div><div class="v1-stat-label">Bourbons</div></div>
+        <div><div class="v1-stat-num">4</div><div class="v1-stat-label">Flights</div></div>
+        <div><div class="v1-stat-num">12+</div><div class="v1-stat-label">Craft Beers</div></div>
+      </div>
+      <div class="v1-features">
+        <div class="v1-feature"><span class="v1-dot"></span>Bourbon flights for exploring new favorites</div>
+        <div class="v1-feature"><span class="v1-dot"></span>Signature cocktails and craft ciders</div>
+        <div class="v1-feature"><span class="v1-dot"></span>Locally sourced craft beer on tap</div>
+        <div class="v1-feature"><span class="v1-dot"></span>Full wine selection</div>
+      </div>
+    </div>
+    <div class="v1-images">
+      <img src="/mock-sites/assets/hoot-nannie/bar-counter.webp" alt="Bar counter" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/bar-crowd.webp" alt="Bar crowd" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- V2: Full-width immersive -->
+<div class="variant v2-section" id="v2">
+  <div class="v2-bg">
+    <img src="/mock-sites/assets/hoot-nannie/bar-crowd.webp" alt="Bar atmosphere" loading="lazy" />
+  </div>
+  <div class="v2-content">
+    <div class="v2-big-num">68</div>
+    <div class="section-label">Full Liquor Bar</div>
+    <h2 class="section-heading">The Bourbon Bar</h2>
+    <p class="section-sub">The best bourbon selection in western North Carolina. Over 68 varieties lining the shelves, plus signature cocktails, craft ciders, and local brews on tap.</p>
+    <div class="v2-grid">
+      <div class="v2-card">
+        <div class="v2-card-num">68</div>
+        <div class="v2-card-label">Bourbons &amp; Whiskeys</div>
+        <div class="v2-card-desc">The largest collection in western NC. From household names to rare finds.</div>
+      </div>
+      <div class="v2-card">
+        <div class="v2-card-num">4+</div>
+        <div class="v2-card-label">Bourbon Flights</div>
+        <div class="v2-card-desc">Curated tastings to help you discover your next go-to pour.</div>
+      </div>
+      <div class="v2-card">
+        <div class="v2-card-num">12+</div>
+        <div class="v2-card-label">Craft Beers</div>
+        <div class="v2-card-desc">Locally sourced craft beer on tap. Rotating selection of NC favorites.</div>
+      </div>
+      <div class="v2-card">
+        <div class="v2-card-num">&infin;</div>
+        <div class="v2-card-label">Signature Cocktails</div>
+        <div class="v2-card-desc">House cocktails, ciders, and a full wine list to round it out.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V3: Horizontal scroll gallery -->
+<div class="variant v3-section" id="v3">
+  <div class="v3-header">
+    <div>
+      <div class="section-label">Full Liquor Bar</div>
+      <h2 class="section-heading">The Bourbon Bar</h2>
+    </div>
+    <div class="v3-header-right">
+      <p class="section-sub">68 bourbons. Craft cocktails. Local beer. The best selection in western North Carolina.</p>
+    </div>
+  </div>
+  <div class="v3-scroll">
+    <div class="v3-slide">
+      <img src="/mock-sites/assets/hoot-nannie/bar-counter.webp" alt="Bar" loading="lazy" />
+      <div class="v3-slide-body">
+        <div class="v3-slide-name">68 Bourbons</div>
+        <p class="v3-slide-desc">The best selection in western North Carolina. From everyday pours to rare bottles you won't find anywhere else in the region.</p>
+      </div>
+    </div>
+    <div class="v3-slide">
+      <img src="/mock-sites/assets/hoot-nannie/tequila-sunrise.webp" alt="Cocktail" loading="lazy" />
+      <div class="v3-slide-body">
+        <div class="v3-slide-name">Signature Cocktails</div>
+        <p class="v3-slide-desc">Tequila Sunrise, Irish Cream specialties, and seasonal creations. Our bartenders know their craft.</p>
+      </div>
+    </div>
+    <div class="v3-slide">
+      <img src="/mock-sites/assets/hoot-nannie/bar-crowd.webp" alt="Bar scene" loading="lazy" />
+      <div class="v3-slide-body">
+        <div class="v3-slide-name">Bourbon Flights</div>
+        <p class="v3-slide-desc">Not sure where to start? Try a flight. Curated pairings that walk you through different styles and regions.</p>
+      </div>
+    </div>
+    <div class="v3-slide">
+      <img src="/mock-sites/assets/hoot-nannie/table-detail.webp" alt="Table" loading="lazy" />
+      <div class="v3-slide-body">
+        <div class="v3-slide-name">Craft Beer on Tap</div>
+        <p class="v3-slide-desc">Locally sourced whenever possible. Rotating selection of North Carolina craft breweries.</p>
+      </div>
+    </div>
+    <div class="v3-slide">
+      <img src="/mock-sites/assets/hoot-nannie/interior-dining.webp" alt="Interior" loading="lazy" />
+      <div class="v3-slide-body">
+        <div class="v3-slide-name">Full Wine Selection</div>
+        <p class="v3-slide-desc">Red, white, and everything in between. A solid wine list to complement any meal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V4: Big stat + testimonial -->
+<div class="variant v4-section" id="v4">
+  <div class="v4-container">
+    <div class="section-label">Full Liquor Bar</div>
+    <div class="v4-big-stat">68</div>
+    <div class="v4-big-label">Bourbons and Whiskeys on the Shelf</div>
+    <div class="v4-cols">
+      <div class="v4-col">
+        <div class="v4-col-title">Bourbon Flights</div>
+        <p class="v4-col-desc">Curated tastings to walk you through different styles, regions, and flavor profiles. Perfect for newcomers and aficionados alike.</p>
+      </div>
+      <div class="v4-col">
+        <div class="v4-col-title">Craft Cocktails</div>
+        <p class="v4-col-desc">Tequila Sunrise, Irish Cream drinks, seasonal specials, and bartender's picks. Full menu of signature creations.</p>
+      </div>
+      <div class="v4-col">
+        <div class="v4-col-title">Local Craft Beer</div>
+        <p class="v4-col-desc">Rotating taps from North Carolina craft breweries. Plus hard ciders and a full wine list.</p>
+      </div>
+    </div>
+    <div class="v4-quote">"Everything we've had has been delicious! The drinks are really good too! So many choices on the cocktail menu!"</div>
+    <div class="v4-quote-attr">Yelp Review</div>
+    <div class="v4-images">
+      <img src="/mock-sites/assets/hoot-nannie/bar-counter.webp" alt="Bar" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/tequila-sunrise.webp" alt="Cocktail" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/bar-crowd.webp" alt="Bar crowd" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- V5: Dark moody split -->
+<div class="variant v5-section" id="v5">
+  <div class="v5-top">
+    <img src="/mock-sites/assets/hoot-nannie/bar-counter.webp" alt="Bar counter" loading="lazy" />
+    <div class="v5-top-content">
+      <div class="section-label">Full Liquor Bar</div>
+      <h2 class="section-heading">The Bourbon Bar</h2>
+      <p class="section-sub" style="color: var(--cream-dark); opacity: 0.8;">Best bourbon selection in western North Carolina. 68 varieties and counting.</p>
+    </div>
+  </div>
+  <div class="v5-bottom">
+    <div class="v5-row">
+      <div class="v5-item">
+        <div class="v5-item-icon">&#127867;</div>
+        <div class="v5-item-title">68 Bourbons</div>
+        <p class="v5-item-desc">From classic Kentucky staples to small-batch rarities. The most extensive collection in the western NC foothills. Ask our bartenders for recommendations.</p>
+      </div>
+      <div class="v5-item">
+        <div class="v5-item-icon">&#127864;</div>
+        <div class="v5-item-title">Craft Cocktails</div>
+        <p class="v5-item-desc">Signature house cocktails, bourbon flights for tasting, and seasonal specials. Plus Tequila Sunrise, Irish Cream drinks, and more.</p>
+      </div>
+      <div class="v5-item">
+        <div class="v5-item-icon">&#127866;</div>
+        <div class="v5-item-title">Beer &amp; Beyond</div>
+        <p class="v5-item-desc">Locally sourced craft beer on tap. Strawberry cider and other craft ciders. Full wine selection. Something for everyone at this bar.</p>
+      </div>
+    </div>
+    <div class="v5-cta">
+      <a href="#" class="btn-amber">Come Pull Up a Stool</a>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Bar Variant</span>
+  <button class="picker-btn active" data-v="1">1</button>
+  <button class="picker-btn" data-v="2">2</button>
+  <button class="picker-btn" data-v="3">3</button>
+  <button class="picker-btn" data-v="4">4</button>
+  <button class="picker-btn" data-v="5">5</button>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.picker-btn');
+  const variants = document.querySelectorAll('.variant');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      variants.forEach(el => el.classList.remove('active'));
+      document.getElementById('v' + btn.dataset.v).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

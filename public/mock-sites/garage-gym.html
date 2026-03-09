@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Gym | Functional Fitness | Spindale, NC</title>
+  <meta name="description" content="Garage Gym in Spindale, NC. Functional fitness, group classes, personal training, and open gym. 101 Callahan Koon Rd." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e0e0e0;
+      background: #0a0a0a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============ TOKENS ============ */
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --concrete: #1c1c1c;
+      --red: #e63226;
+      --red-glow: rgba(230, 50, 38, 0.3);
+      --neon-green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.25);
+      --orange: #ff6b2b;
+      --yellow: #ffc831;
+      --white: #f0f0f0;
+      --muted: #777777;
+      --border: #2a2a2a;
+      --steel: #333333;
+    }
+
+    /* ============ UTILITY ============ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+    }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--neon-green);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 8px 30px var(--red-glow);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--steel);
+    }
+    .btn-outline:hover {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+    }
+    .btn-green {
+      background: var(--neon-green);
+      color: #0a0a0a;
+    }
+    .btn-green:hover {
+      box-shadow: 0 8px 30px var(--green-glow);
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--neon-green); }
+    .nav-phone {
+      color: var(--red);
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    /* Concrete texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230, 50, 38, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(57, 255, 20, 0.04) 0%, transparent 60%);
+    }
+    /* Grid dot pattern */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 1px at 30px 30px, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    /* Diagonal hazard stripe */
+    .hero-stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0px,
+        var(--red) 20px,
+        var(--black) 20px,
+        var(--black) 40px
+      );
+    }
+    .hero-deco-1 {
+      position: absolute;
+      top: 15%;
+      right: 8%;
+      width: 180px;
+      height: 180px;
+      border: 2px solid rgba(230, 50, 38, 0.1);
+      border-radius: 50%;
+    }
+    .hero-deco-2 {
+      position: absolute;
+      bottom: 20%;
+      left: 5%;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(57, 255, 20, 0.08);
+      transform: rotate(45deg);
+    }
+    .hero-deco-3 {
+      position: absolute;
+      top: 55%;
+      right: 15%;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 107, 43, 0.06);
+      border-radius: 50%;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--steel);
+      color: var(--neon-green);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 8px 24px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+      background: rgba(57, 255, 20, 0.05);
+    }
+    .hero h1 {
+      font-size: clamp(3.2rem, 10vw, 7.5rem);
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 0.95;
+    }
+    .hero h1 .accent { color: var(--red); }
+    .hero h1 .accent-green { color: var(--neon-green); }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+      margin-bottom: 40px;
+      letter-spacing: 0.03em;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-feat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .hero-feat-icon {
+      font-size: 1.3rem;
+      color: var(--neon-green);
+    }
+
+    /* ============ MARQUEE ============ */
+    .marquee-strip {
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-strip.dark {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .marquee-strip.dark .marquee-track { color: var(--neon-green); }
+    .marquee-strip.green {
+      background: var(--neon-green);
+      color: #0a0a0a;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============ PROGRAMS ============ */
+    .programs {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .programs::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 100px,
+          rgba(255,255,255,0.015) 100px,
+          rgba(255,255,255,0.015) 101px
+        );
+    }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .program-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .program-card:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+    }
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    .program-card:nth-child(1)::before { background: var(--red); }
+    .program-card:nth-child(2)::before { background: var(--neon-green); }
+    .program-card:nth-child(3)::before { background: var(--orange); }
+    .program-card:nth-child(4)::before { background: var(--yellow); }
+    .program-card:nth-child(1):hover { border-color: var(--red); }
+    .program-card:nth-child(2):hover { border-color: var(--neon-green); }
+    .program-card:nth-child(3):hover { border-color: var(--orange); }
+    .program-card:nth-child(4):hover { border-color: var(--yellow); }
+    .program-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .program-card:nth-child(1) .program-icon { background: rgba(230, 50, 38, 0.12); color: var(--red); }
+    .program-card:nth-child(2) .program-icon { background: rgba(57, 255, 20, 0.1); color: var(--neon-green); }
+    .program-card:nth-child(3) .program-icon { background: rgba(255, 107, 43, 0.12); color: var(--orange); }
+    .program-card:nth-child(4) .program-icon { background: rgba(255, 200, 49, 0.12); color: var(--yellow); }
+    .program-card h3 {
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .program-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============ COMMUNITY ============ */
+    .community {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .community::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 50%, rgba(230, 50, 38, 0.04) 0%, transparent 70%);
+    }
+    .community-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .community-text .section-label { text-align: left; }
+    .community-text .section-heading { text-align: left; }
+    .community-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .community-visual {
+      position: relative;
+    }
+    .community-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .stat-card:hover { border-color: var(--neon-green); }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    /* Decorative barbell */
+    .community-deco {
+      position: absolute;
+      top: -40px;
+      right: -20px;
+      width: 200px;
+      height: 200px;
+      opacity: 0.04;
+    }
+
+    @media (max-width: 768px) {
+      .community-inner { grid-template-columns: 1fr; gap: 40px; }
+      .community-text .section-label,
+      .community-text .section-heading { text-align: center; }
+      .community-text p { text-align: center; }
+    }
+
+    /* ============ SCHEDULE / PRICING ============ */
+    .pricing {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 1.5px at 50px 50px, rgba(255,255,255,0.02) 1.5px, transparent 1.5px);
+      background-size: 100px 100px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .price-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+    }
+    .price-card.featured {
+      border-color: var(--red);
+      background: linear-gradient(180deg, rgba(230, 50, 38, 0.08) 0%, var(--dark-card) 40%);
+    }
+    .price-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 0 0 6px 6px;
+    }
+    .price-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+      margin-top: 16px;
+      letter-spacing: 0.05em;
+    }
+    .price-amount {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-period {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .price-features {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .price-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-features li:last-child { border-bottom: none; }
+    .price-check {
+      color: var(--neon-green);
+      font-weight: 700;
+    }
+
+    /* Schedule block */
+    .schedule-block {
+      margin-top: 60px;
+      position: relative;
+      z-index: 2;
+    }
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .sched-item {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .sched-day {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .sched-time {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .schedule-grid { grid-template-columns: 1fr; max-width: 300px; }
+    }
+
+    /* ============ VISIT / CONTACT ============ */
+    .visit {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .visit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 70% 60%, rgba(57, 255, 20, 0.03) 0%, transparent 70%);
+    }
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    .visit-info h3 {
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .visit-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .visit-detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(230, 50, 38, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .visit-detail-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .visit-detail-text strong {
+      color: var(--white);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .visit-map {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      height: 360px;
+      position: relative;
+    }
+    .visit-map-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      background:
+        radial-gradient(circle 1px at 20px 20px, rgba(57,255,20,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .visit-map-pin {
+      width: 60px;
+      height: 60px;
+      background: var(--red);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .visit-map-pin-inner {
+      width: 24px;
+      height: 24px;
+      background: var(--white);
+      border-radius: 50%;
+      transform: rotate(45deg);
+    }
+    .visit-map-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .visit-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ============ CTA ============ */
+    .cta {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(230, 50, 38, 0.08) 0%, transparent 70%);
+    }
+    .cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.01) 60px,
+          rgba(255,255,255,0.01) 61px
+        );
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .cta h2 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .cta h2 .accent { color: var(--red); }
+    .cta h2 .accent-green { color: var(--neon-green); }
+    .cta p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .footer-logo span { color: var(--red); }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.85rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--neon-green); }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">Garage <span>Gym</span></div>
+      <div class="nav-links">
+        <a href="#programs">Programs</a>
+        <a href="#community">Community</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <a href="tel:8282634218" class="nav-phone">(828) 263-4218</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-stripe"></div>
+    <div class="hero-deco-1"></div>
+    <div class="hero-deco-2"></div>
+    <div class="hero-deco-3"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Spindale, NC &bull; Functional Fitness</div>
+      <h1>
+        Built in the<br />
+        <span class="accent">Garage.</span><br />
+        Forged in the <span class="accent-green">Fire.</span>
+      </h1>
+      <p class="hero-tagline">Functional fitness for real people. Group classes, personal training, and open gym in the heart of the Foothills.</p>
+      <div class="hero-btns">
+        <a href="#pricing" class="btn btn-primary">Start Your Trial</a>
+        <a href="#pricing" class="btn btn-outline">View Schedule</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#9879;</span>
+          Group Classes
+        </div>
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#9733;</span>
+          Personal Training
+        </div>
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#9881;</span>
+          Open Gym
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 1 -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      &starf; BUILT DIFFERENT &starf; FUNCTIONAL FITNESS &starf; GROUP CLASSES &starf; PERSONAL TRAINING &starf; OPEN GYM &starf; SPINDALE NC &starf; BUILT DIFFERENT &starf; FUNCTIONAL FITNESS &starf; GROUP CLASSES &starf; PERSONAL TRAINING &starf; OPEN GYM &starf; SPINDALE NC &starf; BUILT DIFFERENT &starf; FUNCTIONAL FITNESS &starf; GROUP CLASSES &starf; PERSONAL TRAINING &starf; OPEN GYM &starf; SPINDALE NC &starf;
+    </div>
+  </div>
+
+  <!-- PROGRAMS -->
+  <section class="programs section-pad" id="programs">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-heading">Training That Works</h2>
+        <p class="section-sub">No gimmicks. No machines gathering dust. Every workout has a purpose, every movement makes you better.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon">&#9879;</div>
+          <h3>Group Classes</h3>
+          <p>Programmed workouts in a team setting. Every class is coached, scalable, and different. Show up, work hard, get better. That is the formula.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">&#9733;</div>
+          <h3>Personal Training</h3>
+          <p>One-on-one coaching built around your goals. Whether you are brand new or chasing competition-level performance, your program is yours alone.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">&#9881;</div>
+          <h3>Open Gym</h3>
+          <p>Full access to the floor and equipment on your own time. For members who know their way around a barbell and want the freedom to train independently.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">&#9889;</div>
+          <h3>Functional Fitness</h3>
+          <p>Everything we do has a purpose. Lifting, running, jumping, pulling. You will train movements that make you stronger, faster, and harder to break in everyday life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 2 -->
+  <div class="marquee-strip dark">
+    <div class="marquee-track">
+      &starf; SWEAT &starf; LIFT &starf; RUN &starf; PULL &starf; PUSH &starf; GRIND &starf; REPEAT &starf; SWEAT &starf; LIFT &starf; RUN &starf; PULL &starf; PUSH &starf; GRIND &starf; REPEAT &starf; SWEAT &starf; LIFT &starf; RUN &starf; PULL &starf; PUSH &starf; GRIND &starf; REPEAT &starf;
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <section class="community section-pad" id="community">
+    <div class="container">
+      <div class="community-inner">
+        <div class="community-text">
+          <div class="section-label">The People</div>
+          <h2 class="section-heading">More Than<br />a Gym</h2>
+          <p>This is not a place where people wear headphones and avoid eye contact. When you walk through the door, you are part of something. The person next to you will learn your name, push you through the last round, and high-five you when the clock stops.</p>
+          <p>We built this gym because the Foothills deserved better than treadmill farms and judgment-free zones. We believe in hard work, accountability, and showing up for each other. Every single day.</p>
+        </div>
+        <div class="community-visual">
+          <div class="community-stats">
+            <div class="stat-card">
+              <div class="stat-num">100+</div>
+              <div class="stat-label">Members</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Classes / Week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Years Strong</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">828</div>
+              <div class="stat-label">Area Code Proud</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 3 -->
+  <div class="marquee-strip green">
+    <div class="marquee-track">
+      &starf; STRONGER EVERY DAY &starf; COMMUNITY FIRST &starf; NO EXCUSES &starf; SHOW UP &starf; DO THE WORK &starf; STRONGER EVERY DAY &starf; COMMUNITY FIRST &starf; NO EXCUSES &starf; SHOW UP &starf; DO THE WORK &starf; STRONGER EVERY DAY &starf; COMMUNITY FIRST &starf; NO EXCUSES &starf; SHOW UP &starf; DO THE WORK &starf;
+    </div>
+  </div>
+
+  <!-- SCHEDULE & PRICING -->
+  <section class="pricing section-pad" id="pricing">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label">Get Started</div>
+        <h2 class="section-heading">The Investment</h2>
+        <p class="section-sub">No contracts. No hidden fees. Just honest training at a fair price. Pick the plan that fits your life.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- Drop In -->
+        <div class="price-card">
+          <div class="price-name">Drop In</div>
+          <div class="price-amount">$20</div>
+          <div class="price-period">per class</div>
+          <ul class="price-features">
+            <li><span class="price-check">&#10003;</span> Single class access</li>
+            <li><span class="price-check">&#10003;</span> Full coaching included</li>
+            <li><span class="price-check">&#10003;</span> No commitment</li>
+            <li><span class="price-check">&#10003;</span> Try before you join</li>
+          </ul>
+          <a href="#visit" class="btn btn-outline" style="width:100%;">Book a Class</a>
+        </div>
+        <!-- Unlimited -->
+        <div class="price-card featured">
+          <div class="price-name">Unlimited</div>
+          <div class="price-amount">$150</div>
+          <div class="price-period">per month</div>
+          <ul class="price-features">
+            <li><span class="price-check">&#10003;</span> Unlimited group classes</li>
+            <li><span class="price-check">&#10003;</span> Open gym access</li>
+            <li><span class="price-check">&#10003;</span> Full programming</li>
+            <li><span class="price-check">&#10003;</span> Community events</li>
+          </ul>
+          <a href="#visit" class="btn btn-primary" style="width:100%;">Join Now</a>
+        </div>
+        <!-- Personal Training -->
+        <div class="price-card">
+          <div class="price-name">Personal Training</div>
+          <div class="price-amount" style="font-size:2rem;">Contact Us</div>
+          <div class="price-period">custom pricing</div>
+          <ul class="price-features">
+            <li><span class="price-check">&#10003;</span> 1-on-1 coaching</li>
+            <li><span class="price-check">&#10003;</span> Custom programming</li>
+            <li><span class="price-check">&#10003;</span> Flexible scheduling</li>
+            <li><span class="price-check">&#10003;</span> Goal-specific training</li>
+          </ul>
+          <a href="#visit" class="btn btn-outline" style="width:100%;">Get in Touch</a>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div class="schedule-block">
+        <div class="text-center" style="margin-bottom: 32px;">
+          <h3 style="font-size:1.6rem; color:var(--white); margin-bottom:8px;">Class Schedule</h3>
+          <p style="color:var(--muted); font-size:0.95rem;">Classes run throughout the week. Book through the Wodify app.</p>
+        </div>
+        <div class="schedule-grid">
+          <div class="sched-item">
+            <div class="sched-day">Mon - Fri</div>
+            <div class="sched-time">5:00 AM, 6:00 AM<br/>12:00 PM, 5:30 PM</div>
+          </div>
+          <div class="sched-item">
+            <div class="sched-day">Saturday</div>
+            <div class="sched-time">8:00 AM<br/>9:00 AM</div>
+          </div>
+          <div class="sched-item">
+            <div class="sched-day">Sunday</div>
+            <div class="sched-time">Open Gym<br/>By Appointment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Your <span class="accent">First</span><br />Workout Is <span class="accent-green">Free</span></h2>
+      <p>Walk in, try a class, meet the crew. No sales pitch. No pressure. Just show up and see what you are made of.</p>
+      <div class="cta-btns">
+        <a href="#visit" class="btn btn-green">Claim Your Free Class</a>
+        <a href="tel:8282634218" class="btn btn-outline">Call (828) 263-4218</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit section-pad" id="visit">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 48px;">
+        <div class="section-label">Find Us</div>
+        <h2 class="section-heading">Come See the Garage</h2>
+      </div>
+      <div class="visit-inner">
+        <div class="visit-info">
+          <div class="visit-detail">
+            <div class="visit-detail-icon">&#9906;</div>
+            <div class="visit-detail-text">
+              <strong>Address</strong>
+              101 Callahan Koon Rd<br />Spindale, NC 28139
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon">&#9742;</div>
+            <div class="visit-detail-text">
+              <strong>Phone</strong>
+              (828) 263-4218
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon">&#9993;</div>
+            <div class="visit-detail-text">
+              <strong>Email</strong>
+              garagegym828@gmail.com
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon">&#9202;</div>
+            <div class="visit-detail-text">
+              <strong>Hours</strong>
+              Mon-Fri: 5:00 AM - 7:00 PM<br />
+              Saturday: 8:00 AM - 11:00 AM<br />
+              Sunday: Open Gym / By Appointment
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon">&#9733;</div>
+            <div class="visit-detail-text">
+              <strong>Follow Us</strong>
+              @garagegym828 on Instagram &amp; Facebook
+            </div>
+          </div>
+        </div>
+        <div class="visit-map">
+          <div class="visit-map-inner">
+            <div class="visit-map-pin">
+              <div class="visit-map-pin-inner"></div>
+            </div>
+            <div class="visit-map-label">Spindale, NC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Garage <span>Gym</span></div>
+        <div class="footer-links">
+          <a href="#programs">Programs</a>
+          <a href="#community">Community</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#visit">Visit</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/garagegym828/" title="Instagram">IG</a>
+          <a href="https://www.facebook.com/profile.php?id=100076274903459" title="Facebook">FB</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Garage Gym. 101 Callahan Koon Rd, Spindale, NC 28139. (828) 263-4218.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

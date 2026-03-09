@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantrell & Melton - Reviews Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f14; color: #e8e0d4; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --charcoal: #1a1a1e;
+      --deep-navy: #0f1626;
+      --card-dark: #22222a;
+      --gold: #c9a84c;
+      --gold-light: #e0c872;
+      --cream: #e8e0d4;
+      --cream-muted: #b0a898;
+      --barber-red: #c41e3a;
+      --barber-blue: #1e3a5f;
+      --border: #333340;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(15,15,20,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333340; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-label { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: var(--gold); margin-right: 12px; }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 8px;
+      border: 2px solid #333340; background: #1a1a1e; color: #e8e0d4;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active { border-color: var(--gold); background: var(--gold); color: #111; transform: scale(1.08); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+    /* ===========================
+       VARIANT 1 - 3-Column Grid (Original)
+       =========================== */
+    .v1-reviews { padding: 100px 0 140px; background: var(--charcoal); position: relative; }
+    .v1-reviews::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 10% 90%, rgba(196,30,58,0.04) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 10%, rgba(30,58,95,0.06) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .v1-header { text-align: center; margin-bottom: 16px; }
+    .v1-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 16px; }
+    .v1-rating { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 48px; }
+    .v1-rating .stars { color: var(--gold); font-size: 1.2rem; letter-spacing: 4px; }
+    .v1-rating .rating-text { font-size: 0.85rem; color: var(--cream-muted); }
+    .v1-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .v1-card {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 6px; padding: 32px;
+    }
+    .v1-card .quote-mark { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 8px; }
+    .v1-card p { font-size: 0.95rem; font-style: italic; color: var(--cream-muted); line-height: 1.7; margin-bottom: 20px; }
+    .v1-card .reviewer { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+    .v1-card .review-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 3px; margin-top: 4px; }
+
+    /* ===========================
+       VARIANT 2 - Masonry / Staggered
+       =========================== */
+    .v2-reviews { padding: 100px 0 140px; background: var(--deep-navy); position: relative; }
+    .v2-header { text-align: center; margin-bottom: 48px; }
+    .v2-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 8px; }
+    .v2-header .sub { font-size: 1rem; color: var(--cream-muted); }
+    .v2-masonry { columns: 2; column-gap: 24px; }
+    .v2-card {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 8px;
+      padding: 32px; margin-bottom: 24px; break-inside: avoid;
+      transition: border-color 0.3s;
+    }
+    .v2-card:hover { border-color: rgba(201,168,76,0.3); }
+    .v2-card .stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 16px; }
+    .v2-card p { font-family: 'Old Standard TT', serif; font-style: italic; font-size: 1.05rem; color: var(--cream-muted); line-height: 1.8; margin-bottom: 16px; }
+    .v2-card .author { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    /* Make a featured card bigger */
+    .v2-card.featured { background: linear-gradient(135deg, var(--card-dark), rgba(196,30,58,0.06)); }
+    .v2-card.featured p { font-size: 1.15rem; }
+
+    /* ===========================
+       VARIANT 3 - Single Spotlight / Rotating Feel
+       =========================== */
+    .v3-reviews { padding: 100px 0 140px; background: var(--charcoal); position: relative; }
+    .v3-reviews::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(201,168,76,0.01) 60px, rgba(201,168,76,0.01) 61px);
+      pointer-events: none;
+    }
+    .v3-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; }
+    .v3-big-quote {
+      font-family: 'Playfair Display', serif; font-size: 8rem; color: var(--gold); opacity: 0.1;
+      line-height: 1; margin-bottom: -30px;
+    }
+    .v3-inner h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 48px;
+    }
+    .v3-spotlight {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 12px;
+      padding: 48px; margin-bottom: 32px;
+    }
+    .v3-spotlight p {
+      font-family: 'Old Standard TT', serif; font-style: italic; font-size: 1.3rem;
+      color: var(--cream); line-height: 1.8; margin-bottom: 24px;
+    }
+    .v3-spotlight .author { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+    .v3-spotlight .stars { color: var(--gold); font-size: 1rem; letter-spacing: 4px; margin-top: 8px; }
+    .v3-small-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .v3-small-card {
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 8px; padding: 20px;
+    }
+    .v3-small-card p { font-size: 0.85rem; font-style: italic; color: var(--cream-muted); line-height: 1.6; margin-bottom: 12px; }
+    .v3-small-card .author { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+    /* ===========================
+       VARIANT 4 - Horizontal Scroll / Film Strip
+       =========================== */
+    .v4-reviews { padding: 100px 0 140px; background: #111118; position: relative; overflow: hidden; }
+    .v4-header { text-align: center; margin-bottom: 48px; }
+    .v4-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 8px; }
+    .v4-header .sub { font-size: 1rem; color: var(--cream-muted); }
+    .v4-scroll-track {
+      display: flex; gap: 24px; padding: 0 24px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .v4-scroll-track::-webkit-scrollbar { display: none; }
+    .v4-scroll-card {
+      flex: 0 0 360px; scroll-snap-align: start;
+      background: var(--card-dark); border: 1px solid var(--border); border-radius: 8px;
+      padding: 36px; position: relative;
+    }
+    .v4-scroll-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--barber-red), var(--gold));
+    }
+    .v4-scroll-card .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 16px; }
+    .v4-scroll-card p { font-size: 0.95rem; font-style: italic; color: var(--cream-muted); line-height: 1.7; margin-bottom: 20px; }
+    .v4-scroll-card .author { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .v4-hint {
+      text-align: center; margin-top: 24px; font-size: 0.75rem; color: var(--cream-muted); opacity: 0.6;
+    }
+
+    /* ===========================
+       VARIANT 5 - Testimonial Wall / Quote Collage
+       =========================== */
+    .v5-reviews { padding: 100px 0 140px; background: var(--deep-navy); position: relative; }
+    .v5-reviews::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v5-header { text-align: center; margin-bottom: 48px; }
+    .v5-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 700; color: var(--cream); margin-bottom: 12px; }
+    .v5-rating-bar {
+      display: inline-flex; align-items: center; gap: 16px;
+      background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 40px; padding: 12px 28px;
+    }
+    .v5-rating-bar .big-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); }
+    .v5-rating-bar .stars { color: var(--gold); font-size: 1rem; letter-spacing: 3px; }
+    .v5-rating-bar .count { font-size: 0.8rem; color: var(--cream-muted); }
+    .v5-wall {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+    }
+    .v5-tile {
+      padding: 32px; position: relative; transition: background 0.3s;
+    }
+    .v5-tile:hover { background: rgba(201,168,76,0.04); }
+    .v5-tile:nth-child(1) { background: rgba(196,30,58,0.04); }
+    .v5-tile:nth-child(2) { background: rgba(30,58,95,0.06); }
+    .v5-tile:nth-child(3) { background: rgba(201,168,76,0.03); }
+    .v5-tile:nth-child(4) { background: rgba(201,168,76,0.03); }
+    .v5-tile:nth-child(5) { background: rgba(196,30,58,0.04); }
+    .v5-tile:nth-child(6) { background: rgba(30,58,95,0.06); }
+    .v5-tile .quote-mark { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); opacity: 0.25; line-height: 1; margin-bottom: 8px; }
+    .v5-tile p { font-size: 0.9rem; font-style: italic; color: var(--cream-muted); line-height: 1.6; margin-bottom: 14px; }
+    .v5-tile .author { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: 1fr; }
+      .v2-masonry { columns: 1; }
+      .v3-small-grid { grid-template-columns: 1fr; }
+      .v4-scroll-card { flex: 0 0 85vw; }
+      .v5-wall { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - 3-Column Grid -->
+  <div class="variant active" id="v1">
+    <section class="v1-reviews">
+      <div class="container">
+        <div class="v1-header">
+          <p class="section-label">What They Say</p>
+          <h2>Trusted by Shelby</h2>
+        </div>
+        <div class="v1-rating">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="rating-text">4.6 stars from 61+ reviews</span>
+        </div>
+        <div class="v1-grid">
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else. Talk, socialize, get caught up on local business and politics, and get a good haircut too.</p>
+            <div class="reviewer">Satisfied Customer</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Best good old fashioned barber shop in Shelby. Haircuts and conversations are the best.</p>
+            <div class="reviewer">Local Regular</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Walked in and was welcomed with smiles. They gave me a great cut. Will definitely be coming back.</p>
+            <div class="reviewer">First-Time Visitor</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Always does an awesome job with haircuts. Would not go anywhere else.</p>
+            <div class="reviewer">Loyal Customer</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Joni and Ken are always welcoming. Great cuts every single time.</p>
+            <div class="reviewer">Regular Client</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v1-card">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Been going here for years. Honest pricing, good people, and you always leave looking sharp.</p>
+            <div class="reviewer">Cleveland County Resident</div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 - Masonry -->
+  <div class="variant" id="v2">
+    <section class="v2-reviews">
+      <div class="container">
+        <div class="v2-header">
+          <p class="section-label">What They Say</p>
+          <h2>Trusted by Shelby</h2>
+          <p class="sub">4.6 stars from 61+ reviews</p>
+        </div>
+        <div class="v2-masonry">
+          <div class="v2-card featured">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else. Talk, socialize, get caught up on local business and politics, and get a good haircut too.</p>
+            <div class="author">Satisfied Customer</div>
+          </div>
+          <div class="v2-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Best good old fashioned barber shop in Shelby. Haircuts and conversations are the best.</p>
+            <div class="author">Local Regular</div>
+          </div>
+          <div class="v2-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Walked in and was welcomed with smiles. They gave me a great cut. Will definitely be coming back.</p>
+            <div class="author">First-Time Visitor</div>
+          </div>
+          <div class="v2-card featured">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Been going here for years. Honest pricing, good people, and you always leave looking sharp.</p>
+            <div class="author">Cleveland County Resident</div>
+          </div>
+          <div class="v2-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Always does an awesome job with haircuts. Would not go anywhere else.</p>
+            <div class="author">Loyal Customer</div>
+          </div>
+          <div class="v2-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Joni and Ken are always welcoming. Great cuts every single time.</p>
+            <div class="author">Regular Client</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 - Spotlight + Small Grid -->
+  <div class="variant" id="v3">
+    <section class="v3-reviews">
+      <div class="container">
+        <div class="v3-inner">
+          <div class="v3-big-quote">&ldquo;</div>
+          <p class="section-label">What They Say</p>
+          <h2>Trusted by Shelby</h2>
+          <div class="v3-spotlight">
+            <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else. Talk, socialize, get caught up on local business and politics, and get a good haircut too.</p>
+            <div class="author">Satisfied Customer</div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="v3-small-grid">
+            <div class="v3-small-card">
+              <p>Best good old fashioned barber shop in Shelby.</p>
+              <div class="author">Local Regular</div>
+            </div>
+            <div class="v3-small-card">
+              <p>Walked in and was welcomed with smiles. Great cut.</p>
+              <div class="author">First-Time Visitor</div>
+            </div>
+            <div class="v3-small-card">
+              <p>Would not go anywhere else.</p>
+              <div class="author">Loyal Customer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - Horizontal Scroll -->
+  <div class="variant" id="v4">
+    <section class="v4-reviews">
+      <div class="container">
+        <div class="v4-header">
+          <p class="section-label">What They Say</p>
+          <h2>Trusted by Shelby</h2>
+          <p class="sub">4.6 stars from 61+ reviews</p>
+        </div>
+      </div>
+      <div class="v4-scroll-track">
+        <div style="flex:0 0 calc((100vw - 1140px)/2);min-width:24px;"></div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else. Talk, socialize, get caught up on local business and politics, and get a good haircut too.</p>
+          <div class="author">Satisfied Customer</div>
+        </div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Best good old fashioned barber shop in Shelby. Haircuts and conversations are the best.</p>
+          <div class="author">Local Regular</div>
+        </div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Walked in and was welcomed with smiles. They gave me a great cut. Will definitely be coming back.</p>
+          <div class="author">First-Time Visitor</div>
+        </div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Always does an awesome job with haircuts. Would not go anywhere else.</p>
+          <div class="author">Loyal Customer</div>
+        </div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Joni and Ken are always welcoming. Great cuts every single time.</p>
+          <div class="author">Regular Client</div>
+        </div>
+        <div class="v4-scroll-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Been going here for years. Honest pricing, good people, and you always leave looking sharp.</p>
+          <div class="author">Cleveland County Resident</div>
+        </div>
+        <div style="flex:0 0 24px;"></div>
+      </div>
+      <div class="v4-hint">Scroll to see more reviews &rarr;</div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 - Testimonial Wall -->
+  <div class="variant" id="v5">
+    <section class="v5-reviews">
+      <div class="container">
+        <div class="v5-header">
+          <p class="section-label">What They Say</p>
+          <h2>Trusted by Shelby</h2>
+          <div class="v5-rating-bar">
+            <span class="big-num">4.6</span>
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="count">61+ reviews</span>
+          </div>
+        </div>
+        <div class="v5-wall">
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Good cuts! Always friendly. Great small town atmosphere, everyone knows everyone else.</p>
+            <div class="author">Satisfied Customer</div>
+          </div>
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Best good old fashioned barber shop in Shelby. Haircuts and conversations are the best.</p>
+            <div class="author">Local Regular</div>
+          </div>
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Walked in and was welcomed with smiles. They gave me a great cut.</p>
+            <div class="author">First-Time Visitor</div>
+          </div>
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Always does an awesome job with haircuts. Would not go anywhere else.</p>
+            <div class="author">Loyal Customer</div>
+          </div>
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Joni and Ken are always welcoming. Great cuts every single time.</p>
+            <div class="author">Regular Client</div>
+          </div>
+          <div class="v5-tile">
+            <div class="quote-mark">&ldquo;</div>
+            <p>Been going here for years. Honest pricing, good people, and you always leave looking sharp.</p>
+            <div class="author">Cleveland County Resident</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-label">Reviews Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

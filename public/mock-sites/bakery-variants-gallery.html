@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet House Bakery - Gallery Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #fdf8f3; color: #4a3728; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blush: #f4a0b5; --blush-light: #fce4ec; --blush-dark: #d4708a;
+      --gold: #d4a056; --gold-light: #f0d89a; --gold-dark: #b8863c;
+      --cream: #fdf8f3; --cream-dark: #f5ebe0;
+      --warm-brown: #4a3728; --warm-brown-light: #6b5344;
+      --chocolate: #3e2723; --white: #ffffff;
+      --sage: #a8b89c; --peach: #f8c9a0;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(62,39,35,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,86,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,86,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(212,160,86,0.1); }
+    .picker-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blush-dark); font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    /* Shared placeholder */
+    .ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative;
+    }
+    .ph::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(62,39,35,0.25), transparent 60%);
+    }
+    .g-label {
+      position: absolute; bottom: 0.75rem; left: 0.75rem; z-index: 2;
+      font-size: 0.75rem; font-weight: 700; color: var(--white);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .gc-1 { background: linear-gradient(135deg, #fce4ec, #f48fb1); }
+    .gc-2 { background: linear-gradient(135deg, #fff3e0, #ffcc80); }
+    .gc-3 { background: linear-gradient(135deg, #e8f5e9, #a5d6a7); }
+    .gc-4 { background: linear-gradient(135deg, #f3e5f5, #ce93d8); }
+    .gc-5 { background: linear-gradient(135deg, #fff8e1, #ffe082); }
+    .gc-6 { background: linear-gradient(135deg, #fce4ec, #f8c9a0); }
+    .gc-7 { background: linear-gradient(135deg, #e0f2f1, #80cbc4); }
+    .gc-8 { background: linear-gradient(135deg, #fbe9e7, #ffab91); }
+
+    /* ===== V1: Pinterest-style Masonry ===== */
+    .v1 {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream-dark);
+      min-height: 100vh;
+    }
+    .v1 .container { max-width: 1200px; margin: 0 auto; }
+    .v1 .header { text-align: center; margin-bottom: 3rem; }
+    .v1 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v1 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v1 .masonry {
+      columns: 3; column-gap: 1.25rem;
+    }
+    .v1 .masonry-item {
+      break-inside: avoid; margin-bottom: 1.25rem; border-radius: 16px;
+      overflow: hidden; position: relative; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .v1 .masonry-item:hover { transform: scale(1.02); }
+    .v1 .mi-tall .ph { min-height: 320px; }
+    .v1 .mi-short .ph { min-height: 200px; }
+    .v1 .mi-med .ph { min-height: 260px; }
+
+    /* ===== V2: Bento Grid ===== */
+    .v2 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+    }
+    .v2 .container { max-width: 1200px; margin: 0 auto; }
+    .v2 .header { text-align: center; margin-bottom: 3rem; }
+    .v2 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v2 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v2 .bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 220px 220px 220px;
+      gap: 1rem;
+    }
+    .v2 .bento-item {
+      border-radius: 16px; overflow: hidden; position: relative; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .v2 .bento-item:hover { transform: scale(1.02); }
+    .v2 .bi-1 { grid-column: span 2; grid-row: span 2; }
+    .v2 .bi-5 { grid-column: span 2; }
+    .v2 .bi-6 { grid-column: span 2; }
+
+    /* ===== V3: Horizontal Scroller ===== */
+    .v3 {
+      padding: 5rem 0 6rem;
+      background: linear-gradient(180deg, var(--chocolate), #5d3a2a);
+      min-height: 100vh; color: var(--cream);
+    }
+    .v3 .header { text-align: center; margin-bottom: 3rem; padding: 0 2rem; }
+    .v3 .header .section-label { color: var(--gold-light); }
+    .v3 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .v3 .header p { font-size: 1.1rem; color: var(--cream-dark); opacity: 0.7; max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v3 .scroller {
+      display: flex; gap: 1.5rem; overflow-x: auto; padding: 0 2rem 2rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .v3 .scroller::-webkit-scrollbar { display: none; }
+    .v3 .scroll-item {
+      flex: 0 0 350px; border-radius: 20px; overflow: hidden; position: relative;
+      scroll-snap-align: start; cursor: pointer; transition: transform 0.3s;
+    }
+    .v3 .scroll-item:hover { transform: scale(1.02); }
+    .v3 .scroll-item .ph { min-height: 400px; }
+    .v3 .scroll-hint {
+      text-align: center; margin-top: 1.5rem;
+      font-size: 0.8rem; color: var(--gold-light); opacity: 0.5;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ===== V4: Full-width Alternating Rows ===== */
+    .v4 {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream);
+      min-height: 100vh;
+    }
+    .v4 .container { max-width: 1200px; margin: 0 auto; }
+    .v4 .header { text-align: center; margin-bottom: 3rem; }
+    .v4 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v4 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v4 .row {
+      display: grid; gap: 1rem; margin-bottom: 1rem;
+    }
+    .v4 .row-3 { grid-template-columns: 2fr 1fr 1fr; }
+    .v4 .row-2 { grid-template-columns: 1fr 2fr; }
+    .v4 .row-3b { grid-template-columns: 1fr 1fr 2fr; }
+    .v4 .row-item {
+      border-radius: 16px; overflow: hidden; height: 220px;
+      position: relative; cursor: pointer; transition: transform 0.3s;
+    }
+    .v4 .row-item:hover { transform: scale(1.02); }
+
+    /* ===== V5: Gallery with Category Filters ===== */
+    .v5 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+      position: relative;
+    }
+    .v5::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 300px;
+      background: linear-gradient(180deg, var(--blush-light), var(--white));
+    }
+    .v5 .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .v5 .header { text-align: center; margin-bottom: 2rem; }
+    .v5 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v5 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .v5 .filters {
+      display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .v5 .filter-btn {
+      padding: 0.5rem 1.25rem; border-radius: 100px;
+      border: 2px solid rgba(212,160,86,0.2); background: transparent;
+      font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm-brown);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .v5 .filter-btn:hover { border-color: var(--blush); }
+    .v5 .filter-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+    .v5 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .v5 .grid-item {
+      border-radius: 16px; overflow: hidden; position: relative; cursor: pointer;
+      transition: transform 0.3s; background: var(--cream);
+    }
+    .v5 .grid-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(212,112,138,0.1); }
+    .v5 .grid-item .ph { min-height: 240px; }
+    .v5 .grid-item .info {
+      padding: 1rem 1.25rem;
+    }
+    .v5 .grid-item .info h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      color: var(--chocolate); margin-bottom: 0.2rem;
+    }
+    .v5 .grid-item .info p {
+      font-size: 0.8rem; color: var(--warm-brown-light);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .v1 .masonry { columns: 2; }
+      .v2 .bento { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+      .v2 .bi-1 { grid-column: span 2; grid-row: span 1; }
+      .v2 .bi-5, .v2 .bi-6 { grid-column: span 1; }
+      .v4 .row-3, .v4 .row-2, .v4 .row-3b { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .v1 .masonry { columns: 1; }
+      .v2 .bento { grid-template-columns: 1fr; }
+      .v2 .bi-1, .v2 .bi-5, .v2 .bi-6 { grid-column: span 1; }
+      .v2 .bento-item .ph { min-height: 200px; }
+      .v3 .scroll-item { flex: 0 0 280px; }
+      .v3 .scroll-item .ph { min-height: 300px; }
+      .v4 .row-3, .v4 .row-2, .v4 .row-3b { grid-template-columns: 1fr; }
+      .v5 .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1: Pinterest Masonry -->
+  <div class="variant v1 active" id="v1">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">A Peek Inside</div>
+        <h2>Sweet Creations</h2>
+        <p>Every cake tells a story. Here are some of our favorites from birthdays, weddings, and everyday celebrations.</p>
+      </div>
+      <div class="masonry">
+        <div class="masonry-item mi-tall"><div class="ph gc-1">&#127874;</div><span class="g-label">Custom Birthday Cakes</span></div>
+        <div class="masonry-item mi-short"><div class="ph gc-2">&#127847;</div><span class="g-label">Cupcakes</span></div>
+        <div class="masonry-item mi-med"><div class="ph gc-3">&#127856;</div><span class="g-label">Pound Cakes</span></div>
+        <div class="masonry-item mi-short"><div class="ph gc-4">&#127850;</div><span class="g-label">Cookies</span></div>
+        <div class="masonry-item mi-tall"><div class="ph gc-5">&#127883;</div><span class="g-label">Wedding Cakes</span></div>
+        <div class="masonry-item mi-med"><div class="ph gc-6">&#127852;</div><span class="g-label">Sweet Treats</span></div>
+        <div class="masonry-item mi-short"><div class="ph gc-7">&#127846;</div><span class="g-label">Banana Pudding</span></div>
+        <div class="masonry-item mi-med"><div class="ph gc-8">&#127849;</div><span class="g-label">Cake Pops</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2: Bento Grid -->
+  <div class="variant v2" id="v2">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">A Peek Inside</div>
+        <h2>Sweet Creations</h2>
+        <p>Every cake tells a story. Here are some of our favorites.</p>
+      </div>
+      <div class="bento">
+        <div class="bento-item bi-1 gc-1"><div class="ph">&#127874;</div><span class="g-label">Custom Cakes</span></div>
+        <div class="bento-item gc-2"><div class="ph">&#127847;</div><span class="g-label">Cupcakes</span></div>
+        <div class="bento-item gc-3"><div class="ph">&#127856;</div><span class="g-label">Pound Cakes</span></div>
+        <div class="bento-item gc-4"><div class="ph">&#127850;</div><span class="g-label">Cookies</span></div>
+        <div class="bento-item bi-5 gc-5"><div class="ph">&#127883;</div><span class="g-label">Wedding Cakes</span></div>
+        <div class="bento-item bi-6 gc-6"><div class="ph">&#127852;</div><span class="g-label">Sweet Treats</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3: Horizontal Scroller (Dark) -->
+  <div class="variant v3" id="v3">
+    <div class="header">
+      <div class="section-label">A Peek Inside</div>
+      <h2>Sweet Creations</h2>
+      <p>Every cake tells a story. Scroll through some of our favorites.</p>
+    </div>
+    <div class="scroller">
+      <div class="scroll-item"><div class="ph gc-1">&#127874;</div><span class="g-label">Birthday Cakes</span></div>
+      <div class="scroll-item"><div class="ph gc-2">&#127847;</div><span class="g-label">Cupcakes</span></div>
+      <div class="scroll-item"><div class="ph gc-3">&#127856;</div><span class="g-label">Pound Cakes</span></div>
+      <div class="scroll-item"><div class="ph gc-5">&#127883;</div><span class="g-label">Wedding Cakes</span></div>
+      <div class="scroll-item"><div class="ph gc-6">&#127852;</div><span class="g-label">Sweet Treats</span></div>
+      <div class="scroll-item"><div class="ph gc-4">&#127850;</div><span class="g-label">Cookies</span></div>
+      <div class="scroll-item"><div class="ph gc-8">&#127849;</div><span class="g-label">Cake Pops</span></div>
+    </div>
+    <div class="scroll-hint">Swipe to explore &rarr;</div>
+  </div>
+
+  <!-- V4: Full-Width Alternating Rows -->
+  <div class="variant v4" id="v4">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">A Peek Inside</div>
+        <h2>Sweet Creations</h2>
+        <p>Every cake tells a story. Here are some of our favorites.</p>
+      </div>
+      <div class="row row-3">
+        <div class="row-item gc-1"><div class="ph">&#127874;</div><span class="g-label">Custom Cakes</span></div>
+        <div class="row-item gc-2"><div class="ph">&#127847;</div><span class="g-label">Cupcakes</span></div>
+        <div class="row-item gc-3"><div class="ph">&#127856;</div><span class="g-label">Pound Cakes</span></div>
+      </div>
+      <div class="row row-2">
+        <div class="row-item gc-4"><div class="ph">&#127850;</div><span class="g-label">Cookies &amp; Bars</span></div>
+        <div class="row-item gc-5"><div class="ph">&#127883;</div><span class="g-label">Wedding Cakes</span></div>
+      </div>
+      <div class="row row-3b">
+        <div class="row-item gc-6"><div class="ph">&#127852;</div><span class="g-label">Sweet Treats</span></div>
+        <div class="row-item gc-7"><div class="ph">&#127846;</div><span class="g-label">Banana Pudding</span></div>
+        <div class="row-item gc-8"><div class="ph">&#127849;</div><span class="g-label">Cake Pops</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V5: Gallery with Filters -->
+  <div class="variant v5" id="v5">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">A Peek Inside</div>
+        <h2>Sweet Creations</h2>
+        <p>Every cake tells a story. Browse our creations by category.</p>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Cupcakes</button>
+        <button class="filter-btn">Custom Cakes</button>
+        <button class="filter-btn">Wedding</button>
+        <button class="filter-btn">Treats</button>
+      </div>
+      <div class="grid">
+        <div class="grid-item">
+          <div class="ph gc-1">&#127874;</div>
+          <div class="info"><h4>Custom Birthday Cake</h4><p>Strawberry Ombre, 6 layers</p></div>
+        </div>
+        <div class="grid-item">
+          <div class="ph gc-2">&#127847;</div>
+          <div class="info"><h4>Red Velvet Cupcakes</h4><p>Cream cheese frosting</p></div>
+        </div>
+        <div class="grid-item">
+          <div class="ph gc-3">&#127856;</div>
+          <div class="info"><h4>Lemon Pound Cake</h4><p>With sweet glaze</p></div>
+        </div>
+        <div class="grid-item">
+          <div class="ph gc-5">&#127883;</div>
+          <div class="info"><h4>Wedding Cake</h4><p>Three-tier buttercream</p></div>
+        </div>
+        <div class="grid-item">
+          <div class="ph gc-4">&#127850;</div>
+          <div class="info"><h4>Assorted Cookies</h4><p>Fresh baked daily</p></div>
+        </div>
+        <div class="grid-item">
+          <div class="ph gc-6">&#127852;</div>
+          <div class="info"><h4>Cake Pops</h4><p>Party-ready treats</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="label">Gallery Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

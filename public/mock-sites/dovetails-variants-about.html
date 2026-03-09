@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dovetails & Rusty Nails - About Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1512; color: #faf8f3; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --parchment: #f5efe6; --cream: #faf8f3; --brown-deep: #3a2e24; --brown-warm: #6b4c3b;
+      --brown-light: #8b6f5e; --gold: #b8860b; --gold-light: #d4a843; --gold-pale: #e8d5a0;
+      --rust: #8b3a2a; --rust-light: #a85040; --sage: #6b7c5e;
+      --charcoal: #2c2420; --ink: #1a1512;
+    }
+
+    /* ===== PICKER ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,21,18,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(184,134,11,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(184,134,11,0.1); }
+    .picker-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    /* ===== V1: Split Layout (visual left, text right) ===== */
+    .v1 {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 4rem 2rem 6rem; background: var(--charcoal);
+    }
+    .v1 .inner {
+      max-width: 1100px; margin: 0 auto; display: grid;
+      grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;
+    }
+    .v1 .visual { position: relative; }
+    .v1 .frame {
+      aspect-ratio: 3/4; background: linear-gradient(135deg, var(--brown-warm), var(--rust));
+      border-radius: 8px; position: relative; overflow: hidden;
+      border: 1px solid rgba(184,134,11,0.2);
+    }
+    .v1 .frame::before {
+      content: ''; position: absolute; inset: 8px;
+      border: 1px solid rgba(184,134,11,0.2); border-radius: 4px;
+    }
+    .v1 .frame-inner {
+      position: absolute; inset: 20px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; gap: 1rem;
+    }
+    .v1 .frame-text {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 900; color: var(--cream); line-height: 1.1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .v1 .frame-sub {
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold-pale); opacity: 0.8;
+    }
+    .v1 .badge {
+      position: absolute; bottom: -1rem; right: -1rem; width: 90px; height: 90px;
+      background: var(--rust); border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; border: 3px solid var(--charcoal);
+    }
+    .v1 .badge .num {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+      color: var(--gold-light); line-height: 1;
+    }
+    .v1 .badge .lbl {
+      font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--cream); opacity: 0.8;
+    }
+    .v1 .text .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v1 .text h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1.25rem;
+    }
+    .v1 .text p {
+      font-family: 'Libre Baskerville', serif; font-size: 0.95rem;
+      color: rgba(250,248,243,0.7); line-height: 1.9; margin-bottom: 1.25rem;
+    }
+    .v1 .stats {
+      display: flex; gap: 2.5rem; margin-top: 2rem; padding-top: 2rem;
+      border-top: 1px solid rgba(184,134,11,0.15);
+    }
+    .v1 .stat-num {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
+      color: var(--gold-light); line-height: 1;
+    }
+    .v1 .stat-lbl {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(250,248,243,0.4); margin-top: 0.2rem;
+    }
+
+    /* ===== V2: Centered Storytelling ===== */
+    .v2 {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 5rem 2rem 6rem; background: var(--parchment); color: var(--brown-deep);
+    }
+    .v2 .inner { max-width: 700px; text-align: center; }
+    .v2 .ornament {
+      display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;
+    }
+    .v2 .ornament .line { width: 60px; height: 1px; background: var(--gold); opacity: 0.3; }
+    .v2 .ornament .diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); opacity: 0.5; }
+    .v2 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v2 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 2rem;
+    }
+    .v2 p {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: var(--brown-warm); line-height: 2; margin-bottom: 1.5rem;
+    }
+    .v2 .pullquote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1.35rem; color: var(--rust); margin: 2.5rem 0;
+      padding: 1.5rem 0; border-top: 1px solid rgba(184,134,11,0.15);
+      border-bottom: 1px solid rgba(184,134,11,0.15);
+      line-height: 1.5;
+    }
+    .v2 .stats {
+      display: flex; justify-content: center; gap: 3rem; margin-top: 2.5rem;
+    }
+    .v2 .stat-num {
+      font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900;
+      color: var(--gold); line-height: 1;
+    }
+    .v2 .stat-lbl {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--brown-light); margin-top: 0.25rem;
+    }
+
+    /* ===== V3: Newspaper Style ===== */
+    .v3 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--cream); color: var(--brown-deep);
+    }
+    .v3 .inner { max-width: 1000px; margin: 0 auto; }
+    .v3 .masthead {
+      text-align: center; padding-bottom: 1.5rem; margin-bottom: 2rem;
+      border-bottom: 3px double var(--brown-deep);
+    }
+    .v3 .masthead-sub {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--brown-warm); margin-bottom: 0.5rem;
+    }
+    .v3 .masthead h2 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700; color: var(--brown-deep); letter-spacing: 0.02em;
+    }
+    .v3 .columns {
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem;
+      padding-top: 0.5rem;
+    }
+    .v3 .col-main p {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem;
+      color: var(--brown-warm); line-height: 1.9; margin-bottom: 1.25rem;
+    }
+    .v3 .col-main .drop-cap::first-letter {
+      font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700;
+      float: left; line-height: 0.8; margin-right: 0.75rem; margin-top: 0.2rem;
+      color: var(--rust);
+    }
+    .v3 .col-side {
+      border-left: 1px solid rgba(58,46,36,0.15); padding-left: 2rem;
+    }
+    .v3 .sidebar-box {
+      padding: 1.5rem; background: var(--parchment); border-radius: 6px;
+      margin-bottom: 1.5rem; border: 1px solid rgba(184,134,11,0.1);
+    }
+    .v3 .sidebar-box h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 0.5rem;
+    }
+    .v3 .sidebar-box p {
+      font-size: 0.8rem; color: var(--brown-warm); line-height: 1.6;
+    }
+    .v3 .sidebar-box .big-num {
+      font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: 0.25rem;
+    }
+    .v3 .sidebar-box .big-lbl {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brown-light);
+    }
+
+    /* ===== V4: Timeline ===== */
+    .v4 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--charcoal); color: var(--cream);
+    }
+    .v4 .inner { max-width: 800px; margin: 0 auto; }
+    .v4 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v4 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v4 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1rem;
+    }
+    .v4 .header-sub {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: rgba(250,248,243,0.6); max-width: 550px; margin: 0 auto; line-height: 1.8;
+    }
+    .v4 .timeline { position: relative; padding-left: 3rem; }
+    .v4 .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--gold), rgba(184,134,11,0.1));
+    }
+    .v4 .tl-item { position: relative; margin-bottom: 2.5rem; }
+    .v4 .tl-item::before {
+      content: ''; position: absolute; left: -3rem; top: 0.5rem;
+      width: 10px; height: 10px; background: var(--gold); border-radius: 50%;
+      transform: translateX(-4px);
+    }
+    .v4 .tl-year {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+      color: var(--gold-light); margin-bottom: 0.5rem;
+    }
+    .v4 .tl-item h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v4 .tl-item p {
+      font-size: 0.9rem; color: rgba(250,248,243,0.6); line-height: 1.7;
+    }
+
+    /* ===== V5: Full-width Dark Story Block ===== */
+    .v5 {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 5rem 2rem 6rem; background: var(--ink); position: relative;
+      overflow: hidden;
+    }
+    .v5::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(184,134,11,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 80%, rgba(139,58,42,0.08) 0%, transparent 50%);
+    }
+    .v5 .inner {
+      max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .v5 .left .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v5 .left h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900; color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem;
+    }
+    .v5 .left h2 em {
+      font-style: italic; color: var(--gold-light); display: block;
+      font-size: 0.5em; margin-top: 0.3em;
+    }
+    .v5 .left p {
+      font-family: 'Libre Baskerville', serif; font-size: 0.95rem;
+      color: rgba(250,248,243,0.65); line-height: 1.9; margin-bottom: 1.25rem;
+    }
+    .v5 .right {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    }
+    .v5 .fact-card {
+      background: rgba(184,134,11,0.05); border: 1px solid rgba(184,134,11,0.1);
+      border-radius: 8px; padding: 1.75rem; text-align: center;
+    }
+    .v5 .fact-card .num {
+      font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 900;
+      color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .v5 .fact-card .lbl2 {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(250,248,243,0.45);
+    }
+    .v5 .fact-card.highlight {
+      background: var(--rust); border-color: var(--rust);
+      grid-column: span 2;
+    }
+    .v5 .fact-card.highlight .num { color: var(--gold-pale); }
+    .v5 .fact-card.highlight .lbl2 { color: rgba(250,248,243,0.7); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v1 .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .v1 .visual { max-width: 280px; margin: 0 auto; }
+      .v3 .columns { grid-template-columns: 1fr; }
+      .v3 .col-side { border-left: none; padding-left: 0; border-top: 1px solid rgba(58,46,36,0.15); padding-top: 2rem; }
+      .v5 .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Split Layout -->
+<div class="variant v1 active" id="v1">
+  <div class="inner">
+    <div class="visual">
+      <div class="frame">
+        <div class="frame-inner">
+          <div class="frame-sub">Since 2004</div>
+          <div class="frame-text">Family<br />Owned<br />&amp; Operated</div>
+          <div class="frame-sub">Forest City, NC</div>
+        </div>
+      </div>
+      <div class="badge">
+        <div class="num">20+</div>
+        <div class="lbl">Years</div>
+      </div>
+    </div>
+    <div class="text">
+      <div class="lbl">Our Story</div>
+      <h2>Family Roots, Honest Finds</h2>
+      <p>Dovetails & Rusty Nails has been a downtown Forest City fixture since 2004. What started as a passion for giving old things new life turned into 5,000 square feet of carefully curated antiques, vintage collectibles, and one-of-a-kind finds.</p>
+      <p>We are a family-owned shop, and we treat every customer who walks through the door like family too. Whether you are a seasoned collector or just browsing on a Saturday morning, you will find the same warm welcome and honest pricing.</p>
+      <p>The name says it all. We love the craftsmanship of a hand-cut dovetail joint just as much as the character of a rusty nail in a barn board. Every imperfection tells a story.</p>
+      <div class="stats">
+        <div><div class="stat-num">5,000</div><div class="stat-lbl">Square Feet</div></div>
+        <div><div class="stat-num">20+</div><div class="stat-lbl">Years Open</div></div>
+        <div><div class="stat-num">4.3</div><div class="stat-lbl">Star Rating</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 2: Centered Storytelling -->
+<div class="variant v2" id="v2">
+  <div class="inner">
+    <div class="ornament">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+    <div class="lbl">Our Story</div>
+    <h2>Family Roots, Honest Finds</h2>
+    <p>Dovetails & Rusty Nails has been a downtown Forest City fixture since 2004. What started as a passion for giving old things new life turned into 5,000 square feet of carefully curated antiques, vintage collectibles, and one-of-a-kind finds.</p>
+    <div class="pullquote">"We love the craftsmanship of a hand-cut dovetail joint just as much as the character of a rusty nail in a barn board."</div>
+    <p>We are a family-owned shop, and we treat every customer who walks through the door like family too. Whether you are a seasoned collector hunting for a specific piece or just browsing on a Saturday morning, you will find the same warm welcome and honest pricing.</p>
+    <p>Every imperfection tells a story, and every piece in this shop has earned its place.</p>
+    <div class="stats">
+      <div><div class="stat-num">5,000</div><div class="stat-lbl">Square Feet</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-lbl">Years Open</div></div>
+      <div><div class="stat-num">4.3</div><div class="stat-lbl">Star Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 3: Newspaper Style -->
+<div class="variant v3" id="v3">
+  <div class="inner">
+    <div class="masthead">
+      <div class="masthead-sub">Est. 2004 &bull; 115 E Main St, Forest City, NC</div>
+      <h2>Family Roots, Honest Finds</h2>
+    </div>
+    <div class="columns">
+      <div class="col-main">
+        <p class="drop-cap">Dovetails & Rusty Nails has been a downtown Forest City fixture since 2004. What started as a passion for giving old things new life turned into 5,000 square feet of carefully curated antiques, vintage collectibles, and one-of-a-kind finds.</p>
+        <p>We are a family-owned shop, and we treat every customer who walks through the door like family too. Whether you are a seasoned collector hunting for a specific piece or just browsing on a Saturday morning, you will find the same warm welcome and honest pricing.</p>
+        <p>The name says it all. We love the craftsmanship of a hand-cut dovetail joint just as much as the character of a rusty nail in a barn board. Every imperfection tells a story, and every piece in this shop has earned its place.</p>
+      </div>
+      <div class="col-side">
+        <div class="sidebar-box">
+          <div class="big-num">5,000</div>
+          <div class="big-lbl">Square Feet of Antiques</div>
+        </div>
+        <div class="sidebar-box">
+          <div class="big-num">2004</div>
+          <div class="big-lbl">Year Founded</div>
+        </div>
+        <div class="sidebar-box">
+          <h4>What Makes Us Different</h4>
+          <p>Family-owned and operated. Honest pricing. A personal welcome for every visitor. Plus one of the largest glass art and pottery collections in the region.</p>
+        </div>
+        <div class="sidebar-box">
+          <div class="big-num">4.3&#9733;</div>
+          <div class="big-lbl">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 4: Timeline -->
+<div class="variant v4" id="v4">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">Our Story</div>
+      <h2>Family Roots, Honest Finds</h2>
+      <p class="header-sub">Over twenty years of bringing old things back to life on Main Street in Forest City.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2004</div>
+        <h3>Opening Day</h3>
+        <p>What started as a passion for giving old things new life opens its doors at 115 E Main St in downtown Forest City. A family-owned shop from day one.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2008</div>
+        <h3>Growing the Collection</h3>
+        <p>The glass art and pottery collection expands to become one of the largest in the region. Depression glass, art pottery, milk glass, crystal, and stoneware fill the shelves.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2014</div>
+        <h3>A Decade on Main Street</h3>
+        <p>Ten years of family-owned service. The shop grows to 5,000 square feet, packed with Victorian furniture, Eastlake pieces, vintage collectibles, and finds from every era.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020</div>
+        <h3>Still Standing</h3>
+        <p>Through every challenge, the doors stay open. Customers old and new continue to find treasures, honest prices, and a welcome that feels like visiting family.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Today</div>
+        <h3>20+ Years and Counting</h3>
+        <p>Still family-owned. Still family-run. Still the same warm welcome and honest finds that put us on the map. The name says it all: we love the craftsmanship of a hand-cut dovetail joint just as much as the character of a rusty nail in a barn board.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 5: Bold Facts Grid -->
+<div class="variant v5" id="v5">
+  <div class="inner">
+    <div class="left">
+      <div class="lbl">Our Story</div>
+      <h2>Family Roots,<br />Honest Finds<em>Since 2004 in Forest City, NC</em></h2>
+      <p>Dovetails & Rusty Nails has been a downtown Forest City fixture since 2004. What started as a passion for giving old things new life turned into 5,000 square feet of carefully curated antiques, vintage collectibles, and one-of-a-kind finds.</p>
+      <p>We are a family-owned shop, and we treat every customer who walks through the door like family too. The name says it all. We love the craftsmanship of a hand-cut dovetail joint just as much as the character of a rusty nail in a barn board.</p>
+    </div>
+    <div class="right">
+      <div class="fact-card">
+        <div class="num">5,000</div>
+        <div class="lbl2">Square Feet</div>
+      </div>
+      <div class="fact-card">
+        <div class="num">20+</div>
+        <div class="lbl2">Years Open</div>
+      </div>
+      <div class="fact-card">
+        <div class="num">4.3&#9733;</div>
+        <div class="lbl2">Average Rating</div>
+      </div>
+      <div class="fact-card">
+        <div class="num">47</div>
+        <div class="lbl2">Reviews</div>
+      </div>
+      <div class="fact-card highlight">
+        <div class="num">Family Owned & Operated</div>
+        <div class="lbl2">Since Day One, From the Heart</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">About Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

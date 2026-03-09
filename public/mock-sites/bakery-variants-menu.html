@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet House Bakery - Menu Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #fdf8f3; color: #4a3728; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blush: #f4a0b5; --blush-light: #fce4ec; --blush-dark: #d4708a;
+      --gold: #d4a056; --gold-light: #f0d89a; --gold-dark: #b8863c;
+      --cream: #fdf8f3; --cream-dark: #f5ebe0;
+      --warm-brown: #4a3728; --warm-brown-light: #6b5344;
+      --chocolate: #3e2723; --white: #ffffff;
+      --sage: #a8b89c; --peach: #f8c9a0;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(62,39,35,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,86,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,86,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(212,160,86,0.1); }
+    .picker-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blush-dark); font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    /* ===== V1: Classic 3-Column Cards ===== */
+    .v1 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+      position: relative;
+    }
+    .v1::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(244,160,181,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .v1 .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .v1 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v1 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v1 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v1 .grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem;
+    }
+    .v1 .card {
+      background: var(--cream); border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(212,160,86,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .v1 .card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(212,112,138,0.12); }
+    .v1 .card-img {
+      height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;
+    }
+    .v1 .ci-1 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .v1 .ci-2 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .v1 .ci-3 { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+    .v1 .ci-4 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+    .v1 .ci-5 { background: linear-gradient(135deg, #fce4ec, #f8c9a0); }
+    .v1 .ci-6 { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+    .v1 .card-body { padding: 1.5rem; }
+    .v1 .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--chocolate); }
+    .v1 .card-body p { font-size: 0.95rem; color: var(--warm-brown-light); line-height: 1.6; margin-bottom: 1rem; }
+    .v1 .price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--blush-dark); }
+
+    /* ===== V2: Horizontal Menu List ===== */
+    .v2 {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream);
+      min-height: 100vh;
+    }
+    .v2 .container { max-width: 900px; margin: 0 auto; }
+    .v2 .header { text-align: center; margin-bottom: 3rem; }
+    .v2 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v2 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .v2 .menu-item {
+      display: grid; grid-template-columns: 80px 1fr auto; gap: 1.5rem;
+      padding: 1.75rem 0; border-bottom: 1px solid rgba(212,160,86,0.12);
+      align-items: center;
+    }
+    .v2 .menu-item:first-child { border-top: 1px solid rgba(212,160,86,0.12); }
+    .v2 .item-icon {
+      width: 80px; height: 80px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+    }
+    .v2 .ii-1 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .v2 .ii-2 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .v2 .ii-3 { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+    .v2 .ii-4 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+    .v2 .ii-5 { background: linear-gradient(135deg, #fce4ec, #f8c9a0); }
+    .v2 .ii-6 { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+    .v2 .item-info h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--chocolate); margin-bottom: 0.35rem;
+    }
+    .v2 .item-info p { font-size: 0.9rem; color: var(--warm-brown-light); line-height: 1.5; }
+    .v2 .item-price {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--blush-dark); white-space: nowrap;
+    }
+
+    /* ===== V3: Masonry-Style Staggered Grid ===== */
+    .v3 {
+      padding: 5rem 2rem 6rem;
+      background: linear-gradient(180deg, var(--chocolate), #5d3a2a);
+      min-height: 100vh; color: var(--cream);
+    }
+    .v3 .container { max-width: 1200px; margin: 0 auto; }
+    .v3 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v3 .header .section-label { color: var(--gold-light); }
+    .v3 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .v3 .header p { font-size: 1.1rem; color: var(--cream-dark); opacity: 0.7; max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v3 .grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    .v3 .card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(212,160,86,0.12);
+      border-radius: 20px; overflow: hidden; transition: transform 0.3s, background 0.3s;
+    }
+    .v3 .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); }
+    .v3 .card:nth-child(2) { margin-top: 2rem; }
+    .v3 .card:nth-child(5) { margin-top: 2rem; }
+    .v3 .card-img {
+      height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem;
+      position: relative;
+    }
+    .v3 .card-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(62,39,35,0.5), transparent);
+    }
+    .v3 .mi-1 { background: linear-gradient(135deg, rgba(244,160,181,0.3), rgba(212,112,138,0.3)); }
+    .v3 .mi-2 { background: linear-gradient(135deg, rgba(212,160,86,0.3), rgba(184,134,60,0.3)); }
+    .v3 .mi-3 { background: linear-gradient(135deg, rgba(168,184,156,0.3), rgba(139,58,94,0.3)); }
+    .v3 .mi-4 { background: linear-gradient(135deg, rgba(248,201,160,0.3), rgba(212,160,86,0.3)); }
+    .v3 .mi-5 { background: linear-gradient(135deg, rgba(244,160,181,0.3), rgba(248,201,160,0.3)); }
+    .v3 .mi-6 { background: linear-gradient(135deg, rgba(240,216,154,0.3), rgba(212,160,86,0.3)); }
+    .v3 .card-body { padding: 1.5rem; }
+    .v3 .card-body h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.4rem;
+    }
+    .v3 .card-body p { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.7; line-height: 1.5; margin-bottom: 0.75rem; }
+    .v3 .card-price { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--gold-light); }
+
+    /* ===== V4: Featured Highlight + Grid ===== */
+    .v4 {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream-dark);
+      min-height: 100vh;
+    }
+    .v4 .container { max-width: 1200px; margin: 0 auto; }
+    .v4 .header { text-align: center; margin-bottom: 3rem; }
+    .v4 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v4 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+    .v4 .featured {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .v4 .featured-card {
+      background: var(--white); border-radius: 24px; overflow: hidden;
+      border: 1px solid rgba(212,160,86,0.1);
+      display: grid; grid-template-columns: 1fr 1fr;
+      transition: transform 0.3s;
+    }
+    .v4 .featured-card:hover { transform: translateY(-4px); }
+    .v4 .fc-img {
+      display: flex; align-items: center; justify-content: center; font-size: 4rem;
+      min-height: 220px;
+    }
+    .v4 .fc-img-1 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .v4 .fc-img-2 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .v4 .fc-body { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .v4 .fc-body .tag { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush-dark); font-weight: 700; margin-bottom: 0.5rem; }
+    .v4 .fc-body h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--chocolate); margin-bottom: 0.5rem; }
+    .v4 .fc-body p { font-size: 0.9rem; color: var(--warm-brown-light); line-height: 1.6; margin-bottom: 0.75rem; }
+    .v4 .fc-body .price { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--blush-dark); }
+    .v4 .side-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem;
+    }
+    .v4 .side-card {
+      background: var(--white); border-radius: 16px; padding: 1.5rem;
+      text-align: center; border: 1px solid rgba(212,160,86,0.08);
+      transition: transform 0.3s;
+    }
+    .v4 .side-card:hover { transform: translateY(-3px); }
+    .v4 .side-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .v4 .side-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--chocolate); margin-bottom: 0.3rem; }
+    .v4 .side-card .price { font-size: 0.85rem; color: var(--blush-dark); font-weight: 700; }
+
+    /* ===== V5: Tabbed Category Menu ===== */
+    .v5 {
+      padding: 5rem 2rem 6rem;
+      background: var(--white);
+      min-height: 100vh;
+      position: relative;
+    }
+    .v5::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 300px;
+      background: linear-gradient(180deg, var(--blush-light), var(--white));
+    }
+    .v5 .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .v5 .header { text-align: center; margin-bottom: 2.5rem; }
+    .v5 .header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 900; color: var(--chocolate); margin-bottom: 0.75rem;
+    }
+    .v5 .header p { font-size: 1.1rem; color: var(--warm-brown-light); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .v5 .tabs {
+      display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap;
+    }
+    .v5 .tab-btn {
+      padding: 0.6rem 1.5rem; border-radius: 100px; border: 2px solid rgba(212,160,86,0.2);
+      background: transparent; font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm-brown);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .v5 .tab-btn:hover { border-color: var(--blush); color: var(--blush-dark); }
+    .v5 .tab-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+    .v5 .tab-content { display: none; }
+    .v5 .tab-content.active { display: block; }
+    .v5 .menu-list { display: flex; flex-direction: column; gap: 0; }
+    .v5 .menu-row {
+      display: grid; grid-template-columns: 60px 1fr auto; gap: 1.25rem;
+      padding: 1.5rem 1rem; align-items: center;
+      border-bottom: 1px solid rgba(212,160,86,0.08);
+      transition: background 0.2s;
+    }
+    .v5 .menu-row:hover { background: var(--cream); }
+    .v5 .menu-row .icon {
+      width: 60px; height: 60px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+      background: var(--blush-light);
+    }
+    .v5 .menu-row h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--chocolate); margin-bottom: 0.2rem; }
+    .v5 .menu-row p { font-size: 0.85rem; color: var(--warm-brown-light); line-height: 1.5; }
+    .v5 .menu-row .price {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--blush-dark); white-space: nowrap;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .v1 .grid { grid-template-columns: repeat(2,1fr); }
+      .v3 .grid { grid-template-columns: repeat(2,1fr); }
+      .v3 .card:nth-child(2), .v3 .card:nth-child(5) { margin-top: 0; }
+      .v4 .featured { grid-template-columns: 1fr; }
+      .v4 .side-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .v1 .grid { grid-template-columns: 1fr; }
+      .v2 .menu-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+      .v2 .item-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+      .v2 .item-price { grid-column: 2; }
+      .v3 .grid { grid-template-columns: 1fr; }
+      .v4 .featured-card { grid-template-columns: 1fr; }
+      .v4 .side-grid { grid-template-columns: 1fr 1fr; }
+      .v5 .menu-row { grid-template-columns: 50px 1fr; gap: 1rem; }
+      .v5 .menu-row .icon { width: 50px; height: 50px; font-size: 1.4rem; }
+      .v5 .menu-row .price { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1: Classic 3-Column Cards -->
+  <div class="variant v1 active" id="v1">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">What We Bake</div>
+        <h2>Our Sweet Selection</h2>
+        <p>From signature cupcake flavors to made-from-scratch pound cakes and towering custom creations, there is something sweet for every occasion.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-img ci-1">&#127847;</div>
+          <div class="card-body">
+            <h3>Signature Cupcakes</h3>
+            <p>Red Velvet, Cherry Lemon Sundrop, Salted Caramel, Cotton Candy, Butterfinger, Orange Creamsicle, and more.</p>
+            <div class="price">$2.50 each / $27 dozen</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img ci-2">&#127874;</div>
+          <div class="card-body">
+            <h3>Custom Cakes</h3>
+            <p>Birthday cakes, celebration cakes, and specialty designs made to order. Short-notice orders welcome.</p>
+            <div class="price">Starting at $35+</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img ci-3">&#127856;</div>
+          <div class="card-body">
+            <h3>Pound Cakes</h3>
+            <p>Vanilla Almond, Lemon, Vanilla Butternut, and Sundrop. Available plain or with glaze.</p>
+            <div class="price">$30 plain / $35 glazed</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img ci-4">&#127850;</div>
+          <div class="card-body">
+            <h3>Cookies &amp; Bars</h3>
+            <p>Freshly baked cookies, fudgy brownies, and assorted bar treats. Perfect for gifting or sharing.</p>
+            <div class="price">Priced individually</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img ci-5">&#127883;</div>
+          <div class="card-body">
+            <h3>Wedding Cakes</h3>
+            <p>Multi-tier wedding cakes designed for your special day. Custom flavors, fillings, and decorations.</p>
+            <div class="price">Custom quote</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img ci-6">&#127852;</div>
+          <div class="card-body">
+            <h3>Sweet Treats</h3>
+            <p>Cake pops, cannolis, banana pudding, cheesecake slices, and seasonal specials.</p>
+            <div class="price">Priced individually</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2: Horizontal Menu List -->
+  <div class="variant v2" id="v2">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">What We Bake</div>
+        <h2>Our Sweet Selection</h2>
+        <p>Something sweet for every occasion, baked fresh from scratch every day.</p>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-1">&#127847;</div>
+        <div class="item-info">
+          <h3>Signature Cupcakes</h3>
+          <p>Red Velvet, Cherry Lemon Sundrop, Salted Caramel, Cotton Candy, Butterfinger, Orange Creamsicle. New flavors rotate weekly.</p>
+        </div>
+        <div class="item-price">$2.50 each<br/>$27 / dozen</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-2">&#127874;</div>
+        <div class="item-info">
+          <h3>Custom Cakes</h3>
+          <p>Birthday cakes, celebration cakes, and specialty designs made to order. Tell us your vision. Short-notice orders welcome.</p>
+        </div>
+        <div class="item-price">Starting at $35+</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-3">&#127856;</div>
+        <div class="item-info">
+          <h3>Pound Cakes</h3>
+          <p>Vanilla Almond, Lemon, Vanilla Butternut, and Sundrop flavors. Available plain or with a sweet glaze finish.</p>
+        </div>
+        <div class="item-price">$30 plain<br/>$35 glazed</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-4">&#127850;</div>
+        <div class="item-info">
+          <h3>Cookies &amp; Bars</h3>
+          <p>Freshly baked cookies, fudgy brownies, and assorted bar treats. Perfect for gifting, sharing, or treating yourself.</p>
+        </div>
+        <div class="item-price">Priced individually</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-5">&#127883;</div>
+        <div class="item-info">
+          <h3>Wedding Cakes</h3>
+          <p>Multi-tier wedding cakes with custom flavors, fillings, and decorations. Schedule a tasting consultation.</p>
+        </div>
+        <div class="item-price">Custom quote</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-icon ii-6">&#127852;</div>
+        <div class="item-info">
+          <h3>Sweet Treats</h3>
+          <p>Cake pops, cannolis, banana pudding, cheesecake slices, and seasonal specials. Something new every visit.</p>
+        </div>
+        <div class="item-price">Priced individually</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3: Dark Masonry Grid -->
+  <div class="variant v3" id="v3">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">What We Bake</div>
+        <h2>Our Sweet Selection</h2>
+        <p>From signature cupcake flavors to made-from-scratch pound cakes and towering custom creations.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-img mi-1">&#127847;</div>
+          <div class="card-body">
+            <h3>Signature Cupcakes</h3>
+            <p>Red Velvet, Cherry Lemon Sundrop, Salted Caramel, Cotton Candy, and more.</p>
+            <div class="card-price">$2.50 each / $27 dozen</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img mi-2">&#127874;</div>
+          <div class="card-body">
+            <h3>Custom Cakes</h3>
+            <p>Birthday and celebration cakes designed to order. Short-notice welcome.</p>
+            <div class="card-price">Starting at $35+</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img mi-3">&#127856;</div>
+          <div class="card-body">
+            <h3>Pound Cakes</h3>
+            <p>Vanilla Almond, Lemon, Vanilla Butternut, Sundrop. Plain or glazed.</p>
+            <div class="card-price">$30 plain / $35 glazed</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img mi-4">&#127850;</div>
+          <div class="card-body">
+            <h3>Cookies &amp; Bars</h3>
+            <p>Freshly baked cookies, fudgy brownies, and assorted treats.</p>
+            <div class="card-price">Priced individually</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img mi-5">&#127883;</div>
+          <div class="card-body">
+            <h3>Wedding Cakes</h3>
+            <p>Multi-tier custom designs with tastings available.</p>
+            <div class="card-price">Custom quote</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img mi-6">&#127852;</div>
+          <div class="card-body">
+            <h3>Sweet Treats</h3>
+            <p>Cake pops, cannolis, banana pudding, cheesecake, and seasonal specials.</p>
+            <div class="card-price">Priced individually</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V4: Featured Highlight + Grid -->
+  <div class="variant v4" id="v4">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">What We Bake</div>
+        <h2>Our Sweet Selection</h2>
+        <p>Something sweet for every occasion, baked fresh from scratch every day.</p>
+      </div>
+      <div class="featured">
+        <div class="featured-card">
+          <div class="fc-img fc-img-1">&#127847;</div>
+          <div class="fc-body">
+            <div class="tag">Fan Favorite</div>
+            <h3>Signature Cupcakes</h3>
+            <p>Red Velvet, Cherry Lemon Sundrop, Salted Caramel, Cotton Candy, Butterfinger, Orange Creamsicle, and rotating seasonal flavors.</p>
+            <div class="price">$2.50 each / $27 dozen</div>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="fc-img fc-img-2">&#127874;</div>
+          <div class="fc-body">
+            <div class="tag">Made to Order</div>
+            <h3>Custom Cakes</h3>
+            <p>Birthday, celebration, and specialty cakes designed with your vision in mind. Short-notice orders are always welcome.</p>
+            <div class="price">Starting at $35+</div>
+          </div>
+        </div>
+      </div>
+      <div class="side-grid">
+        <div class="side-card">
+          <div class="icon">&#127856;</div>
+          <h4>Pound Cakes</h4>
+          <div class="price">$30 - $35</div>
+        </div>
+        <div class="side-card">
+          <div class="icon">&#127850;</div>
+          <h4>Cookies &amp; Bars</h4>
+          <div class="price">Varies</div>
+        </div>
+        <div class="side-card">
+          <div class="icon">&#127883;</div>
+          <h4>Wedding Cakes</h4>
+          <div class="price">Custom</div>
+        </div>
+        <div class="side-card">
+          <div class="icon">&#127852;</div>
+          <h4>Sweet Treats</h4>
+          <div class="price">Varies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V5: Tabbed Category Menu -->
+  <div class="variant v5" id="v5">
+    <div class="container">
+      <div class="header">
+        <div class="section-label">What We Bake</div>
+        <h2>Our Sweet Selection</h2>
+        <p>Browse by category. Everything baked fresh from scratch, every single day.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('all')">All Items</button>
+        <button class="tab-btn" onclick="showTab('cupcakes')">Cupcakes</button>
+        <button class="tab-btn" onclick="showTab('cakes')">Cakes</button>
+        <button class="tab-btn" onclick="showTab('treats')">Treats</button>
+      </div>
+      <div class="tab-content active" id="tab-all">
+        <div class="menu-list">
+          <div class="menu-row">
+            <div class="icon">&#127847;</div>
+            <div>
+              <h4>Signature Cupcakes</h4>
+              <p>Red Velvet, Cherry Lemon Sundrop, Salted Caramel, Cotton Candy, Butterfinger, Orange Creamsicle. Rotating flavors weekly.</p>
+            </div>
+            <div class="price">$2.50 / $27 dz</div>
+          </div>
+          <div class="menu-row">
+            <div class="icon">&#127874;</div>
+            <div>
+              <h4>Custom Cakes</h4>
+              <p>Birthday, celebration, and specialty cakes. Tell us your vision. Short-notice orders welcome.</p>
+            </div>
+            <div class="price">$35+</div>
+          </div>
+          <div class="menu-row">
+            <div class="icon">&#127856;</div>
+            <div>
+              <h4>Pound Cakes</h4>
+              <p>Vanilla Almond, Lemon, Vanilla Butternut, Sundrop. Plain or with sweet glaze.</p>
+            </div>
+            <div class="price">$30 - $35</div>
+          </div>
+          <div class="menu-row">
+            <div class="icon">&#127883;</div>
+            <div>
+              <h4>Wedding Cakes</h4>
+              <p>Multi-tier with custom flavors, fillings, and decorations. Schedule a tasting.</p>
+            </div>
+            <div class="price">Custom</div>
+          </div>
+          <div class="menu-row">
+            <div class="icon">&#127850;</div>
+            <div>
+              <h4>Cookies &amp; Bars</h4>
+              <p>Freshly baked cookies, fudgy brownies, and assorted bar treats.</p>
+            </div>
+            <div class="price">Varies</div>
+          </div>
+          <div class="menu-row">
+            <div class="icon">&#127852;</div>
+            <div>
+              <h4>Sweet Treats</h4>
+              <p>Cake pops, cannolis, banana pudding, cheesecake, and seasonal specials.</p>
+            </div>
+            <div class="price">Varies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="label">Menu Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+    function showTab(id) {
+      // For simplicity, just toggle active on buttons; all content shows in "all" tab
+      document.querySelectorAll('.v5 .tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

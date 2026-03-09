@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dovetails & Rusty Nails - Visit Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1512; color: #faf8f3; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --parchment: #f5efe6; --cream: #faf8f3; --brown-deep: #3a2e24; --brown-warm: #6b4c3b;
+      --brown-light: #8b6f5e; --gold: #b8860b; --gold-light: #d4a843; --gold-pale: #e8d5a0;
+      --rust: #8b3a2a; --rust-light: #a85040; --sage: #6b7c5e;
+      --charcoal: #2c2420; --ink: #1a1512;
+    }
+
+    /* ===== PICKER ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,21,18,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(184,134,11,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(184,134,11,0.1); }
+    .picker-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    /* ===== SHARED HOURS TABLE ===== */
+    .hours-row {
+      display: flex; justify-content: space-between; padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(184,134,11,0.08); font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+
+    /* ===== V1: Split (info left, hours right) on Dark ===== */
+    .v1 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--brown-deep); color: var(--cream);
+      display: flex; align-items: center;
+    }
+    .v1 .inner {
+      max-width: 1000px; margin: 0 auto; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 4rem; width: 100%;
+    }
+    .v1 .info .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v1 .info h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1.25rem;
+    }
+    .v1 .info > p {
+      font-family: 'Libre Baskerville', serif; font-size: 0.95rem;
+      color: rgba(250,248,243,0.7); line-height: 1.8; margin-bottom: 2rem;
+    }
+    .v1 .detail {
+      display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem;
+    }
+    .v1 .detail-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(184,134,11,0.1); border: 1px solid rgba(184,134,11,0.2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--gold-light); font-size: 0.9rem;
+    }
+    .v1 .detail h4 {
+      font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.2rem;
+    }
+    .v1 .detail p { font-size: 0.85rem; color: rgba(250,248,243,0.6); line-height: 1.6; }
+    .v1 .hours-panel {
+      background: rgba(184,134,11,0.05); border: 1px solid rgba(184,134,11,0.12);
+      border-radius: 8px; padding: 2.5rem;
+    }
+    .v1 .hours-panel h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--gold-light); margin-bottom: 1.5rem; text-align: center;
+    }
+    .v1 .hours-row .day { color: rgba(250,248,243,0.7); }
+    .v1 .hours-row .time { color: var(--cream); font-weight: 700; }
+    .v1 .hours-row .closed { color: rgba(250,248,243,0.35); font-style: italic; }
+    .v1 .hours-note {
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px solid rgba(184,134,11,0.12);
+      text-align: center; font-size: 0.8rem; color: rgba(250,248,243,0.5);
+    }
+    .v1 .hours-note a { color: var(--gold-light); font-weight: 700; }
+
+    /* ===== V2: Centered on Cream ===== */
+    .v2 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--cream); color: var(--brown-deep);
+      display: flex; align-items: center;
+    }
+    .v2 .inner { max-width: 800px; margin: 0 auto; text-align: center; width: 100%; }
+    .v2 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v2 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 1rem;
+    }
+    .v2 > .inner > p {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: var(--brown-warm); max-width: 600px; margin: 0 auto 3rem; line-height: 1.8;
+    }
+    .v2 .info-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      margin-bottom: 3rem; text-align: center;
+    }
+    .v2 .info-box {
+      padding: 1.5rem; background: var(--parchment); border-radius: 8px;
+      border: 1px solid rgba(184,134,11,0.1);
+    }
+    .v2 .info-box-icon {
+      font-size: 1.5rem; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .v2 .info-box h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 0.25rem;
+    }
+    .v2 .info-box p { font-size: 0.85rem; color: var(--brown-warm); line-height: 1.5; }
+    .v2 .hours-table {
+      max-width: 450px; margin: 0 auto; background: var(--parchment);
+      border-radius: 8px; padding: 2rem; border: 1px solid rgba(184,134,11,0.1);
+    }
+    .v2 .hours-table h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 1.25rem;
+    }
+    .v2 .hours-row .day { color: var(--brown-warm); }
+    .v2 .hours-row .time { color: var(--brown-deep); font-weight: 700; }
+    .v2 .hours-row .closed { color: var(--brown-light); font-style: italic; }
+    .v2 .hours-note {
+      margin-top: 1.25rem; padding-top: 1rem;
+      border-top: 1px solid rgba(184,134,11,0.1);
+      font-size: 0.8rem; color: var(--brown-light);
+    }
+    .v2 .hours-note a { color: var(--gold); font-weight: 700; }
+
+    /* ===== V3: Card-based Dark ===== */
+    .v3 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--ink); color: var(--cream);
+      display: flex; align-items: center;
+      position: relative;
+    }
+    .v3::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(184,134,11,0.04) 0%, transparent 60%);
+    }
+    .v3 .inner {
+      max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; width: 100%;
+    }
+    .v3 .header { text-align: center; margin-bottom: 3rem; }
+    .v3 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v3 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1rem;
+    }
+    .v3 .header p {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: rgba(250,248,243,0.6); max-width: 550px; margin: 0 auto; line-height: 1.8;
+    }
+    .v3 .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .v3 .card {
+      border-radius: 10px; padding: 2rem; text-align: center;
+      border: 1px solid rgba(184,134,11,0.1); background: rgba(250,248,243,0.02);
+      transition: background 0.3s;
+    }
+    .v3 .card:hover { background: rgba(184,134,11,0.05); }
+    .v3 .card-icon {
+      font-size: 1.75rem; color: var(--gold-light); margin-bottom: 1rem;
+    }
+    .v3 .card h4 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v3 .card p { font-size: 0.85rem; color: rgba(250,248,243,0.55); line-height: 1.6; }
+    .v3 .card p a { color: var(--gold-light); font-weight: 700; }
+    .v3 .hours-full {
+      margin-top: 2rem; background: rgba(184,134,11,0.05);
+      border: 1px solid rgba(184,134,11,0.1); border-radius: 10px; padding: 2rem;
+    }
+    .v3 .hours-full h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--gold-light); margin-bottom: 1.25rem; text-align: center;
+    }
+    .v3 .hours-inline {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2rem;
+      font-size: 0.85rem;
+    }
+    .v3 .hours-inline .day-block {
+      display: flex; gap: 0.5rem; align-items: center;
+    }
+    .v3 .hours-inline .day { color: rgba(250,248,243,0.5); }
+    .v3 .hours-inline .time { color: var(--cream); font-weight: 700; }
+    .v3 .hours-inline .closed { color: rgba(250,248,243,0.3); font-style: italic; }
+
+    /* ===== V4: Map Placeholder + Info ===== */
+    .v4 {
+      min-height: 100vh; background: var(--charcoal); color: var(--cream);
+    }
+    .v4 .map-area {
+      height: 50vh; background: linear-gradient(135deg, var(--brown-deep) 0%, var(--ink) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .v4 .map-area::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(184,134,11,0.02) 30px, rgba(184,134,11,0.02) 31px),
+        repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(184,134,11,0.02) 30px, rgba(184,134,11,0.02) 31px);
+    }
+    .v4 .map-content {
+      position: relative; z-index: 1; text-align: center;
+    }
+    .v4 .map-pin {
+      font-size: 3rem; color: var(--rust); margin-bottom: 1rem;
+    }
+    .v4 .map-address {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v4 .map-city {
+      font-size: 0.85rem; color: rgba(250,248,243,0.5); letter-spacing: 0.1em;
+    }
+    .v4 .info-section { padding: 4rem 2rem 6rem; }
+    .v4 .info-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+    }
+    .v4 .info-col { text-align: center; }
+    .v4 .info-col h4 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--gold-light); margin-bottom: 1rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid rgba(184,134,11,0.15);
+    }
+    .v4 .info-col p {
+      font-size: 0.85rem; color: rgba(250,248,243,0.6); line-height: 1.7;
+    }
+    .v4 .info-col p a { color: var(--gold-light); }
+    .v4 .info-col .hours-compact { text-align: left; }
+    .v4 .info-col .hours-row .day { color: rgba(250,248,243,0.6); font-size: 0.85rem; }
+    .v4 .info-col .hours-row .time { color: var(--cream); font-weight: 700; font-size: 0.85rem; }
+    .v4 .info-col .hours-row .closed { color: rgba(250,248,243,0.3); font-style: italic; font-size: 0.85rem; }
+
+    /* ===== V5: Full-width Parchment with ornate framing ===== */
+    .v5 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--parchment); color: var(--brown-deep);
+      display: flex; align-items: center;
+      position: relative;
+    }
+    .v5::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(58,46,36,0.012) 1px, rgba(58,46,36,0.012) 2px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(58,46,36,0.012) 1px, rgba(58,46,36,0.012) 2px);
+    }
+    .v5 .inner {
+      max-width: 900px; margin: 0 auto; position: relative; z-index: 1; width: 100%;
+    }
+    .v5 .frame {
+      border: 2px solid var(--brown-deep); padding: 3rem;
+      position: relative;
+    }
+    .v5 .frame::before {
+      content: ''; position: absolute; inset: 6px;
+      border: 1px solid rgba(58,46,36,0.2);
+    }
+    .v5 .frame-content { position: relative; z-index: 1; }
+    .v5 .header {
+      text-align: center; margin-bottom: 2.5rem;
+      padding-bottom: 2rem; border-bottom: 1px solid rgba(184,134,11,0.15);
+    }
+    .v5 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v5 h2 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700; color: var(--brown-deep); margin-bottom: 0.75rem;
+    }
+    .v5 .header p {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: 0.95rem; color: var(--brown-warm); line-height: 1.7;
+    }
+    .v5 .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .v5 .col h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 1rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid rgba(184,134,11,0.12);
+    }
+    .v5 .col .detail-line {
+      display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;
+    }
+    .v5 .col .detail-line .icon {
+      color: var(--gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem;
+    }
+    .v5 .col .detail-line p {
+      font-size: 0.9rem; color: var(--brown-warm); line-height: 1.6;
+    }
+    .v5 .col .detail-line p strong { color: var(--brown-deep); }
+    .v5 .hours-row .day { color: var(--brown-warm); font-size: 0.9rem; }
+    .v5 .hours-row .time { color: var(--brown-deep); font-weight: 700; font-size: 0.9rem; }
+    .v5 .hours-row .closed { color: var(--brown-light); font-style: italic; font-size: 0.9rem; }
+    .v5 .footer-ornament {
+      text-align: center; margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(184,134,11,0.15);
+    }
+    .v5 .footer-ornament .flourish {
+      font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+      color: var(--gold); opacity: 0.3;
+    }
+    .v5 .footer-ornament p {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: 0.85rem; color: var(--brown-light); margin-top: 0.5rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v1 .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .v2 .info-grid { grid-template-columns: 1fr; }
+      .v3 .cards { grid-template-columns: 1fr; }
+      .v4 .info-inner { grid-template-columns: 1fr; }
+      .v5 .two-col { grid-template-columns: 1fr; }
+      .v5 .frame { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Split Dark -->
+<div class="variant v1 active" id="v1">
+  <div class="inner">
+    <div class="info">
+      <div class="lbl">Plan Your Visit</div>
+      <h2>Come Find Your Treasure</h2>
+      <p>We are located right on Main Street in downtown Forest City, surrounded by local shops and restaurants. The front door might not look like much, but step inside and you will understand why people drive from across the state to dig through our collection.</p>
+      <div class="detail">
+        <div class="detail-icon">&#9906;</div>
+        <div>
+          <h4>Address</h4>
+          <p>115 E Main St, Forest City, NC 28043</p>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-icon">&#9743;</div>
+        <div>
+          <h4>Phone</h4>
+          <p>(828) 247-4030</p>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-icon">&#9733;</div>
+        <div>
+          <h4>Parking</h4>
+          <p>Free street parking and public lots within a block.</p>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-icon">&#9752;</div>
+        <div>
+          <h4>Location</h4>
+          <p>In the heart of historic downtown Forest City. Part of the Rutherford County foothills, about an hour west of Charlotte.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hours-panel">
+      <h3>Shop Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="time closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">9:00 AM - 3:00 PM</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="time closed">Closed</span></div>
+      <div class="hours-note">Hours may change for holidays. Call <a href="tel:8282474030">(828) 247-4030</a> to confirm.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 2: Centered on Cream -->
+<div class="variant v2" id="v2">
+  <div class="inner">
+    <div class="lbl">Plan Your Visit</div>
+    <h2>Come Find Your Treasure</h2>
+    <p>We are located right on Main Street in downtown Forest City, surrounded by local shops and restaurants. Step inside and you will understand why people drive from across the state.</p>
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="info-box-icon">&#9906;</div>
+        <h4>Address</h4>
+        <p>115 E Main St<br />Forest City, NC 28043</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">&#9743;</div>
+        <h4>Phone</h4>
+        <p>(828) 247-4030</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">&#9752;</div>
+        <h4>Location</h4>
+        <p>Historic downtown Forest City.<br />Rutherford County foothills.</p>
+      </div>
+    </div>
+    <div class="hours-table">
+      <h3>Shop Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="time closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">9:00 AM - 3:00 PM</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="time closed">Closed</span></div>
+      <div class="hours-note">Hours may change for holidays. Call <a href="tel:8282474030">(828) 247-4030</a> to confirm.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 3: Card-based Dark -->
+<div class="variant v3" id="v3">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">Plan Your Visit</div>
+      <h2>Come Find Your Treasure</h2>
+      <p>Right on Main Street in downtown Forest City. Step inside and you will understand why people drive from across the state.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#9906;</div>
+        <h4>Find Us</h4>
+        <p>115 E Main St<br />Forest City, NC 28043</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9743;</div>
+        <h4>Call Us</h4>
+        <p><a href="tel:8282474030">(828) 247-4030</a></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9752;</div>
+        <h4>Getting Here</h4>
+        <p>Rutherford County foothills. About an hour west of Charlotte. Free street parking.</p>
+      </div>
+    </div>
+    <div class="hours-full">
+      <h3>Shop Hours</h3>
+      <div class="hours-inline">
+        <div class="day-block"><span class="day">Mon</span><span class="closed">Closed</span></div>
+        <div class="day-block"><span class="day">Tue-Fri</span><span class="time">10am-5pm</span></div>
+        <div class="day-block"><span class="day">Sat</span><span class="time">9am-3pm</span></div>
+        <div class="day-block"><span class="day">Sun</span><span class="closed">Closed</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 4: Map Hero + Info Below -->
+<div class="variant v4" id="v4">
+  <div class="map-area">
+    <div class="map-content">
+      <div class="map-pin">&#9906;</div>
+      <div class="map-address">115 E Main St</div>
+      <div class="map-city">Forest City, NC 28043</div>
+    </div>
+  </div>
+  <div class="info-section">
+    <div class="info-inner">
+      <div class="info-col">
+        <h4>Contact</h4>
+        <p>(828) 247-4030<br /><br />115 E Main St<br />Forest City, NC 28043</p>
+      </div>
+      <div class="info-col">
+        <h4>Hours</h4>
+        <div class="hours-compact">
+          <div class="hours-row"><span class="day">Mon</span><span class="closed">Closed</span></div>
+          <div class="hours-row"><span class="day">Tue-Fri</span><span class="time">10am-5pm</span></div>
+          <div class="hours-row"><span class="day">Sat</span><span class="time">9am-3pm</span></div>
+          <div class="hours-row"><span class="day">Sun</span><span class="closed">Closed</span></div>
+        </div>
+      </div>
+      <div class="info-col">
+        <h4>Getting Here</h4>
+        <p>Historic downtown Forest City. Rutherford County foothills, about an hour west of Charlotte. Free street parking and public lots within a block.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 5: Ornate Framed Parchment -->
+<div class="variant v5" id="v5">
+  <div class="inner">
+    <div class="frame">
+      <div class="frame-content">
+        <div class="header">
+          <div class="lbl">Plan Your Visit</div>
+          <h2>Come Find Your Treasure</h2>
+          <p>Right on Main Street in downtown Forest City. The front door might not look like much, but step inside and you will understand why people keep coming back.</p>
+        </div>
+        <div class="two-col">
+          <div class="col">
+            <h3>Where to Find Us</h3>
+            <div class="detail-line">
+              <span class="icon">&#9906;</span>
+              <p><strong>Address</strong><br />115 E Main St, Forest City, NC 28043</p>
+            </div>
+            <div class="detail-line">
+              <span class="icon">&#9743;</span>
+              <p><strong>Phone</strong><br />(828) 247-4030</p>
+            </div>
+            <div class="detail-line">
+              <span class="icon">&#9733;</span>
+              <p><strong>Parking</strong><br />Free street parking and public lots within a block.</p>
+            </div>
+            <div class="detail-line">
+              <span class="icon">&#9752;</span>
+              <p><strong>Region</strong><br />Rutherford County foothills, about an hour west of Charlotte.</p>
+            </div>
+          </div>
+          <div class="col">
+            <h3>Shop Hours</h3>
+            <div class="hours-row"><span class="day">Monday</span><span class="time closed">Closed</span></div>
+            <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM - 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">9:00 AM - 3:00 PM</span></div>
+            <div class="hours-row"><span class="day">Sunday</span><span class="time closed">Closed</span></div>
+          </div>
+        </div>
+        <div class="footer-ornament">
+          <div class="flourish">&#10047;</div>
+          <p>Hours may change for holidays. Call (828) 247-4030 to confirm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Visit Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

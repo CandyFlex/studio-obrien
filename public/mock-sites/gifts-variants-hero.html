@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gifts and Talents - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #faf7f2; color: #3d3629; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --sage: #7a9b76; --sage-dark: #5a7b56; --sage-light: #a8c4a4;
+      --clay: #b8845a; --clay-dark: #96693f; --clay-light: #d4a87a;
+      --cream: #faf7f2; --cream-dark: #f0ebe2; --warm-white: #fefcf8;
+      --gold: #c4a35a; --charcoal: #3d3629; --charcoal-light: #5a4f3f;
+      --text-muted: #8a7e6e; --text-body: #5a4f3f;
+      --linen: #f5f0e6; --blush: #e8c8b8;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(61,54,41,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(122,155,118,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--sage-light); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(122,155,118,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--sage); background: rgba(122,155,118,0.1); }
+    .picker-btn.active { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .hero-section { min-height: 100vh; position: relative; overflow: hidden; }
+    .hero-section img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+    /* ===== V1: EDITORIAL LEFT ===== */
+    .v1 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(250,247,242,0.94) 0%, rgba(250,247,242,0.8) 40%, rgba(250,247,242,0.35) 70%, rgba(250,247,242,0.1) 100%);
+    }
+    .v1 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      justify-content: center; min-height: 100vh; padding: 6rem 4rem;
+      max-width: 600px;
+    }
+    .v1 .tag {
+      display: inline-block; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sage); font-weight: 600; margin-bottom: 1.5rem;
+      padding: 0.4rem 1rem; border: 1px solid rgba(122,155,118,0.3); border-radius: 30px;
+      width: fit-content;
+    }
+    .v1 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3rem,7vw,5rem);
+      font-weight: 900; line-height: 1.02; margin-bottom: 0.6rem; color: var(--charcoal);
+    }
+    .v1 h1 .accent { color: var(--sage); }
+    .v1 .sub {
+      font-family: 'Caveat', cursive; font-size: clamp(1.5rem,3vw,2.2rem);
+      color: var(--clay); margin-bottom: 1.5rem;
+    }
+    .v1 p { font-size: 1.08rem; color: var(--text-body); line-height: 1.7; margin-bottom: 2.5rem; max-width: 460px; }
+    .v1 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-p {
+      padding: 0.85rem 2rem; background: var(--sage); color: var(--cream); font-weight: 600;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px;
+      border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-p:hover { background: var(--sage-dark); }
+    .btn-s {
+      padding: 0.85rem 2rem; background: transparent; color: var(--charcoal); font-weight: 600;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px;
+      border: 2px solid var(--charcoal); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-s:hover { background: var(--charcoal); color: var(--cream); }
+
+    /* ===== V2: CENTER DRAMATIC ===== */
+    .v2 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(61,54,41,0.3) 0%, rgba(61,54,41,0.2) 30%, rgba(61,54,41,0.6) 70%, rgba(61,54,41,0.95) 100%);
+    }
+    .v2 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v2 .tag {
+      font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--sage-light); font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .v2 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3.5rem,9vw,7rem);
+      font-weight: 900; line-height: 0.95; color: var(--cream); margin-bottom: 0.5rem;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.3);
+    }
+    .v2 h1 .accent { color: var(--sage-light); }
+    .v2 .sub {
+      font-family: 'Caveat', cursive; font-size: clamp(1.6rem,3vw,2.5rem);
+      color: var(--clay-light); margin-bottom: 1.5rem;
+    }
+    .v2 p { font-size: 1.1rem; color: var(--cream); opacity: 0.85; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .v2 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v2 .btn-p { background: var(--sage); }
+    .v2 .btn-s { border-color: var(--cream); color: var(--cream); }
+    .v2 .btn-s:hover { background: var(--cream); color: var(--charcoal); }
+
+    /* ===== V3: SPLIT LAYOUT ===== */
+    .v3 { display: none; }
+    .v3.active { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .v3 .left {
+      background: var(--cream); display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 3.5rem; position: relative;
+    }
+    .v3 .left::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle at 1px 1px, rgba(122,155,118,0.04) 1px, transparent 0);
+      background-size: 20px 20px;
+    }
+    .v3 .left::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 4px;
+      background: linear-gradient(to bottom, var(--sage), var(--clay));
+    }
+    .v3 .tag {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sage); font-weight: 600; margin-bottom: 1rem;
+    }
+    .v3 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,4vw,4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 0.5rem; position: relative; z-index: 1;
+    }
+    .v3 h1 .accent { color: var(--sage); }
+    .v3 .sub {
+      font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--clay);
+      margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .v3 p { font-size: 1rem; color: var(--text-body); line-height: 1.7; margin-bottom: 2rem; max-width: 420px; position: relative; z-index: 1; }
+    .v3 .btns { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .v3 .right { position: relative; overflow: hidden; }
+    .v3 .right img { width: 100%; height: 100%; object-fit: cover; }
+    .v3 .right .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to left, transparent, rgba(250,247,242,0.1));
+    }
+    @media (max-width: 768px) {
+      .v3.active { grid-template-columns: 1fr; }
+      .v3 .right { height: 40vh; order: -1; }
+      .v3 .left { padding: 2.5rem 1.5rem; }
+    }
+
+    /* ===== V4: MINIMAL SERIF ===== */
+    .v4 {
+      background: var(--cream);
+    }
+    .v4 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: var(--cream);
+    }
+    .v4 .img-strip {
+      position: absolute; top: 50%; right: 4rem; transform: translateY(-50%);
+      width: 340px; height: 440px; border-radius: 200px; overflow: hidden;
+      z-index: 2; box-shadow: 0 20px 60px rgba(61,54,41,0.12);
+    }
+    .v4 .img-strip img { width: 100%; height: 100%; object-fit: cover; }
+    .v4 .content {
+      position: relative; z-index: 3; display: flex; flex-direction: column;
+      justify-content: center; min-height: 100vh; padding: 6rem 4rem;
+      max-width: 560px;
+    }
+    .v4 .tag {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--clay); font-weight: 500; margin-bottom: 2rem;
+    }
+    .v4 h1 {
+      font-family: 'Libre Baskerville', serif; font-size: clamp(2.5rem,5vw,4rem);
+      font-weight: 700; line-height: 1.15; color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .v4 h1 em { font-style: italic; color: var(--sage); }
+    .v4 p { font-size: 1.05rem; color: var(--text-body); line-height: 1.8; margin-bottom: 2rem; }
+    .v4 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v4 .divider-line {
+      width: 60px; height: 2px; background: var(--sage); margin-bottom: 2rem; opacity: 0.5;
+    }
+    @media (max-width: 900px) {
+      .v4 .img-strip { display: none; }
+    }
+
+    /* ===== V5: FULL BLEED DARK ===== */
+    .v5 .overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: rgba(30,27,22,0.75);
+    }
+    .v5 .texture {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+      background-size: 18px 18px;
+    }
+    .v5 .content {
+      position: relative; z-index: 3; display: flex; flex-direction: column;
+      justify-content: flex-end; min-height: 100vh; padding: 0 4rem 6rem;
+    }
+    .v5 .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .v5 .eyebrow .line { width: 40px; height: 1px; background: var(--sage-light); }
+    .v5 .eyebrow .text {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sage-light); font-weight: 600;
+    }
+    .v5 h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem,8vw,6rem);
+      font-weight: 700; line-height: 1; color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v5 h1 .highlight {
+      background: linear-gradient(to right, var(--sage), var(--sage-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .v5 .sub {
+      font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--clay-light);
+      margin-bottom: 1.5rem;
+    }
+    .v5 p { font-size: 1.05rem; color: rgba(250,247,242,0.75); line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
+    .v5 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v5 .btn-p { background: var(--sage); }
+    .v5 .btn-s { border-color: rgba(250,247,242,0.4); color: var(--cream); }
+    .v5 .btn-s:hover { background: var(--cream); color: var(--charcoal); border-color: var(--cream); }
+    @media (max-width: 768px) {
+      .v5 .content { padding: 0 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Editorial Left -->
+<section class="hero-section variant v1 active" id="v1">
+  <img class="bg" src="/mock-sites/assets/gifts-and-talents/hero-storefront.webp" alt="Gifts and Talents storefront" />
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="tag">Forest City, NC</div>
+    <h1>Gifts <span class="accent">&amp;</span> Talents</h1>
+    <div class="sub">Handmade in the Foothills</div>
+    <p>A collective of local artisans on Main Street. Pottery, photography, soaps, wood crafts, and more. All made by hand. All made here.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Visit the Shop &rarr;</a>
+      <a href="#" class="btn-s">See What We Carry</a>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANT 2: Center Dramatic -->
+<section class="hero-section variant v2" id="v2">
+  <img class="bg" src="/mock-sites/assets/gifts-and-talents/hero-interior.webp" alt="Inside Gifts and Talents" />
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="tag">An Artisan Collective on Main Street</div>
+    <h1>Gifts <span class="accent">&amp;</span><br/>Talents</h1>
+    <div class="sub">Handmade in the Foothills</div>
+    <p>Pottery. Photography. Soaps. Wood crafts. All from local makers in Forest City, NC.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Come See Us &rarr;</a>
+      <a href="#" class="btn-s">Browse the Collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANT 3: Split Layout -->
+<section class="hero-section variant v3" id="v3">
+  <div class="left">
+    <div class="tag">Artisan Collective / Forest City, NC</div>
+    <h1>Gifts <span class="accent">&amp;</span> Talents</h1>
+    <div class="sub">Handmade in the Foothills</div>
+    <p>Over fifteen local makers under one roof on Main Street. Pottery, photography, handcrafted soaps, wood pieces, upcycled furniture, and more.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Plan Your Visit &rarr;</a>
+      <a href="#" class="btn-s">Meet the Artisans</a>
+    </div>
+  </div>
+  <div class="right">
+    <img src="/mock-sites/assets/gifts-and-talents/hero-storefront.webp" alt="Gifts and Talents" />
+    <div class="overlay"></div>
+  </div>
+</section>
+
+<!-- VARIANT 4: Minimal Serif -->
+<section class="hero-section variant v4" id="v4">
+  <div class="overlay"></div>
+  <div class="img-strip">
+    <img src="/mock-sites/assets/gifts-and-talents/pottery-display.webp" alt="Handmade pottery" />
+  </div>
+  <div class="content">
+    <div class="tag">136 W Main St, Forest City NC</div>
+    <div class="divider-line"></div>
+    <h1>A place for <em>local makers</em> to share their craft</h1>
+    <p>Gifts and Talents is an artisan collective in the heart of downtown Forest City. We bring together the best handmade goods from across the Foothills, all in one storefront on Main Street.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Explore the Shop</a>
+      <a href="#" class="btn-s">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANT 5: Full Bleed Dark -->
+<section class="hero-section variant v5" id="v5">
+  <img class="bg" src="/mock-sites/assets/gifts-and-talents/hero-interior.webp" alt="Shop interior" />
+  <div class="overlay"></div>
+  <div class="texture"></div>
+  <div class="content">
+    <div class="eyebrow">
+      <span class="line"></span>
+      <span class="text">Forest City, NC</span>
+    </div>
+    <h1><span class="highlight">Gifts</span> &amp; Talents</h1>
+    <div class="sub">Handmade in the Foothills</div>
+    <p>A collective of potters, woodworkers, soap makers, photographers, and furniture restorers sharing one storefront on Main Street.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Visit Us &rarr;</a>
+      <a href="#" class="btn-s">See the Collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- PICKER -->
+<div class="picker-bar">
+  <span class="label">Hero Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

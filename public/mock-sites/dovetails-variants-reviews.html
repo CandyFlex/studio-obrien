@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dovetails & Rusty Nails - Reviews Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1512; color: #faf8f3; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --parchment: #f5efe6; --cream: #faf8f3; --brown-deep: #3a2e24; --brown-warm: #6b4c3b;
+      --brown-light: #8b6f5e; --gold: #b8860b; --gold-light: #d4a843; --gold-pale: #e8d5a0;
+      --rust: #8b3a2a; --rust-light: #a85040; --sage: #6b7c5e;
+      --charcoal: #2c2420; --ink: #1a1512;
+    }
+
+    /* ===== PICKER ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,21,18,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(184,134,11,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(184,134,11,0.1); }
+    .picker-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    .star { color: var(--gold); }
+
+    /* ===== V1: Card Grid on Parchment ===== */
+    .v1 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--parchment); color: var(--brown-deep);
+    }
+    .v1 .inner { max-width: 1100px; margin: 0 auto; }
+    .v1 .header { text-align: center; margin-bottom: 3rem; }
+    .v1 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v1 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 0.75rem;
+    }
+    .v1 .stars-row { display: flex; justify-content: center; gap: 0.25rem; margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .v1 .rating {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem; color: var(--brown-warm);
+    }
+    .v1 .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+    }
+    .v1 .card {
+      background: var(--cream); border-radius: 8px; padding: 2rem;
+      border: 1px solid rgba(184,134,11,0.08); position: relative;
+    }
+    .v1 .card::before {
+      content: '\201C'; font-family: 'Playfair Display', serif; font-size: 4rem;
+      color: var(--gold); opacity: 0.15; position: absolute; top: 0.5rem; left: 1rem; line-height: 1;
+    }
+    .v1 .card .stars { display: flex; gap: 0.15rem; margin-bottom: 0.75rem; font-size: 0.85rem; }
+    .v1 .card blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem;
+      color: var(--brown-deep); line-height: 1.8; font-style: italic; margin-bottom: 1rem;
+    }
+    .v1 .card .attr { font-size: 0.75rem; color: var(--brown-light); }
+    .v1 .card .attr strong { color: var(--brown-warm); }
+
+    /* ===== V2: Dark Testimonial Slider Look ===== */
+    .v2 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--charcoal); color: var(--cream);
+    }
+    .v2 .inner { max-width: 1100px; margin: 0 auto; }
+    .v2 .header { text-align: center; margin-bottom: 3rem; }
+    .v2 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v2 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .v2 .stars-row { display: flex; justify-content: center; gap: 0.25rem; margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .v2 .rating { font-size: 0.9rem; color: rgba(250,248,243,0.5); }
+    .v2 .featured {
+      text-align: center; max-width: 700px; margin: 0 auto 3rem;
+      padding: 3rem 2rem; border: 1px solid rgba(184,134,11,0.1);
+      border-radius: 12px; background: rgba(184,134,11,0.03);
+    }
+    .v2 .featured .big-quote {
+      font-family: 'Playfair Display', serif; font-size: 3rem;
+      color: var(--gold); opacity: 0.25; line-height: 1; margin-bottom: 1rem;
+    }
+    .v2 .featured blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 1.15rem;
+      color: var(--cream); line-height: 1.8; font-style: italic; margin-bottom: 1.25rem;
+    }
+    .v2 .featured .attr {
+      font-size: 0.8rem; color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .v2 .mini-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;
+    }
+    .v2 .mini-card {
+      padding: 1.5rem; border-radius: 8px;
+      border: 1px solid rgba(184,134,11,0.08); background: rgba(250,248,243,0.02);
+    }
+    .v2 .mini-card .stars { display: flex; gap: 0.15rem; margin-bottom: 0.5rem; font-size: 0.75rem; }
+    .v2 .mini-card blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 0.85rem;
+      color: rgba(250,248,243,0.7); line-height: 1.7; font-style: italic; margin-bottom: 0.75rem;
+    }
+    .v2 .mini-card .attr { font-size: 0.7rem; color: rgba(250,248,243,0.4); }
+
+    /* ===== V3: Single Column Stacked ===== */
+    .v3 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--cream); color: var(--brown-deep);
+    }
+    .v3 .inner { max-width: 700px; margin: 0 auto; }
+    .v3 .header { text-align: center; margin-bottom: 3rem; }
+    .v3 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v3 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 0.75rem;
+    }
+    .v3 .stars-row { display: flex; justify-content: center; gap: 0.25rem; margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .v3 .rating {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem; color: var(--brown-warm);
+    }
+    .v3 .review-item {
+      padding: 2rem 0; border-bottom: 1px solid rgba(184,134,11,0.12);
+    }
+    .v3 .review-item:last-child { border-bottom: none; }
+    .v3 .review-item .stars { display: flex; gap: 0.15rem; margin-bottom: 0.75rem; font-size: 0.85rem; }
+    .v3 .review-item blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: var(--brown-deep); line-height: 1.9; font-style: italic; margin-bottom: 0.75rem;
+    }
+    .v3 .review-item .attr { font-size: 0.75rem; color: var(--brown-light); }
+    .v3 .review-item .attr strong { color: var(--brown-warm); }
+
+    /* ===== V4: Masonry-like / Offset Grid ===== */
+    .v4 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--parchment); color: var(--brown-deep);
+    }
+    .v4 .inner { max-width: 1100px; margin: 0 auto; }
+    .v4 .header { text-align: center; margin-bottom: 3rem; }
+    .v4 .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v4 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep);
+    }
+    .v4 .masonry {
+      columns: 2; column-gap: 1.5rem;
+    }
+    .v4 .m-card {
+      break-inside: avoid; margin-bottom: 1.5rem;
+      border-radius: 10px; padding: 2rem; position: relative;
+    }
+    .v4 .m-card.cream-bg { background: var(--cream); border: 1px solid rgba(184,134,11,0.08); }
+    .v4 .m-card.dark-bg { background: var(--charcoal); color: var(--cream); }
+    .v4 .m-card.rust-bg { background: var(--rust); color: var(--cream); }
+    .v4 .m-card.gold-bg { background: rgba(184,134,11,0.08); border: 1px solid rgba(184,134,11,0.15); }
+    .v4 .m-card::before {
+      content: '\201C'; font-family: 'Playfair Display', serif; font-size: 3.5rem;
+      opacity: 0.12; position: absolute; top: 0.5rem; left: 1rem; line-height: 1;
+    }
+    .v4 .m-card.dark-bg::before, .v4 .m-card.rust-bg::before { color: var(--gold-pale); opacity: 0.2; }
+    .v4 .m-card .stars { display: flex; gap: 0.15rem; margin-bottom: 0.75rem; font-size: 0.8rem; }
+    .v4 .m-card blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem;
+      line-height: 1.8; font-style: italic; margin-bottom: 0.75rem;
+    }
+    .v4 .m-card.dark-bg blockquote { color: rgba(250,248,243,0.85); }
+    .v4 .m-card.rust-bg blockquote { color: rgba(250,248,243,0.9); }
+    .v4 .m-card .attr { font-size: 0.7rem; opacity: 0.6; }
+
+    /* ===== V5: Big Quote Hero + Cards ===== */
+    .v5 {
+      min-height: 100vh; background: var(--ink); color: var(--cream);
+    }
+    .v5 .hero-quote {
+      padding: 8rem 2rem 5rem; text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(184,134,11,0.06) 0%, transparent 60%),
+        var(--ink);
+    }
+    .v5 .hero-quote .lbl {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 1rem;
+    }
+    .v5 .hero-quote .big-mark {
+      font-family: 'Playfair Display', serif; font-size: 5rem;
+      color: var(--gold); opacity: 0.2; line-height: 1;
+    }
+    .v5 .hero-quote blockquote {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700; font-style: italic; color: var(--cream);
+      max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.4;
+    }
+    .v5 .hero-quote .attr {
+      font-size: 0.8rem; color: var(--gold-light); letter-spacing: 0.1em;
+    }
+    .v5 .hero-quote .stars-row {
+      display: flex; justify-content: center; gap: 0.25rem; margin: 1.5rem 0 0.5rem; font-size: 1.5rem;
+    }
+    .v5 .hero-quote .rating { font-size: 0.85rem; color: rgba(250,248,243,0.4); }
+    .v5 .cards-section {
+      padding: 0 2rem 6rem; max-width: 1100px; margin: 0 auto;
+    }
+    .v5 .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;
+    }
+    .v5 .r-card {
+      padding: 1.75rem; border-radius: 8px;
+      border: 1px solid rgba(184,134,11,0.08); background: rgba(250,248,243,0.03);
+    }
+    .v5 .r-card .stars { display: flex; gap: 0.15rem; margin-bottom: 0.75rem; font-size: 0.8rem; }
+    .v5 .r-card blockquote {
+      font-family: 'Libre Baskerville', serif; font-size: 0.9rem;
+      color: rgba(250,248,243,0.75); line-height: 1.8; font-style: italic; margin-bottom: 0.75rem;
+    }
+    .v5 .r-card .attr { font-size: 0.7rem; color: rgba(250,248,243,0.35); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v4 .masonry { columns: 1; }
+      .v2 .mini-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Card Grid on Parchment -->
+<div class="variant v1 active" id="v1">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">What Visitors Say</div>
+      <h2 class="heading">Words From Our Guests</h2>
+      <div class="stars-row">
+        <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star" style="opacity:0.5;">&#9733;</span>
+      </div>
+      <p class="rating">4.3 out of 5 from 47 reviews</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The owners were so nice. They greeted us when we walked in like we were long lost friends.</blockquote>
+        <div class="attr"><strong>TripAdvisor Reviewer</strong></div>
+      </div>
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Though it may look small from the outside, once you walk through the doors, you realize there are loads of vintage items for sale.</blockquote>
+        <div class="attr"><strong>Yelp Reviewer</strong></div>
+      </div>
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Lots of treasures in this antique shop, plus it smelled wonderful!</blockquote>
+        <div class="attr"><strong>Chamber of Commerce</strong></div>
+      </div>
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The best antique store. You can find everything, excellent service.</blockquote>
+        <div class="attr"><strong>Chamber of Commerce</strong></div>
+      </div>
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Great place, great owner. She always has something different there.</blockquote>
+        <div class="attr"><strong>Chamber of Commerce</strong></div>
+      </div>
+      <div class="card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The gentleman at the counter was friendly and very nice. If you enjoy seeing items from the old days, then a stop here should be a must do.</blockquote>
+        <div class="attr"><strong>TripAdvisor Reviewer</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 2: Dark Featured + Mini Grid -->
+<div class="variant v2" id="v2">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">What Visitors Say</div>
+      <h2 class="heading">Words From Our Guests</h2>
+      <div class="stars-row">
+        <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star" style="opacity:0.5;">&#9733;</span>
+      </div>
+      <p class="rating">4.3 out of 5 from 47 reviews</p>
+    </div>
+    <div class="featured">
+      <div class="big-quote">&#8220;</div>
+      <blockquote>The owners were so nice. They greeted us when we walked in like we were long lost friends.</blockquote>
+      <div class="attr">TripAdvisor Reviewer</div>
+    </div>
+    <div class="mini-grid">
+      <div class="mini-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Though it may look small from the outside, once you walk through the doors, you realize there are loads of vintage items for sale.</blockquote>
+        <div class="attr">Yelp Reviewer</div>
+      </div>
+      <div class="mini-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Lots of treasures in this antique shop, plus it smelled wonderful!</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="mini-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The best antique store. You can find everything, excellent service.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="mini-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Great place, great owner. She always has something different there.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="mini-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>If you enjoy seeing items from the old days, then a stop here should be a must do.</blockquote>
+        <div class="attr">TripAdvisor Reviewer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 3: Single Column Stacked -->
+<div class="variant v3" id="v3">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">What Visitors Say</div>
+      <h2 class="heading">Words From Our Guests</h2>
+      <div class="stars-row">
+        <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star" style="opacity:0.5;">&#9733;</span>
+      </div>
+      <p class="rating">4.3 out of 5 from 47 reviews</p>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>The owners were so nice. They greeted us when we walked in like we were long lost friends.</blockquote>
+      <div class="attr"><strong>TripAdvisor Reviewer</strong></div>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>Though it may look small from the outside, once you walk through the doors, you realize there are loads of vintage items for sale.</blockquote>
+      <div class="attr"><strong>Yelp Reviewer</strong></div>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>Lots of treasures in this antique shop, plus it smelled wonderful!</blockquote>
+      <div class="attr"><strong>Chamber of Commerce</strong></div>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>The best antique store. You can find everything, excellent service.</blockquote>
+      <div class="attr"><strong>Chamber of Commerce</strong></div>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>Great place, great owner. She always has something different there.</blockquote>
+      <div class="attr"><strong>Chamber of Commerce</strong></div>
+    </div>
+    <div class="review-item">
+      <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+      <blockquote>The gentleman at the counter was friendly and very nice. If you enjoy seeing items from the old days, then a stop here should be a must do.</blockquote>
+      <div class="attr"><strong>TripAdvisor Reviewer</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 4: Masonry Mixed Colors -->
+<div class="variant v4" id="v4">
+  <div class="inner">
+    <div class="header">
+      <div class="lbl">What Visitors Say</div>
+      <h2 class="heading">Words From Our Guests</h2>
+    </div>
+    <div class="masonry">
+      <div class="m-card cream-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The owners were so nice. They greeted us when we walked in like we were long lost friends.</blockquote>
+        <div class="attr">TripAdvisor Reviewer</div>
+      </div>
+      <div class="m-card dark-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Though it may look small from the outside, once you walk through the doors, you realize there are loads of vintage items for sale.</blockquote>
+        <div class="attr">Yelp Reviewer</div>
+      </div>
+      <div class="m-card rust-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Lots of treasures in this antique shop, plus it smelled wonderful!</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="m-card gold-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The best antique store. You can find everything, excellent service.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="m-card cream-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Great place, great owner. She always has something different there.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="m-card dark-bg">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The gentleman at the counter was friendly and very nice. If you enjoy seeing items from the old days, then a stop here should be a must do.</blockquote>
+        <div class="attr">TripAdvisor Reviewer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 5: Big Quote Hero + Cards -->
+<div class="variant v5" id="v5">
+  <div class="hero-quote">
+    <div class="lbl">What Visitors Say</div>
+    <div class="big-mark">&#8220;</div>
+    <blockquote>The owners were so nice. They greeted us when we walked in like we were long lost friends.</blockquote>
+    <div class="attr">TripAdvisor Reviewer</div>
+    <div class="stars-row">
+      <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star" style="opacity:0.5;">&#9733;</span>
+    </div>
+    <p class="rating">4.3 out of 5 from 47 reviews</p>
+  </div>
+  <div class="cards-section">
+    <div class="cards-grid">
+      <div class="r-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Though it may look small from the outside, once you walk through the doors, you realize there are loads of vintage items for sale.</blockquote>
+        <div class="attr">Yelp Reviewer</div>
+      </div>
+      <div class="r-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Lots of treasures in this antique shop, plus it smelled wonderful!</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="r-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>The best antique store. You can find everything, excellent service.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="r-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>Great place, great owner. She always has something different there.</blockquote>
+        <div class="attr">Chamber of Commerce</div>
+      </div>
+      <div class="r-card">
+        <div class="stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <blockquote>If you enjoy seeing items from the old days, then a stop here should be a must do.</blockquote>
+        <div class="attr">TripAdvisor Reviewer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Reviews Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

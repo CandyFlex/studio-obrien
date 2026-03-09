@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slim's Bar & Grill | Build Your Own Burger | Forest City, NC</title>
+  <meta name="description" content="Slim's Bar & Grill in Forest City, NC. Build-your-own burgers, wings, Philly steak and chicken, and great appetizers. 184 East Main St." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f0f0f0;
+      background: #111111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============ TOKENS ============ */
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --dark-card: #1e1e1e;
+      --neon-red: #ff3333;
+      --neon-orange: #ff6b2b;
+      --neon-yellow: #ffc831;
+      --neon-green: #39ff14;
+      --amber: #d4860b;
+      --white: #f0f0f0;
+      --muted: #888888;
+      --smoke: #2a2a2a;
+      --border: #333333;
+    }
+
+    /* ============ UTILITY ============ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--neon-orange);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      padding: 16px 40px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 51, 51, 0.3);
+    }
+    .btn-primary {
+      background: var(--neon-red);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: #ff4444; }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--neon-orange);
+      color: var(--neon-orange);
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: #111;
+    }
+    .btn-amber:hover { background: #e8960e; }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--neon-red); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--neon-orange); }
+    .nav-phone {
+      color: var(--neon-red);
+      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 51, 51, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255, 107, 43, 0.06) 0%, transparent 60%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 1.5px at 40px 40px, rgba(255,255,255,0.04) 1.5px, transparent 1.5px);
+      background-size: 80px 80px;
+    }
+    /* Decorative fire lines */
+    .hero-deco-1 {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(255, 107, 43, 0.12);
+      border-radius: 50%;
+    }
+    .hero-deco-2 {
+      position: absolute;
+      bottom: 15%;
+      left: 3%;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(255, 51, 51, 0.1);
+      transform: rotate(45deg);
+    }
+    .hero-deco-3 {
+      position: absolute;
+      top: 60%;
+      right: 12%;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 200, 49, 0.06);
+      border-radius: 50%;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--neon-orange);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 8px 24px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 0.95;
+    }
+    .hero h1 .accent { color: var(--neon-red); }
+    .hero h1 .accent-orange {
+      color: var(--neon-orange);
+      font-size: 0.65em;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-feat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .hero-feat-icon {
+      font-size: 1.3rem;
+    }
+
+    /* ============ MARQUEE ============ */
+    .marquee-strip {
+      background: var(--neon-red);
+      color: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-strip.dark {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .marquee-strip.dark .marquee-track { color: var(--neon-orange); }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 25s linear infinite;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============ MENU SECTION ============ */
+    .menu {
+      background: var(--dark);
+      position: relative;
+    }
+    .menu::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.015) 40px,
+          rgba(255,255,255,0.015) 42px
+        );
+    }
+    .menu > * { position: relative; z-index: 1; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .menu-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.3s;
+    }
+    .menu-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--neon-orange);
+    }
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .menu-card:nth-child(1)::before { background: var(--neon-red); }
+    .menu-card:nth-child(2)::before { background: var(--neon-orange); }
+    .menu-card:nth-child(3)::before { background: var(--neon-yellow); }
+    .menu-card:nth-child(4)::before { background: var(--neon-green); }
+    .menu-card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .menu-card h3 {
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .menu-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .menu-card .highlight {
+      color: var(--neon-orange);
+      font-weight: 600;
+    }
+    /* Signature item: Build Your Own */
+    .menu-signature {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+      border: 1px solid var(--neon-red);
+      border-radius: 20px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-signature::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 50% at 0% 50%, rgba(255, 51, 51, 0.06), transparent);
+    }
+    .menu-signature > * { position: relative; z-index: 1; }
+    .menu-sig-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .menu-sig-title span { color: var(--neon-red); }
+    .menu-sig-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .build-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .build-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .build-step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-red);
+      line-height: 1;
+    }
+    .build-step-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    /* ============ VIBE SECTION ============ */
+    .vibe {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .vibe::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255, 107, 43, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255, 51, 51, 0.04) 0%, transparent 50%);
+    }
+    .vibe > * { position: relative; z-index: 1; }
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .vibe-text h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .vibe-text h2 span { color: var(--neon-red); }
+    .vibe-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+    .vibe-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .vibe-tile {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 20px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.3s;
+    }
+    .vibe-tile:hover {
+      transform: translateY(-3px);
+      border-color: var(--neon-red);
+    }
+    .vibe-tile:nth-child(1) { border-top: 3px solid var(--neon-red); }
+    .vibe-tile:nth-child(2) { border-top: 3px solid var(--neon-orange); }
+    .vibe-tile:nth-child(3) { border-top: 3px solid var(--neon-yellow); }
+    .vibe-tile:nth-child(4) { border-top: 3px solid var(--neon-green); }
+    .vibe-tile-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .vibe-tile h4 {
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .vibe-tile p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .vibe-quote {
+      margin-top: 32px;
+      padding: 24px 28px;
+      background: var(--dark-card);
+      border-left: 3px solid var(--neon-orange);
+      border-radius: 0 12px 12px 0;
+    }
+    .vibe-quote p {
+      font-size: 1.1rem;
+      color: var(--white);
+      font-style: italic;
+      margin: 0;
+    }
+    .vibe-quote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: var(--neon-orange);
+      font-style: normal;
+    }
+
+    /* ============ VISIT SECTION ============ */
+    .visit {
+      background: var(--dark);
+      position: relative;
+    }
+    .visit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .visit > * { position: relative; z-index: 1; }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .visit-info-block {
+      margin-bottom: 36px;
+    }
+    .visit-info-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--neon-orange);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.06em;
+    }
+    .visit-info-block p,
+    .visit-info-block a {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .visit-info-block a {
+      color: var(--neon-red);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .visit-info-block a:hover { color: var(--neon-orange); }
+    .visit-hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .visit-hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .visit-hours-table td {
+      padding: 12px 0;
+      font-size: 0.95rem;
+    }
+    .visit-hours-table td:first-child {
+      font-weight: 600;
+      color: var(--white);
+      width: 140px;
+    }
+    .visit-hours-table td:last-child {
+      color: var(--muted);
+    }
+    .visit-hours-table .today td:first-child {
+      color: var(--neon-green);
+    }
+    .visit-map-placeholder {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .visit-map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 51, 51, 0.06), transparent 70%);
+    }
+    .visit-map-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+    .visit-map-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+    .visit-map-address {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .visit-map-btn {
+      margin-top: 20px;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo span { color: var(--neon-red); }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--neon-orange); }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px auto;
+      max-width: 400px;
+    }
+    .footer-credit {
+      font-size: 0.78rem;
+      color: #555;
+    }
+    .footer-credit a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .footer-credit a:hover { color: var(--white); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 10px 16px;
+      }
+      .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .hero { min-height: 85vh; }
+      .hero-content { padding: 60px 20px; }
+      .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+      .hero-features { gap: 16px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-signature {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+      }
+      .build-steps { grid-template-columns: 1fr 1fr; }
+      .vibe-grid { grid-template-columns: 1fr; gap: 40px; }
+      .vibe-visual { grid-template-columns: 1fr 1fr; }
+      .visit-grid { grid-template-columns: 1fr; gap: 36px; }
+      .section-pad { padding: 64px 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; align-items: center; }
+      .vibe-visual { grid-template-columns: 1fr; }
+      .build-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Slim's <span>Bar & Grill</span></a>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#vibe">The Vibe</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:8283820283" class="nav-phone">(828) 382-0283</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-deco-1"></div>
+    <div class="hero-deco-2"></div>
+    <div class="hero-deco-3"></div>
+    <div class="hero-content">
+      <div class="hero-badge">184 East Main St, Forest City, NC</div>
+      <h1>
+        <span class="accent">Build</span> Your<br />
+        <span class="accent-orange">Own Burger</span>
+      </h1>
+      <p class="hero-tagline">Burgers built your way. Wings done right. Cold drinks and good times on Main Street.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn btn-primary">See the Menu</a>
+        <a href="#visit" class="btn btn-outline">Find Us</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#127828;</span>
+          Custom Burgers
+        </div>
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#127831;</span>
+          Wings
+        </div>
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#127866;</span>
+          Cold Beer
+        </div>
+        <div class="hero-feat">
+          <span class="hero-feat-icon">&#127860;</span>
+          Philly Steak
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      Build Your Own &#9733; Wings &#9733; Philly Steak &#9733; Philly Chicken &#9733; Appetizers &#9733; Cold Beer &#9733; Good Times &#9733; Forest City &#9733; Build Your Own &#9733; Wings &#9733; Philly Steak &#9733; Philly Chicken &#9733; Appetizers &#9733; Cold Beer &#9733; Good Times &#9733; Forest City &#9733;&nbsp;
+    </div>
+  </div>
+
+  <!-- ============ MENU ============ -->
+  <section class="menu section-pad" id="menu">
+    <div class="container text-center">
+      <p class="section-label">What We're Serving</p>
+      <h2 class="section-heading">The Menu</h2>
+      <p class="section-sub">Simple food done well. Every burger is made to order, every wing is crispy, and every Philly is loaded. No shortcuts.</p>
+    </div>
+    <div class="container">
+      <!-- Signature Build Your Own -->
+      <div class="menu-signature" style="margin-bottom: 28px;">
+        <div>
+          <h3 class="menu-sig-title"><span>Build Your Own</span> Burger</h3>
+          <p class="menu-sig-desc">Start with a fresh patty and make it yours. Choose your bun, pick your toppings, stack your sauces. From classic cheeseburger to something nobody has ever tried before. Your call, every time.</p>
+        </div>
+        <div class="build-steps">
+          <div class="build-step">
+            <div class="build-step-num">01</div>
+            <div class="build-step-label">Pick Your Patty</div>
+          </div>
+          <div class="build-step">
+            <div class="build-step-num">02</div>
+            <div class="build-step-label">Choose Your Bun</div>
+          </div>
+          <div class="build-step">
+            <div class="build-step-num">03</div>
+            <div class="build-step-label">Stack Toppings</div>
+          </div>
+          <div class="build-step">
+            <div class="build-step-num">04</div>
+            <div class="build-step-label">Add Sauces</div>
+          </div>
+        </div>
+      </div>
+      <!-- Menu Cards -->
+      <div class="menu-grid">
+        <div class="menu-card">
+          <span class="menu-card-icon">&#127831;</span>
+          <h3>Wings</h3>
+          <p>Crispy fried wings tossed in your choice of sauce. From mild to <span class="highlight">bring-the-heat hot</span>. Get them by the basket and don't forget the ranch.</p>
+        </div>
+        <div class="menu-card">
+          <span class="menu-card-icon">&#129386;</span>
+          <h3>Philly Steak & Chicken</h3>
+          <p>Shaved steak or grilled chicken piled high with peppers, onions, and melted cheese on a toasted hoagie roll. The real deal, <span class="highlight">Forest City style</span>.</p>
+        </div>
+        <div class="menu-card">
+          <span class="menu-card-icon">&#127839;</span>
+          <h3>Appetizers</h3>
+          <p>Start things off right. Fried pickles, mozzarella sticks, loaded nachos, and more. Perfect for sharing or keeping all to yourself.</p>
+        </div>
+        <div class="menu-card">
+          <span class="menu-card-icon">&#127866;</span>
+          <h3>Drinks</h3>
+          <p>Cold beer on tap, bottled favorites, and soft drinks. Whatever you're in the mood for, we've got something to wash it all down.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee-strip dark">
+    <div class="marquee-track">
+      Your Burger, Your Rules &#9733; Fresh Off the Grill &#9733; Downtown Forest City &#9733; Open Late &#9733; Your Burger, Your Rules &#9733; Fresh Off the Grill &#9733; Downtown Forest City &#9733; Open Late &#9733;&nbsp;
+    </div>
+  </div>
+
+  <!-- ============ THE VIBE ============ -->
+  <section class="vibe section-pad" id="vibe">
+    <div class="container">
+      <div class="vibe-grid">
+        <div class="vibe-text">
+          <p class="section-label">The Vibe</p>
+          <h2>Not Fancy.<br /><span>Just Good.</span></h2>
+          <p>Slim's is what a bar and grill should be. Walk in, grab a seat, order something that actually tastes like someone who cares made it. No pretense, no dress code, no overpriced plates.</p>
+          <p>Sitting right on East Main Street in downtown Forest City, this is a neighborhood spot through and through. Come for lunch with coworkers, grab dinner with the family, or close out the night with cold ones and good company.</p>
+          <p>The kitchen runs hot. The beer runs cold. And the burgers run exactly the way you want them to.</p>
+          <div class="vibe-quote">
+            <p>"A build-your-own burger shop, which also features wings, Philly steak or chicken, and great appetizers."</p>
+            <cite>Rutherford County Tourism</cite>
+          </div>
+        </div>
+        <div class="vibe-visual">
+          <div class="vibe-tile">
+            <span class="vibe-tile-icon">&#128293;</span>
+            <h4>Grill Fired</h4>
+            <p>Cooked fresh to order, every single time</p>
+          </div>
+          <div class="vibe-tile">
+            <span class="vibe-tile-icon">&#127866;</span>
+            <h4>Full Bar</h4>
+            <p>Cold beer, good drinks, nothing complicated</p>
+          </div>
+          <div class="vibe-tile">
+            <span class="vibe-tile-icon">&#127963;&#65039;</span>
+            <h4>Main Street</h4>
+            <p>Heart of downtown Forest City</p>
+          </div>
+          <div class="vibe-tile">
+            <span class="vibe-tile-icon">&#129309;</span>
+            <h4>Neighborhood</h4>
+            <p>Where locals eat, drink, and hang out</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="visit section-pad" id="visit">
+    <div class="container text-center">
+      <p class="section-label">Come Eat</p>
+      <h2 class="section-heading">Find Slim's</h2>
+      <p class="section-sub">Right on Main Street in downtown Forest City. Swing by for lunch, dinner, or a late night bite.</p>
+    </div>
+    <div class="container">
+      <div class="visit-grid">
+        <div>
+          <div class="visit-info-block">
+            <h3>&#128205; Address</h3>
+            <p>184 East Main St<br />Forest City, NC 28043</p>
+          </div>
+          <div class="visit-info-block">
+            <h3>&#128222; Phone</h3>
+            <a href="tel:8283820283">(828) 382-0283</a>
+          </div>
+          <div class="visit-info-block">
+            <h3>&#128339; Hours</h3>
+            <table class="visit-hours-table">
+              <tr><td>Monday</td><td>11:00 AM - 10:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>11:00 AM - 10:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>11:00 AM - 10:00 PM</td></tr>
+              <tr><td>Thursday</td><td>11:00 AM - 10:00 PM</td></tr>
+              <tr><td>Friday</td><td>11:00 AM - 11:00 PM</td></tr>
+              <tr><td>Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+              <tr><td>Sunday</td><td>12:00 PM - 9:00 PM</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="visit-map-placeholder">
+          <div class="visit-map-icon">&#128205;</div>
+          <div class="visit-map-text">Downtown Forest City</div>
+          <div class="visit-map-address">184 East Main St, Forest City, NC 28043</div>
+          <a href="https://maps.google.com/?q=184+East+Main+St+Forest+City+NC+28043" target="_blank" class="btn btn-primary visit-map-btn" style="margin-top: 20px; font-size: 1rem; padding: 12px 28px;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Slim's <span>Bar & Grill</span></div>
+      <p class="footer-tagline">Build your own burger. Forest City, NC.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#vibe">The Vibe</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:8283820283">(828) 382-0283</a>
+      </div>
+      <hr class="footer-divider" />
+      <p class="footer-credit">
+        &copy; 2026 Slim's Bar & Grill. 184 East Main St, Forest City, NC 28043.
+        <br />
+        Website designed by <a href="#">Studio O'Brien</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

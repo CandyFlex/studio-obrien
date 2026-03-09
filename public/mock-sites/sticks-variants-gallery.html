@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sticks & Stones - Gallery Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e0d4;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --black: #0f0f0f;
+      --black-light: #1a1a1a;
+      --charcoal: #2a2a2a;
+      --cream: #f5f0e6;
+      --cream-dim: #e8e0d4;
+      --gold: #c4a35a;
+      --gold-light: #d4b96a;
+      --burgundy: #722F37;
+      --burgundy-light: #8a3a44;
+      --text-muted: #8a8278;
+      --text-body: #c4bdb2;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .variant-section { display: none; }
+    .variant-section.active { display: block; }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(15,15,15,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(196,163,90,0.2);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-label {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.2em; color: var(--gold); margin-right: 8px;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border: 2px solid rgba(196,163,90,0.3);
+      background: transparent; color: var(--cream-dim);
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .picker-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .picker-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
+    .picker-desc {
+      margin-left: 16px; font-size: 0.8rem; color: var(--text-muted); max-width: 300px;
+    }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.25em; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700;
+      margin-bottom: 20px; color: var(--cream);
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-muted); max-width: 580px;
+      margin: 0 auto 48px; line-height: 1.7;
+    }
+    .section-pad { padding: 100px 0 140px; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+
+    .btn {
+      display: inline-block; font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 16px 40px; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(245,240,230,0.3); }
+    .btn-outline:hover { background: rgba(245,240,230,0.08); }
+    .btn-primary { background: var(--gold); color: var(--black); }
+
+    /* Shared placeholder styling */
+    .placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background:
+        radial-gradient(circle 1px at 20px 20px, rgba(196,163,90,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .placeholder-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.3; }
+    .placeholder-text {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--text-muted); opacity: 0.4;
+    }
+
+    /* ======== V1: 4-Column Grid ======== */
+    .v1-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    }
+    .v1-item {
+      aspect-ratio: 1; background: var(--charcoal); position: relative; overflow: hidden; cursor: pointer;
+    }
+    .v1-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s, filter 0.5s; filter: grayscale(20%);
+    }
+    .v1-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
+    .v1-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(transparent 50%, rgba(15,15,15,0.8) 100%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .v1-item:hover .v1-item-overlay { opacity: 1; }
+    .v1-cta { text-align: center; margin-top: 48px; }
+
+    /* ======== V2: Staggered Masonry ======== */
+    .v2-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    }
+    .v2-item {
+      background: var(--charcoal); position: relative; overflow: hidden; cursor: pointer;
+    }
+    .v2-item:nth-child(1) { aspect-ratio: 3/4; grid-row: span 2; }
+    .v2-item:nth-child(2) { aspect-ratio: 4/3; }
+    .v2-item:nth-child(3) { aspect-ratio: 1; }
+    .v2-item:nth-child(4) { aspect-ratio: 4/3; }
+    .v2-item:nth-child(5) { aspect-ratio: 1; grid-column: span 2; }
+    .v2-item:nth-child(6) { aspect-ratio: 3/4; }
+    .v2-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s; filter: grayscale(20%);
+    }
+    .v2-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
+    .v2-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 16px; background: linear-gradient(transparent, rgba(15,15,15,0.8));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .v2-item:hover .v2-item-label { opacity: 1; }
+    .v2-item-label span {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+    }
+
+    /* ======== V3: Horizontal Scroll Cards ======== */
+    .v3-scroll-wrapper {
+      overflow-x: auto; padding-bottom: 24px;
+      -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .v3-scroll-wrapper::-webkit-scrollbar { display: none; }
+    .v3-scroll {
+      display: flex; gap: 16px; width: max-content; padding: 0 24px;
+    }
+    .v3-card {
+      width: 300px; flex-shrink: 0; background: var(--black-light);
+      border: 1px solid rgba(196,163,90,0.08); overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .v3-card:hover { border-color: rgba(196,163,90,0.25); }
+    .v3-card-img {
+      width: 100%; aspect-ratio: 4/5; background: var(--charcoal); overflow: hidden;
+    }
+    .v3-card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+    .v3-card-body { padding: 20px; }
+    .v3-card-tag {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .v3-card-title {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream);
+    }
+    .v3-hint {
+      text-align: center; margin-top: 24px; font-size: 0.75rem;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em;
+    }
+
+    /* ======== V4: Large Feature + Thumbs ======== */
+    .v4-layout {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 8px;
+    }
+    .v4-feature {
+      aspect-ratio: 4/3; background: var(--charcoal); position: relative; overflow: hidden;
+    }
+    .v4-feature img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+    .v4-feature-label {
+      position: absolute; bottom: 24px; left: 24px;
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+      color: var(--cream);
+    }
+    .v4-thumbs {
+      display: grid; grid-template-rows: repeat(3, 1fr); gap: 8px;
+    }
+    .v4-thumb {
+      background: var(--charcoal); position: relative; overflow: hidden; cursor: pointer;
+    }
+    .v4-thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: filter 0.3s; }
+    .v4-thumb:hover img { filter: grayscale(0%); }
+    .v4-below {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px;
+    }
+    .v4-small {
+      aspect-ratio: 1; background: var(--charcoal); overflow: hidden; cursor: pointer;
+    }
+    .v4-small img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+
+    /* ======== V5: Full-Width Hero Image + Category Filters ======== */
+    .v5-hero-img {
+      width: 100%; height: 50vh; background: var(--charcoal); overflow: hidden;
+      position: relative;
+    }
+    .v5-hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; filter: grayscale(30%); }
+    .v5-hero-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .v5-hero-overlay h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; color: var(--cream);
+    }
+    .v5-filters {
+      display: flex; justify-content: center; gap: 8px; margin: 32px 0 40px; flex-wrap: wrap;
+    }
+    .v5-filter {
+      padding: 10px 24px; border: 1px solid rgba(196,163,90,0.2);
+      background: transparent; color: var(--text-muted);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+      cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .v5-filter:hover, .v5-filter.active {
+      border-color: var(--gold); color: var(--gold); background: rgba(196,163,90,0.06);
+    }
+    .v5-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .v5-item {
+      aspect-ratio: 1; background: var(--charcoal); overflow: hidden; position: relative; cursor: pointer;
+    }
+    .v5-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.4s; }
+    .v5-item:hover img { transform: scale(1.04); filter: grayscale(0%); }
+    .v5-item-tag {
+      position: absolute; top: 12px; left: 12px; padding: 4px 12px;
+      background: rgba(15,15,15,0.7); font-size: 0.6rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: repeat(2, 1fr); }
+      .v2-grid { grid-template-columns: 1fr 1fr; }
+      .v2-item:nth-child(1) { grid-row: auto; aspect-ratio: 1; }
+      .v2-item:nth-child(5) { grid-column: auto; aspect-ratio: 1; }
+      .v4-layout { grid-template-columns: 1fr; }
+      .v4-thumbs { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+      .v4-below { grid-template-columns: repeat(2, 1fr); }
+      .v5-grid { grid-template-columns: repeat(2, 1fr); }
+      .picker-desc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ V1: 4-Column Grid ============ -->
+  <section class="variant-section active" id="v1">
+    <div class="section-pad" style="background: var(--black-light);">
+      <div class="container text-center">
+        <p class="section-label">The Work</p>
+        <h2 class="section-heading">Portfolio</h2>
+        <p class="section-sub">Custom tattoo work and original art. Follow Brandon on Instagram for the latest pieces.</p>
+      </div>
+      <div class="container">
+        <div class="v1-grid">
+          <div class="v1-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Studio" /><div class="v1-item-overlay"></div></div>
+          <div class="v1-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Station" /><div class="v1-item-overlay"></div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#9998;</div><div class="placeholder-text">Custom Work</div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#127912;</div><div class="placeholder-text">Oil Paintings</div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#128396;</div><div class="placeholder-text">Portraits</div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#9899;</div><div class="placeholder-text">Black &amp; Gray</div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#127752;</div><div class="placeholder-text">Full Color</div></div>
+          <div class="v1-item placeholder"><div class="placeholder-icon">&#9889;</div><div class="placeholder-text">Flash</div></div>
+        </div>
+        <div class="v1-cta"><a href="#" class="btn btn-outline">Follow on Instagram</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2: Staggered Masonry ============ -->
+  <section class="variant-section" id="v2">
+    <div class="section-pad" style="background: var(--black);">
+      <div class="container text-center">
+        <p class="section-label">The Work</p>
+        <h2 class="section-heading">Portfolio</h2>
+        <p class="section-sub">Custom tattoo work and original art. Follow Brandon on Instagram for the latest pieces.</p>
+      </div>
+      <div class="container">
+        <div class="v2-grid">
+          <div class="v2-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Studio" /><div class="v2-item-label"><span>Studio</span></div></div>
+          <div class="v2-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Station" /><div class="v2-item-label"><span>Equipment</span></div></div>
+          <div class="v2-item placeholder"><div class="placeholder-icon">&#9998;</div><div class="placeholder-text">Custom</div></div>
+          <div class="v2-item placeholder"><div class="placeholder-icon">&#127912;</div><div class="placeholder-text">Gallery</div></div>
+          <div class="v2-item"><img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Logo" /><div class="v2-item-label"><span>Branding</span></div></div>
+          <div class="v2-item placeholder"><div class="placeholder-icon">&#128396;</div><div class="placeholder-text">Portraits</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3: Horizontal Scroll ============ -->
+  <section class="variant-section" id="v3">
+    <div class="section-pad" style="background: var(--black);">
+      <div class="container text-center">
+        <p class="section-label">The Work</p>
+        <h2 class="section-heading">Portfolio</h2>
+        <p class="section-sub">Custom tattoo work and original art. Follow Brandon on Instagram for the latest pieces.</p>
+      </div>
+      <div class="v3-scroll-wrapper">
+        <div class="v3-scroll">
+          <div class="v3-card"><div class="v3-card-img"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Studio" /></div><div class="v3-card-body"><div class="v3-card-tag">Studio</div><div class="v3-card-title">The Workspace</div></div></div>
+          <div class="v3-card"><div class="v3-card-img"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Equipment" /></div><div class="v3-card-body"><div class="v3-card-tag">Equipment</div><div class="v3-card-title">Tools of the Trade</div></div></div>
+          <div class="v3-card"><div class="v3-card-img"><img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Logo" /></div><div class="v3-card-body"><div class="v3-card-tag">Identity</div><div class="v3-card-title">The Logo</div></div></div>
+          <div class="v3-card"><div class="v3-card-img placeholder"><div class="placeholder-icon">&#9998;</div><div class="placeholder-text">Custom Work</div></div><div class="v3-card-body"><div class="v3-card-tag">Tattoo</div><div class="v3-card-title">Custom Pieces</div></div></div>
+          <div class="v3-card"><div class="v3-card-img placeholder"><div class="placeholder-icon">&#127912;</div><div class="placeholder-text">Oil Paintings</div></div><div class="v3-card-body"><div class="v3-card-tag">Gallery</div><div class="v3-card-title">Fine Art</div></div></div>
+          <div class="v3-card"><div class="v3-card-img placeholder"><div class="placeholder-icon">&#128396;</div><div class="placeholder-text">Portraits</div></div><div class="v3-card-body"><div class="v3-card-tag">Specialty</div><div class="v3-card-title">Portrait Work</div></div></div>
+        </div>
+      </div>
+      <div class="v3-hint">Scroll to explore &rarr;</div>
+    </div>
+  </section>
+
+  <!-- ============ V4: Large Feature + Thumbs ============ -->
+  <section class="variant-section" id="v4">
+    <div class="section-pad" style="background: var(--black);">
+      <div class="container text-center">
+        <p class="section-label">The Work</p>
+        <h2 class="section-heading">Portfolio</h2>
+        <p class="section-sub">Custom tattoo work and original art. Follow Brandon on Instagram for the latest pieces.</p>
+      </div>
+      <div class="container">
+        <div class="v4-layout">
+          <div class="v4-feature">
+            <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Studio" />
+            <div class="v4-feature-label">The Studio</div>
+          </div>
+          <div class="v4-thumbs">
+            <div class="v4-thumb"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Equipment" /></div>
+            <div class="v4-thumb"><img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Logo" /></div>
+            <div class="v4-thumb placeholder"><div class="placeholder-icon">&#9998;</div><div class="placeholder-text">Custom</div></div>
+          </div>
+        </div>
+        <div class="v4-below">
+          <div class="v4-small placeholder"><div class="placeholder-icon">&#128396;</div><div class="placeholder-text">Portrait</div></div>
+          <div class="v4-small placeholder"><div class="placeholder-icon">&#9899;</div><div class="placeholder-text">B&amp;G</div></div>
+          <div class="v4-small placeholder"><div class="placeholder-icon">&#127752;</div><div class="placeholder-text">Color</div></div>
+          <div class="v4-small placeholder"><div class="placeholder-icon">&#127912;</div><div class="placeholder-text">Oil</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5: Hero Image + Category Filters ============ -->
+  <section class="variant-section" id="v5">
+    <div style="background: var(--black); padding-bottom: 100px;">
+      <div class="v5-hero-img">
+        <img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Tattoo equipment" />
+        <div class="v5-hero-overlay">
+          <p class="section-label">The Work</p>
+          <h2>Portfolio</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="v5-filters">
+          <button class="v5-filter active">All Work</button>
+          <button class="v5-filter">Custom</button>
+          <button class="v5-filter">Portraits</button>
+          <button class="v5-filter">Black &amp; Gray</button>
+          <button class="v5-filter">Color</button>
+          <button class="v5-filter">Flash</button>
+          <button class="v5-filter">Oil Paintings</button>
+        </div>
+        <div class="v5-grid">
+          <div class="v5-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment.webp" alt="Studio" /><span class="v5-item-tag">Studio</span></div>
+          <div class="v5-item"><img src="/mock-sites/assets/sticks-and-stones/tattoo-equipment-dark.webp" alt="Equipment" /><span class="v5-item-tag">Equipment</span></div>
+          <div class="v5-item"><img src="/mock-sites/assets/sticks-and-stones/shop-logo.webp" alt="Logo" /><span class="v5-item-tag">Identity</span></div>
+          <div class="v5-item placeholder"><div class="placeholder-icon">&#9998;</div><div class="placeholder-text">Custom Work</div></div>
+          <div class="v5-item placeholder"><div class="placeholder-icon">&#128396;</div><div class="placeholder-text">Portraits</div></div>
+          <div class="v5-item placeholder"><div class="placeholder-icon">&#127912;</div><div class="placeholder-text">Oil Paintings</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PICKER BAR ============ -->
+  <div class="picker-bar">
+    <span class="picker-label">Gallery</span>
+    <button class="picker-btn active" data-variant="1" onclick="showVariant(1)">1</button>
+    <button class="picker-btn" data-variant="2" onclick="showVariant(2)">2</button>
+    <button class="picker-btn" data-variant="3" onclick="showVariant(3)">3</button>
+    <button class="picker-btn" data-variant="4" onclick="showVariant(4)">4</button>
+    <button class="picker-btn" data-variant="5" onclick="showVariant(5)">5</button>
+    <span class="picker-desc" id="picker-desc">4-column uniform grid with hover effects</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      1: '4-column uniform grid with hover effects',
+      2: 'Staggered masonry with labeled overlays',
+      3: 'Horizontal scroll cards with metadata',
+      4: 'Large feature image with thumbnail sidebar',
+      5: 'Category filters with hero banner'
+    };
+    function showVariant(n) {
+      document.querySelectorAll('.variant-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-variant="' + n + '"]').classList.add('active');
+      document.getElementById('picker-desc').textContent = descriptions[n];
+    }
+  </script>
+</body>
+</html>

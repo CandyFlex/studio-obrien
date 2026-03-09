@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahoo's Sports &amp; Collectibles — Website Concept by Studio O'Brien</title>
+  <meta name="description" content="A custom website concept built for Wahoo's Sports & Collectibles in Forest City, NC by Studio O'Brien." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest: #0d2818;
+      --gold: #c9a84c;
+      --parchment: #f5f0e1;
+      --bg: #0a0f0d;
+    }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--bg);
+      color: var(--parchment);
+      line-height: 1.7;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--forest) 0%, var(--bg) 100%);
+    }
+    .hero .badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 20px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--parchment);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero .sub {
+      font-size: 1.15rem;
+      font-style: italic;
+      opacity: 0.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Preview */
+    .preview {
+      margin: 48px auto 0;
+      max-width: 800px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .preview-bar {
+      background: #1a1a1a;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
+    .preview-dot:first-child { background: #ff5f56; }
+    .preview-dot:nth-child(2) { background: #ffbd2e; }
+    .preview-dot:nth-child(3) { background: #27c93f; }
+    .preview-url {
+      margin-left: 12px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .preview img {
+      width: 100%;
+      display: block;
+    }
+    .preview-cta {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+    }
+    .preview-cta a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 12px 32px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .preview-cta a:hover { background: var(--gold); color: var(--forest); }
+
+    /* Sections */
+    .section { padding: 64px 24px; }
+    .section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .section p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 16px; }
+
+    /* Problem */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (max-width: 600px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .problem-card .label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .problem-card .label.now { color: #e55; }
+    .problem-card .label.after { color: #5e5; }
+    .problem-card p { font-size: 1rem; opacity: 0.7; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .feature {
+      background: rgba(201,168,76,0.04);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .feature h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--parchment);
+      margin-bottom: 6px;
+    }
+    .feature p { font-size: 0.9rem; opacity: 0.6; margin: 0; }
+
+    /* Quote */
+    .quote {
+      text-align: center;
+      padding: 48px 24px;
+      font-size: 1.3rem;
+      font-style: italic;
+      opacity: 0.5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 80px 24px;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--forest) 100%);
+    }
+    .cta h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--parchment);
+      margin-bottom: 16px;
+    }
+    .cta h2 span { color: var(--gold); }
+    .cta p {
+      font-size: 1.1rem;
+      opacity: 0.6;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .cta-btn.primary { background: var(--gold); color: var(--forest); }
+    .cta-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .cta-btn.secondary { border: 1px solid rgba(201,168,76,0.3); color: var(--gold); }
+    .cta-btn.secondary:hover { background: rgba(201,168,76,0.1); }
+
+    /* Footer */
+    .foot {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      opacity: 0.3;
+    }
+    .foot a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="container">
+      <div class="badge">Built for You</div>
+      <h1>A Website for <span>Wahoo's Sports &amp; Collectibles</span></h1>
+      <p class="sub">We built this concept using your real business information — inventory, location, story, and customer reviews. No templates. No stock photos of someone else's shop.</p>
+    </div>
+
+    <div class="preview">
+      <div class="preview-bar">
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <span class="preview-url">wahoossports.com</span>
+      </div>
+      <img src="/images/portfolio/wahoos-sports.webp" alt="Wahoo's Sports & Collectibles website concept" loading="lazy" />
+      <div class="preview-cta">
+        <a href="/mock-sites/wahoos-sports.html" target="_blank">View the Full Interactive Site &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2>The Problem</h2>
+      <p>Right now, someone searching "sports cards Forest City" or "Supreme clothing NC" finds nothing. You're the only shop of your kind in the Foothills — sneakers, streetwear, vintage cards, NASCAR memorabilia — but you're invisible online. An Instagram account with 107 followers can't compete with the search results collectors are actually using.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="label now">Right Now</div>
+          <p>No website. Collectors searching for sports cards, sneakers, or streetwear in the area have no way to find you unless they already know you exist.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label now">Right Now</div>
+          <p>Buy/sell/trade inquiries happen through Instagram DMs or walk-ins only. No way for someone in the next county to know what you've got in stock.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label after">With This Site</div>
+          <p>A full product catalog organized by category — sneakers, streetwear, sports cards, NASCAR. Customers browse your inventory from anywhere.</p>
+        </div>
+        <div class="problem-card">
+          <div class="label after">With This Site</div>
+          <p>Shows up in Google searches. Ranks for "sports cards near me," "sneaker shop Forest City," and "Supreme clothing North Carolina." Your shop finally gets found.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2>What's Included</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Product Catalog</h3>
+          <p>Sneakers, streetwear, vintage cards, and NASCAR memorabilia — organized by category, easy to browse, updated when new stock arrives.</p>
+        </div>
+        <div class="feature">
+          <h3>Buy / Sell / Trade</h3>
+          <p>A dedicated section for collectors to see what you're buying, submit trade offers, or inquire about selling their collections.</p>
+        </div>
+        <div class="feature">
+          <h3>Instagram Feed</h3>
+          <p>Your latest Instagram posts pulled directly into the site. New arrivals you post on IG automatically show up on your website too.</p>
+        </div>
+        <div class="feature">
+          <h3>New Arrivals Showcase</h3>
+          <p>A highlighted section for fresh inventory. Give customers a reason to keep checking back — because you never know what you'll find at Wahoo's.</p>
+        </div>
+        <div class="feature">
+          <h3>Hours &amp; Location</h3>
+          <p>128 E Main St, Forest City — embedded map, clear hours, and contact info. No more guessing if you're open.</p>
+        </div>
+        <div class="feature">
+          <h3>SEO Built In</h3>
+          <p>Structured for Google from day one. Your shop, inventory categories, and location show up in local search results where collectors are looking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    "Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!"<br />
+    <span style="font-size: 0.85rem; color: var(--gold); font-style: normal;">— Google Review</span>
+  </div>
+
+  <div class="cta">
+    <div class="container">
+      <h2>Ready to Make <span>This Real?</span></h2>
+      <p>This concept was built specifically for Wahoo's Sports &amp; Collectibles. If you like what you see, let's talk about making it your actual website.</p>
+      <div class="cta-buttons">
+        <a href="https://studioobrien.com/#contact" class="cta-btn primary">Get in Touch</a>
+        <a href="mailto:hello@studioobrien.com?subject=Wahoo's%20Sports%20%26%20Collectibles%20Website" class="cta-btn secondary">Email Us Directly</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Built by <a href="https://studioobrien.com">Studio O'Brien</a> &middot; Shelby, NC
+  </div>
+
+</body>
+</html>

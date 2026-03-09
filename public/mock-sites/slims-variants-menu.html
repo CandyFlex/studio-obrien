@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slim's Bar & Grill - Menu Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --dark-card: #1e1e1e;
+      --neon-red: #ff3333;
+      --neon-orange: #ff6b2b;
+      --neon-yellow: #ffc831;
+      --neon-green: #39ff14;
+      --amber: #d4860b;
+      --white: #f0f0f0;
+      --muted: #888888;
+      --smoke: #2a2a2a;
+      --border: #333333;
+    }
+
+    /* Picker bar */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(17,17,17,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      letter-spacing: 0.1em; color: var(--neon-orange); margin-right: 12px;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 12px;
+      border: 2px solid #333; background: #1a1a1a; color: #f0f0f0;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--neon-red); background: var(--neon-red); color: #fff;
+      transform: scale(1.08);
+    }
+
+    .variant { display: none; padding-bottom: 80px; }
+    .variant.active { display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 80px 0; }
+    .text-center { text-align: center; }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--neon-orange); margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white); margin-bottom: 20px; text-transform: uppercase; line-height: 1;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 580px; margin: 0 auto 48px; line-height: 1.7;
+    }
+
+    /* ===========================
+       V1 - Grid Cards (Original)
+       =========================== */
+    .v1-menu { background: var(--dark); position: relative; }
+    .v1-menu::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 42px);
+    }
+    .v1-menu > * { position: relative; z-index: 1; }
+    .v1-sig {
+      background: linear-gradient(135deg, #1e1e1e, #252525);
+      border: 1px solid var(--neon-red); border-radius: 20px;
+      padding: 48px; display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: center; margin-bottom: 28px; position: relative; overflow: hidden;
+    }
+    .v1-sig::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 50% at 0% 50%, rgba(255,51,51,0.06), transparent);
+    }
+    .v1-sig > * { position: relative; z-index: 1; }
+    .v1-sig-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--white); line-height: 1; margin-bottom: 16px;
+    }
+    .v1-sig-title span { color: var(--neon-red); }
+    .v1-sig-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.7; }
+    .v1-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .v1-step {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 16px; text-align: center;
+    }
+    .v1-step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--neon-red); line-height: 1; }
+    .v1-step-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+    .v1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .v1-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 32px;
+      transition: transform 0.25s, border-color 0.3s; position: relative; overflow: hidden;
+    }
+    .v1-card:hover { transform: translateY(-4px); border-color: var(--neon-orange); }
+    .v1-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .v1-card:nth-child(1)::before { background: var(--neon-red); }
+    .v1-card:nth-child(2)::before { background: var(--neon-orange); }
+    .v1-card:nth-child(3)::before { background: var(--neon-yellow); }
+    .v1-card:nth-child(4)::before { background: var(--neon-green); }
+    .v1-card-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+    .v1-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--white); margin-bottom: 12px; }
+    .v1-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    .v1-card .hl { color: var(--neon-orange); font-weight: 600; }
+
+    /* ===========================
+       V2 - Horizontal Scroll Cards
+       =========================== */
+    .v2-menu { background: #0d0d0d; position: relative; overflow: hidden; }
+    .v2-menu::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,107,43,0.04), transparent);
+    }
+    .v2-menu > * { position: relative; z-index: 1; }
+    .v2-scroll-wrap { overflow-x: auto; padding-bottom: 20px; }
+    .v2-scroll {
+      display: flex; gap: 24px; padding: 0 24px;
+      min-width: max-content;
+    }
+    .v2-item {
+      background: #161616; border: 1px solid #2a2a2a;
+      border-radius: 20px; padding: 40px 32px;
+      width: 340px; flex-shrink: 0;
+      transition: transform 0.25s, border-color 0.3s; position: relative; overflow: hidden;
+    }
+    .v2-item:hover { transform: translateY(-4px); border-color: var(--neon-red); }
+    .v2-item-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+    .v2-item-badge {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; padding: 4px 14px; border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .v2-item:nth-child(1) .v2-item-badge { background: var(--neon-red); color: #fff; }
+    .v2-item:nth-child(2) .v2-item-badge { background: var(--neon-orange); color: #111; }
+    .v2-item:nth-child(3) .v2-item-badge { background: var(--neon-yellow); color: #111; }
+    .v2-item:nth-child(4) .v2-item-badge { background: var(--neon-green); color: #111; }
+    .v2-item:nth-child(5) .v2-item-badge { background: var(--amber); color: #fff; }
+    .v2-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+    .v2-item p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+
+    /* ===========================
+       V3 - Full-Width Stacked Rows
+       =========================== */
+    .v3-menu { background: var(--dark); }
+    .v3-row {
+      border-bottom: 1px solid #222;
+      padding: 48px 0;
+      display: grid; grid-template-columns: 80px 1fr 2fr;
+      gap: 32px; align-items: center;
+      max-width: 1000px; margin: 0 auto; padding-left: 24px; padding-right: 24px;
+    }
+    .v3-row:last-child { border-bottom: none; }
+    .v3-row-icon { font-size: 3rem; text-align: center; }
+    .v3-row h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+      color: var(--white); line-height: 1;
+    }
+    .v3-row-tag {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; color: var(--neon-orange); margin-top: 4px;
+    }
+    .v3-row p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    .v3-row-sig {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #1a1a1a, #222);
+      border: 1px solid var(--neon-red);
+      border-radius: 16px; padding: 40px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 40px; align-items: center;
+    }
+    .v3-row-sig h3 {
+      font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px;
+    }
+    .v3-row-sig h3 span { color: var(--neon-red); }
+    .v3-row-sig p { max-width: 500px; }
+    .v3-steps-mini { display: flex; gap: 12px; flex-wrap: wrap; }
+    .v3-step-mini {
+      background: rgba(255,255,255,0.05); border: 1px solid #333;
+      border-radius: 10px; padding: 14px 18px; text-align: center;
+    }
+    .v3-step-mini-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--neon-red); }
+    .v3-step-mini-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ===========================
+       V4 - Tab-Style Menu
+       =========================== */
+    .v4-menu { background: #0e0e0e; position: relative; }
+    .v4-tabs {
+      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .v4-tab {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      letter-spacing: 0.08em; padding: 12px 28px;
+      border-radius: 50px; border: 1px solid #333;
+      background: transparent; color: var(--muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .v4-tab:hover, .v4-tab.active { background: var(--neon-red); border-color: var(--neon-red); color: #fff; }
+    .v4-panel { display: none; }
+    .v4-panel.active { display: block; }
+    .v4-panel-inner {
+      max-width: 800px; margin: 0 auto;
+      text-align: center;
+    }
+    .v4-panel-icon { font-size: 4rem; margin-bottom: 20px; display: block; }
+    .v4-panel h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white); margin-bottom: 16px;
+    }
+    .v4-panel p {
+      font-size: 1.1rem; color: var(--muted); line-height: 1.8;
+      max-width: 600px; margin: 0 auto 28px;
+    }
+    .v4-panel-tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .v4-panel-tag {
+      background: #1a1a1a; border: 1px solid #333;
+      border-radius: 50px; padding: 8px 18px;
+      font-size: 0.85rem; color: var(--muted);
+    }
+
+    /* ===========================
+       V5 - Magazine / Bold Blocks
+       =========================== */
+    .v5-menu { background: var(--dark); }
+    .v5-hero-block {
+      background: var(--neon-red); border-radius: 24px;
+      padding: 60px 48px; text-align: center;
+      margin-bottom: 32px; position: relative; overflow: hidden;
+    }
+    .v5-hero-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.05) 60px, rgba(0,0,0,0.05) 62px);
+    }
+    .v5-hero-block > * { position: relative; z-index: 1; }
+    .v5-hero-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #fff; line-height: 1; margin-bottom: 12px;
+    }
+    .v5-hero-block p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.85);
+      max-width: 500px; margin: 0 auto;
+    }
+    .v5-blocks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .v5-block {
+      border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+      transition: transform 0.25s;
+    }
+    .v5-block:hover { transform: translateY(-4px); }
+    .v5-block:nth-child(1) { background: #1a1a1a; border: 1px solid #2a2a2a; }
+    .v5-block:nth-child(2) { background: var(--neon-orange); }
+    .v5-block:nth-child(3) { background: #151515; border: 1px solid var(--neon-yellow); }
+    .v5-block:nth-child(4) { background: #0d0d0d; border: 1px solid #2a2a2a; }
+    .v5-block-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+    .v5-block h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+      color: var(--white); margin-bottom: 10px;
+    }
+    .v5-block:nth-child(2) h3 { color: #111; }
+    .v5-block p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+    .v5-block:nth-child(2) p { color: rgba(0,0,0,0.65); }
+
+    @media (max-width: 768px) {
+      .v1-sig, .v3-row-sig { grid-template-columns: 1fr; padding: 32px 24px; }
+      .v1-grid, .v5-blocks { grid-template-columns: 1fr; }
+      .v3-row { grid-template-columns: 60px 1fr; }
+      .v3-row p { grid-column: 1 / -1; }
+      .v2-item { width: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1 - Grid Cards -->
+  <div class="variant active" id="v1">
+    <section class="v1-menu section-pad">
+      <div class="container text-center">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-heading">The Menu</h2>
+        <p class="section-sub">Simple food done well. Every burger is made to order, every wing is crispy, and every Philly is loaded. No shortcuts.</p>
+      </div>
+      <div class="container">
+        <div class="v1-sig">
+          <div>
+            <h3 class="v1-sig-title"><span>Build Your Own</span> Burger</h3>
+            <p class="v1-sig-desc">Start with a fresh patty and make it yours. Choose your bun, pick your toppings, stack your sauces. Your call, every time.</p>
+          </div>
+          <div class="v1-steps">
+            <div class="v1-step"><div class="v1-step-num">01</div><div class="v1-step-label">Pick Your Patty</div></div>
+            <div class="v1-step"><div class="v1-step-num">02</div><div class="v1-step-label">Choose Your Bun</div></div>
+            <div class="v1-step"><div class="v1-step-num">03</div><div class="v1-step-label">Stack Toppings</div></div>
+            <div class="v1-step"><div class="v1-step-num">04</div><div class="v1-step-label">Add Sauces</div></div>
+          </div>
+        </div>
+        <div class="v1-grid">
+          <div class="v1-card"><span class="v1-card-icon">&#127831;</span><h3>Wings</h3><p>Crispy fried wings tossed in your choice of sauce. From mild to <span class="hl">bring-the-heat hot</span>.</p></div>
+          <div class="v1-card"><span class="v1-card-icon">&#129386;</span><h3>Philly Steak & Chicken</h3><p>Shaved steak or grilled chicken piled high with peppers, onions, and melted cheese on a toasted hoagie.</p></div>
+          <div class="v1-card"><span class="v1-card-icon">&#127839;</span><h3>Appetizers</h3><p>Fried pickles, mozzarella sticks, loaded nachos, and more. Perfect for sharing or keeping to yourself.</p></div>
+          <div class="v1-card"><span class="v1-card-icon">&#127866;</span><h3>Drinks</h3><p>Cold beer on tap, bottled favorites, and soft drinks. Whatever you need to wash it all down.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V2 - Horizontal Scroll -->
+  <div class="variant" id="v2">
+    <section class="v2-menu section-pad">
+      <div class="container text-center">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-heading">The Menu</h2>
+        <p class="section-sub">Simple food done well. Every burger is made to order, every wing is crispy, and every Philly is loaded.</p>
+      </div>
+      <div class="v2-scroll-wrap">
+        <div class="v2-scroll">
+          <div class="v2-item">
+            <span class="v2-item-icon">&#127828;</span>
+            <span class="v2-item-badge">Signature</span>
+            <h3>Build Your Own Burger</h3>
+            <p>Start with a fresh patty, pick your bun, stack your toppings, add your sauces. Every burger is built exactly the way you want it.</p>
+          </div>
+          <div class="v2-item">
+            <span class="v2-item-icon">&#127831;</span>
+            <span class="v2-item-badge">Fan Favorite</span>
+            <h3>Wings</h3>
+            <p>Crispy fried wings tossed in your choice of sauce. From mild to bring-the-heat hot. Get them by the basket.</p>
+          </div>
+          <div class="v2-item">
+            <span class="v2-item-icon">&#129386;</span>
+            <span class="v2-item-badge">Classic</span>
+            <h3>Philly Steak & Chicken</h3>
+            <p>Shaved steak or grilled chicken with peppers, onions, and melted cheese on a toasted hoagie roll.</p>
+          </div>
+          <div class="v2-item">
+            <span class="v2-item-icon">&#127839;</span>
+            <span class="v2-item-badge">Starters</span>
+            <h3>Appetizers</h3>
+            <p>Fried pickles, mozzarella sticks, loaded nachos, and more. Perfect for starting things off right.</p>
+          </div>
+          <div class="v2-item">
+            <span class="v2-item-icon">&#127866;</span>
+            <span class="v2-item-badge">Bar</span>
+            <h3>Drinks</h3>
+            <p>Cold beer on tap, bottled favorites, and soft drinks. Something for everyone at the bar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V3 - Stacked Rows -->
+  <div class="variant" id="v3">
+    <section class="v3-menu section-pad">
+      <div class="container text-center">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-heading">The Menu</h2>
+        <p class="section-sub">Simple food done well. No shortcuts, no compromises.</p>
+      </div>
+      <div class="v3-row-sig" style="max-width: 1000px; margin: 0 auto 8px; padding: 40px;">
+        <div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,4vw,2.8rem); color:#f0f0f0; margin-bottom:12px;"><span style="color:var(--neon-red);">Build Your Own</span> Burger</h3>
+          <p style="font-size:0.95rem; color:#888; line-height:1.7; max-width:500px;">Start with a fresh patty and make it yours. Choose your bun, pick your toppings, stack your sauces. From classic cheeseburger to something nobody has tried before.</p>
+        </div>
+        <div class="v3-steps-mini">
+          <div class="v3-step-mini"><div class="v3-step-mini-num">01</div><div class="v3-step-mini-label">Patty</div></div>
+          <div class="v3-step-mini"><div class="v3-step-mini-num">02</div><div class="v3-step-mini-label">Bun</div></div>
+          <div class="v3-step-mini"><div class="v3-step-mini-num">03</div><div class="v3-step-mini-label">Toppings</div></div>
+          <div class="v3-step-mini"><div class="v3-step-mini-num">04</div><div class="v3-step-mini-label">Sauces</div></div>
+        </div>
+      </div>
+      <div class="v3-row"><div class="v3-row-icon">&#127831;</div><div><h3>Wings</h3><div class="v3-row-tag">Fan Favorite</div></div><p>Crispy fried wings tossed in your choice of sauce. From mild to bring-the-heat hot. Get them by the basket and don't forget the ranch.</p></div>
+      <div class="v3-row"><div class="v3-row-icon">&#129386;</div><div><h3>Philly Steak & Chicken</h3><div class="v3-row-tag">Classic</div></div><p>Shaved steak or grilled chicken piled high with peppers, onions, and melted cheese on a toasted hoagie roll. The real deal.</p></div>
+      <div class="v3-row"><div class="v3-row-icon">&#127839;</div><div><h3>Appetizers</h3><div class="v3-row-tag">Starters</div></div><p>Fried pickles, mozzarella sticks, loaded nachos, and more. Perfect for sharing or keeping all to yourself.</p></div>
+      <div class="v3-row"><div class="v3-row-icon">&#127866;</div><div><h3>Drinks</h3><div class="v3-row-tag">Full Bar</div></div><p>Cold beer on tap, bottled favorites, and soft drinks. Whatever you're in the mood for.</p></div>
+    </section>
+  </div>
+
+  <!-- V4 - Tab Style -->
+  <div class="variant" id="v4">
+    <section class="v4-menu section-pad">
+      <div class="container text-center">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-heading">The Menu</h2>
+        <p class="section-sub">Tap a category to explore what's cooking.</p>
+        <div class="v4-tabs">
+          <button class="v4-tab active" onclick="showTab(0)">&#127828; Burgers</button>
+          <button class="v4-tab" onclick="showTab(1)">&#127831; Wings</button>
+          <button class="v4-tab" onclick="showTab(2)">&#129386; Phillys</button>
+          <button class="v4-tab" onclick="showTab(3)">&#127839; Apps</button>
+          <button class="v4-tab" onclick="showTab(4)">&#127866; Drinks</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="v4-panel active" id="tab0">
+          <div class="v4-panel-inner">
+            <span class="v4-panel-icon">&#127828;</span>
+            <h3>Build Your Own Burger</h3>
+            <p>Start with a fresh patty and make it yours. Choose your bun, pick your toppings, stack your sauces. From classic cheeseburger to something nobody has ever tried before. Your call, every time.</p>
+            <div class="v4-panel-tags">
+              <span class="v4-panel-tag">Pick Your Patty</span>
+              <span class="v4-panel-tag">Choose Your Bun</span>
+              <span class="v4-panel-tag">Stack Toppings</span>
+              <span class="v4-panel-tag">Add Sauces</span>
+            </div>
+          </div>
+        </div>
+        <div class="v4-panel" id="tab1">
+          <div class="v4-panel-inner">
+            <span class="v4-panel-icon">&#127831;</span>
+            <h3>Wings</h3>
+            <p>Crispy fried wings tossed in your choice of sauce. From mild to bring-the-heat hot. Get them by the basket and don't forget the ranch.</p>
+            <div class="v4-panel-tags">
+              <span class="v4-panel-tag">Mild</span>
+              <span class="v4-panel-tag">Medium</span>
+              <span class="v4-panel-tag">Hot</span>
+              <span class="v4-panel-tag">Basket Size</span>
+            </div>
+          </div>
+        </div>
+        <div class="v4-panel" id="tab2">
+          <div class="v4-panel-inner">
+            <span class="v4-panel-icon">&#129386;</span>
+            <h3>Philly Steak & Chicken</h3>
+            <p>Shaved steak or grilled chicken piled high with peppers, onions, and melted cheese on a toasted hoagie roll. The real deal, Forest City style.</p>
+            <div class="v4-panel-tags">
+              <span class="v4-panel-tag">Philly Steak</span>
+              <span class="v4-panel-tag">Philly Chicken</span>
+              <span class="v4-panel-tag">Extra Cheese</span>
+            </div>
+          </div>
+        </div>
+        <div class="v4-panel" id="tab3">
+          <div class="v4-panel-inner">
+            <span class="v4-panel-icon">&#127839;</span>
+            <h3>Appetizers</h3>
+            <p>Fried pickles, mozzarella sticks, loaded nachos, and more. Perfect for sharing or keeping all to yourself.</p>
+            <div class="v4-panel-tags">
+              <span class="v4-panel-tag">Fried Pickles</span>
+              <span class="v4-panel-tag">Mozzarella Sticks</span>
+              <span class="v4-panel-tag">Loaded Nachos</span>
+            </div>
+          </div>
+        </div>
+        <div class="v4-panel" id="tab4">
+          <div class="v4-panel-inner">
+            <span class="v4-panel-icon">&#127866;</span>
+            <h3>Drinks</h3>
+            <p>Cold beer on tap, bottled favorites, and soft drinks. Whatever you're in the mood for, we've got something to wash it all down.</p>
+            <div class="v4-panel-tags">
+              <span class="v4-panel-tag">Draft Beer</span>
+              <span class="v4-panel-tag">Bottles</span>
+              <span class="v4-panel-tag">Soft Drinks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V5 - Magazine Blocks -->
+  <div class="variant" id="v5">
+    <section class="v5-menu section-pad">
+      <div class="container text-center">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-heading">The Menu</h2>
+        <p class="section-sub">Simple food done well. Every bite counts.</p>
+      </div>
+      <div class="container">
+        <div class="v5-hero-block">
+          <h3>Build Your Own Burger</h3>
+          <p>Start with a fresh patty, choose your bun, stack your toppings, add your sauces. Your burger, your way, every single time.</p>
+        </div>
+        <div class="v5-blocks">
+          <div class="v5-block"><span class="v5-block-icon">&#127831;</span><h3>Wings</h3><p>Crispy fried wings tossed in your choice of sauce. From mild to bring-the-heat hot.</p></div>
+          <div class="v5-block"><span class="v5-block-icon">&#129386;</span><h3>Philly Steak & Chicken</h3><p>Shaved steak or grilled chicken piled high with peppers, onions, and melted cheese.</p></div>
+          <div class="v5-block"><span class="v5-block-icon">&#127839;</span><h3>Appetizers</h3><p>Fried pickles, mozzarella sticks, loaded nachos, and more. Start things off right.</p></div>
+          <div class="v5-block"><span class="v5-block-icon">&#127866;</span><h3>Drinks</h3><p>Cold beer on tap, bottled favorites, and soft drinks. Something for everyone.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Menu Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+    function showTab(i) {
+      document.querySelectorAll('.v4-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.v4-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab' + i).classList.add('active');
+      document.querySelectorAll('.v4-tab')[i].classList.add('active');
+    }
+  </script>
+</body>
+</html>

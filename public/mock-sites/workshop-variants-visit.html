@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkShop Vintage Market - Visit Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf6ef;
+      color: #3a2e25;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --cream: #faf6ef;
+      --brown: #5c4033;
+      --sage: #8a9a7b;
+      --gold: #c4a35a;
+      --terracotta: #c17c5e;
+      --linen: #f0ead6;
+      --dark: #3a2e25;
+    }
+    .variant { display: none; }
+
+    /* ======================================================
+       PICKER BAR
+    ====================================================== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #3a2e25; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar .bar-label {
+      color: #c4a35a; font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 700; margin-right: 16px;
+    }
+    .pick-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(196,163,90,0.3);
+      background: transparent; color: #faf6ef; font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .pick-btn:hover { border-color: #c4a35a; background: rgba(196,163,90,0.1); }
+    .pick-btn.active { background: #c17c5e; color: #fff; border-color: #c17c5e; }
+
+    /* ======================================================
+       V1 — TWO-COLUMN: INFO LEFT, ABSTRACT MAP RIGHT
+    ====================================================== */
+    .v1-section {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex;
+      align-items: stretch;
+    }
+    .v1-left {
+      flex: 1;
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 580px;
+    }
+    .v1-label {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+    }
+    .v1-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+    .v1-info-block {
+      margin-bottom: 32px;
+    }
+    .v1-info-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .v1-info-text {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--brown);
+    }
+    .v1-info-text a {
+      color: var(--terracotta);
+      border-bottom: 1px solid rgba(193,124,94,0.3);
+      transition: border-color 0.2s;
+    }
+    .v1-info-text a:hover { border-color: var(--terracotta); }
+    .v1-hours-list {
+      list-style: none;
+    }
+    .v1-hours-list li {
+      font-size: 16px;
+      color: var(--brown);
+      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      max-width: 320px;
+    }
+    .v1-hours-list li span:last-child {
+      font-weight: 600;
+    }
+    .v1-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 32px 0;
+    }
+    .v1-note {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .v1-cta {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--linen);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+    }
+    .v1-cta p {
+      font-size: 15px;
+      color: var(--brown);
+      line-height: 1.6;
+    }
+    .v1-right {
+      flex: 1;
+      position: relative;
+      background: var(--linen);
+      overflow: hidden;
+      min-height: 600px;
+    }
+    /* Abstract street grid */
+    .v1-map-grid {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .v1-street {
+      position: absolute;
+      background: rgba(92,64,51,0.08);
+    }
+    .v1-street.h1 { top: 20%; left: 0; right: 0; height: 3px; }
+    .v1-street.h2 { top: 45%; left: 0; right: 0; height: 5px; background: rgba(92,64,51,0.15); }
+    .v1-street.h3 { top: 70%; left: 10%; right: 0; height: 2px; }
+    .v1-street.v1s { left: 25%; top: 0; bottom: 0; width: 2px; }
+    .v1-street.v2s { left: 50%; top: 0; bottom: 0; width: 4px; background: rgba(92,64,51,0.12); }
+    .v1-street.v3s { left: 75%; top: 10%; bottom: 10%; width: 2px; }
+    /* Buildings as blocks */
+    .v1-block {
+      position: absolute;
+      border-radius: 4px;
+    }
+    .v1-block.b1 { top: 8%; left: 10%; width: 12%; height: 10%; background: rgba(138,154,123,0.15); }
+    .v1-block.b2 { top: 24%; left: 30%; width: 18%; height: 18%; background: rgba(196,163,90,0.12); }
+    .v1-block.b3 { top: 50%; left: 8%; width: 15%; height: 15%; background: rgba(193,124,94,0.1); }
+    .v1-block.b4 { top: 55%; left: 55%; width: 18%; height: 12%; background: rgba(138,154,123,0.1); }
+    .v1-block.b5 { top: 75%; left: 30%; width: 10%; height: 18%; background: rgba(92,64,51,0.06); }
+    .v1-block.b6 { top: 10%; left: 55%; width: 16%; height: 8%; background: rgba(193,124,94,0.08); }
+    .v1-block.b7 { top: 25%; left: 60%; width: 10%; height: 14%; background: rgba(196,163,90,0.1); }
+    /* Workshop marker */
+    .v1-marker {
+      position: absolute;
+      top: 42%;
+      left: 48%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+    }
+    .v1-marker-dot {
+      width: 20px;
+      height: 20px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      box-shadow: 0 0 0 6px rgba(193,124,94,0.2), 0 0 0 14px rgba(193,124,94,0.08);
+      animation: v1pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes v1pulse {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(193,124,94,0.2), 0 0 0 14px rgba(193,124,94,0.08); }
+      50% { box-shadow: 0 0 0 10px rgba(193,124,94,0.15), 0 0 0 22px rgba(193,124,94,0.05); }
+    }
+    .v1-marker-label {
+      font-family: 'Caveat', cursive;
+      font-size: 18px;
+      color: var(--terracotta);
+      white-space: nowrap;
+    }
+    .v1-street-label {
+      position: absolute;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(92,64,51,0.35);
+      font-weight: 600;
+    }
+    .v1-street-label.lafayette { top: 43%; left: 52%; transform: rotate(-90deg) translateX(-50%); transform-origin: left top; }
+    .v1-street-label.warren { top: 18%; left: 30%; }
+    .v1-footer {
+      padding: 40px 60px;
+      background: var(--dark);
+      text-align: center;
+    }
+    .v1-footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: rgba(250,246,239,0.5);
+      letter-spacing: 0.1em;
+    }
+    .v1-footer .social {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(196,163,90,0.6);
+      margin-top: 10px;
+      letter-spacing: 0;
+    }
+    @media (max-width: 900px) {
+      .v1-section { flex-direction: column; }
+      .v1-left { max-width: 100%; padding: 60px 40px; }
+      .v1-right { min-height: 400px; }
+    }
+    @media (max-width: 560px) {
+      .v1-left { padding: 40px 24px; }
+      .v1-heading { font-size: 34px; }
+      .v1-hours-list li { flex-direction: column; gap: 2px; }
+    }
+
+    /* ======================================================
+       V2 — FULL-WIDTH CENTERED, HERO TYPOGRAPHY ADDRESS
+    ====================================================== */
+    .v2-section {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+    }
+    .v2-hero {
+      padding: 100px 40px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .v2-hero::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: var(--sage);
+    }
+    .v2-label {
+      font-family: 'Caveat', cursive;
+      font-size: 26px;
+      color: var(--sage);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .v2-address-hero {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 7vw, 96px);
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .v2-address-hero .city-line {
+      display: block;
+      font-size: clamp(20px, 3.5vw, 44px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown);
+      margin-top: 8px;
+      letter-spacing: 0.02em;
+    }
+    .v2-subtext {
+      font-size: 16px;
+      color: var(--sage);
+      margin-top: 20px;
+      letter-spacing: 0.05em;
+    }
+    .v2-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 40px auto;
+    }
+    .v2-ornament-line {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .v2-ornament-diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .v2-hours-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+    }
+    .v2-hours-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 32px;
+    }
+    .v2-hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .v2-hours-table tr {
+      border-bottom: 1px solid rgba(92,64,51,0.1);
+    }
+    .v2-hours-table tr:last-child { border-bottom: none; }
+    .v2-hours-table td {
+      padding: 16px 0;
+      font-size: 16px;
+      color: var(--brown);
+    }
+    .v2-hours-table td:first-child {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .v2-hours-table td:last-child {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+    }
+    .v2-hours-table tr.closed td:last-child {
+      color: var(--sage);
+      font-style: italic;
+    }
+    .v2-hours-table tr.open td:last-child {
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+    .v2-bottom {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      background: var(--linen);
+      border-top: 3px solid var(--gold);
+    }
+    .v2-contact-row {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .v2-contact-item {
+      text-align: center;
+    }
+    .v2-contact-item .icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--gold);
+    }
+    .v2-contact-item p {
+      font-size: 15px;
+      color: var(--brown);
+    }
+    .v2-contact-item p a {
+      color: var(--terracotta);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .v2-contact-item p a:hover { border-bottom-color: var(--terracotta); }
+    .v2-note {
+      max-width: 500px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .v2-cta-text {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: var(--terracotta);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .v2-footer {
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--dark);
+    }
+    .v2-footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: rgba(250,246,239,0.5);
+      letter-spacing: 0.1em;
+    }
+    .v2-footer .social {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(196,163,90,0.6);
+      margin-top: 10px;
+      letter-spacing: 0;
+    }
+    @media (max-width: 560px) {
+      .v2-hero { padding: 80px 24px 40px; }
+      .v2-hours-section { padding: 0 24px 40px; }
+      .v2-contact-row { gap: 30px; }
+    }
+
+    /* ======================================================
+       V3 — DARK BROWN BG, GOLD ACCENTS, ELEGANT CARDS
+    ====================================================== */
+    .v3-section {
+      min-height: 100vh;
+      background: var(--dark);
+      color: var(--cream);
+      position: relative;
+    }
+    .v3-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(196,163,90,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(193,124,94,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .v3-header {
+      text-align: center;
+      padding: 80px 40px 20px;
+      position: relative;
+    }
+    .v3-corner-ornament {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-color: rgba(196,163,90,0.25);
+      border-style: solid;
+    }
+    .v3-corner-ornament.tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+    .v3-corner-ornament.tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+    .v3-label {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .v3-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .v3-subtitle {
+      font-size: 15px;
+      color: rgba(250,246,239,0.45);
+      letter-spacing: 0.08em;
+    }
+    .v3-gold-rule {
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 40px auto;
+    }
+    .v3-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+    }
+    .v3-card {
+      background: rgba(250,246,239,0.04);
+      border: 1px solid rgba(196,163,90,0.15);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .v3-card:hover {
+      border-color: rgba(196,163,90,0.35);
+      background: rgba(250,246,239,0.06);
+    }
+    .v3-card-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold);
+    }
+    .v3-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+    .v3-card-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(250,246,239,0.65);
+    }
+    .v3-card-text a {
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196,163,90,0.3);
+      transition: border-color 0.2s;
+    }
+    .v3-card-text a:hover { border-color: var(--gold); }
+    .v3-hours-row {
+      padding: 4px 0;
+    }
+    .v3-hours-day {
+      font-weight: 600;
+      color: rgba(250,246,239,0.8);
+    }
+    .v3-hours-time {
+      color: var(--gold);
+    }
+    .v3-hours-closed {
+      color: rgba(250,246,239,0.35);
+      font-style: italic;
+    }
+    .v3-workshop-banner {
+      max-width: 960px;
+      margin: 0 auto 60px;
+      padding: 0 40px;
+    }
+    .v3-workshop-inner {
+      background: linear-gradient(135deg, rgba(193,124,94,0.12), rgba(196,163,90,0.08));
+      border: 1px solid rgba(196,163,90,0.2);
+      border-radius: 12px;
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .v3-workshop-icon {
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--terracotta);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--terracotta);
+      flex-shrink: 0;
+    }
+    .v3-workshop-text {
+      font-size: 16px;
+      color: rgba(250,246,239,0.75);
+      line-height: 1.6;
+    }
+    .v3-footer {
+      border-top: 1px solid rgba(196,163,90,0.12);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .v3-footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: rgba(250,246,239,0.35);
+      letter-spacing: 0.1em;
+    }
+    .v3-footer .social {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(196,163,90,0.4);
+      margin-top: 10px;
+      letter-spacing: 0;
+    }
+    @media (max-width: 768px) {
+      .v3-cards-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .v3-workshop-inner { flex-direction: column; text-align: center; padding: 28px 24px; }
+    }
+    @media (max-width: 560px) {
+      .v3-header { padding: 60px 24px 20px; }
+      .v3-cards-grid { padding: 0 24px 40px; }
+      .v3-workshop-banner { padding: 0 24px; }
+      .v3-corner-ornament { width: 40px; height: 40px; }
+    }
+
+    /* ======================================================
+       V4 — SPLIT: ABSTRACT STREET GRID + INFO OVERLAY
+    ====================================================== */
+    .v4-section {
+      min-height: 100vh;
+      position: relative;
+      background: var(--linen);
+      overflow: hidden;
+    }
+    /* Full-background abstract street grid */
+    .v4-grid-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .v4-grid-line {
+      position: absolute;
+      background: rgba(92,64,51,0.06);
+    }
+    /* Horizontal streets */
+    .v4-grid-line.gh1 { top: 12%; left: 0; right: 0; height: 2px; }
+    .v4-grid-line.gh2 { top: 28%; left: 5%; right: 10%; height: 4px; background: rgba(138,154,123,0.08); }
+    .v4-grid-line.gh3 { top: 48%; left: 0; right: 0; height: 6px; background: rgba(92,64,51,0.1); }
+    .v4-grid-line.gh4 { top: 65%; left: 8%; right: 5%; height: 3px; }
+    .v4-grid-line.gh5 { top: 82%; left: 0; right: 0; height: 2px; background: rgba(92,64,51,0.04); }
+    /* Vertical streets */
+    .v4-grid-line.gv1 { left: 15%; top: 0; bottom: 0; width: 2px; }
+    .v4-grid-line.gv2 { left: 35%; top: 5%; bottom: 8%; width: 5px; background: rgba(138,154,123,0.06); }
+    .v4-grid-line.gv3 { left: 55%; top: 0; bottom: 0; width: 3px; background: rgba(92,64,51,0.08); }
+    .v4-grid-line.gv4 { left: 72%; top: 10%; bottom: 5%; width: 2px; }
+    .v4-grid-line.gv5 { left: 88%; top: 0; bottom: 0; width: 2px; background: rgba(92,64,51,0.04); }
+    /* Building blocks */
+    .v4-bldg {
+      position: absolute;
+      border-radius: 3px;
+    }
+    .v4-bldg.gb1 { top: 4%; left: 20%; width: 12%; height: 6%; background: rgba(196,163,90,0.08); }
+    .v4-bldg.gb2 { top: 14%; left: 40%; width: 12%; height: 12%; background: rgba(138,154,123,0.07); }
+    .v4-bldg.gb3 { top: 5%; left: 60%; width: 10%; height: 5%; background: rgba(193,124,94,0.06); }
+    .v4-bldg.gb4 { top: 30%; left: 18%; width: 14%; height: 15%; background: rgba(92,64,51,0.05); }
+    .v4-bldg.gb5 { top: 32%; left: 58%; width: 12%; height: 14%; background: rgba(196,163,90,0.06); }
+    .v4-bldg.gb6 { top: 68%; left: 22%; width: 10%; height: 10%; background: rgba(138,154,123,0.06); }
+    .v4-bldg.gb7 { top: 52%; left: 75%; width: 10%; height: 10%; background: rgba(193,124,94,0.05); }
+    .v4-bldg.gb8 { top: 70%; left: 60%; width: 10%; height: 10%; background: rgba(92,64,51,0.04); }
+    .v4-bldg.gb9 { top: 85%; left: 38%; width: 14%; height: 8%; background: rgba(196,163,90,0.05); }
+    /* Intersection marker for WorkShop */
+    .v4-pin {
+      position: absolute;
+      top: 46%;
+      left: 54%;
+      z-index: 1;
+    }
+    .v4-pin-ring {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--terracotta);
+      border-radius: 50%;
+      animation: v4ring 3s ease-in-out infinite;
+    }
+    @keyframes v4ring {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.4; }
+    }
+    .v4-pin-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .v4-pin-label {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: var(--terracotta);
+      white-space: nowrap;
+    }
+    /* Street name labels on grid */
+    .v4-slabel {
+      position: absolute;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(92,64,51,0.2);
+      font-weight: 700;
+      z-index: 1;
+    }
+    .v4-slabel.lafayette { top: 46%; left: 56%; transform: rotate(-90deg); transform-origin: left top; }
+    .v4-slabel.marion { top: 26%; left: 20%; }
+    .v4-slabel.warren { top: 63%; left: 38%; }
+    /* Info overlay panel */
+    .v4-overlay {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 60px;
+    }
+    .v4-panel {
+      background: rgba(58,46,37,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 56px 48px;
+      max-width: 480px;
+      width: 100%;
+      color: var(--cream);
+      border: 1px solid rgba(196,163,90,0.15);
+      box-shadow: 0 32px 64px rgba(58,46,37,0.3);
+    }
+    .v4-panel-label {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .v4-panel-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+    .v4-panel-address {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .v4-panel-city {
+      font-size: 15px;
+      color: rgba(250,246,239,0.5);
+      margin-bottom: 24px;
+    }
+    .v4-panel-phone {
+      font-size: 16px;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .v4-panel-phone a {
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196,163,90,0.3);
+    }
+    .v4-panel-phone a:hover { border-bottom-color: var(--gold); }
+    .v4-panel-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 24px;
+    }
+    .v4-panel-hours-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: rgba(250,246,239,0.6);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .v4-panel-hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(250,246,239,0.06);
+      font-size: 15px;
+    }
+    .v4-panel-hours-row:last-of-type { border-bottom: none; }
+    .v4-panel-hours-row .day { color: rgba(250,246,239,0.7); }
+    .v4-panel-hours-row .time { color: var(--terracotta); font-weight: 600; }
+    .v4-panel-hours-row .time.off { color: rgba(250,246,239,0.3); font-style: italic; font-weight: 400; }
+    .v4-panel-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: rgba(250,246,239,0.4);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .v4-panel-cta {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: rgba(193,124,94,0.12);
+      border-radius: 8px;
+      border-left: 3px solid var(--terracotta);
+      font-size: 14px;
+      color: rgba(250,246,239,0.7);
+      line-height: 1.6;
+    }
+    .v4-footer {
+      position: relative;
+      z-index: 2;
+      padding: 30px 20px;
+      background: var(--dark);
+      text-align: center;
+    }
+    .v4-footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: rgba(250,246,239,0.5);
+      letter-spacing: 0.1em;
+    }
+    .v4-footer .social {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(196,163,90,0.6);
+      margin-top: 10px;
+      letter-spacing: 0;
+    }
+    @media (max-width: 900px) {
+      .v4-overlay { justify-content: center; padding: 40px 24px; }
+    }
+    @media (max-width: 560px) {
+      .v4-panel { padding: 36px 28px; }
+      .v4-panel-heading { font-size: 28px; }
+    }
+
+    /* ======================================================
+       V5 — MAGAZINE EDITORIAL, GIANT HEADING, TERRACOTTA BORDER
+    ====================================================== */
+    .v5-section {
+      min-height: 100vh;
+      background: var(--cream);
+      position: relative;
+    }
+    .v5-border-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--terracotta), var(--gold), var(--terracotta));
+    }
+    .v5-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px 60px 80px;
+    }
+    .v5-top-label {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .v5-giant-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(60px, 10vw, 140px);
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .v5-giant-heading .accent {
+      color: var(--terracotta);
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.55em;
+      letter-spacing: 0;
+      line-height: 1.3;
+    }
+    .v5-rule {
+      width: 100%;
+      height: 3px;
+      background: var(--dark);
+      margin: 40px 0 48px;
+    }
+    .v5-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .v5-col-left {}
+    .v5-col-right {}
+    .v5-block {
+      margin-bottom: 40px;
+    }
+    .v5-block-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(193,124,94,0.2);
+    }
+    .v5-block-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+    .v5-block-value.small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.7;
+    }
+    .v5-block-value a {
+      color: var(--terracotta);
+      border-bottom: 1px solid rgba(193,124,94,0.3);
+      transition: border-color 0.2s;
+    }
+    .v5-block-value a:hover { border-bottom-color: var(--terracotta); }
+    .v5-hours-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .v5-hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(92,64,51,0.08);
+    }
+    .v5-hours-row:last-child { border-bottom: none; }
+    .v5-hours-row .day {
+      font-size: 15px;
+      color: var(--brown);
+      font-weight: 500;
+    }
+    .v5-hours-row .time {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .v5-hours-row .time.off {
+      color: var(--sage);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .v5-cta-box {
+      background: var(--dark);
+      color: var(--cream);
+      padding: 28px 32px;
+      border-radius: 0;
+      position: relative;
+    }
+    .v5-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--terracotta);
+    }
+    .v5-cta-box p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(250,246,239,0.8);
+    }
+    .v5-cta-box .cta-label {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .v5-note-block {
+      margin-top: 40px;
+      padding-left: 20px;
+      border-left: 3px solid var(--sage);
+    }
+    .v5-note-block p {
+      font-size: 15px;
+      color: var(--sage);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .v5-social-note {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: var(--terracotta);
+      margin-top: 28px;
+    }
+    .v5-footer {
+      border-top: 3px solid var(--dark);
+      padding: 40px 60px 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .v5-footer p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--brown);
+      letter-spacing: 0.1em;
+    }
+    .v5-footer .social {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--sage);
+    }
+    @media (max-width: 768px) {
+      .v5-inner { padding: 60px 40px 40px 52px; }
+      .v5-content { grid-template-columns: 1fr; gap: 0; }
+      .v5-footer { flex-direction: column; gap: 8px; text-align: center; padding: 30px 24px; }
+    }
+    @media (max-width: 560px) {
+      .v5-inner { padding: 48px 24px 32px 36px; }
+      .v5-border-accent { width: 5px; }
+      .v5-giant-heading { font-size: 52px; }
+      .v5-block-value { font-size: 18px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     V1 — TWO-COLUMN: INFO LEFT, ABSTRACT MAP RIGHT
+============================================================ -->
+<div class="variant" id="v1" style="display:block;">
+  <div class="v1-section">
+    <div class="v1-left">
+      <p class="v1-label">Come See Us</p>
+      <h2 class="v1-heading">Find Us in<br>Uptown Shelby</h2>
+
+      <div class="v1-info-block">
+        <p class="v1-info-label">Address</p>
+        <p class="v1-info-text">108 N Lafayette St<br>Shelby, NC 28150</p>
+      </div>
+
+      <div class="v1-info-block">
+        <p class="v1-info-label">Phone</p>
+        <p class="v1-info-text"><a href="tel:7044817987">(704) 481-7987</a></p>
+      </div>
+
+      <div class="v1-info-block">
+        <p class="v1-info-label">Hours</p>
+        <ul class="v1-hours-list">
+          <li><span>Tuesday - Friday</span> <span>10:30 AM - 5:30 PM</span></li>
+          <li><span>Saturday - Monday</span> <span>Closed</span></li>
+        </ul>
+      </div>
+
+      <div class="v1-divider"></div>
+
+      <p class="v1-note">In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</p>
+
+      <div class="v1-cta">
+        <p>Want to book a workshop, birthday party, or girls' night? Give us a call.</p>
+      </div>
+    </div>
+
+    <div class="v1-right">
+      <div class="v1-map-grid">
+        <div class="v1-street h1"></div>
+        <div class="v1-street h2"></div>
+        <div class="v1-street h3"></div>
+        <div class="v1-street v1s"></div>
+        <div class="v1-street v2s"></div>
+        <div class="v1-street v3s"></div>
+        <div class="v1-block b1"></div>
+        <div class="v1-block b2"></div>
+        <div class="v1-block b3"></div>
+        <div class="v1-block b4"></div>
+        <div class="v1-block b5"></div>
+        <div class="v1-block b6"></div>
+        <div class="v1-block b7"></div>
+        <div class="v1-marker">
+          <div class="v1-marker-dot"></div>
+          <span class="v1-marker-label">WorkShop is here</span>
+        </div>
+        <span class="v1-street-label lafayette">Lafayette St</span>
+        <span class="v1-street-label warren">Warren St</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="v1-footer">
+    <p>WorkShop Vintage Market. Shelby, NC. Est. 2018.</p>
+    <p class="social">Follow us on Facebook for new arrivals and event announcements.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     V2 — FULL-WIDTH CENTERED, HERO TYPOGRAPHY, ELEGANT TABLE
+============================================================ -->
+<div class="variant" id="v2">
+  <div class="v2-section">
+    <div class="v2-hero">
+      <p class="v2-label">Come See Us</p>
+      <h2 class="v2-address-hero">
+        108 N Lafayette St
+        <span class="city-line">Shelby, North Carolina 28150</span>
+      </h2>
+      <p class="v2-subtext">(704) 481-7987</p>
+    </div>
+
+    <div class="v2-ornament">
+      <div class="v2-ornament-line"></div>
+      <div class="v2-ornament-diamond"></div>
+      <div class="v2-ornament-line"></div>
+    </div>
+
+    <div class="v2-hours-section">
+      <h3 class="v2-hours-title">Shop Hours</h3>
+      <table class="v2-hours-table">
+        <tr class="open"><td>Tuesday</td><td>10:30 AM - 5:30 PM</td></tr>
+        <tr class="open"><td>Wednesday</td><td>10:30 AM - 5:30 PM</td></tr>
+        <tr class="open"><td>Thursday</td><td>10:30 AM - 5:30 PM</td></tr>
+        <tr class="open"><td>Friday</td><td>10:30 AM - 5:30 PM</td></tr>
+        <tr class="closed"><td>Saturday</td><td>Closed</td></tr>
+        <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+        <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+      </table>
+    </div>
+
+    <div class="v2-bottom">
+      <div class="v2-contact-row">
+        <div class="v2-contact-item">
+          <div class="icon-circle">P</div>
+          <p><a href="tel:7044817987">(704) 481-7987</a></p>
+        </div>
+        <div class="v2-contact-item">
+          <div class="icon-circle">A</div>
+          <p>108 N Lafayette St<br>Shelby, NC 28150</p>
+        </div>
+      </div>
+      <p class="v2-note">In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</p>
+      <p class="v2-cta-text">Want to book a workshop, birthday party, or girls' night? Give us a call.</p>
+    </div>
+
+    <div class="v2-footer">
+      <p>WorkShop Vintage Market. Shelby, NC. Est. 2018.</p>
+      <p class="social">Follow us on Facebook for new arrivals and event announcements.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     V3 — DARK BROWN BG, GOLD ACCENTS, ELEGANT CARDS
+============================================================ -->
+<div class="variant" id="v3">
+  <div class="v3-section">
+    <div class="v3-corner-ornament tl"></div>
+    <div class="v3-corner-ornament tr"></div>
+
+    <div class="v3-header">
+      <p class="v3-label">Come See Us</p>
+      <h2 class="v3-heading">Find Us in Uptown Shelby</h2>
+      <p class="v3-subtitle">108 N Lafayette St, Shelby, NC 28150</p>
+    </div>
+
+    <div class="v3-gold-rule"></div>
+
+    <div class="v3-cards-grid">
+      <!-- Card 1: Location -->
+      <div class="v3-card">
+        <div class="v3-card-icon">L</div>
+        <h3 class="v3-card-title">Location</h3>
+        <p class="v3-card-text">
+          108 N Lafayette St<br>
+          Shelby, NC 28150<br><br>
+          <span style="font-style:italic;color:rgba(250,246,239,0.4);font-size:13px;">In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</span>
+        </p>
+      </div>
+
+      <!-- Card 2: Hours -->
+      <div class="v3-card">
+        <div class="v3-card-icon">H</div>
+        <h3 class="v3-card-title">Shop Hours</h3>
+        <div class="v3-card-text">
+          <div class="v3-hours-row">
+            <span class="v3-hours-day">Tue - Fri</span><br>
+            <span class="v3-hours-time">10:30 AM - 5:30 PM</span>
+          </div>
+          <div class="v3-hours-row" style="margin-top:12px;">
+            <span class="v3-hours-day">Sat - Mon</span><br>
+            <span class="v3-hours-closed">Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Contact -->
+      <div class="v3-card">
+        <div class="v3-card-icon">C</div>
+        <h3 class="v3-card-title">Get in Touch</h3>
+        <p class="v3-card-text">
+          <a href="tel:7044817987">(704) 481-7987</a><br><br>
+          <span style="font-size:13px;color:rgba(250,246,239,0.4);">Follow us on Facebook for new arrivals and event announcements.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="v3-workshop-banner">
+      <div class="v3-workshop-inner">
+        <div class="v3-workshop-icon">W</div>
+        <p class="v3-workshop-text">Want to book a workshop, birthday party, or girls' night? Give us a call.</p>
+      </div>
+    </div>
+
+    <div class="v3-footer">
+      <p>WorkShop Vintage Market. Shelby, NC. Est. 2018.</p>
+      <p class="social">Follow us on Facebook for new arrivals and event announcements.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     V4 — SPLIT: ABSTRACT STREET GRID BG + INFO OVERLAY PANEL
+============================================================ -->
+<div class="variant" id="v4">
+  <div class="v4-section">
+    <div class="v4-grid-bg">
+      <!-- Streets -->
+      <div class="v4-grid-line gh1"></div>
+      <div class="v4-grid-line gh2"></div>
+      <div class="v4-grid-line gh3"></div>
+      <div class="v4-grid-line gh4"></div>
+      <div class="v4-grid-line gh5"></div>
+      <div class="v4-grid-line gv1"></div>
+      <div class="v4-grid-line gv2"></div>
+      <div class="v4-grid-line gv3"></div>
+      <div class="v4-grid-line gv4"></div>
+      <div class="v4-grid-line gv5"></div>
+      <!-- Buildings -->
+      <div class="v4-bldg gb1"></div>
+      <div class="v4-bldg gb2"></div>
+      <div class="v4-bldg gb3"></div>
+      <div class="v4-bldg gb4"></div>
+      <div class="v4-bldg gb5"></div>
+      <div class="v4-bldg gb6"></div>
+      <div class="v4-bldg gb7"></div>
+      <div class="v4-bldg gb8"></div>
+      <div class="v4-bldg gb9"></div>
+      <!-- Pin -->
+      <div class="v4-pin">
+        <span class="v4-pin-label">WorkShop</span>
+        <div class="v4-pin-ring"></div>
+        <div class="v4-pin-dot"></div>
+      </div>
+      <!-- Street labels -->
+      <span class="v4-slabel lafayette">Lafayette St</span>
+      <span class="v4-slabel marion">N Marion St</span>
+      <span class="v4-slabel warren">W Warren St</span>
+    </div>
+
+    <div class="v4-overlay">
+      <div class="v4-panel">
+        <p class="v4-panel-label">Come See Us</p>
+        <h2 class="v4-panel-heading">Find Us in<br>Uptown Shelby</h2>
+        <p class="v4-panel-address">108 N Lafayette St</p>
+        <p class="v4-panel-city">Shelby, NC 28150</p>
+        <p class="v4-panel-phone"><a href="tel:7044817987">(704) 481-7987</a></p>
+        <div class="v4-panel-divider"></div>
+        <p class="v4-panel-hours-title">Shop Hours</p>
+        <div class="v4-panel-hours-row"><span class="day">Tuesday - Friday</span><span class="time">10:30 AM - 5:30 PM</span></div>
+        <div class="v4-panel-hours-row"><span class="day">Saturday - Monday</span><span class="time off">Closed</span></div>
+        <p class="v4-panel-note">In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</p>
+        <div class="v4-panel-cta">Want to book a workshop, birthday party, or girls' night? Give us a call.</div>
+      </div>
+    </div>
+
+    <div class="v4-footer">
+      <p>WorkShop Vintage Market. Shelby, NC. Est. 2018.</p>
+      <p class="social">Follow us on Facebook for new arrivals and event announcements.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     V5 — MAGAZINE EDITORIAL, GIANT HEADING, TERRACOTTA BORDER
+============================================================ -->
+<div class="variant" id="v5">
+  <div class="v5-section">
+    <div class="v5-border-accent"></div>
+
+    <div class="v5-inner">
+      <p class="v5-top-label">WorkShop Vintage Market</p>
+      <h2 class="v5-giant-heading">
+        Come<br>Visit
+        <span class="accent">Uptown Shelby</span>
+      </h2>
+
+      <div class="v5-rule"></div>
+
+      <div class="v5-content">
+        <div class="v5-col-left">
+          <div class="v5-block">
+            <p class="v5-block-label">Address</p>
+            <p class="v5-block-value">108 N Lafayette St<br>Shelby, NC 28150</p>
+          </div>
+
+          <div class="v5-block">
+            <p class="v5-block-label">Phone</p>
+            <p class="v5-block-value"><a href="tel:7044817987">(704) 481-7987</a></p>
+          </div>
+
+          <div class="v5-block">
+            <p class="v5-block-label">Hours</p>
+            <div class="v5-hours-stack">
+              <div class="v5-hours-row"><span class="day">Tuesday</span><span class="time">10:30 AM - 5:30 PM</span></div>
+              <div class="v5-hours-row"><span class="day">Wednesday</span><span class="time">10:30 AM - 5:30 PM</span></div>
+              <div class="v5-hours-row"><span class="day">Thursday</span><span class="time">10:30 AM - 5:30 PM</span></div>
+              <div class="v5-hours-row"><span class="day">Friday</span><span class="time">10:30 AM - 5:30 PM</span></div>
+              <div class="v5-hours-row"><span class="day">Saturday</span><span class="time off">Closed</span></div>
+              <div class="v5-hours-row"><span class="day">Sunday</span><span class="time off">Closed</span></div>
+              <div class="v5-hours-row"><span class="day">Monday</span><span class="time off">Closed</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="v5-col-right">
+          <div class="v5-block">
+            <p class="v5-block-label">Getting Here</p>
+            <p class="v5-block-value small">In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</p>
+          </div>
+
+          <div class="v5-cta-box">
+            <p class="cta-label">Book With Us</p>
+            <p>Want to book a workshop, birthday party, or girls' night? Give us a call.</p>
+          </div>
+
+          <div class="v5-note-block">
+            <p>Follow us on Facebook for new arrivals and event announcements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="v5-footer">
+      <p>WorkShop Vintage Market. Shelby, NC. Est. 2018.</p>
+      <p class="social">Follow us on Facebook for new arrivals and event announcements.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PICKER BAR
+============================================================ -->
+<div class="picker-bar">
+  <span class="bar-label">Visit Variants</span>
+  <button onclick="show(1)" class="pick-btn active">1</button>
+  <button onclick="show(2)" class="pick-btn">2</button>
+  <button onclick="show(3)" class="pick-btn">3</button>
+  <button onclick="show(4)" class="pick-btn">4</button>
+  <button onclick="show(5)" class="pick-btn">5</button>
+</div>
+
+<script>
+  function show(n) {
+    document.querySelectorAll('.variant').forEach(function(v) { v.style.display = 'none'; });
+    document.getElementById('v' + n).style.display = 'block';
+    document.querySelectorAll('.pick-btn').forEach(function(b, i) { b.classList.toggle('active', i === n - 1); });
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dovetails & Rusty Nails - Products Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1512; color: #3a2e24; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    :root {
+      --parchment: #f5efe6; --cream: #faf8f3; --brown-deep: #3a2e24; --brown-warm: #6b4c3b;
+      --brown-light: #8b6f5e; --gold: #b8860b; --gold-light: #d4a843; --gold-pale: #e8d5a0;
+      --rust: #8b3a2a; --rust-light: #a85040; --sage: #6b7c5e; --sage-light: #8fa87a;
+      --burgundy: #5c2028; --charcoal: #2c2420; --ink: #1a1512;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,21,18,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(184,134,11,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(184,134,11,0.1); }
+    .picker-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    .variant { display: none; }
+    .variant.active { display: block; }
+
+    /* ===== V1: Card Grid on Cream ===== */
+    .v1 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--cream);
+    }
+    .v1 .inner { max-width: 1100px; margin: 0 auto; }
+    .v1 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v1 .label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v1 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 1rem;
+    }
+    .v1 .sub {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: var(--brown-warm); max-width: 600px; margin: 0 auto; line-height: 1.8;
+    }
+    .v1 .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+    .v1 .card {
+      background: var(--parchment); border-radius: 8px; padding: 2rem;
+      border: 1px solid rgba(184,134,11,0.1); transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .v1 .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(58,46,36,0.1); }
+    .v1 .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--rust), var(--gold));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .v1 .card:hover::before { opacity: 1; }
+    .v1 .card-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; font-size: 1.5rem;
+      background: rgba(184,134,11,0.08); border: 1px solid rgba(184,134,11,0.15);
+      color: var(--gold);
+    }
+    .v1 .card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 0.75rem;
+    }
+    .v1 .card p { font-size: 0.9rem; color: var(--brown-warm); line-height: 1.7; }
+
+    /* ===== V2: Dark with Alternating Layout ===== */
+    .v2 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--charcoal); color: var(--cream);
+    }
+    .v2 .inner { max-width: 900px; margin: 0 auto; }
+    .v2 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v2 .label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v2 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--cream); margin-bottom: 1rem;
+    }
+    .v2 .sub {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: rgba(250,248,243,0.6); max-width: 550px; margin: 0 auto; line-height: 1.8;
+    }
+    .v2 .item {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 2rem 0; border-bottom: 1px solid rgba(184,134,11,0.08);
+    }
+    .v2 .item:last-child { border-bottom: none; }
+    .v2 .item-num {
+      font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900;
+      color: var(--gold); opacity: 0.3; line-height: 1; flex-shrink: 0; width: 50px;
+    }
+    .v2 .item h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v2 .item p {
+      font-size: 0.9rem; color: rgba(250,248,243,0.55); line-height: 1.7;
+    }
+
+    /* ===== V3: Bento Grid ===== */
+    .v3 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--parchment);
+    }
+    .v3 .inner { max-width: 1100px; margin: 0 auto; }
+    .v3 .header { text-align: center; margin-bottom: 3.5rem; }
+    .v3 .label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v3 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 1rem;
+    }
+    .v3 .bento {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .v3 .bento-card {
+      border-radius: 12px; padding: 2rem; position: relative; overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .v3 .bento-card:hover { transform: translateY(-2px); }
+    .v3 .bento-card.large {
+      grid-column: span 2; grid-row: span 2;
+      background: var(--brown-deep); color: var(--cream); padding: 3rem;
+    }
+    .v3 .bento-card.rust-bg { background: var(--rust); color: var(--cream); }
+    .v3 .bento-card.gold-bg { background: rgba(184,134,11,0.1); border: 1px solid rgba(184,134,11,0.15); }
+    .v3 .bento-card.sage-bg { background: var(--sage); color: var(--cream); }
+    .v3 .bento-card.cream-bg { background: var(--cream); border: 1px solid rgba(184,134,11,0.1); }
+    .v3 .bento-icon {
+      font-size: 2rem; margin-bottom: 1rem; opacity: 0.6;
+    }
+    .v3 .bento-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .v3 .bento-card.large h3 { font-size: 1.75rem; }
+    .v3 .bento-card p { font-size: 0.85rem; line-height: 1.7; opacity: 0.8; }
+    .v3 .bento-card.large p { font-size: 0.95rem; }
+
+    /* ===== V4: Horizontal Scroll Cards ===== */
+    .v4 {
+      min-height: 100vh; padding: 5rem 0 6rem;
+      background: var(--cream);
+    }
+    .v4 .header { text-align: center; margin-bottom: 3rem; padding: 0 2rem; }
+    .v4 .label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v4 .heading {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; color: var(--brown-deep); margin-bottom: 1rem;
+    }
+    .v4 .sub {
+      font-family: 'Libre Baskerville', serif; font-size: 0.95rem;
+      color: var(--brown-warm); max-width: 550px; margin: 0 auto; line-height: 1.8;
+    }
+    .v4 .scroll-track {
+      display: flex; gap: 1.5rem; overflow-x: auto;
+      padding: 1rem 2rem 2rem; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .v4 .scroll-track::-webkit-scrollbar { height: 4px; }
+    .v4 .scroll-track::-webkit-scrollbar-track { background: var(--parchment); }
+    .v4 .scroll-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .v4 .scroll-card {
+      min-width: 320px; max-width: 320px; flex-shrink: 0;
+      scroll-snap-align: start; border-radius: 12px;
+      overflow: hidden; border: 1px solid rgba(184,134,11,0.1);
+      background: var(--parchment); transition: transform 0.3s;
+    }
+    .v4 .scroll-card:hover { transform: translateY(-4px); }
+    .v4 .scroll-card-top {
+      height: 140px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative; overflow: hidden;
+    }
+    .v4 .scroll-card-top.c1 { background: linear-gradient(135deg, var(--brown-deep), var(--brown-warm)); color: var(--gold-pale); }
+    .v4 .scroll-card-top.c2 { background: linear-gradient(135deg, var(--rust), var(--rust-light)); color: var(--gold-pale); }
+    .v4 .scroll-card-top.c3 { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--brown-deep); }
+    .v4 .scroll-card-top.c4 { background: linear-gradient(135deg, var(--sage), var(--sage-light)); color: var(--cream); }
+    .v4 .scroll-card-top.c5 { background: linear-gradient(135deg, var(--burgundy), var(--rust)); color: var(--gold-pale); }
+    .v4 .scroll-card-body { padding: 1.5rem; }
+    .v4 .scroll-card-body h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 0.5rem;
+    }
+    .v4 .scroll-card-body p { font-size: 0.85rem; color: var(--brown-warm); line-height: 1.7; }
+
+    /* ===== V5: Victorian Catalog Style ===== */
+    .v5 {
+      min-height: 100vh; padding: 5rem 2rem 6rem;
+      background: var(--cream); position: relative;
+    }
+    .v5::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(58,46,36,0.01) 1px, rgba(58,46,36,0.01) 2px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(58,46,36,0.01) 1px, rgba(58,46,36,0.01) 2px);
+    }
+    .v5 .inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .v5 .header {
+      text-align: center; margin-bottom: 3rem;
+      padding-bottom: 2rem; border-bottom: 2px solid var(--brown-deep);
+    }
+    .v5 .header-top {
+      font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--brown-warm); margin-bottom: 1rem;
+    }
+    .v5 .heading {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700; color: var(--brown-deep); margin-bottom: 0.5rem;
+    }
+    .v5 .heading-sub {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: 1rem; color: var(--brown-warm);
+    }
+    .v5 .catalog-item {
+      display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem;
+      padding: 2rem 0; border-bottom: 1px solid rgba(58,46,36,0.1);
+      align-items: start;
+    }
+    .v5 .catalog-item:last-child { border-bottom: 2px solid var(--brown-deep); }
+    .v5 .catalog-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700;
+      color: var(--gold); opacity: 0.4; text-align: center; line-height: 1;
+    }
+    .v5 .catalog-content h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 0.5rem; letter-spacing: 0.02em;
+    }
+    .v5 .catalog-content p {
+      font-family: 'Libre Baskerville', serif; font-size: 0.85rem;
+      color: var(--brown-warm); line-height: 1.8;
+    }
+    .v5 .catalog-tags {
+      display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;
+    }
+    .v5 .catalog-tag {
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--brown-light); padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(58,46,36,0.15); border-radius: 100px;
+    }
+    .v5 .footer-text {
+      text-align: center; padding-top: 2rem;
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: 0.85rem; color: var(--brown-light);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v3 .bento { grid-template-columns: 1fr; }
+      .v3 .bento-card.large { grid-column: span 1; grid-row: span 1; }
+      .v5 .catalog-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .v5 .catalog-num { text-align: left; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Card Grid on Cream -->
+<div class="variant v1 active" id="v1">
+  <div class="inner">
+    <div class="header">
+      <div class="label">What We Carry</div>
+      <h2 class="heading">Every Corner Holds a Story</h2>
+      <p class="sub">From Victorian parlor furniture to vintage baseball cards, our 5,000 square feet of floor space is packed with pieces that have lived real lives.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">&#9881;</div>
+        <h3>Fine Furniture</h3>
+        <p>Victorian, Eastlake, shabby chic, primitive. Tables, chairs, dressers, cabinets, and statement pieces spanning more than a century of American craftsmanship.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9883;</div>
+        <h3>Glass Art & Pottery</h3>
+        <p>One of the largest collections in the region. Depression glass, art pottery, milk glass, crystal, stoneware, and hand-thrown pieces you will not find anywhere else.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9826;</div>
+        <h3>China & Tableware</h3>
+        <p>Complete sets and individual pieces. Bone china, porcelain, sterling flatware, and elegant serving pieces ready for your table or your collection.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9733;</div>
+        <h3>Vintage Collectibles</h3>
+        <p>Baseball cards, toys, dolls, records, books, and one-of-a-kind curiosities. The kind of stuff that stops you in your tracks.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9830;</div>
+        <h3>Jewelry & Accessories</h3>
+        <p>Estate jewelry, vintage brooches, watches, cufflinks, and accessories with character that modern pieces simply cannot replicate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 2: Dark Numbered List -->
+<div class="variant v2" id="v2">
+  <div class="inner">
+    <div class="header">
+      <div class="label">What We Carry</div>
+      <h2 class="heading">Every Corner Holds a Story</h2>
+      <p class="sub">From Victorian parlor furniture to vintage baseball cards, 5,000 square feet packed with pieces that have lived real lives.</p>
+    </div>
+    <div class="item">
+      <div class="item-num">01</div>
+      <div>
+        <h3>Fine Furniture</h3>
+        <p>Victorian, Eastlake, shabby chic, primitive. Tables, chairs, dressers, cabinets, and statement pieces spanning more than a century of American craftsmanship.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-num">02</div>
+      <div>
+        <h3>Glass Art & Pottery</h3>
+        <p>One of the largest collections in the region. Depression glass, art pottery, milk glass, crystal, stoneware, and hand-thrown pieces you will not find anywhere else.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-num">03</div>
+      <div>
+        <h3>China & Tableware</h3>
+        <p>Complete sets and individual pieces. Bone china, porcelain, sterling flatware, and elegant serving pieces ready for your table or your collection.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-num">04</div>
+      <div>
+        <h3>Vintage Collectibles</h3>
+        <p>Baseball cards, toys, dolls, records, books, and one-of-a-kind curiosities. The kind of stuff that stops you in your tracks and takes you right back to childhood.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-num">05</div>
+      <div>
+        <h3>Jewelry & Accessories</h3>
+        <p>Estate jewelry, vintage brooches, watches, cufflinks, and accessories with character that modern pieces simply cannot replicate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 3: Bento Grid -->
+<div class="variant v3" id="v3">
+  <div class="inner">
+    <div class="header">
+      <div class="label">What We Carry</div>
+      <h2 class="heading">Every Corner Holds a Story</h2>
+    </div>
+    <div class="bento">
+      <div class="bento-card large">
+        <div class="bento-icon">&#9881;</div>
+        <h3>Fine Furniture</h3>
+        <p>Victorian, Eastlake, shabby chic, primitive. Tables, chairs, dressers, cabinets, and statement pieces spanning more than a century of American craftsmanship. Our 5,000 square feet holds everything from delicate parlor chairs to massive farmhouse tables.</p>
+      </div>
+      <div class="bento-card rust-bg">
+        <div class="bento-icon">&#9883;</div>
+        <h3>Glass Art & Pottery</h3>
+        <p>One of the largest collections in the region. Depression glass, art pottery, milk glass, crystal, and stoneware.</p>
+      </div>
+      <div class="bento-card gold-bg">
+        <div class="bento-icon">&#9826;</div>
+        <h3>China & Tableware</h3>
+        <p>Bone china, porcelain, sterling flatware, and elegant serving pieces for your table or collection.</p>
+      </div>
+      <div class="bento-card sage-bg">
+        <div class="bento-icon">&#9733;</div>
+        <h3>Vintage Collectibles</h3>
+        <p>Baseball cards, toys, dolls, records, books, and curiosities that take you right back to childhood.</p>
+      </div>
+      <div class="bento-card cream-bg">
+        <div class="bento-icon">&#9830;</div>
+        <h3>Jewelry & Accessories</h3>
+        <p>Estate jewelry, brooches, watches, cufflinks, and accessories with character.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 4: Horizontal Scroll Cards -->
+<div class="variant v4" id="v4">
+  <div class="header">
+    <div class="label">What We Carry</div>
+    <h2 class="heading">Every Corner Holds a Story</h2>
+    <p class="sub">From Victorian parlor furniture to vintage baseball cards, our 5,000 square feet is packed with pieces that have lived real lives.</p>
+  </div>
+  <div class="scroll-track">
+    <div class="scroll-card">
+      <div class="scroll-card-top c1">&#9881;</div>
+      <div class="scroll-card-body">
+        <h3>Fine Furniture</h3>
+        <p>Victorian, Eastlake, shabby chic, primitive. Tables, chairs, dressers, cabinets, and statement pieces spanning over a century of craftsmanship.</p>
+      </div>
+    </div>
+    <div class="scroll-card">
+      <div class="scroll-card-top c2">&#9883;</div>
+      <div class="scroll-card-body">
+        <h3>Glass Art & Pottery</h3>
+        <p>One of the largest collections in the region. Depression glass, art pottery, milk glass, crystal, stoneware, and hand-thrown pieces.</p>
+      </div>
+    </div>
+    <div class="scroll-card">
+      <div class="scroll-card-top c3">&#9826;</div>
+      <div class="scroll-card-body">
+        <h3>China & Tableware</h3>
+        <p>Complete sets and individual pieces. Bone china, porcelain, sterling flatware, and elegant serving pieces.</p>
+      </div>
+    </div>
+    <div class="scroll-card">
+      <div class="scroll-card-top c4">&#9733;</div>
+      <div class="scroll-card-body">
+        <h3>Vintage Collectibles</h3>
+        <p>Baseball cards, toys, dolls, records, books, and one-of-a-kind curiosities that stop you in your tracks.</p>
+      </div>
+    </div>
+    <div class="scroll-card">
+      <div class="scroll-card-top c5">&#9830;</div>
+      <div class="scroll-card-body">
+        <h3>Jewelry & Accessories</h3>
+        <p>Estate jewelry, vintage brooches, watches, cufflinks, and accessories with character.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 5: Victorian Catalog -->
+<div class="variant v5" id="v5">
+  <div class="inner">
+    <div class="header">
+      <div class="header-top">Dovetails & Rusty Nails &bull; 115 E Main St, Forest City, NC</div>
+      <h2 class="heading">Catalog of Goods</h2>
+      <p class="heading-sub">A selection of what awaits inside our 5,000 square feet</p>
+    </div>
+    <div class="catalog-item">
+      <div class="catalog-num">I.</div>
+      <div class="catalog-content">
+        <h3>Fine Furniture</h3>
+        <p>Victorian, Eastlake, shabby chic, primitive. Tables, chairs, dressers, cabinets, and statement pieces spanning more than a century of American craftsmanship.</p>
+        <div class="catalog-tags">
+          <span class="catalog-tag">Victorian</span>
+          <span class="catalog-tag">Eastlake</span>
+          <span class="catalog-tag">Primitive</span>
+          <span class="catalog-tag">Shabby Chic</span>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-item">
+      <div class="catalog-num">II.</div>
+      <div class="catalog-content">
+        <h3>Glass Art & Pottery</h3>
+        <p>One of the largest collections in the region. Depression glass, art pottery, milk glass, crystal, stoneware, and hand-thrown pieces you will not find anywhere else.</p>
+        <div class="catalog-tags">
+          <span class="catalog-tag">Depression Glass</span>
+          <span class="catalog-tag">Art Pottery</span>
+          <span class="catalog-tag">Crystal</span>
+          <span class="catalog-tag">Stoneware</span>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-item">
+      <div class="catalog-num">III.</div>
+      <div class="catalog-content">
+        <h3>China & Tableware</h3>
+        <p>Complete sets and individual pieces. Bone china, porcelain, sterling flatware, and elegant serving pieces ready for your table or your collection.</p>
+        <div class="catalog-tags">
+          <span class="catalog-tag">Bone China</span>
+          <span class="catalog-tag">Porcelain</span>
+          <span class="catalog-tag">Sterling</span>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-item">
+      <div class="catalog-num">IV.</div>
+      <div class="catalog-content">
+        <h3>Vintage Collectibles</h3>
+        <p>Baseball cards, toys, dolls, records, books, and one-of-a-kind curiosities. The kind of stuff that stops you in your tracks and takes you right back to childhood.</p>
+        <div class="catalog-tags">
+          <span class="catalog-tag">Baseball Cards</span>
+          <span class="catalog-tag">Toys</span>
+          <span class="catalog-tag">Records</span>
+          <span class="catalog-tag">Books</span>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-item">
+      <div class="catalog-num">V.</div>
+      <div class="catalog-content">
+        <h3>Jewelry & Accessories</h3>
+        <p>Estate jewelry, vintage brooches, watches, cufflinks, and accessories with character that modern pieces simply cannot replicate.</p>
+        <div class="catalog-tags">
+          <span class="catalog-tag">Estate Jewelry</span>
+          <span class="catalog-tag">Brooches</span>
+          <span class="catalog-tag">Watches</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer-text">New treasures arrive weekly. Inventory changes constantly.</p>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Products Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

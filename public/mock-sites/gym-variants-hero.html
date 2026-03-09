@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Gym - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Bebas+Neue&family=Anton&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --red: #e63226;
+      --red-glow: rgba(230, 50, 38, 0.3);
+      --neon-green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.25);
+      --orange: #ff6b2b;
+      --yellow: #ffc831;
+      --white: #f0f0f0;
+      --muted: #777777;
+      --border: #2a2a2a;
+      --steel: #333333;
+    }
+
+    /* ============ PICKER BAR ============ */
+    .picker-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid #333;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--neon-green);
+      margin-right: 12px;
+      text-transform: uppercase;
+    }
+    .picker-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      background: #161616;
+      color: #f0f0f0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--red);
+      background: var(--red);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    .variant { display: none; min-height: 100vh; }
+    .variant.active { display: block; }
+    .btn {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { box-shadow: 0 8px 30px var(--red-glow); }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid #444; }
+    .btn-outline:hover { border-color: var(--neon-green); color: var(--neon-green); }
+    .btn-green { background: var(--neon-green); color: #0a0a0a; }
+    .btn-green:hover { box-shadow: 0 8px 30px var(--green-glow); }
+
+    /* ===========================
+       VARIANT 1 - Classic Dark / Centered
+       =========================== */
+    .v1-hero {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v1-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230,50,38,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(57,255,20,0.04) 0%, transparent 60%);
+    }
+    .v1-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 1px at 30px 30px, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .v1-stripe { position: absolute; top: 0; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 20px, var(--black) 20px, var(--black) 40px); }
+    .v1-deco-1 { position: absolute; top: 15%; right: 8%; width: 180px; height: 180px; border: 2px solid rgba(230,50,38,0.1); border-radius: 50%; }
+    .v1-deco-2 { position: absolute; bottom: 20%; left: 5%; width: 100px; height: 100px; border: 2px solid rgba(57,255,20,0.08); transform: rotate(45deg); }
+    .v1-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .v1-badge {
+      display: inline-block;
+      border: 1px solid var(--steel);
+      color: var(--neon-green);
+      font-weight: 700; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.2em;
+      padding: 8px 24px; border-radius: 4px; margin-bottom: 32px;
+      background: rgba(57,255,20,0.05);
+    }
+    .v1-content h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3.2rem, 10vw, 7.5rem);
+      color: var(--white); line-height: 0.95; margin-bottom: 8px;
+    }
+    .v1-content h1 .accent { color: var(--red); }
+    .v1-content h1 .accent-green { color: var(--neon-green); }
+    .v1-tagline { font-size: clamp(1rem,2vw,1.15rem); color: var(--muted); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .v1-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .v1-features { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .v1-feat { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.85rem; font-weight: 500; }
+    .v1-feat-icon { font-size: 1.3rem; color: var(--neon-green); }
+
+    /* ===========================
+       VARIANT 2 - Split Layout / Industrial Slab
+       =========================== */
+    .v2-hero {
+      background: #0d0d0d;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v2-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 120px, rgba(255,255,255,0.015) 120px, rgba(255,255,255,0.015) 121px);
+    }
+    .v2-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .v2-text h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.92; color: var(--white); margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .v2-text h1 span { color: var(--red); }
+    .v2-text .sub {
+      font-size: 1.1rem; color: var(--muted);
+      margin-bottom: 32px; line-height: 1.7; max-width: 480px;
+    }
+    .v2-text .v2-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v2-panel {
+      position: relative;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 48px 40px;
+    }
+    .v2-panel::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red), var(--orange), transparent);
+      z-index: -1;
+      opacity: 0.3;
+      filter: blur(20px);
+    }
+    .v2-panel-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .v2-panel-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .v2-stat {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .v2-stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .v2-stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) {
+      .v2-inner { grid-template-columns: 1fr; text-align: center; }
+      .v2-text .v2-btns { justify-content: center; }
+      .v2-text .sub { margin-left: auto; margin-right: auto; }
+    }
+
+    /* ===========================
+       VARIANT 3 - Full-Bleed Red / Bold Type
+       =========================== */
+    .v3-hero {
+      background: var(--red);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .v3-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(0,0,0,0.06) 80px, rgba(0,0,0,0.06) 81px),
+        repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(0,0,0,0.06) 80px, rgba(0,0,0,0.06) 81px);
+    }
+    .v3-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    }
+    .v3-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 1000px;
+    }
+    .v3-content h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      color: #fff;
+      line-height: 0.88;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.3);
+    }
+    .v3-content h1 .dark-text { color: rgba(0,0,0,0.7); }
+    .v3-divider {
+      width: 80px;
+      height: 4px;
+      background: #fff;
+      margin: 0 auto 24px;
+    }
+    .v3-tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .v3-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .v3-btns .btn-white {
+      background: #fff;
+      color: var(--red);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .v3-btns .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .v3-btns .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .v3-btns .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .v3-location {
+      margin-top: 48px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ===========================
+       VARIANT 4 - Asymmetric / Diagonal Cut
+       =========================== */
+    .v4-hero {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v4-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: var(--red);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    .v4-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 1px at 40px 40px, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .v4-inner {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .v4-left { padding-right: 40px; }
+    .v4-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .v4-left h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .v4-left h1 .accent { color: var(--red); }
+    .v4-left p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .v4-left .v4-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v4-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-left: 40px;
+    }
+    .v4-feature {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .v4-feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .v4-feature-text h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .v4-feature-text p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .v4-hero::before { width: 100%; clip-path: polygon(0 60%, 100% 50%, 100% 100%, 0% 100%); }
+      .v4-inner { grid-template-columns: 1fr; text-align: center; }
+      .v4-left { padding-right: 0; }
+      .v4-left p { margin-left: auto; margin-right: auto; }
+      .v4-left .v4-btns { justify-content: center; }
+      .v4-right { padding-left: 0; }
+    }
+
+    /* ===========================
+       VARIANT 5 - Warehouse / Numbers
+       =========================== */
+    .v5-hero {
+      background: #080808;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .v5-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(230,50,38,0.02) 40px, rgba(230,50,38,0.02) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(57,255,20,0.015) 40px, rgba(57,255,20,0.015) 41px);
+    }
+    /* Giant background number */
+    .v5-bg-text {
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(15rem, 30vw, 40rem);
+      color: rgba(230, 50, 38, 0.04);
+      line-height: 0.8;
+      user-select: none;
+      z-index: 1;
+    }
+    .v5-content {
+      position: relative; z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .v5-main h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .v5-main h1 .accent { color: var(--red); }
+    .v5-main h1 .accent-green { color: var(--neon-green); font-size: 0.7em; }
+    .v5-main p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 500px;
+    }
+    .v5-main .v5-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .v5-numbers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .v5-num-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .v5-num-card:hover { border-color: var(--red); }
+    .v5-num-card:nth-child(2):hover { border-color: var(--neon-green); }
+    .v5-num-card:nth-child(3):hover { border-color: var(--orange); }
+    .v5-num-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .v5-num-card:nth-child(1) .v5-num-val { color: var(--red); }
+    .v5-num-card:nth-child(2) .v5-num-val { color: var(--neon-green); }
+    .v5-num-card:nth-child(3) .v5-num-val { color: var(--orange); }
+    .v5-num-card:nth-child(4) .v5-num-val { color: var(--yellow); }
+    .v5-num-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+    }
+    .v5-bottom-stripe {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red), var(--orange), var(--neon-green));
+    }
+    @media (max-width: 768px) {
+      .v5-content { grid-template-columns: 1fr; text-align: center; }
+      .v5-main p { margin-left: auto; margin-right: auto; }
+      .v5-main .v5-btns { justify-content: center; }
+      .v5-bg-text { font-size: 12rem; right: -10%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - Classic Dark / Centered -->
+  <div class="variant active" id="v1">
+    <section class="v1-hero">
+      <div class="v1-stripe"></div>
+      <div class="v1-deco-1"></div>
+      <div class="v1-deco-2"></div>
+      <div class="v1-content">
+        <div class="v1-badge">Spindale, NC &bull; Functional Fitness</div>
+        <h1>
+          Built in the<br />
+          <span class="accent">Garage.</span><br />
+          Forged in the <span class="accent-green">Fire.</span>
+        </h1>
+        <p class="v1-tagline">Functional fitness for real people. Group classes, personal training, and open gym in the heart of the Foothills.</p>
+        <div class="v1-btns">
+          <a href="#" class="btn btn-primary">Start Your Trial</a>
+          <a href="#" class="btn btn-outline">View Schedule</a>
+        </div>
+        <div class="v1-features">
+          <div class="v1-feat"><span class="v1-feat-icon">&#9879;</span> Group Classes</div>
+          <div class="v1-feat"><span class="v1-feat-icon">&#9733;</span> Personal Training</div>
+          <div class="v1-feat"><span class="v1-feat-icon">&#9881;</span> Open Gym</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 - Split Layout / Industrial Slab -->
+  <div class="variant" id="v2">
+    <section class="v2-hero">
+      <div class="v2-inner">
+        <div class="v2-text">
+          <h1>Garage<br /><span>Gym</span></h1>
+          <p class="sub">Functional fitness for real people. Group classes, personal training, and open gym access in Spindale, NC. No machines. No mirrors. Just work.</p>
+          <div class="v2-btns">
+            <a href="#" class="btn btn-primary">Start Your Trial</a>
+            <a href="#" class="btn btn-outline">View Schedule</a>
+          </div>
+        </div>
+        <div class="v2-panel">
+          <div class="v2-panel-title">By the Numbers</div>
+          <div class="v2-panel-stats">
+            <div class="v2-stat">
+              <div class="v2-stat-num">100+</div>
+              <div class="v2-stat-label">Members</div>
+            </div>
+            <div class="v2-stat">
+              <div class="v2-stat-num">20+</div>
+              <div class="v2-stat-label">Classes / Week</div>
+            </div>
+            <div class="v2-stat">
+              <div class="v2-stat-num">828</div>
+              <div class="v2-stat-label">Area Code</div>
+            </div>
+            <div class="v2-stat">
+              <div class="v2-stat-num">3+</div>
+              <div class="v2-stat-label">Years Strong</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 - Full-Bleed Red / Bold Type -->
+  <div class="variant" id="v3">
+    <section class="v3-hero">
+      <div class="v3-content">
+        <h1>Garage<br /><span class="dark-text">Gym</span></h1>
+        <div class="v3-divider"></div>
+        <p class="v3-tagline">Functional fitness for real people. Group classes, personal training, and open gym in the heart of the Foothills. No frills. Just results.</p>
+        <div class="v3-btns">
+          <a href="#" class="btn-white">Start Your Trial</a>
+          <a href="#" class="btn-ghost">View Schedule</a>
+        </div>
+        <div class="v3-location">101 Callahan Koon Rd &bull; Spindale, NC &bull; (828) 263-4218</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - Asymmetric / Diagonal Cut -->
+  <div class="variant" id="v4">
+    <section class="v4-hero">
+      <div class="v4-inner">
+        <div class="v4-left">
+          <div class="v4-label">Spindale, NC</div>
+          <h1>Built in<br />the <span class="accent">Garage</span></h1>
+          <p>Functional fitness for real people. No corporate gym nonsense. Just barbells, community, and the will to get better every day.</p>
+          <div class="v4-btns">
+            <a href="#" class="btn btn-primary">Start Your Trial</a>
+            <a href="#" class="btn btn-outline">View Schedule</a>
+          </div>
+        </div>
+        <div class="v4-right">
+          <div class="v4-feature">
+            <div class="v4-feature-icon">&#9879;</div>
+            <div class="v4-feature-text">
+              <h4>Group Classes</h4>
+              <p>Coached, scalable, different every day</p>
+            </div>
+          </div>
+          <div class="v4-feature">
+            <div class="v4-feature-icon">&#9733;</div>
+            <div class="v4-feature-text">
+              <h4>Personal Training</h4>
+              <p>Custom programming, one-on-one coaching</p>
+            </div>
+          </div>
+          <div class="v4-feature">
+            <div class="v4-feature-icon">&#9881;</div>
+            <div class="v4-feature-text">
+              <h4>Open Gym</h4>
+              <p>Full floor access on your schedule</p>
+            </div>
+          </div>
+          <div class="v4-feature">
+            <div class="v4-feature-icon">&#9889;</div>
+            <div class="v4-feature-text">
+              <h4>Functional Fitness</h4>
+              <p>Real movements for real life</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 - Warehouse / Numbers -->
+  <div class="variant" id="v5">
+    <section class="v5-hero">
+      <div class="v5-bg-text">828</div>
+      <div class="v5-content">
+        <div class="v5-main">
+          <h1>Garage<br /><span class="accent">Gym</span><br /><span class="accent-green">Spindale</span></h1>
+          <p>Functional fitness for real people. No treadmill farms. No judgment zones. Just honest training and a community that shows up for each other.</p>
+          <div class="v5-btns">
+            <a href="#" class="btn btn-green">Start Your Trial</a>
+            <a href="#" class="btn btn-outline">Call (828) 263-4218</a>
+          </div>
+        </div>
+        <div class="v5-numbers">
+          <div class="v5-num-card">
+            <div class="v5-num-val">100+</div>
+            <div class="v5-num-label">Members</div>
+          </div>
+          <div class="v5-num-card">
+            <div class="v5-num-val">20+</div>
+            <div class="v5-num-label">Weekly Classes</div>
+          </div>
+          <div class="v5-num-card">
+            <div class="v5-num-val">3+</div>
+            <div class="v5-num-label">Years Strong</div>
+          </div>
+          <div class="v5-num-card">
+            <div class="v5-num-val">5 AM</div>
+            <div class="v5-num-label">First Class</div>
+          </div>
+        </div>
+      </div>
+      <div class="v5-bottom-stripe"></div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Hero Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

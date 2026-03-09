@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Footer Section Variants</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-light: #aaa;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 60px; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* CRT SCANLINE */
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 2px solid var(--yellow-dim); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav .nav-logo { font-family: var(--font-pixel); font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    nav .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    nav .nav-links a { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+    nav .nav-links a:hover { color: var(--white); }
+    nav .nav-cta-wrap { display: flex; align-items: center; gap: 10px; }
+    nav .nav-cta-micro { font-family: var(--font-pixel); font-size: 0.35rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+    nav .nav-cta { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.2rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+
+    /* LOCKED HERO (compact) */
+    .locked-hero { position: relative; width: 100%; height: 45vh; min-height: 320px; overflow: hidden; background: var(--darker); display: flex; align-items: center; justify-content: center; }
+    .locked-hero .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--dark) 0%, var(--black) 50%, #1a1020 100%); }
+    .locked-hero .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 72% 62% at center 43%, rgba(245,214,35,0.05) 0%, transparent 100%); }
+    .locked-hero .hero-content { position: relative; z-index: 3; text-align: center; }
+    .locked-hero .hero-title { font-family: var(--font-pixel); font-size: clamp(1rem, 3vw, 1.8rem); color: var(--yellow); text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 30px rgba(245,214,35,0.3); margin-bottom: 0.5rem; }
+    .locked-hero .hero-sub { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-transform: uppercase; letter-spacing: 4px; }
+
+    /* ========== FOOTER VARIANTS ========== */
+    .footer-variant { display: none; }
+    .footer-variant.active { display: block; }
+
+    /* Shared utility */
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ============================================================
+       V1: MINIMAL BAR
+       Single dark bar. Logo text left, address center, social/phone right.
+       Credit at very bottom. Clean single line.
+       ============================================================ */
+    .footer-v1 {
+      background: var(--dark);
+      border-top: 1px solid var(--gray-dark);
+    }
+    .footer-v1 .v1-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-v1 .v1-logo {
+      font-family: var(--font-pixel);
+      font-size: 0.65rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+    .footer-v1 .v1-center {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .footer-v1 .v1-center a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v1 .v1-center a:hover { color: var(--yellow); }
+    .footer-v1 .v1-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .footer-v1 .v1-right a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-v1 .v1-right a:hover { color: var(--yellow); }
+    .footer-v1 .v1-right .v1-phone {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      color: var(--cyan);
+      letter-spacing: 1px;
+    }
+    .footer-v1 .v1-right .v1-fb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      border: 1px solid var(--gray-dark);
+      padding: 0.4rem 0.8rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-v1 .v1-right .v1-fb-link:hover {
+      border-color: var(--yellow-dim);
+      color: var(--white);
+    }
+    .footer-v1 .v1-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(51,51,51,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-v1 .v1-copyright {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v1 .v1-credit {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v1 .v1-credit a {
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v1 .v1-credit a:hover { color: var(--yellow-dim); }
+
+    @media (max-width: 900px) {
+      .footer-v1 .v1-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.2rem;
+      }
+      .footer-v1 .v1-right {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .footer-v1 .v1-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+    }
+
+    /* ============================================================
+       V2: THREE COLUMN
+       Logo + tagline left, Quick Links center, Contact right.
+       Yellow top border.
+       ============================================================ */
+    .footer-v2 {
+      background: var(--dark);
+      border-top: 3px solid var(--yellow);
+    }
+    .footer-v2 .v2-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-v2 .v2-col-logo {}
+    .footer-v2 .v2-logo-text {
+      font-family: var(--font-pixel);
+      font-size: 0.7rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      line-height: 2;
+    }
+    .footer-v2 .v2-tagline {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+    .footer-v2 .v2-col-title {
+      font-family: var(--font-pixel);
+      font-size: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      margin-bottom: 1.2rem;
+    }
+    .footer-v2 .v2-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .footer-v2 .v2-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s, padding-left 0.2s;
+      display: inline-block;
+    }
+    .footer-v2 .v2-links a:hover {
+      color: var(--yellow);
+      padding-left: 4px;
+    }
+    .footer-v2 .v2-contact-item {
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+    .footer-v2 .v2-contact-item a {
+      color: var(--yellow-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v2 .v2-contact-item a:hover { color: var(--yellow); }
+    .footer-v2 .v2-contact-label {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 0.3rem;
+    }
+    .footer-v2 .v2-social-row {
+      margin-top: 1.2rem;
+    }
+    .footer-v2 .v2-fb-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      text-decoration: none;
+      border: 1px solid var(--gray-dark);
+      padding: 0.5rem 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-v2 .v2-fb-btn:hover {
+      border-color: var(--yellow-dim);
+      color: var(--white);
+    }
+    .footer-v2 .v2-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      border-top: 1px solid var(--gray-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .footer-v2 .v2-copyright {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v2 .v2-credit {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v2 .v2-credit a {
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v2 .v2-credit a:hover { color: var(--yellow-dim); }
+
+    @media (max-width: 900px) {
+      .footer-v2 .v2-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .footer-v2 .v2-col-logo {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 560px) {
+      .footer-v2 .v2-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-v2 .v2-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ============================================================
+       V3: CTA FOOTER
+       Large "Insert Coin" CTA section above the footer with phone number.
+       Below: compact footer with logo, address, social, credit. Red CTA button.
+       ============================================================ */
+    .footer-v3 {}
+    .footer-v3 .v3-cta-section {
+      background: var(--darker);
+      border-top: 1px solid var(--gray-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .footer-v3 .v3-cta-label {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+    }
+    .footer-v3 .v3-cta-title {
+      font-family: var(--font-pixel);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 40px rgba(245,214,35,0.25);
+      margin-bottom: 1rem;
+      line-height: 2;
+    }
+    .footer-v3 .v3-cta-sub {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .footer-v3 .v3-cta-phone {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+    .footer-v3 .v3-cta-phone a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v3 .v3-cta-phone a:hover { color: var(--yellow); }
+    .footer-v3 .v3-cta-btn {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 1rem 2.5rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .footer-v3 .v3-cta-btn:hover {
+      background: var(--red-glow);
+      box-shadow: 0 0 30px rgba(232,52,46,0.4);
+      transform: translateY(-2px);
+    }
+    .footer-v3 .v3-cta-directions {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.45rem;
+      color: var(--gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 1.5rem;
+      padding: 0.9rem 1.5rem;
+      border: 1px solid var(--gray-dark);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-v3 .v3-cta-directions:hover {
+      border-color: var(--yellow-dim);
+      color: var(--white);
+    }
+    .footer-v3 .v3-cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-v3 .v3-footer-bar {
+      background: var(--dark);
+      border-top: 1px solid var(--gray-dark);
+      padding: 1.5rem 2rem;
+    }
+    .footer-v3 .v3-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-v3 .v3-bar-logo {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-v3 .v3-bar-address {
+      color: var(--gray);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    .footer-v3 .v3-bar-address a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v3 .v3-bar-address a:hover { color: var(--yellow); }
+    .footer-v3 .v3-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-v3 .v3-bar-social a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-v3 .v3-bar-social a:hover { color: var(--white); }
+    .footer-v3 .v3-bar-email a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-v3 .v3-bar-email a:hover { color: var(--yellow); }
+    .footer-v3 .v3-credit-strip {
+      background: var(--black);
+      padding: 0.8rem 2rem;
+      text-align: center;
+    }
+    .footer-v3 .v3-credit-strip span {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v3 .v3-credit-strip a {
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v3 .v3-credit-strip a:hover { color: var(--yellow-dim); }
+
+    @media (max-width: 900px) {
+      .footer-v3 .v3-cta-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .footer-v3 .v3-cta-directions { margin-left: 0; }
+    }
+    @media (max-width: 560px) {
+      .footer-v3 .v3-bar-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+      }
+      .footer-v3 .v3-bar-right {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* ============================================================
+       V4: RETRO TERMINAL
+       Footer styled like an old CRT terminal. Green text on black.
+       Info displayed as terminal commands/output.
+       ============================================================ */
+    .footer-v4 {
+      background: #020a02;
+      border-top: 2px solid var(--green);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-v4::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(57,255,20,0.02) 3px,
+        rgba(57,255,20,0.02) 6px
+      );
+      z-index: 1;
+    }
+    .footer-v4 .v4-terminal {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      font-family: 'Courier New', 'Lucida Console', monospace;
+    }
+    .footer-v4 .v4-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(57,255,20,0.2);
+    }
+    .footer-v4 .v4-dots {
+      display: flex;
+      gap: 5px;
+    }
+    .footer-v4 .v4-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gray-dark);
+    }
+    .footer-v4 .v4-dot:nth-child(1) { background: var(--red); }
+    .footer-v4 .v4-dot:nth-child(2) { background: var(--yellow); }
+    .footer-v4 .v4-dot:nth-child(3) { background: var(--green); }
+    .footer-v4 .v4-title-bar {
+      font-size: 0.75rem;
+      color: rgba(57,255,20,0.5);
+      margin-left: 0.8rem;
+      letter-spacing: 1px;
+    }
+    .footer-v4 .v4-line {
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--green);
+    }
+    .footer-v4 .v4-prompt {
+      color: var(--green);
+      opacity: 0.7;
+    }
+    .footer-v4 .v4-cmd {
+      color: var(--green);
+      font-weight: 700;
+    }
+    .footer-v4 .v4-output {
+      color: rgba(57,255,20,0.65);
+      padding-left: 1.5rem;
+    }
+    .footer-v4 .v4-comment {
+      color: rgba(57,255,20,0.3);
+      font-style: italic;
+    }
+    .footer-v4 .v4-link {
+      color: var(--green);
+      text-decoration: underline;
+      text-decoration-color: rgba(57,255,20,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+    .footer-v4 .v4-link:hover {
+      text-decoration-color: var(--green);
+    }
+    .footer-v4 .v4-separator {
+      margin: 1rem 0;
+      border: none;
+      border-top: 1px dashed rgba(57,255,20,0.15);
+    }
+    .footer-v4 .v4-logo-block {
+      margin-bottom: 1rem;
+      padding: 0.5rem 0;
+    }
+    .footer-v4 .v4-logo-block svg {
+      width: 220px;
+      height: auto;
+      filter: brightness(0) saturate(100%) invert(66%) sepia(95%) saturate(3988%) hue-rotate(79deg) brightness(104%) contrast(106%);
+      opacity: 0.6;
+    }
+    .footer-v4 .v4-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--green);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: v4blink 1s step-end infinite;
+    }
+    @keyframes v4blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .footer-v4 .v4-credit-line {
+      margin-top: 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed rgba(57,255,20,0.15);
+      font-size: 0.75rem;
+      color: rgba(57,255,20,0.25);
+    }
+    .footer-v4 .v4-credit-line a {
+      color: rgba(57,255,20,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v4 .v4-credit-line a:hover { color: var(--green); }
+
+    @media (max-width: 560px) {
+      .footer-v4 .v4-terminal { padding: 1.5rem 1rem; }
+      .footer-v4 .v4-line { font-size: 0.75rem; }
+      .footer-v4 .v4-output { padding-left: 0.5rem; }
+    }
+
+    /* ============================================================
+       V5: FULL INFO
+       Wide footer with all info. Left: SVG logo. Center: hours compact.
+       Right: contact + address. Bottom strip with credit and social.
+       ============================================================ */
+    .footer-v5 {
+      background: var(--dark);
+      border-top: 2px solid var(--yellow-dim);
+    }
+    .footer-v5 .v5-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .footer-v5 .v5-col-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .footer-v5 .v5-logo-svg {
+      width: 240px;
+      height: auto;
+    }
+    .footer-v5 .v5-address {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer-v5 .v5-address a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v5 .v5-address a:hover { color: var(--yellow); }
+    .footer-v5 .v5-col-hours {}
+    .footer-v5 .v5-col-label {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+    .footer-v5 .v5-hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.35rem 1rem;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+    }
+    .footer-v5 .v5-hours-grid .day { color: var(--white); font-weight: 600; font-size: 0.85rem; }
+    .footer-v5 .v5-hours-grid .closed { color: var(--red); }
+    .footer-v5 .v5-col-contact {}
+    .footer-v5 .v5-contact-item {
+      margin-bottom: 0.8rem;
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer-v5 .v5-contact-item a {
+      color: var(--yellow-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v5 .v5-contact-item a:hover { color: var(--yellow); }
+    .footer-v5 .v5-contact-label {
+      font-family: var(--font-pixel);
+      font-size: 0.28rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 0.25rem;
+    }
+    .footer-v5 .v5-fb-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      text-decoration: none;
+      border: 1px solid var(--gray-dark);
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-v5 .v5-fb-btn:hover {
+      border-color: var(--yellow-dim);
+      color: var(--white);
+    }
+    .footer-v5 .v5-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      border-top: 1px solid var(--gray-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-v5 .v5-copyright {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v5 .v5-credit {
+      font-size: 0.7rem;
+      color: var(--gray-dark);
+    }
+    .footer-v5 .v5-credit a {
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-v5 .v5-credit a:hover { color: var(--yellow-dim); }
+    .footer-v5 .v5-directions {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      text-decoration: none;
+      border: 1px solid var(--gray-dark);
+      padding: 0.4rem 0.8rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-v5 .v5-directions:hover {
+      border-color: var(--yellow-dim);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .footer-v5 .v5-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .footer-v5 .v5-col-logo {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 560px) {
+      .footer-v5 .v5-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-v5 .v5-col-logo {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-v5 .v5-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+    }
+
+    /* ========== PICKER ========== */
+    .picker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10000; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); border-top: 2px solid var(--yellow); padding: 12px 24px; display: flex; align-items: center; gap: 12px; }
+    .picker-label { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; margin-right: 4px; }
+    .picker-section { font-family: var(--font-pixel); font-size: 0.55rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-right: 12px; }
+    .picker-btn { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--dark); color: var(--gray); border: 1px solid var(--gray-dark); padding: 8px 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
+    .picker-btn:hover { border-color: var(--yellow-dim); color: var(--white); }
+    .picker-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .picker-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .picker-desc { font-size: 0.75rem; color: var(--gray); margin-left: auto; max-width: 480px; line-height: 1.4; }
+
+    /* ========== RESPONSIVE PICKER ========== */
+    @media (max-width: 560px) {
+      .picker { flex-wrap: wrap; padding: 8px 12px; gap: 6px; }
+      .picker-desc { display: none; }
+    }
+
+    /* ========== PREFERS REDUCED MOTION ========== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Carolina Arcade</a>
+    <ul class="nav-links">
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <span class="nav-cta-micro">Open Now</span>
+      <a href="tel:+18282293089" class="nav-cta">Call Us</a>
+    </div>
+  </nav>
+
+  <!-- LOCKED HERO (compact placeholder) -->
+  <section class="locked-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Carolina Arcade Museum</h1>
+      <p class="hero-sub">Footer Section Variants</p>
+    </div>
+  </section>
+
+
+  <!-- ===== V1: MINIMAL BAR ===== -->
+  <section class="footer-variant footer-v1 active" data-footer="v1">
+    <div class="v1-main">
+      <div class="v1-logo">Carolina Arcade Museum</div>
+      <div class="v1-center">
+        <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">145 East Main Street, Forest City, NC 28043</a>
+        <br>
+        <span style="font-size:0.75rem; color:var(--gray-dark);">Mon-Thu 12-8PM &middot; Fri-Sat 12-10PM &middot; Sun Closed</span>
+      </div>
+      <div class="v1-right">
+        <a href="tel:+18282293089" class="v1-phone">(828) 229-3089</a>
+        <a href="mailto:walker.darla5@gmail.com" style="font-size:0.8rem;">walker.darla5@gmail.com</a>
+        <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="v1-fb-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+    <div class="v1-bottom">
+      <span class="v1-copyright">&copy; 2025 Carolina Arcade Museum. All rights reserved.</span>
+      <span class="v1-credit">Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></span>
+    </div>
+  </section>
+
+
+  <!-- ===== V2: THREE COLUMN ===== -->
+  <section class="footer-variant footer-v2" data-footer="v2">
+    <div class="v2-grid">
+      <div class="v2-col-logo">
+        <div class="v2-logo-text">Carolina<br>Arcade<br>Museum</div>
+        <p class="v2-tagline">Step back in time with classic arcade games in the heart of downtown Forest City.</p>
+      </div>
+      <div class="v2-col-links">
+        <p class="v2-col-title">Quick Links</p>
+        <ul class="v2-links">
+          <li><a href="#">Hours &amp; Pricing</a></li>
+          <li><a href="#">Our Games</a></li>
+          <li><a href="#">Birthday Parties</a></li>
+          <li><a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">Get Directions</a></li>
+        </ul>
+      </div>
+      <div class="v2-col-contact">
+        <p class="v2-col-title">Contact</p>
+        <div class="v2-contact-item">
+          <p class="v2-contact-label">Address</p>
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">145 East Main Street<br>Forest City, NC 28043</a>
+        </div>
+        <div class="v2-contact-item">
+          <p class="v2-contact-label">Phone</p>
+          <a href="tel:+18282293089">(828) 229-3089</a>
+        </div>
+        <div class="v2-contact-item">
+          <p class="v2-contact-label">Email</p>
+          <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+        </div>
+        <div class="v2-contact-item">
+          <p class="v2-contact-label">Hours</p>
+          Mon-Thu 12-8PM<br>Fri-Sat 12-10PM<br><span style="color:var(--red);">Sun Closed</span>
+        </div>
+        <div class="v2-social-row">
+          <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="v2-fb-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Follow Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="v2-bottom">
+      <span class="v2-copyright">&copy; 2025 Carolina Arcade Museum. All rights reserved.</span>
+      <span class="v2-credit">Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></span>
+    </div>
+  </section>
+
+
+  <!-- ===== V3: CTA FOOTER ===== -->
+  <section class="footer-variant footer-v3" data-footer="v3">
+    <div class="v3-cta-section">
+      <p class="v3-cta-label">Ready to Play?</p>
+      <h2 class="v3-cta-title">Insert Coin<br>to Continue</h2>
+      <p class="v3-cta-sub">Walk-ins welcome. No reservations needed. Just show up and start playing.</p>
+      <p class="v3-cta-phone">
+        <a href="tel:+18282293089">(828) 229-3089</a>
+      </p>
+      <div class="v3-cta-buttons">
+        <a href="tel:+18282293089" class="v3-cta-btn">Call Now</a>
+        <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="v3-cta-directions">Get Directions</a>
+      </div>
+    </div>
+    <div class="v3-footer-bar">
+      <div class="v3-bar-inner">
+        <div class="v3-bar-logo">Carolina Arcade Museum</div>
+        <div class="v3-bar-address">
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">145 East Main Street, Forest City, NC 28043</a>
+          <span style="color:var(--gray-dark); margin: 0 0.5rem;">|</span>
+          <span style="font-size:0.75rem; color:var(--gray-dark);">Mon-Thu 12-8PM &middot; Fri-Sat 12-10PM &middot; Sun Closed</span>
+        </div>
+        <div class="v3-bar-right">
+          <div class="v3-bar-email">
+            <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+          </div>
+          <div class="v3-bar-social">
+            <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" title="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="v3-credit-strip">
+      <span>&copy; 2025 Carolina Arcade Museum &middot; Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></span>
+    </div>
+  </section>
+
+
+  <!-- ===== V4: RETRO TERMINAL ===== -->
+  <section class="footer-variant footer-v4" data-footer="v4">
+    <div class="v4-terminal">
+      <div class="v4-header">
+        <div class="v4-dots">
+          <span class="v4-dot"></span>
+          <span class="v4-dot"></span>
+          <span class="v4-dot"></span>
+        </div>
+        <span class="v4-title-bar">arcade-museum@forest-city ~ $</span>
+      </div>
+
+      <div class="v4-logo-block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" fill="none">
+          <rect x="10" y="12" width="340" height="100" rx="16" fill="#020a02" stroke="#39ff14" stroke-width="4"/>
+          <text x="36" y="48" font-family="'Press Start 2P', monospace" font-size="18" fill="#39ff14" letter-spacing="2">CAROLINA</text>
+          <text x="30" y="95" font-family="'Press Start 2P', monospace" font-size="42" fill="#39ff14" letter-spacing="1">ARCADE</text>
+          <line x1="380" y1="30" x2="380" y2="85" stroke="#1a3a1a" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="380" cy="24" r="20" fill="#39ff14" opacity="0.4"/>
+          <ellipse cx="380" cy="18" rx="10" ry="6" fill="#39ff14" opacity="0.2"/>
+          <rect x="170" y="88" width="340" height="100" rx="16" fill="#020a02" stroke="#39ff14" stroke-width="4"/>
+          <text x="196" y="152" font-family="'Press Start 2P', monospace" font-size="42" fill="#39ff14" letter-spacing="1">MUSEUM</text>
+        </svg>
+      </div>
+
+      <div class="v4-line">
+        <span class="v4-prompt">$ </span><span class="v4-cmd">cat /info/location.txt</span>
+      </div>
+      <div class="v4-line v4-output">
+        <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="v4-link">145 East Main Street, Forest City, NC 28043</a>
+      </div>
+
+      <hr class="v4-separator">
+
+      <div class="v4-line">
+        <span class="v4-prompt">$ </span><span class="v4-cmd">cat /info/hours.cfg</span>
+      </div>
+      <div class="v4-line v4-output">MON-THU &nbsp; 12:00 PM - 08:00 PM</div>
+      <div class="v4-line v4-output">FRI-SAT &nbsp; 12:00 PM - 10:00 PM</div>
+      <div class="v4-line v4-output" style="color:rgba(232,52,46,0.7);">SUNDAY &nbsp;&nbsp; CLOSED</div>
+
+      <hr class="v4-separator">
+
+      <div class="v4-line">
+        <span class="v4-prompt">$ </span><span class="v4-cmd">cat /info/contact.dat</span>
+      </div>
+      <div class="v4-line v4-output">
+        PHONE: <a href="tel:+18282293089" class="v4-link">(828) 229-3089</a>
+      </div>
+      <div class="v4-line v4-output">
+        EMAIL: <a href="mailto:walker.darla5@gmail.com" class="v4-link">walker.darla5@gmail.com</a>
+      </div>
+      <div class="v4-line v4-output">
+        SOCIAL: <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="v4-link">facebook.com/carolina-arcade-museum</a>
+      </div>
+
+      <hr class="v4-separator">
+
+      <div class="v4-line">
+        <span class="v4-prompt">$ </span><span class="v4-cmd">echo "GAME OVER"</span>
+      </div>
+      <div class="v4-line v4-output" style="color:var(--green); font-weight:700; letter-spacing:2px;">GAME OVER</div>
+      <div class="v4-line v4-comment"># INSERT COIN TO CONTINUE ...</div>
+      <div class="v4-line">
+        <span class="v4-prompt">$ </span><span class="v4-cursor" aria-hidden="true"></span>
+      </div>
+
+      <div class="v4-credit-line">
+        &copy; 2025 Carolina Arcade Museum &middot; Site by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== V5: FULL INFO ===== -->
+  <section class="footer-variant footer-v5" data-footer="v5">
+    <div class="v5-main">
+      <div class="v5-col-logo">
+        <svg class="v5-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" fill="none">
+          <rect x="10" y="12" width="340" height="100" rx="16" fill="#0a0a0a" stroke="#f5d623" stroke-width="4"/>
+          <text x="36" y="48" font-family="'Press Start 2P', monospace" font-size="18" fill="#f5d623" letter-spacing="2">CAROLINA</text>
+          <text x="30" y="95" font-family="'Press Start 2P', monospace" font-size="42" fill="#f5d623" letter-spacing="1">ARCADE</text>
+          <line x1="380" y1="30" x2="380" y2="85" stroke="#444" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="380" cy="24" r="20" fill="#e8342e"/>
+          <ellipse cx="380" cy="18" rx="10" ry="6" fill="#ff6b6b" opacity="0.5"/>
+          <rect x="170" y="88" width="340" height="100" rx="16" fill="#0a0a0a" stroke="#f5d623" stroke-width="4"/>
+          <text x="196" y="152" font-family="'Press Start 2P', monospace" font-size="42" fill="#f5d623" letter-spacing="1">MUSEUM</text>
+        </svg>
+        <div class="v5-address">
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">145 East Main Street<br>Forest City, NC 28043</a>
+        </div>
+        <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="v5-directions">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+          Get Directions
+        </a>
+      </div>
+
+      <div class="v5-col-hours">
+        <p class="v5-col-label">Hours</p>
+        <div class="v5-hours-grid">
+          <span class="day">Monday</span><span>12 PM &ndash; 8 PM</span>
+          <span class="day">Tuesday</span><span>12 PM &ndash; 8 PM</span>
+          <span class="day">Wednesday</span><span>12 PM &ndash; 8 PM</span>
+          <span class="day">Thursday</span><span>12 PM &ndash; 8 PM</span>
+          <span class="day">Friday</span><span>12 PM &ndash; 10 PM</span>
+          <span class="day">Saturday</span><span>12 PM &ndash; 10 PM</span>
+          <span class="day">Sunday</span><span class="closed">Closed</span>
+        </div>
+      </div>
+
+      <div class="v5-col-contact">
+        <p class="v5-col-label">Contact</p>
+        <div class="v5-contact-item">
+          <p class="v5-contact-label">Phone</p>
+          <a href="tel:+18282293089">(828) 229-3089</a>
+        </div>
+        <div class="v5-contact-item">
+          <p class="v5-contact-label">Email</p>
+          <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+        </div>
+        <div class="v5-contact-item">
+          <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="v5-fb-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Follow on Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="v5-bottom">
+      <span class="v5-copyright">&copy; 2025 Carolina Arcade Museum. All rights reserved.</span>
+      <span class="v5-credit">Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></span>
+    </div>
+  </section>
+
+
+  <!-- PICKER -->
+  <div class="picker" role="toolbar" aria-label="Variant picker">
+    <span class="picker-label">Variant:</span>
+    <span class="picker-section">Footer</span>
+    <button class="picker-btn active" data-pick="v1" aria-pressed="true">1</button>
+    <button class="picker-btn" data-pick="v2" aria-pressed="false">2</button>
+    <button class="picker-btn" data-pick="v3" aria-pressed="false">3</button>
+    <button class="picker-btn" data-pick="v4" aria-pressed="false">4</button>
+    <button class="picker-btn" data-pick="v5" aria-pressed="false">5</button>
+    <span class="picker-desc" id="picker-desc">Minimal Bar: Single dark bar with logo left, address center, social/phone right</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      v1: "Minimal Bar: Single dark bar with logo left, address center, social/phone right",
+      v2: "Three Column: Logo + tagline left, Quick Links center, Contact right with yellow top border",
+      v3: "CTA Footer: Large \"Insert Coin\" CTA section above compact footer bar with red CTA button",
+      v4: "Retro Terminal: Green-on-black CRT terminal style with commands and blinking cursor",
+      v5: "Full Info: Wide footer with inline SVG logo, full hours grid, contact column, directions link",
+    };
+    const btns = document.querySelectorAll(".picker-btn");
+    const sections = document.querySelectorAll(".footer-variant");
+    const desc = document.getElementById("picker-desc");
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const v = btn.dataset.pick;
+        sections.forEach(s => s.classList.remove("active"));
+        btns.forEach(b => {
+          b.classList.toggle("active", b.dataset.pick === v);
+          b.setAttribute("aria-pressed", b.dataset.pick === v ? "true" : "false");
+        });
+        const target = document.querySelector(`[data-footer="${v}"]`);
+        if (target) {
+          target.classList.add("active");
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        desc.textContent = descriptions[v] || "";
+      });
+    });
+  </script>
+
+</body>
+</html>

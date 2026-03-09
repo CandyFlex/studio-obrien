@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Games G2 Refinements</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/mock-sites/assets/carolina-arcade/logo-wide.webp">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-light: #aaa;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 60px; }
+    img { display: block; max-width: 100%; }
+
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 2px solid var(--yellow-dim); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav .nav-logo { font-family: var(--font-pixel); font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    nav .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    nav .nav-links a { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+    nav .nav-links a:hover { color: var(--white); }
+    nav .nav-cta-wrap { display: flex; align-items: center; gap: 10px; }
+    nav .nav-cta-micro { font-family: var(--font-pixel); font-size: 0.35rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+    nav .nav-cta { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.2rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+
+    /* ========== V1 TIGHT ORBITAL HERO ========== */
+    .hero-orbital {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-orbital .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-orbital .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-orbital .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at center 45%, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.92) 100%);
+    }
+    .hero-orbital .hero-center {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6rem 2rem 3rem;
+    }
+    .hero-orbital .hero-logo-img {
+      width: min(580px, 65vw);
+      filter: drop-shadow(0 0 50px rgba(245,214,35,0.35));
+      margin-bottom: 1rem;
+    }
+    .hero-orbital .hero-tagline {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .hero-orbital .hero-cta {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 1rem 2.5rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 0 30px rgba(232,52,46,0.3);
+    }
+    .hero-orbital .hero-cta:hover { background: var(--red-glow); transform: translateY(-2px); }
+
+    /* Feature chips scattered around the logo */
+    .hero-chip {
+      position: absolute;
+      z-index: 4;
+      background: rgba(10,10,10,0.85);
+      border: 1px solid var(--gray-dark);
+      padding: 0.8rem 1rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s, transform 0.3s;
+      min-width: 120px;
+    }
+    .hero-chip:hover {
+      border-color: var(--yellow-dim);
+      transform: scale(1.05);
+    }
+    .hero-chip .chip-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.4rem;
+    }
+    .hero-chip .chip-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .hero-chip .chip-value {
+      font-family: var(--font-pixel);
+      font-size: 0.8rem;
+      color: var(--green);
+      text-shadow: 0 0 12px rgba(57,255,20,0.2);
+      margin-bottom: 0.2rem;
+    }
+    .hero-chip .chip-label {
+      font-family: var(--font-pixel);
+      font-size: 0.3rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.5;
+    }
+
+    /* Chip positions - scattered around the logo */
+    .chip-1 { top: 15%; left: 6%; }
+    .chip-2 { top: 12%; right: 6%; }
+    .chip-3 { top: 42%; left: 3%; }
+    .chip-4 { top: 42%; right: 3%; }
+    .chip-5 { bottom: 18%; left: 8%; }
+    .chip-6 { bottom: 15%; right: 8%; }
+
+    @media (max-width: 1200px) {
+      .chip-1 { top: 12%; left: 3%; }
+      .chip-2 { top: 10%; right: 3%; }
+      .chip-3 { top: 40%; left: 1%; }
+      .chip-4 { top: 40%; right: 1%; }
+      .chip-5 { bottom: 16%; left: 4%; }
+      .chip-6 { bottom: 14%; right: 4%; }
+      .hero-chip { min-width: 100px; padding: 0.6rem 0.8rem; }
+      .hero-chip .chip-value { font-size: 0.65rem; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-orbital { min-height: 80vh; }
+      .hero-chip { display: none; }
+      .hero-orbital .hero-logo-img { width: min(420px, 80vw); }
+    }
+
+    /* LOCKED PRICING (P2 compact) */
+    .locked-pricing { background: var(--dark); border-top: 3px solid var(--yellow-dim); padding: 2.5rem 2rem; }
+    .lp-container { max-width: 800px; margin: 0 auto; }
+    .locked-pricing .p2-header { text-align: center; margin-bottom: 1.2rem; }
+    .locked-pricing .p2-select-label { font-family: var(--font-pixel); font-size: 0.38rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 0.4rem; }
+    .locked-pricing .st { font-family: var(--font-pixel); font-size: 0.9rem; color: var(--white); line-height: 1.8; }
+    .locked-pricing .p2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .locked-pricing .p2-card { border: 2px solid var(--gray-dark); padding: 1.3rem 1rem; text-align: center; background: rgba(17,17,24,0.8); position: relative; }
+    .locked-pricing .p2-card + .p2-card { border-left: none; }
+    .locked-pricing .p2-card.selected { background: rgba(245,214,35,0.05); border-color: var(--yellow); z-index: 1; }
+    .locked-pricing .p2-card.selected::after { content: '\25B6'; position: absolute; top: 0.6rem; left: 0.6rem; font-size: 0.5rem; color: var(--yellow); animation: blink-cursor 1s step-end infinite; }
+    .locked-pricing .p2-name { font-family: var(--font-pixel); font-size: 0.4rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); margin-bottom: 0.6rem; }
+    .locked-pricing .p2-card.selected .p2-name { color: var(--yellow); }
+    .locked-pricing .p2-price { font-family: var(--font-pixel); font-size: 1.5rem; color: var(--gray); margin-bottom: 0.2rem; }
+    .locked-pricing .p2-card.selected .p2-price { color: var(--green); text-shadow: 0 0 20px rgba(57,255,20,0.3); }
+    .locked-pricing .p2-per { font-family: var(--font-pixel); font-size: 0.28rem; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 2px; }
+    @keyframes blink-cursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ========== GAMES VARIANTS ========== */
+    .games-variant { display: none; }
+    .games-variant.active { display: block; }
+
+    .games-section { padding: 5rem 2rem; position: relative; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label { font-family: var(--font-pixel); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 4px; color: var(--yellow-dim); margin-bottom: 0.8rem; }
+    .section-title { font-family: var(--font-pixel); font-size: 1.4rem; color: var(--white); line-height: 1.8; margin-bottom: 0.8rem; text-wrap: balance; }
+    .section-desc { color: var(--gray-light); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
+
+    /* Shared marquee */
+    .games-marquee { overflow: hidden; border-top: 1px solid var(--gray-dark); border-bottom: 1px solid var(--gray-dark); padding: 0.8rem 0; margin-top: 2rem; }
+    .games-marquee-inner { display: flex; gap: 3rem; animation: scroll-left 25s linear infinite; width: max-content; }
+    .game-name { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; }
+    .game-name .dot { color: var(--red); margin: 0 0.5rem; }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Photo */
+    .game-img { overflow: hidden; border: 1px solid var(--gray-dark); }
+    .game-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .game-img:hover img { transform: scale(1.03); }
+
+    /* ========== STAT CARDS (Lucide SVG icons) ========== */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .stat-card {
+      background: var(--darker);
+      border: 1px solid var(--gray-dark);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--yellow-dim); }
+    .stat-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.6rem;
+    }
+    .stat-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .stat-number {
+      font-family: var(--font-pixel);
+      font-size: 1.6rem;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(57,255,20,0.15);
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-family: var(--font-pixel);
+      font-size: 0.35rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.6;
+    }
+
+    /* ========== G2 BASE: Text left + Photo grid right ========== */
+    .g2-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .g2-text { padding-top: 0.5rem; }
+    .g2-text .section-desc { margin-bottom: 1.5rem; }
+    .g2-highlight {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.7;
+      border-left: 3px solid var(--yellow-dim);
+      padding-left: 1rem;
+      margin-top: 1.2rem;
+    }
+    .g2-highlight strong { color: var(--white); }
+
+    /* Photo grid variations */
+    .g2-photos { display: grid; gap: 10px; }
+    .g2-photos .game-img { aspect-ratio: 4/3; }
+
+    /* V1: 1 LARGE + 2 SMALL */
+    .games-v1 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+    .v1-photos { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+    .v1-photos .game-img:first-child { grid-row: 1 / 3; aspect-ratio: auto; }
+
+    /* V2: 2x2 EVEN GRID */
+    .games-v2 { background: var(--dark); }
+    .v2-photos { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+
+    /* V3: 1 LARGE TOP + 3 SMALL BOTTOM */
+    .games-v3 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+    .v3-photos { grid-template-columns: repeat(3, 1fr); }
+    .v3-photos .game-img:first-child { grid-column: 1 / -1; aspect-ratio: 21/9; }
+
+    /* V4: STAGGERED MASONRY */
+    .games-v4 { background: var(--dark); }
+    .v4-photos { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; }
+    .v4-photos .game-img:first-child { grid-row: 1 / 3; aspect-ratio: 3/4; }
+    .v4-photos .game-img:nth-child(2) { aspect-ratio: 16/9; }
+    .v4-photos .game-img:nth-child(3) { aspect-ratio: 1/1; }
+
+    /* V5: SINGLE HERO + STRIP */
+    .games-v5 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+    .v5-hero-photo { aspect-ratio: 3/2; }
+    .v5-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 2rem; }
+    .v5-strip .game-img { aspect-ratio: 16/9; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .g2-layout { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .v5-strip { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .stat-icon svg { width: 24px; height: 24px; }
+      .stat-number { font-size: 1.2rem; }
+      .v3-photos { grid-template-columns: 1fr 1fr; }
+      .v3-photos .game-img:first-child { grid-column: 1 / -1; }
+      .v5-strip { grid-template-columns: 1fr 1fr; }
+      .locked-pricing .p2-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+      .locked-pricing .p2-card + .p2-card { border-left: 2px solid var(--gray-dark); border-top: none; }
+      .locked-pricing .p2-card.selected { border-color: var(--yellow); }
+    }
+
+    /* SCROLL CONTEXT */
+    .scroll-context { background: var(--darker); padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(245,214,35,0.1); min-height: 15vh; }
+    .scroll-context p { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 3px; }
+
+    /* PICKER */
+    .picker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10000; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); border-top: 2px solid var(--yellow); padding: 12px 24px; display: flex; align-items: center; gap: 12px; }
+    .picker-label { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; margin-right: 4px; }
+    .picker-section { font-family: var(--font-pixel); font-size: 0.55rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-right: 12px; }
+    .picker-btn { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--dark); color: var(--gray); border: 1px solid var(--gray-dark); padding: 8px 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
+    .picker-btn:hover { border-color: var(--yellow-dim); color: var(--white); }
+    .picker-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .picker-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .picker-desc { font-size: 0.75rem; color: var(--gray); margin-left: auto; max-width: 480px; line-height: 1.4; }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: 0s !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li><li><a href="#">Games</a></li><li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li><li><a href="#">Our Story</a></li><li><a href="#">Visit</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <span class="nav-cta-micro">Insert Coin &rsaquo;</span>
+      <a href="#" class="nav-cta">Press Start</a>
+    </div>
+  </nav>
+
+  <!-- V1 TIGHT ORBITAL HERO (full, with scattered chips) -->
+  <div class="hero-orbital">
+    <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+
+    <!-- 6 scattered feature chips -->
+    <div class="hero-chip chip-1">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div>
+      <p class="chip-value">105+</p>
+      <p class="chip-label">Arcade Games</p>
+    </div>
+    <div class="hero-chip chip-2">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+      <p class="chip-value">80+</p>
+      <p class="chip-label">In Rotation</p>
+    </div>
+    <div class="hero-chip chip-3">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div>
+      <p class="chip-value">$13</p>
+      <p class="chip-label">All Day Pass</p>
+    </div>
+    <div class="hero-chip chip-4">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <p class="chip-value">Est. 2018</p>
+      <p class="chip-label">Forest City, NC</p>
+    </div>
+    <div class="hero-chip chip-5">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></div>
+      <p class="chip-value">2</p>
+      <p class="chip-label">Floors to Play</p>
+    </div>
+    <div class="hero-chip chip-6">
+      <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div>
+      <p class="chip-value">0</p>
+      <p class="chip-label">Quarters Needed</p>
+    </div>
+
+    <div class="hero-center">
+      <img class="hero-logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="hero-tagline">Classic Arcade &amp; Pinball &bull; All Freeplay</p>
+      <a href="#" class="hero-cta">Press Start</a>
+    </div>
+  </div>
+
+  <!-- LOCKED PRICING (P2 compact) -->
+  <div class="locked-pricing">
+    <div class="lp-container">
+      <div class="p2-header"><p class="p2-select-label">Select Your Pass</p><h2 class="st">Choose Your Player</h2></div>
+      <div class="p2-grid">
+        <div class="p2-card"><p class="p2-name">Hourly</p><p class="p2-price">$8</p><p class="p2-per">Per Hour</p></div>
+        <div class="p2-card selected"><p class="p2-name">All-Day</p><p class="p2-price">$13</p><p class="p2-per">Unlimited</p></div>
+        <div class="p2-card"><p class="p2-name">Group</p><p class="p2-price">$10</p><p class="p2-per">Per Person</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== V1: Large + 2 Small, PBS quote, Lucide icon stats ===== -->
+  <section class="games-variant games-section games-v1 active" data-games="v1">
+    <div class="container">
+      <div class="g2-layout">
+        <div class="g2-text">
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">105+ Machines.<br>All Playable.</h2>
+          <p class="section-desc">Every cabinet is powered up and set to freeplay. Pac-Man, Donkey Kong, Street Fighter II, Star Wars pinball, and dozens more from the golden age of arcades. Plus a full basement room with blacklights and vintage 80s carpet.</p>
+          <p class="g2-highlight">"You have more fun when you're playing with somebody, and you're there physically. <strong>It's more than just a screen.</strong>"<br><small style="color:var(--gray-dark); font-size:0.8rem;">Dave Walker, Founder</small></p>
+        </div>
+        <div class="g2-photos v1-photos">
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Father and child playing pinball" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball with Stormtrooper" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Blacklight basement room" loading="lazy" width="1200" height="904"></div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div>
+          <p class="stat-number">105+</p>
+          <p class="stat-label">Games on<br>the Floor</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+          <p class="stat-number">80+</p>
+          <p class="stat-label">More in<br>Rotation</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div>
+          <p class="stat-number">100%</p>
+          <p class="stat-label">On<br>Freeplay</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div>
+          <p class="stat-number">0</p>
+          <p class="stat-label">Quarters<br>Needed</p>
+        </div>
+      </div>
+    </div>
+    <div class="games-marquee"><div class="games-marquee-inner">
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+    </div></div>
+  </section>
+
+  <!-- ===== V2: 2x2 grid, value messaging ===== -->
+  <section class="games-variant games-section games-v2" data-games="v2">
+    <div class="container">
+      <div class="g2-layout">
+        <div class="g2-text">
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">Every Game.<br>Every Era.</h2>
+          <p class="section-desc">Cabinets from the '70s through the '90s, all powered up and waiting. Classic beat-em-ups, pinball tables, racing games, and all the titles that defined a generation of arcades.</p>
+          <p class="g2-highlight">The collection rotates regularly. Dave keeps <strong>80+ additional machines</strong> in storage, swapping titles in and out so there's always something new on the floor.</p>
+        </div>
+        <div class="g2-photos v2-photos">
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the arcade floor" loading="lazy" width="1189" height="787"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Family playing pinball" loading="lazy" width="1200" height="904"></div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div><p class="stat-number">105+</p><p class="stat-label">Games on<br>the Floor</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div><p class="stat-number">80+</p><p class="stat-label">More in<br>Rotation</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div><p class="stat-number">100%</p><p class="stat-label">On<br>Freeplay</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div><p class="stat-number">0</p><p class="stat-label">Quarters<br>Needed</p></div>
+      </div>
+    </div>
+    <div class="games-marquee"><div class="games-marquee-inner">
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+    </div></div>
+  </section>
+
+  <!-- ===== V3: 1 large top + 3 small, family angle ===== -->
+  <section class="games-variant games-section games-v3" data-games="v3">
+    <div class="container">
+      <div class="g2-layout">
+        <div class="g2-text">
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">Bring the<br>Whole Family.</h2>
+          <p class="section-desc">Originally built for 30-somethings chasing nostalgia, the museum quickly became a destination for families, teenagers, and anyone who's ever dropped a quarter into a machine. Two floors, 105+ games, all ages welcome.</p>
+          <p class="g2-highlight">"<strong>Great place to bring the family and enjoy the whole day.</strong> The kids loved it just as much as we did."<br><small style="color:var(--gray-dark); font-size:0.8rem;">Google Review</small></p>
+        </div>
+        <div class="g2-photos v3-photos">
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes cabinet" loading="lazy" width="1200" height="675"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball" loading="lazy" width="675" height="1200"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball" loading="lazy" width="1200" height="904"></div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div><p class="stat-number">105+</p><p class="stat-label">Games on<br>the Floor</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div><p class="stat-number">80+</p><p class="stat-label">More in<br>Rotation</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div><p class="stat-number">100%</p><p class="stat-label">On<br>Freeplay</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div><p class="stat-number">0</p><p class="stat-label">Quarters<br>Needed</p></div>
+      </div>
+    </div>
+    <div class="games-marquee"><div class="games-marquee-inner">
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+    </div></div>
+  </section>
+
+  <!-- ===== V4: Masonry, blacklight focus ===== -->
+  <section class="games-variant games-section games-v4" data-games="v4">
+    <div class="container">
+      <div class="g2-layout">
+        <div class="g2-text">
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">Two Floors.<br>One Wristband.</h2>
+          <p class="section-desc">The main floor is packed with classics. Downstairs, the blacklight room is something else entirely. Vintage 80s arcade carpet, UV lighting, and a curated set of cabinets that feel like stepping into a time machine.</p>
+          <p class="g2-highlight">Dave keeps <strong>80+ extra machines in storage</strong>, rotating titles regularly so there's always something different to play. The collection spans from early '70s Pong-era games through '90s fighters.</p>
+        </div>
+        <div class="g2-photos v4-photos">
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement room" loading="lazy" width="1200" height="904"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of the arcade" loading="lazy" width="1189" height="787"></div>
+          <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="Munsters pinball" loading="lazy" width="675" height="1200"></div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div><p class="stat-number">105+</p><p class="stat-label">Games on<br>the Floor</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div><p class="stat-number">80+</p><p class="stat-label">More in<br>Rotation</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div><p class="stat-number">100%</p><p class="stat-label">On<br>Freeplay</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div><p class="stat-number">0</p><p class="stat-label">Quarters<br>Needed</p></div>
+      </div>
+    </div>
+    <div class="games-marquee"><div class="games-marquee-inner">
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+    </div></div>
+  </section>
+
+  <!-- ===== V5: Single hero + strip, review quotes ===== -->
+  <section class="games-variant games-section games-v5" data-games="v5">
+    <div class="container">
+      <div class="g2-layout">
+        <div class="g2-text">
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">Play Everything.<br>No Limits.</h2>
+          <p class="section-desc">105 machines on the floor, another 80 in rotation. Every cabinet is maintained, powered up, and set to freeplay. Walk up, press start. Repeat until closing time.</p>
+          <p class="g2-highlight">"<strong>This place is great for kids, teens and adults!</strong> Unlimited gaming for $13 is awesome."<br><small style="color:var(--gray-dark); font-size:0.8rem;">Google Review</small></p>
+        </div>
+        <div class="g2-photos">
+          <div class="game-img v5-hero-photo"><img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines" loading="lazy" width="1200" height="904"></div>
+        </div>
+      </div>
+      <div class="v5-strip">
+        <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes cabinet" loading="lazy" width="1200" height="675"></div>
+        <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball" loading="lazy" width="1200" height="904"></div>
+        <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Blacklight room" loading="lazy" width="1200" height="904"></div>
+        <div class="game-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Family at pinball" loading="lazy" width="1200" height="904"></div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg></div><p class="stat-number">105+</p><p class="stat-label">Games on<br>the Floor</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div><p class="stat-number">80+</p><p class="stat-label">More in<br>Rotation</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div><p class="stat-number">100%</p><p class="stat-label">On<br>Freeplay</p></div>
+        <div class="stat-card"><div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><circle cx="16" cy="8" r="6"/></svg></div><p class="stat-number">0</p><p class="stat-label">Quarters<br>Needed</p></div>
+      </div>
+    </div>
+    <div class="games-marquee"><div class="games-marquee-inner">
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+      <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Mars Attacks!</span>
+    </div></div>
+  </section>
+
+  <div class="scroll-context"><p>Next Section Preview</p></div>
+
+  <!-- PICKER -->
+  <div class="picker" role="toolbar" aria-label="Variant picker">
+    <span class="picker-label">Variant:</span>
+    <span class="picker-section">Games</span>
+    <button class="picker-btn active" data-pick="v1" aria-pressed="true">1</button>
+    <button class="picker-btn" data-pick="v2" aria-pressed="false">2</button>
+    <button class="picker-btn" data-pick="v3" aria-pressed="false">3</button>
+    <button class="picker-btn" data-pick="v4" aria-pressed="false">4</button>
+    <button class="picker-btn" data-pick="v5" aria-pressed="false">5</button>
+    <span class="picker-desc" id="picker-desc">1 Large + 2 Small: Family pinball hero, PBS founder quote, Lucide icon stat cards</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      v1: "1 Large + 2 Small: Family pinball hero, PBS founder quote, Lucide icon stat cards",
+      v2: "2x2 Even Grid: Overhead, pinball, blacklight, family. Rotation/value copy",
+      v3: "1 Top + 3 Below: Pinball row hero, family-focused copy, review quote",
+      v4: "Masonry: Tall blacklight hero, two floors copy, storage rotation detail",
+      v5: "Hero + Strip: Single large pinball right, 4-photo strip below, review quote",
+    };
+    const btns = document.querySelectorAll(".picker-btn");
+    const sections = document.querySelectorAll(".games-variant");
+    const desc = document.getElementById("picker-desc");
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const v = btn.dataset.pick;
+        sections.forEach(s => s.classList.remove("active"));
+        btns.forEach(b => { b.classList.toggle("active", b.dataset.pick === v); b.setAttribute("aria-pressed", b.dataset.pick === v ? "true" : "false"); });
+        document.querySelector(`[data-games="${v}"]`)?.classList.add("active");
+        desc.textContent = descriptions[v] || "";
+        document.querySelector(`[data-games="${v}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+
+</body>
+</html>

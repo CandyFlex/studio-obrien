@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slim's Bar & Grill - Visit Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --dark-card: #1e1e1e;
+      --neon-red: #ff3333;
+      --neon-orange: #ff6b2b;
+      --neon-yellow: #ffc831;
+      --neon-green: #39ff14;
+      --amber: #d4860b;
+      --white: #f0f0f0;
+      --muted: #888888;
+      --smoke: #2a2a2a;
+      --border: #333333;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(17,17,17,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      letter-spacing: 0.1em; color: var(--neon-orange); margin-right: 12px;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 12px;
+      border: 2px solid #333; background: #1a1a1a; color: #f0f0f0;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--neon-red); background: var(--neon-red); color: #fff;
+      transform: scale(1.08);
+    }
+
+    .variant { display: none; padding-bottom: 80px; }
+    .variant.active { display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-center { text-align: center; }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--neon-orange); margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white); margin-bottom: 20px; text-transform: uppercase; line-height: 1;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 580px; margin: 0 auto 48px; line-height: 1.7;
+    }
+    .btn {
+      display: inline-block; font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem; letter-spacing: 0.1em; padding: 14px 36px;
+      border-radius: 6px; border: none; cursor: pointer; transition: transform 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--neon-red); color: #fff; }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid #444; }
+    .btn-outline:hover { border-color: var(--neon-orange); color: var(--neon-orange); }
+
+    /* Shared hours table */
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table td { padding: 12px 0; font-size: 0.95rem; }
+    .hours-table td:first-child { font-weight: 600; color: var(--white); width: 140px; }
+    .hours-table td:last-child { color: var(--muted); }
+
+    /* ===========================
+       V1 - Two Column (Original)
+       =========================== */
+    .v1-visit { background: var(--dark); position: relative; }
+    .v1-visit::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .v1-visit > * { position: relative; z-index: 1; }
+    .v1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .v1-info-block { margin-bottom: 36px; }
+    .v1-info-block h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      color: var(--neon-orange); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px; letter-spacing: 0.06em;
+    }
+    .v1-info-block p, .v1-info-block a {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+    }
+    .v1-info-block a { color: var(--neon-red); font-weight: 600; }
+    .v1-info-block a:hover { color: var(--neon-orange); }
+    .v1-map {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 20px; aspect-ratio: 1/1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .v1-map::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,51,51,0.06), transparent 70%);
+    }
+    .v1-map-icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .v1-map-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--white); }
+    .v1-map-address { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+
+    /* ===========================
+       V2 - Centered Card
+       =========================== */
+    .v2-visit { background: #0d0d0d; position: relative; }
+    .v2-card {
+      max-width: 800px; margin: 0 auto;
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 60px 48px;
+      position: relative; overflow: hidden;
+    }
+    .v2-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,51,51,0.05), transparent);
+    }
+    .v2-card > * { position: relative; z-index: 1; }
+    .v2-card-top { text-align: center; margin-bottom: 40px; }
+    .v2-card-top h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white); margin-bottom: 8px;
+    }
+    .v2-card-top h2 span { color: var(--neon-red); }
+    .v2-card-top p { font-size: 1rem; color: var(--muted); }
+    .v2-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .v2-card-info h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      color: var(--neon-orange); margin-bottom: 8px; letter-spacing: 0.08em;
+    }
+    .v2-card-info p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+    .v2-card-info a { color: var(--neon-red); font-weight: 600; font-size: 1rem; }
+    .v2-btns { text-align: center; margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===========================
+       V3 - Three Column Info Cards
+       =========================== */
+    .v3-visit { background: var(--dark); }
+    .v3-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+    .v3-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px 28px; text-align: center;
+      transition: transform 0.25s, border-color 0.3s;
+    }
+    .v3-card:hover { transform: translateY(-4px); border-color: var(--neon-red); }
+    .v3-card-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+    .v3-card h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      color: var(--white); margin-bottom: 12px; letter-spacing: 0.06em;
+    }
+    .v3-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    .v3-card a { color: var(--neon-red); font-weight: 600; font-size: 1.1rem; }
+    .v3-hours-card {
+      max-width: 600px; margin: 0 auto;
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px;
+    }
+    .v3-hours-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      color: var(--neon-orange); text-align: center; margin-bottom: 20px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===========================
+       V4 - Bold Split with Red Accent
+       =========================== */
+    .v4-visit { background: #0a0a0a; position: relative; overflow: hidden; }
+    .v4-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+    .v4-left {
+      background: var(--neon-red); padding: 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .v4-left::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 32px);
+    }
+    .v4-left > * { position: relative; z-index: 1; }
+    .v4-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #fff; margin-bottom: 16px; line-height: 1;
+    }
+    .v4-left p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 24px; line-height: 1.7; }
+    .v4-left .btn-dark {
+      display: inline-block; font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem; letter-spacing: 0.1em; padding: 14px 36px;
+      border-radius: 6px; background: #1a0000; color: #fff; border: none;
+      cursor: pointer; transition: transform 0.2s; align-self: flex-start;
+    }
+    .v4-left .btn-dark:hover { transform: translateY(-2px); }
+    .v4-right {
+      background: #111; padding: 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .v4-info-row { margin-bottom: 32px; }
+    .v4-info-row h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+      color: var(--neon-orange); margin-bottom: 8px; letter-spacing: 0.08em;
+    }
+    .v4-info-row p { font-size: 1rem; color: var(--muted); line-height: 1.7; }
+    .v4-info-row a { color: var(--neon-red); font-weight: 600; }
+
+    /* ===========================
+       V5 - Minimal / Clean
+       =========================== */
+    .v5-visit { background: var(--dark); }
+    .v5-top { text-align: center; margin-bottom: 60px; }
+    .v5-top h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      color: var(--white); line-height: 1; margin-bottom: 12px;
+    }
+    .v5-top h2 span { color: var(--neon-red); }
+    .v5-top p { font-size: 1.1rem; color: var(--muted); }
+    .v5-info-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden; margin-bottom: 48px;
+    }
+    .v5-info-cell {
+      padding: 40px 32px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .v5-info-cell:last-child { border-right: none; }
+    .v5-info-cell-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .v5-info-cell h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+      color: var(--neon-orange); margin-bottom: 8px; letter-spacing: 0.08em;
+    }
+    .v5-info-cell p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
+    .v5-info-cell a { color: var(--neon-red); font-weight: 600; }
+    .v5-hours-wrap {
+      max-width: 500px; margin: 0 auto; text-align: center;
+    }
+    .v5-hours-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      color: var(--neon-orange); margin-bottom: 20px; letter-spacing: 0.1em;
+    }
+    .v5-cta-row {
+      text-align: center; margin-top: 48px;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .v1-grid, .v2-card-grid, .v4-split { grid-template-columns: 1fr; }
+      .v3-cards { grid-template-columns: 1fr; }
+      .v5-info-strip { grid-template-columns: 1fr; }
+      .v5-info-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .v5-info-cell:last-child { border-bottom: none; }
+      .v4-left, .v4-right { padding: 60px 24px; }
+      .v2-card { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1 - Two Column -->
+  <div class="variant active" id="v1">
+    <section class="v1-visit section-pad">
+      <div class="container text-center">
+        <p class="section-label">Come Eat</p>
+        <h2 class="section-heading">Find Slim's</h2>
+        <p class="section-sub">Right on Main Street in downtown Forest City. Swing by for lunch, dinner, or a late night bite.</p>
+      </div>
+      <div class="container">
+        <div class="v1-grid">
+          <div>
+            <div class="v1-info-block">
+              <h3>&#128205; Address</h3>
+              <p>184 East Main St<br />Forest City, NC 28043</p>
+            </div>
+            <div class="v1-info-block">
+              <h3>&#128222; Phone</h3>
+              <a href="tel:8283820283">(828) 382-0283</a>
+            </div>
+            <div class="v1-info-block">
+              <h3>&#128339; Hours</h3>
+              <table class="hours-table">
+                <tr><td>Monday</td><td>11:00 AM - 10:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>11:00 AM - 10:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>11:00 AM - 10:00 PM</td></tr>
+                <tr><td>Thursday</td><td>11:00 AM - 10:00 PM</td></tr>
+                <tr><td>Friday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Sunday</td><td>12:00 PM - 9:00 PM</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="v1-map">
+            <div class="v1-map-icon">&#128205;</div>
+            <div class="v1-map-text">Downtown Forest City</div>
+            <div class="v1-map-address">184 East Main St, Forest City, NC 28043</div>
+            <a href="https://maps.google.com/?q=184+East+Main+St+Forest+City+NC+28043" target="_blank" class="btn btn-primary" style="margin-top: 20px; font-size: 1rem; padding: 12px 28px;">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V2 - Centered Card -->
+  <div class="variant" id="v2">
+    <section class="v2-visit section-pad">
+      <div class="container text-center">
+        <p class="section-label">Come Eat</p>
+        <h2 class="section-heading">Find Slim's</h2>
+        <p class="section-sub">Downtown Forest City, right on Main Street.</p>
+      </div>
+      <div class="container">
+        <div class="v2-card">
+          <div class="v2-card-top">
+            <h2>Slim's <span>Bar & Grill</span></h2>
+            <p>184 East Main St, Forest City, NC 28043</p>
+          </div>
+          <div class="v2-card-grid">
+            <div class="v2-card-info">
+              <h3>&#128222; Call Us</h3>
+              <a href="tel:8283820283">(828) 382-0283</a>
+              <h3 style="margin-top: 28px;">&#128205; Location</h3>
+              <p>184 East Main St<br />Forest City, NC 28043</p>
+            </div>
+            <div class="v2-card-info">
+              <h3>&#128339; Hours</h3>
+              <table class="hours-table">
+                <tr><td>Mon-Thu</td><td>11AM - 10PM</td></tr>
+                <tr><td>Fri-Sat</td><td>11AM - 11PM</td></tr>
+                <tr><td>Sunday</td><td>12PM - 9PM</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="v2-btns">
+            <a href="tel:8283820283" class="btn btn-primary">Call to Order</a>
+            <a href="https://maps.google.com/?q=184+East+Main+St+Forest+City+NC+28043" target="_blank" class="btn btn-outline">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V3 - Three Column Info Cards -->
+  <div class="variant" id="v3">
+    <section class="v3-visit section-pad">
+      <div class="container text-center">
+        <p class="section-label">Come Eat</p>
+        <h2 class="section-heading">Find Slim's</h2>
+        <p class="section-sub">Right on Main Street in downtown Forest City.</p>
+      </div>
+      <div class="container">
+        <div class="v3-cards">
+          <div class="v3-card">
+            <span class="v3-card-icon">&#128205;</span>
+            <h3>Location</h3>
+            <p>184 East Main St<br />Forest City, NC 28043</p>
+          </div>
+          <div class="v3-card">
+            <span class="v3-card-icon">&#128222;</span>
+            <h3>Phone</h3>
+            <a href="tel:8283820283">(828) 382-0283</a>
+          </div>
+          <div class="v3-card">
+            <span class="v3-card-icon">&#127963;&#65039;</span>
+            <h3>Neighborhood</h3>
+            <p>Downtown Forest City<br />East Main Street</p>
+          </div>
+        </div>
+        <div class="v3-hours-card">
+          <div class="v3-hours-title">&#128339; Hours</div>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Thursday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Friday</td><td>11:00 AM - 11:00 PM</td></tr>
+            <tr><td>Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+            <tr><td>Sunday</td><td>12:00 PM - 9:00 PM</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V4 - Bold Split -->
+  <div class="variant" id="v4">
+    <section class="v4-visit">
+      <div class="v4-split">
+        <div class="v4-left">
+          <h2>Come Eat<br />With Us</h2>
+          <p>Slim's Bar & Grill is right on East Main Street in downtown Forest City. Walk in hungry, leave happy. That's the plan.</p>
+          <a href="https://maps.google.com/?q=184+East+Main+St+Forest+City+NC+28043" target="_blank" class="btn-dark">Get Directions</a>
+        </div>
+        <div class="v4-right">
+          <div class="v4-info-row">
+            <h3>&#128205; Address</h3>
+            <p>184 East Main St<br />Forest City, NC 28043</p>
+          </div>
+          <div class="v4-info-row">
+            <h3>&#128222; Phone</h3>
+            <p><a href="tel:8283820283">(828) 382-0283</a></p>
+          </div>
+          <div class="v4-info-row">
+            <h3>&#128339; Hours</h3>
+            <table class="hours-table">
+              <tr><td>Mon-Thu</td><td>11AM - 10PM</td></tr>
+              <tr><td>Fri-Sat</td><td>11AM - 11PM</td></tr>
+              <tr><td>Sunday</td><td>12PM - 9PM</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- V5 - Minimal Clean -->
+  <div class="variant" id="v5">
+    <section class="v5-visit section-pad">
+      <div class="container">
+        <div class="v5-top">
+          <p class="section-label">Come Eat</p>
+          <h2>Find <span>Slim's</span></h2>
+          <p>Downtown Forest City, right on Main Street.</p>
+        </div>
+        <div class="v5-info-strip">
+          <div class="v5-info-cell">
+            <span class="v5-info-cell-icon">&#128205;</span>
+            <h3>Address</h3>
+            <p>184 East Main St<br />Forest City, NC 28043</p>
+          </div>
+          <div class="v5-info-cell">
+            <span class="v5-info-cell-icon">&#128222;</span>
+            <h3>Phone</h3>
+            <p><a href="tel:8283820283">(828) 382-0283</a></p>
+          </div>
+          <div class="v5-info-cell">
+            <span class="v5-info-cell-icon">&#128339;</span>
+            <h3>Quick Hours</h3>
+            <p>Mon-Thu: 11AM-10PM<br />Fri-Sat: 11AM-11PM<br />Sun: 12PM-9PM</p>
+          </div>
+        </div>
+        <div class="v5-hours-wrap">
+          <div class="v5-hours-title">Full Schedule</div>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Thursday</td><td>11:00 AM - 10:00 PM</td></tr>
+            <tr><td>Friday</td><td>11:00 AM - 11:00 PM</td></tr>
+            <tr><td>Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+            <tr><td>Sunday</td><td>12:00 PM - 9:00 PM</td></tr>
+          </table>
+        </div>
+        <div class="v5-cta-row">
+          <a href="tel:8283820283" class="btn btn-primary">Call to Order</a>
+          <a href="https://maps.google.com/?q=184+East+Main+St+Forest+City+NC+28043" target="_blank" class="btn btn-outline">Get Directions</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Visit Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

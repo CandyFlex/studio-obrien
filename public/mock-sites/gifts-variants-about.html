@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gifts and Talents - About Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #faf7f2; color: #3d3629; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --sage: #7a9b76; --sage-dark: #5a7b56; --sage-light: #a8c4a4;
+      --clay: #b8845a; --clay-dark: #96693f; --clay-light: #d4a87a;
+      --cream: #faf7f2; --cream-dark: #f0ebe2; --warm-white: #fefcf8;
+      --gold: #c4a35a; --charcoal: #3d3629; --charcoal-light: #5a4f3f;
+      --text-muted: #8a7e6e; --text-body: #5a4f3f;
+      --linen: #f5f0e6; --blush: #e8c8b8;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(61,54,41,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(122,155,118,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--sage-light); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(122,155,118,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--sage); background: rgba(122,155,118,0.1); }
+    .picker-btn.active { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+
+    .variant { display: none; padding: 80px 0 100px; }
+    .variant.active { display: block; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .section-label {
+      font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sage); font-weight: 600; margin-bottom: 0.75rem;
+    }
+
+    /* ===== V1: SIDE BY SIDE (Image Left, Text Right) ===== */
+    .v1 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .v1 .img-side { border-radius: 20px; overflow: hidden; position: relative; }
+    .v1 .img-side img { width: 100%; aspect-ratio: 5/4; object-fit: cover; }
+    .v1 .img-side .badge {
+      position: absolute; bottom: -16px; right: 24px;
+      background: var(--sage); color: var(--cream); padding: 0.75rem 1.5rem; border-radius: 12px;
+      font-family: 'Caveat', cursive; font-size: 1.2rem; font-weight: 600;
+      box-shadow: 0 4px 20px rgba(122,155,118,0.3);
+    }
+    .v1 .text-side h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3.5vw,2.8rem);
+      font-weight: 700; margin-bottom: 1.25rem; line-height: 1.15;
+    }
+    .v1 .text-side p { font-size: 1.02rem; color: var(--text-body); line-height: 1.8; margin-bottom: 1rem; }
+    .v1 .stats { display: flex; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,155,118,0.15); }
+    .v1 .stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--sage); }
+    .v1 .stat .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    @media (max-width: 768px) { .v1 .layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* ===== V2: FULL-WIDTH BANNER WITH OVERLAY TEXT ===== */
+    .v2 { padding: 0 !important; position: relative; min-height: 70vh; display: flex; align-items: center; }
+    .v2.active { display: flex; }
+    .v2 .bg { position: absolute; inset: 0; }
+    .v2 .bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+    .v2 .overlay-content {
+      position: relative; z-index: 2; max-width: 700px; padding: 4rem;
+    }
+    .v2 .section-label { color: var(--sage-light); }
+    .v2 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.2rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.15;
+    }
+    .v2 p { font-size: 1.05rem; color: rgba(250,247,242,0.85); line-height: 1.8; margin-bottom: 1rem; }
+    .v2 .highlight-box {
+      background: rgba(122,155,118,0.15); border-left: 4px solid var(--sage);
+      padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem;
+    }
+    .v2 .highlight-box p { margin: 0; font-style: italic; color: rgba(250,247,242,0.9); font-size: 1.1rem; }
+
+    /* ===== V3: CENTERED TEXT, STATS BAR, SMALL IMAGES ===== */
+    .v3 .text-center-block { max-width: 700px; margin: 0 auto; }
+    .v3 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,4.5vw,3rem);
+      font-weight: 700; margin-bottom: 1.5rem; line-height: 1.15;
+    }
+    .v3 .body-text { font-size: 1.05rem; color: var(--text-body); line-height: 1.8; margin-bottom: 1rem; text-align: center; }
+    .v3 .stats-bar {
+      display: flex; justify-content: center; gap: 3rem; margin: 3rem 0;
+      padding: 2rem 0; border-top: 1px solid rgba(122,155,118,0.15); border-bottom: 1px solid rgba(122,155,118,0.15);
+    }
+    .v3 .stat { text-align: center; }
+    .v3 .stat .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--sage); }
+    .v3 .stat .label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+    .v3 .img-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .v3 .img-row img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 12px; }
+
+    /* ===== V4: TIMELINE STYLE ===== */
+    .v4 { background: var(--linen); }
+    .v4 h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem);
+      font-weight: 700; margin-bottom: 0.5rem; line-height: 1.15;
+    }
+    .v4 .sub-text {
+      font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--clay); margin-bottom: 3rem;
+    }
+    .v4 .timeline { display: flex; flex-direction: column; gap: 0; position: relative; max-width: 700px; margin: 0 auto; }
+    .v4 .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--sage), var(--clay));
+    }
+    .v4 .step { display: flex; gap: 1.5rem; padding: 1.5rem 0; position: relative; }
+    .v4 .step .dot {
+      flex: 0 0 40px; height: 40px; border-radius: 50%;
+      background: var(--cream); border: 3px solid var(--sage);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.9rem;
+      color: var(--sage); z-index: 1;
+    }
+    .v4 .step .text h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .v4 .step .text p { font-size: 0.95rem; color: var(--text-body); line-height: 1.7; }
+
+    /* ===== V5: DARK TWO-COLUMN QUOTE STYLE ===== */
+    .v5 { background: var(--charcoal); color: var(--cream); }
+    .v5 .section-label { color: var(--sage-light); }
+    .v5 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .v5 .quote-side { position: relative; padding-left: 2rem; }
+    .v5 .quote-side::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(to bottom, var(--sage), var(--clay));
+      border-radius: 2px;
+    }
+    .v5 .big-quote {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem);
+      font-weight: 400; font-style: italic; color: var(--cream); line-height: 1.5; margin-bottom: 1.5rem;
+    }
+    .v5 .attribution { font-size: 0.85rem; color: var(--sage-light); }
+    .v5 .text-side h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.5rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 1.25rem; line-height: 1.15;
+    }
+    .v5 .text-side p { font-size: 1rem; color: rgba(250,247,242,0.75); line-height: 1.8; margin-bottom: 1rem; }
+    .v5 .values { display: flex; gap: 1.5rem; margin-top: 2rem; }
+    .v5 .value-item {
+      padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 12px;
+      border: 1px solid rgba(122,155,118,0.12); flex: 1; text-align: center;
+    }
+    .v5 .value-item .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .v5 .value-item h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--cream); margin-bottom: 0.2rem; }
+    .v5 .value-item p { font-size: 0.78rem; color: rgba(250,247,242,0.5); margin: 0; }
+    @media (max-width: 768px) { .v5 .layout { grid-template-columns: 1fr; gap: 2rem; } .v5 .values { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<!-- V1: Side by Side -->
+<section class="variant v1 active" id="v1">
+  <div class="container">
+    <div class="layout">
+      <div class="img-side">
+        <img src="/mock-sites/assets/gifts-and-talents/about-collective.webp" alt="Inside the collective" />
+        <div class="badge">Est. in Forest City</div>
+      </div>
+      <div class="text-side">
+        <div class="section-label">About the Shop</div>
+        <h2>More Than a Shop</h2>
+        <p>Gifts and Talents started with a simple idea: give local makers a storefront. Not everyone can run a retail space on their own, but everyone deserves a place to show their work.</p>
+        <p>This collective brings together artisans from Rutherford County and the surrounding Foothills, sharing one space on Forest City's Main Street. When you shop here, you are buying directly from someone in your community.</p>
+        <p>The person who glazed that mug, carved that bowl, or mixed that soap probably lives a few miles from where you are standing. That connection between maker and buyer is what keeps this place going.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">15+</div><div class="label">Local Artisans</div></div>
+          <div class="stat"><div class="num">6</div><div class="label">Craft Categories</div></div>
+          <div class="stat"><div class="num">1</div><div class="label">Main Street</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V2: Full Width Banner Overlay -->
+<section class="variant v2" id="v2">
+  <div class="bg"><img src="/mock-sites/assets/gifts-and-talents/hero-interior.webp" alt="Inside the shop" /></div>
+  <div class="overlay-content">
+    <div class="section-label">About the Shop</div>
+    <h2>A Storefront for People Who Make Things</h2>
+    <p>Gifts and Talents exists because not every artisan can afford a retail space, but every artisan deserves one. This collective on Forest City's Main Street brings potters, woodworkers, soap makers, photographers, and furniture restorers under one roof.</p>
+    <p>When you pick something up in this shop, you are holding the work of someone who lives nearby. Someone who chose to make it by hand instead of buying it wholesale.</p>
+    <div class="highlight-box">
+      <p>"Give local makers a storefront. That was the whole idea."</p>
+    </div>
+  </div>
+</section>
+
+<!-- V3: Centered Text with Stats Bar -->
+<section class="variant v3" id="v3">
+  <div class="container">
+    <div class="text-center-block text-center">
+      <div class="section-label">About the Shop</div>
+      <h2>Built Around a Simple Idea</h2>
+      <p class="body-text">Give local makers a storefront. Not everyone can run a retail space on their own, but everyone deserves a place to show their work. Gifts and Talents brings together artisans from Rutherford County and the surrounding Foothills, sharing one space on Main Street.</p>
+      <p class="body-text">When you shop here, you are buying directly from someone in your community. The person who glazed that mug or carved that bowl probably lives a few miles from where you are standing.</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat"><div class="num">15+</div><div class="label">Artisans</div></div>
+      <div class="stat"><div class="num">6</div><div class="label">Crafts</div></div>
+      <div class="stat"><div class="num">4</div><div class="label">Days a Week</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Community</div></div>
+    </div>
+    <div class="img-row">
+      <img src="/mock-sites/assets/gifts-and-talents/pottery-display.webp" alt="Pottery" />
+      <img src="/mock-sites/assets/gifts-and-talents/shop-detail.webp" alt="Shop detail" />
+      <img src="/mock-sites/assets/gifts-and-talents/wood-crafts.webp" alt="Wood crafts" />
+    </div>
+  </div>
+</section>
+
+<!-- V4: Timeline Style -->
+<section class="variant v4" id="v4">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">About the Shop</div>
+      <h2>How It All Started</h2>
+      <div class="sub-text">From idea to Main Street</div>
+    </div>
+    <div class="timeline">
+      <div class="step"><div class="dot">1</div><div class="text"><h3>The Idea</h3><p>Local makers needed a place to sell their work. Not everyone could afford their own storefront, but the talent was everywhere in the Foothills.</p></div></div>
+      <div class="step"><div class="dot">2</div><div class="text"><h3>The Space</h3><p>A spot opened up on Main Street in downtown Forest City. The vision was simple: one shared space, many artisans, all local.</p></div></div>
+      <div class="step"><div class="dot">3</div><div class="text"><h3>The Makers</h3><p>Potters, woodworkers, soap makers, photographers, and furniture restorers came together. Each brought their own craft and their own customers.</p></div></div>
+      <div class="step"><div class="dot">4</div><div class="text"><h3>The Collective</h3><p>Today, Gifts and Talents is home to over 15 local artisans. Every item on the shelves was made by someone who lives nearby. That is the whole point.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- V5: Dark Two-Column Quote -->
+<section class="variant v5" id="v5">
+  <div class="container">
+    <div class="layout">
+      <div class="quote-side">
+        <div class="section-label">About the Shop</div>
+        <div class="big-quote">"When you shop here, you are buying directly from someone in your community. The person who made it probably lives a few miles from where you are standing."</div>
+        <div class="attribution">The idea behind Gifts and Talents</div>
+      </div>
+      <div class="text-side">
+        <h2>A Collective, Not a Store</h2>
+        <p>Gifts and Talents brings together artisans from Rutherford County and the surrounding Foothills into one shared space on Forest City's Main Street.</p>
+        <p>Potters, woodworkers, soap makers, photographers, and furniture restorers all share the same shelves. Shoppers get variety. Makers get visibility. The community gets a reason to shop local.</p>
+        <div class="values">
+          <div class="value-item"><div class="icon">&#10030;</div><h4>Local</h4><p>Every maker is from the Foothills</p></div>
+          <div class="value-item"><div class="icon">&#10030;</div><h4>Handmade</h4><p>No mass production, no middlemen</p></div>
+          <div class="value-item"><div class="icon">&#10030;</div><h4>Community</h4><p>Buying here supports your neighbors</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICKER -->
+<div class="picker-bar">
+  <span class="label">About Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

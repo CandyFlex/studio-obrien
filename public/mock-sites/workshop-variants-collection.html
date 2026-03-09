@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkShop Vintage Market - Collection Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; background: #faf6ef; color: #3a2e25; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --cream: #faf6ef;
+      --brown: #5c4033;
+      --sage: #8a9a7b;
+      --gold: #c4a35a;
+      --terracotta: #c17c5e;
+      --linen: #f0ead6;
+      --dark: #3a2e25;
+      --sage-pale: #c8d4bc;
+      --gold-pale: #e8d5a0;
+      --terracotta-pale: #e8b9a3;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #3a2e25; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar .label {
+      color: #c4a35a; font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 700; margin-right: 16px;
+    }
+    .pick-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(196,163,90,0.3);
+      background: transparent; color: #faf6ef; font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; border-radius: 6px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pick-btn:hover { border-color: var(--gold); background: rgba(196,163,90,0.1); }
+    .pick-btn.active { background: #c17c5e; color: #fff; border-color: #c17c5e; }
+
+    .variant { display: none; padding-bottom: 70px; }
+    #v1 { display: block; }
+
+    /* ===== SHARED HELPERS ===== */
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .handwritten { font-family: 'Caveat', cursive; }
+
+    /* =======================================================
+       V1: 3x2 Card Grid, Cream Background, Pattern Overlays
+       ======================================================= */
+    .v1-sec {
+      padding: 6rem 2rem; background: var(--cream); position: relative;
+    }
+    .v1 .inner { max-width: 1100px; margin: 0 auto; }
+    .v1 .hdr { text-align: center; margin-bottom: 3.5rem; }
+    .v1 .hdr .section-label { color: var(--terracotta); }
+    .v1 .hdr .section-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem); color: var(--dark);
+    }
+    .v1 .hdr .sub {
+      font-size: 1.05rem; color: var(--brown); max-width: 640px;
+      margin: 0 auto; line-height: 1.85; font-weight: 400;
+    }
+    .v1 .hdr .accent {
+      font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--terracotta);
+      margin-top: 0.5rem; display: block;
+    }
+    .v1 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .v1 .card {
+      background: var(--linen); border-radius: 12px; padding: 2.25rem 2rem;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(92,64,51,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .v1 .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(58,46,37,0.1);
+    }
+    /* Unique pattern overlays per card */
+    .v1 .card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.35; pointer-events: none;
+      border-radius: 12px;
+    }
+    .v1 .card:nth-child(1)::before {
+      background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(138,154,123,0.08) 12px, rgba(138,154,123,0.08) 13px);
+    }
+    .v1 .card:nth-child(2)::before {
+      background: radial-gradient(circle at 80% 20%, rgba(196,163,90,0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(193,124,94,0.1) 0%, transparent 50%);
+    }
+    .v1 .card:nth-child(3)::before {
+      background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(92,64,51,0.04) 8px, rgba(92,64,51,0.04) 9px);
+    }
+    .v1 .card:nth-child(4)::before {
+      background: repeating-conic-gradient(rgba(138,154,123,0.05) 0% 25%, transparent 0% 50%) 0 0 / 20px 20px;
+    }
+    .v1 .card:nth-child(5)::before {
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(193,124,94,0.06) 10px, rgba(193,124,94,0.06) 11px),
+                  repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(193,124,94,0.06) 10px, rgba(193,124,94,0.06) 11px);
+    }
+    .v1 .card:nth-child(6)::before {
+      background: radial-gradient(circle at 50% 50%, rgba(196,163,90,0.08) 0%, transparent 40%),
+                  repeating-linear-gradient(90deg, transparent, transparent 16px, rgba(92,64,51,0.03) 16px, rgba(92,64,51,0.03) 17px);
+    }
+    .v1 .card .icon-shape {
+      width: 52px; height: 52px; border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.4rem;
+      margin-bottom: 1.25rem; position: relative;
+    }
+    .v1 .card:nth-child(1) .icon-shape { background: var(--sage-pale); color: var(--sage); }
+    .v1 .card:nth-child(2) .icon-shape { background: var(--gold-pale); color: var(--gold); }
+    .v1 .card:nth-child(3) .icon-shape { background: var(--terracotta-pale); color: var(--terracotta); }
+    .v1 .card:nth-child(4) .icon-shape { background: rgba(138,154,123,0.2); color: var(--sage); }
+    .v1 .card:nth-child(5) .icon-shape { background: rgba(196,163,90,0.2); color: var(--gold); }
+    .v1 .card:nth-child(6) .icon-shape { background: rgba(193,124,94,0.2); color: var(--terracotta); }
+    .v1 .card .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.75rem; position: relative;
+    }
+    .v1 .card .cat-desc {
+      font-size: 0.92rem; color: var(--brown); line-height: 1.75; position: relative;
+    }
+    @media (max-width: 900px) { .v1 .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .v1 .grid { grid-template-columns: 1fr; } .v1-sec { padding: 4rem 1.25rem; } }
+
+    /* =======================================================
+       V2: Alternating Zigzag Layout, Sage Background
+       ======================================================= */
+    .v2-sec {
+      padding: 6rem 2rem; background: var(--sage); position: relative; overflow: hidden;
+    }
+    .v2-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(250,246,239,0.02) 40px, rgba(250,246,239,0.02) 41px),
+                  repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(250,246,239,0.02) 40px, rgba(250,246,239,0.02) 41px);
+    }
+    .v2 .inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
+    .v2 .hdr { text-align: center; margin-bottom: 4rem; }
+    .v2 .hdr .section-label { color: var(--linen); opacity: 0.8; }
+    .v2 .hdr .section-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem); color: var(--cream);
+    }
+    .v2 .hdr .sub {
+      font-size: 1.05rem; color: rgba(250,246,239,0.8); max-width: 620px;
+      margin: 0 auto; line-height: 1.85;
+    }
+    .v2 .hdr .accent {
+      font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--gold);
+      margin-top: 0.75rem; display: block;
+    }
+    .v2 .zigzag { display: flex; flex-direction: column; gap: 2rem; }
+    .v2 .zig-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .v2 .zig-row:nth-child(even) { direction: rtl; }
+    .v2 .zig-row:nth-child(even) > * { direction: ltr; }
+    .v2 .zig-visual {
+      aspect-ratio: 4/3; border-radius: 16px; position: relative; overflow: hidden;
+    }
+    .v2 .zig-visual::after {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      border: 1px solid rgba(250,246,239,0.1);
+    }
+    .v2 .zig-row:nth-child(1) .zig-visual {
+      background: linear-gradient(135deg, var(--brown) 0%, #7a5e4a 100%);
+    }
+    .v2 .zig-row:nth-child(2) .zig-visual {
+      background: linear-gradient(135deg, var(--gold) 0%, #d4b86a 100%);
+    }
+    .v2 .zig-row:nth-child(3) .zig-visual {
+      background: linear-gradient(135deg, var(--terracotta) 0%, #d49a80 100%);
+    }
+    .v2 .zig-row:nth-child(4) .zig-visual {
+      background: linear-gradient(135deg, #5c6e4e 0%, var(--sage) 100%);
+    }
+    .v2 .zig-row:nth-child(5) .zig-visual {
+      background: linear-gradient(135deg, #8a6e52 0%, var(--brown) 100%);
+    }
+    .v2 .zig-row:nth-child(6) .zig-visual {
+      background: linear-gradient(135deg, #a8855c 0%, var(--terracotta) 100%);
+    }
+    .v2 .zig-visual .vis-label {
+      position: absolute; bottom: 1.25rem; left: 1.25rem;
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+      color: rgba(250,246,239,0.15); text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    /* Decorative shapes inside visuals */
+    .v2 .zig-visual .deco {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .v2 .zig-row:nth-child(1) .deco {
+      width: 80px; height: 80px; border: 3px solid rgba(250,246,239,0.15); border-radius: 50%;
+    }
+    .v2 .zig-row:nth-child(2) .deco {
+      width: 70px; height: 70px; border: 3px solid rgba(58,46,37,0.15); transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .v2 .zig-row:nth-child(3) .deco {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(250,246,239,0.1) 30%, transparent 70%);
+    }
+    .v2 .zig-row:nth-child(4) .deco {
+      width: 60px; height: 60px; border: 3px solid rgba(250,246,239,0.12);
+      border-radius: 8px; transform: translate(-50%, -50%) rotate(15deg);
+    }
+    .v2 .zig-row:nth-child(5) .deco {
+      width: 80px; height: 3px; background: rgba(250,246,239,0.15);
+    }
+    .v2 .zig-row:nth-child(5) .deco::after {
+      content: ''; position: absolute; width: 3px; height: 80px;
+      background: rgba(250,246,239,0.15); top: -38px; left: 38px;
+    }
+    .v2 .zig-row:nth-child(6) .deco {
+      width: 70px; height: 70px; border-radius: 50% 0 50% 0;
+      border: 3px solid rgba(250,246,239,0.12); transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .v2 .zig-content .num {
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900;
+      color: rgba(250,246,239,0.12); line-height: 1; margin-bottom: 0.25rem;
+    }
+    .v2 .zig-content .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .v2 .zig-content .cat-desc {
+      font-size: 0.95rem; color: rgba(250,246,239,0.75); line-height: 1.8;
+    }
+    @media (max-width: 768px) {
+      .v2 .zig-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .v2 .zig-row:nth-child(even) { direction: ltr; }
+      .v2 .zig-visual { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 560px) { .v2-sec { padding: 4rem 1.25rem; } }
+
+    /* =======================================================
+       V3: Dark Theme, Gold Accents, Elegant Cards
+       ======================================================= */
+    .v3-sec {
+      padding: 6rem 2rem; background: var(--dark); position: relative; overflow: hidden;
+    }
+    .v3-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 0%, rgba(196,163,90,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 100%, rgba(193,124,94,0.04) 0%, transparent 50%);
+    }
+    .v3-sec::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(196,163,90,0.015) 1px, rgba(196,163,90,0.015) 2px);
+      background-size: 100% 4px;
+    }
+    .v3 .inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .v3 .hdr { text-align: center; margin-bottom: 4rem; }
+    .v3 .hdr .section-label { color: var(--gold); }
+    .v3 .hdr .section-heading {
+      font-size: clamp(2.25rem, 5.5vw, 3.5rem); color: var(--cream);
+    }
+    .v3 .hdr .rule {
+      width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.25rem auto;
+    }
+    .v3 .hdr .sub {
+      font-size: 1rem; color: rgba(250,246,239,0.6); max-width: 600px;
+      margin: 0 auto; line-height: 1.85;
+    }
+    .v3 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
+    }
+    .v3 .card {
+      background: rgba(250,246,239,0.03); border-radius: 16px; padding: 2.5rem 2rem;
+      border: 1px solid rgba(196,163,90,0.1); position: relative; overflow: hidden;
+      transition: border-color 0.4s, box-shadow 0.4s;
+    }
+    .v3 .card:hover {
+      border-color: rgba(196,163,90,0.3);
+      box-shadow: 0 0 40px rgba(196,163,90,0.06);
+    }
+    .v3 .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .v3 .card:hover::before { opacity: 1; }
+    .v3 .card .cat-num {
+      font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900;
+      color: rgba(196,163,90,0.08); line-height: 1; position: absolute; top: 1rem; right: 1.5rem;
+    }
+    .v3 .card .gold-line {
+      width: 32px; height: 2px; background: var(--gold); margin-bottom: 1.25rem;
+    }
+    .v3 .card .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .v3 .card .cat-desc {
+      font-size: 0.9rem; color: rgba(250,246,239,0.55); line-height: 1.8;
+    }
+    .v3 .card .tag {
+      display: inline-block; margin-top: 1.25rem; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(196,163,90,0.2); padding: 0.35rem 0.75rem;
+      border-radius: 100px; font-weight: 600;
+    }
+    @media (max-width: 900px) { .v3 .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) {
+      .v3 .grid { grid-template-columns: 1fr; }
+      .v3-sec { padding: 4rem 1.25rem; }
+    }
+
+    /* =======================================================
+       V4: Large Typography with Oversized Category Names
+       ======================================================= */
+    .v4-sec {
+      padding: 6rem 2rem; background: var(--linen); position: relative; overflow: hidden;
+    }
+    .v4-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, rgba(138,154,123,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 100% 50%, rgba(193,124,94,0.06) 0%, transparent 50%);
+    }
+    .v4 .inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .v4 .hdr { margin-bottom: 4rem; max-width: 600px; }
+    .v4 .hdr .section-label { color: var(--sage); }
+    .v4 .hdr .section-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem); color: var(--dark);
+    }
+    .v4 .hdr .sub {
+      font-size: 1rem; color: var(--brown); line-height: 1.85;
+    }
+    .v4 .hdr .accent {
+      font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--terracotta);
+      margin-top: 0.5rem; display: block;
+    }
+    .v4 .cat-list { display: flex; flex-direction: column; gap: 0; }
+    .v4 .cat-row {
+      display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: baseline;
+      padding: 2.5rem 0; border-bottom: 1px solid rgba(92,64,51,0.08);
+      position: relative; transition: background 0.3s;
+    }
+    .v4 .cat-row:first-child { border-top: 1px solid rgba(92,64,51,0.08); }
+    .v4 .cat-row:hover {
+      background: rgba(250,246,239,0.6);
+    }
+    .v4 .cat-row .big-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900;
+      color: var(--dark); line-height: 1.1; transition: color 0.3s;
+      letter-spacing: -0.01em;
+    }
+    .v4 .cat-row:hover .big-name { color: var(--terracotta); }
+    .v4 .cat-row .big-name .num {
+      font-size: 0.4em; color: var(--sage); font-weight: 700;
+      vertical-align: super; margin-right: 0.25em; letter-spacing: 0;
+    }
+    .v4 .cat-row .cat-desc {
+      font-size: 0.9rem; color: var(--brown); line-height: 1.75;
+      max-width: 340px; text-align: right;
+    }
+    .v4 .cat-row .arrow {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      font-size: 1.5rem; color: var(--terracotta); opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .v4 .cat-row:hover .arrow { opacity: 1; transform: translateY(-50%) translateX(4px); }
+    @media (max-width: 768px) {
+      .v4 .cat-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .v4 .cat-row .cat-desc { text-align: left; max-width: none; }
+      .v4 .cat-row .big-name { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+      .v4 .cat-row .arrow { display: none; }
+    }
+    @media (max-width: 560px) { .v4-sec { padding: 4rem 1.25rem; } }
+
+    /* =======================================================
+       V5: Masonry/Staggered Grid with Varied Card Sizes
+       ======================================================= */
+    .v5-sec {
+      padding: 6rem 2rem; background: var(--cream); position: relative;
+    }
+    .v5-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(92,64,51,0.015) 60px, rgba(92,64,51,0.015) 61px);
+    }
+    .v5 .inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .v5 .hdr { text-align: center; margin-bottom: 4rem; }
+    .v5 .hdr .section-label { color: var(--terracotta); }
+    .v5 .hdr .section-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem); color: var(--dark);
+    }
+    .v5 .hdr .rule {
+      width: 60px; height: 3px; background: var(--terracotta); margin: 1rem auto;
+      border-radius: 2px;
+    }
+    .v5 .hdr .sub {
+      font-size: 1rem; color: var(--brown); max-width: 600px;
+      margin: 0 auto; line-height: 1.85;
+    }
+    .v5 .hdr .accent {
+      font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--sage);
+      margin-top: 0.75rem; display: block;
+    }
+    .v5 .masonry {
+      columns: 3; column-gap: 1.5rem;
+    }
+    .v5 .m-card {
+      break-inside: avoid; margin-bottom: 1.5rem; border-radius: 16px;
+      overflow: hidden; position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .v5 .m-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(58,46,37,0.12);
+    }
+    /* Card 1: Tall, sage bg */
+    .v5 .m-card:nth-child(1) {
+      background: var(--sage); padding: 3rem 2rem; color: var(--cream);
+    }
+    .v5 .m-card:nth-child(1) .vis-block {
+      width: 100%; aspect-ratio: 1; border-radius: 12px; margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, rgba(250,246,239,0.08) 0%, rgba(250,246,239,0.02) 100%);
+      position: relative; overflow: hidden;
+    }
+    .v5 .m-card:nth-child(1) .vis-block::before {
+      content: ''; position: absolute; inset: 20%; border: 2px solid rgba(250,246,239,0.1);
+      border-radius: 50%;
+    }
+    .v5 .m-card:nth-child(1) .vis-block::after {
+      content: ''; position: absolute; inset: 30%; border: 2px solid rgba(250,246,239,0.06);
+      border-radius: 50%;
+    }
+    .v5 .m-card:nth-child(1) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v5 .m-card:nth-child(1) .cat-desc {
+      font-size: 0.9rem; line-height: 1.8; opacity: 0.8;
+    }
+
+    /* Card 2: Short, gold border */
+    .v5 .m-card:nth-child(2) {
+      background: var(--linen); padding: 2rem; border: 2px solid var(--gold);
+    }
+    .v5 .m-card:nth-child(2) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.75rem;
+    }
+    .v5 .m-card:nth-child(2) .cat-desc {
+      font-size: 0.9rem; color: var(--brown); line-height: 1.8;
+    }
+    .v5 .m-card:nth-child(2) .tag {
+      margin-top: 1rem; display: inline-block; font-family: 'Caveat', cursive;
+      font-size: 1.15rem; color: var(--gold);
+    }
+
+    /* Card 3: Medium, terracotta bg */
+    .v5 .m-card:nth-child(3) {
+      background: var(--terracotta); padding: 2.5rem 2rem; color: var(--cream);
+    }
+    .v5 .m-card:nth-child(3) .vis-block {
+      width: 100%; aspect-ratio: 16/9; border-radius: 10px; margin-bottom: 1.5rem;
+      background: rgba(250,246,239,0.08); position: relative; overflow: hidden;
+    }
+    .v5 .m-card:nth-child(3) .vis-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(250,246,239,0.04) 8px, rgba(250,246,239,0.04) 9px);
+    }
+    .v5 .m-card:nth-child(3) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v5 .m-card:nth-child(3) .cat-desc {
+      font-size: 0.9rem; line-height: 1.8; opacity: 0.85;
+    }
+
+    /* Card 4: Tall, dark bg */
+    .v5 .m-card:nth-child(4) {
+      background: var(--dark); padding: 3rem 2rem; color: var(--cream);
+    }
+    .v5 .m-card:nth-child(4) .vis-block {
+      width: 100%; aspect-ratio: 3/4; border-radius: 12px; margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, rgba(196,163,90,0.1) 0%, rgba(196,163,90,0.02) 100%);
+      position: relative; overflow: hidden;
+    }
+    .v5 .m-card:nth-child(4) .vis-block::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg);
+      width: 60px; height: 60px; border: 2px solid rgba(196,163,90,0.15);
+    }
+    .v5 .m-card:nth-child(4) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .v5 .m-card:nth-child(4) .cat-desc {
+      font-size: 0.9rem; line-height: 1.8; opacity: 0.65;
+    }
+
+    /* Card 5: Short, cream bg, sage accent */
+    .v5 .m-card:nth-child(5) {
+      background: #fff; padding: 2rem; border-left: 4px solid var(--sage);
+    }
+    .v5 .m-card:nth-child(5) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.75rem;
+    }
+    .v5 .m-card:nth-child(5) .cat-desc {
+      font-size: 0.9rem; color: var(--brown); line-height: 1.8;
+    }
+
+    /* Card 6: Medium, linen bg with pattern */
+    .v5 .m-card:nth-child(6) {
+      background: var(--linen); padding: 2.5rem 2rem; position: relative;
+    }
+    .v5 .m-card:nth-child(6)::before {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: repeating-conic-gradient(rgba(92,64,51,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px;
+    }
+    .v5 .m-card:nth-child(6) .vis-block {
+      width: 100%; aspect-ratio: 2/1; border-radius: 10px; margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+      position: relative; overflow: hidden;
+    }
+    .v5 .m-card:nth-child(6) .vis-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 6px, rgba(250,246,239,0.06) 6px, rgba(250,246,239,0.06) 7px);
+    }
+    .v5 .m-card:nth-child(6) .cat-name {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.75rem; position: relative;
+    }
+    .v5 .m-card:nth-child(6) .cat-desc {
+      font-size: 0.9rem; color: var(--brown); line-height: 1.8; position: relative;
+    }
+
+    @media (max-width: 900px) { .v5 .masonry { columns: 2; } }
+    @media (max-width: 560px) {
+      .v5 .masonry { columns: 1; }
+      .v5-sec { padding: 4rem 1.25rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== V1: 3x2 Card Grid with Pattern Overlays ===== -->
+  <section class="variant" id="v1" style="display:block;">
+    <div class="v1-sec">
+      <div class="inner">
+        <div class="hdr">
+          <div class="section-label">Our Collection</div>
+          <h2 class="section-heading">Every Booth Tells a Story</h2>
+          <p class="sub">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+          <span class="accent">Always changing, always worth the trip</span>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3 class="cat-name">Vintage Furniture</h3>
+            <p class="cat-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+          </div>
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8 2 6 6 6 10c0 4 2 6 6 10 4-4 6-6 6-10 0-4-2-8-6-8z"/></svg>
+            </div>
+            <h3 class="cat-name">Antiques & Collectibles</h3>
+            <p class="cat-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+          </div>
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2 1.5-4 4-4s4 2 4 4-1.5 4-4 4"/></svg>
+            </div>
+            <h3 class="cat-name">Handcrafted Goods</h3>
+            <p class="cat-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+          </div>
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="cat-name">Home Decor</h3>
+            <p class="cat-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+          </div>
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h3 class="cat-name">Local Favorites</h3>
+            <p class="cat-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+          </div>
+          <div class="card">
+            <div class="icon-shape">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 017-7h4a7 7 0 017 7v2"/></svg>
+            </div>
+            <h3 class="cat-name">Fashion & Accessories</h3>
+            <p class="cat-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V2: Alternating Zigzag Layout, Sage Background ===== -->
+  <section class="variant" id="v2">
+    <div class="v2-sec">
+      <div class="inner">
+        <div class="hdr">
+          <div class="section-label">Our Collection</div>
+          <h2 class="section-heading">Every Booth Tells a Story</h2>
+          <p class="sub">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+          <span class="accent">Something new every week</span>
+        </div>
+        <div class="zigzag">
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">01</span></div>
+            <div class="zig-content">
+              <div class="num">01</div>
+              <h3 class="cat-name">Vintage Furniture</h3>
+              <p class="cat-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+            </div>
+          </div>
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">02</span></div>
+            <div class="zig-content">
+              <div class="num">02</div>
+              <h3 class="cat-name">Antiques & Collectibles</h3>
+              <p class="cat-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+            </div>
+          </div>
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">03</span></div>
+            <div class="zig-content">
+              <div class="num">03</div>
+              <h3 class="cat-name">Handcrafted Goods</h3>
+              <p class="cat-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+            </div>
+          </div>
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">04</span></div>
+            <div class="zig-content">
+              <div class="num">04</div>
+              <h3 class="cat-name">Home Decor</h3>
+              <p class="cat-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+            </div>
+          </div>
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">05</span></div>
+            <div class="zig-content">
+              <div class="num">05</div>
+              <h3 class="cat-name">Local Favorites</h3>
+              <p class="cat-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+            </div>
+          </div>
+          <div class="zig-row">
+            <div class="zig-visual"><div class="deco"></div><span class="vis-label">06</span></div>
+            <div class="zig-content">
+              <div class="num">06</div>
+              <h3 class="cat-name">Fashion & Accessories</h3>
+              <p class="cat-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V3: Dark Theme, Gold Accents, Elegant Cards ===== -->
+  <section class="variant" id="v3">
+    <div class="v3-sec">
+      <div class="inner">
+        <div class="hdr">
+          <div class="section-label">Our Collection</div>
+          <h2 class="section-heading">Every Booth Tells a Story</h2>
+          <div class="rule"></div>
+          <p class="sub">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="cat-num">01</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Vintage Furniture</h3>
+            <p class="cat-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+            <span class="tag">Downstairs</span>
+          </div>
+          <div class="card">
+            <span class="cat-num">02</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Antiques & Collectibles</h3>
+            <p class="cat-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+            <span class="tag">Both Floors</span>
+          </div>
+          <div class="card">
+            <span class="cat-num">03</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Handcrafted Goods</h3>
+            <p class="cat-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+            <span class="tag">Local Artisans</span>
+          </div>
+          <div class="card">
+            <span class="cat-num">04</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Home Decor</h3>
+            <p class="cat-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+            <span class="tag">Farmhouse Style</span>
+          </div>
+          <div class="card">
+            <span class="cat-num">05</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Local Favorites</h3>
+            <p class="cat-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+            <span class="tag">Shelby Made</span>
+          </div>
+          <div class="card">
+            <span class="cat-num">06</span>
+            <div class="gold-line"></div>
+            <h3 class="cat-name">Fashion & Accessories</h3>
+            <p class="cat-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+            <span class="tag">Upstairs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V4: Large Typography, Oversized Category Names ===== -->
+  <section class="variant" id="v4">
+    <div class="v4-sec">
+      <div class="inner">
+        <div class="hdr">
+          <div class="section-label">Our Collection</div>
+          <h2 class="section-heading">Every Booth Tells a Story</h2>
+          <p class="sub">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+          <span class="accent">80+ vendors and counting</span>
+        </div>
+        <div class="cat-list">
+          <div class="cat-row">
+            <div class="big-name"><span class="num">01</span>Vintage Furniture</div>
+            <p class="cat-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+          <div class="cat-row">
+            <div class="big-name"><span class="num">02</span>Antiques & Collectibles</div>
+            <p class="cat-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+          <div class="cat-row">
+            <div class="big-name"><span class="num">03</span>Handcrafted Goods</div>
+            <p class="cat-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+          <div class="cat-row">
+            <div class="big-name"><span class="num">04</span>Home Decor</div>
+            <p class="cat-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+          <div class="cat-row">
+            <div class="big-name"><span class="num">05</span>Local Favorites</div>
+            <p class="cat-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+          <div class="cat-row">
+            <div class="big-name"><span class="num">06</span>Fashion & Accessories</div>
+            <p class="cat-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+            <span class="arrow">&rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== V5: Masonry/Staggered Grid with Varied Card Sizes ===== -->
+  <section class="variant" id="v5">
+    <div class="v5-sec">
+      <div class="inner">
+        <div class="hdr">
+          <div class="section-label">Our Collection</div>
+          <h2 class="section-heading">Every Booth Tells a Story</h2>
+          <div class="rule"></div>
+          <p class="sub">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+          <span class="accent">Curated with care, found by chance</span>
+        </div>
+        <div class="masonry">
+          <!-- Card 1: Tall sage -->
+          <div class="m-card">
+            <div class="vis-block"></div>
+            <h3 class="cat-name">Vintage Furniture</h3>
+            <p class="cat-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+          </div>
+          <!-- Card 2: Short gold border -->
+          <div class="m-card">
+            <h3 class="cat-name">Antiques & Collectibles</h3>
+            <p class="cat-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+            <span class="tag">One of a kind</span>
+          </div>
+          <!-- Card 3: Medium terracotta -->
+          <div class="m-card">
+            <div class="vis-block"></div>
+            <h3 class="cat-name">Handcrafted Goods</h3>
+            <p class="cat-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+          </div>
+          <!-- Card 4: Tall dark -->
+          <div class="m-card">
+            <div class="vis-block"></div>
+            <h3 class="cat-name">Home Decor</h3>
+            <p class="cat-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+          </div>
+          <!-- Card 5: Short cream -->
+          <div class="m-card">
+            <h3 class="cat-name">Local Favorites</h3>
+            <p class="cat-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+          </div>
+          <!-- Card 6: Medium linen pattern -->
+          <div class="m-card">
+            <div class="vis-block"></div>
+            <h3 class="cat-name">Fashion & Accessories</h3>
+            <p class="cat-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PICKER BAR ===== -->
+  <div class="picker-bar">
+    <span class="label">Collection Variants</span>
+    <button onclick="show(1)" class="pick-btn active">1</button>
+    <button onclick="show(2)" class="pick-btn">2</button>
+    <button onclick="show(3)" class="pick-btn">3</button>
+    <button onclick="show(4)" class="pick-btn">4</button>
+    <button onclick="show(5)" class="pick-btn">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.style.display = 'none');
+      document.getElementById('v' + n).style.display = 'block';
+      document.querySelectorAll('.pick-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

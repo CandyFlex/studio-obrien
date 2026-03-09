@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dovetails & Rusty Nails - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #1a1512; color: #faf8f3; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --parchment: #f5efe6; --cream: #faf8f3; --brown-deep: #3a2e24; --brown-warm: #6b4c3b;
+      --gold: #b8860b; --gold-light: #d4a843; --gold-pale: #e8d5a0;
+      --rust: #8b3a2a; --rust-light: #a85040; --sage: #6b7c5e;
+      --charcoal: #2c2420; --ink: #1a1512;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,21,18,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(184,134,11,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(184,134,11,0.1); }
+    .picker-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    /* ===== SHARED ===== */
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .hero-section { min-height: 100vh; position: relative; overflow: hidden; }
+    .btn-p {
+      display: inline-block; padding: 0.85rem 2.25rem; background: var(--rust); color: var(--cream);
+      font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em;
+      border-radius: 3px; transition: all 0.3s;
+    }
+    .btn-p:hover { background: var(--rust-light); transform: translateY(-1px); }
+    .btn-s {
+      display: inline-block; padding: 0.85rem 2.25rem; background: transparent; color: var(--gold-light);
+      font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em;
+      border-radius: 3px; border: 1px solid rgba(184,134,11,0.4); transition: all 0.3s;
+    }
+    .btn-s:hover { background: rgba(184,134,11,0.1); border-color: var(--gold-light); }
+
+    /* ===== V1: Centered Classic (dark, ornate borders) ===== */
+    .v1-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(139,58,42,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(184,134,11,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(107,76,59,0.2) 0%, transparent 60%),
+        var(--charcoal);
+    }
+    .v1 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v1 .corner {
+      position: absolute; width: 80px; height: 80px;
+      border-color: rgba(184,134,11,0.15); border-style: solid; z-index: 1;
+    }
+    .v1 .corner.tl { top: 2rem; left: 2rem; border-width: 1px 0 0 1px; }
+    .v1 .corner.tr { top: 2rem; right: 2rem; border-width: 1px 1px 0 0; }
+    .v1 .corner.bl { bottom: 4rem; left: 2rem; border-width: 0 0 1px 1px; }
+    .v1 .corner.br { bottom: 4rem; right: 2rem; border-width: 0 1px 1px 0; }
+    .v1 .est {
+      display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+      font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700;
+    }
+    .v1 .est .line { width: 40px; height: 1px; background: var(--gold); opacity: 0.4; }
+    .v1 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900; line-height: 0.95; margin-bottom: 0.5rem;
+    }
+    .v1 h1 .amp { color: var(--gold-light); font-style: italic; font-size: 0.7em; }
+    .v1 .tagline {
+      font-family: 'Libre Baskerville', serif; font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.35rem); color: var(--gold-pale);
+      margin-bottom: 1.5rem; opacity: 0.9;
+    }
+    .v1 .sub {
+      font-size: 1rem; color: rgba(250,248,243,0.65); max-width: 520px;
+      margin: 0 auto 2.5rem; line-height: 1.8;
+    }
+    .v1 .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== V2: Split Layout (image-like panel + text) ===== */
+    .v2 { display: none; }
+    .v2.active { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .v2 .left {
+      background: var(--charcoal); display: flex; flex-direction: column;
+      justify-content: center; padding: 4rem 3rem; position: relative;
+    }
+    .v2 .left::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--rust));
+    }
+    .v2 .tag {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 600; margin-bottom: 1.25rem;
+    }
+    .v2 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 900; line-height: 1; margin-bottom: 0.5rem;
+    }
+    .v2 h1 em {
+      color: var(--gold-light); font-style: italic; display: block;
+      font-size: 0.45em; margin-top: 0.5em; letter-spacing: 0.05em;
+    }
+    .v2 .sub {
+      font-family: 'Libre Baskerville', serif; font-size: 0.95rem;
+      color: rgba(250,248,243,0.7); line-height: 1.8; margin-bottom: 2rem; max-width: 450px;
+    }
+    .v2 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v2 .stats {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(184,134,11,0.15);
+    }
+    .v2 .stat-num {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
+      color: var(--gold-light); line-height: 1;
+    }
+    .v2 .stat-label {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(250,248,243,0.45); margin-top: 0.2rem;
+    }
+    .v2 .right {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--brown-warm), var(--rust) 40%, var(--brown-deep));
+    }
+    .v2 .right::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(184,134,11,0.03) 40px, rgba(184,134,11,0.03) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(184,134,11,0.03) 40px, rgba(184,134,11,0.03) 41px);
+    }
+    .v2 .right-content {
+      position: relative; z-index: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; height: 100%; padding: 2rem;
+      text-align: center;
+    }
+    .v2 .right-icon {
+      font-size: 4rem; margin-bottom: 1.5rem; color: var(--gold-pale); opacity: 0.6;
+    }
+    .v2 .right-text {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
+      color: var(--cream); line-height: 1.15; text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .v2 .right-sub {
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold-pale); opacity: 0.7; margin-top: 0.75rem;
+    }
+
+    /* ===== V3: Full Bleed Typography ===== */
+    .v3-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, var(--ink) 0%, var(--brown-deep) 50%, var(--rust) 100%);
+    }
+    .v3-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 30px, rgba(184,134,11,0.015) 30px, rgba(184,134,11,0.015) 31px
+      );
+    }
+    .v3 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      min-height: 100vh; padding: 4rem 3rem 6rem;
+    }
+    .v3 .big-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(4rem, 11vw, 9rem);
+      font-weight: 900; line-height: 0.85; letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .v3 .big-title span { color: var(--gold-light); }
+    .v3 .sub-line {
+      font-family: 'Libre Baskerville', serif; font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-style: italic; color: var(--gold-pale); margin-bottom: 1.5rem; opacity: 0.85;
+    }
+    .v3 .desc {
+      font-size: 1rem; color: rgba(250,248,243,0.65); max-width: 500px;
+      line-height: 1.7; margin-bottom: 2rem;
+    }
+    .v3 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v3 .corner-badge {
+      position: absolute; top: 2rem; right: 2rem; z-index: 2;
+      background: var(--rust); padding: 1rem; border-radius: 50%;
+      width: 100px; height: 100px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      border: 2px solid rgba(184,134,11,0.3);
+    }
+    .v3 .corner-badge .num {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900;
+      color: var(--gold-light); line-height: 1;
+    }
+    .v3 .corner-badge .lbl {
+      font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--cream); opacity: 0.8; margin-top: 2px;
+    }
+
+    /* ===== V4: Victorian Elegance (ornate, framed) ===== */
+    .v4-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(184,134,11,0.08) 0%, transparent 60%),
+        var(--ink);
+    }
+    .v4 .frame {
+      position: absolute; z-index: 1;
+      top: 3rem; left: 3rem; right: 3rem; bottom: 5rem;
+      border: 1px solid rgba(184,134,11,0.12);
+    }
+    .v4 .frame::before {
+      content: ''; position: absolute;
+      top: 8px; left: 8px; right: 8px; bottom: 8px;
+      border: 1px solid rgba(184,134,11,0.08);
+    }
+    .v4 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 5rem 2rem;
+    }
+    .v4 .flourish {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+      color: var(--gold); opacity: 0.3; margin-bottom: 1rem; line-height: 1;
+    }
+    .v4 .tag {
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 700; margin-bottom: 1.5rem;
+    }
+    .v4 h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700; line-height: 1; margin-bottom: 0.5rem; letter-spacing: 0.02em;
+    }
+    .v4 h1 .amp {
+      display: block; font-style: italic; font-size: 0.4em;
+      color: var(--gold-light); margin: 0.3em 0;
+    }
+    .v4 .sep {
+      display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
+    }
+    .v4 .sep .line { width: 80px; height: 1px; background: var(--gold); opacity: 0.2; }
+    .v4 .sep .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.4; }
+    .v4 .tagline {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.35rem; color: var(--gold-pale); margin-bottom: 1rem; opacity: 0.85;
+    }
+    .v4 .sub {
+      font-size: 0.9rem; color: rgba(250,248,243,0.55); max-width: 480px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .v4 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v4 .bottom-text {
+      position: absolute; bottom: 6rem; z-index: 2;
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(250,248,243,0.25);
+    }
+
+    /* ===== V5: Horizontal Marquee + Bold ===== */
+    .v5-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, var(--brown-deep) 0%, var(--charcoal) 100%);
+    }
+    .v5 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh; padding: 2rem; text-align: center;
+    }
+    .v5 .marquee-strip {
+      position: absolute; z-index: 1; width: 200%; left: -50%;
+      padding: 0.5rem 0; overflow: hidden; white-space: nowrap;
+      font-family: 'Playfair Display', serif; font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(184,134,11,0.12); font-weight: 700;
+    }
+    .v5 .marquee-strip.top { top: 25%; transform: rotate(-3deg); }
+    .v5 .marquee-strip.bottom { bottom: 25%; transform: rotate(-3deg); }
+    .v5 .marquee-text {
+      display: inline-block; animation: marqueeScroll 30s linear infinite;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .v5 .badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 0.5rem 1.25rem; border: 1px solid rgba(184,134,11,0.25);
+      border-radius: 100px; margin-bottom: 2rem;
+    }
+    .v5 .badge .dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+    .v5 .badge span {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 600;
+    }
+    .v5 h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 900; line-height: 0.9; margin-bottom: 0.75rem;
+    }
+    .v5 h1 .line2 {
+      display: block; font-style: italic; color: var(--gold-light);
+      font-size: 0.35em; margin-top: 0.4em; letter-spacing: 0.05em;
+    }
+    .v5 .sub {
+      font-family: 'Libre Baskerville', serif; font-size: 1rem;
+      color: rgba(250,248,243,0.6); max-width: 520px; line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .v5 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v5 .bottom-stats {
+      position: absolute; bottom: 3rem; left: 0; right: 0; z-index: 3;
+      display: flex; justify-content: center; gap: 3rem;
+    }
+    .v5 .bstat { text-align: center; }
+    .v5 .bstat-num {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+      color: var(--gold-light);
+    }
+    .v5 .bstat-lbl {
+      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(250,248,243,0.4);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v2.active { grid-template-columns: 1fr; }
+      .v2 .right { min-height: 35vh; }
+      .v2 .left { padding: 2.5rem 1.5rem; }
+      .v1 .corner { width: 40px; height: 40px; }
+      .v4 .frame { top: 1.5rem; left: 1.5rem; right: 1.5rem; bottom: 4rem; }
+      .v3 .corner-badge { width: 80px; height: 80px; }
+      .v3 .corner-badge .num { font-size: 1.1rem; }
+      .v5 .bottom-stats { gap: 1.5rem; }
+      .v5 .marquee-strip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- VARIANT 1: Centered Classic -->
+<div class="variant v1 active" id="v1">
+  <section class="hero-section">
+    <div class="v1-bg"></div>
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+    <div class="content">
+      <div class="est">
+        <span class="line"></span>
+        Est. 2004 &bull; Forest City, NC
+        <span class="line"></span>
+      </div>
+      <h1>Dovetails <span class="amp">&</span><br />Rusty Nails</h1>
+      <p class="tagline">5,000 square feet of history, one treasure at a time.</p>
+      <p class="sub">Family-owned antiques and vintage collectibles in the heart of downtown Forest City. Victorian furniture, glass art, pottery, and pieces with stories you can feel.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">Explore Our Collection</a>
+        <a href="#" class="btn-s">Plan Your Visit</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VARIANT 2: Split Layout -->
+<div class="variant v2" id="v2">
+  <div class="left">
+    <div class="tag">Antiques & Vintage Collectibles &bull; Est. 2004</div>
+    <h1>Dovetails &<br />Rusty Nails<em>Downtown Forest City, NC</em></h1>
+    <p class="sub">Family-owned since 2004. Victorian furniture, glass art, pottery, vintage collectibles, and 5,000 square feet of pieces with real history. Step inside and see what finds you.</p>
+    <div class="btns">
+      <a href="#" class="btn-p">Explore the Collection</a>
+      <a href="#" class="btn-s">Visit Us</a>
+    </div>
+    <div class="stats">
+      <div><div class="stat-num">5,000</div><div class="stat-label">Square Feet</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-label">Years Open</div></div>
+      <div><div class="stat-num">4.3</div><div class="stat-label">Star Rating</div></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-content">
+      <div class="right-icon">&#9881;</div>
+      <div class="right-text">Every Piece<br />Has a Past</div>
+      <div class="right-sub">115 E Main St &bull; Forest City, NC</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 3: Full Bleed Typography -->
+<div class="variant v3" id="v3">
+  <section class="hero-section">
+    <div class="v3-bg"></div>
+    <div class="corner-badge">
+      <div class="num">Est.</div>
+      <div class="lbl">2004</div>
+    </div>
+    <div class="content">
+      <div class="big-title">Dove<span>tails</span><br />&amp; Rusty<br />Nails</div>
+      <div class="sub-line">Antiques &amp; Vintage Collectibles, Forest City NC</div>
+      <p class="desc">5,000 square feet of Victorian furniture, glass art, pottery, and vintage finds. Family-owned on Main Street since 2004. Come dig through history.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">See What We Carry</a>
+        <a href="#" class="btn-s">Our Story</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VARIANT 4: Victorian Elegance -->
+<div class="variant v4" id="v4">
+  <section class="hero-section">
+    <div class="v4-bg"></div>
+    <div class="frame"></div>
+    <div class="content">
+      <div class="flourish">&#10047;</div>
+      <div class="tag">Forest City, North Carolina &bull; Since 2004</div>
+      <h1>Dovetails<span class="amp">&</span>Rusty Nails</h1>
+      <div class="sep">
+        <div class="line"></div>
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <p class="tagline">Antiques, Vintage Collectibles &amp; Treasures Worth Finding</p>
+      <p class="sub">5,000 square feet of carefully curated furniture, glass art, pottery, jewelry, and vintage curiosities. Family-owned and operated in the heart of downtown Forest City.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">Explore the Collection</a>
+        <a href="#" class="btn-s">Plan Your Visit</a>
+      </div>
+    </div>
+    <div class="bottom-text">115 E Main St &bull; (828) 247-4030</div>
+  </section>
+</div>
+
+<!-- VARIANT 5: Marquee Bold -->
+<div class="variant v5" id="v5">
+  <section class="hero-section">
+    <div class="v5-bg"></div>
+    <div class="marquee-strip top">
+      <span class="marquee-text">ANTIQUES &#9733; VINTAGE &#9733; COLLECTIBLES &#9733; FURNITURE &#9733; GLASS ART &#9733; POTTERY &#9733; JEWELRY &#9733; ANTIQUES &#9733; VINTAGE &#9733; COLLECTIBLES &#9733; FURNITURE &#9733; GLASS ART &#9733; POTTERY &#9733; JEWELRY &#9733; ANTIQUES &#9733; VINTAGE &#9733; COLLECTIBLES &#9733; FURNITURE &#9733; GLASS ART &#9733; POTTERY &#9733; JEWELRY &#9733; </span>
+    </div>
+    <div class="marquee-strip bottom">
+      <span class="marquee-text" style="animation-direction: reverse;">FOREST CITY NC &#9733; EST 2004 &#9733; 5000 SQ FT &#9733; FAMILY OWNED &#9733; MAIN STREET &#9733; FOREST CITY NC &#9733; EST 2004 &#9733; 5000 SQ FT &#9733; FAMILY OWNED &#9733; MAIN STREET &#9733; FOREST CITY NC &#9733; EST 2004 &#9733; 5000 SQ FT &#9733; FAMILY OWNED &#9733; MAIN STREET &#9733; </span>
+    </div>
+    <div class="content">
+      <div class="badge">
+        <span class="dot"></span>
+        <span>Est. 2004 &bull; Main Street</span>
+      </div>
+      <h1>Dovetails &<br />Rusty Nails<span class="line2">Antiques &amp; Vintage Collectibles</span></h1>
+      <p class="sub">5,000 square feet of history in the heart of downtown Forest City. Victorian furniture, glass art, pottery, and vintage finds. Family-owned, honestly priced, always worth the trip.</p>
+      <div class="btns">
+        <a href="#" class="btn-p">Explore the Collection</a>
+        <a href="#" class="btn-s">Plan Your Visit</a>
+      </div>
+    </div>
+    <div class="bottom-stats">
+      <div class="bstat"><div class="bstat-num">5,000</div><div class="bstat-lbl">Sq Ft</div></div>
+      <div class="bstat"><div class="bstat-num">20+</div><div class="bstat-lbl">Years</div></div>
+      <div class="bstat"><div class="bstat-num">4.3&#9733;</div><div class="bstat-lbl">Rating</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Hero Variant</span>
+  <button class="picker-btn active" onclick="pick(1)">1</button>
+  <button class="picker-btn" onclick="pick(2)">2</button>
+  <button class="picker-btn" onclick="pick(3)">3</button>
+  <button class="picker-btn" onclick="pick(4)">4</button>
+  <button class="picker-btn" onclick="pick(5)">5</button>
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('v' + n).classList.add('active');
+  document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

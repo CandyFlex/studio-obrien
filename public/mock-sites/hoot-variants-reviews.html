@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoot Nannie - Reviews Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #1a1410; color: #FFF8F0; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --brick: #8B2500; --brick-dark: #6B1C00; --amber: #D4A017; --amber-light: #E8C547;
+      --charcoal: #1a1410; --charcoal-light: #2a2218; --cream: #FFF8F0; --cream-dark: #F5EDE0;
+      --wood: #3E2723; --wood-light: #5D4037;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,20,16,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); font-weight: 700; margin-right: 1rem; }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,23,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--amber); background: rgba(212,160,23,0.1); }
+    .picker-btn.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+
+    .variant { display: none; padding-bottom: 5rem; }
+    .variant.active { display: block; }
+
+    .section-label { font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 0.75rem; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--cream); margin-bottom: 1rem; }
+    .stars { color: var(--amber); font-size: 1rem; letter-spacing: 0.15em; }
+
+    /* ===== V1: Card Grid ===== */
+    .v1-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v1-container { max-width: 1200px; margin: 0 auto; }
+    .v1-header { text-align: center; margin-bottom: 4rem; }
+    .v1-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+    .v1-card { padding: 2rem; background: var(--charcoal-light); border-radius: 8px; border: 1px solid rgba(212,160,23,0.06); position: relative; }
+    .v1-card::before { content: '\201C'; position: absolute; top: 1rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--amber); opacity: 0.08; line-height: 1; }
+    .v1-text { font-size: 0.95rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.7; margin: 1rem 0 1.25rem; font-style: italic; }
+    .v1-author { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); opacity: 0.8; }
+
+    /* ===== V2: Featured Testimonial + Grid ===== */
+    .v2-section { padding: 5rem 2rem; }
+    .v2-container { max-width: 1100px; margin: 0 auto; }
+    .v2-header { text-align: center; margin-bottom: 4rem; }
+    .v2-featured { background: var(--charcoal-light); border-radius: 12px; padding: 3rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; border: 1px solid rgba(212,160,23,0.1); }
+    .v2-featured img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; }
+    .v2-featured-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-style: italic; line-height: 1.6; color: var(--cream); margin: 1rem 0; }
+    .v2-featured-author { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+    .v2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .v2-card { padding: 1.75rem; background: var(--charcoal-light); border-radius: 8px; border: 1px solid rgba(212,160,23,0.06); }
+    .v2-card-text { font-size: 0.9rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.6; font-style: italic; margin: 0.75rem 0 1rem; }
+    .v2-card-author { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); opacity: 0.7; }
+
+    /* ===== V3: Alternating Rows ===== */
+    .v3-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v3-container { max-width: 900px; margin: 0 auto; }
+    .v3-header { text-align: center; margin-bottom: 4rem; }
+    .v3-item { display: grid; grid-template-columns: auto 1fr; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(212,160,23,0.06); align-items: start; }
+    .v3-item:last-child { border-bottom: none; }
+    .v3-item-left { width: 80px; text-align: center; }
+    .v3-rating { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .v3-rating-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cream-dark); opacity: 0.5; margin-top: 0.25rem; }
+    .v3-text { font-size: 1.05rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.7; font-style: italic; margin-bottom: 0.75rem; }
+    .v3-author { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); opacity: 0.7; }
+
+    /* ===== V4: Masonry-style ===== */
+    .v4-section { padding: 5rem 2rem; }
+    .v4-container { max-width: 1200px; margin: 0 auto; }
+    .v4-header { text-align: center; margin-bottom: 4rem; }
+    .v4-masonry { columns: 3; column-gap: 1.5rem; }
+    .v4-card { break-inside: avoid; margin-bottom: 1.5rem; padding: 2rem; background: var(--charcoal-light); border-radius: 10px; border: 1px solid rgba(212,160,23,0.06); }
+    .v4-card.highlight { background: var(--brick); border-color: transparent; }
+    .v4-card.highlight .v4-card-text { color: var(--cream); opacity: 0.95; }
+    .v4-card.highlight .v4-card-author { color: var(--amber-light); }
+    .v4-card-text { font-size: 0.92rem; color: var(--cream-dark); opacity: 0.8; line-height: 1.65; font-style: italic; margin: 0.75rem 0 1rem; }
+    .v4-card-author { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); opacity: 0.7; }
+
+    /* ===== V5: Carousel-style single review ===== */
+    .v5-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v5-container { max-width: 800px; margin: 0 auto; text-align: center; }
+    .v5-header { margin-bottom: 3rem; }
+    .v5-carousel { position: relative; min-height: 300px; }
+    .v5-slide { display: none; animation: fadeIn 0.5s ease; }
+    .v5-slide.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .v5-quote-mark { font-family: 'Playfair Display', serif; font-size: 5rem; color: var(--amber); opacity: 0.15; line-height: 1; margin-bottom: -1rem; }
+    .v5-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--cream); line-height: 1.6; margin-bottom: 1.5rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+    .v5-author { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber); }
+    .v5-dots { display: flex; justify-content: center; gap: 0.75rem; margin-top: 2.5rem; }
+    .v5-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(212,160,23,0.2); border: none; cursor: pointer; transition: background 0.2s; }
+    .v5-dot.active { background: var(--amber); }
+    .v5-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+    .v5-nav-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(212,160,23,0.1); border: 1px solid rgba(212,160,23,0.2); color: var(--amber); font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .v5-nav-btn:hover { background: rgba(212,160,23,0.2); }
+    .v5-platforms { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(212,160,23,0.1); }
+    .v5-platform { text-align: center; }
+    .v5-platform-name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream-dark); opacity: 0.5; margin-bottom: 0.25rem; }
+    .v5-platform-rating { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 900; color: var(--amber); }
+
+    @media (max-width: 768px) {
+      .v1-grid, .v2-grid { grid-template-columns: 1fr; }
+      .v2-featured { grid-template-columns: 1fr; }
+      .v3-item { grid-template-columns: 1fr; }
+      .v3-item-left { width: auto; text-align: left; display: flex; gap: 0.5rem; align-items: baseline; }
+      .v4-masonry { columns: 1; }
+      .v5-quote { font-size: 1.2rem; }
+      .v5-platforms { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- V1: Card Grid -->
+<div class="variant v1-section active" id="v1">
+  <div class="v1-container">
+    <div class="v1-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-heading">Straight from Our Guests</h2>
+    </div>
+    <div class="v1-grid">
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"We started with the Cheese Curds, and they may have been the best I've ever had. We took half of all three plates home and reheated them for dinner. Worth the wait for sure!"</p>
+        <div class="v1-author">The Cheese Curds Convert</div>
+      </div>
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"Tonight is Thursday and it's fifty-cent wing night. Wings are great, not too smoky, and the sauces are good. I'm getting the Cubano sandwich, one of my favorites."</p>
+        <div class="v1-author">Wing Night Regular</div>
+      </div>
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"The steak was delicious, cooked exactly as we wanted. We enjoyed sitting outside on the patio. Pet friendly too. Next time we get a steak craving we will for sure go back."</p>
+        <div class="v1-author">The Steak Craving</div>
+      </div>
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"Arriving in the parking lot drew me in because you can smell the grill. I had the cheddar cheese hamburger with grilled asparagus. This place is quite a cowboy's dream!"</p>
+        <div class="v1-author">The Cowboy's Dream</div>
+      </div>
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"I ordered a Smokehouse Cuban sandwich with their homemade chips. Absolutely amazing! The chips were the best kettle type chips I've eaten!"</p>
+        <div class="v1-author">The Cuban Fan</div>
+      </div>
+      <div class="v1-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v1-text">"Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The staff deserves special mention. Friendly, hilarious, and quick."</p>
+        <div class="v1-author">The Comfort Food Love Letter</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V2: Featured + Grid -->
+<div class="variant v2-section" id="v2">
+  <div class="v2-container">
+    <div class="v2-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-heading">Straight from Our Guests</h2>
+    </div>
+    <div class="v2-featured">
+      <img src="/mock-sites/assets/hoot-nannie/smoked-wings.webp" alt="Wings" loading="lazy" />
+      <div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v2-featured-text">"Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were the perfect mix of generous and you're definitely taking leftovers home."</p>
+        <div class="v2-featured-author">The Comfort Food Love Letter</div>
+      </div>
+    </div>
+    <div class="v2-grid">
+      <div class="v2-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v2-card-text">"We started with the Cheese Curds, and they may have been the best I've ever had."</p>
+        <div class="v2-card-author">The Cheese Curds Convert</div>
+      </div>
+      <div class="v2-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v2-card-text">"The steak was delicious, cooked exactly as we wanted. Pet friendly too."</p>
+        <div class="v2-card-author">The Steak Craving</div>
+      </div>
+      <div class="v2-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v2-card-text">"The Smokehouse Cuban sandwich with homemade chips. Absolutely amazing!"</p>
+        <div class="v2-card-author">The Cuban Fan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V3: Alternating Rows -->
+<div class="variant v3-section" id="v3">
+  <div class="v3-container">
+    <div class="v3-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-heading">Straight from Our Guests</h2>
+    </div>
+    <div class="v3-item">
+      <div class="v3-item-left">
+        <div class="v3-rating">5.0</div>
+        <div class="v3-rating-label">Stars</div>
+      </div>
+      <div>
+        <p class="v3-text">"We started with the Cheese Curds, and they may have been the best I've ever had. We took half of all three plates home and reheated them for dinner. The food reheated excellently. Worth the wait for sure!"</p>
+        <div class="v3-author">The Cheese Curds Convert</div>
+      </div>
+    </div>
+    <div class="v3-item">
+      <div class="v3-item-left">
+        <div class="v3-rating">5.0</div>
+        <div class="v3-rating-label">Stars</div>
+      </div>
+      <div>
+        <p class="v3-text">"Tonight is Thursday and it's fifty-cent wing night. Wings are great, not too smoky, and the sauces are good. I'm getting the Cubano sandwich, one of my favorites. Place is usually busy and sometimes there's a wait."</p>
+        <div class="v3-author">Wing Night Regular</div>
+      </div>
+    </div>
+    <div class="v3-item">
+      <div class="v3-item-left">
+        <div class="v3-rating">5.0</div>
+        <div class="v3-rating-label">Stars</div>
+      </div>
+      <div>
+        <p class="v3-text">"Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were generous. The staff deserves special mention. Friendly, hilarious, and quicker than a hummingbird."</p>
+        <div class="v3-author">The Comfort Food Love Letter</div>
+      </div>
+    </div>
+    <div class="v3-item">
+      <div class="v3-item-left">
+        <div class="v3-rating">5.0</div>
+        <div class="v3-rating-label">Stars</div>
+      </div>
+      <div>
+        <p class="v3-text">"The steak was delicious, cooked exactly as we wanted. We enjoyed the service and sitting outside on the patio. Pet friendly too. Next time we get a steak craving we will for sure go back."</p>
+        <div class="v3-author">The Steak Craving</div>
+      </div>
+    </div>
+    <div class="v3-item">
+      <div class="v3-item-left">
+        <div class="v3-rating">5.0</div>
+        <div class="v3-rating-label">Stars</div>
+      </div>
+      <div>
+        <p class="v3-text">"I ordered a Smokehouse Cuban sandwich with their homemade chips. Absolutely amazing! The sandwich was made with delicious smoked ham on Swiss. The chips were the best kettle type chips I've eaten!"</p>
+        <div class="v3-author">The Cuban Fan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V4: Masonry -->
+<div class="variant v4-section" id="v4">
+  <div class="v4-container">
+    <div class="v4-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-heading">Straight from Our Guests</h2>
+    </div>
+    <div class="v4-masonry">
+      <div class="v4-card highlight">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were the perfect mix of generous and you're definitely taking leftovers home and happily eating them cold at midnight."</p>
+        <div class="v4-card-author">The Comfort Food Love Letter</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"We started with the Cheese Curds, and they may have been the best I've ever had."</p>
+        <div class="v4-card-author">The Cheese Curds Convert</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"Tonight is Thursday and it's fifty-cent wing night. Wings are great, not too smoky, and the sauces are good. I'm getting the Cubano sandwich, one of my favorites. Place is usually busy."</p>
+        <div class="v4-card-author">Wing Night Regular</div>
+      </div>
+      <div class="v4-card highlight">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"Arriving in the parking lot drew me in because you can smell the grill. This place is quite a cowboy's dream!"</p>
+        <div class="v4-card-author">The Cowboy's Dream</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"The steak was delicious, cooked exactly as we wanted. We enjoyed sitting outside on the patio. Pet friendly too."</p>
+        <div class="v4-card-author">The Steak Craving</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"I ordered a Smokehouse Cuban sandwich with their homemade chips. Absolutely amazing! The chips were the best kettle type chips I've eaten!"</p>
+        <div class="v4-card-author">The Cuban Fan</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"Smoked wings were unbelievable. Very good BBQ and the wings are the best in town."</p>
+        <div class="v4-card-author">Google Review</div>
+      </div>
+      <div class="v4-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"Best. Chicken. Sandwich. EVER. We will be back for sure!"</p>
+        <div class="v4-card-author">Yelp Review</div>
+      </div>
+      <div class="v4-card highlight">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="v4-card-text">"These were some of the best ribs I've ever had! Tender and juicy with a nice dark bark. Mac and cheese was delicious."</p>
+        <div class="v4-card-author">TripAdvisor Review</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V5: Carousel -->
+<div class="variant v5-section" id="v5">
+  <div class="v5-container">
+    <div class="v5-header">
+      <div class="section-label">What People Say</div>
+      <h2 class="section-heading">Straight from Our Guests</h2>
+    </div>
+    <div class="v5-carousel" id="carousel">
+      <div class="v5-slide active" data-slide="0">
+        <div class="v5-quote-mark">"</div>
+        <p class="v5-quote">We started with the Cheese Curds, and they may have been the best I've ever had. We took half of all three plates home and reheated them for dinner. Worth the wait for sure!</p>
+        <div class="stars" style="margin-bottom: 0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="v5-author">The Cheese Curds Convert</div>
+      </div>
+      <div class="v5-slide" data-slide="1">
+        <div class="v5-quote-mark">"</div>
+        <p class="v5-quote">Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were generous. The staff deserves special mention. Friendly, hilarious, and quick.</p>
+        <div class="stars" style="margin-bottom: 0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="v5-author">The Comfort Food Love Letter</div>
+      </div>
+      <div class="v5-slide" data-slide="2">
+        <div class="v5-quote-mark">"</div>
+        <p class="v5-quote">Tonight is Thursday and it's fifty-cent wing night. Wings are great, not too smoky, and the sauces are good. I'm getting the Cubano sandwich, one of my favorites. Place is usually busy.</p>
+        <div class="stars" style="margin-bottom: 0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="v5-author">Wing Night Regular</div>
+      </div>
+      <div class="v5-slide" data-slide="3">
+        <div class="v5-quote-mark">"</div>
+        <p class="v5-quote">The steak was delicious, cooked exactly as we wanted. We enjoyed sitting outside on the patio. Pet friendly too. Next time we get a steak craving we will for sure go back.</p>
+        <div class="stars" style="margin-bottom: 0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="v5-author">The Steak Craving</div>
+      </div>
+      <div class="v5-slide" data-slide="4">
+        <div class="v5-quote-mark">"</div>
+        <p class="v5-quote">I ordered a Smokehouse Cuban sandwich with their homemade chips. Absolutely amazing! The sandwich was made with delicious smoked ham on Swiss. The chips were the best kettle type chips I've eaten!</p>
+        <div class="stars" style="margin-bottom: 0.75rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="v5-author">The Cuban Fan</div>
+      </div>
+    </div>
+    <div class="v5-dots" id="dots"></div>
+    <div class="v5-nav">
+      <button class="v5-nav-btn" id="prevBtn">&#8592;</button>
+      <button class="v5-nav-btn" id="nextBtn">&#8594;</button>
+    </div>
+    <div class="v5-platforms">
+      <div class="v5-platform">
+        <div class="v5-platform-name">Google</div>
+        <div class="v5-platform-rating">4.2 &#9733;</div>
+      </div>
+      <div class="v5-platform">
+        <div class="v5-platform-name">Restaurant Guru</div>
+        <div class="v5-platform-rating">4.3 &#9733;</div>
+      </div>
+      <div class="v5-platform">
+        <div class="v5-platform-name">TripAdvisor</div>
+        <div class="v5-platform-rating">3.9 &#9733;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Reviews Variant</span>
+  <button class="picker-btn active" data-v="1">1</button>
+  <button class="picker-btn" data-v="2">2</button>
+  <button class="picker-btn" data-v="3">3</button>
+  <button class="picker-btn" data-v="4">4</button>
+  <button class="picker-btn" data-v="5">5</button>
+</div>
+
+<script>
+  // Picker
+  const btns = document.querySelectorAll('.picker-btn');
+  const variants = document.querySelectorAll('.variant');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      variants.forEach(el => el.classList.remove('active'));
+      document.getElementById('v' + btn.dataset.v).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Re-init carousel if V5
+      if (btn.dataset.v === '5') initCarousel();
+    });
+  });
+
+  // V5 Carousel
+  let current = 0;
+  const slides = document.querySelectorAll('.v5-slide');
+  const dotsContainer = document.getElementById('dots');
+
+  function initCarousel() {
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'v5-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+    current = 0;
+    updateSlides();
+  }
+
+  function goTo(n) {
+    current = n;
+    updateSlides();
+  }
+
+  function updateSlides() {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[current].classList.add('active');
+    dotsContainer.querySelectorAll('.v5-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    updateSlides();
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    updateSlides();
+  });
+
+  initCarousel();
+</script>
+</body>
+</html>

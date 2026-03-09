@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" fill="none">
+  <!-- Top panel: CAROLINA ARCADE -->
+  <rect x="10" y="12" width="340" height="100" rx="16" fill="#0a0a0a" stroke="#f5d623" stroke-width="4"/>
+  <!-- CAROLINA text (small) -->
+  <text x="36" y="48" font-family="'Press Start 2P', monospace" font-size="18" fill="#f5d623" letter-spacing="2">CAROLINA</text>
+  <!-- ARCADE text (large, pixel style) -->
+  <text x="30" y="95" font-family="'Press Start 2P', monospace" font-size="42" fill="#f5d623" letter-spacing="1">ARCADE</text>
+
+  <!-- Joystick -->
+  <line x1="380" y1="30" x2="380" y2="85" stroke="#444" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="380" cy="24" r="20" fill="#e8342e"/>
+  <ellipse cx="380" cy="18" rx="10" ry="6" fill="#ff6b6b" opacity="0.5"/>
+
+  <!-- Bottom panel: MUSEUM -->
+  <rect x="170" y="88" width="340" height="100" rx="16" fill="#0a0a0a" stroke="#f5d623" stroke-width="4"/>
+  <text x="196" y="152" font-family="'Press Start 2P', monospace" font-size="42" fill="#f5d623" letter-spacing="1">MUSEUM</text>
+</svg>

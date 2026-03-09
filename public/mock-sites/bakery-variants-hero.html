@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet House Bakery - Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #fdf8f3; color: #4a3728; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --blush: #f4a0b5; --blush-light: #fce4ec; --blush-dark: #d4708a;
+      --gold: #d4a056; --gold-light: #f0d89a; --gold-dark: #b8863c;
+      --cream: #fdf8f3; --cream-dark: #f5ebe0;
+      --warm-brown: #4a3728; --warm-brown-light: #6b5344;
+      --chocolate: #3e2723; --white: #ffffff;
+      --sage: #a8b89c; --berry: #8b3a5e; --peach: #f8c9a0;
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(62,39,35,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,86,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--gold); font-weight: 700; margin-right: 1rem;
+    }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,86,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--gold); background: rgba(212,160,86,0.1); }
+    .picker-btn.active { background: var(--blush); color: var(--white); border-color: var(--blush); }
+
+    /* ===== SHARED ===== */
+    .variant { display: none; }
+    .variant.active { display: block; }
+    .hero-section { min-height: 100vh; position: relative; overflow: hidden; }
+
+    .btn-p {
+      padding: 0.9rem 2.25rem; background: var(--blush); color: var(--white);
+      font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 100px; border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-p:hover { background: var(--blush-dark); }
+    .btn-s {
+      padding: 0.9rem 2.25rem; background: transparent; color: var(--chocolate);
+      font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+      border-radius: 100px; border: 2px solid var(--gold); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-s:hover { background: var(--gold); color: var(--white); }
+
+    /* ===== V1: Centered Warm Glow ===== */
+    .v1 .hero-section {
+      background: linear-gradient(135deg, #fdf8f3 0%, #fce4ec 40%, #f8c9a0 100%);
+    }
+    .v1 .pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(212,160,86,0.08) 1px, transparent 1px);
+      background-size: 30px 30px; z-index: 0;
+    }
+    .v1 .glow {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(244,160,181,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(212,160,86,0.25) 0%, transparent 50%);
+    }
+    .v1 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v1 .tag { font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--blush-dark); font-weight: 700; margin-bottom: 1.5rem; }
+    .v1 h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem,8vw,5.5rem); font-weight: 900; line-height: 0.95; margin-bottom: 1.5rem; color: var(--chocolate); }
+    .v1 h1 em { font-style: italic; color: var(--blush-dark); display: block; font-size: 0.55em; margin-top: 0.25em; }
+    .v1 .sub { font-size: 1.15rem; color: var(--warm-brown-light); max-width: 520px; line-height: 1.8; margin-bottom: 2.5rem; }
+    .v1 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v1 .circle-accent {
+      position: absolute; width: 350px; height: 350px; border-radius: 50%;
+      border: 2px dashed rgba(212,160,86,0.15); top: 50%; left: 50%;
+      transform: translate(-50%,-50%); z-index: 1;
+    }
+    .v1 .float {
+      position: absolute; border-radius: 50%; z-index: 1; opacity: 0.2;
+    }
+    .v1 .f1 { width: 150px; height: 150px; background: var(--blush); top: 10%; left: 8%; animation: floatA 8s ease-in-out infinite; }
+    .v1 .f2 { width: 100px; height: 100px; background: var(--gold); bottom: 15%; right: 10%; animation: floatB 6s ease-in-out infinite; }
+    .v1 .f3 { width: 60px; height: 60px; background: var(--sage); top: 70%; left: 80%; animation: floatA 10s ease-in-out infinite; }
+
+    @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-20px) rotate(5deg)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(15px)} }
+
+    /* ===== V2: Split Left Text / Right Visual ===== */
+    .v2 { display: none; }
+    .v2.active { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 100vh; }
+    .v2 .left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 4rem 4rem 5rem; background: var(--cream);
+      position: relative;
+    }
+    .v2 .left::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(244,160,181,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .v2 .left > * { position: relative; z-index: 1; }
+    .v2 .tag { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blush-dark); font-weight: 700; margin-bottom: 1.25rem; }
+    .v2 h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,4vw,4rem); font-weight: 900; line-height: 1.05; margin-bottom: 1rem; color: var(--chocolate); }
+    .v2 h1 em { color: var(--blush-dark); font-style: italic; display: block; font-size: 0.55em; margin-top: 0.3em; }
+    .v2 .sub { font-size: 1rem; color: var(--warm-brown-light); line-height: 1.7; margin-bottom: 2rem; max-width: 440px; }
+    .v2 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v2 .stats {
+      display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(212,160,86,0.15);
+    }
+    .v2 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--blush-dark); line-height: 1; }
+    .v2 .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-brown-light); margin-top: 0.25rem; }
+    .v2 .right {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--blush-light), var(--peach), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .v2 .right .big-icon { font-size: 12rem; opacity: 0.5; }
+    .v2 .right::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 15%);
+    }
+    .v2 .right .badge {
+      position: absolute; bottom: 2rem; right: 2rem; z-index: 2;
+      background: var(--gold); color: var(--white); width: 100px; height: 100px;
+      border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 8px 24px rgba(212,160,86,0.3);
+    }
+    .v2 .right .badge .big { font-size: 1.5rem; font-weight: 900; line-height: 1; }
+    .v2 .right .badge .sml { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ===== V3: Full-bleed warm gradient with oversized type ===== */
+    .v3 .hero-section {
+      background: linear-gradient(160deg, var(--chocolate) 0%, #5d3a2a 40%, var(--blush-dark) 100%);
+    }
+    .v3 .overlay {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(circle, rgba(240,216,154,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .v3 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      min-height: 100vh; padding: 4rem 4rem 6rem;
+    }
+    .v3 .big-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(4rem,12vw,9rem);
+      font-weight: 900; line-height: 0.9; color: var(--cream);
+      margin-bottom: 0.5rem; text-shadow: 0 4px 40px rgba(0,0,0,0.3);
+    }
+    .v3 .big-title span { color: var(--blush); }
+    .v3 .sub-line {
+      font-family: 'Playfair Display', serif; font-size: clamp(1rem,2.5vw,1.75rem);
+      font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem;
+    }
+    .v3 .desc { font-size: 1rem; color: var(--cream-dark); opacity: 0.8; max-width: 500px; line-height: 1.7; margin-bottom: 2rem; }
+    .v3 .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .v3 .corner-badge {
+      position: absolute; top: 2rem; right: 2rem; z-index: 2;
+      background: var(--blush); padding: 1rem; border-radius: 50%;
+      text-align: center; width: 110px; height: 110px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--white);
+      box-shadow: 0 8px 30px rgba(244,160,181,0.3);
+    }
+    .v3 .corner-badge .num { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 900; line-height: 1; }
+    .v3 .corner-badge .lbl { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .v3 .btn-p { background: var(--gold); }
+    .v3 .btn-p:hover { background: var(--gold-dark); }
+    .v3 .btn-s { color: var(--cream); border-color: var(--blush); }
+    .v3 .btn-s:hover { background: var(--blush); }
+
+    /* ===== V4: Elegant Centered with Arch ===== */
+    .v4 .hero-section {
+      background: var(--cream);
+    }
+    .v4 .arch-frame {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 500px; height: 600px;
+      border: 2px solid rgba(212,160,86,0.2);
+      border-radius: 250px 250px 0 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .v4 .arch-fill {
+      width: 100%; height: 100%;
+      background: linear-gradient(180deg, var(--blush-light), var(--peach), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .v4 .arch-fill .icon { font-size: 8rem; opacity: 0.4; }
+    .v4 .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      min-height: 100vh; padding: 2rem;
+    }
+    .v4 .tag {
+      font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--blush-dark); font-weight: 700; margin-bottom: 1rem;
+      background: var(--cream); padding: 0.25rem 1rem; position: relative; z-index: 3;
+    }
+    .v4 h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem,9vw,6.5rem);
+      font-weight: 300; line-height: 0.95; color: var(--chocolate);
+      margin-bottom: 0.25rem; position: relative; z-index: 3;
+      background: var(--cream); padding: 0.25rem 1.5rem;
+    }
+    .v4 h1 strong { font-weight: 700; }
+    .v4 h1 em { font-style: italic; color: var(--blush-dark); display: block; font-size: 0.5em; margin-top: 0.2em; }
+    .v4 .divider {
+      width: 50px; height: 2px; background: var(--gold); margin: 1.5rem auto;
+      position: relative; z-index: 3;
+    }
+    .v4 .sub {
+      font-size: 1.1rem; color: var(--warm-brown-light); max-width: 480px;
+      line-height: 1.8; margin-bottom: 2.5rem; position: relative; z-index: 3;
+      background: var(--cream); padding: 0.5rem 1rem;
+    }
+    .v4 .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 3; }
+    .v4 .corner-flowers {
+      position: absolute; font-size: 3rem; opacity: 0.15; z-index: 0;
+    }
+    .v4 .cf-tl { top: 3rem; left: 3rem; }
+    .v4 .cf-tr { top: 3rem; right: 3rem; }
+    .v4 .cf-bl { bottom: 3rem; left: 3rem; }
+    .v4 .cf-br { bottom: 3rem; right: 3rem; }
+
+    /* ===== V5: Bold Stripe Layout ===== */
+    .v5 .hero-section {
+      background: var(--white);
+      display: grid; grid-template-rows: 1fr auto 1fr;
+    }
+    .v5 .top-strip {
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 6rem 2rem 1rem; text-align: center;
+    }
+    .v5 .top-strip .tag {
+      font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--blush-dark); font-weight: 700;
+    }
+    .v5 .mid-stripe {
+      background: var(--chocolate); color: var(--cream); padding: 2.5rem 2rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .v5 .mid-stripe::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(240,216,154,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .v5 .mid-stripe h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(3rem,8vw,5.5rem);
+      font-weight: 900; line-height: 1; color: var(--cream); position: relative; z-index: 1;
+    }
+    .v5 .mid-stripe h1 span { color: var(--blush); }
+    .v5 .bot-strip {
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      padding: 2rem 2rem 4rem; text-align: center; gap: 1.5rem;
+    }
+    .v5 .bot-strip .sub {
+      font-size: 1.1rem; color: var(--warm-brown-light);
+      max-width: 520px; line-height: 1.8;
+    }
+    .v5 .bot-strip .btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .v5 .side-accent {
+      position: absolute; top: 0; bottom: 0; width: 60px;
+    }
+    .v5 .sa-left { left: 0; background: linear-gradient(to bottom, var(--blush-light), var(--peach)); }
+    .v5 .sa-right { right: 0; background: linear-gradient(to bottom, var(--gold-light), var(--blush-light)); }
+    .v5 .bot-strip .mini-stats {
+      display: flex; gap: 3rem; margin-top: 0.5rem;
+    }
+    .v5 .mini-stat { text-align: center; }
+    .v5 .mini-stat .num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--blush-dark); }
+    .v5 .mini-stat .lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-brown-light); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .v2.active { grid-template-columns: 1fr; }
+      .v2 .left { padding: 2rem; }
+      .v2 .right { height: 40vh; }
+      .v2 .right::before { background: linear-gradient(to top, var(--cream) 0%, transparent 15%); }
+      .v4 .arch-frame { width: 280px; height: 340px; border-radius: 140px 140px 0 0; }
+      .v5 .hero-section { min-height: 100vh; }
+      .v5 .sa-left, .v5 .sa-right { width: 30px; }
+      .v3 .content { padding: 2rem 2rem 4rem; }
+      .v3 .corner-badge { width: 80px; height: 80px; }
+      .v3 .corner-badge .num { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1: Centered Warm Glow -->
+  <div class="variant v1 active" id="v1">
+    <section class="hero-section">
+      <div class="pattern"></div>
+      <div class="glow"></div>
+      <div class="circle-accent"></div>
+      <div class="float f1"></div>
+      <div class="float f2"></div>
+      <div class="float f3"></div>
+      <div class="content">
+        <div class="tag">Uptown Shelby, NC</div>
+        <h1>Sweet House<em>Bakery</em></h1>
+        <p class="sub">Fresh-baked cupcakes, custom cakes, and Southern-style treats made with love since 2013. Walk in for a sweet pick-me-up or order your next celebration cake.</p>
+        <div class="btns">
+          <button class="btn-p">Order a Cake</button>
+          <button class="btn-s">View the Menu</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2: Split Layout -->
+  <div class="variant v2" id="v2">
+    <div class="left">
+      <div class="tag">Uptown Shelby, NC &middot; Est. 2013</div>
+      <h1>Sweet House<em>Bakery</em></h1>
+      <p class="sub">Fresh-baked cupcakes, custom cakes, and Southern-style treats made with love. Walk in for a sweet pick-me-up or call ahead for your next celebration cake.</p>
+      <div class="btns">
+        <button class="btn-p">Order a Cake</button>
+        <button class="btn-s">View the Menu</button>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Baking</div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Locations</div>
+        </div>
+        <div>
+          <div class="stat-num">4.5&#9733;</div>
+          <div class="stat-label">Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <span class="big-icon">&#127856;</span>
+      <div class="badge">
+        <span class="big">4.5</span>
+        <span class="sml">Stars</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT 3: Dark + Bold Type -->
+  <div class="variant v3" id="v3">
+    <section class="hero-section">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="big-title">Sweet<br/>House <span>Bakery</span></div>
+        <div class="sub-line">Baked with love in Uptown Shelby</div>
+        <p class="desc">Custom cakes, signature cupcakes, and fresh-baked treats made from scratch since 2013. Every bite made just for you.</p>
+        <div class="btns">
+          <button class="btn-p">Order a Cake</button>
+          <button class="btn-s">View the Menu</button>
+        </div>
+      </div>
+      <div class="corner-badge">
+        <span class="num">10+</span>
+        <span class="lbl">Years</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4: Elegant Arch -->
+  <div class="variant v4" id="v4">
+    <section class="hero-section">
+      <div class="arch-frame">
+        <div class="arch-fill"><span class="icon">&#127874;</span></div>
+      </div>
+      <span class="corner-flowers cf-tl">&#10047;</span>
+      <span class="corner-flowers cf-tr">&#10047;</span>
+      <span class="corner-flowers cf-bl">&#10047;</span>
+      <span class="corner-flowers cf-br">&#10047;</span>
+      <div class="content">
+        <div class="tag">Uptown Shelby, NC</div>
+        <h1><strong>Sweet House</strong><em>Bakery</em></h1>
+        <div class="divider"></div>
+        <p class="sub">Fresh-baked cupcakes, custom cakes, and Southern-style treats made with love since 2013.</p>
+        <div class="btns">
+          <button class="btn-p">Order a Cake</button>
+          <button class="btn-s">View Menu</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5: Bold Stripe -->
+  <div class="variant v5" id="v5">
+    <section class="hero-section">
+      <div class="side-accent sa-left"></div>
+      <div class="side-accent sa-right"></div>
+      <div class="top-strip">
+        <div class="tag">Uptown Shelby, NC &middot; Est. 2013</div>
+      </div>
+      <div class="mid-stripe">
+        <h1>Sweet House <span>Bakery</span></h1>
+      </div>
+      <div class="bot-strip">
+        <p class="sub">Fresh-baked cupcakes, custom cakes, and Southern-style treats made with love. Walk in for something sweet or call ahead for your celebration cake.</p>
+        <div class="btns">
+          <button class="btn-p">Order a Cake</button>
+          <button class="btn-s">View the Menu</button>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="num">10+</div>
+            <div class="lbl">Years</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">3</div>
+            <div class="lbl">Locations</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">4.5</div>
+            <div class="lbl">Stars</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="label">Hero Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foothills Family Chiropractic | Shelby, NC</title>
+  <meta name="description" content="Gentle, whole-body chiropractic care for the entire family. Serving the foothills with compassion and expertise since 2016." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Cormorant:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --void-blue: #0a0a1a;
+      --midnight: #121228;
+      --twilight: #1a1a3e;
+      --starlight: #e8e4f0;
+      --moon-silver: #c0c0d0;
+      --amethyst: #9b59b6;
+      --lavender: #b39ddb;
+      --cosmic-blue: #5c6bc0;
+      --star-gold: #ffd700;
+      --rose-quartz: #f48fb1;
+      --crystal-white: #f0eef5;
+
+      --font-display: 'Cormorant Unicase', serif;
+      --font-heading: 'Cormorant', serif;
+      --font-body: 'Lora', serif;
+    }
+
+    /* ===== BASE ===== */
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--starlight);
+      background: var(--void-blue);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== TEXTURES ===== */
+
+    /* Starfield: multiple radial-gradient dots at various positions */
+    .starfield {
+      position: relative;
+    }
+
+    .starfield::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(1px 1px at 10% 15%, rgba(232,228,240,0.7) 50%, transparent 50%),
+        radial-gradient(1px 1px at 25% 40%, rgba(232,228,240,0.5) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,215,0,0.6) 50%, transparent 50%),
+        radial-gradient(1px 1px at 65% 55%, rgba(232,228,240,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 80% 25%, rgba(232,228,240,0.6) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 15% 70%, rgba(179,157,219,0.5) 50%, transparent 50%),
+        radial-gradient(1px 1px at 35% 85%, rgba(232,228,240,0.5) 50%, transparent 50%),
+        radial-gradient(1px 1px at 55% 65%, rgba(255,215,0,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 75% 80%, rgba(232,228,240,0.4) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 90% 50%, rgba(232,228,240,0.6) 50%, transparent 50%),
+        radial-gradient(1px 1px at 5% 45%, rgba(232,228,240,0.3) 50%, transparent 50%),
+        radial-gradient(1px 1px at 42% 30%, rgba(179,157,219,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 88% 70%, rgba(232,228,240,0.5) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 20% 90%, rgba(255,215,0,0.3) 50%, transparent 50%),
+        radial-gradient(1px 1px at 70% 5%, rgba(232,228,240,0.6) 50%, transparent 50%),
+        radial-gradient(1px 1px at 95% 15%, rgba(232,228,240,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 30% 60%, rgba(232,228,240,0.3) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 60% 90%, rgba(179,157,219,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 45% 50%, rgba(232,228,240,0.4) 50%, transparent 50%),
+        radial-gradient(1px 1px at 85% 40%, rgba(255,215,0,0.3) 50%, transparent 50%);
+      z-index: 1;
+    }
+
+    /* Aurora glow: amethyst and cosmic-blue radial gradients at edges */
+    .aurora {
+      position: relative;
+    }
+
+    .aurora::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 0% 50%, rgba(155,89,182,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 100% 50%, rgba(92,107,192,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 50% 0%, rgba(155,89,182,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(92,107,192,0.06) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    /* ===== CRYSTAL DIVIDER ===== */
+    .crystal-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 24px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .crystal-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(179,157,219,0.5), rgba(155,89,182,0.6));
+    }
+
+    .crystal-divider .line:last-child {
+      background: linear-gradient(90deg, rgba(155,89,182,0.6), rgba(179,157,219,0.5), transparent);
+    }
+
+    .crystal-divider .diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--amethyst);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(155,89,182,0.5);
+    }
+
+    .crystal-divider .diamond-sm {
+      width: 5px;
+      height: 5px;
+      background: var(--lavender);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      opacity: 0.7;
+      margin: 0 4px;
+    }
+
+    /* ===== MOON CRESCENT ===== */
+    .moon-crescent {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      box-shadow: 6px -4px 0 0 var(--lavender);
+      margin: 0 auto 16px;
+      opacity: 0.6;
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass-card {
+      background: rgba(26, 26, 62, 0.6);
+      border: 1px solid rgba(155, 89, 182, 0.2);
+      border-radius: 20px;
+      padding: 40px 32px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 1s ease-out, box-shadow 1s ease-out, border-color 0.6s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(155,89,182,0.15), 0 0 20px rgba(179,157,219,0.08);
+      border-color: rgba(155,89,182,0.35);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-amethyst {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--amethyst);
+      color: var(--crystal-white);
+      padding: 14px 38px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.6s ease, transform 0.6s ease, background-color 0.4s ease;
+      position: relative;
+      z-index: 5;
+    }
+
+    .btn-amethyst:hover {
+      box-shadow: 0 0 24px rgba(179,157,219,0.5), 0 0 48px rgba(155,89,182,0.25);
+      transform: scale(1.03);
+      background: #a86bc2;
+    }
+
+    /* ===== FLOATING STAR PARTICLES ===== */
+    .star-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--star-gold);
+      box-shadow: 0 0 6px rgba(255,215,0,0.6);
+      opacity: 0;
+      animation: float-star 6s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .star-particle:nth-child(1) {
+      top: 18%;
+      left: 12%;
+      animation-delay: 0s;
+      animation-duration: 7s;
+    }
+
+    .star-particle:nth-child(2) {
+      top: 30%;
+      right: 15%;
+      animation-delay: 1.5s;
+      animation-duration: 8s;
+      width: 2px;
+      height: 2px;
+    }
+
+    .star-particle:nth-child(3) {
+      bottom: 25%;
+      left: 20%;
+      animation-delay: 3s;
+      animation-duration: 6.5s;
+    }
+
+    .star-particle:nth-child(4) {
+      bottom: 35%;
+      right: 22%;
+      animation-delay: 4.5s;
+      animation-duration: 7.5s;
+      width: 2px;
+      height: 2px;
+      background: var(--lavender);
+      box-shadow: 0 0 6px rgba(179,157,219,0.5);
+    }
+
+    @keyframes float-star {
+      0%, 100% {
+        opacity: 0;
+        transform: translateY(0) translateX(0);
+      }
+      20% {
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-18px) translateX(8px);
+      }
+      80% {
+        opacity: 0.6;
+      }
+    }
+
+    /* Star particles near headings */
+    .star-scatter {
+      position: relative;
+    }
+
+    .star-scatter::before,
+    .star-scatter::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--star-gold);
+      box-shadow: 0 0 6px rgba(255,215,0,0.5);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .star-scatter::before {
+      top: -8px;
+      right: -16px;
+    }
+
+    .star-scatter::after {
+      bottom: -6px;
+      left: -14px;
+      animation-delay: 1.5s;
+      width: 2px;
+      height: 2px;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    /* ===== GLOW PULSE ===== */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(155,89,182,0.2); }
+      50% { box-shadow: 0 0 32px rgba(155,89,182,0.4), 0 0 48px rgba(179,157,219,0.15); }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* ===== HEADER / NAV ===== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(18, 18, 40, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(155,89,182,0.1);
+      transition: background 0.4s ease;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+
+    .site-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--starlight);
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+    }
+
+    .site-logo span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--moon-silver);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--moon-silver);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--starlight);
+    }
+
+    .nav-links .nav-cta a {
+      background: var(--amethyst);
+      color: var(--crystal-white);
+      padding: 8px 22px;
+      border-radius: 9999px;
+      transition: box-shadow 0.4s ease, background-color 0.3s ease;
+    }
+
+    .nav-links .nav-cta a:hover {
+      box-shadow: 0 0 16px rgba(155,89,182,0.4);
+      background: #a86bc2;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 110;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--starlight);
+      margin: 5px 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background: var(--void-blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 720px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: var(--starlight);
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--moon-silver);
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+
+    .hero .btn-amethyst {
+      margin-top: 8px;
+    }
+
+    /* Extra aurora layers for hero */
+    .hero .aurora-hero {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero .aurora-hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -15%;
+      width: 60%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(155,89,182,0.10) 0%, transparent 65%);
+    }
+
+    .hero .aurora-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 55%;
+      height: 65%;
+      background: radial-gradient(ellipse at center, rgba(92,107,192,0.08) 0%, transparent 65%);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 100px 24px 120px;
+      background: var(--midnight);
+      position: relative;
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      text-align: center;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--starlight);
+      text-align: center;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card .card-title {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: var(--starlight);
+      margin-bottom: 14px;
+    }
+
+    .service-card .card-text {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--moon-silver);
+      line-height: 1.75;
+    }
+
+    /* ===== ABOUT / PHILOSOPHY ===== */
+    .about {
+      padding: 100px 24px 110px;
+      background: var(--midnight);
+      position: relative;
+    }
+
+    .about-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about h2 {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--starlight);
+      margin-bottom: 36px;
+    }
+
+    .about p {
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+      color: var(--moon-silver);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .about .attribution {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--lavender);
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      padding: 100px 24px 110px;
+      background: var(--twilight);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 5;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--starlight);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--moon-silver);
+      margin-bottom: 12px;
+    }
+
+    .cta-phone {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--lavender);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .cta-phone a {
+      color: var(--lavender);
+      transition: color 0.3s ease;
+    }
+
+    .cta-phone a:hover {
+      color: var(--starlight);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--void-blue);
+      padding: 48px 24px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--starlight);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .footer-address {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--moon-silver);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(192,192,208,0.5);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: rgba(18, 18, 40, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        border-left: 1px solid rgba(155,89,182,0.15);
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        letter-spacing: 0.06em;
+      }
+
+      .glass-card {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-logo {
+        font-size: 0.9rem;
+      }
+
+      .site-logo span {
+        font-size: 0.6rem;
+      }
+
+      .header-inner {
+        padding: 14px 16px;
+      }
+
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .crystal-divider {
+        max-width: 220px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .services-grid .service-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header starfield">
+    <div class="header-inner">
+      <a href="#" class="site-logo">
+        Foothills Family<span>Chiropractic</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li class="nav-cta"><a href="#book">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero starfield aurora" id="hero">
+    <div class="aurora-hero"></div>
+
+    <!-- Floating star particles -->
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+
+    <div class="hero-content">
+      <h1 class="reveal star-scatter">Restore Your Balance</h1>
+
+      <p class="reveal reveal-delay-1">
+        Gentle, whole-body chiropractic care for the entire family. Serving the foothills with compassion and expertise since 2016.
+      </p>
+
+      <div class="crystal-divider reveal reveal-delay-1">
+        <div class="diamond-sm"></div>
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+        <div class="diamond-sm"></div>
+      </div>
+
+      <a href="#book" class="btn-amethyst reveal reveal-delay-2">Book Your Visit</a>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services starfield aurora" id="services">
+    <div class="services-inner">
+      <p class="section-eyebrow reveal">Our Care</p>
+      <h2 class="section-heading reveal reveal-delay-1">What We Offer</h2>
+
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="glass-card service-card reveal reveal-delay-1">
+          <div class="moon-crescent"></div>
+          <h3 class="card-title">Spinal Adjustments</h3>
+          <p class="card-text">Precise, gentle corrections that restore alignment and relieve pain at its source.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card service-card reveal reveal-delay-2">
+          <div class="moon-crescent" style="box-shadow: 6px -4px 0 0 var(--rose-quartz); opacity: 0.5;"></div>
+          <h3 class="card-title">Prenatal &amp; Pediatric</h3>
+          <p class="card-text">Specialized care for mothers-to-be and growing children, adapted to every stage.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card service-card reveal reveal-delay-3">
+          <div class="moon-crescent" style="box-shadow: 6px -4px 0 0 var(--cosmic-blue); opacity: 0.5;"></div>
+          <h3 class="card-title">Sports Recovery</h3>
+          <p class="card-text">Rehabilitation and performance optimization for athletes at every level.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / PHILOSOPHY ===== -->
+  <section class="about aurora" id="about">
+    <!-- Aurora extra glow -->
+    <div class="about-inner">
+      <div class="crystal-divider reveal">
+        <div class="diamond-sm"></div>
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+        <div class="diamond-sm"></div>
+      </div>
+
+      <h2 class="reveal star-scatter">A Different Kind of Practice</h2>
+
+      <p class="reveal reveal-delay-1">
+        We believe healing is not something done to you. It is something your body already knows how to do. Our role is to remove the interference, to listen carefully, and to guide you back toward the balance you were born with. Every patient who walks through our door receives a plan built around their body, their life, their goals.
+      </p>
+
+      <p class="reveal reveal-delay-2">
+        Dr. Sarah Chen founded this practice with a simple vision: a place where families feel heard. Eight years and thousands of patients later, that vision has not changed.
+      </p>
+
+      <p class="attribution reveal reveal-delay-3">Dr. Sarah Chen, D.C.</p>
+
+      <div class="crystal-divider reveal reveal-delay-3">
+        <div class="diamond-sm"></div>
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+        <div class="diamond-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section starfield aurora" id="book">
+    <!-- Floating star particles -->
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+    <div class="star-particle"></div>
+
+    <div class="cta-content">
+      <h2 class="reveal star-scatter">Begin Your Journey</h2>
+      <p class="reveal reveal-delay-1">New patients welcome. Call us or book online.</p>
+      <span class="cta-phone reveal reveal-delay-2">
+        <a href="tel:7045550198">(704) 555-0198</a>
+      </span>
+      <div class="reveal reveal-delay-3">
+        <a href="#" class="btn-amethyst">Book Your First Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="crystal-divider" style="margin-bottom: 28px;">
+      <div class="diamond-sm"></div>
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+      <div class="diamond-sm"></div>
+    </div>
+
+    <p class="footer-logo">Foothills Family Chiropractic</p>
+    <p class="footer-address">1205 E. Dixon Blvd, Suite C, Shelby, NC 28152</p>
+    <p class="footer-copy">&copy; 2026 Foothills Family Chiropractic. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // ---- Mobile Nav Toggle ----
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      toggle.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ---- Scroll Reveal via IntersectionObserver ----
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

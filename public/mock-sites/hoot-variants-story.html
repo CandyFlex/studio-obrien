@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoot Nannie - Story Section Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #1a1410; color: #FFF8F0; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --brick: #8B2500; --brick-dark: #6B1C00; --amber: #D4A017; --amber-light: #E8C547;
+      --charcoal: #1a1410; --charcoal-light: #2a2218; --cream: #FFF8F0; --cream-dark: #F5EDE0;
+      --wood: #3E2723; --wood-light: #5D4037;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(26,20,16,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(212,160,23,0.2);
+      padding: 0.75rem 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .picker-bar .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber); font-weight: 700; margin-right: 1rem; }
+    .picker-btn {
+      width: 48px; height: 40px; border: 2px solid rgba(212,160,23,0.3); background: transparent;
+      color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover { border-color: var(--amber); background: rgba(212,160,23,0.1); }
+    .picker-btn.active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); }
+
+    .variant { display: none; padding-bottom: 5rem; }
+    .variant.active { display: block; }
+
+    .section-label { font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 0.75rem; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--cream); margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--cream-dark); opacity: 0.8; max-width: 600px; line-height: 1.7; }
+
+    /* ===== V1: Image Left + Text Right ===== */
+    .v1-section { padding: 5rem 2rem; }
+    .v1-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .v1-img-wrap { position: relative; }
+    .v1-img { width: 100%; height: 500px; object-fit: cover; border-radius: 8px; }
+    .v1-badge { position: absolute; bottom: -1rem; right: -1rem; width: 120px; height: 120px; background: var(--brick); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; z-index: 1; }
+    .v1-badge span { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; line-height: 1.3; }
+    .v1-text { font-size: 1rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.8; margin-bottom: 1.5rem; }
+    .v1-highlight { padding: 1.5rem; background: rgba(212,160,23,0.06); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; margin: 2rem 0; }
+    .v1-highlight p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; line-height: 1.6; }
+
+    /* ===== V2: Full-width story with timeline ===== */
+    .v2-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v2-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+    .v2-header .section-sub { margin: 0 auto; }
+    .v2-timeline { max-width: 900px; margin: 0 auto; position: relative; padding-left: 3rem; }
+    .v2-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--amber), var(--brick), transparent); }
+    .v2-event { position: relative; margin-bottom: 3rem; padding-left: 2rem; }
+    .v2-event::before { content: ''; position: absolute; left: -3.55rem; top: 0.25rem; width: 12px; height: 12px; background: var(--amber); border-radius: 50%; border: 3px solid #0f0c09; }
+    .v2-event-year { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--amber); margin-bottom: 0.25rem; }
+    .v2-event-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .v2-event-desc { font-size: 0.95rem; color: var(--cream-dark); opacity: 0.75; line-height: 1.7; }
+    .v2-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 3rem auto 0; }
+    .v2-bottom img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+
+    /* ===== V3: Magazine editorial ===== */
+    .v3-section { padding: 5rem 2rem; }
+    .v3-container { max-width: 1200px; margin: 0 auto; }
+    .v3-hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; min-height: 500px; border-radius: 12px; overflow: hidden; margin-bottom: 3rem; }
+    .v3-hero-img { position: relative; }
+    .v3-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .v3-hero-text { background: var(--charcoal-light); padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+    .v3-hero-text .section-heading { font-size: clamp(1.75rem,3vw,2.75rem); }
+    .v3-text { font-size: 1rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.8; margin-bottom: 1rem; }
+    .v3-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .v3-stat { text-align: center; padding: 2rem; background: var(--charcoal-light); border-radius: 10px; border: 1px solid rgba(212,160,23,0.06); }
+    .v3-stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .v3-stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream-dark); opacity: 0.7; margin-top: 0.25rem; }
+    .v3-stat-desc { font-size: 0.85rem; color: var(--cream-dark); opacity: 0.6; margin-top: 0.5rem; line-height: 1.4; }
+
+    /* ===== V4: Centered narrative ===== */
+    .v4-section { padding: 5rem 2rem; background: #0f0c09; }
+    .v4-container { max-width: 700px; margin: 0 auto; text-align: center; }
+    .v4-portrait { width: 100%; max-width: 600px; height: 350px; object-fit: cover; border-radius: 10px; margin: 0 auto 3rem; }
+    .v4-text { font-size: 1.1rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.9; margin-bottom: 1.5rem; text-align: left; }
+    .v4-pullquote {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic;
+      color: var(--amber); text-align: center; padding: 2rem 0; margin: 2rem 0;
+      border-top: 1px solid rgba(212,160,23,0.15); border-bottom: 1px solid rgba(212,160,23,0.15);
+      line-height: 1.5;
+    }
+    .v4-sources { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .v4-source { text-align: center; }
+    .v4-source-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: var(--amber); margin-bottom: 0.25rem; }
+    .v4-source-desc { font-size: 0.8rem; color: var(--cream-dark); opacity: 0.6; }
+
+    /* ===== V5: Immersive parallax-style ===== */
+    .v5-section { padding: 0; }
+    .v5-hero { position: relative; height: 60vh; overflow: hidden; display: flex; align-items: flex-end; }
+    .v5-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .v5-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--charcoal) 0%, transparent 60%); }
+    .v5-hero-content { position: relative; z-index: 1; padding: 3rem; }
+    .v5-body { padding: 3rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
+    .v5-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .v5-col-text { font-size: 1rem; color: var(--cream-dark); opacity: 0.85; line-height: 1.8; margin-bottom: 1.25rem; }
+    .v5-col-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--cream); padding: 1.5rem; background: rgba(212,160,23,0.06); border-left: 3px solid var(--amber); border-radius: 0 8px 8px 0; line-height: 1.6; }
+    .v5-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; }
+    .v5-gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .v1-container { grid-template-columns: 1fr; gap: 2rem; }
+      .v1-img { height: 300px; }
+      .v2-bottom { grid-template-columns: 1fr; }
+      .v3-hero { grid-template-columns: 1fr; }
+      .v3-stats { grid-template-columns: 1fr; }
+      .v4-sources { grid-template-columns: 1fr; }
+      .v5-cols { grid-template-columns: 1fr; }
+      .v5-gallery { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- V1: Image Left + Text Right -->
+<div class="variant v1-section active" id="v1">
+  <div class="v1-container">
+    <div class="v1-img-wrap">
+      <img class="v1-img" src="/mock-sites/assets/hoot-nannie/exterior-storefront.webp" alt="Storefront" loading="lazy" />
+      <div class="v1-badge"><span>Est. 2021<br />Main St.</span></div>
+    </div>
+    <div>
+      <div class="section-label">Our Story</div>
+      <h2 class="section-heading">The Farmer &amp; The Pitmaster</h2>
+      <p class="v1-text">Johnny Ray Bousselot and Stephen Soto took the best of two Fallston restaurants, The Honey Hog and Nannie's Fish Camp, added farm-raised steaks and a full bar, and brought it all to Main Street in Forest City.</p>
+      <p class="v1-text">Behind every plate is Honey Hog Farm. 126 acres of their own land, plus another 140 leased, raising hogs, Wagyu cattle, and chickens. Their steaks come from Beam Farms right here in Rutherford County. The cheese curds come fresh from Brown Creek Creamery.</p>
+      <div class="v1-highlight">
+        <p>"You can smell the grill from the parking lot. This is a farm to table type of place. Most of what you eat is sourced locally, and you can taste the difference."</p>
+      </div>
+      <p class="v1-text">Johnny Ray started making hot sauces over 12 years ago. His signature barbecue sauce is now sold in Food Lion and Ingles stores across the state. That same craft goes into every plate coming out of this kitchen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- V2: Timeline Story -->
+<div class="variant v2-section" id="v2">
+  <div class="v2-header">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-heading">How We Got Here</h2>
+    <p class="section-sub">From homemade hot sauce to a restaurant group with its own farm. Here is how The Hoot Nannie came to be.</p>
+  </div>
+  <div class="v2-timeline">
+    <div class="v2-event">
+      <div class="v2-event-year">2012</div>
+      <div class="v2-event-title">Johnny Ray's Signature Sauces</div>
+      <p class="v2-event-desc">Johnny Ray Bousselot, originally from Texas, starts making hot sauces in North Carolina. Friends and family push him to go commercial. The brand launches out of Mount Holly, NC.</p>
+    </div>
+    <div class="v2-event">
+      <div class="v2-event-year">2015</div>
+      <div class="v2-event-title">Honey Hog Farm</div>
+      <p class="v2-event-desc">Tyler Jones buys 40 acres in Lincoln County. The partnership with Johnny Ray begins, combining food and farming. They start raising their own hogs, Wagyu cattle, and chickens.</p>
+    </div>
+    <div class="v2-event">
+      <div class="v2-event-year">2018</div>
+      <div class="v2-event-title">The Honey Hog Restaurant</div>
+      <p class="v2-event-desc">The first restaurant opens in Fallston, NC. BBQ and smokehouse fare sourced directly from their own farm. The farm-to-table concept takes root.</p>
+    </div>
+    <div class="v2-event">
+      <div class="v2-event-year">2021</div>
+      <div class="v2-event-title">The Hoot Nannie Opens</div>
+      <p class="v2-event-desc">Johnny Ray and Stephen Soto combine the best of The Honey Hog and Nannie's Fish Camp. They add farm-raised steaks and a full bourbon bar, and open on Main Street in Forest City.</p>
+    </div>
+  </div>
+  <div class="v2-bottom">
+    <img src="/mock-sites/assets/hoot-nannie/exterior-storefront.webp" alt="Storefront" loading="lazy" />
+    <img src="/mock-sites/assets/hoot-nannie/interior-dining.webp" alt="Interior" loading="lazy" />
+  </div>
+</div>
+
+<!-- V3: Magazine Editorial -->
+<div class="variant v3-section" id="v3">
+  <div class="v3-container">
+    <div class="v3-hero">
+      <div class="v3-hero-img">
+        <img src="/mock-sites/assets/hoot-nannie/exterior-storefront.webp" alt="Storefront" loading="lazy" />
+      </div>
+      <div class="v3-hero-text">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-heading">The Farmer &amp; The Pitmaster</h2>
+        <p class="v3-text">Johnny Ray Bousselot and Stephen Soto took the best of two Fallston restaurants, added farm-raised steaks and a full bar, and brought it all to Main Street in Forest City in 2021.</p>
+        <p class="v3-text">Behind every plate is Honey Hog Farm, their own 126-acre operation raising hogs, Wagyu cattle, and chickens. Steaks from Beam Farms in Rutherford County. Cheese curds fresh from Brown Creek Creamery.</p>
+      </div>
+    </div>
+    <div class="v3-stats">
+      <div class="v3-stat">
+        <div class="v3-stat-num">126</div>
+        <div class="v3-stat-label">Farm Acres</div>
+        <div class="v3-stat-desc">Plus 140 acres leased. Hogs, Wagyu cattle, and chickens raised on site.</div>
+      </div>
+      <div class="v3-stat">
+        <div class="v3-stat-num">4</div>
+        <div class="v3-stat-label">Restaurants</div>
+        <div class="v3-stat-desc">Johnny Ray's Smokehouse, Nannie's, The Hoot Nannie, Five Spur Steakhouse.</div>
+      </div>
+      <div class="v3-stat">
+        <div class="v3-stat-num">12+</div>
+        <div class="v3-stat-label">Years of Sauce</div>
+        <div class="v3-stat-desc">Johnny Ray's sauces are now sold in Food Lion and Ingles across the state.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V4: Centered Narrative -->
+<div class="variant v4-section" id="v4">
+  <div class="v4-container">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-heading">The Farmer &amp; The Pitmaster</h2>
+    <img class="v4-portrait" src="/mock-sites/assets/hoot-nannie/exterior-storefront.webp" alt="Storefront" loading="lazy" />
+    <p class="v4-text">The Hoot Nannie was born from a merger of two Fallston restaurants. Johnny Ray Bousselot and Stephen Soto combined the best of The Honey Hog, a BBQ smokehouse, and Nannie's Fish Camp, then added farm-raised steaks and a full liquor bar.</p>
+    <p class="v4-text">They opened on Main Street in Forest City in mid-2021, filling a space left vacant after COVID closures. The building is a faded brick structure on the corner of Main, and from the parking lot, you can smell the grill before you ever walk in.</p>
+    <div class="v4-pullquote">"This is a farm to table type of place. Most of what you eat is sourced locally, and you can taste the difference."</div>
+    <p class="v4-text">Behind every plate is Honey Hog Farm. 126 acres owned, 140 more leased. Hogs, Wagyu cattle, and chickens. Steaks from Beam Farms in Rutherford County. Cheese curds from Brown Creek Creamery. Johnny Ray's signature sauces, born from over 12 years of experimenting, are now sold in grocery stores across the state.</p>
+    <div class="v4-sources">
+      <div class="v4-source">
+        <div class="v4-source-name">Honey Hog Farm</div>
+        <div class="v4-source-desc">Hogs, Wagyu Cattle, Chickens</div>
+      </div>
+      <div class="v4-source">
+        <div class="v4-source-name">Beam Farms</div>
+        <div class="v4-source-desc">Steaks, Rutherford County</div>
+      </div>
+      <div class="v4-source">
+        <div class="v4-source-name">Brown Creek Creamery</div>
+        <div class="v4-source-desc">Fresh Cheese Curds</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V5: Immersive Parallax-style -->
+<div class="variant v5-section" id="v5">
+  <div class="v5-hero">
+    <img src="/mock-sites/assets/hoot-nannie/exterior-storefront.webp" alt="Storefront" loading="lazy" />
+    <div class="v5-hero-content">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-heading" style="font-size: clamp(2.5rem,6vw,4.5rem);">The Farmer &amp;<br />The Pitmaster</h2>
+    </div>
+  </div>
+  <div class="v5-body">
+    <div class="v5-cols">
+      <div>
+        <p class="v5-col-text">Johnny Ray Bousselot and Stephen Soto took the best of two Fallston restaurants, The Honey Hog and Nannie's Fish Camp, added farm-raised steaks and a full bar, and brought it all to Main Street in Forest City.</p>
+        <p class="v5-col-text">Behind every plate is Honey Hog Farm. 126 acres of their own land, plus another 140 leased, raising hogs, Wagyu cattle, and chickens. Their steaks come from Beam Farms right here in Rutherford County.</p>
+      </div>
+      <div>
+        <p class="v5-col-text">The cheese curds come fresh from Brown Creek Creamery, hand-breaded and fried to order. 150 pounds of them go out the door every single week.</p>
+        <div class="v5-col-quote">"You can smell the grill from the parking lot. This is a farm to table type of place. Most of what you eat is sourced locally, and you can taste the difference."</div>
+        <p class="v5-col-text" style="margin-top: 1.25rem;">Johnny Ray started making hot sauces over 12 years ago. His signature barbecue sauce is now sold in Food Lion and Ingles stores across the state.</p>
+      </div>
+    </div>
+    <div class="v5-gallery">
+      <img src="/mock-sites/assets/hoot-nannie/interior-dining.webp" alt="Interior" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/dining-atmosphere.webp" alt="Dining" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/brick-entrance.webp" alt="Entrance" loading="lazy" />
+      <img src="/mock-sites/assets/hoot-nannie/interior-evening.webp" alt="Evening" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- PICKER BAR -->
+<div class="picker-bar">
+  <span class="label">Story Variant</span>
+  <button class="picker-btn active" data-v="1">1</button>
+  <button class="picker-btn" data-v="2">2</button>
+  <button class="picker-btn" data-v="3">3</button>
+  <button class="picker-btn" data-v="4">4</button>
+  <button class="picker-btn" data-v="5">5</button>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.picker-btn');
+  const variants = document.querySelectorAll('.variant');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      variants.forEach(el => el.classList.remove('active'));
+      document.getElementById('v' + btn.dataset.v).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

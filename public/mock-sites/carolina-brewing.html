@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Craft Brewing Co. | Brewed in the Foothills</title>
+  <meta name="description" content="Small-batch craft beer rooted in Carolina tradition. Visit our taproom in Shelby, NC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & FOUNDATIONS
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-forest: #0d2818;
+      --forest: #1a3a2a;
+      --emerald: #2d5a3d;
+      --sage: #4a7c59;
+      --gold: #c9a84c;
+      --bright-gold: #d4af37;
+      --pale-gold: #e8d48b;
+      --parchment: #f5f0e1;
+      --ivory: #faf7ef;
+      --dark-bark: #0a1f14;
+      --moss: #5a7d5a;
+
+      --font-display: 'Cinzel Decorative', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Cormorant Garamond', serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--parchment);
+      background: var(--deep-forest);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul { list-style: none; }
+
+    /* ========================================
+       LEAF PATTERN OVERLAY (reusable)
+       ======================================== */
+    .leaf-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image:
+        radial-gradient(ellipse 60px 80px at 15% 20%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 50px 70px at 85% 30%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 70px 90px at 45% 70%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 40px 60px at 70% 85%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 55px 75px at 25% 55%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 45px 65px at 90% 60%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 65px 85px at 55% 15%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 35px 55px at 10% 80%, var(--sage) 0%, transparent 70%),
+        radial-gradient(ellipse 50px 70px at 60% 45%, var(--sage) 0%, transparent 70%);
+    }
+
+    .foliage-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background:
+        radial-gradient(ellipse 300px 200px at 0% 100%, var(--emerald), transparent),
+        radial-gradient(ellipse 250px 180px at 100% 0%, var(--sage), transparent),
+        radial-gradient(ellipse 200px 150px at 50% 50%, var(--emerald), transparent);
+    }
+
+    /* ========================================
+       ANIMATIONS
+       ======================================== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .animate-on-scroll.is-visible {
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-on-scroll.delay-1 { animation-delay: 0.15s; }
+    .animate-on-scroll.delay-2 { animation-delay: 0.3s; }
+    .animate-on-scroll.delay-3 { animation-delay: 0.45s; }
+    .animate-on-scroll.delay-4 { animation-delay: 0.6s; }
+    .animate-on-scroll.delay-5 { animation-delay: 0.75s; }
+
+    /* ========================================
+       GOLD ORNAMENT DIVIDER (SVG helper)
+       ======================================== */
+    .gold-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .gold-rule {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-rule-wide {
+      width: 160px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       HEADER / NAV
+       ======================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(13, 40, 24, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .site-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse 800px 600px at 50% 40%, rgba(45, 90, 61, 0.15), transparent),
+        radial-gradient(ellipse 400px 400px at 20% 80%, rgba(45, 90, 61, 0.08), transparent),
+        radial-gradient(ellipse 400px 400px at 80% 20%, rgba(74, 124, 89, 0.06), transparent),
+        var(--deep-forest);
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--parchment);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 400;
+      color: var(--pale-gold);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-ornament {
+      opacity: 0;
+      animation: fadeIn 1.2s 0.9s ease forwards;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+      padding: 1rem 2.8rem;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-cta:hover {
+      background: var(--gold);
+      color: var(--deep-forest);
+      box-shadow: 0 0 30px rgba(201, 168, 76, 0.25);
+    }
+
+    /* Decorative floating elements */
+    .hero-float-left,
+    .hero-float-right {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      border-radius: 50%;
+      animation: gentlePulse 6s ease-in-out infinite;
+    }
+
+    .hero-float-left {
+      top: 20%;
+      left: -60px;
+      animation-delay: 0s;
+    }
+
+    .hero-float-right {
+      bottom: 15%;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      animation-delay: 3s;
+    }
+
+    .hero-corner-tl,
+    .hero-corner-br {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-color: rgba(201, 168, 76, 0.15);
+      border-style: solid;
+    }
+
+    .hero-corner-tl {
+      top: 100px;
+      left: 40px;
+      border-width: 1.5px 0 0 1.5px;
+    }
+
+    .hero-corner-br {
+      bottom: 40px;
+      right: 40px;
+      border-width: 0 1.5px 1.5px 0;
+    }
+
+    /* ========================================
+       SECTION SHARED
+       ======================================== */
+    .section-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-title--parchment { color: var(--parchment); }
+    .section-title--forest { color: var(--deep-forest); }
+
+    /* ========================================
+       FEATURED BEERS
+       ======================================== */
+    .beers-section {
+      position: relative;
+      padding: 7rem 2rem;
+      background:
+        radial-gradient(ellipse 600px 500px at 30% 50%, rgba(45, 90, 61, 0.12), transparent),
+        radial-gradient(ellipse 500px 400px at 80% 30%, rgba(74, 124, 89, 0.08), transparent),
+        var(--deep-forest);
+      overflow: hidden;
+    }
+
+    .beers-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .beers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Beer Card */
+    .beer-card {
+      position: relative;
+      background: linear-gradient(160deg, var(--emerald), rgba(26, 58, 42, 0.95));
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    }
+
+    .beer-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(201, 168, 76, 0.25);
+    }
+
+    /* Gold corner brackets */
+    .beer-card::before,
+    .beer-card::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-color: var(--gold);
+      border-style: solid;
+      transition: all 0.4s ease;
+    }
+
+    .beer-card::before {
+      top: 10px;
+      left: 10px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .beer-card::after {
+      bottom: 10px;
+      right: 10px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .beer-card:hover::before,
+    .beer-card:hover::after {
+      width: 32px;
+      height: 32px;
+      border-color: var(--bright-gold);
+    }
+
+    /* Extra corners using inner element */
+    .beer-card-corners::before,
+    .beer-card-corners::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-color: var(--gold);
+      border-style: solid;
+      transition: all 0.4s ease;
+    }
+
+    .beer-card-corners {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .beer-card-corners::before {
+      top: 10px;
+      right: 10px;
+      border-width: 2px 2px 0 0;
+    }
+
+    .beer-card-corners::after {
+      bottom: 10px;
+      left: 10px;
+      border-width: 0 0 2px 2px;
+    }
+
+    .beer-card:hover .beer-card-corners::before,
+    .beer-card:hover .beer-card-corners::after {
+      width: 32px;
+      height: 32px;
+      border-color: var(--bright-gold);
+    }
+
+    .beer-card-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      color: var(--gold);
+      opacity: 0.7;
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .beer-card:nth-child(2) .beer-card-icon {
+      animation-delay: 1.3s;
+    }
+
+    .beer-card:nth-child(3) .beer-card-icon {
+      animation-delay: 2.6s;
+    }
+
+    .beer-badge {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 1.25rem;
+      align-self: flex-start;
+    }
+
+    .beer-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--parchment);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+
+    .beer-abv {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--pale-gold);
+      margin-bottom: 1rem;
+    }
+
+    .beer-desc {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(245, 240, 225, 0.8);
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .beer-card-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .beer-card-footer span {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: letter-spacing 0.3s ease;
+    }
+
+    .beer-card:hover .beer-card-footer span {
+      letter-spacing: 0.2em;
+    }
+
+    .beer-card-footer svg {
+      width: 14px;
+      height: 14px;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .beer-card:hover .beer-card-footer svg {
+      transform: translateX(4px);
+    }
+
+    /* ========================================
+       TAPROOM
+       ======================================== */
+    .taproom-section {
+      position: relative;
+      padding: 7rem 2rem;
+      background:
+        radial-gradient(ellipse 500px 400px at 80% 50%, rgba(74, 124, 89, 0.06), transparent),
+        linear-gradient(180deg, var(--parchment), var(--ivory));
+      overflow: hidden;
+    }
+
+    .taproom-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .taproom-text h2 {
+      color: var(--deep-forest);
+    }
+
+    .taproom-text .section-eyebrow {
+      color: var(--emerald);
+    }
+
+    .taproom-body {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--forest);
+      margin-bottom: 2rem;
+    }
+
+    .taproom-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .taproom-hours-title {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      margin-bottom: 0.25rem;
+    }
+
+    .taproom-hours-row {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--forest);
+      display: flex;
+      justify-content: space-between;
+      max-width: 320px;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(45, 90, 61, 0.1);
+    }
+
+    .taproom-hours-day {
+      font-weight: 600;
+      color: var(--deep-forest);
+    }
+
+    .taproom-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Decorative taproom element */
+    .taproom-deco {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--emerald), var(--deep-forest));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Corner brackets for taproom deco */
+    .taproom-deco::before,
+    .taproom-deco::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+
+    .taproom-deco::before {
+      top: 16px;
+      left: 16px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .taproom-deco::after {
+      bottom: 16px;
+      right: 16px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .taproom-deco-corners {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .taproom-deco-corners::before,
+    .taproom-deco-corners::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+
+    .taproom-deco-corners::before {
+      top: 16px;
+      right: 16px;
+      border-width: 2px 2px 0 0;
+    }
+
+    .taproom-deco-corners::after {
+      bottom: 16px;
+      left: 16px;
+      border-width: 0 0 2px 2px;
+    }
+
+    .taproom-deco-num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .taproom-deco-label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--pale-gold);
+      margin-bottom: 2rem;
+    }
+
+    .taproom-deco-rule {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin-bottom: 2rem;
+    }
+
+    .taproom-deco-quote {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(245, 240, 225, 0.7);
+      line-height: 1.6;
+    }
+
+    .taproom-deco .foliage-overlay {
+      opacity: 0.06;
+    }
+
+    /* ========================================
+       EVENTS
+       ======================================== */
+    .events-section {
+      position: relative;
+      padding: 7rem 2rem;
+      background:
+        radial-gradient(ellipse 600px 500px at 50% 30%, rgba(45, 90, 61, 0.1), transparent),
+        var(--deep-forest);
+      overflow: hidden;
+    }
+
+    .events-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .events-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .event-row {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .event-row:first-child {
+      border-top: 1px solid rgba(201, 168, 76, 0.12);
+    }
+
+    .event-row:hover {
+      padding-left: 0.75rem;
+      border-bottom-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .event-date {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      min-width: 70px;
+    }
+
+    .event-title {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--parchment);
+      line-height: 1.4;
+    }
+
+    .event-arrow {
+      margin-left: auto;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.3s ease;
+    }
+
+    .event-row:hover .event-arrow {
+      opacity: 0.6;
+      transform: translateX(0);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .site-footer {
+      position: relative;
+      padding: 4rem 2rem 2.5rem;
+      background: var(--dark-bark);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-address {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--parchment);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
+      margin: 1.5rem auto;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.5;
+      transition: opacity 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--moss);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 900px) {
+      .beers-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+      }
+
+      .taproom-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .taproom-visual {
+        order: -1;
+      }
+
+      .taproom-deco {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .hero-corner-tl,
+      .hero-corner-br {
+        display: none;
+      }
+
+      .hero-float-left,
+      .hero-float-right {
+        opacity: 0.3;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        padding: 0 1.25rem;
+        height: 60px;
+      }
+
+      .site-logo {
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+      }
+
+      .beers-section,
+      .taproom-section,
+      .events-section {
+        padding: 4.5rem 1.25rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+      }
+
+      .beer-card {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+
+      .event-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .event-date {
+        min-width: auto;
+      }
+
+      .event-arrow {
+        display: none;
+      }
+
+      .taproom-hours-row {
+        font-size: 0.95rem;
+      }
+
+      .footer-nav {
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1100px) {
+      .beers-grid {
+        gap: 1.5rem;
+      }
+
+      .beer-card {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+    }
+
+    /* ========================================
+       MOBILE NAV OVERLAY
+       ======================================== */
+    .mobile-nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10, 31, 20, 0.97);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav-overlay a {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-overlay a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-nav-close span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .mobile-nav-close span:first-child {
+      transform: rotate(45deg) translateY(1px);
+    }
+
+    .mobile-nav-close span:last-child {
+      transform: rotate(-45deg) translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER
+       ========================================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="site-logo">Carolina Craft Brewing Co.</a>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#beers">Our Beers</a>
+        <a href="#taproom">Taproom</a>
+        <a href="#events">Events</a>
+        <a href="#">Shop</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.mobile-nav-overlay').classList.add('is-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay">
+    <button class="mobile-nav-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('is-open')">
+      <span></span>
+      <span></span>
+    </button>
+    <a href="#" onclick="this.parentElement.classList.remove('is-open')">Home</a>
+    <a href="#beers" onclick="this.parentElement.classList.remove('is-open')">Our Beers</a>
+    <a href="#taproom" onclick="this.parentElement.classList.remove('is-open')">Taproom</a>
+    <a href="#events" onclick="this.parentElement.classList.remove('is-open')">Events</a>
+    <a href="#">Shop</a>
+  </div>
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <section class="hero">
+    <div class="leaf-overlay"></div>
+    <div class="foliage-overlay"></div>
+    <div class="hero-float-left"></div>
+    <div class="hero-float-right"></div>
+    <div class="hero-corner-tl"></div>
+    <div class="hero-corner-br"></div>
+
+    <p class="hero-eyebrow">Est. 2019 &bull; Shelby, North Carolina</p>
+
+    <h1 class="hero-title">Brewed in the <span>Foothills</span></h1>
+
+    <p class="hero-subtitle">Small-batch craft beer rooted in Carolina tradition. From grain to glass, every pint tells a story.</p>
+
+    <!-- Gold ornamental SVG divider -->
+    <div class="hero-ornament">
+      <svg width="220" height="32" viewBox="0 0 220 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Left scroll -->
+        <path d="M0 16 Q10 16 16 10 Q22 4 30 6 Q38 8 36 16 Q34 24 26 24 Q18 24 20 16" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M20 16 L42 16" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/>
+        <!-- Left leaf -->
+        <path d="M42 16 Q52 8 62 12 Q56 16 62 20 Q52 24 42 16Z" fill="none" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M48 16 L60 16" stroke="#c9a84c" stroke-width="0.6" opacity="0.5"/>
+        <!-- Left vine -->
+        <path d="M62 16 L82 16" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="72" cy="16" r="1.5" fill="#c9a84c" opacity="0.5"/>
+        <!-- Left rule -->
+        <path d="M82 16 L100 16" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Center diamond -->
+        <path d="M105 16 L110 11 L115 16 L110 21Z" fill="#c9a84c" opacity="0.6"/>
+        <path d="M105 16 L110 11 L115 16 L110 21Z" stroke="#c9a84c" stroke-width="1"/>
+        <!-- Right rule -->
+        <path d="M120 16 L138 16" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="148" cy="16" r="1.5" fill="#c9a84c" opacity="0.5"/>
+        <!-- Right vine -->
+        <path d="M138 16 L158 16" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+        <!-- Right leaf -->
+        <path d="M158 16 Q168 8 178 12 Q172 16 178 20 Q168 24 158 16Z" fill="none" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M160 16 L172 16" stroke="#c9a84c" stroke-width="0.6" opacity="0.5"/>
+        <!-- Right scroll -->
+        <path d="M178 16 L200 16" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/>
+        <path d="M220 16 Q210 16 204 10 Q198 4 190 6 Q182 8 184 16 Q186 24 194 24 Q202 24 200 16" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <a href="#taproom" class="hero-cta">Visit the Taproom</a>
+  </section>
+
+  <!-- ==========================================
+       FEATURED BEERS
+       ========================================== -->
+  <section class="beers-section" id="beers">
+    <div class="leaf-overlay"></div>
+    <div class="foliage-overlay"></div>
+
+    <div class="beers-header">
+      <p class="section-eyebrow animate-on-scroll">What We Pour</p>
+      <h2 class="section-title section-title--parchment animate-on-scroll delay-1">On Tap Now</h2>
+      <div class="gold-divider animate-on-scroll delay-2">
+        <svg width="160" height="20" viewBox="0 0 160 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 10 L55 10" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+          <path d="M60 10 Q68 3 76 7 Q72 10 76 13 Q68 17 60 10Z" fill="none" stroke="#c9a84c" stroke-width="0.8"/>
+          <path d="M80 10 L80 6 L84 10 L80 14Z" fill="#c9a84c" opacity="0.5"/>
+          <path d="M84 10 Q92 3 100 7 Q96 10 100 13 Q92 17 84 10Z" fill="none" stroke="#c9a84c" stroke-width="0.8"/>
+          <path d="M105 10 L160 10" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="beers-grid">
+      <!-- Card 1: Foothills IPA -->
+      <div class="beer-card animate-on-scroll delay-1">
+        <div class="beer-card-corners"></div>
+        <svg class="beer-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 42V14h20v28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 14h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 14V8c0-1.5 1-3 6-3s6 1.5 6 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 24c2 2 10 2 12 0" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <path d="M14 42h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="32" r="3" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <span class="beer-badge">West Coast IPA</span>
+        <h3 class="beer-name">Foothills IPA</h3>
+        <p class="beer-abv">6.8% ABV</p>
+        <p class="beer-desc">Bright citrus hops with a clean, piney finish.</p>
+        <div class="beer-card-footer">
+          <span>Learn more</span>
+          <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Dark Hollow Stout -->
+      <div class="beer-card animate-on-scroll delay-2">
+        <div class="beer-card-corners"></div>
+        <svg class="beer-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 42V10h24v32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 10c0-3 4-5 12-5s12 2 12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 42h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 20h12" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M18 26h12" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+          <path d="M18 32h12" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+          <ellipse cx="24" cy="10" rx="12" ry="3" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+        </svg>
+        <span class="beer-badge">Oatmeal Stout</span>
+        <h3 class="beer-name">Dark Hollow Stout</h3>
+        <p class="beer-abv">5.4% ABV</p>
+        <p class="beer-desc">Rich chocolate and roasted coffee. Smooth as a winter night.</p>
+        <div class="beer-card-footer">
+          <span>Learn more</span>
+          <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 3: Golden Hour Lager -->
+      <div class="beer-card animate-on-scroll delay-3">
+        <div class="beer-card-corners"></div>
+        <svg class="beer-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 42l-2-28h20l-2 28H16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 14h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M34 20c3 0 5 2 5 5s-2 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 22c2 3 8 3 10 0" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M19 28h10" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.2"/>
+          <path d="M16 42h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="beer-badge">Carolina Lager</span>
+        <h3 class="beer-name">Golden Hour Lager</h3>
+        <p class="beer-abv">4.6% ABV</p>
+        <p class="beer-desc">Crisp, clean, and built for a long afternoon on the porch.</p>
+        <div class="beer-card-footer">
+          <span>Learn more</span>
+          <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAPROOM
+       ========================================== -->
+  <section class="taproom-section" id="taproom">
+    <div class="taproom-inner">
+      <div class="taproom-text">
+        <p class="section-eyebrow animate-on-scroll">Come On In</p>
+        <h2 class="section-title section-title--forest animate-on-scroll delay-1">The Taproom</h2>
+        <div class="gold-rule-wide animate-on-scroll delay-2" style="margin: 1rem 0 1.5rem; background: linear-gradient(90deg, rgba(45,90,61,0.3), rgba(201,168,76,0.5), rgba(45,90,61,0.3));"></div>
+        <p class="taproom-body animate-on-scroll delay-2">Twelve taps. One long wooden bar. A back patio that catches the evening light just right. We keep it simple because the beer does the talking. Bring your dog, bring your friends, bring an appetite. Food trucks rotate on weekends.</p>
+        <div class="taproom-hours animate-on-scroll delay-3">
+          <p class="taproom-hours-title">Hours</p>
+          <div class="taproom-hours-row">
+            <span class="taproom-hours-day">Wed &ndash; Thu</span>
+            <span>4pm &ndash; 9pm</span>
+          </div>
+          <div class="taproom-hours-row">
+            <span class="taproom-hours-day">Friday</span>
+            <span>3pm &ndash; 11pm</span>
+          </div>
+          <div class="taproom-hours-row">
+            <span class="taproom-hours-day">Saturday</span>
+            <span>12pm &ndash; 11pm</span>
+          </div>
+          <div class="taproom-hours-row">
+            <span class="taproom-hours-day">Sunday</span>
+            <span>12pm &ndash; 7pm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="taproom-visual animate-on-scroll delay-2">
+        <div class="taproom-deco">
+          <div class="foliage-overlay"></div>
+          <div class="taproom-deco-corners"></div>
+          <div class="taproom-deco-num">12</div>
+          <div class="taproom-deco-label">Taps on Draft</div>
+          <div class="taproom-deco-rule"></div>
+          <p class="taproom-deco-quote">"Good beer, good company,<br>good conversation."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       EVENTS
+       ========================================== -->
+  <section class="events-section" id="events">
+    <div class="leaf-overlay"></div>
+    <div class="foliage-overlay"></div>
+
+    <div class="events-inner">
+      <div class="events-header">
+        <p class="section-eyebrow animate-on-scroll">Upcoming</p>
+        <h2 class="section-title section-title--parchment animate-on-scroll delay-1">Gather Round</h2>
+        <div class="gold-divider animate-on-scroll delay-2">
+          <svg width="120" height="16" viewBox="0 0 120 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 8 L45 8" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M55 8 L60 3 L65 8 L60 13Z" fill="#c9a84c" opacity="0.5"/>
+            <path d="M75 8 L120 8" stroke="#c9a84c" stroke-width="0.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="event-row animate-on-scroll delay-1">
+        <span class="event-date">Mar 15</span>
+        <span class="event-title">Bluegrass & Brews: Live Music on the Patio</span>
+        <svg class="event-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="event-row animate-on-scroll delay-2">
+        <span class="event-date">Mar 22</span>
+        <span class="event-title">Brewmaster's Table: Tasting Flight & Tour</span>
+        <svg class="event-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="event-row animate-on-scroll delay-3">
+        <span class="event-date">Apr 5</span>
+        <span class="event-title">Spring Release Party: Three New Taps</span>
+        <svg class="event-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="foliage-overlay" style="opacity: 0.02;"></div>
+
+    <div class="footer-logo">Carolina Craft Brewing Co.</div>
+    <p class="footer-address">445 E. Warren St, Shelby, NC 28150</p>
+
+    <div class="footer-divider"></div>
+
+    <nav class="footer-nav">
+      <a href="#">Home</a>
+      <a href="#beers">Our Beers</a>
+      <a href="#taproom">Taproom</a>
+      <a href="#events">Events</a>
+      <a href="#">Shop</a>
+    </nav>
+
+    <p class="footer-copy">&copy; 2026 Carolina Craft Brewing Co. All rights reserved.</p>
+  </footer>
+
+  <!-- ==========================================
+       SCROLL ANIMATION OBSERVER
+       ========================================== -->
+  <script>
+    (function() {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        elements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback: show everything immediately
+        elements.forEach(function(el) {
+          el.classList.add('is-visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

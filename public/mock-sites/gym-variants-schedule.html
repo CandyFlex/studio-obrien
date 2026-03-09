@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Gym - Schedule & Pricing Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #161616;
+      --red: #e63226;
+      --red-glow: rgba(230, 50, 38, 0.3);
+      --neon-green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.25);
+      --orange: #ff6b2b;
+      --yellow: #ffc831;
+      --white: #f0f0f0;
+      --muted: #777777;
+      --border: #2a2a2a;
+      --steel: #333333;
+    }
+
+    .picker-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid #333; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .picker-bar-label {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--neon-green); margin-right: 12px; text-transform: uppercase;
+    }
+    .picker-btn {
+      width: 48px; height: 48px; border-radius: 8px; border: 2px solid #333;
+      background: #161616; color: #f0f0f0; font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .picker-btn:hover, .picker-btn.active {
+      border-color: var(--red); background: var(--red); color: #fff; transform: scale(1.08);
+    }
+
+    .variant { display: none; min-height: 100vh; }
+    .variant.active { display: block; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0 140px; }
+    .text-center { text-align: center; }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 1.05; letter-spacing: 0.02em; font-weight: 700; }
+
+    .btn {
+      display: inline-block; font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px;
+      border-radius: 4px; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { box-shadow: 0 8px 30px var(--red-glow); }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid #444; }
+    .btn-outline:hover { border-color: var(--neon-green); color: var(--neon-green); }
+    .btn-green { background: var(--neon-green); color: #0a0a0a; }
+    .btn-green:hover { box-shadow: 0 8px 30px var(--green-glow); }
+
+    /* ===========================
+       VARIANT 1 - 3-Column Pricing Cards (Original)
+       =========================== */
+    .v1-pricing { background: var(--dark); position: relative; overflow: hidden; }
+    .v1-pricing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle 1.5px at 50px 50px, rgba(255,255,255,0.02) 1.5px, transparent 1.5px); background-size: 100px 100px; }
+    .v1-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v1-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v1-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v1-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; z-index: 2; }
+    .v1-card {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 40px 32px; text-align: center; position: relative; transition: transform 0.3s;
+    }
+    .v1-card:hover { transform: translateY(-4px); }
+    .v1-card.featured { border-color: var(--red); background: linear-gradient(180deg, rgba(230,50,38,0.08) 0%, var(--dark-card) 40%); }
+    .v1-card.featured::before {
+      content: 'Most Popular'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--red); color: #fff; font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 20px; border-radius: 0 0 6px 6px;
+    }
+    .v1-name { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 16px; margin-top: 16px; letter-spacing: 0.05em; }
+    .v1-amount { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; color: var(--neon-green); line-height: 1; margin-bottom: 4px; }
+    .v1-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; }
+    .v1-features li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--muted); display: flex; align-items: center; gap: 10px; text-align: left; }
+    .v1-features li:last-child { border-bottom: none; }
+    .v1-check { color: var(--neon-green); font-weight: 700; }
+    .v1-sched { margin-top: 60px; position: relative; z-index: 2; }
+    .v1-sched-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .v1-sched-item { background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px; padding: 24px 20px; text-align: center; }
+    .v1-sched-day { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; color: var(--red); letter-spacing: 0.1em; margin-bottom: 8px; text-transform: uppercase; }
+    .v1-sched-time { font-size: 0.9rem; color: var(--muted); }
+    @media (max-width: 768px) {
+      .v1-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .v1-sched-grid { grid-template-columns: 1fr; max-width: 300px; }
+    }
+
+    /* ===========================
+       VARIANT 2 - Horizontal Comparison Table
+       =========================== */
+    .v2-pricing { background: var(--black); position: relative; overflow: hidden; }
+    .v2-pricing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(230,50,38,0.04) 0%, transparent 70%); }
+    .v2-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v2-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v2-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v2-table { position: relative; z-index: 2; overflow-x: auto; }
+    .v2-table table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .v2-table th {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--white);
+      text-transform: uppercase; letter-spacing: 0.1em; padding: 20px 16px; text-align: center;
+      border-bottom: 2px solid var(--border); background: var(--dark-card);
+    }
+    .v2-table th:first-child { text-align: left; }
+    .v2-table th.featured-col { color: var(--red); border-bottom-color: var(--red); }
+    .v2-table td {
+      padding: 16px; text-align: center; border-bottom: 1px solid var(--border);
+      font-size: 0.9rem; color: var(--muted);
+    }
+    .v2-table td:first-child { text-align: left; color: var(--white); font-weight: 500; }
+    .v2-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .v2-yes { color: var(--neon-green); font-weight: 700; font-size: 1.1rem; }
+    .v2-no { color: #444; }
+    .v2-table tfoot td { border-bottom: none; padding-top: 24px; }
+    .v2-price-cell {
+      font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--neon-green);
+    }
+
+    /* ===========================
+       VARIANT 3 - Stacked Tiers with Schedule Sidebar
+       =========================== */
+    .v3-pricing { background: var(--dark); position: relative; overflow: hidden; }
+    .v3-pricing::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px); }
+    .v3-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v3-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 48px; }
+    .v3-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; position: relative; z-index: 2; }
+    .v3-tiers { display: flex; flex-direction: column; gap: 16px; }
+    .v3-tier {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 28px 32px; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; transition: border-color 0.3s;
+    }
+    .v3-tier:hover { border-color: var(--red); }
+    .v3-tier.featured { border-color: var(--red); background: linear-gradient(90deg, rgba(230,50,38,0.06), var(--dark-card)); }
+    .v3-tier-info h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 6px; }
+    .v3-tier-info p { font-size: 0.9rem; color: var(--muted); }
+    .v3-tier-price { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--neon-green); white-space: nowrap; }
+    .v3-tier-btn { flex-shrink: 0; }
+    .v3-sidebar {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 32px 24px;
+    }
+    .v3-sidebar h3 {
+      font-size: 1.2rem; color: var(--white); margin-bottom: 20px; text-align: center;
+    }
+    .v3-sched-row {
+      display: flex; justify-content: space-between; padding: 12px 0;
+      border-bottom: 1px solid var(--border); font-size: 0.9rem;
+    }
+    .v3-sched-row:last-child { border-bottom: none; }
+    .v3-sched-day { color: var(--red); font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .v3-sched-time { color: var(--muted); text-align: right; }
+    @media (max-width: 768px) {
+      .v3-layout { grid-template-columns: 1fr; }
+      .v3-tier { flex-direction: column; text-align: center; }
+    }
+
+    /* ===========================
+       VARIANT 4 - Dark Cards with Toggle
+       =========================== */
+    .v4-pricing { background: var(--black); position: relative; overflow: hidden; }
+    .v4-pricing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle 1px at 40px 40px, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; }
+    .v4-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v4-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 20px; }
+    .v4-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .v4-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; z-index: 2; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .v4-card {
+      background: var(--dark-card); padding: 48px 32px; text-align: center;
+      border-right: 1px solid var(--border); position: relative;
+    }
+    .v4-card:last-child { border-right: none; }
+    .v4-card.featured { background: linear-gradient(180deg, rgba(230,50,38,0.1) 0%, var(--dark-card) 50%); }
+    .v4-card.featured::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red);
+    }
+    .v4-tier-icon { font-size: 2rem; margin-bottom: 16px; }
+    .v4-card:nth-child(1) .v4-tier-icon { color: var(--muted); }
+    .v4-card:nth-child(2) .v4-tier-icon { color: var(--red); }
+    .v4-card:nth-child(3) .v4-tier-icon { color: var(--neon-green); }
+    .v4-name { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+    .v4-amount { font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 700; color: var(--neon-green); line-height: 1; margin-bottom: 4px; }
+    .v4-period { font-size: 0.8rem; color: var(--muted); margin-bottom: 24px; }
+    .v4-list { margin-bottom: 28px; }
+    .v4-list li { padding: 8px 0; font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 8px; justify-content: center; }
+    .v4-check { color: var(--neon-green); font-weight: 700; }
+    @media (max-width: 768px) { .v4-grid { grid-template-columns: 1fr; } .v4-card { border-right: none; border-bottom: 1px solid var(--border); } .v4-card:last-child { border-bottom: none; } }
+
+    /* ===========================
+       VARIANT 5 - Pricing + Integrated Schedule
+       =========================== */
+    .v5-pricing { background: var(--dark); position: relative; overflow: hidden; }
+    .v5-pricing::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.01) 60px, rgba(255,255,255,0.01) 61px); }
+    .v5-label { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.25em; color: var(--neon-green); margin-bottom: 12px; }
+    .v5-heading { font-size: clamp(2.4rem,6vw,4rem); color: var(--white); margin-bottom: 48px; }
+    .v5-top { position: relative; z-index: 2; }
+    .v5-hero-card {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+      align-items: center; margin-bottom: 40px;
+    }
+    .v5-hero-card .v5-plan {
+      text-align: center; padding: 24px 16px;
+    }
+    .v5-hero-card .v5-plan:nth-child(2) {
+      border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+    }
+    .v5-plan-name { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--white); margin-bottom: 8px; letter-spacing: 0.05em; }
+    .v5-plan-price { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--neon-green); line-height: 1; margin-bottom: 4px; }
+    .v5-plan-per { font-size: 0.8rem; color: var(--muted); margin-bottom: 16px; }
+    .v5-plan-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+    .v5-sched-strip {
+      background: var(--dark-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px 48px; display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .v5-sched-block { text-align: center; }
+    .v5-sched-day { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .v5-sched-times { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .v5-sched-divider { width: 1px; height: 50px; background: var(--border); }
+    @media (max-width: 768px) {
+      .v5-hero-card { grid-template-columns: 1fr; gap: 0; }
+      .v5-hero-card .v5-plan:nth-child(2) { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .v5-sched-strip { flex-direction: column; }
+      .v5-sched-divider { width: 60px; height: 1px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1 - 3-Column Cards -->
+  <div class="variant active" id="v1">
+    <section class="v1-pricing section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v1-label">Get Started</div>
+          <h2 class="v1-heading">The Investment</h2>
+          <p class="v1-sub">No contracts. No hidden fees. Just honest training at a fair price. Pick the plan that fits your life.</p>
+        </div>
+        <div class="v1-grid">
+          <div class="v1-card">
+            <div class="v1-name">Drop In</div>
+            <div class="v1-amount">$20</div>
+            <div class="v1-period">per class</div>
+            <ul class="v1-features">
+              <li><span class="v1-check">&#10003;</span> Single class access</li>
+              <li><span class="v1-check">&#10003;</span> Full coaching included</li>
+              <li><span class="v1-check">&#10003;</span> No commitment</li>
+              <li><span class="v1-check">&#10003;</span> Try before you join</li>
+            </ul>
+            <a href="#" class="btn btn-outline" style="width:100%;">Book a Class</a>
+          </div>
+          <div class="v1-card featured">
+            <div class="v1-name">Unlimited</div>
+            <div class="v1-amount">$150</div>
+            <div class="v1-period">per month</div>
+            <ul class="v1-features">
+              <li><span class="v1-check">&#10003;</span> Unlimited group classes</li>
+              <li><span class="v1-check">&#10003;</span> Open gym access</li>
+              <li><span class="v1-check">&#10003;</span> Full programming</li>
+              <li><span class="v1-check">&#10003;</span> Community events</li>
+            </ul>
+            <a href="#" class="btn btn-primary" style="width:100%;">Join Now</a>
+          </div>
+          <div class="v1-card">
+            <div class="v1-name">Personal Training</div>
+            <div class="v1-amount" style="font-size:2rem;">Contact Us</div>
+            <div class="v1-period">custom pricing</div>
+            <ul class="v1-features">
+              <li><span class="v1-check">&#10003;</span> 1-on-1 coaching</li>
+              <li><span class="v1-check">&#10003;</span> Custom programming</li>
+              <li><span class="v1-check">&#10003;</span> Flexible scheduling</li>
+              <li><span class="v1-check">&#10003;</span> Goal-specific training</li>
+            </ul>
+            <a href="#" class="btn btn-outline" style="width:100%;">Get in Touch</a>
+          </div>
+        </div>
+        <div class="v1-sched">
+          <div class="text-center" style="margin-bottom:32px;">
+            <h3 style="font-size:1.6rem;color:var(--white);margin-bottom:8px;">Class Schedule</h3>
+            <p style="color:var(--muted);font-size:0.95rem;">Book through the Wodify app.</p>
+          </div>
+          <div class="v1-sched-grid">
+            <div class="v1-sched-item"><div class="v1-sched-day">Mon - Fri</div><div class="v1-sched-time">5:00 AM, 6:00 AM<br/>12:00 PM, 5:30 PM</div></div>
+            <div class="v1-sched-item"><div class="v1-sched-day">Saturday</div><div class="v1-sched-time">8:00 AM<br/>9:00 AM</div></div>
+            <div class="v1-sched-item"><div class="v1-sched-day">Sunday</div><div class="v1-sched-time">Open Gym<br/>By Appointment</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2 - Comparison Table -->
+  <div class="variant" id="v2">
+    <section class="v2-pricing section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v2-label">Get Started</div>
+          <h2 class="v2-heading">The Investment</h2>
+          <p class="v2-sub">No contracts. No hidden fees. Just honest training at a fair price.</p>
+        </div>
+        <div class="v2-table">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Drop In</th>
+                <th class="featured-col">Unlimited</th>
+                <th>Personal Training</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Group Classes</td>
+                <td>Single Visit</td>
+                <td><span class="v2-yes">&#10003; Unlimited</span></td>
+                <td><span class="v2-no">&ndash;</span></td>
+              </tr>
+              <tr>
+                <td>Open Gym Access</td>
+                <td><span class="v2-no">&ndash;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td>Coached Sessions</td>
+                <td><span class="v2-yes">&#10003;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+                <td><span class="v2-yes">&#10003; 1-on-1</span></td>
+              </tr>
+              <tr>
+                <td>Custom Programming</td>
+                <td><span class="v2-no">&ndash;</span></td>
+                <td><span class="v2-no">&ndash;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td>Community Events</td>
+                <td><span class="v2-no">&ndash;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+                <td><span class="v2-yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td>Commitment</td>
+                <td>None</td>
+                <td>Monthly</td>
+                <td>Flexible</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td><div class="v2-price-cell">$20</div><span style="color:var(--muted);font-size:0.8rem;">per class</span><br/><br/><a href="#" class="btn btn-outline">Book a Class</a></td>
+                <td><div class="v2-price-cell">$150</div><span style="color:var(--muted);font-size:0.8rem;">per month</span><br/><br/><a href="#" class="btn btn-primary">Join Now</a></td>
+                <td><div class="v2-price-cell" style="font-size:1.4rem;">Contact Us</div><span style="color:var(--muted);font-size:0.8rem;">custom pricing</span><br/><br/><a href="#" class="btn btn-outline">Get in Touch</a></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3 - Tiers + Schedule Sidebar -->
+  <div class="variant" id="v3">
+    <section class="v3-pricing section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v3-label">Get Started</div>
+          <h2 class="v3-heading">The Investment</h2>
+        </div>
+        <div class="v3-layout">
+          <div class="v3-tiers">
+            <div class="v3-tier">
+              <div class="v3-tier-info"><h3>Drop In</h3><p>Single class visit. Try us out, no commitment required.</p></div>
+              <div class="v3-tier-price">$20</div>
+              <a href="#" class="btn btn-outline v3-tier-btn">Book</a>
+            </div>
+            <div class="v3-tier featured">
+              <div class="v3-tier-info"><h3>Unlimited</h3><p>Unlimited group classes, open gym, full programming.</p></div>
+              <div class="v3-tier-price">$150/mo</div>
+              <a href="#" class="btn btn-primary v3-tier-btn">Join</a>
+            </div>
+            <div class="v3-tier">
+              <div class="v3-tier-info"><h3>Personal Training</h3><p>1-on-1 coaching with custom programming.</p></div>
+              <div class="v3-tier-price" style="font-size:1.3rem;">Contact</div>
+              <a href="#" class="btn btn-outline v3-tier-btn">Ask</a>
+            </div>
+          </div>
+          <div class="v3-sidebar">
+            <h3>Class Schedule</h3>
+            <div class="v3-sched-row"><span class="v3-sched-day">Mon</span><span class="v3-sched-time">5a, 6a, 12p, 5:30p</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Tue</span><span class="v3-sched-time">5a, 6a, 12p, 5:30p</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Wed</span><span class="v3-sched-time">5a, 6a, 12p, 5:30p</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Thu</span><span class="v3-sched-time">5a, 6a, 12p, 5:30p</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Fri</span><span class="v3-sched-time">5a, 6a, 12p, 5:30p</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Sat</span><span class="v3-sched-time">8a, 9a</span></div>
+            <div class="v3-sched-row"><span class="v3-sched-day">Sun</span><span class="v3-sched-time">Open Gym</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 4 - Connected Cards -->
+  <div class="variant" id="v4">
+    <section class="v4-pricing section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v4-label">Get Started</div>
+          <h2 class="v4-heading">The Investment</h2>
+          <p class="v4-sub">No contracts. No hidden fees. Just honest training at a fair price.</p>
+        </div>
+        <div class="v4-grid">
+          <div class="v4-card">
+            <div class="v4-tier-icon">&#9733;</div>
+            <div class="v4-name">Drop In</div>
+            <div class="v4-amount">$20</div>
+            <div class="v4-period">per class</div>
+            <ul class="v4-list">
+              <li><span class="v4-check">&#10003;</span> Single class access</li>
+              <li><span class="v4-check">&#10003;</span> Full coaching</li>
+              <li><span class="v4-check">&#10003;</span> No commitment</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Book a Class</a>
+          </div>
+          <div class="v4-card featured">
+            <div class="v4-tier-icon">&#9830;</div>
+            <div class="v4-name">Unlimited</div>
+            <div class="v4-amount">$150</div>
+            <div class="v4-period">per month</div>
+            <ul class="v4-list">
+              <li><span class="v4-check">&#10003;</span> Unlimited classes</li>
+              <li><span class="v4-check">&#10003;</span> Open gym access</li>
+              <li><span class="v4-check">&#10003;</span> Full programming</li>
+              <li><span class="v4-check">&#10003;</span> Community events</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Join Now</a>
+          </div>
+          <div class="v4-card">
+            <div class="v4-tier-icon">&#9733;</div>
+            <div class="v4-name">Personal Training</div>
+            <div class="v4-amount" style="font-size:1.8rem;">Contact Us</div>
+            <div class="v4-period">custom pricing</div>
+            <ul class="v4-list">
+              <li><span class="v4-check">&#10003;</span> 1-on-1 coaching</li>
+              <li><span class="v4-check">&#10003;</span> Custom programming</li>
+              <li><span class="v4-check">&#10003;</span> Flexible schedule</li>
+            </ul>
+            <a href="#" class="btn btn-green">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 5 - Pricing Strip + Schedule -->
+  <div class="variant" id="v5">
+    <section class="v5-pricing section-pad">
+      <div class="container">
+        <div class="text-center">
+          <div class="v5-label">Get Started</div>
+          <h2 class="v5-heading">The Investment</h2>
+        </div>
+        <div class="v5-top">
+          <div class="v5-hero-card">
+            <div class="v5-plan">
+              <div class="v5-plan-name">Drop In</div>
+              <div class="v5-plan-price">$20</div>
+              <div class="v5-plan-per">per class</div>
+              <div class="v5-plan-desc">Single class visit. Try a workout with no strings attached.</div>
+              <a href="#" class="btn btn-outline">Book</a>
+            </div>
+            <div class="v5-plan">
+              <div class="v5-plan-name">Unlimited</div>
+              <div class="v5-plan-price">$150</div>
+              <div class="v5-plan-per">per month</div>
+              <div class="v5-plan-desc">Unlimited group classes, open gym, full programming access.</div>
+              <a href="#" class="btn btn-primary">Join Now</a>
+            </div>
+            <div class="v5-plan">
+              <div class="v5-plan-name">Personal Training</div>
+              <div class="v5-plan-price" style="font-size:1.6rem;">Contact</div>
+              <div class="v5-plan-per">custom pricing</div>
+              <div class="v5-plan-desc">One-on-one coaching with custom programming.</div>
+              <a href="#" class="btn btn-green">Inquire</a>
+            </div>
+          </div>
+          <div class="v5-sched-strip">
+            <div class="v5-sched-block"><div class="v5-sched-day">Mon - Fri</div><div class="v5-sched-times">5:00 AM, 6:00 AM<br/>12:00 PM, 5:30 PM</div></div>
+            <div class="v5-sched-divider"></div>
+            <div class="v5-sched-block"><div class="v5-sched-day">Saturday</div><div class="v5-sched-times">8:00 AM<br/>9:00 AM</div></div>
+            <div class="v5-sched-divider"></div>
+            <div class="v5-sched-block"><div class="v5-sched-day">Sunday</div><div class="v5-sched-times">Open Gym<br/>By Appointment</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PICKER BAR -->
+  <div class="picker-bar">
+    <span class="picker-bar-label">Schedule Variant</span>
+    <button class="picker-btn active" onclick="show(1)">1</button>
+    <button class="picker-btn" onclick="show(2)">2</button>
+    <button class="picker-btn" onclick="show(3)">3</button>
+    <button class="picker-btn" onclick="show(4)">4</button>
+    <button class="picker-btn" onclick="show(5)">5</button>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.picker-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('v' + n).classList.add('active');
+      document.querySelectorAll('.picker-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

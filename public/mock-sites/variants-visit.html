@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Visit Section Variants</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/mock-sites/assets/carolina-arcade/logo-wide.webp">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-light: #aaa;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 60px; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* CRT SCANLINE */
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px); }
+
+    /* ========== NAV ========== */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 2px solid var(--yellow-dim); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    nav .nav-logo { font-family: var(--font-pixel); font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    nav .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    nav .nav-links a { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+    nav .nav-links a:hover { color: var(--white); }
+    nav .nav-cta-wrap { display: flex; align-items: center; gap: 10px; }
+    nav .nav-cta-micro { font-family: var(--font-pixel); font-size: 0.35rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+    nav .nav-cta { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.2rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+
+    /* ========== LOCKED HERO (compact) ========== */
+    .locked-hero { position: relative; width: 100%; height: 45vh; min-height: 320px; overflow: hidden; }
+    .locked-hero .hero-bg { position: absolute; inset: 0; }
+    .locked-hero .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .locked-hero .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 72% 62% at center 43%, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.87) 100%); }
+    .locked-hero .hero-logo { position: absolute; z-index: 3; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(480px, 50vw); filter: drop-shadow(0 0 40px rgba(245,214,35,0.3)); }
+    .locked-hero .hero-logo img { width: 100%; height: auto; }
+
+    /* ========== VISIT VARIANTS ========== */
+    .visit-variant { display: none; }
+    .visit-variant.active { display: block; }
+
+    .visit-section { padding: 5rem 2rem; position: relative; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .container-wide { max-width: 1280px; margin: 0 auto; }
+
+    .section-label { font-family: var(--font-pixel); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 4px; color: var(--yellow-dim); margin-bottom: 0.8rem; }
+    .section-title { font-family: var(--font-pixel); font-size: 1.4rem; color: var(--white); line-height: 1.8; margin-bottom: 0.8rem; text-wrap: balance; }
+    .section-desc { color: var(--gray-light); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
+
+    /* Photo shared */
+    .visit-img { overflow: hidden; border: 1px solid var(--gray-dark); }
+    .visit-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .visit-img:hover img { transform: scale(1.03); }
+
+    /* CTA btn shared */
+    .visit-cta {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .visit-cta:hover { background: var(--red-glow); box-shadow: 0 0 20px rgba(232,52,46,0.3); }
+
+    .visit-cta-secondary {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      background: transparent;
+      color: var(--yellow);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 0.8rem 1.6rem;
+      border: 1px solid var(--yellow-dim);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .visit-cta-secondary:hover { background: var(--yellow); color: var(--black); }
+
+    /* Info blocks shared */
+    .info-label {
+      font-family: var(--font-pixel);
+      font-size: 0.38rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+    .info-text {
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .info-text a { color: var(--yellow); text-decoration: none; transition: color 0.2s; }
+    .info-text a:hover { color: var(--white); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+      font-size: 0.95rem;
+      color: var(--gray-light);
+    }
+    .hours-grid .day { color: var(--white); font-weight: 600; }
+    .hours-grid .closed { color: var(--red); }
+
+    /* Social link shared */
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .social-link:hover { color: var(--white); }
+    .social-link svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+
+    /* ============================================================
+       V1: INFO GRID
+       Left column with hours table, contact info, and address.
+       Right column with stacked exterior photos. Get Directions
+       CTA at bottom.
+       ============================================================ */
+    .visit-v1 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v1-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .v1-left { padding-top: 0.5rem; }
+
+    .v1-info-block { margin-bottom: 2rem; }
+    .v1-info-block:last-of-type { margin-bottom: 0; }
+
+    .v1-hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .v1-hours-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .v1-hours-table tr:last-child { border-bottom: none; }
+    .v1-hours-table td { padding: 0.5rem 0; color: var(--gray-light); }
+    .v1-hours-table td:first-child { color: var(--white); font-weight: 600; padding-right: 2rem; white-space: nowrap; }
+    .v1-hours-table .closed-row td:last-child { color: var(--red); }
+
+    .v1-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--gray-dark);
+      margin: 1.5rem 0;
+      border: none;
+    }
+
+    .v1-contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .v1-photos {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .v1-photos .visit-img:first-child { aspect-ratio: 16/10; }
+    .v1-photos .visit-img:nth-child(2) { aspect-ratio: 16/9; }
+    .v1-photos .visit-img:nth-child(3) { aspect-ratio: 16/9; }
+
+    .v1-cta-row {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+
+    /* ============================================================
+       V2: FULL MAP HERO
+       Large photo (exterior-front.webp) as background, with overlaid
+       info cards for Hours, Contact, and Location floating on top.
+       Glass effect cards.
+       ============================================================ */
+    .visit-v2 { background: var(--dark); padding: 0; }
+
+    .v2-hero-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 90vh;
+      overflow: hidden;
+    }
+    .v2-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .v2-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .v2-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,0.65) 0%,
+        rgba(10,10,10,0.45) 40%,
+        rgba(10,10,10,0.7) 100%
+      );
+    }
+
+    .v2-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 2rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .v2-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .v2-header .section-title {
+      font-size: 2rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .v2-header .section-desc {
+      margin: 0.5rem auto 0;
+      color: var(--gray-light);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    .v2-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .v2-glass-card {
+      background: rgba(13,13,20,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(245,214,35,0.15);
+      padding: 2rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .v2-glass-card:hover {
+      border-color: var(--yellow-dim);
+      transform: translateY(-3px);
+    }
+
+    .v2-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .v2-card-title {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .v2-glass-card .hours-grid { font-size: 0.85rem; }
+
+    .v2-glass-card .info-text { font-size: 0.9rem; }
+
+    .v2-social-row {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .v2-cta-row {
+      text-align: center;
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+
+    /* ============================================================
+       V3: THREE COLUMN
+       Three equal columns: Hours (with styled table), Contact
+       (phone, email, social), Location (address, map link,
+       parking note). Clean grid with colored top borders.
+       ============================================================ */
+    .visit-v3 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v3-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .v3-header .section-desc { margin: 0.5rem auto 0; }
+
+    .v3-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .v3-col {
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      border-top: 3px solid var(--yellow);
+      padding: 2rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .v3-col:nth-child(2) { border-top-color: var(--cyan); }
+    .v3-col:nth-child(3) { border-top-color: var(--red); }
+
+    .v3-col:hover { border-color: rgba(255,255,255,0.15); }
+    .v3-col:nth-child(1):hover { border-top-color: var(--yellow); }
+    .v3-col:nth-child(2):hover { border-top-color: var(--cyan); }
+    .v3-col:nth-child(3):hover { border-top-color: var(--red); }
+
+    .v3-col-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .v3-col-title {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .v3-hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .v3-hours-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .v3-hours-table tr:last-child { border-bottom: none; }
+    .v3-hours-table td { padding: 0.45rem 0; color: var(--gray-light); }
+    .v3-hours-table td:first-child { color: var(--white); font-weight: 600; padding-right: 1.5rem; }
+    .v3-hours-table .closed-row td:last-child { color: var(--red); }
+
+    .v3-contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .v3-contact-item:last-child { margin-bottom: 0; }
+
+    .v3-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .v3-contact-link:hover { color: var(--yellow); }
+    .v3-contact-link .link-icon {
+      font-size: 1rem;
+      width: 1.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .v3-parking-note {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: rgba(245,214,35,0.04);
+      border: 1px solid rgba(245,214,35,0.1);
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .v3-parking-note strong { color: var(--yellow-dim); }
+
+    .v3-photos-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 2.5rem;
+    }
+    .v3-photos-row .visit-img { aspect-ratio: 16/10; }
+
+    .v3-cta-row {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+
+    /* ============================================================
+       V4: SPLIT PANEL
+       Left panel is dark with all text info (hours, contact,
+       address). Right panel is a photo collage of all 3 exterior
+       shots. CTA button spans full width below.
+       ============================================================ */
+    .visit-v4 { background: var(--dark); padding: 0; }
+
+    .v4-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+
+    .v4-left {
+      background: var(--darker);
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-dark);
+    }
+
+    .v4-info-section { margin-bottom: 2.5rem; }
+    .v4-info-section:last-of-type { margin-bottom: 0; }
+
+    .v4-info-heading {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .v4-info-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-dark);
+    }
+
+    .v4-hours-list {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+    .v4-hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--gray-light);
+    }
+    .v4-hours-list li:last-child { border-bottom: none; }
+    .v4-hours-list .day-label { color: var(--white); font-weight: 600; }
+    .v4-hours-list .closed-text { color: var(--red); }
+
+    .v4-contact-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .v4-contact-line {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+    .v4-contact-line a { color: var(--yellow); text-decoration: none; transition: color 0.2s; }
+    .v4-contact-line a:hover { color: var(--white); }
+    .v4-contact-line .cl-icon { width: 1.2rem; text-align: center; flex-shrink: 0; color: var(--yellow-dim); }
+
+    .v4-address-text {
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .v4-parking {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .v4-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.2fr 1fr;
+      gap: 0;
+    }
+    .v4-right .visit-img { border: none; border-bottom: 1px solid var(--gray-dark); border-left: 1px solid var(--gray-dark); }
+    .v4-right .visit-img:first-child { grid-column: 1 / -1; border-left: none; }
+    .v4-right .visit-img:nth-child(2) { border-left: none; }
+    .v4-right .visit-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .v4-full-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: var(--darker);
+      border-top: 3px solid var(--yellow-dim);
+    }
+
+
+    /* ============================================================
+       V5: ARCADE CARD
+       Single centered card styled like an arcade cabinet info panel.
+       Hours in a retro terminal display, contact info below, address
+       at bottom. Flanked by exterior photos.
+       ============================================================ */
+    .visit-v5 { background: var(--darker); border-top: 1px solid rgba(245,214,35,0.1); }
+
+    .v5-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .v5-side-photo { display: flex; flex-direction: column; gap: 10px; }
+    .v5-side-photo .visit-img { aspect-ratio: 3/4; }
+
+    .v5-cabinet-card {
+      background: var(--dark);
+      border: 2px solid var(--yellow-dim);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .v5-card-header {
+      background: linear-gradient(135deg, var(--yellow-dim) 0%, var(--yellow) 100%);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .v5-card-header .section-label { color: var(--black); margin-bottom: 0.3rem; }
+    .v5-card-header .section-title { color: var(--black); font-size: 1.2rem; margin-bottom: 0; line-height: 1.4; }
+
+    .v5-terminal {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--green);
+      margin: 1.5rem;
+      padding: 1.2rem;
+      font-family: var(--font-pixel);
+      position: relative;
+    }
+    .v5-terminal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,255,20,0.03) 2px, rgba(57,255,20,0.03) 4px);
+      pointer-events: none;
+    }
+    .v5-terminal-header {
+      font-size: 0.35rem;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .v5-hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      font-size: 0.65rem;
+      color: var(--green);
+      border-bottom: 1px solid rgba(57,255,20,0.1);
+    }
+    .v5-hours-row:last-child { border-bottom: none; }
+    .v5-hours-row .h-day { opacity: 0.8; }
+    .v5-hours-row .h-time { letter-spacing: 1px; }
+    .v5-hours-row.closed-row .h-time { color: var(--red); }
+
+    .v5-card-body {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .v5-info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--gray-dark);
+    }
+    .v5-info-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .v5-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+    .v5-info-item .item-icon {
+      width: 1.2rem;
+      text-align: center;
+      flex-shrink: 0;
+      color: var(--yellow-dim);
+      font-size: 1rem;
+    }
+    .v5-info-item a { color: var(--yellow); text-decoration: none; transition: color 0.2s; }
+    .v5-info-item a:hover { color: var(--white); }
+
+    .v5-address-block {
+      padding: 1.2rem 0 0;
+    }
+    .v5-address-block .info-text { margin-bottom: 0.5rem; }
+    .v5-parking-note {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    .v5-card-footer {
+      background: rgba(0,0,0,0.3);
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--gray-dark);
+    }
+
+
+    /* ========== FOOTER (per-variant) ========== */
+    .visit-footer {
+      background: var(--dark);
+      border-top: 2px solid var(--yellow-dim);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .visit-footer .footer-name {
+      font-family: var(--font-pixel);
+      font-size: 0.65rem;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .visit-footer .footer-address,
+    .visit-footer .footer-phone {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .visit-footer .footer-phone { margin-bottom: 1rem; }
+    .visit-footer .footer-phone a { color: var(--gray); text-decoration: none; }
+    .visit-footer .footer-credit {
+      font-size: 0.75rem;
+      color: var(--gray-dark);
+      margin-top: 0.8rem;
+    }
+    .visit-footer .footer-credit a { color: var(--gray-dark); text-decoration: none; transition: color 0.2s; }
+    .visit-footer .footer-credit a:hover { color: var(--yellow-dim); }
+    .visit-footer .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray-dark);
+      margin-top: 0.4rem;
+    }
+
+    /* ========== SCROLL CONTEXT ========== */
+    .scroll-context { background: var(--darker); padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(245,214,35,0.1); min-height: 15vh; }
+    .scroll-context p { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 3px; }
+
+    /* ========== PICKER ========== */
+    .picker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10000; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); border-top: 2px solid var(--yellow); padding: 12px 24px; display: flex; align-items: center; gap: 12px; }
+    .picker-label { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; margin-right: 4px; }
+    .picker-section { font-family: var(--font-pixel); font-size: 0.55rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-right: 12px; }
+    .picker-btn { font-family: var(--font-pixel); font-size: 0.5rem; background: var(--dark); color: var(--gray); border: 1px solid var(--gray-dark); padding: 8px 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
+    .picker-btn:hover { border-color: var(--yellow-dim); color: var(--white); }
+    .picker-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .picker-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .picker-desc { font-size: 0.75rem; color: var(--gray); margin-left: auto; max-width: 480px; line-height: 1.4; }
+
+
+    /* ========== RESPONSIVE ========== */
+
+    @media (max-width: 1200px) {
+      .v5-layout { grid-template-columns: 1fr 1.6fr 1fr; gap: 1rem; }
+      .v4-left { padding: 4rem 2rem; }
+    }
+
+    @media (max-width: 900px) {
+      /* V1 */
+      .v1-layout { grid-template-columns: 1fr; }
+
+      /* V2 */
+      .v2-cards-grid { grid-template-columns: 1fr; }
+      .v2-hero-content { padding-top: 6rem; }
+
+      /* V3 */
+      .v3-columns { grid-template-columns: 1fr; }
+      .v3-photos-row { grid-template-columns: 1fr 1fr; }
+      .v3-photos-row .visit-img:last-child { grid-column: 1 / -1; }
+
+      /* V4 */
+      .v4-split { grid-template-columns: 1fr; min-height: auto; }
+      .v4-left { border-right: none; border-bottom: 1px solid var(--gray-dark); }
+      .v4-right { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .v4-right .visit-img { border-left: none; }
+      .v4-right .visit-img:first-child { grid-column: 1 / -1; }
+      .v4-right .visit-img:nth-child(3) { border-left: 1px solid var(--gray-dark); }
+
+      /* V5 */
+      .v5-layout { grid-template-columns: 1fr; }
+      .v5-side-photo { display: grid; grid-template-columns: 1fr 1fr; }
+      .v5-side-photo .visit-img { aspect-ratio: 16/10; }
+      .v5-side-photo:first-of-type { order: 2; }
+      .v5-side-photo:last-of-type { order: 3; display: none; }
+      .v5-cabinet-card { order: 1; }
+
+      .section-title { font-size: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+
+      .v2-header .section-title { font-size: 1.2rem; }
+      .v5-card-header .section-title { font-size: 0.9rem; }
+    }
+
+    @media (max-width: 560px) {
+      /* V1 */
+      .v1-cta-row { flex-direction: column; align-items: stretch; text-align: center; }
+
+      /* V2 */
+      .v2-cta-row { flex-direction: column; align-items: center; }
+      .v2-hero-content { padding: 5rem 1rem 3rem; }
+
+      /* V3 */
+      .v3-photos-row { grid-template-columns: 1fr; }
+      .v3-photos-row .visit-img:last-child { grid-column: auto; }
+      .v3-cta-row { flex-direction: column; align-items: center; }
+
+      /* V4 */
+      .v4-right { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .v4-right .visit-img:first-child { grid-column: auto; }
+      .v4-right .visit-img:nth-child(3) { border-left: none; }
+      .v4-full-cta { flex-direction: column; gap: 0.8rem; }
+
+      /* V5 */
+      .v5-side-photo { grid-template-columns: 1fr; }
+      .v5-terminal .v5-hours-row { font-size: 0.5rem; }
+      .v5-card-footer { flex-direction: column; align-items: center; }
+
+      .picker { flex-wrap: wrap; padding: 8px 12px; gap: 6px; }
+      .picker-desc { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <span class="nav-cta-micro">Insert Coin &rsaquo;</span>
+      <a href="#" class="nav-cta">Press Start</a>
+    </div>
+  </nav>
+
+  <!-- LOCKED HERO (compact) -->
+  <div class="locked-hero">
+    <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+    <div class="hero-logo"><img src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400"></div>
+  </div>
+
+  <!-- DARK PLACEHOLDER -->
+  <div class="scroll-context"><p>Sections Above (Pricing / Games / Story / etc.)</p></div>
+
+
+  <!-- ===== V1: INFO GRID ===== -->
+  <section class="visit-variant visit-section visit-v1 active" data-visit="v1">
+    <div class="container">
+      <p class="section-label">Plan Your Visit</p>
+      <h2 class="section-title">Come Play</h2>
+
+      <div class="v1-layout">
+        <div class="v1-left">
+          <!-- Hours -->
+          <div class="v1-info-block">
+            <p class="info-label">Hours</p>
+            <table class="v1-hours-table">
+              <tr>
+                <td>Monday</td>
+                <td>12:00 PM &ndash; 8:00 PM</td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>12:00 PM &ndash; 8:00 PM</td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>12:00 PM &ndash; 8:00 PM</td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>12:00 PM &ndash; 8:00 PM</td>
+              </tr>
+              <tr>
+                <td>Friday</td>
+                <td>12:00 PM &ndash; 10:00 PM</td>
+              </tr>
+              <tr>
+                <td>Saturday</td>
+                <td>12:00 PM &ndash; 10:00 PM</td>
+              </tr>
+              <tr class="closed-row">
+                <td>Sunday</td>
+                <td>Closed</td>
+              </tr>
+            </table>
+          </div>
+
+          <hr class="v1-divider">
+
+          <!-- Contact -->
+          <div class="v1-info-block">
+            <p class="info-label">Contact</p>
+            <div class="v1-contact-row">
+              <p class="info-text"><a href="tel:+18282293089">(828) 229-3089</a></p>
+              <p class="info-text"><a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a></p>
+            </div>
+          </div>
+
+          <hr class="v1-divider">
+
+          <!-- Address -->
+          <div class="v1-info-block">
+            <p class="info-label">Location</p>
+            <p class="info-text">145 East Main Street<br>Forest City, NC 28043</p>
+            <p style="margin-top:0.6rem; font-size:0.85rem; color:var(--gray); line-height:1.5;">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+          </div>
+
+          <hr class="v1-divider">
+
+          <!-- Social -->
+          <div class="v1-info-block">
+            <p class="info-label">Follow Us</p>
+            <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="social-link">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+
+          <div class="v1-cta-row">
+            <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+            <a href="tel:+18282293089" class="visit-cta-secondary">Call Us</a>
+          </div>
+        </div>
+
+        <div class="v1-photos">
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Storefront with Mario window decal" loading="lazy" width="1200" height="900"></div>
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Open sign on sidewalk" loading="lazy" width="900" height="1200"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="visit-footer" style="margin-top:4rem;">
+      <p class="footer-name">Carolina Arcade Museum</p>
+      <p class="footer-address">145 East Main Street, Forest City, NC 28043</p>
+      <p class="footer-phone"><a href="tel:+18282293089">(828) 229-3089</a></p>
+      <p class="footer-credit">Website designed by <a href="#">Studio O'Brien</a></p>
+      <p class="footer-copy">&copy; 2024 Carolina Arcade Museum. All rights reserved.</p>
+    </footer>
+  </section>
+
+
+  <!-- ===== V2: FULL MAP HERO ===== -->
+  <section class="visit-variant visit-section visit-v2" data-visit="v2" style="padding:0;">
+    <div class="v2-hero-wrap">
+      <div class="v2-hero-bg">
+        <img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900">
+      </div>
+
+      <div class="v2-hero-content">
+        <div class="v2-header">
+          <p class="section-label" style="color:var(--yellow);">Plan Your Visit</p>
+          <h2 class="section-title" style="font-size:2rem;">Come Play</h2>
+          <p class="section-desc" style="color:var(--gray-light);">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+        </div>
+
+        <div class="v2-cards-grid">
+          <!-- Hours Card -->
+          <div class="v2-glass-card">
+            <span class="v2-card-icon" aria-hidden="true">&#x1F55B;</span>
+            <p class="v2-card-title">Hours</p>
+            <div class="hours-grid" style="font-size:0.85rem;">
+              <span class="day">Monday</span><span>12:00 PM &ndash; 8:00 PM</span>
+              <span class="day">Tuesday</span><span>12:00 PM &ndash; 8:00 PM</span>
+              <span class="day">Wednesday</span><span>12:00 PM &ndash; 8:00 PM</span>
+              <span class="day">Thursday</span><span>12:00 PM &ndash; 8:00 PM</span>
+              <span class="day">Friday</span><span>12:00 PM &ndash; 10:00 PM</span>
+              <span class="day">Saturday</span><span>12:00 PM &ndash; 10:00 PM</span>
+              <span class="day">Sunday</span><span class="closed">Closed</span>
+            </div>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="v2-glass-card">
+            <span class="v2-card-icon" aria-hidden="true">&#x1F4DE;</span>
+            <p class="v2-card-title">Contact</p>
+            <p class="info-text" style="font-size:0.9rem;">
+              Phone: <a href="tel:+18282293089">(828) 229-3089</a>
+            </p>
+            <p class="info-text" style="font-size:0.9rem; margin-top:0.4rem;">
+              Email: <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+            </p>
+            <div class="v2-social-row">
+              <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="social-link" style="font-size:0.8rem;">
+                <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+
+          <!-- Location Card -->
+          <div class="v2-glass-card">
+            <span class="v2-card-icon" aria-hidden="true">&#x1F4CD;</span>
+            <p class="v2-card-title">Location</p>
+            <p class="info-text" style="font-size:0.9rem;">
+              145 East Main Street<br>Forest City, NC 28043
+            </p>
+            <p style="margin-top:0.8rem; font-size:0.8rem; color:var(--gray); line-height:1.5;">
+              Right in the heart of downtown Forest City, on Main Street. Street parking available.
+            </p>
+            <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta-secondary" style="margin-top:1rem; font-size:0.4rem; padding:0.6rem 1rem;">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="v2-cta-row">
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+          <a href="tel:+18282293089" class="visit-cta-secondary">Call Us</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="visit-footer">
+      <p class="footer-name">Carolina Arcade Museum</p>
+      <p class="footer-address">145 East Main Street, Forest City, NC 28043</p>
+      <p class="footer-phone"><a href="tel:+18282293089">(828) 229-3089</a></p>
+      <p class="footer-credit">Website designed by <a href="#">Studio O'Brien</a></p>
+      <p class="footer-copy">&copy; 2024 Carolina Arcade Museum. All rights reserved.</p>
+    </footer>
+  </section>
+
+
+  <!-- ===== V3: THREE COLUMN ===== -->
+  <section class="visit-variant visit-section visit-v3" data-visit="v3">
+    <div class="container">
+      <div class="v3-header">
+        <p class="section-label">Plan Your Visit</p>
+        <h2 class="section-title">Come Play</h2>
+        <p class="section-desc">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+      </div>
+
+      <div class="v3-columns">
+        <!-- Hours Column -->
+        <div class="v3-col">
+          <p class="v3-col-icon" aria-hidden="true">&#x1F55B;</p>
+          <p class="v3-col-title">Hours</p>
+          <table class="v3-hours-table">
+            <tr>
+              <td>Monday</td>
+              <td>12:00 PM &ndash; 8:00 PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>12:00 PM &ndash; 8:00 PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>12:00 PM &ndash; 8:00 PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>12:00 PM &ndash; 8:00 PM</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>12:00 PM &ndash; 10:00 PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>12:00 PM &ndash; 10:00 PM</td>
+            </tr>
+            <tr class="closed-row">
+              <td>Sunday</td>
+              <td>Closed</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="v3-col">
+          <p class="v3-col-icon" aria-hidden="true">&#x1F4DE;</p>
+          <p class="v3-col-title">Contact</p>
+          <div class="v3-contact-item">
+            <a href="tel:+18282293089" class="v3-contact-link">
+              <span class="link-icon">&#x260E;</span>
+              (828) 229-3089
+            </a>
+            <a href="mailto:walker.darla5@gmail.com" class="v3-contact-link">
+              <span class="link-icon">&#x2709;</span>
+              walker.darla5@gmail.com
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="v3-contact-link">
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;vertical-align:middle;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+        <!-- Location Column -->
+        <div class="v3-col">
+          <p class="v3-col-icon" aria-hidden="true">&#x1F4CD;</p>
+          <p class="v3-col-title">Location</p>
+          <p class="info-text">145 East Main Street<br>Forest City, NC 28043</p>
+          <div class="v3-parking-note">
+            <strong>Parking:</strong> Street parking available along Main Street.
+          </div>
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta-secondary" style="margin-top:1rem; font-size:0.4rem; padding:0.6rem 1rem;">Get Directions</a>
+        </div>
+      </div>
+
+      <!-- Photos Row -->
+      <div class="v3-photos-row">
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Storefront with Mario window decal" loading="lazy" width="1200" height="900"></div>
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Open sign on sidewalk" loading="lazy" width="900" height="1200"></div>
+      </div>
+
+      <div class="v3-cta-row">
+        <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+        <a href="tel:+18282293089" class="visit-cta-secondary">Call Ahead</a>
+      </div>
+    </div>
+
+    <footer class="visit-footer" style="margin-top:4rem;">
+      <p class="footer-name">Carolina Arcade Museum</p>
+      <p class="footer-address">145 East Main Street, Forest City, NC 28043</p>
+      <p class="footer-phone"><a href="tel:+18282293089">(828) 229-3089</a></p>
+      <p class="footer-credit">Website designed by <a href="#">Studio O'Brien</a></p>
+      <p class="footer-copy">&copy; 2024 Carolina Arcade Museum. All rights reserved.</p>
+    </footer>
+  </section>
+
+
+  <!-- ===== V4: SPLIT PANEL ===== -->
+  <section class="visit-variant visit-section visit-v4" data-visit="v4" style="padding:0;">
+    <div class="v4-split">
+      <!-- Left: All text info -->
+      <div class="v4-left">
+        <p class="section-label">Plan Your Visit</p>
+        <h2 class="section-title" style="margin-bottom:2rem;">Come Play</h2>
+
+        <!-- Hours -->
+        <div class="v4-info-section">
+          <p class="v4-info-heading">Hours</p>
+          <ul class="v4-hours-list">
+            <li>
+              <span class="day-label">Monday</span>
+              <span>12:00 PM &ndash; 8:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Tuesday</span>
+              <span>12:00 PM &ndash; 8:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Wednesday</span>
+              <span>12:00 PM &ndash; 8:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Thursday</span>
+              <span>12:00 PM &ndash; 8:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Friday</span>
+              <span>12:00 PM &ndash; 10:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Saturday</span>
+              <span>12:00 PM &ndash; 10:00 PM</span>
+            </li>
+            <li>
+              <span class="day-label">Sunday</span>
+              <span class="closed-text">Closed</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="v4-info-section">
+          <p class="v4-info-heading">Contact</p>
+          <div class="v4-contact-stack">
+            <div class="v4-contact-line">
+              <span class="cl-icon">&#x260E;</span>
+              <a href="tel:+18282293089">(828) 229-3089</a>
+            </div>
+            <div class="v4-contact-line">
+              <span class="cl-icon">&#x2709;</span>
+              <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+            </div>
+            <div class="v4-contact-line">
+              <span class="cl-icon">
+                <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:var(--yellow-dim);vertical-align:middle;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
+              <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener">Facebook</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="v4-info-section">
+          <p class="v4-info-heading">Location</p>
+          <p class="v4-address-text">145 East Main Street<br>Forest City, NC 28043</p>
+          <p class="v4-parking">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+        </div>
+      </div>
+
+      <!-- Right: Photo collage -->
+      <div class="v4-right">
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Storefront with Mario window decal" loading="lazy" width="1200" height="900"></div>
+        <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Open sign on sidewalk" loading="lazy" width="900" height="1200"></div>
+      </div>
+    </div>
+
+    <!-- Full-width CTA -->
+    <div class="v4-full-cta">
+      <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+      <a href="tel:+18282293089" class="visit-cta-secondary">Call Us</a>
+    </div>
+
+    <footer class="visit-footer">
+      <p class="footer-name">Carolina Arcade Museum</p>
+      <p class="footer-address">145 East Main Street, Forest City, NC 28043</p>
+      <p class="footer-phone"><a href="tel:+18282293089">(828) 229-3089</a></p>
+      <p class="footer-credit">Website designed by <a href="#">Studio O'Brien</a></p>
+      <p class="footer-copy">&copy; 2024 Carolina Arcade Museum. All rights reserved.</p>
+    </footer>
+  </section>
+
+
+  <!-- ===== V5: ARCADE CARD ===== -->
+  <section class="visit-variant visit-section visit-v5" data-visit="v5">
+    <div class="container-wide">
+      <div class="v5-layout">
+        <!-- Left photo -->
+        <div class="v5-side-photo">
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Storefront with Mario window decal" loading="lazy" width="1200" height="900"></div>
+        </div>
+
+        <!-- Center: Arcade cabinet card -->
+        <div class="v5-cabinet-card">
+          <div class="v5-card-header">
+            <p class="section-label">Plan Your Visit</p>
+            <h2 class="section-title">Come Play</h2>
+          </div>
+
+          <!-- Terminal-style hours display -->
+          <div class="v5-terminal">
+            <p class="v5-terminal-header">&gt; system.hours.display()</p>
+            <div class="v5-hours-row">
+              <span class="h-day">MON</span>
+              <span class="h-time">12:00 PM - 8:00 PM</span>
+            </div>
+            <div class="v5-hours-row">
+              <span class="h-day">TUE</span>
+              <span class="h-time">12:00 PM - 8:00 PM</span>
+            </div>
+            <div class="v5-hours-row">
+              <span class="h-day">WED</span>
+              <span class="h-time">12:00 PM - 8:00 PM</span>
+            </div>
+            <div class="v5-hours-row">
+              <span class="h-day">THU</span>
+              <span class="h-time">12:00 PM - 8:00 PM</span>
+            </div>
+            <div class="v5-hours-row">
+              <span class="h-day">FRI</span>
+              <span class="h-time">12:00 PM - 10:00 PM</span>
+            </div>
+            <div class="v5-hours-row">
+              <span class="h-day">SAT</span>
+              <span class="h-time">12:00 PM - 10:00 PM</span>
+            </div>
+            <div class="v5-hours-row closed-row">
+              <span class="h-day">SUN</span>
+              <span class="h-time">CLOSED</span>
+            </div>
+          </div>
+
+          <!-- Contact info -->
+          <div class="v5-card-body">
+            <div class="v5-info-row">
+              <p class="info-label">Contact</p>
+              <div class="v5-info-item">
+                <span class="item-icon">&#x260E;</span>
+                <a href="tel:+18282293089">(828) 229-3089</a>
+              </div>
+              <div class="v5-info-item">
+                <span class="item-icon">&#x2709;</span>
+                <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
+              </div>
+              <div class="v5-info-item">
+                <span class="item-icon">
+                  <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:var(--yellow-dim);vertical-align:middle;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </span>
+                <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+
+            <div class="v5-info-row">
+              <p class="info-label">Location</p>
+              <div class="v5-address-block">
+                <p class="info-text">145 East Main Street<br>Forest City, NC 28043</p>
+                <p class="v5-parking-note">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card footer CTAs -->
+          <div class="v5-card-footer">
+            <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="visit-cta">Get Directions</a>
+            <a href="tel:+18282293089" class="visit-cta-secondary">Call Us</a>
+          </div>
+        </div>
+
+        <!-- Right photos -->
+        <div class="v5-side-photo">
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+          <div class="visit-img"><img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Open sign on sidewalk" loading="lazy" width="900" height="1200"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="visit-footer" style="margin-top:4rem;">
+      <p class="footer-name">Carolina Arcade Museum</p>
+      <p class="footer-address">145 East Main Street, Forest City, NC 28043</p>
+      <p class="footer-phone"><a href="tel:+18282293089">(828) 229-3089</a></p>
+      <p class="footer-credit">Website designed by <a href="#">Studio O'Brien</a></p>
+      <p class="footer-copy">&copy; 2024 Carolina Arcade Museum. All rights reserved.</p>
+    </footer>
+  </section>
+
+
+  <!-- PICKER -->
+  <div class="picker" role="toolbar" aria-label="Variant picker">
+    <span class="picker-label">Variant:</span>
+    <span class="picker-section">Visit</span>
+    <button class="picker-btn active" data-pick="v1" aria-pressed="true">1</button>
+    <button class="picker-btn" data-pick="v2" aria-pressed="false">2</button>
+    <button class="picker-btn" data-pick="v3" aria-pressed="false">3</button>
+    <button class="picker-btn" data-pick="v4" aria-pressed="false">4</button>
+    <button class="picker-btn" data-pick="v5" aria-pressed="false">5</button>
+    <span class="picker-desc" id="picker-desc">Info Grid: Hours table, contact, and address left. Stacked exterior photos right. Get Directions CTA.</span>
+  </div>
+
+  <script>
+    const descriptions = {
+      v1: "Info Grid: Hours table, contact, and address left. Stacked exterior photos right. Get Directions CTA.",
+      v2: "Full Map Hero: Large exterior photo background with floating glass-effect info cards for Hours, Contact, Location.",
+      v3: "Three Column: Equal columns for Hours, Contact, Location with colored top borders. Photos row below.",
+      v4: "Split Panel: Dark left panel with all text info. Right panel photo collage. Full-width CTA below.",
+      v5: "Arcade Card: Centered cabinet-style card with retro terminal hours display. Flanked by exterior photos.",
+    };
+    const btns = document.querySelectorAll(".picker-btn");
+    const sections = document.querySelectorAll(".visit-variant");
+    const desc = document.getElementById("picker-desc");
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const v = btn.dataset.pick;
+        sections.forEach(s => s.classList.remove("active"));
+        btns.forEach(b => {
+          b.classList.toggle("active", b.dataset.pick === v);
+          b.setAttribute("aria-pressed", b.dataset.pick === v ? "true" : "false");
+        });
+        document.querySelector(`[data-visit="${v}"]`)?.classList.add("active");
+        desc.textContent = descriptions[v] || "";
+        document.querySelector(`[data-visit="${v}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+
+</body>
+</html>

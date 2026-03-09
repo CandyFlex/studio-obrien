@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinnacle Homes Realty | Luxury Real Estate in Shelby, NC</title>
+  <meta name="description" content="Boutique luxury real estate in Shelby, NC and the Carolina foothills. Pinnacle Homes Realty curates exceptional properties with white-glove service.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       OBSIDIAN LUXE DESIGN SYSTEM
+       Pinnacle Homes Realty
+       Shelby, NC
+    ============================================= */
+
+    /* --- Reset & Base --- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --obsidian:    #0c0c0c;
+      --charcoal:    #1a1a1a;
+      --gold:        #c5a55a;
+      --soft-gold:   #dcc07a;
+      --marble:      #f5f2ed;
+      --gray:        #7a7a7a;
+      --white:       #ffffff;
+
+      --hairline:    rgba(197, 165, 90, 0.28);
+      --hairline-strong: rgba(197, 165, 90, 0.55);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
+
+      --spacing-xs:  0.5rem;
+      --spacing-sm:  1rem;
+      --spacing-md:  2rem;
+      --spacing-lg:  4rem;
+      --spacing-xl:  7rem;
+      --spacing-2xl: 10rem;
+
+      --track-wide:  0.18em;
+      --track-wider: 0.28em;
+      --track-tight: 0.05em;
+
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--obsidian);
+      color: var(--marble);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* --- Marble Noise Texture Utility --- */
+    .marble-noise {
+      position: relative;
+    }
+    .marble-noise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 12% 20%, rgba(245,242,237,0.045) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(245,242,237,0.03) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 55% 80%, rgba(245,242,237,0.025) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 30% at 30% 60%, rgba(197,165,90,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 70% 40%, rgba(245,242,237,0.02) 0%, transparent 55%),
+        radial-gradient(ellipse 25% 20% at 90% 75%, rgba(197,165,90,0.03) 0%, transparent 45%),
+        radial-gradient(ellipse 45% 35% at 15% 85%, rgba(245,242,237,0.03) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 45% at 40% 30%, rgba(220,192,122,0.02) 0%, transparent 60%);
+    }
+
+    /* --- Scroll Reveal States --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.48s; }
+
+    /* =============================================
+       HEADER / NAVIGATION
+    ============================================= */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(12, 12, 12, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--hairline);
+      transition: background var(--transition);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      gap: 1px;
+    }
+    .logo-wordmark {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--soft-gold);
+      letter-spacing: var(--track-wide);
+      line-height: 1.1;
+    }
+    .logo-sub {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      font-weight: 400;
+      color: var(--gray);
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--soft-gold);
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--hairline-strong);
+      padding: 0.55rem 1.25rem;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .nav-cta:hover {
+      background: rgba(197,165,90,0.1);
+      border-color: var(--gold);
+      box-shadow: 0 0 18px rgba(197,165,90,0.18);
+    }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(12,12,12,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--hairline);
+      z-index: 99;
+      padding: 2rem 2.5rem;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .mobile-nav.open {
+      display: flex;
+    }
+    .mobile-nav a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--hairline);
+      transition: color var(--transition);
+    }
+    .mobile-nav a:hover { color: var(--soft-gold); }
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+
+    .hero {
+      min-height: 100vh;
+      background: var(--obsidian);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    /* Marble noise on hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 90% 70% at 10% 15%, rgba(245,242,237,0.04) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 88% 12%, rgba(245,242,237,0.025) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 55% at 60% 85%, rgba(245,242,237,0.03) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 35% 55%, rgba(197,165,90,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 65% 50% at 75% 42%, rgba(245,242,237,0.02) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 25% at 92% 78%, rgba(197,165,90,0.035) 0%, transparent 48%),
+        radial-gradient(ellipse 50% 40% at 18% 82%, rgba(245,242,237,0.025) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 48% at 45% 28%, rgba(220,192,122,0.018) 0%, transparent 62%);
+    }
+
+    /* Gold hairline accents */
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--hairline-strong) 50%, transparent);
+    }
+
+    .hero-accent-line-left {
+      position: absolute;
+      left: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--hairline) 50%, transparent);
+    }
+    .hero-accent-line-right {
+      position: absolute;
+      right: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--hairline) 50%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--hairline-strong);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 400;
+      color: var(--marble);
+      line-height: 1.15;
+      letter-spacing: var(--track-tight);
+      margin-bottom: 1.75rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--soft-gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      line-height: 1.9;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--hairline-strong);
+      margin: 0 auto 3rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-gold {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--hairline-strong);
+      padding: 1rem 2.5rem;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .btn-outline-gold:hover {
+      background: rgba(197,165,90,0.1);
+      border-color: var(--gold);
+      box-shadow: 0 0 28px rgba(197,165,90,0.2);
+    }
+
+    .btn-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wide);
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .btn-text-link:hover { color: var(--marble); }
+    .btn-text-link svg {
+      transition: transform var(--transition);
+    }
+    .btn-text-link:hover svg { transform: translateX(4px); }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 1;
+    }
+    .hero-scroll-indicator span {
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--hairline-strong), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* =============================================
+       SECTION SHARED STYLES
+    ============================================= */
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--hairline-strong);
+    }
+
+    /* =============================================
+       FEATURED LISTINGS
+    ============================================= */
+
+    .listings {
+      background: var(--charcoal);
+      padding: var(--spacing-xl) 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .listings-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .listings-header {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .listings-header .section-label {
+      justify-content: center;
+    }
+    .listings-header .section-label::before {
+      display: none;
+    }
+    .listings-header .section-label::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--hairline-strong);
+    }
+
+    .listings-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--marble);
+      letter-spacing: var(--track-tight);
+      margin-bottom: 0.75rem;
+    }
+    .listings-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.03em;
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      border: 1px solid var(--hairline);
+    }
+
+    .listing-card {
+      background: var(--marble);
+      color: var(--obsidian);
+      padding: 2.75rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .listing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--soft-gold));
+    }
+
+    /* Subtle marble noise on cards */
+    .listing-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(197,165,90,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 80% 70%, rgba(197,165,90,0.03) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 55% 15%, rgba(0,0,0,0.02) 0%, transparent 60%);
+    }
+
+    .listing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(197,165,90,0.3);
+    }
+
+    .listing-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .listing-status {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .listing-status::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .listing-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--obsidian);
+      letter-spacing: var(--track-tight);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .listing-location {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: #555;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+    }
+
+    .listing-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(197,165,90,0.25);
+      margin-bottom: 1.75rem;
+    }
+
+    .listing-price {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--obsidian);
+      letter-spacing: var(--track-tight);
+      margin-bottom: 1rem;
+    }
+
+    .listing-details {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .listing-detail {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #666;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .listing-detail strong {
+      font-weight: 500;
+      color: var(--obsidian);
+    }
+
+    .listing-desc {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .listing-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--obsidian);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(197,165,90,0.5);
+      padding-bottom: 3px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .listing-link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .listing-link svg { transition: transform var(--transition); }
+    .listing-link:hover svg { transform: translateX(4px); }
+
+    .listings-footer-note {
+      text-align: center;
+      margin-top: var(--spacing-md);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       WHY PINNACLE
+    ============================================= */
+
+    .why {
+      background: var(--obsidian);
+      padding: var(--spacing-xl) 0;
+      border-bottom: 1px solid var(--hairline);
+      position: relative;
+    }
+    .why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 60% at 5% 50%, rgba(245,242,237,0.03) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 95% 50%, rgba(197,165,90,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 50% 90%, rgba(245,242,237,0.02) 0%, transparent 55%);
+    }
+
+    .why-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-left {
+      padding-right: var(--spacing-md);
+      border-right: 1px solid var(--hairline);
+    }
+
+    .why-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      font-weight: 400;
+      color: var(--marble);
+      letter-spacing: var(--track-tight);
+      line-height: 1.2;
+      margin-bottom: 1.75rem;
+    }
+    .why-heading em {
+      font-style: italic;
+      color: var(--soft-gold);
+    }
+
+    .why-body {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .why-signature {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--hairline);
+    }
+    .why-signature-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--soft-gold);
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+    .why-signature-title {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .why-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding-left: var(--spacing-md);
+    }
+
+    .stat-item {
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .stat-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: var(--track-tight);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-desc {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(122,122,122,0.75);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       NEIGHBORHOODS
+    ============================================= */
+
+    .neighborhoods {
+      background: var(--marble);
+      padding: var(--spacing-xl) 0;
+      border-bottom: 1px solid rgba(197,165,90,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neighborhoods::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(197,165,90,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(0,0,0,0.025) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 55% 80%, rgba(197,165,90,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 30% at 30% 55%, rgba(0,0,0,0.02) 0%, transparent 50%),
+        radial-gradient(ellipse 55% 45% at 70% 40%, rgba(197,165,90,0.03) 0%, transparent 55%);
+    }
+
+    .neighborhoods-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .neighborhoods-header {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .neighborhoods-header .section-label {
+      justify-content: center;
+    }
+    .neighborhoods-header .section-label::before { display: none; }
+    .neighborhoods-header .section-label::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: rgba(197,165,90,0.6);
+    }
+
+    .neighborhoods-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--obsidian);
+      letter-spacing: var(--track-tight);
+    }
+
+    .neighborhoods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(197,165,90,0.2);
+    }
+
+    .neighborhood-item {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid rgba(197,165,90,0.2);
+      position: relative;
+      transition: background var(--transition);
+    }
+    .neighborhood-item:last-child { border-right: none; }
+    .neighborhood-item:hover { background: rgba(197,165,90,0.04); }
+
+    .neighborhood-number {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 400;
+      color: rgba(197,165,90,0.12);
+      line-height: 1;
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .neighborhood-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--obsidian);
+      letter-spacing: var(--track-tight);
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .neighborhood-region {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .neighborhood-divider {
+      width: 30px;
+      height: 1px;
+      background: rgba(197,165,90,0.4);
+      margin-bottom: 1.5rem;
+    }
+
+    .neighborhood-desc {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .neighborhood-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .neighborhood-highlights li {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #666;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .neighborhood-highlights li::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       CTA SECTION
+    ============================================= */
+
+    .cta-section {
+      background: var(--obsidian);
+      padding: var(--spacing-xl) 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 50%, rgba(197,165,90,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 10% 10%, rgba(245,242,237,0.03) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 90%, rgba(245,242,237,0.025) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 25% 75%, rgba(197,165,90,0.035) 0%, transparent 50%),
+        radial-gradient(ellipse 55% 45% at 75% 20%, rgba(220,192,122,0.025) 0%, transparent 58%);
+    }
+
+    /* Decorative corner hairlines */
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: var(--spacing-md);
+      left: var(--spacing-md);
+      right: var(--spacing-md);
+      bottom: var(--spacing-md);
+      border: 1px solid var(--hairline);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 400;
+      color: var(--soft-gold);
+      letter-spacing: var(--track-tight);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      line-height: 1.85;
+      margin-bottom: var(--spacing-lg);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-hairline {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--hairline-strong), transparent);
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .cta-contact-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cta-phone {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--marble);
+      letter-spacing: var(--track-tight);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .cta-phone:hover { color: var(--soft-gold); }
+
+    .cta-address {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-button-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-solid-gold {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--obsidian);
+      text-decoration: none;
+      background: var(--gold);
+      padding: 1rem 2.5rem;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .btn-solid-gold:hover {
+      background: var(--soft-gold);
+      box-shadow: 0 8px 30px rgba(197,165,90,0.35);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+
+    .site-footer {
+      background: var(--charcoal);
+      padding: 3.5rem 0 2.5rem;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .footer-logo-block {}
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--soft-gold);
+      letter-spacing: var(--track-tight);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 4rem;
+    }
+    .footer-nav-col {}
+    .footer-nav-heading {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: var(--track-wider);
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color var(--transition);
+    }
+    .footer-nav-links a:hover { color: var(--marble); }
+
+    .footer-contact-col {
+      text-align: right;
+    }
+    .footer-contact-col p {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+    .footer-contact-col a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-contact-col a:hover { color: var(--soft-gold); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: rgba(122,122,122,0.6);
+      letter-spacing: 0.06em;
+    }
+    .footer-license {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: rgba(122,122,122,0.5);
+      letter-spacing: 0.04em;
+    }
+
+    /* =============================================
+       KEYFRAMES
+    ============================================= */
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(36px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .anim-fade-up {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .anim-slide-left {
+      animation: slideInLeft 0.8s ease forwards;
+    }
+    .anim-slide-right {
+      animation: slideInRight 0.8s ease forwards;
+    }
+
+    /* =============================================
+       RESPONSIVE — 900px
+    ============================================= */
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+
+      .listings-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .listings-grid .listing-card + .listing-card {
+        border-top: 1px solid var(--hairline);
+      }
+
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+      }
+      .why-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+        padding-bottom: var(--spacing-lg);
+      }
+      .why-right {
+        padding-left: 0;
+      }
+
+      .neighborhoods-grid {
+        grid-template-columns: 1fr;
+      }
+      .neighborhood-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(197,165,90,0.2);
+      }
+      .neighborhood-item:last-child { border-bottom: none; }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .footer-contact-col {
+        text-align: left;
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE — 640px
+    ============================================= */
+
+    @media (max-width: 640px) {
+      :root {
+        --spacing-xl: 4.5rem;
+        --spacing-lg: 3rem;
+      }
+
+      .header-inner {
+        padding: 0 1.25rem;
+      }
+
+      .hero-content {
+        padding: var(--spacing-lg) 1.25rem;
+      }
+
+      .hero-accent-line-left,
+      .hero-accent-line-right {
+        display: none;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .listings-inner,
+      .why-inner,
+      .neighborhoods-inner,
+      .cta-inner,
+      .footer-inner {
+        padding: 0 1.25rem;
+      }
+
+      .listing-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .neighborhood-item {
+        padding: 2.25rem 1.5rem;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .cta-section::after {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      .stat-number {
+        font-size: 2.4rem;
+      }
+
+      .mobile-nav {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =============================================
+       STICKY HEADER
+  ============================================= -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+
+      <a href="#" class="logo" aria-label="Pinnacle Homes Realty">
+        <span class="logo-wordmark">Pinnacle Homes</span>
+        <span class="logo-sub">Realty &nbsp;&middot;&nbsp; Shelby, NC</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="#listings">Listings</a></li>
+          <li><a href="#why">About</a></li>
+          <li><a href="#neighborhoods">Neighborhoods</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contact" class="nav-cta">Schedule a Showing</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#listings" class="mobile-nav-link">Listings</a>
+    <a href="#why" class="mobile-nav-link">About</a>
+    <a href="#neighborhoods" class="mobile-nav-link">Neighborhoods</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="#contact" class="mobile-nav-link" style="color: var(--gold);">Schedule a Showing</a>
+  </nav>
+
+  <main>
+
+    <!-- =============================================
+         HERO
+    ============================================= -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+
+      <div class="hero-accent-line-left" aria-hidden="true"></div>
+      <div class="hero-accent-line-right" aria-hidden="true"></div>
+
+      <div class="hero-content">
+
+        <div class="hero-eyebrow reveal">
+          Shelby, NC &nbsp; &middot; &nbsp; Cleveland County &nbsp; &middot; &nbsp; The Carolina Foothills
+        </div>
+
+        <h1 class="hero-title reveal reveal-delay-1" id="hero-title">
+          Exceptional Properties<br>
+          in the <em>Carolina Foothills</em>
+        </h1>
+
+        <div class="hero-divider reveal reveal-delay-2" aria-hidden="true"></div>
+
+        <p class="hero-subtitle reveal reveal-delay-2">
+          Pinnacle Homes Realty curates the finest luxury and estate properties
+          across Shelby, Kings Mountain, and Cleveland County. Personal service.
+          Deep local knowledge. Results that speak clearly.
+        </p>
+
+        <div class="hero-cta-group reveal reveal-delay-3">
+          <a href="#listings" class="btn-outline-gold">View Listings</a>
+          <a href="#contact" class="btn-text-link">
+            Schedule a Consultation
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+
+    </section>
+
+    <!-- =============================================
+         FEATURED LISTINGS
+    ============================================= -->
+    <section class="listings" id="listings" aria-labelledby="listings-title">
+      <div class="listings-inner">
+
+        <header class="listings-header">
+          <p class="section-label reveal">Featured Properties</p>
+          <h2 class="listings-title reveal reveal-delay-1" id="listings-title">
+            Currently Available
+          </h2>
+          <p class="listings-subtitle reveal reveal-delay-2">
+            A curated selection of exceptional homes across the foothills region.
+          </p>
+        </header>
+
+        <div class="listings-grid">
+
+          <!-- Card 1 -->
+          <article class="listing-card reveal reveal-delay-1">
+            <div class="listing-card-content">
+              <p class="listing-status">Active Listing</p>
+              <h3 class="listing-name">Mountain Ridge Estate</h3>
+              <p class="listing-location">Kings Mountain, NC &nbsp;&middot;&nbsp; Cleveland County</p>
+              <div class="listing-divider" aria-hidden="true"></div>
+              <p class="listing-price">$1,200,000</p>
+              <div class="listing-details">
+                <span class="listing-detail"><strong>5</strong> Bedrooms</span>
+                <span class="listing-detail"><strong>4</strong> Bathrooms</span>
+                <span class="listing-detail"><strong>5,840</strong> sq ft</span>
+              </div>
+              <p class="listing-desc">
+                Set against a backdrop of Blue Ridge views, this timber-frame estate sits on
+                6.2 private acres with a chef's kitchen, custom millwork throughout, and
+                a wraparound stone terrace built for long evenings overlooking the ridge.
+              </p>
+              <a href="#contact" class="listing-link">
+                Request Details
+                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 4.5H13M13 4.5L9.5 1M13 4.5L9.5 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="listing-card reveal reveal-delay-2">
+            <div class="listing-card-content">
+              <p class="listing-status">Active Listing</p>
+              <h3 class="listing-name">Lakefront Haven</h3>
+              <p class="listing-location">Lake Norman Area &nbsp;&middot;&nbsp; Gaston County</p>
+              <div class="listing-divider" aria-hidden="true"></div>
+              <p class="listing-price">$895,000</p>
+              <div class="listing-details">
+                <span class="listing-detail"><strong>4</strong> Bedrooms</span>
+                <span class="listing-detail"><strong>3</strong> Bathrooms</span>
+                <span class="listing-detail"><strong>3,920</strong> sq ft</span>
+              </div>
+              <p class="listing-desc">
+                A composed lakefront residence with 110 feet of private shoreline.
+                The open main level flows directly to a covered dock and screened
+                porch, with a primary suite designed around the water view.
+              </p>
+              <a href="#contact" class="listing-link">
+                Request Details
+                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 4.5H13M13 4.5L9.5 1M13 4.5L9.5 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="listing-card reveal reveal-delay-3">
+            <div class="listing-card-content">
+              <p class="listing-status">Active Listing</p>
+              <h3 class="listing-name">Historic Downtown Residence</h3>
+              <p class="listing-location">Shelby Historic District &nbsp;&middot;&nbsp; Cleveland County</p>
+              <div class="listing-divider" aria-hidden="true"></div>
+              <p class="listing-price">$675,000</p>
+              <div class="listing-details">
+                <span class="listing-detail"><strong>3</strong> Bedrooms</span>
+                <span class="listing-detail"><strong>2</strong> Bathrooms</span>
+                <span class="listing-detail"><strong>2,740</strong> sq ft</span>
+              </div>
+              <p class="listing-desc">
+                A meticulously preserved 1924 Colonial Revival one block from Uptown
+                Shelby. Original heart pine floors, restored plaster medallions, and
+                a garden courtyard anchor this rare piece of the city's heritage.
+              </p>
+              <a href="#contact" class="listing-link">
+                Request Details
+                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 4.5H13M13 4.5L9.5 1M13 4.5L9.5 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="listings-footer-note reveal">
+          All listings represented by Pinnacle Homes Realty. Contact us for current availability and private showings.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         WHY PINNACLE
+    ============================================= -->
+    <section class="why" id="why" aria-labelledby="why-title">
+      <div class="why-inner">
+
+        <div class="why-left">
+          <p class="section-label reveal-left">Our Approach</p>
+          <h2 class="why-heading reveal-left reveal-delay-1" id="why-title">
+            A Different<br><em>Standard</em>
+          </h2>
+          <p class="why-body reveal-left reveal-delay-2">
+            Pinnacle Homes was founded on a straightforward belief: buying or selling
+            a significant property deserves more than a transaction. It deserves
+            someone who knows this county, these neighborhoods, and these roads the
+            way a neighbor does.
+          </p>
+          <p class="why-body reveal-left reveal-delay-2">
+            We are a boutique firm by design. That means every client works directly
+            with a principal agent, not a junior assistant. It means we take on fewer
+            listings so each one receives full attention. And it means our knowledge of
+            Cleveland County runs genuinely deep, from the quiet residential streets of
+            the Historic District to the rural acreage along the South Mountains foothills.
+          </p>
+          <p class="why-body reveal-left reveal-delay-3">
+            White-glove service is not a phrase we use lightly. From your first
+            consultation through closing day, the standard of care is consistent.
+          </p>
+
+          <div class="why-signature reveal-left reveal-delay-3">
+            <p class="why-signature-name">Margaret L. Pinnacle</p>
+            <p class="why-signature-title">Principal Broker &nbsp;&middot;&nbsp; Shelby, NC</p>
+          </div>
+        </div>
+
+        <div class="why-right">
+          <div class="stat-item reveal-right">
+            <p class="stat-number">$42M+</p>
+            <p class="stat-label">In Closed Sales</p>
+            <p class="stat-desc">
+              Representing buyers and sellers across Cleveland, Rutherford, and Gaston counties.
+            </p>
+          </div>
+          <div class="stat-item reveal-right reveal-delay-1">
+            <p class="stat-number">98%</p>
+            <p class="stat-label">List-to-Sale Ratio</p>
+            <p class="stat-desc">
+              Our listings sell at or above asking price. Pricing strategy and presentation matter.
+            </p>
+          </div>
+          <div class="stat-item reveal-right reveal-delay-2">
+            <p class="stat-number">15 Yrs</p>
+            <p class="stat-label">Of Excellence</p>
+            <p class="stat-desc">
+              Founded in 2011. Built on referrals and repeat clients throughout the foothills.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         NEIGHBORHOODS
+    ============================================= -->
+    <section class="neighborhoods" id="neighborhoods" aria-labelledby="neighborhoods-title">
+      <div class="neighborhoods-inner">
+
+        <header class="neighborhoods-header">
+          <p class="section-label reveal">Explore the Foothills</p>
+          <h2 class="neighborhoods-title reveal reveal-delay-1" id="neighborhoods-title">
+            Where We Work
+          </h2>
+        </header>
+
+        <div class="neighborhoods-grid">
+
+          <div class="neighborhood-item reveal reveal-delay-1">
+            <span class="neighborhood-number" aria-hidden="true">01</span>
+            <h3 class="neighborhood-name">Shelby Historic District</h3>
+            <p class="neighborhood-region">Shelby, NC &nbsp;&middot;&nbsp; Cleveland County</p>
+            <div class="neighborhood-divider" aria-hidden="true"></div>
+            <p class="neighborhood-desc">
+              The heart of Shelby carries more than a century of civic and architectural history.
+              Tree-lined avenues, preserved Victorian and Colonial Revival homes, and a walkable
+              Uptown core make this neighborhood increasingly sought after by buyers who want
+              genuine character rather than new construction imitation.
+            </p>
+            <ul class="neighborhood-highlights" aria-label="Neighborhood highlights">
+              <li>Pre-1950 estate homes on large corner lots</li>
+              <li>Walking distance to Uptown Shelby dining and galleries</li>
+              <li>Active historic preservation community</li>
+              <li>Strong long-term appreciation trajectory</li>
+            </ul>
+          </div>
+
+          <div class="neighborhood-item reveal reveal-delay-2">
+            <span class="neighborhood-number" aria-hidden="true">02</span>
+            <h3 class="neighborhood-name">Kings Mountain Estates</h3>
+            <p class="neighborhood-region">Kings Mountain, NC &nbsp;&middot;&nbsp; Cleveland County</p>
+            <div class="neighborhood-divider" aria-hidden="true"></div>
+            <p class="neighborhood-desc">
+              Perched on the western edge of Cleveland County, Kings Mountain offers
+              executive-level properties with elevated terrain and privacy that is
+              increasingly rare this close to Charlotte. Estate lots, ridgeline views,
+              and quick access to I-85 attract buyers who commute to the city but choose
+              to come home to the foothills.
+            </p>
+            <ul class="neighborhood-highlights" aria-label="Neighborhood highlights">
+              <li>Ridgeline and wooded estate properties</li>
+              <li>40 minutes to Charlotte Douglas International</li>
+              <li>New custom builds alongside established estates</li>
+              <li>Highly rated Cleveland County Schools</li>
+            </ul>
+          </div>
+
+          <div class="neighborhood-item reveal reveal-delay-3">
+            <span class="neighborhood-number" aria-hidden="true">03</span>
+            <h3 class="neighborhood-name">Cleveland County Countryside</h3>
+            <p class="neighborhood-region">Rural Cleveland County &nbsp;&middot;&nbsp; NC Foothills</p>
+            <div class="neighborhood-divider" aria-hidden="true"></div>
+            <p class="neighborhood-desc">
+              Beyond the town limits, Cleveland County opens into rolling farmland, South Mountains
+              foothills, and creek-fed valleys where acreage still sells at prices the Charlotte
+              market can no longer offer. Buyers seeking equestrian land, gentleman farms, or private
+              retreats find genuine value in this corridor between the piedmont and the mountains.
+            </p>
+            <ul class="neighborhood-highlights" aria-label="Neighborhood highlights">
+              <li>Parcels from 5 to 200+ acres available</li>
+              <li>Equestrian and agricultural properties</li>
+              <li>South Mountains State Park proximity</li>
+              <li>Strong rural land value appreciation</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         CTA SECTION
+    ============================================= -->
+    <section class="cta-section" id="contact" aria-labelledby="cta-title">
+      <div class="cta-inner">
+
+        <p class="cta-eyebrow reveal">Pinnacle Homes Realty &nbsp;&middot;&nbsp; Shelby, NC</p>
+
+        <h2 class="cta-title reveal reveal-delay-1" id="cta-title">
+          Your Next Chapter<br>Awaits
+        </h2>
+
+        <p class="cta-subtitle reveal reveal-delay-2">
+          Whether you are ready to list, beginning your search, or simply
+          want an honest conversation about what the foothills market looks
+          like today, we are here. No pressure. No script.
+        </p>
+
+        <div class="cta-hairline reveal reveal-delay-2" aria-hidden="true"></div>
+
+        <div class="cta-contact-block reveal reveal-delay-3">
+          <a href="tel:+17045550421" class="cta-phone">(704) 555-0421</a>
+          <p class="cta-address">310 N. Morgan St, Suite 100 &nbsp;&middot;&nbsp; Shelby, NC 28150</p>
+        </div>
+
+        <div class="cta-button-group reveal reveal-delay-4">
+          <a href="tel:+17045550421" class="btn-solid-gold">Call Us Today</a>
+          <a href="mailto:info@pinnaclehomesnc.com" class="btn-outline-gold">Send an Email</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+
+        <div class="footer-logo-block">
+          <p class="footer-wordmark">Pinnacle Homes Realty</p>
+          <p class="footer-tagline">Luxury Real Estate &nbsp;&middot;&nbsp; Shelby, NC</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-col">
+            <p class="footer-nav-heading">Navigate</p>
+            <ul class="footer-nav-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#listings">Listings</a></li>
+              <li><a href="#why">About</a></li>
+              <li><a href="#neighborhoods">Neighborhoods</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <p class="footer-nav-heading">Areas Served</p>
+            <ul class="footer-nav-links">
+              <li><a href="#neighborhoods">Shelby, NC</a></li>
+              <li><a href="#neighborhoods">Kings Mountain, NC</a></li>
+              <li><a href="#neighborhoods">Forest City, NC</a></li>
+              <li><a href="#neighborhoods">Cleveland County</a></li>
+              <li><a href="#neighborhoods">Rutherford County</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-contact-col">
+          <p class="footer-nav-heading" style="font-family: var(--font-body); font-size: 0.6rem; letter-spacing: var(--track-wider); text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;">Contact</p>
+          <p>
+            <a href="tel:+17045550421">(704) 555-0421</a><br>
+            <a href="mailto:info@pinnaclehomesnc.com">info@pinnaclehomesnc.com</a><br><br>
+            310 N. Morgan St, Suite 100<br>
+            Shelby, NC 28150<br><br>
+            Mon. Fri. &nbsp; 9 am to 5 pm<br>
+            Sat. by appointment
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2026 Pinnacle Homes Realty. All rights reserved.
+        </p>
+        <p class="footer-license">
+          NC Real Estate License #C27849 &nbsp;&middot;&nbsp; Member, Canopy MLS
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // --- Mobile hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // Close mobile nav when a link is clicked
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // --- IntersectionObserver scroll reveal ---
+    var revealSelectors = '.reveal, .reveal-left, .reveal-right';
+    var revealElements = document.querySelectorAll(revealSelectors);
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    // --- Header scroll state ---
+    var header = document.getElementById('site-header');
+    var lastScrollY = 0;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+
+      if (scrollY > 80) {
+        header.style.background = 'rgba(12, 12, 12, 0.98)';
+      } else {
+        header.style.background = 'rgba(12, 12, 12, 0.94)';
+      }
+
+      lastScrollY = scrollY;
+    }, { passive: true });
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          var headerHeight = header.offsetHeight;
+          var targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
