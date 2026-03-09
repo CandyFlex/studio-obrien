@@ -551,6 +551,143 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+/* ─── CONTACT FORM ─── */
+const inputStyle: React.CSSProperties = {
+  fontFamily: F.body,
+  fontSize: "1rem",
+  background: "rgba(255,255,255,0.06)",
+  border: `1px solid ${C.gold}30`,
+  borderRadius: "4px",
+  padding: "14px 16px",
+  color: C.parchment,
+  width: "100%",
+  outline: "none",
+  transition: "border-color 0.3s",
+};
+
+function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/hello@studioobrien.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(data)),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "sent") {
+    return (
+      <div className="flex flex-col items-center justify-center h-full min-h-[300px] text-center">
+        <div className="text-4xl mb-4" style={{ color: C.gold }}>&#10003;</div>
+        <p className="text-xl mb-2" style={{ fontFamily: F.heading, color: C.parchment }}>
+          Message Received
+        </p>
+        <p className="text-sm opacity-60">We'll be in touch shortly.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} />
+      <input type="hidden" name="_subject" value="New inquiry from studioobrien.com" />
+
+      <div className="flex flex-col sm:flex-row gap-5">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          style={inputStyle}
+          onFocus={(e) => (e.target.style.borderColor = C.gold)}
+          onBlur={(e) => (e.target.style.borderColor = `${C.gold}30`)}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+          style={inputStyle}
+          onFocus={(e) => (e.target.style.borderColor = C.gold)}
+          onBlur={(e) => (e.target.style.borderColor = `${C.gold}30`)}
+        />
+      </div>
+
+      <input
+        type="text"
+        name="business"
+        placeholder="Business Name (optional)"
+        style={inputStyle}
+        onFocus={(e) => (e.target.style.borderColor = C.gold)}
+        onBlur={(e) => (e.target.style.borderColor = `${C.gold}30`)}
+      />
+
+      <select
+        name="service"
+        required
+        style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}
+        defaultValue=""
+        onFocus={(e) => (e.target.style.borderColor = C.gold)}
+        onBlur={(e) => (e.target.style.borderColor = `${C.gold}30`)}
+      >
+        <option value="" disabled style={{ color: "#666" }}>What are you looking for?</option>
+        <option value="Full Website">Full Website Design & Build</option>
+        <option value="Landing Page">Landing Page</option>
+        <option value="Redesign">Website Redesign</option>
+        <option value="Branding">Branding & Identity</option>
+        <option value="Other">Something Else</option>
+      </select>
+
+      <textarea
+        name="message"
+        placeholder="Tell us about your project..."
+        rows={5}
+        required
+        style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
+        onFocus={(e) => (e.target.style.borderColor = C.gold)}
+        onBlur={(e) => (e.target.style.borderColor = `${C.gold}30`)}
+      />
+
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="w-full sm:w-auto px-14 py-4 text-sm tracking-[0.2em] uppercase font-bold rounded-sm transition-all duration-500 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+        style={{
+          fontFamily: F.heading,
+          background: C.gold,
+          color: C.deepForest,
+          boxShadow: `0 4px 24px rgba(0,0,0,0.3)`,
+        }}
+      >
+        {status === "sending" ? "Sending..." : "Send Message"}
+      </button>
+
+      {status === "error" && (
+        <p className="text-sm" style={{ color: "#e55" }}>
+          Something went wrong. Try emailing us directly at{" "}
+          <a href="mailto:hello@studioobrien.com" className="underline">hello@studioobrien.com</a>
+        </p>
+      )}
+    </form>
+  );
+}
+
 /* ─── CURTAIN PANELS (cinematic auto-open, scroll-locked until complete) ─── */
 function FoliageCurtain({
   onReveal,
@@ -1463,11 +1600,11 @@ export default function App() {
         );
       })()}
 
-      {/* ═══════════════════ CTA ═══════════════════ */}
+      {/* ═══════════════════ CONTACT FORM ═══════════════════ */}
       <LeafReveal side="left">
       <section
         id="contact"
-        className="relative pt-24 md:pt-32 pb-32 md:pb-44 px-6 md:px-16 lg:px-20 overflow-hidden text-center"
+        className="relative pt-24 md:pt-32 pb-32 md:pb-44 px-6 md:px-16 lg:px-20 overflow-hidden"
         style={{ background: C.deepForest, color: C.parchment }}
       >
         <div
@@ -1484,58 +1621,60 @@ export default function App() {
           }}
         />
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={vp}
-            transition={{ duration: 1 }}
-          >
-            <div className="w-48 mx-auto mb-8">
-              <Ornament />
-            </div>
-            <h2
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9]"
-              style={{ fontFamily: F.display }}
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+            {/* Left column — headline + info */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={vp}
+              transition={{ duration: 1 }}
+              className="md:w-[40%] flex-shrink-0"
             >
-              Let Us Build
-              <br />
-              <span style={{ color: C.gold }}>Your Kingdom</span>
-            </h2>
-          </motion.div>
+              <div className="w-40 mb-8">
+                <Ornament />
+              </div>
+              <h2
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[0.9] mb-6"
+                style={{ fontFamily: F.display }}
+              >
+                Let Us Build
+                <br />
+                <span style={{ color: C.gold }}>Your Kingdom</span>
+              </h2>
+              <p
+                className="text-base md:text-lg italic opacity-60 mb-8"
+                style={{ fontWeight: 300 }}
+              >
+                Every great legacy begins with a single step.
+                <br />
+                Take yours today.
+              </p>
+              <div className="space-y-3 text-sm opacity-70">
+                <a href="mailto:hello@studioobrien.com" className="flex items-center gap-3 hover:opacity-100 transition-opacity">
+                  <span style={{ color: C.gold }}>&#9993;</span>
+                  hello@studioobrien.com
+                </a>
+                <div className="flex items-center gap-3">
+                  <span style={{ color: C.gold }}>&#9670;</span>
+                  Shelby, NC
+                </div>
+              </div>
+            </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={vp}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 text-lg md:text-xl italic opacity-60 max-w-lg mx-auto"
-            style={{ fontWeight: 300 }}
-          >
-            Every great legacy begins with a single step.
-            <br />
-            Take yours today.
-          </motion.p>
-
-          <motion.a
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={vp}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            href="mailto:hello@studioobrien.com"
-            className="inline-block mt-10 px-14 py-6 text-base tracking-[0.2em] uppercase font-bold rounded-full transition-all duration-500 hover:scale-105"
-            style={{
-              fontFamily: F.heading,
-              background: C.parchment,
-              color: C.deepForest,
-              boxShadow: `0 4px 24px rgba(0,0,0,0.3)`,
-            }}
-          >
-            Contact Us
-          </motion.a>
+            {/* Right column — form */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={vp}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex-1"
+            >
+              <ContactForm />
+            </motion.div>
+          </div>
         </div>
       </section>
       </LeafReveal>
