@@ -802,6 +802,7 @@ function FoliageCurtain({
 export default function App() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [scrollUnlocked, setScrollUnlocked] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== "undefined" && window.innerWidth < 640,
   );
@@ -962,27 +963,71 @@ export default function App() {
         }}
       />
 
-      {/* ── STICKY HEADER — 10 Variants ── */}
+      {/* ── STICKY HEADER + MOBILE NAV ── */}
       {(() => {
         const navLinks = [
           { label: "Our Craft", href: "#craft" },
           { label: "The Journey", href: "#journey" },
           { label: "Portfolio", href: "#portfolio" },
+          { label: "Contact", href: "#contact" },
         ];
         const hF = { fontFamily: F.heading };
 
         return (
-          <motion.nav style={{ opacity: headerBlur, y: headerY }} className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
-            <div className="w-full flex justify-between items-center px-6 md:px-12 py-3" style={{ background: C.parchment, borderBottom: `1px solid ${C.gold}15` }}>
-              <div className="hidden md:flex gap-7 text-xs tracking-[0.2em] uppercase font-bold" style={{ ...hF, color: C.deepForest }}>
-                {navLinks.map(l => <a key={l.label} href={l.href} className="hover:text-[#c9a84c] transition-colors duration-300">{l.label}</a>)}
+          <>
+            <motion.nav style={{ opacity: headerBlur, y: headerY }} className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
+              <div className="w-full flex justify-between items-center px-6 md:px-12 py-3" style={{ background: C.parchment, borderBottom: `1px solid ${C.gold}15` }}>
+                {/* Mobile hamburger */}
+                <button
+                  className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+                  onClick={() => setMobileMenuOpen(true)}
+                  aria-label="Open menu"
+                >
+                  <span className="block w-5 h-[1.5px]" style={{ background: C.deepForest }} />
+                  <span className="block w-5 h-[1.5px]" style={{ background: C.deepForest }} />
+                  <span className="block w-3.5 h-[1.5px]" style={{ background: C.deepForest }} />
+                </button>
+                {/* Desktop nav links */}
+                <div className="hidden md:flex gap-7 text-xs tracking-[0.2em] uppercase font-bold" style={{ ...hF, color: C.deepForest }}>
+                  {navLinks.slice(0, 3).map(l => <a key={l.label} href={l.href} className="hover:text-[#c9a84c] transition-colors duration-300">{l.label}</a>)}
+                </div>
+                <img src="/images/logo.webp" alt="Studio O'Brien" className="h-8 md:h-10 w-auto absolute left-1/2 -translate-x-1/2" />
+                <div className="flex items-center gap-4 ml-auto">
+                  <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Get in Touch</a>
+                </div>
               </div>
-              <img src="/images/logo.webp" alt="Studio O'Brien" className="h-8 md:h-10 w-auto absolute left-1/2 -translate-x-1/2" />
-              <div className="flex items-center gap-4 ml-auto">
-                <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Get in Touch</a>
+            </motion.nav>
+
+            {/* Mobile fullscreen menu */}
+            {mobileMenuOpen && (
+              <div className="fixed inset-0 z-[70] flex flex-col items-center justify-center" style={{ background: C.deepForest }}>
+                <button
+                  className="absolute top-5 right-6 w-10 h-10 flex items-center justify-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <span className="block w-6 h-[1.5px] rotate-45 absolute" style={{ background: C.gold }} />
+                  <span className="block w-6 h-[1.5px] -rotate-45 absolute" style={{ background: C.gold }} />
+                </button>
+                <nav className="flex flex-col items-center gap-8">
+                  {navLinks.map(l => (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-2xl tracking-[0.3em] uppercase transition-colors duration-300 hover:text-[#c9a84c]"
+                      style={{ fontFamily: F.heading, color: C.parchment }}
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </nav>
+                <div className="mt-12">
+                  <Ornament className="w-32" color={C.gold} />
+                </div>
               </div>
-            </div>
-          </motion.nav>
+            )}
+          </>
         );
       })()}
 
