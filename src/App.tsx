@@ -889,6 +889,9 @@ export default function App() {
   const [screenW, setScreenW] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 1440,
   );
+  const [screenH, setScreenH] = useState(() =>
+    typeof window !== "undefined" ? window.innerHeight : 900,
+  );
 
   const handleReveal = useRef(() => setHeroVisible(true)).current;
   const handleComplete = useRef(() => setScrollUnlocked(true)).current;
@@ -902,6 +905,7 @@ export default function App() {
     const onResize = () => {
       setIsMobile(window.innerWidth < 640);
       setScreenW(window.innerWidth);
+      setScreenH(window.innerHeight);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -1088,12 +1092,22 @@ export default function App() {
   }, [processCombo]);
 
   /* ─── Zoom transform calculation ─── */
-  const zoomScale = 2.2;
+  /* The SVG is max(vw,vh) square inside a vw×vh container.
+     Translate % is relative to the container, so Y needs
+     aspect-ratio correction (svgSize / containerH) to land
+     every node at the exact same screen position. */
+  const zoomScale = 2.6;
   const safeIdx = tourStep >= 0 ? tourStep : 0;
-  const tourTx = tourStep === -1 ? 0 : zoomScale * (50 - cNodes[safeIdx].x * 100 / 800);
-  const tourTy = tourStep === -1 ? 0 : zoomScale * (50 - cNodes[safeIdx].y * 100 / 800);
+  const nodeXPct = cNodes[safeIdx].x * 100 / 800;
+  const nodeYPct = cNodes[safeIdx].y * 100 / 800;
+  const svgSize = Math.max(screenW, screenH);
+  const aspectX = svgSize / screenW; // 1 on landscape, >1 on portrait
+  const aspectY = svgSize / screenH; // >1 on landscape, 1 on portrait
+  const targetY = 38; // node lands between title and info panel
+  const tourTx = tourStep === -1 ? 0 : (50 - 50) + zoomScale * (50 - nodeXPct) * aspectX;
+  const tourTy = tourStep === -1 ? 0 : (targetY - 50) + zoomScale * (50 - nodeYPct) * aspectY;
   const tourScale = tourStep === -1 ? 1 : zoomScale;
-  const tourRotate = tourStep === -1 ? 0 : Math.sin(cNodes[safeIdx].angle) * 3;
+  const tourRotate = 0;
 
   return (
     <div className="min-h-screen" style={{ fontFamily: F.body }}>
@@ -1603,8 +1617,8 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Fraunces', serif", color: C.parchment, fontWeight: 900 }}>Built, Not Assembled</h2>
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
-              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every website we create starts from nothing — no templates, no themes, no drag-and-drop shortcuts. Just intention, craft, and an obsessive refusal to settle.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien exists because most of the web looks the same. Your business deserves something that was actually made for it — not adapted from a kit that ten thousand other sites already use.</p>
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every website we create starts from nothing. No templates, no themes, no drag-and-drop shortcuts. Just intention, craft, and an obsessive refusal to settle.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien exists because most of the web looks the same. Your business deserves something that was actually made for it. Not adapted from a kit that ten thousand other sites already use.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 1 && (<>
@@ -1613,8 +1627,8 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Instrument Serif', serif", color: C.parchment, fontWeight: 400 }}>The Details Are the Design</h2>
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
-              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We obsess over the things most people never notice — the weight of a font, the timing of an animation, the way a page makes you feel before you've read a single word. When everything is intentional, people feel it.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that don't just look good. They feel considered. Crafted. Like someone actually gave a damn — because someone did.</p>
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We obsess over the things most people never notice. The weight of a font. The timing of an animation. The way a page makes you feel before you've read a single word. When everything is intentional, people feel it.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that feel considered. Crafted. Like someone actually gave a damn. Because someone did.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 2 && (<>
@@ -1624,7 +1638,7 @@ export default function App() {
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
               <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Templates are fast. Themes are cheap. And you can always tell. We build from scratch because the businesses we work with deserve more than "close enough."</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every pixel, every interaction, every word — placed with purpose. Studio O'Brien exists for businesses that refuse to blend in.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every pixel, every interaction, every word. Placed with purpose. Studio O'Brien exists for businesses that refuse to blend in.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 3 && (<>
@@ -1634,7 +1648,7 @@ export default function App() {
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
               <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>You won't be handed off to a junior designer or run through a production line. Every project gets my full attention, my actual taste, and more revisions than is probably healthy.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a one-person studio by design. Smaller means more care, more craft, and a final product that actually reflects who you are — not who your template vendor decided you should be.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a one-person studio by design. Smaller means more care, more craft, and a final product that actually reflects who you are. Not who your template vendor decided you should be.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 4 && (<>
@@ -1643,9 +1657,9 @@ export default function App() {
               <h2 className="text-5xl md:text-7xl tracking-[0.04em] mb-4 leading-[0.95]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>craft is the strategy</h2>
               <p className="text-sm tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-20 mb-5" style={{ height: "1px", background: C.gold }} />
-              <p className="text-xl md:text-2xl leading-[1.7] opacity-80 mb-3" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The most strategic thing you can do is build something real. Something someone actually made — with intent behind every decision and purpose behind every pixel.</p>
+              <p className="text-xl md:text-2xl leading-[1.7] opacity-80 mb-3" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The most strategic thing you can do is build something real. Something one person actually made, with intent behind every decision and purpose behind every pixel.</p>
               <div className="w-10 my-2" style={{ height: "1px", background: `${C.gold}30` }} />
-              <p className="text-lg leading-[1.7] opacity-55 mb-5" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien merges design instinct with modern capability. The result is work that doesn't just perform — it resonates. And resonance is what turns visitors into believers.</p>
+              <p className="text-lg leading-[1.7] opacity-55 mb-5" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien merges design instinct with modern capability. Work that performs, yes. But more than that, work that resonates. That's what turns visitors into believers.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 5 && (<>
@@ -1655,7 +1669,7 @@ export default function App() {
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
               <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>There's a ceiling to what pre-made solutions can do. It shows in the layouts that all look the same, the interactions that all feel the same. We start from zero so you don't end up at average.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every Studio O'Brien project is built by hand — designed, coded, and refined until it's something only your business could own.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every Studio O'Brien project is built by hand. Designed, coded, and refined until it's something only your business could own.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 6 && (<>
@@ -1664,8 +1678,8 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Bodoni Moda', serif", color: C.parchment, fontWeight: 700 }}>Obsession Is the Method</h2>
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
-              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We don't have a "good enough" threshold. Every font weight, every color value, every hover state gets the same unreasonable attention. That's not a bug — it's the entire point.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds for businesses that understand: the details aren't decoration. They're what separates forgettable from unforgettable.</p>
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We don't have a "good enough" threshold. Every font weight, every color value, every hover state gets the same unreasonable attention. That's not a bug. It's the entire point.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds for businesses that understand something simple. The details aren't decoration. They're what separates forgettable from unforgettable.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 7 && (<>
@@ -1675,7 +1689,7 @@ export default function App() {
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
               <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Nothing in our work is default. No auto-generated layouts, no stock solutions, no "that'll do." Every element exists because it was chosen, tested, and refined.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a craft studio — small by choice, meticulous by nature. We build digital experiences that feel like someone actually cared. Because someone did.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a craft studio. Small by choice, meticulous by nature. We build digital experiences that feel like someone actually cared. Because someone did.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
             {philCombo === 8 && (<>
@@ -1684,7 +1698,7 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Cormorant Infant', serif", color: C.parchment, fontWeight: 700 }}>Your Brand Deserves a Maker</h2>
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
-              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Not an agency. Not a template marketplace. A maker — someone who treats your business like their own and builds something worthy of it.</p>
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Not an agency. Not a template marketplace. A maker. Someone who treats your business like their own and builds something worthy of it.</p>
               <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien combines design instinct, development skill, and genuine care into work that stands apart. One person. Full attention. No shortcuts.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
@@ -1694,8 +1708,8 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Noto Serif Display', serif", color: C.parchment, fontWeight: 900 }}>Where Craft Meets Conviction</h2>
               <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
-              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The best work comes from caring too much — about the typography, the timing, the way a page makes someone feel before they've read a single word.</p>
-              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that don't just convert. They convince. Because when craft is real, people trust it.</p>
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The best work comes from caring too much. About the typography, the timing, the way a page makes someone feel before they've read a single word.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that convince. When craft is real, people trust it.</p>
               <Ornament className="w-32 md:w-48" color={C.gold} />
             </>)}
           </motion.div>
@@ -1704,41 +1718,31 @@ export default function App() {
 
       {/* ═══════════════════ PROCESS / THE JOURNEY ═══════════════════ */}
       <LeafReveal side="left">
-      <Section
+      <section
         id="journey"
-        bg={C.forest}
-        color={C.parchment}
-        overlay={
-          <div
-            className="absolute inset-0 opacity-[0.05]"
-            style={{
-              backgroundImage: leafPattern,
-              backgroundSize: "80px 80px",
-            }}
-          />
-        }
+        className="relative overflow-hidden"
+        style={{ background: C.forest, color: C.parchment, minHeight: "100vh" }}
       >
-        {/* ── Section Header ── */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center mb-16 md:mb-24">
-          <p className="text-[10px] tracking-[0.45em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400 }}>Our Process</p>
-          <h2 className="text-3xl md:text-5xl tracking-[0.04em] leading-[1]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>Ten Steps to Something Real</h2>
-          <p className="text-[11px] tracking-[0.25em] uppercase mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400 }}>From First Conversation to Final Pixel</p>
-        </motion.div>
+        {/* Leaf pattern underlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: leafPattern,
+            backgroundSize: "80px 80px",
+          }}
+        />
 
-        {/* ── Process Variants ── */}
-
-        {/* 1 — The Constellation: interactive zooming tour */}
+        {/* ── Full-bleed constellation background ── */}
         {processCombo === 0 && (
-          <div className="relative max-w-4xl mx-auto">
-            {/* Large viewport container */}
-            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: "1/1", border: `1px solid ${C.gold}12` }}>
-              {/* Transformable SVG wrapper — zooms & rotates to each node */}
-              <motion.div
-                animate={{ scale: tourScale, x: `${tourTx}%`, y: `${tourTy}%`, rotate: tourRotate }}
-                transition={{ duration: 0.7, ease: [0.33, 0, 0.2, 1] }}
-                style={{ width: "100%", height: "100%", willChange: "transform", transformOrigin: "50% 50%", backfaceVisibility: "hidden" as const }}
-              >
-                <svg viewBox="0 0 800 800" style={{ width: "100%", height: "100%", shapeRendering: "geometricPrecision" }}>
+          <div className="absolute inset-0" style={{ zIndex: 1 }}>
+            {/* Transformable SVG wrapper — zooms & rotates to each node */}
+            <motion.div
+              animate={{ scale: tourScale, x: `${tourTx}%`, y: `${tourTy}%`, rotate: tourRotate }}
+              transition={{ duration: 0.7, ease: [0.33, 0, 0.2, 1] }}
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ willChange: "transform", transformOrigin: "50% 50%", backfaceVisibility: "hidden" as const }}
+            >
+                <svg viewBox="0 0 800 800" style={{ width: "max(100vw, 100vh)", height: "max(100vw, 100vh)", shapeRendering: "geometricPrecision" }}>
                   <defs>
                     <pattern id="hatchGold" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
                       <line x1="0" y1="0" x2="0" y2="6" stroke={C.gold} strokeWidth="0.5" opacity="0.18" />
@@ -1974,12 +1978,25 @@ export default function App() {
                     );
                   })()}
                 </svg>
-              </motion.div>
+            </motion.div>
+          </div>
+        )}
 
-              {/* ── Info overlay panel — appears when zoomed ── */}
+        {/* ── Content overlay layer (above constellation) ── */}
+        <div className="relative" style={{ zIndex: 2, minHeight: "100vh" }}>
+          {/* ── Section Header — drop-shadowed overlay ── */}
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center pt-16 md:pt-20 pb-6">
+            <p className="text-[10px] tracking-[0.45em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400, textShadow: `0 2px 12px rgba(0,0,0,0.8)` }}>Our Process</p>
+            <h2 className="text-3xl md:text-5xl tracking-[0.04em] leading-[1]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700, textShadow: `0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.5)` }}>Ten Steps to Something Real</h2>
+            <p className="text-[11px] tracking-[0.25em] uppercase mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400, textShadow: `0 2px 8px rgba(0,0,0,0.9)` }}>From First Conversation to Final Pixel</p>
+          </motion.div>
+
+          {/* ── Info overlay panel — fixed position below node circle ── */}
+          {processCombo === 0 && (
+            <>
               <motion.div
-                className="absolute inset-0 flex items-end justify-center pointer-events-none"
-                style={{ paddingBottom: "8%" }}
+                className="absolute left-1/2 -translate-x-1/2 pointer-events-none px-6"
+                style={{ top: "62%", width: "100%" }}
                 animate={{ opacity: stepInfoVisible ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
@@ -1991,9 +2008,9 @@ export default function App() {
 
                   return (
                     <motion.div
-                      className="text-left pointer-events-none"
+                      className="text-left pointer-events-none mx-auto"
                       style={{
-                        width: "min(340px, 85%)",
+                        width: "min(380px, 90%)",
                         background: `linear-gradient(135deg, ${C.deepForest}f5, ${C.darkBark}f2)`,
                         borderLeft: `2px solid ${C.gold}`,
                         backdropFilter: "blur(16px)",
@@ -2026,63 +2043,65 @@ export default function App() {
               </motion.div>
 
               {/* ── Step progress bar with prev/next arrows ── */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10 px-3 py-2 rounded-full" style={{ background: `${C.deepForest}cc`, backdropFilter: "blur(10px)", border: `1px solid ${C.gold}18` }}>
-                {/* Prev arrow */}
-                <button
-                  onClick={() => {
-                    tourActiveRef.current = false;
-                    tourTimers.current.forEach(clearTimeout);
-                    tourTimers.current = [];
-                    const prev = tourStep <= 0 ? 9 : tourStep - 1;
-                    setTourStep(prev);
-                    setStepInfoVisible(true);
-                  }}
-                  className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
-                  style={{ opacity: 0.5, width: "20px", height: "20px" }}
-                  aria-label="Previous step"
-                >
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M7 1L3 5L7 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex justify-center">
+                <div className="flex items-center gap-3 px-3 py-2 rounded-full" style={{ background: `${C.deepForest}cc`, backdropFilter: "blur(10px)", border: `1px solid ${C.gold}18` }}>
+                  {/* Prev arrow */}
+                  <button
+                    onClick={() => {
+                      tourActiveRef.current = false;
+                      tourTimers.current.forEach(clearTimeout);
+                      tourTimers.current = [];
+                      const prev = tourStep <= 0 ? 9 : tourStep - 1;
+                      setTourStep(prev);
+                      setStepInfoVisible(true);
+                    }}
+                    className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
+                    style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                    aria-label="Previous step"
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M7 1L3 5L7 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
 
-                {/* Dots */}
-                <div className="flex items-center gap-1.5">
-                  {proc.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => {
-                        tourActiveRef.current = false;
-                        tourTimers.current.forEach(clearTimeout);
-                        tourTimers.current = [];
-                        setTourStep(i);
-                        setStepInfoVisible(true);
-                      }}
-                      className="relative cursor-pointer transition-all duration-400"
-                      style={{ width: tourStep === i ? "22px" : "6px", height: "6px", borderRadius: "3px", background: tourStep === i ? C.gold : `${C.gold}30`, opacity: tourStep === i ? 1 : 0.5 }}
-                      aria-label={`Step ${i + 1}: ${proc[i].name}`}
-                    />
-                  ))}
+                  {/* Dots */}
+                  <div className="flex items-center gap-1.5">
+                    {proc.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => {
+                          tourActiveRef.current = false;
+                          tourTimers.current.forEach(clearTimeout);
+                          tourTimers.current = [];
+                          setTourStep(i);
+                          setStepInfoVisible(true);
+                        }}
+                        className="relative cursor-pointer transition-all duration-400"
+                        style={{ width: tourStep === i ? "22px" : "6px", height: "6px", borderRadius: "3px", background: tourStep === i ? C.gold : `${C.gold}30`, opacity: tourStep === i ? 1 : 0.5 }}
+                        aria-label={`Step ${i + 1}: ${proc[i].name}`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Next arrow */}
+                  <button
+                    onClick={() => {
+                      tourActiveRef.current = false;
+                      tourTimers.current.forEach(clearTimeout);
+                      tourTimers.current = [];
+                      const next = tourStep >= 9 ? 0 : tourStep + 1;
+                      setTourStep(next);
+                      setStepInfoVisible(true);
+                    }}
+                    className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
+                    style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                    aria-label="Next step"
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M3 1L7 5L3 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
                 </div>
-
-                {/* Next arrow */}
-                <button
-                  onClick={() => {
-                    tourActiveRef.current = false;
-                    tourTimers.current.forEach(clearTimeout);
-                    tourTimers.current = [];
-                    const next = tourStep >= 9 ? 0 : tourStep + 1;
-                    setTourStep(next);
-                    setStepInfoVisible(true);
-                  }}
-                  className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
-                  style={{ opacity: 0.5, width: "20px", height: "20px" }}
-                  aria-label="Next step"
-                >
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M3 1L7 5L3 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
               </div>
 
               {/* ── Overview / Reset button ── */}
@@ -2095,15 +2114,15 @@ export default function App() {
                     setTourStep(-1);
                     setStepInfoVisible(false);
                   }}
-                  className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded text-[9px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 hover:opacity-100"
+                  className="absolute top-16 md:top-20 right-6 px-3 py-1.5 rounded text-[9px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 hover:opacity-100"
                   style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 400, color: C.gold, background: `${C.deepForest}cc`, border: `1px solid ${C.gold}25`, opacity: 0.55, backdropFilter: "blur(8px)" }}
                 >
                   Overview
                 </button>
               )}
-            </div>
-          </div>
-        )}
+            </>
+          )}
+        </div>
 
         {/* 2 — The Forge Path: medieval cartographic winding journey map */}
         {processCombo === 1 && (() => {
@@ -2621,7 +2640,7 @@ export default function App() {
           );
         })()}
 
-      </Section>
+      </section>
       </LeafReveal>
 
       {/* ═══════════════════ PORTFOLIO / PAST WORK — Roller Conveyor ═══════════════════ */}
