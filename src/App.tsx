@@ -5,6 +5,17 @@ import {
   useTransform,
   useSpring,
 } from "motion/react";
+import {
+  Globe,
+  Target,
+  Bot,
+  Sparkles,
+  Search,
+  Megaphone,
+  BookOpen,
+  Cog,
+  BarChart3,
+} from "lucide-react";
 
 /* ─── DESIGN TOKENS ─── */
 const F = {
@@ -12,6 +23,20 @@ const F = {
   heading: "'Cinzel', serif",
   body: "'Cormorant Garamond', serif",
 };
+
+/* ─── BODY FONT PAIRINGS (10 options for card descriptions) ─── */
+const bodyFonts = [
+  { name: "Lora", css: "'Lora', serif", weight: 400, size: "15.5px", lh: "1.65", italic: true },
+  { name: "Spectral", css: "'Spectral', serif", weight: 300, size: "15px", lh: "1.7", italic: false },
+  { name: "EB Garamond", css: "'EB Garamond', serif", weight: 400, size: "16px", lh: "1.6", italic: false },
+  { name: "Crimson Text", css: "'Crimson Text', serif", weight: 400, size: "15.5px", lh: "1.65", italic: false },
+  { name: "Libre Baskerville", css: "'Libre Baskerville', serif", weight: 400, size: "14px", lh: "1.7", italic: false },
+  { name: "Josefin Sans", css: "'Josefin Sans', sans-serif", weight: 300, size: "14px", lh: "1.7", italic: false },
+  { name: "Raleway", css: "'Raleway', sans-serif", weight: 300, size: "14.5px", lh: "1.7", italic: false },
+  { name: "Nunito Sans", css: "'Nunito Sans', sans-serif", weight: 300, size: "14.5px", lh: "1.7", italic: false },
+  { name: "Cardo", css: "'Cardo', serif", weight: 400, size: "15.5px", lh: "1.65", italic: false },
+  { name: "Quattrocento", css: "'Quattrocento', serif", weight: 400, size: "15px", lh: "1.65", italic: false },
+];
 
 const C = {
   forest: "#1a3a2a",
@@ -326,6 +351,24 @@ const css = `
 @keyframes pw-scroll-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
 .pw-row:hover .pw-inner{animation-play-state:paused}
 .pw-col:hover .pw-inner{animation-play-state:paused}
+@keyframes hg-glow{0%,100%{opacity:0.35;transform:scale(1)}50%{opacity:0.55;transform:scale(1.04)}}
+@keyframes nav-shine{0%{left:-100%}100%{left:200%}}
+@keyframes nav-pulse-border{0%,100%{border-color:rgba(201,168,76,0.3)}50%{border-color:rgba(201,168,76,0.8)}}
+.nav-btn{position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.nav-btn-1::after{content:'';position:absolute;inset:3px;border:1px solid ${C.gold}50;border-radius:inherit;transition:all 0.35s ease;opacity:0;transform:scale(0.92)}.nav-btn-1:hover::after{opacity:1;transform:scale(1)}
+.nav-btn-2::after{content:'';position:absolute;inset:2px;border:0.5px solid ${C.gold}40;border-radius:inherit;transition:all 0.35s ease;opacity:0}.nav-btn-2:hover::after{opacity:1}
+.nav-btn-3:hover{box-shadow:inset 0 0 0 3px ${C.parchment},inset 0 0 0 4.5px ${C.gold}60,0 2px 8px ${C.deepForest}15 !important}
+.nav-btn-4::after{content:'';position:absolute;inset:3px;border:1px solid ${C.gold}40;border-radius:6px;transition:all 0.35s ease;opacity:0}.nav-btn-4:hover::after{opacity:1}
+.nav-btn-5:hover{transform:scale(1.04);box-shadow:inset 0 0 0 3px ${C.parchment},inset 0 0 0 4.5px ${C.deepForest}25,0 4px 16px ${C.deepForest}15 !important}
+.nav-btn-6:hover{box-shadow:inset 0 0 0 4px ${C.parchment},inset 0 0 0 5.5px ${C.deepForest}40,inset 0 0 0 7px ${C.parchment},inset 0 0 0 8px ${C.gold}30 !important}
+.nav-btn-7::after{content:'';position:absolute;inset:3px;border:1px solid ${C.deepForest}20;border-radius:inherit;transition:all 0.35s ease}.nav-btn-7:hover::after{border-color:${C.gold}60;box-shadow:0 0 8px ${C.gold}15}
+.nav-btn-8::after{content:'';position:absolute;inset:2px;border:1.5px solid ${C.gold}50;border-radius:inherit;opacity:0;transition:all 0.3s ease}.nav-btn-8::before{content:'';position:absolute;inset:5px;border:0.5px solid ${C.gold}30;border-radius:inherit;opacity:0;transition:all 0.3s ease 0.05s}.nav-btn-8:hover::after,.nav-btn-8:hover::before{opacity:1}
+.nav-btn-9::after{content:'';position:absolute;inset:2px;border:1px solid ${C.gold}40;border-radius:inherit;transition:all 0.3s ease;opacity:0;transform:scale(0.95)}.nav-btn-9:hover::after{opacity:1;transform:scale(1)}.nav-btn-9:hover{transform:translateY(-2px)}
+.nav-btn-10:hover{box-shadow:inset 0 0 0 3px ${C.parchment},inset 0 0 0 4px ${C.deepForest}30,0 2px 0 ${C.deepForest}15,0 -2px 0 ${C.deepForest}08 !important}
+.nav-link{position:relative;transition:all 0.3s ease}
+.nav-link-underline::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:${C.gold};transition:width 0.3s ease}.nav-link-underline:hover::after{width:100%}
+.nav-link-bracket::before,.nav-link-bracket::after{transition:all 0.3s ease;opacity:0}.nav-link-bracket::before{content:'[ '}.nav-link-bracket::after{content:' ]'}.nav-link-bracket:hover::before,.nav-link-bracket:hover::after{opacity:1;color:${C.gold}}
+.nav-link-dot::before{content:'';position:absolute;left:-10px;top:50%;width:4px;height:4px;border-radius:50%;background:${C.gold};transform:translateY(-50%) scale(0);transition:transform 0.3s ease}.nav-link-dot:hover::before{transform:translateY(-50%) scale(1)}
 `;
 
 function injectStyles() {
@@ -552,20 +595,19 @@ const fadeUp = {
 };
 
 /* ─── CONTACT FORM ─── */
-const inputStyle: React.CSSProperties = {
-  fontFamily: F.body,
-  fontSize: "1rem",
-  background: "rgba(255,255,255,0.06)",
-  border: `1px solid ${C.gold}30`,
-  borderRadius: "4px",
-  padding: "14px 16px",
-  color: C.parchment,
-  width: "100%",
-  outline: "none",
-  transition: "border-color 0.3s",
-};
-
 function ContactForm() {
+  const inputStyle: React.CSSProperties = {
+    fontFamily: F.body,
+    fontSize: "1rem",
+    background: "rgba(255,255,255,0.06)",
+    border: `1px solid ${C.gold}30`,
+    borderRadius: "4px",
+    padding: "14px 16px",
+    color: C.parchment,
+    width: "100%",
+    outline: "none",
+    transition: "border-color 0.3s",
+  };
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -803,6 +845,38 @@ export default function App() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [scrollUnlocked, setScrollUnlocked] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [heroVariant, setHeroVariant] = useState(0);
+  const [cardCombo, setCardCombo] = useState(9);
+  const emblemNames = [
+    "Soft Centered", "Dome Crown", "Blurred Halo", "Ghost Echo", "Radial Burst",
+    "Corner Drift", "Double Layer", "Etched Ring", "Scattered Seeds", "Monumental",
+  ];
+  const [navCombo, setNavCombo] = useState(1);
+  const [btnCombo, setBtnCombo] = useState(7);
+  const [linkSize, setLinkSize] = useState(1);
+  const [philCombo, setPhilCombo] = useState(4);
+  const [processCombo, setProcessCombo] = useState(0);
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
+  const [tourStep, setTourStep] = useState(-1);
+  const [stepInfoVisible, setStepInfoVisible] = useState(false);
+
+  const tourActiveRef = useRef(false);
+  const tourTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const linkSizeNames = [
+    "Playfair Display", "Cormorant SC", "Marcellus", "Forum", "Tenor Sans",
+    "Sorts Mill Goudy", "Gilda Display", "Bellefair", "Mate SC", "Almendra",
+  ];
+  const navNames = [
+    "Etched Original", "Thinner Frame", "Gold Inner", "Rounded Etch", "Wide Plate",
+    "Deep Inset", "Soft Etch", "Double Gold", "Tight Etch", "Beveled Plate",
+  ];
+  const philNames = [
+    "Built Not Assembled", "Details Are Design", "Good Enough Never Is", "One Maker Zero Shortcuts", "Craft Is Strategy",
+    "What Templates Can't", "Obsession Is Method", "Every Pixel Earned", "Brand Deserves Maker", "Craft Meets Conviction",
+  ];
+  const processNames = [
+    "The Constellation", "The Forge Path", "The Wheel",
+  ];
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== "undefined" && window.innerWidth < 640,
   );
@@ -818,6 +892,7 @@ export default function App() {
     injectStyles();
   }, []);
 
+
   useEffect(() => {
     const onResize = () => {
       setIsMobile(window.innerWidth < 640);
@@ -832,7 +907,8 @@ export default function App() {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroY = useTransform(heroProgress, [0, 1], [0, 120]);
+  const heroY = useTransform(heroProgress, [0, 1], [0, 50]);
+  const heroContentOpacity = useTransform(heroProgress, [0, 0.5, 0.85], [1, 1, 0]);
   const { scrollYProgress: overallProgress, scrollY } = useScroll();
 
   const headerOpacity = useTransform(scrollY, [100, 250], [0, 1]);
@@ -907,45 +983,112 @@ export default function App() {
   ];
 
   // ── VARIANT 5: 5-Step Pentagon Process ──
-  const jProcess = [
-    { num: 1, label: ["Discovery", "& Research"], note: "We learn your business, your customers, and your competition before touching any design." },
-    { num: 2, label: ["Strategy", "& Planning"], note: "Architecture, content direction, and SEO targeting mapped out in advance." },
-    { num: 3, label: ["Design", "& Build"], note: "Multiple design options built and tested at every screen size." },
-    { num: 4, label: ["Testing", "& Validation"], note: "Quality checked on real phones, tablets, and desktops before launch." },
-    { num: 5, label: ["Ongoing", "Support"], note: "Revisions, monitoring, and growth tracking included with every project." },
+  const proc = [
+    { n: "01", name: "Listen", desc: "We sit down and talk — about your customers, your competitors, and the gap between where you are and where you want to be. No intake forms. Just a real conversation." },
+    { n: "02", name: "Research", desc: "Your competitors have blind spots. We find them. Market analysis, audience profiling, and keyword mapping build the strategic foundation before a single pixel moves." },
+    { n: "03", name: "Architect", desc: "Sitemaps. Content hierarchy. User journeys. The invisible scaffolding that separates sites people use from sites people leave. This gets locked before design begins." },
+    { n: "04", name: "Design", desc: "You see three distinct creative directions — not one guess. Each one tailored to your brand, your audience, and the outcomes you need. You pick the winner." },
+    { n: "05", name: "Build", desc: "Every line written by hand. Zero templates, zero page builders. The result loads fast, reads clean on every screen, and scores where search engines look." },
+    { n: "06", name: "Refine", desc: "This is where good becomes undeniable. Spacing gets tighter. Transitions get smoother. We iterate until the details feel inevitable — not decorated." },
+    { n: "07", name: "Test", desc: "iPhones, Androids, Chrome, Safari, slow connections, screen readers — nothing ships until it works everywhere real people actually browse." },
+    { n: "08", name: "Launch", desc: "Domain, hosting, SSL, analytics, search indexing — all configured and deployed. You never touch a dashboard. It just goes live, and it works." },
+    { n: "09", name: "Measure", desc: "Real traffic data from day one. We track what visitors do, where they drop off, and which pages convert — so every next move is backed by evidence." },
+    { n: "10", name: "Evolve", desc: "Your business changes. Your site keeps pace. New pages, seasonal campaigns, performance tuning — an ongoing partnership, not a one-and-done handoff." },
   ];
 
-  // Pentagon geometry — self-contained SVG layout
-  const pCx = 500, pCy = 530, pR = 260, pCr = 210;
-  const pAngles = [-90, -18, 54, 126, 198];
-  const pCircles = pAngles.map(a => ({
-    x: pCx + pR * Math.cos((a * Math.PI) / 180),
-    y: pCy + pR * Math.sin((a * Math.PI) / 180),
-  }));
-  // Badges pushed OUTWARD from each circle (just past the edge)
-  const pBadgePush = pCr + 30;
-  const pBadges = pAngles.map((a, i) => {
-    const rad = (a * Math.PI) / 180;
+  /* ─── Constellation Geometry (static, used for tour zoom) ─── */
+  const cxP = 400, cyP = 400, cR = 280, cOverlapR = 120;
+  const cNodes = Array.from({ length: 10 }, (_, i) => {
+    const angle = (2 * Math.PI * i) / 10 - Math.PI / 2;
+    return { x: cxP + cR * Math.cos(angle), y: cyP + cR * Math.sin(angle), angle };
+  });
+  const cStarPath = (indices: number[]) => indices.map((idx, j) => `${j === 0 ? "M" : "L"}${cNodes[idx].x.toFixed(2)},${cNodes[idx].y.toFixed(2)}`).join(" ") + " Z";
+  const cPhases = [
+    { label: "DISCOVER", from: 0, to: 1 },
+    { label: "PLAN", from: 2, to: 3 },
+    { label: "CREATE", from: 4, to: 5 },
+    { label: "PERFECT", from: 6, to: 7 },
+    { label: "GROW", from: 8, to: 9 },
+  ];
+  const cPhaseArcs = cPhases.map(p => {
+    const midAngle = (cNodes[p.from].angle + cNodes[p.to].angle) / 2;
+    const labelR = cR + 52;
     return {
-      x: pCircles[i].x + pBadgePush * Math.cos(rad),
-      y: pCircles[i].y + pBadgePush * Math.sin(rad),
+      label: p.label,
+      x: cxP + labelR * Math.cos(midAngle),
+      y: cyP + labelR * Math.sin(midAngle),
+      rotate: (midAngle * 180) / Math.PI + (midAngle > Math.PI / 2 && midAngle < (3 * Math.PI) / 2 ? 180 : 0),
     };
   });
-  const pAdj: [number, number][] = [[0,1],[1,2],[2,3],[3,4],[4,0]];
-  const pMids = pAdj.map(([a, b]) => ({
-    x: (pCircles[a].x + pCircles[b].x) / 2,
-    y: (pCircles[a].y + pCircles[b].y) / 2,
-  }));
-  const pInterLabels = ["Define", "Brief", "Review", "Monitor", "Iterate"];
-  // Label positions inside circles — pushed outward from center
-  const pLabelPush = 80;
-  const pLabels = pAngles.map((a, i) => {
-    const rad = (a * Math.PI) / 180;
-    return {
-      x: pCircles[i].x + pLabelPush * Math.cos(rad),
-      y: pCircles[i].y + pLabelPush * Math.sin(rad),
-    };
+  const cRosePoints = Array.from({ length: 16 }, (_, i) => {
+    const a = (2 * Math.PI * i) / 16;
+    const len = i % 4 === 0 ? 28 : i % 2 === 0 ? 18 : 10;
+    return { x1: cxP, y1: cyP, x2: cxP + len * Math.cos(a), y2: cyP + len * Math.sin(a) };
   });
+  const cTicks = Array.from({ length: 60 }, (_, i) => {
+    const a = (2 * Math.PI * i) / 60;
+    const inner = i % 5 === 0 ? 42 : 46;
+    return { x1: cxP + inner * Math.cos(a), y1: cyP + inner * Math.sin(a), x2: cxP + 50 * Math.cos(a), y2: cyP + 50 * Math.sin(a) };
+  });
+
+  /* ─── Tour auto-cycling effect ─── */
+  useEffect(() => {
+    if (processCombo !== 0) {
+      tourActiveRef.current = false;
+      tourTimers.current.forEach(clearTimeout);
+      tourTimers.current = [];
+      setTourStep(-1);
+      setStepInfoVisible(false);
+      return;
+    }
+
+    tourActiveRef.current = true;
+    const schedule = (fn: () => void, ms: number) => {
+      const t = setTimeout(() => { if (tourActiveRef.current) fn(); }, ms);
+      tourTimers.current.push(t);
+    };
+
+    const runStep = (step: number) => {
+      if (!tourActiveRef.current) return;
+      setTourStep(step);
+      setStepInfoVisible(false);
+
+      // Info appears after zoom (0.7s)
+      schedule(() => {
+        setStepInfoVisible(true);
+        // Hold for reading (2.4s), then hide
+        schedule(() => {
+          setStepInfoVisible(false);
+          // Advance after hide animation (0.35s)
+          schedule(() => {
+            if (step >= 9) {
+              setTourStep(-1);
+              schedule(() => runStep(0), 1600);
+            } else {
+              runStep(step + 1);
+            }
+          }, 350);
+        }, 2400);
+      }, 700);
+    };
+
+    // Start tour after initial reveal
+    schedule(() => runStep(0), 1800);
+
+    return () => {
+      tourActiveRef.current = false;
+      tourTimers.current.forEach(clearTimeout);
+      tourTimers.current = [];
+    };
+  }, [processCombo]);
+
+  /* ─── Zoom transform calculation ─── */
+  const zoomScale = 2.2;
+  const safeIdx = tourStep >= 0 ? tourStep : 0;
+  const tourTx = tourStep === -1 ? 0 : zoomScale * (50 - cNodes[safeIdx].x * 100 / 800);
+  const tourTy = tourStep === -1 ? 0 : zoomScale * (50 - cNodes[safeIdx].y * 100 / 800);
+  const tourScale = tourStep === -1 ? 1 : zoomScale;
+  const tourRotate = tourStep === -1 ? 0 : Math.sin(cNodes[safeIdx].angle) * 3;
 
   return (
     <div className="min-h-screen" style={{ fontFamily: F.body }}>
@@ -966,36 +1109,100 @@ export default function App() {
       {/* ── STICKY HEADER + MOBILE NAV ── */}
       {(() => {
         const navLinks = [
-          { label: "Our Craft", href: "#craft" },
-          { label: "The Journey", href: "#journey" },
-          { label: "Portfolio", href: "#portfolio" },
+          { label: "Services", href: "#craft" },
+          { label: "Process", href: "#journey" },
+          { label: "Work", href: "#portfolio" },
           { label: "Contact", href: "#contact" },
         ];
         const hF = { fontFamily: F.heading };
+        const v = navCombo;
+
+        /* shared hamburger */
+        const burger = (color: string) => (
+          <button className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]" onClick={() => setMobileMenuOpen(true)} aria-label="Open menu">
+            <span className="block w-5 h-[1.5px]" style={{ background: color }} />
+            <span className="block w-5 h-[1.5px]" style={{ background: color }} />
+            <span className="block w-3.5 h-[1.5px]" style={{ background: color }} />
+          </button>
+        );
+
+        /* shared logo */
+        const logo = (h: string) => <img src="/images/logo.webp" alt="Studio O'Brien" className={`${h} w-auto absolute left-1/2 -translate-x-1/2`} />;
+        const orn = (
+          <div className="flex items-center gap-2 pb-1.5 -mt-0.5">
+            <div className="w-12 h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${C.gold})` }} />
+            <div className="w-1 h-1 rotate-45" style={{ background: C.gold }} />
+            <div className="w-12 h-[1px]" style={{ background: `linear-gradient(270deg, transparent, ${C.gold})` }} />
+          </div>
+        );
+
+        /* 10 stylized button + menu combos on Tight Crest base */
+        /* Links — locked to Cormorant SC bold */
+        const linkClass = "nav-link";
+        const linkFont = { family: "'Cormorant SC', serif", size: "16px", tracking: "0.18em", weight: 700 };
+
+        /* Button cycles through 10 combos via btnCombo */
+        const b = btnCombo;
+        const btnClass = `nav-btn nav-btn-${b + 1}`;
+
+        const btnStyle: Record<string, string | number> = {
+          fontFamily: F.heading,
+          fontSize: "13px",
+          letterSpacing: "0.1em",
+          fontWeight: 700,
+        };
+
+        const btnShape: Record<string, string> = (() => {
+          switch (b) {
+            /* 1: Etched Original — parchment, dark border, inner double frame */
+            case 0: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}30` };
+            /* 2: Thinner Frame — lighter outer border, subtler inset */
+            case 1: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1px solid ${C.deepForest}60`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 3.5px ${C.deepForest}18` };
+            /* 3: Gold Inner — dark outer, gold inner frame */
+            case 2: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.gold}50` };
+            /* 4: Rounded Etch — same double frame but with rounded corners */
+            case 3: return { background: C.parchment, color: C.deepForest, borderRadius: "8px", padding: "8px 24px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}25` };
+            /* 5: Wide Plate — extra horizontal padding, wider look */
+            case 4: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 36px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}25` };
+            /* 6: Deep Inset — thicker gap between borders, triple frame feel */
+            case 5: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "9px 26px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 4px ${C.parchment}, inset 0 0 0 5px ${C.deepForest}20` };
+            /* 7: Soft Etch — lighter border, softer shadow, more gentle */
+            case 6: return { background: C.parchment, color: C.deepForest, borderRadius: "4px", padding: "8px 24px", border: `1px solid ${C.deepForest}40`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}12` };
+            /* 8: Double Gold — both frames in gold, dark text */
+            case 7: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1.5px solid ${C.gold}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.gold}40` };
+            /* 9: Tight Etch — smaller padding, compact, sharp */
+            case 8: return { background: C.parchment, color: C.deepForest, borderRadius: "1px", padding: "6px 20px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 2px ${C.parchment}, inset 0 0 0 3px ${C.deepForest}30` };
+            /* 10: Beveled Plate — subtle top-light bottom-dark bevel effect */
+            case 9: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}25, inset 0 2px 0 rgba(255,255,255,0.4), inset 0 -1px 0 ${C.deepForest}10` };
+            default: return { background: C.parchment, color: C.deepForest, borderRadius: "2px", padding: "8px 24px", border: `1.5px solid ${C.deepForest}`, boxShadow: `inset 0 0 0 3px ${C.parchment}, inset 0 0 0 4px ${C.deepForest}30` };
+          }
+        })();
+
+        const navContent = (
+          <div className="w-full flex flex-col items-center" style={{ background: C.parchment }}>
+            <div className="w-full flex justify-between items-center px-6 md:px-12 py-2">
+              {burger(C.deepForest)}
+              <div className="hidden md:flex gap-7 uppercase ml-16" style={{ color: C.deepForest, fontFamily: linkFont.family, fontSize: linkFont.size, letterSpacing: linkFont.tracking, fontWeight: linkFont.weight }}>
+                {navLinks.slice(0, 3).map(l => (
+                  <a key={l.label} href={l.href} className={linkClass} style={{ color: C.deepForest }}
+                    onMouseEnter={e => (e.currentTarget.style.color = C.gold)}
+                    onMouseLeave={e => (e.currentTarget.style.color = C.deepForest)}
+                  >{l.label}</a>
+                ))}
+              </div>
+              {logo("h-8 md:h-11")}
+              <div className="flex items-center gap-4 ml-auto mr-16">
+                <a href="#contact" className={`${btnClass} uppercase`} style={{ ...btnStyle, ...btnShape, textTransform: "uppercase" } as React.CSSProperties}>Let's Talk</a>
+              </div>
+            </div>
+            {orn}
+          </div>
+        );
 
         return (
           <>
             <motion.nav style={{ opacity: headerBlur, y: headerY }} className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
-              <div className="w-full flex justify-between items-center px-6 md:px-12 py-3" style={{ background: C.parchment, borderBottom: `1px solid ${C.gold}15` }}>
-                {/* Mobile hamburger */}
-                <button
-                  className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-                  onClick={() => setMobileMenuOpen(true)}
-                  aria-label="Open menu"
-                >
-                  <span className="block w-5 h-[1.5px]" style={{ background: C.deepForest }} />
-                  <span className="block w-5 h-[1.5px]" style={{ background: C.deepForest }} />
-                  <span className="block w-3.5 h-[1.5px]" style={{ background: C.deepForest }} />
-                </button>
-                {/* Desktop nav links */}
-                <div className="hidden md:flex gap-7 text-xs tracking-[0.2em] uppercase font-bold" style={{ ...hF, color: C.deepForest }}>
-                  {navLinks.slice(0, 3).map(l => <a key={l.label} href={l.href} className="hover:text-[#c9a84c] transition-colors duration-300">{l.label}</a>)}
-                </div>
-                <img src="/images/logo.webp" alt="Studio O'Brien" className="h-8 md:h-10 w-auto absolute left-1/2 -translate-x-1/2" />
-                <div className="flex items-center gap-4 ml-auto">
-                  <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Get in Touch</a>
-                </div>
-              </div>
+              {navContent}
             </motion.nav>
 
             {/* Mobile fullscreen menu */}
@@ -1032,171 +1239,102 @@ export default function App() {
       })()}
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-        style={{ background: C.ivory }}
-      >
-        {/* Leaf pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }}
-        />
-
-        {/* Radial glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 60% 50% at 50% 40%, ${C.gold}12, transparent)`,
-          }}
-        />
-
-        {/* Parallax inner */}
-        <motion.div
-          style={{ y: heroY }}
-          className="relative z-10 text-center px-6 pb-16 md:pb-20"
-        >
-          {/* ── Framed logo block ── */}
-          <img
-            src="/images/motif-top.webp"
-            alt=""
-            className="w-[218px] sm:w-[250px] md:w-[310px] lg:w-[373px] mx-auto mb-1"
+      <section ref={heroRef} className="relative min-h-screen flex flex-col items-start overflow-hidden" style={{ background: C.parchment }}>
+        <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />
+        <motion.div style={{ y: heroY, opacity: heroContentOpacity }} className="relative z-10 flex flex-col items-center px-4 w-full pt-[12vh] sm:pt-[14vh]">
+          {/* Motif top */}
+          <motion.img
+            src="/images/motif-top.webp" alt=""
+            className="w-[180px] sm:w-[240px] md:w-[300px] mb-4"
+            initial={{ opacity: 0, y: -8 }} animate={heroVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1 }}
           />
-          <h1 className="relative inline-block">
-            <img
-              src="/images/logo.webp"
-              alt="Studio O'Brien"
-              className="w-[520px] sm:w-[600px] md:w-[728px] lg:w-[884px]"
-              style={{
-                filter: `drop-shadow(0 4px 30px ${C.gold}50) drop-shadow(0 0 60px ${C.gold}20)`,
-              }}
-            />
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <motion.div
-                className="absolute inset-0"
-                initial={{ x: "-100%" }}
-                animate={heroVisible ? { x: "200%" } : {}}
-                transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
-                style={{
-                  background: `linear-gradient(105deg, transparent 40%, ${C.paleGold}30 47%, #fff4 50%, ${C.paleGold}30 53%, transparent 60%)`,
-                }}
-              />
-            </div>
-          </h1>
-          <img
-            src="/images/motif-bottom.webp"
-            alt=""
-            className="w-[218px] sm:w-[250px] md:w-[310px] lg:w-[373px] mx-auto mt-0.5"
+          {/* Gold hairline */}
+          <motion.div
+            initial={{ scaleX: 0 }} animate={heroVisible ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            style={{ width: "min(70vw, 660px)", height: 1, background: `${C.gold}50`, transformOrigin: "center" }}
           />
-
-          {/* ── Tagline ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={scrollUnlocked ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-center"
+          {/* Est label */}
+          <motion.span
+            className="text-[9px] tracking-[0.6em] uppercase my-5"
+            style={{ fontFamily: F.heading, color: C.gold }}
+            initial={{ opacity: 0 }} animate={heroVisible ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <div className="max-w-md mx-auto">
-              <p
-                className="text-xs md:text-sm uppercase tracking-[0.35em]"
-                style={{ fontFamily: F.heading, color: C.gold, fontWeight: 400, lineHeight: 1.6 }}
-              >
-                Where brands come to life
-              </p>
-              <div className="mx-auto mt-3 mb-4 flex items-center justify-center gap-2">
-                <div className="h-px w-8" style={{ background: `${C.gold}30` }} />
-                <div className="w-1.5 h-1.5 rotate-45" style={{ background: `${C.gold}50` }} />
-                <div className="h-px w-8" style={{ background: `${C.gold}30` }} />
-              </div>
-              <p
-                className="text-base md:text-lg italic"
-                style={{ fontFamily: F.body, color: C.emerald, fontWeight: 500, lineHeight: 1.7, letterSpacing: "0.01em" }}
-              >
-                Designed with craft, powered by the magic of modern technology.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* ── CTAs ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={scrollUnlocked ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-5 sm:mt-6 md:mt-8 lg:mt-10 flex flex-col items-center gap-3 md:gap-4"
-          >
-            <motion.a
-              href="#craft"
-              className="group relative inline-block px-12 py-5 text-sm tracking-[0.2em] uppercase rounded-full overflow-hidden"
-              style={{
-                fontFamily: F.heading,
-                border: `2px solid ${C.gold}`,
-                color: C.gold,
-                background: `${C.gold}10`,
-              }}
-            >
-              <span className="relative z-10 transition-colors duration-700 ease-out group-hover:text-white">
-                Explore the Studio
-              </span>
-              {/* Circle that grows from center to fill the button */}
-              <span
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 rounded-full group-hover:w-[400px] group-hover:h-[400px] transition-all duration-700 ease-out"
-                style={{
-                  background: `radial-gradient(circle, ${C.brightGold} 0%, ${C.gold} 100%)`,
-                }}
-              />
-            </motion.a>
-
-            <motion.a
-              href="#contact"
-              className="text-sm tracking-[0.2em] uppercase font-bold transition-all duration-300"
-              style={{ fontFamily: F.heading, color: C.gold, opacity: 0.7 }}
-              whileHover={{ opacity: 1, letterSpacing: "0.25em" }}
-            >
-              Let&#8217;s Create
-            </motion.a>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll prompt — appears after curtain, fades out on first scroll */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={scrollUnlocked ? { opacity: 1 } : {}}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          style={{ opacity: scrollUnlocked ? scrollPromptOpacity : 0 }}
-          className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span
-            className="text-[10px] tracking-[0.3em] uppercase"
+            Est. 2025
+          </motion.span>
+          {/* Logo */}
+          <motion.img
+            src="/images/logo.webp" alt="Studio O'Brien"
+            className="w-[80vw] sm:w-[70vw] md:w-[60vw] lg:w-[720px] max-w-[780px]"
+            initial={{ opacity: 0, y: 16 }} animate={heroVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          />
+          {/* Location label */}
+          <motion.span
+            className="mt-5 text-[9px] tracking-[0.6em] uppercase"
             style={{ fontFamily: F.heading, color: C.sage }}
+            initial={{ opacity: 0 }} animate={heroVisible ? { opacity: 0.6 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Scroll
-          </span>
-          <div
-            className="w-5 h-8 rounded-full border flex justify-center pt-1.5"
-            style={{ borderColor: `${C.sage}60` }}
+            Shelby, North Carolina
+          </motion.span>
+          {/* Gold hairline */}
+          <motion.div
+            className="mt-5"
+            initial={{ scaleX: 0 }} animate={heroVisible ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            style={{ width: "min(70vw, 660px)", height: 1, background: `${C.gold}50`, transformOrigin: "center" }}
+          />
+          {/* Motif bottom */}
+          <motion.img
+            src="/images/motif-bottom.webp" alt=""
+            className="w-[180px] sm:w-[240px] md:w-[300px] mt-4 mb-6"
+            initial={{ opacity: 0, y: 8 }} animate={heroVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+          />
+          {/* Animated ornament */}
+          <AnimatedOrnament
+            className="w-40 sm:w-52 md:w-60 mb-5"
+            color={C.gold}
+            active={scrollUnlocked}
+            delay={0.1}
+          />
+          {/* Services tagline */}
+          <motion.p
+            className="text-[10px] tracking-[0.4em] uppercase"
+            style={{ fontFamily: F.heading, color: C.deepForest, opacity: 0.4 }}
+            initial={{ opacity: 0 }} animate={scrollUnlocked ? { opacity: 0.4 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div
-              className="w-1 h-2 rounded-full"
-              style={{
-                background: C.sage,
-                animation: "hg-scroll-bounce 2s ease-in-out infinite",
-              }}
-            />
-          </div>
+            Design &bull; Development &bull; Strategy
+          </motion.p>
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={scrollUnlocked ? { opacity: 1 } : {}} transition={{ delay: 0.5 }} style={{ opacity: scrollUnlocked ? scrollPromptOpacity : 0 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <span className="text-[10px] tracking-[0.3em] uppercase" style={{ fontFamily: F.heading, color: C.sage }}>Scroll</span>
+          <div className="w-5 h-8 rounded-full border flex justify-center pt-1.5" style={{ borderColor: `${C.sage}60` }}><div className="w-1 h-2 rounded-full" style={{ background: C.sage, animation: "hg-scroll-bounce 2s ease-in-out infinite" }} /></div>
         </motion.div>
       </section>
+
 
       {/* ═══════════════════ SERVICES / OUR CRAFT ═══════════════════ */}
       <section
         id="craft"
-        className="relative overflow-hidden"
+        className="relative overflow-visible"
         style={{
           background: C.deepForest,
           color: C.parchment,
           zIndex: 30,
-          height: "115vh",
+          height: "220vh",
+          marginTop: "-1px",
         }}
       >
+        {/* ── Section transition — gold hairline ── */}
+        <div className="absolute left-0 right-0 z-[3] pointer-events-none" style={{ top: "-1px" }}>
+          <div style={{ height: "1px", background: C.gold }} />
+        </div>
+
         {/* Background texture */}
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -1207,14 +1345,35 @@ export default function App() {
           style={{ background: `radial-gradient(ellipse 80% 50% at 50% 100%, ${C.emerald}20, transparent)` }}
         />
 
-        {/* Gradient mask — top */}
-        <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none" style={{
-          height: "140px",
-          background: `linear-gradient(to bottom, ${C.deepForest}, transparent)`,
+        {/* ── Section Header ── */}
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="relative z-30 pt-[282px] sm:pt-[357px] pb-6 px-6">
+          <div className="text-center">
+            <p className="text-[13px] tracking-[0.6em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What We Do</p>
+            <div className="relative">
+              <h2 className="text-[8.4rem] sm:text-[12rem] md:text-[19.2rem] tracking-[0.14em] uppercase leading-[0.85] font-bold" style={{
+                fontFamily: F.heading,
+                color: C.gold,
+                maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+              }}>
+                CRAFT
+              </h2>
+              <p className="relative text-lg sm:text-xl tracking-[0.2em] uppercase opacity-60" style={{ fontFamily: F.heading, color: C.parchment, marginTop: "-22px" }}>
+                Design · Development · Strategy
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Gradient mask — top dissolve */}
+        <div className="absolute left-0 right-0 z-20 pointer-events-none" style={{
+          top: "540px",
+          height: "200px",
+          background: `linear-gradient(to bottom, ${C.deepForest} 0%, ${C.deepForest} 20%, transparent 100%)`,
         }} />
-        {/* Gradient mask — bottom */}
+        {/* Gradient mask — bottom dissolve */}
         <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none" style={{
-          height: "140px",
+          height: "120px",
           background: `linear-gradient(to top, ${C.deepForest}, transparent)`,
         }} />
 
@@ -1226,9 +1385,9 @@ export default function App() {
           const track3 = [...services.slice(1), ...services.slice(0, 1), ...services, ...services, ...services.slice(1), ...services.slice(0, 1)];
 
           /* ── FIXED DIMENSIONS — identical at every breakpoint ── */
-          const cardW = 336;
-          const cardH = 480;
-          const gap = 36;
+          const cardW = 380;
+          const cardH = 520;
+          const gap = 42;
           const archRadius = "50% 50% 10px 10px / 42% 42% 10px 10px";
 
           /* Column count based purely on what fits at fixed card size */
@@ -1246,89 +1405,119 @@ export default function App() {
           const trackDirections = ["up", "down", "up"];
           const trackDurations = ["110s", "120s", "115s"];
 
+          /* ─── Lucide icon map for services ─── */
+          const lucideIcon = (key: string, color: string, size: number) => {
+            const props = { color, size, strokeWidth: 1.5 };
+            switch (key) {
+              case "tower": return <Globe {...props} />;
+              case "scroll": return <Target {...props} />;
+              case "brain": return <Bot {...props} />;
+              case "quill": return <Sparkles {...props} />;
+              case "lens": return <Search {...props} />;
+              case "compass": return <Megaphone {...props} />;
+              case "book": return <BookOpen {...props} />;
+              case "gears": return <Cog {...props} />;
+              case "crystal": return <BarChart3 {...props} />;
+              default: return <Globe {...props} />;
+            }
+          };
+
+          /* ─── 10 emblem treatments — only the watermark changes ─── */
+
+          const renderEmblem = (s: typeof services[0], ac: string, v: number) => {
+            const ico = (size: number, extra?: React.CSSProperties) => (
+              <div className="absolute pointer-events-none" style={extra}>
+                {lucideIcon(s.iconKey, ac, size)}
+              </div>
+            );
+
+            /* 1: Soft Centered — current default, clean centered watermark */
+            if (v === 0) return ico(160, { left: "50%", top: "50%", transform: "translate(-50%, -45%)", opacity: 0.07 });
+
+            /* 2: Dome Crown — icon sits in the arch dome area, large and proud */
+            if (v === 1) return ico(200, { left: "50%", top: "8%", transform: "translateX(-50%)", opacity: 0.06 });
+
+            /* 3: Blurred Halo — icon with heavy blur creating a soft glow */
+            if (v === 2) return (
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "45%", transform: "translate(-50%, -50%)", opacity: 0.12, filter: "blur(12px)" }}>
+                {lucideIcon(s.iconKey, ac, 180)}
+              </div>
+            );
+
+            /* 4: Ghost Echo — two icons stacked, offset, different sizes */
+            if (v === 3) return (<>
+              {ico(200, { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 0.04 })}
+              {ico(100, { left: "50%", top: "48%", transform: "translate(-50%, -50%)", opacity: 0.09 })}
+            </>);
+
+            /* 5: Radial Burst — icon with radiating concentric circles */
+            if (v === 4) return (<>
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "42%", transform: "translate(-50%, -50%)", width: "260px", height: "260px", borderRadius: "50%", border: `1px solid ${ac}`, opacity: 0.04 }} />
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "42%", transform: "translate(-50%, -50%)", width: "190px", height: "190px", borderRadius: "50%", border: `1px solid ${ac}`, opacity: 0.06 }} />
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "42%", transform: "translate(-50%, -50%)", width: "120px", height: "120px", borderRadius: "50%", border: `1px solid ${ac}`, opacity: 0.08 }} />
+              {ico(80, { left: "50%", top: "42%", transform: "translate(-50%, -50%)", opacity: 0.1 })}
+            </>);
+
+            /* 6: Corner Drift — icon floats in top-right, rotated, atmospheric */
+            if (v === 5) return ico(180, { right: "-15%", top: "5%", transform: "rotate(15deg)", opacity: 0.05 });
+
+            /* 7: Double Layer — sharp small icon over massive blurred one */
+            if (v === 6) return (<>
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "40%", transform: "translate(-50%, -50%)", opacity: 0.04, filter: "blur(8px)" }}>
+                {lucideIcon(s.iconKey, ac, 240)}
+              </div>
+              {ico(70, { left: "50%", top: "25%", transform: "translate(-50%, -50%)", opacity: 0.12 })}
+            </>);
+
+            /* 8: Etched Ring — icon inside a thin decorative circle with dots */
+            if (v === 7) return (<>
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "38%", transform: "translate(-50%, -50%)", width: "180px", height: "180px", borderRadius: "50%", border: `1.5px dashed ${ac}`, opacity: 0.08 }} />
+              <div className="absolute pointer-events-none" style={{ left: "50%", top: "38%", transform: "translate(-50%, -50%)", width: "160px", height: "160px", borderRadius: "50%", border: `0.5px solid ${ac}`, opacity: 0.06 }} />
+              {ico(90, { left: "50%", top: "38%", transform: "translate(-50%, -50%)", opacity: 0.09 })}
+            </>);
+
+            /* 9: Scattered Seeds — three small icons scattered at different angles */
+            if (v === 8) return (<>
+              {ico(60, { left: "15%", top: "15%", transform: "rotate(-20deg)", opacity: 0.06 })}
+              {ico(90, { left: "55%", top: "35%", transform: "rotate(10deg)", opacity: 0.05 })}
+              {ico(45, { right: "10%", top: "60%", transform: "rotate(25deg)", opacity: 0.07 })}
+            </>);
+
+            /* 10: Monumental — fills entire card height, ultra faint */
+            return ico(340, { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 0.035 });
+          };
+
           const renderCard = (s: typeof services[0], filled: boolean) => {
-            const tc = filled ? C.deepForest : C.paleGold;
+            const tc = filled ? C.deepForest : C.parchment;
             const ac = filled ? C.deepForest : C.gold;
-            const lc = filled ? `${C.deepForest}20` : `${C.gold}18`;
+            const bf = bodyFonts[4]; /* Locked: Libre Baskerville */
 
             return (
-              <div className="relative z-10 flex flex-col items-center h-full px-6">
-                {/* ── Radiating lines from dome peak ── */}
-                <div className="absolute top-0 left-0 right-0 pointer-events-none overflow-hidden" style={{ height: "55%", borderRadius: "inherit" }}>
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[8%]" style={{
-                    width: "1px", height: "80%",
-                    background: `linear-gradient(to bottom, ${ac}30, ${ac}08, transparent)`,
-                  }} />
-                  <div className="absolute left-1/2 top-[8%] origin-top" style={{
-                    width: "1px", height: "75%", transform: "rotate(-14deg)",
-                    background: `linear-gradient(to bottom, ${ac}20, transparent 70%)`,
-                  }} />
-                  <div className="absolute left-1/2 top-[8%] origin-top" style={{
-                    width: "1px", height: "65%", transform: "rotate(-28deg)",
-                    background: `linear-gradient(to bottom, ${ac}14, transparent 60%)`,
-                  }} />
-                  <div className="absolute left-1/2 top-[8%] origin-top" style={{
-                    width: "1px", height: "75%", transform: "rotate(14deg)",
-                    background: `linear-gradient(to bottom, ${ac}20, transparent 70%)`,
-                  }} />
-                  <div className="absolute left-1/2 top-[8%] origin-top" style={{
-                    width: "1px", height: "65%", transform: "rotate(28deg)",
-                    background: `linear-gradient(to bottom, ${ac}14, transparent 60%)`,
-                  }} />
-                  <div className="absolute top-0 left-0 right-0" style={{
-                    height: "60%",
-                    background: `radial-gradient(ellipse 50% 45% at 50% 15%, ${ac}10, transparent)`,
-                  }} />
-                </div>
-
-                {/* ── Emblem ── */}
-                <div className="relative mt-[48%] mb-3">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
-                    border: `1.5px solid ${filled ? `${C.deepForest}35` : `${C.gold}45`}`,
-                    background: `radial-gradient(circle, ${ac}12, transparent 70%)`,
-                    boxShadow: `0 0 20px ${ac}12`,
-                  }}>
-                    {s.iconKey === "tower" && <EmblemTower color={tc} />}
-                    {s.iconKey === "brain" && <EmblemBrain color={tc} />}
-                    {s.iconKey === "compass" && <EmblemCompass color={tc} />}
-                    {s.iconKey === "gears" && <EmblemGears color={tc} />}
-                    {s.iconKey === "scroll" && <EmblemScroll color={tc} />}
-                    {s.iconKey === "quill" && <EmblemQuill color={tc} />}
-                    {s.iconKey === "lens" && <EmblemLens color={tc} />}
-                    {s.iconKey === "book" && <EmblemBook color={tc} />}
-                    {s.iconKey === "crystal" && <EmblemCrystal color={tc} />}
-                  </div>
-                </div>
-
-                {/* ── Title ── */}
-                <h3 className="text-xl tracking-[0.12em] uppercase text-center leading-snug mb-2"
-                  style={{ fontFamily: F.heading, color: tc, fontWeight: 700 }}>{s.title}</h3>
-
-                {/* ── Divider ── */}
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="h-px w-6" style={{ background: lc }} />
-                  <div className="w-[5px] h-[5px] rotate-45" style={{ background: `${ac}45` }} />
-                  <div className="h-px w-6" style={{ background: lc }} />
-                </div>
-
-                {/* ── Description ── */}
-                <p className="text-[15px] leading-[1.55] text-center max-w-[90%]"
-                  style={{ fontFamily: F.body, color: tc, opacity: 0.75, fontWeight: 500 }}>{s.desc}</p>
-
-                {/* ── Bottom flourish ── */}
-                <div className="mt-auto pb-5 pt-3 flex items-center gap-1.5">
-                  <div className="h-px w-4" style={{ background: `${ac}15` }} />
-                  <div className="w-[4px] h-[4px] rotate-45" style={{ background: `${ac}25` }} />
-                  <div className="w-[3px] h-[3px] rounded-full" style={{ background: `${ac}30` }} />
-                  <div className="w-[4px] h-[4px] rotate-45" style={{ background: `${ac}25` }} />
-                  <div className="h-px w-4" style={{ background: `${ac}15` }} />
-                </div>
+              <div className="relative z-10 flex flex-col items-center h-full px-6 overflow-hidden">
+                {/* Spacer */}
+                <div style={{ flex: "1 1 0", minHeight: "22%" }} />
+                {/* Emblem — swappable treatment */}
+                {renderEmblem(s, ac, cardCombo)}
+                {/* Title — Cinzel bold, locked */}
+                <h3 className="text-[28px] tracking-[0.06em] uppercase text-center leading-tight mb-4 relative" style={{ fontFamily: F.heading, color: tc, fontWeight: 700 }}>{s.title}</h3>
+                {/* Divider */}
+                <div className="w-16 mb-4 relative" style={{ height: "2px", background: `${ac}35` }} />
+                {/* Body — Libre Baskerville, locked */}
+                <p className="text-center max-w-[90%] relative" style={{
+                  fontFamily: bf.css,
+                  fontWeight: bf.weight,
+                  fontSize: bf.size,
+                  lineHeight: bf.lh,
+                  color: tc,
+                  opacity: 0.85,
+                }}>{s.desc}</p>
+                <div style={{ flex: "1 1 0", minHeight: "8%" }} />
               </div>
             );
           };
 
           return (
-            <div className="absolute inset-0 z-10 flex items-start justify-center" style={{ paddingTop: 0 }}>
+            <div className="absolute inset-0 z-10 flex items-start justify-center" style={{ paddingTop: "620px" }}>
               <div className="flex h-full" style={{ width: `${containerW}px`, gap: `${gap}px` }}>
                 {tracks.map((trackServices, colIdx) => {
                   const filled = colCount === 1 ? true : colIdx !== 1;
@@ -1336,7 +1525,7 @@ export default function App() {
                   const dur = trackDurations[colIdx] ?? "35s";
 
                   return (
-                    <div key={colIdx} className="craft-track overflow-hidden relative" style={{ width: `${cardW}px` }}>
+                    <div key={colIdx} className="craft-track relative" style={{ width: `${cardW}px`, maskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 3%, black 92%, transparent 100%)" }}>
                       <div
                         className="craft-track-inner flex flex-col"
                         style={{
@@ -1346,6 +1535,10 @@ export default function App() {
                       >
                         {trackServices.map((s, i) => {
                           const isFilled = colCount === 1 ? i % 2 === 0 : filled;
+
+                          const filledBg = { background: `linear-gradient(175deg, ${C.brightGold}, ${C.gold} 30%, ${C.paleGold} 55%, ${C.gold} 75%, ${C.brightGold})`, boxShadow: `inset 0 2px 8px ${C.deepForest}15, inset 0 -2px 8px ${C.deepForest}10` };
+                          const outlinedBg = { background: C.deepForest, border: `1.5px solid ${C.gold}50`, boxShadow: `inset 0 0 30px ${C.gold}06` };
+
                           return (
                             <div
                               key={`${colIdx}-${i}`}
@@ -1355,16 +1548,7 @@ export default function App() {
                                 width: `${cardW}px`,
                                 height: `${cardH}px`,
                                 minHeight: `${cardH}px`,
-                                ...(isFilled
-                                  ? {
-                                      background: `linear-gradient(175deg, ${C.brightGold}, ${C.gold} 30%, ${C.paleGold} 55%, ${C.gold} 75%, ${C.brightGold})`,
-                                      boxShadow: `inset 0 2px 8px ${C.deepForest}15, inset 0 -2px 8px ${C.deepForest}10`,
-                                    }
-                                  : {
-                                      background: C.deepForest,
-                                      border: `1.5px solid ${C.gold}50`,
-                                      boxShadow: `inset 0 0 30px ${C.gold}06`,
-                                    }),
+                                ...(isFilled ? filledBg : outlinedBg),
                               }}
                             >
                               {isFilled && (
@@ -1393,10 +1577,11 @@ export default function App() {
         })()}
       </section>
 
+
       {/* ═══════════════════ PHILOSOPHY ═══════════════════ */}
-      <Section bg={C.deepForest} color={C.parchment} overlay={<div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />}>
+      <Section bg={C.deepForest} color={C.parchment} className="!py-64 md:!py-80" overlay={<div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />}>
         <div className="flex flex-col md:flex-row items-start gap-10 md:gap-14">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-full md:w-[29%] flex-shrink-0">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-full md:w-[28%] flex-shrink-0">
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden" style={{ border: `2px solid ${C.gold}` }}>
               <img src="/images/portrait.webp" alt="J. O'Brien, Founder" className="w-full h-full object-cover" loading="lazy" decoding="async" width={700} height={700} />
               <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: `linear-gradient(to top, ${C.deepForest}, transparent)` }} />
@@ -1406,12 +1591,108 @@ export default function App() {
               <span className="text-xs opacity-50">Founder</span>
             </div>
           </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }} className="flex-1 md:pt-8">
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
-            <h2 className="text-3xl md:text-5xl tracking-tight mb-8" style={{ fontFamily: F.display, color: C.parchment }}>Craft Before<br /><span style={{ color: C.gold }}>Everything</span></h2>
-            <div className="mb-6"><p className="text-lg md:text-xl leading-relaxed opacity-80" style={{ fontWeight: 300, fontStyle: "italic" }}><span className="float-left text-6xl leading-none mr-3 mt-1" style={{ fontFamily: F.display, color: C.gold, fontStyle: "normal" }}>W</span>e believe the finest digital craft is born where human artistry meets purposeful technology. Timeless design principles, amplified by modern tools and relentless attention to detail.</p></div>
-            <p className="text-base leading-relaxed opacity-60 mb-8" style={{ fontWeight: 300 }}>Studio O'Brien merges deep design tradition with cutting-edge capability to forge digital experiences that feel both enduring and fresh. Every pixel placed with purpose, every interaction designed to resonate.</p>
-            <Ornament className="w-32 md:w-48" color={C.gold} />
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }} className="flex-1 md:pt-0">
+            {philCombo === 0 && (<>
+              {/* 1 — "Built, Not Assembled" + Fraunces 900 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Fraunces', serif", color: C.parchment, fontWeight: 900 }}>Built, Not Assembled</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every website we create starts from nothing — no templates, no themes, no drag-and-drop shortcuts. Just intention, craft, and an obsessive refusal to settle.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien exists because most of the web looks the same. Your business deserves something that was actually made for it — not adapted from a kit that ten thousand other sites already use.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 1 && (<>
+              {/* 2 — "The Details Are the Design" + Instrument Serif */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Instrument Serif', serif", color: C.parchment, fontWeight: 400 }}>The Details Are the Design</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We obsess over the things most people never notice — the weight of a font, the timing of an animation, the way a page makes you feel before you've read a single word. When everything is intentional, people feel it.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that don't just look good. They feel considered. Crafted. Like someone actually gave a damn — because someone did.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 2 && (<>
+              {/* 3 — "Good Enough Never Is" + DM Serif Display */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'DM Serif Display', serif", color: C.parchment, fontWeight: 400 }}>Good Enough Never Is</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Templates are fast. Themes are cheap. And you can always tell. We build from scratch because the businesses we work with deserve more than "close enough."</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every pixel, every interaction, every word — placed with purpose. Studio O'Brien exists for businesses that refuse to blend in.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 3 && (<>
+              {/* 4 — "One Maker. Zero Shortcuts." + Playfair Display 500 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Playfair Display', serif", color: C.parchment, fontWeight: 500 }}>One Maker. Zero Shortcuts.</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>You won't be handed off to a junior designer or run through a production line. Every project gets my full attention, my actual taste, and more revisions than is probably healthy.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a one-person studio by design. Smaller means more care, more craft, and a final product that actually reflects who you are — not who your template vendor decided you should be.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 4 && (<>
+              {/* 5 — "craft is the strategy" + Cinzel 700 */}
+              <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-5xl md:text-7xl tracking-[0.04em] mb-4 leading-[0.95]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>craft is the strategy</h2>
+              <p className="text-sm tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-20 mb-5" style={{ height: "1px", background: C.gold }} />
+              <p className="text-xl md:text-2xl leading-[1.7] opacity-80 mb-3" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The most strategic thing you can do is build something real. Something someone actually made — with intent behind every decision and purpose behind every pixel.</p>
+              <div className="w-10 my-2" style={{ height: "1px", background: `${C.gold}30` }} />
+              <p className="text-lg leading-[1.7] opacity-55 mb-5" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien merges design instinct with modern capability. The result is work that doesn't just perform — it resonates. And resonance is what turns visitors into believers.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 5 && (<>
+              {/* 6 — "We Build What Templates Can't" + Young Serif */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Young Serif', serif", color: C.parchment, fontWeight: 400 }}>We Build What Templates Can't</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>There's a ceiling to what pre-made solutions can do. It shows in the layouts that all look the same, the interactions that all feel the same. We start from zero so you don't end up at average.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Every Studio O'Brien project is built by hand — designed, coded, and refined until it's something only your business could own.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 6 && (<>
+              {/* 7 — "Obsession Is the Method" + Bodoni Moda 700 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Bodoni Moda', serif", color: C.parchment, fontWeight: 700 }}>Obsession Is the Method</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>We don't have a "good enough" threshold. Every font weight, every color value, every hover state gets the same unreasonable attention. That's not a bug — it's the entire point.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds for businesses that understand: the details aren't decoration. They're what separates forgettable from unforgettable.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 7 && (<>
+              {/* 8 — "Every Pixel Earned" + Literata 900 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Literata', serif", color: C.parchment, fontWeight: 900 }}>Every Pixel Earned</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Nothing in our work is default. No auto-generated layouts, no stock solutions, no "that'll do." Every element exists because it was chosen, tested, and refined.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien is a craft studio — small by choice, meticulous by nature. We build digital experiences that feel like someone actually cared. Because someone did.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 8 && (<>
+              {/* 9 — "Your Brand Deserves a Maker" + Cormorant Infant 700 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Cormorant Infant', serif", color: C.parchment, fontWeight: 700 }}>Your Brand Deserves a Maker</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Not an agency. Not a template marketplace. A maker — someone who treats your business like their own and builds something worthy of it.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien combines design instinct, development skill, and genuine care into work that stands apart. One person. Full attention. No shortcuts.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
+            {philCombo === 9 && (<>
+              {/* 10 — "Where Craft Meets Conviction" + Noto Serif Display 900 */}
+              <p className="text-[11px] tracking-[0.35em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <h2 className="text-4xl md:text-6xl tracking-tight mb-3 leading-[1]" style={{ fontFamily: "'Noto Serif Display', serif", color: C.parchment, fontWeight: 900 }}>Where Craft Meets Conviction</h2>
+              <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
+              <div className="w-16 mb-8" style={{ height: "1px", background: C.gold }} />
+              <p className="text-lg md:text-xl leading-[1.75] opacity-80 mb-6" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>The best work comes from caring too much — about the typography, the timing, the way a page makes someone feel before they've read a single word.</p>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif", fontWeight: 400 }}>Studio O'Brien builds websites that don't just convert. They convince. Because when craft is real, people trust it.</p>
+              <Ornament className="w-32 md:w-48" color={C.gold} />
+            </>)}
           </motion.div>
         </div>
       </Section>
@@ -1433,111 +1714,908 @@ export default function App() {
         }
       >
         {/* ── Section Header ── */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={vp}
-          className="text-center mb-12 md:mb-16"
-        >
-          <div className="flex items-center justify-center gap-5 md:gap-8">
-            <div
-              className="w-16 md:w-28 h-px"
-              style={{ background: `linear-gradient(to right, transparent, ${C.gold}60)` }}
-            />
-            <h2
-              className="text-xl md:text-2xl lg:text-3xl tracking-[0.35em] uppercase"
-              style={{ fontFamily: F.heading, color: C.gold }}
-            >
-              Our Process
-            </h2>
-            <div
-              className="w-16 md:w-28 h-px"
-              style={{ background: `linear-gradient(to left, transparent, ${C.gold}60)` }}
-            />
-          </div>
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center mb-16 md:mb-24">
+          <p className="text-[10px] tracking-[0.45em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400 }}>Our Process</p>
+          <h2 className="text-3xl md:text-5xl tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Cormorant Garamond', serif", color: C.parchment, fontWeight: 600, fontStyle: "italic" }}>Ten Steps to Something Real</h2>
+          <p className="text-[11px] tracking-[0.25em] uppercase mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400 }}>From First Conversation to Final Pixel</p>
         </motion.div>
 
-        {/* ── Process: Large Diagram + 5-Column Strip Below ── */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }}>
-          {/* Mobile: stacked */}
-          <div className="md:hidden">
-            <div className="max-w-sm mx-auto mb-8">
-              <svg viewBox="-10 0 1020 970" className="w-full h-auto" role="img" aria-label="Interconnected process diagram">
-                <defs>
-                  <pattern id="proc-hatch" width={7} height={7} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <line x1={0} y1={0} x2={0} y2={7} stroke={C.parchment} strokeWidth={0.8} opacity={0.22} />
-                  </pattern>
-                  {pCircles.map((_c, i) => (
-                    <clipPath key={i} id={`pc-${i}`}><circle cx={pCircles[i].x} cy={pCircles[i].y} r={pCr} /></clipPath>
+        {/* ── Process Variants ── */}
+
+        {/* 1 — The Constellation: interactive zooming tour */}
+        {processCombo === 0 && (
+          <div className="relative max-w-4xl mx-auto">
+            {/* Large viewport container */}
+            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: "1/1", border: `1px solid ${C.gold}12` }}>
+              {/* Transformable SVG wrapper — zooms & rotates to each node */}
+              <motion.div
+                animate={{ scale: tourScale, x: `${tourTx}%`, y: `${tourTy}%`, rotate: tourRotate }}
+                transition={{ duration: 0.7, ease: [0.33, 0, 0.2, 1] }}
+                style={{ width: "100%", height: "100%", willChange: "transform", transformOrigin: "50% 50%", backfaceVisibility: "hidden" as const }}
+              >
+                <svg viewBox="0 0 800 800" style={{ width: "100%", height: "100%", shapeRendering: "geometricPrecision" }}>
+                  <defs>
+                    <pattern id="hatchGold" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+                      <line x1="0" y1="0" x2="0" y2="6" stroke={C.gold} strokeWidth="0.5" opacity="0.18" />
+                    </pattern>
+                    <pattern id="hatchFine" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(-45)">
+                      <line x1="0" y1="0" x2="0" y2="4" stroke={C.gold} strokeWidth="0.3" opacity="0.1" />
+                    </pattern>
+                    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor={C.gold} stopOpacity={0.12} />
+                      <stop offset="100%" stopColor={C.gold} stopOpacity={0} />
+                    </radialGradient>
+                    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor={C.brightGold} stopOpacity={0.35} />
+                      <stop offset="60%" stopColor={C.gold} stopOpacity={0.08} />
+                      <stop offset="100%" stopColor={C.gold} stopOpacity={0} />
+                    </radialGradient>
+                    {cNodes.map((node, i) => (
+                      <clipPath key={`vp-clip-${i}`} id={`vpClip${i}`}>
+                        <circle cx={node.x} cy={node.y} r={cOverlapR} />
+                      </clipPath>
+                    ))}
+                  </defs>
+
+                  {/* Interlocking overlap circles */}
+                  {cNodes.map((node, i) => (
+                    <circle key={`overlap-${i}`} cx={node.x} cy={node.y} r={cOverlapR}
+                      fill="none" stroke={C.gold} strokeWidth="0.5"
+                      opacity={tourStep === i ? 0.25 : 0.08}
+                      style={{ transition: "opacity 0.8s ease" }}
+                    />
                   ))}
-                </defs>
-                {pBadges.map((b, i) => { const next = pBadges[(i + 1) % 5]; return (<line key={`pl-${i}`} x1={b.x} y1={b.y} x2={next.x} y2={next.y} stroke={C.gold} strokeWidth={1} strokeDasharray="6 4" opacity={0.3} />); })}
-                <polygon points={pBadges.map((b) => `${b.x},${b.y}`).join(" ")} fill={C.gold} fillOpacity={0.04} stroke="none" />
-                {pCircles.map((c, i) => (<circle key={`co-${i}`} cx={c.x} cy={c.y} r={pCr} fill="none" stroke={C.parchment} strokeWidth={1.5} opacity={0.25} />))}
-                {pAdj.map(([a, b]) => (<circle key={`hz-${a}-${b}`} cx={pCircles[a].x} cy={pCircles[a].y} r={pCr} fill="url(#proc-hatch)" clipPath={`url(#pc-${b})`} />))}
-                {pLabels.map((l, i) => (
-                  <text key={`lt-${i}`} x={l.x} y={l.y - 12} textAnchor="middle" fill={C.parchment} fontSize={26} fontFamily={F.heading} letterSpacing="0.04em" fontWeight="bold" opacity={0.85}>
-                    <tspan x={l.x} dy="0">{jProcess[i].label[0]}</tspan>
-                    <tspan x={l.x} dy="30">{jProcess[i].label[1]}</tspan>
-                  </text>
-                ))}
-                {pBadges.map((b, i) => (<g key={`bg-${i}`}><circle cx={b.x} cy={b.y} r={24} fill={C.gold} /><text x={b.x} y={b.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.deepForest} fontSize={18} fontWeight="bold" fontFamily={F.heading}>{jProcess[i].num}</text></g>))}
-                {pMids.map((m, i) => (<text key={`il-${i}`} x={m.x} y={m.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.gold} fontSize={20} fontFamily={F.heading} letterSpacing="0.06em" fontWeight="bold" opacity={0.7}>{pInterLabels[i]}</text>))}
-              </svg>
-            </div>
-            <div className="grid grid-cols-1 gap-5">
-              {jProcess.map((p, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: C.gold, color: C.deepForest, fontFamily: F.heading }}>{p.num}</div>
-                  <div>
-                    <p className="text-base tracking-wider uppercase mb-1" style={{ fontFamily: F.heading, color: C.paleGold }}>{p.label.join(" ")}</p>
-                    <p className="text-sm leading-relaxed opacity-50" style={{ fontWeight: 300 }}>{p.note}</p>
-                  </div>
+
+                  {/* Vesica piscis hatched fills */}
+                  {cNodes.map((_node, i) => {
+                    const next = cNodes[(i + 1) % 10];
+                    return (
+                      <circle key={`vp-${i}`} cx={next.x} cy={next.y} r={cOverlapR}
+                        fill="url(#hatchGold)" clipPath={`url(#vpClip${i})`} opacity="0.6"
+                      />
+                    );
+                  })}
+
+                  {/* Radial web — lines from each node to center */}
+                  {cNodes.map((node, i) => (
+                    <line key={`web-${i}`} x1={node.x} y1={node.y} x2={cxP} y2={cyP}
+                      stroke={C.gold} strokeWidth={tourStep === i ? 1 : 0.5}
+                      opacity={tourStep === i ? 0.3 : 0.08}
+                      style={{ transition: "all 0.8s ease" }}
+                    />
+                  ))}
+
+                  {/* Star pentagon A (nodes 0,2,4,6,8) */}
+                  <path d={cStarPath([0, 2, 4, 6, 8])}
+                    fill="none" stroke={C.gold} strokeWidth="1" opacity="0.18"
+                  />
+                  {/* Star pentagon B (nodes 1,3,5,7,9) */}
+                  <path d={cStarPath([1, 3, 5, 7, 9])}
+                    fill="none" stroke={C.brightGold} strokeWidth="0.8" opacity="0.12"
+                  />
+
+                  {/* Decagon outline */}
+                  <polygon
+                    points={cNodes.map(n => `${n.x.toFixed(2)},${n.y.toFixed(2)}`).join(" ")}
+                    fill="none" stroke={C.gold} strokeWidth="0.8" opacity="0.12"
+                  />
+
+                  {/* ═══ Center Medallion — Architectural Blueprint Hub ═══ */}
+                  <g>
+                    {/* Outer glow halo */}
+                    <circle cx={cxP} cy={cyP} r="90" fill="url(#centerGlow)" />
+
+                    {/* Outermost ring — 60 precision tick marks (clock/compass face) */}
+                    {cTicks.map((t, i) => (
+                      <line key={`tick-${i}`} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+                        stroke={C.gold} strokeWidth={i % 5 === 0 ? 1.2 : 0.3} opacity={i % 5 === 0 ? 0.45 : 0.12} />
+                    ))}
+
+                    {/* Triple concentric border rings */}
+                    <circle cx={cxP} cy={cyP} r="78" fill="none" stroke={C.gold} strokeWidth="0.4" opacity="0.12" />
+                    <circle cx={cxP} cy={cyP} r="68" fill="none" stroke={C.gold} strokeWidth="0.3" opacity="0.08" strokeDasharray="2 3" />
+                    <circle cx={cxP} cy={cyP} r="58" fill="none" stroke={C.gold} strokeWidth="1.5" opacity="0.35" />
+                    <circle cx={cxP} cy={cyP} r="56" fill="none" stroke={C.gold} strokeWidth="0.4" opacity="0.15" />
+
+                    {/* Hatched annulus between r=56 and r=50 */}
+                    <circle cx={cxP} cy={cyP} r="53" fill="url(#hatchFine)" />
+                    <circle cx={cxP} cy={cyP} r="50" fill={C.deepForest} />
+                    <circle cx={cxP} cy={cyP} r="50" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.3" />
+
+                    {/* 8-pointed architectural star (two overlapping rotated squares) */}
+                    {[0, 45].map(rot => (
+                      <rect key={`star-sq-${rot}`} x={cxP - 32} y={cyP - 32} width="64" height="64"
+                        fill="none" stroke={C.gold} strokeWidth="0.6" opacity="0.2"
+                        transform={`rotate(${rot}, ${cxP}, ${cyP})`}
+                      />
+                    ))}
+                    {/* Inner diamond from the star intersection */}
+                    <polygon
+                      points={[0, 90, 180, 270].map(deg => {
+                        const r = 24;
+                        return `${cxP + r * Math.cos(deg * Math.PI / 180)},${cyP + r * Math.sin(deg * Math.PI / 180)}`;
+                      }).join(" ")}
+                      fill="none" stroke={C.gold} strokeWidth="0.8" opacity="0.25"
+                    />
+
+                    {/* 16-point compass rose — graduated spokes */}
+                    {cRosePoints.map((r, i) => (
+                      <line key={`rose-${i}`} x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2}
+                        stroke={C.brightGold} strokeWidth={i % 4 === 0 ? 1.8 : i % 2 === 0 ? 1 : 0.4} opacity={i % 4 === 0 ? 0.55 : 0.2} />
+                    ))}
+
+                    {/* 4 cardinal arrowhead ornaments */}
+                    {[0, 4, 8, 12].map(idx => {
+                      const a = (2 * Math.PI * idx) / 16;
+                      const tipX = cxP + 42 * Math.cos(a), tipY = cyP + 42 * Math.sin(a);
+                      const lx = cxP + 6 * Math.cos(a + Math.PI / 2), ly = cyP + 6 * Math.sin(a + Math.PI / 2);
+                      const rx = cxP + 6 * Math.cos(a - Math.PI / 2), ry = cyP + 6 * Math.sin(a - Math.PI / 2);
+                      return <polygon key={`card-${idx}`} points={`${tipX},${tipY} ${lx},${ly} ${cxP},${cyP} ${rx},${ry}`} fill={C.gold} opacity="0.1" />;
+                    })}
+
+                    {/* Inner filled hub */}
+                    <circle cx={cxP} cy={cyP} r="20" fill={C.deepForest} />
+                    <circle cx={cxP} cy={cyP} r="20" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.45" />
+                    <circle cx={cxP} cy={cyP} r="17" fill="none" stroke={C.gold} strokeWidth="0.3" opacity="0.2" />
+
+                    {/* 5 service offering labels around inner ring */}
+                    {(() => {
+                      const offerings = ["DESIGN", "BUILD", "STRATEGY", "LAUNCH", "GROW"];
+                      const labelR = 63;
+                      return offerings.map((label, i) => {
+                        const a = (2 * Math.PI * i) / 5 - Math.PI / 2;
+                        const lx = cxP + labelR * Math.cos(a);
+                        const ly = cyP + labelR * Math.sin(a);
+                        const rotDeg = (a * 180) / Math.PI + (a > Math.PI / 2 && a < (3 * Math.PI) / 2 ? 180 : 0);
+                        return (
+                          <text key={`off-${i}`} x={lx} y={ly}
+                            textAnchor="middle" dominantBaseline="middle"
+                            fontSize="5" letterSpacing="2.5" fill={C.paleGold} opacity="0.45"
+                            fontFamily="'Cormorant SC', serif" fontWeight="400"
+                            transform={`rotate(${rotDeg.toFixed(1)},${lx.toFixed(1)},${ly.toFixed(1)})`}
+                          >{label}</text>
+                        );
+                      });
+                    })()}
+
+                    {/* 10 small dots on the r=56 ring at step angles */}
+                    {cNodes.map((_, i) => {
+                      const a = (2 * Math.PI * i) / 10 - Math.PI / 2;
+                      return (
+                        <circle key={`hub-dot-${i}`} cx={cxP + 56 * Math.cos(a)} cy={cyP + 56 * Math.sin(a)} r="1.5"
+                          fill={C.gold} opacity={tourStep === i ? 0.8 : 0.2}
+                          style={{ transition: "opacity 0.4s ease" }}
+                        />
+                      );
+                    })}
+
+                    {/* Center crosshair — architectural precision mark */}
+                    <line x1={cxP - 10} y1={cyP} x2={cxP + 10} y2={cyP} stroke={C.gold} strokeWidth="0.6" opacity="0.4" />
+                    <line x1={cxP} y1={cyP - 10} x2={cxP} y2={cyP + 10} stroke={C.gold} strokeWidth="0.6" opacity="0.4" />
+                    <circle cx={cxP} cy={cyP} r="3" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.35" />
+                    <circle cx={cxP} cy={cyP} r="1.2" fill={C.gold} opacity="0.5" />
+                  </g>
+
+                  {/* Phase labels along outer edge */}
+                  {cPhaseArcs.map((p, i) => (
+                    <text key={`phase-${i}`} x={p.x} y={p.y}
+                      textAnchor="middle" dominantBaseline="middle"
+                      fontSize="8" letterSpacing="3.5" fill={C.paleGold} opacity="0.35"
+                      fontFamily="'Cormorant SC', serif" fontWeight="400"
+                      transform={`rotate(${p.rotate.toFixed(1)},${p.x.toFixed(1)},${p.y.toFixed(1)})`}
+                    >{p.label}</text>
+                  ))}
+
+                  {/* Active node glow ring — pulses when zoomed in */}
+                  {tourStep >= 0 && (
+                    <motion.circle
+                      key={`glow-${tourStep}`}
+                      cx={cNodes[tourStep].x} cy={cNodes[tourStep].y} r="36"
+                      fill="url(#nodeGlow)" stroke={C.brightGold} strokeWidth="1"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: [0, 0.5, 0.25, 0.5], scale: [0.85, 1.05, 0.95, 1.05] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      style={{ transformOrigin: `${cNodes[tourStep].x}px ${cNodes[tourStep].y}px` }}
+                    />
+                  )}
+
+                  {/* Node badges at each decagon vertex */}
+                  {cNodes.map((node, i) => {
+                    const isActive = tourStep === i;
+                    return (
+                      <g key={`badge-${i}`}>
+                        {/* Outer decorative ring */}
+                        <circle cx={node.x} cy={node.y} r="26" fill="none" stroke={C.gold} strokeWidth="0.4"
+                          opacity={isActive ? 0.5 : 0.12}
+                          style={{ transition: "opacity 0.6s ease" }}
+                        />
+                        {/* Main ring */}
+                        <circle cx={node.x} cy={node.y} r="22" fill="none" stroke={C.gold}
+                          strokeWidth={isActive ? 2.5 : 1.5}
+                          opacity={isActive ? 1 : 0.5}
+                          style={{ transition: "all 0.6s ease" }}
+                        />
+                        {/* Inner fill */}
+                        <circle cx={node.x} cy={node.y} r="18" fill={C.deepForest} stroke={C.gold} strokeWidth="0.5" opacity="0.95" />
+                        {/* Step number */}
+                        <text x={node.x} y={node.y} textAnchor="middle" dominantBaseline="middle"
+                          fontSize={isActive ? 12 : 10} fontWeight="300" fill={isActive ? C.brightGold : C.gold} fontFamily="'Cormorant Garamond', serif"
+                          letterSpacing="0.5" style={{ transition: "all 0.4s ease" }}
+                        >{proc[i].n}</text>
+                        {/* Step name (below badge — visible at zoom) */}
+                        <text x={node.x} y={node.y + 34} textAnchor="middle" dominantBaseline="middle"
+                          fontSize="7" fill={C.parchment} fontFamily="'Cormorant SC', serif"
+                          letterSpacing="2" fontWeight="400"
+                          opacity={isActive ? 0.85 : 0.4}
+                          style={{ transition: "opacity 0.4s ease" }}
+                        >{proc[i].name.toUpperCase()}</text>
+                      </g>
+                    );
+                  })}
+
+                  {/* Connecting arc highlight for active phase */}
+                  {tourStep >= 0 && (() => {
+                    const phaseIdx = Math.floor(tourStep / 2);
+                    const phase = cPhases[phaseIdx];
+                    const n1 = cNodes[phase.from], n2 = cNodes[phase.to];
+                    return (
+                      <motion.line
+                        x1={n1.x} y1={n1.y} x2={n2.x} y2={n2.y}
+                        stroke={C.brightGold} strokeWidth="1.5" strokeDasharray="4 4"
+                        initial={{ opacity: 0, pathLength: 0 }}
+                        animate={{ opacity: 0.4, pathLength: 1 }}
+                        transition={{ duration: 0.8 }}
+                      />
+                    );
+                  })()}
+                </svg>
+              </motion.div>
+
+              {/* ── Info overlay panel — appears when zoomed ── */}
+              <motion.div
+                className="absolute inset-0 flex items-end justify-center pointer-events-none"
+                style={{ paddingBottom: "8%" }}
+                animate={{ opacity: stepInfoVisible ? 1 : 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {tourStep >= 0 && (() => {
+                  const phase = cPhases[Math.floor(tourStep / 2)].label;
+                  const num = proc[tourStep].n;
+                  const name = proc[tourStep].name;
+                  const desc = proc[tourStep].desc;
+
+                  return (
+                    <motion.div
+                      className="text-left pointer-events-none"
+                      style={{
+                        width: "min(340px, 85%)",
+                        background: `linear-gradient(135deg, ${C.deepForest}f5, ${C.darkBark}f2)`,
+                        borderLeft: `2px solid ${C.gold}`,
+                        backdropFilter: "blur(16px)",
+                        boxShadow: `0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px ${C.gold}0a`,
+                        padding: "20px 24px 18px",
+                      }}
+                      initial={{ y: 14, opacity: 0.8 }} animate={{ y: stepInfoVisible ? 0 : 14, opacity: stepInfoVisible ? 1 : 0.8 }} transition={{ duration: 0.28, ease: "easeOut" }}
+                    >
+                      {/* Top row: number + phase + mini progress bar */}
+                      <div className="flex items-end gap-4 mb-3">
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", color: C.gold, fontSize: "34px", fontWeight: 300, lineHeight: 0.85, letterSpacing: "-1px" }}>{num}</span>
+                        <div style={{ paddingBottom: "2px" }}>
+                          <p style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontSize: "8px", letterSpacing: "3.5px", lineHeight: 1, marginBottom: "3px", opacity: 0.7 }}>{phase}</p>
+                          <div className="flex items-center gap-1.5">
+                            {Array.from({ length: 10 }, (_, i) => (
+                              <div key={i} style={{ width: i === tourStep ? "12px" : "4px", height: "2px", borderRadius: "1px", background: i === tourStep ? C.gold : `${C.gold}30`, transition: "all 0.3s ease" }} />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      {/* Step name */}
+                      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: C.parchment, fontSize: "24px", fontWeight: 600, fontStyle: "italic", lineHeight: 1.1, marginBottom: "10px", letterSpacing: "0.3px" }}>{name}</h3>
+                      {/* Gold rule */}
+                      <div style={{ width: "32px", height: "1px", background: `linear-gradient(to right, ${C.gold}50, ${C.gold}00)`, marginBottom: "10px" }} />
+                      {/* Description */}
+                      <p style={{ fontFamily: "'Crimson Text', serif", color: C.parchment, fontSize: "13.5px", lineHeight: 1.75, opacity: 0.7, fontWeight: 400 }}>{desc}</p>
+                    </motion.div>
+                  );
+                })()}
+              </motion.div>
+
+              {/* ── Step progress bar with prev/next arrows ── */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10 px-3 py-2 rounded-full" style={{ background: `${C.deepForest}cc`, backdropFilter: "blur(10px)", border: `1px solid ${C.gold}18` }}>
+                {/* Prev arrow */}
+                <button
+                  onClick={() => {
+                    tourActiveRef.current = false;
+                    tourTimers.current.forEach(clearTimeout);
+                    tourTimers.current = [];
+                    const prev = tourStep <= 0 ? 9 : tourStep - 1;
+                    setTourStep(prev);
+                    setStepInfoVisible(true);
+                  }}
+                  className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
+                  style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                  aria-label="Previous step"
+                >
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M7 1L3 5L7 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                {/* Dots */}
+                <div className="flex items-center gap-1.5">
+                  {proc.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        tourActiveRef.current = false;
+                        tourTimers.current.forEach(clearTimeout);
+                        tourTimers.current = [];
+                        setTourStep(i);
+                        setStepInfoVisible(true);
+                      }}
+                      className="relative cursor-pointer transition-all duration-400"
+                      style={{ width: tourStep === i ? "22px" : "6px", height: "6px", borderRadius: "3px", background: tourStep === i ? C.gold : `${C.gold}30`, opacity: tourStep === i ? 1 : 0.5 }}
+                      aria-label={`Step ${i + 1}: ${proc[i].name}`}
+                    />
+                  ))}
                 </div>
+
+                {/* Next arrow */}
+                <button
+                  onClick={() => {
+                    tourActiveRef.current = false;
+                    tourTimers.current.forEach(clearTimeout);
+                    tourTimers.current = [];
+                    const next = tourStep >= 9 ? 0 : tourStep + 1;
+                    setTourStep(next);
+                    setStepInfoVisible(true);
+                  }}
+                  className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
+                  style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                  aria-label="Next step"
+                >
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M3 1L7 5L3 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* ── Overview / Reset button ── */}
+              {tourStep >= 0 && (
+                <button
+                  onClick={() => {
+                    tourActiveRef.current = false;
+                    tourTimers.current.forEach(clearTimeout);
+                    tourTimers.current = [];
+                    setTourStep(-1);
+                    setStepInfoVisible(false);
+                  }}
+                  className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded text-[9px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 hover:opacity-100"
+                  style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 400, color: C.gold, background: `${C.deepForest}cc`, border: `1px solid ${C.gold}25`, opacity: 0.55, backdropFilter: "blur(8px)" }}
+                >
+                  Overview
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* 2 — The Forge Path: medieval cartographic winding journey map */}
+        {processCombo === 1 && (() => {
+          const wp = [
+            { x: 350, y: 80 }, { x: 200, y: 190 }, { x: 500, y: 300 },
+            { x: 200, y: 410 }, { x: 500, y: 520 }, { x: 200, y: 630 },
+            { x: 500, y: 740 }, { x: 200, y: 850 }, { x: 500, y: 960 },
+            { x: 350, y: 1070 },
+          ];
+          const forgePhases = [
+            { label: "DISCOVERY", i1: 0, i2: 1, shape: "scroll" as const },
+            { label: "BLUEPRINT", i1: 2, i2: 3, shape: "cartouche" as const },
+            { label: "CREATION", i1: 4, i2: 5, shape: "shield" as const },
+            { label: "PERFECTION", i1: 6, i2: 7, shape: "medallion" as const },
+            { label: "GROWTH", i1: 8, i2: 9, shape: "diamond" as const },
+          ];
+          let pathD = `M ${wp[0].x} ${wp[0].y}`;
+          for (let i = 0; i < wp.length - 1; i++) {
+            const curr = wp[i]; const next = wp[i + 1];
+            const midY = (curr.y + next.y) / 2;
+            pathD += ` C ${curr.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}`;
+          }
+          const forgeDiamonds: { x: number; y: number }[] = [];
+          for (let i = 0; i < wp.length - 1; i++) {
+            forgeDiamonds.push({ x: (wp[i].x + wp[i + 1].x) / 2, y: (wp[i].y + wp[i + 1].y) / 2 });
+          }
+          const forgeChevrons: { x: number; y: number; angle: number }[] = [];
+          for (let i = 0; i < wp.length - 1; i++) {
+            const curr = wp[i]; const next = wp[i + 1];
+            forgeChevrons.push({
+              x: curr.x + (next.x - curr.x) * 0.35,
+              y: curr.y + (next.y - curr.y) * 0.35,
+              angle: Math.atan2(next.y - curr.y, next.x - curr.x) * (180 / Math.PI),
+            });
+          }
+          const forgeLeaves = [
+            { x: 120, y: 140, r: 20, flip: false },
+            { x: 580, y: 250, r: -15, flip: true },
+            { x: 100, y: 480, r: 30, flip: false },
+            { x: 600, y: 680, r: -25, flip: true },
+            { x: 130, y: 920, r: 10, flip: false },
+          ];
+          const totalLen = 2800;
+          return (
+          <div className="max-w-3xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.8 }}>
+              <svg viewBox="0 0 700 1200" className="w-full h-auto" style={{ maxWidth: "700px", margin: "0 auto", display: "block" }}>
+                <defs>
+                  <pattern id="forgeDotGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="0.8" fill={C.gold} opacity="0.12" />
+                  </pattern>
+                  <filter id="forgeGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="forgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={C.darkBark} floodOpacity="0.4" />
+                  </filter>
+                </defs>
+
+                {/* Background dot grid */}
+                <rect width="700" height="1200" fill="url(#forgeDotGrid)" opacity="0.5" />
+
+                {/* Corner flourishes */}
+                {[
+                  "",
+                  "translate(700, 0) scale(-1, 1)",
+                  "translate(0, 1200) scale(1, -1)",
+                  "translate(700, 1200) scale(-1, -1)",
+                ].map((t, ci) => (
+                  <g key={`corner-${ci}`} opacity="0.25" stroke={C.gold} strokeWidth="1.5" fill="none" transform={t || undefined}>
+                    <path d="M 15 50 Q 15 15 50 15" />
+                    <path d="M 15 60 Q 15 10 60 10" />
+                    <circle cx="15" cy="15" r="2" fill={C.gold} />
+                    <line x1="15" y1="18" x2="15" y2="35" />
+                    <line x1="18" y1="15" x2="35" y2="15" />
+                  </g>
+                ))}
+
+                {/* S-curve path — outer glow road */}
+                <path d={pathD} fill="none" stroke={`${C.gold}15`} strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Main road stroke */}
+                <motion.path d={pathD} fill="none" stroke={C.gold} strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.55"
+                  initial={{ strokeDasharray: totalLen, strokeDashoffset: totalLen }}
+                  whileInView={{ strokeDashoffset: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                />
+                {/* Inner road dashed line */}
+                <motion.path d={pathD} fill="none" stroke={C.paleGold} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25" strokeDasharray="8 12"
+                  initial={{ strokeDashoffset: totalLen }}
+                  whileInView={{ strokeDashoffset: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 2.8, ease: "easeInOut", delay: 0.3 }}
+                />
+
+                {/* Diamond markers along path */}
+                {forgeDiamonds.map((d, i) => (
+                  <motion.rect key={`fdiam-${i}`} x={d.x - 4} y={d.y - 4} width="8" height="8" fill={C.gold} opacity="0.35" transform={`rotate(45 ${d.x} ${d.y})`}
+                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 0.35, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.8 + i * 0.15 }}
+                  />
+                ))}
+
+                {/* Directional chevron arrows */}
+                {forgeChevrons.map((ch, i) => (
+                  <g key={`fchev-${i}`} transform={`translate(${ch.x}, ${ch.y}) rotate(${ch.angle})`} opacity="0.18">
+                    <path d="M -5 -4 L 2 0 L -5 4" fill="none" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </g>
+                ))}
+
+                {/* Start emblem — pennant/flag */}
+                <motion.g initial={{ opacity: 0, y: -15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+                  <line x1={wp[0].x} y1={wp[0].y - 52} x2={wp[0].x} y2={wp[0].y - 18} stroke={C.gold} strokeWidth="2" opacity="0.7" />
+                  <path d={`M ${wp[0].x} ${wp[0].y - 52} L ${wp[0].x + 28} ${wp[0].y - 44} L ${wp[0].x} ${wp[0].y - 36} Z`} fill={C.gold} opacity="0.6" />
+                  <path d={`M ${wp[0].x} ${wp[0].y - 52} L ${wp[0].x + 28} ${wp[0].y - 44} L ${wp[0].x} ${wp[0].y - 36}`} fill="none" stroke={C.brightGold} strokeWidth="0.8" opacity="0.8" />
+                  <text x={wp[0].x + 34} y={wp[0].y - 42} fill={C.gold} fontSize="9" fontFamily={F.heading} letterSpacing="0.2em" opacity="0.6">START</text>
+                  <circle cx={wp[0].x} cy={wp[0].y - 54} r="3" fill={C.gold} opacity="0.5" />
+                </motion.g>
+
+                {/* Finish emblem — crown/laurel */}
+                <motion.g initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 2.2 }}>
+                  {/* Laurel left */}
+                  <path d={`M ${wp[9].x - 25} ${wp[9].y + 25} Q ${wp[9].x - 30} ${wp[9].y + 45} ${wp[9].x - 10} ${wp[9].y + 55}`} fill="none" stroke={C.sage} strokeWidth="1.5" opacity="0.5" />
+                  <path d={`M ${wp[9].x - 28} ${wp[9].y + 32} Q ${wp[9].x - 22} ${wp[9].y + 30} ${wp[9].x - 24} ${wp[9].y + 26}`} fill={C.sage} opacity="0.35" />
+                  <path d={`M ${wp[9].x - 30} ${wp[9].y + 40} Q ${wp[9].x - 24} ${wp[9].y + 38} ${wp[9].x - 26} ${wp[9].y + 34}`} fill={C.sage} opacity="0.35" />
+                  <path d={`M ${wp[9].x - 28} ${wp[9].y + 48} Q ${wp[9].x - 22} ${wp[9].y + 46} ${wp[9].x - 24} ${wp[9].y + 42}`} fill={C.sage} opacity="0.35" />
+                  {/* Laurel right */}
+                  <path d={`M ${wp[9].x + 25} ${wp[9].y + 25} Q ${wp[9].x + 30} ${wp[9].y + 45} ${wp[9].x + 10} ${wp[9].y + 55}`} fill="none" stroke={C.sage} strokeWidth="1.5" opacity="0.5" />
+                  <path d={`M ${wp[9].x + 28} ${wp[9].y + 32} Q ${wp[9].x + 22} ${wp[9].y + 30} ${wp[9].x + 24} ${wp[9].y + 26}`} fill={C.sage} opacity="0.35" />
+                  <path d={`M ${wp[9].x + 30} ${wp[9].y + 40} Q ${wp[9].x + 24} ${wp[9].y + 38} ${wp[9].x + 26} ${wp[9].y + 34}`} fill={C.sage} opacity="0.35" />
+                  <path d={`M ${wp[9].x + 28} ${wp[9].y + 48} Q ${wp[9].x + 22} ${wp[9].y + 46} ${wp[9].x + 24} ${wp[9].y + 42}`} fill={C.sage} opacity="0.35" />
+                  {/* Crown motif */}
+                  <path d={`M ${wp[9].x - 14} ${wp[9].y + 22} L ${wp[9].x - 10} ${wp[9].y + 16} L ${wp[9].x - 4} ${wp[9].y + 22} L ${wp[9].x} ${wp[9].y + 14} L ${wp[9].x + 4} ${wp[9].y + 22} L ${wp[9].x + 10} ${wp[9].y + 16} L ${wp[9].x + 14} ${wp[9].y + 22}`} fill="none" stroke={C.gold} strokeWidth="1.5" opacity="0.6" />
+                  <line x1={wp[9].x - 14} y1={wp[9].y + 24} x2={wp[9].x + 14} y2={wp[9].y + 24} stroke={C.gold} strokeWidth="1.5" opacity="0.5" />
+                  <text x={wp[9].x} y={wp[9].y + 65} fill={C.gold} fontSize="9" fontFamily={F.heading} letterSpacing="0.2em" opacity="0.5" textAnchor="middle">COMPLETE</text>
+                </motion.g>
+
+                {/* Compass rose — top-right */}
+                <motion.g initial={{ opacity: 0, rotate: -30 }} whileInView={{ opacity: 1, rotate: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.5 }}>
+                  <g transform="translate(610, 90)">
+                    <circle cx="0" cy="0" r="38" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.25" />
+                    <circle cx="0" cy="0" r="35" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.15" strokeDasharray="3 3" />
+                    <circle cx="0" cy="0" r="12" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.3" />
+                    <circle cx="0" cy="0" r="3" fill={C.gold} opacity="0.35" />
+                    {/* N */}
+                    <polygon points="0,-32 -4,-18 4,-18" fill={C.gold} opacity="0.55" />
+                    <polygon points="0,-32 -2.5,-20 2.5,-20" fill={C.brightGold} opacity="0.3" />
+                    {/* S */}
+                    <polygon points="0,32 -4,18 4,18" fill={C.gold} opacity="0.35" />
+                    {/* E */}
+                    <polygon points="32,0 18,-4 18,4" fill={C.gold} opacity="0.35" />
+                    {/* W */}
+                    <polygon points="-32,0 -18,-4 -18,4" fill={C.gold} opacity="0.35" />
+                    {/* NE */}
+                    <polygon points="22,-22 10,-14 14,-10" fill={C.gold} opacity="0.2" />
+                    {/* NW */}
+                    <polygon points="-22,-22 -10,-14 -14,-10" fill={C.gold} opacity="0.2" />
+                    {/* SE */}
+                    <polygon points="22,22 10,14 14,10" fill={C.gold} opacity="0.2" />
+                    {/* SW */}
+                    <polygon points="-22,22 -10,14 -14,10" fill={C.gold} opacity="0.2" />
+                    <text x="0" y="-40" fill={C.gold} fontSize="8" fontFamily={F.heading} textAnchor="middle" opacity="0.5">N</text>
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+                      <line key={`ctick-${a}`} x1="0" y1="-36" x2="0" y2="-33" stroke={C.gold} strokeWidth="0.7" opacity="0.3" transform={`rotate(${a})`} />
+                    ))}
+                  </g>
+                </motion.g>
+
+                {/* Botanical leaf motifs */}
+                {forgeLeaves.map((leaf, i) => (
+                  <motion.g key={`fleaf-${i}`} initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 1.0 + i * 0.2 }}
+                    transform={`translate(${leaf.x}, ${leaf.y}) rotate(${leaf.r}) ${leaf.flip ? "scale(-1,1)" : ""}`}>
+                    <path d="M 0 0 Q 5 -8 3 -18" fill="none" stroke={C.sage} strokeWidth="1" opacity="0.4" />
+                    <path d="M 3 -18 Q 10 -22 8 -14 Q 12 -16 3 -18" fill={C.sage} opacity="0.2" />
+                    <path d="M 3 -18 Q -2 -24 0 -12 Q -4 -16 3 -18" fill={C.sage} opacity="0.15" />
+                    <path d="M 2 -8 Q 7 -12 6 -6" fill={C.sage} opacity="0.15" />
+                  </motion.g>
+                ))}
+
+                {/* Phase banners */}
+                {forgePhases.map((phase, pi) => {
+                  const p1 = wp[phase.i1]; const p2 = wp[phase.i2];
+                  const bx = (p1.x + p2.x) / 2;
+                  const by = (p1.y + p2.y) / 2;
+                  const pushX = bx < 350 ? -65 : bx > 350 ? 65 : 0;
+                  const fbx = bx + pushX; const fby = by;
+                  return (
+                    <motion.g key={`fphase-${pi}`} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 1.2 + pi * 0.25 }} filter="url(#forgeShadow)">
+                      {phase.shape === "scroll" && (
+                        <g transform={`translate(${fbx}, ${fby})`}>
+                          <path d="M -42 -12 Q -48 -12 -48 -6 Q -48 0 -42 0 L -42 -4 L 42 -4 L 42 0 Q 48 0 48 -6 Q 48 -12 42 -12 Z" fill={C.deepForest} stroke={C.gold} strokeWidth="1" opacity="0.85" />
+                          <path d="M -42 0 Q -46 2 -44 5 Q -42 3 -42 0" fill={C.gold} opacity="0.2" />
+                          <path d="M 42 0 Q 46 2 44 5 Q 42 3 42 0" fill={C.gold} opacity="0.2" />
+                          <text x="0" y="-5" fill={C.gold} fontSize="7.5" fontFamily={F.heading} textAnchor="middle" letterSpacing="0.25em" opacity="0.8">{phase.label}</text>
+                        </g>
+                      )}
+                      {phase.shape === "cartouche" && (
+                        <g transform={`translate(${fbx}, ${fby})`}>
+                          <rect x="-44" y="-13" width="88" height="18" rx="2" fill={C.deepForest} stroke={C.gold} strokeWidth="1" opacity="0.85" />
+                          <line x1="-44" y1="-13" x2="-38" y2="-7" stroke={C.gold} strokeWidth="0.7" opacity="0.4" />
+                          <line x1="44" y1="-13" x2="38" y2="-7" stroke={C.gold} strokeWidth="0.7" opacity="0.4" />
+                          <line x1="-44" y1="5" x2="-38" y2="-1" stroke={C.gold} strokeWidth="0.7" opacity="0.4" />
+                          <line x1="44" y1="5" x2="38" y2="-1" stroke={C.gold} strokeWidth="0.7" opacity="0.4" />
+                          <text x="0" y="-1" fill={C.gold} fontSize="7.5" fontFamily={F.heading} textAnchor="middle" letterSpacing="0.25em" opacity="0.8">{phase.label}</text>
+                        </g>
+                      )}
+                      {phase.shape === "shield" && (
+                        <g transform={`translate(${fbx}, ${fby})`}>
+                          <path d="M -35 -14 L 35 -14 L 35 2 Q 35 14 0 20 Q -35 14 -35 2 Z" fill={C.deepForest} stroke={C.gold} strokeWidth="1" opacity="0.85" />
+                          <path d="M -30 -10 L 30 -10 L 30 0 Q 30 10 0 15 Q -30 10 -30 0 Z" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.25" />
+                          <text x="0" y="-1" fill={C.gold} fontSize="7.5" fontFamily={F.heading} textAnchor="middle" letterSpacing="0.25em" opacity="0.8">{phase.label}</text>
+                        </g>
+                      )}
+                      {phase.shape === "medallion" && (
+                        <g transform={`translate(${fbx}, ${fby})`}>
+                          <circle cx="0" cy="0" r="24" fill={C.deepForest} stroke={C.gold} strokeWidth="1" opacity="0.85" />
+                          <circle cx="0" cy="0" r="20" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.25" />
+                          {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+                            <circle key={`fmed-${a}`} cx={22 * Math.cos(a * Math.PI / 180)} cy={22 * Math.sin(a * Math.PI / 180)} r="1.2" fill={C.gold} opacity="0.3" />
+                          ))}
+                          <text x="0" y="3" fill={C.gold} fontSize="6.5" fontFamily={F.heading} textAnchor="middle" letterSpacing="0.2em" opacity="0.8">{phase.label}</text>
+                        </g>
+                      )}
+                      {phase.shape === "diamond" && (
+                        <g transform={`translate(${fbx}, ${fby})`}>
+                          <polygon points="0,-22 45,0 0,22 -45,0" fill={C.deepForest} stroke={C.gold} strokeWidth="1" opacity="0.85" />
+                          <polygon points="0,-17 38,0 0,17 -38,0" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.25" />
+                          <text x="0" y="3" fill={C.gold} fontSize="7" fontFamily={F.heading} textAnchor="middle" letterSpacing="0.2em" opacity="0.8">{phase.label}</text>
+                        </g>
+                      )}
+                    </motion.g>
+                  );
+                })}
+
+                {/* Decorated waypoints */}
+                {wp.map((p, i) => {
+                  const isLeft = p.x < 350;
+                  const isCentered = p.x === 350;
+                  const labelX = isCentered ? p.x : isLeft ? p.x - 55 : p.x + 55;
+                  const anchor = isCentered ? "middle" as const : isLeft ? "end" as const : "start" as const;
+                  return (
+                    <motion.g key={`fwp-${i}`} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.5 + i * 0.18, type: "spring", stiffness: 200 }}>
+                      {/* 8 radiating lines */}
+                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                        <line key={`fray-${i}-${angle}`} x1={p.x + 24 * Math.cos(angle * Math.PI / 180)} y1={p.y + 24 * Math.sin(angle * Math.PI / 180)} x2={p.x + 32 * Math.cos(angle * Math.PI / 180)} y2={p.y + 32 * Math.sin(angle * Math.PI / 180)} stroke={C.gold} strokeWidth="1" opacity="0.3" />
+                      ))}
+                      {/* Outer decorative ring */}
+                      <circle cx={p.x} cy={p.y} r="30" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.25" />
+                      <circle cx={p.x} cy={p.y} r="27" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.12" strokeDasharray="2 4" />
+                      {/* Inner circle */}
+                      <circle cx={p.x} cy={p.y} r="18" fill={C.deepForest} stroke={C.gold} strokeWidth="1.5" opacity="0.9" filter="url(#forgeGlow)" />
+                      {/* Step number */}
+                      <text x={p.x} y={p.y + 4} fill={C.gold} fontSize="12" fontFamily={F.heading} textAnchor="middle" fontWeight="bold" opacity="0.9">{proc[i].n}</text>
+                      {/* Step name */}
+                      <text x={labelX} y={isCentered ? p.y + 48 : p.y + 5} fill={C.parchment} fontSize="11" fontFamily={F.heading} textAnchor={anchor} letterSpacing="0.15em" opacity="0.7">{proc[i].name.toUpperCase()}</text>
+                    </motion.g>
+                  );
+                })}
+              </svg>
+            </motion.div>
+
+            {/* Detail strip — 2-column grid below SVG */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 max-w-2xl mx-auto">
+              {proc.map((s, i) => (
+                <motion.div key={`fdetail-${i}`} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-20px" }} transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="relative pl-10" style={{ borderLeft: `1px solid ${C.gold}20` }}>
+                  <span className="absolute left-2 top-0 text-xs font-bold" style={{ color: C.gold, fontFamily: F.heading }}>{s.n}</span>
+                  <p className="text-sm tracking-[0.15em] uppercase mb-1" style={{ fontFamily: F.heading, color: C.parchment }}>{s.name}</p>
+                  <p className="text-xs leading-[1.7] opacity-50" style={{ fontFamily: "'Crimson Text', serif" }}>{s.desc}</p>
+                </motion.div>
               ))}
             </div>
           </div>
-          {/* Desktop: diagram + 5-column strip */}
-          <div className="hidden md:block">
-            <div className="max-w-5xl mx-auto">
-              <svg viewBox="-10 0 1020 970" className="w-full h-auto" role="img" aria-label="Interconnected process diagram">
+          );
+        })()}
+
+        {/* 3 — The Wheel: cathedral rose window / alchemical clock diagram */}
+        {processCombo === 2 && (() => {
+          const cxW = 400, cyW = 400;
+          const toRad = (deg: number) => deg * Math.PI / 180;
+          const pxW = (c: number, r: number, deg: number) => c + r * Math.cos(toRad(deg));
+          const pyW = (c: number, r: number, deg: number) => c + r * Math.sin(toRad(deg));
+          const arcPath = (r: number, startDeg: number, endDeg: number, sweep = 1) => {
+            const x1 = pxW(cxW, r, startDeg), y1 = pyW(cyW, r, startDeg);
+            const x2 = pxW(cxW, r, endDeg), y2 = pyW(cyW, r, endDeg);
+            const large = Math.abs(endDeg - startDeg) > 180 ? 1 : 0;
+            return `M ${x1} ${y1} A ${r} ${r} 0 ${large} ${sweep} ${x2} ${y2}`;
+          };
+          const segPath = (innerR: number, outerR: number, startA: number, endA: number) => {
+            const p1x = pxW(cxW, innerR, startA), p1y = pyW(cyW, innerR, startA);
+            const p2x = pxW(cxW, outerR, startA), p2y = pyW(cyW, outerR, startA);
+            const p3x = pxW(cxW, outerR, endA), p3y = pyW(cyW, outerR, endA);
+            const p4x = pxW(cxW, innerR, endA), p4y = pyW(cyW, innerR, endA);
+            return `M ${p1x} ${p1y} L ${p2x} ${p2y} A ${outerR} ${outerR} 0 0 1 ${p3x} ${p3y} L ${p4x} ${p4y} A ${innerR} ${innerR} 0 0 0 ${p1x} ${p1y}`;
+          };
+          const wheelPhases = [
+            { name: "DISCOVER", icon: "M0,-8 L3,-3 L8,0 L3,3 L0,8 L-3,3 L-8,0 L-3,-3 Z" },
+            { name: "PLAN", icon: "M-6,-6 L6,-6 L6,6 L-6,6 Z M0,-8 L0,8 M-8,0 L8,0" },
+            { name: "CREATE", icon: "M0,-8 L4,0 L8,8 L-8,8 L-4,0 Z" },
+            { name: "PERFECT", icon: "M0,-9 L3,-3 L9,-3 L4,2 L6,9 L0,5 L-6,9 L-4,2 L-9,-3 L-3,-3 Z" },
+            { name: "GROW", icon: "M0,-9 L0,6 M-5,0 L0,-4 L5,0 M-7,4 L0,-1 L7,4" },
+          ];
+          return (
+          <div className="max-w-5xl mx-auto">
+            {/* ── SVG Rose Window ── */}
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }} className="flex justify-center mb-12 md:mb-16">
+              <motion.svg viewBox="0 0 800 800" className="w-full max-w-[600px] md:max-w-[700px]" style={{ filter: `drop-shadow(0 0 40px ${C.gold}15)` }}>
                 <defs>
-                  <pattern id="proc-hatch-d" width={7} height={7} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <line x1={0} y1={0} x2={0} y2={7} stroke={C.parchment} strokeWidth={0.8} opacity={0.22} />
+                  {/* Cross-hatch pattern for outer border */}
+                  <pattern id="whlCrossHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="6" stroke={`${C.gold}18`} strokeWidth="0.5" />
+                    <line x1="0" y1="0" x2="6" y2="0" stroke={`${C.gold}12`} strokeWidth="0.5" />
                   </pattern>
-                  {pCircles.map((_c, i) => (
-                    <clipPath key={i} id={`pcd-${i}`}><circle cx={pCircles[i].x} cy={pCircles[i].y} r={pCr} /></clipPath>
-                  ))}
+                  {/* Gold radial gradient for background glow */}
+                  <radialGradient id="whlGoldRadial" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor={C.brightGold} stopOpacity="0.3" />
+                    <stop offset="70%" stopColor={C.gold} stopOpacity="0.15" />
+                    <stop offset="100%" stopColor={C.gold} stopOpacity="0.05" />
+                  </radialGradient>
+                  {/* Inner ring gradient */}
+                  <linearGradient id="whlInnerRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor={C.gold} stopOpacity="0.6" />
+                    <stop offset="25%" stopColor={C.brightGold} stopOpacity="0.9" />
+                    <stop offset="50%" stopColor={C.paleGold} stopOpacity="0.6" />
+                    <stop offset="75%" stopColor={C.brightGold} stopOpacity="0.9" />
+                    <stop offset="100%" stopColor={C.gold} stopOpacity="0.6" />
+                  </linearGradient>
+                  {/* Arc paths for step name text */}
+                  {proc.map((_, i) => {
+                    const startA = i * 36 - 90 - 15;
+                    const endA = i * 36 - 90 + 15;
+                    return <path key={`whlStpArc${i}`} id={`whlStpArc${i}`} d={arcPath(322, startA, endA)} fill="none" />;
+                  })}
+                  {/* Arc paths for phase labels */}
+                  {wheelPhases.map((_, j) => {
+                    const startA = j * 72 - 90 - 30;
+                    const endA = j * 72 - 90 + 30;
+                    return <path key={`whlPhArc${j}`} id={`whlPhArc${j}`} d={arcPath(212, startA, endA)} fill="none" />;
+                  })}
                 </defs>
-                {pBadges.map((b, i) => { const next = pBadges[(i + 1) % 5]; return (<line key={`pl-${i}`} x1={b.x} y1={b.y} x2={next.x} y2={next.y} stroke={C.gold} strokeWidth={1} strokeDasharray="6 4" opacity={0.3} />); })}
-                <polygon points={pBadges.map((b) => `${b.x},${b.y}`).join(" ")} fill={C.gold} fillOpacity={0.04} stroke="none" />
-                {pCircles.map((c, i) => (<circle key={`co-${i}`} cx={c.x} cy={c.y} r={pCr} fill="none" stroke={C.parchment} strokeWidth={1.5} opacity={0.25} />))}
-                {pAdj.map(([a, b]) => (<circle key={`hz-${a}-${b}`} cx={pCircles[a].x} cy={pCircles[a].y} r={pCr} fill="url(#proc-hatch-d)" clipPath={`url(#pcd-${b})`} />))}
-                {pLabels.map((l, i) => (
-                  <text key={`lt-${i}`} x={l.x} y={l.y - 12} textAnchor="middle" fill={C.parchment} fontSize={26} fontFamily={F.heading} letterSpacing="0.04em" fontWeight="bold" opacity={0.85}>
-                    <tspan x={l.x} dy="0">{jProcess[i].label[0]}</tspan>
-                    <tspan x={l.x} dy="30">{jProcess[i].label[1]}</tspan>
-                  </text>
-                ))}
-                {pBadges.map((b, i) => (<g key={`bg-${i}`}><circle cx={b.x} cy={b.y} r={24} fill={C.gold} /><text x={b.x} y={b.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.deepForest} fontSize={18} fontWeight="bold" fontFamily={F.heading}>{jProcess[i].num}</text></g>))}
-                {pMids.map((m, i) => (<text key={`il-${i}`} x={m.x} y={m.y + 1} textAnchor="middle" dominantBaseline="central" fill={C.gold} fontSize={20} fontFamily={F.heading} letterSpacing="0.06em" fontWeight="bold" opacity={0.7}>{pInterLabels[i]}</text>))}
-              </svg>
-            </div>
-            <div className="max-w-6xl mx-auto mt-12">
-              <div className="grid grid-cols-5 gap-0">
-                {jProcess.map((p, i) => (
-                  <div key={i} className="text-left px-5 py-5" style={{ borderRight: i < 4 ? `1px solid ${C.gold}15` : "none" }}>
-                    <div className="h-0.5 w-full mb-4" style={{ background: C.gold, opacity: 0.35 }} />
-                    <span className="text-2xl font-bold block mb-2" style={{ color: C.gold, fontFamily: F.heading }}>{p.num}</span>
-                    <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ fontFamily: F.heading, color: C.paleGold }}>{p.label.join(" ")}</p>
-                    <p className="text-xs leading-relaxed opacity-80" style={{ fontWeight: 300, color: C.parchment }}>{p.note}</p>
+
+                {/* Background glow */}
+                <circle cx={cxW} cy={cyW} r="390" fill="url(#whlGoldRadial)" />
+
+                {/* ═══ LAYER 1: Outermost decorative border ═══ */}
+                <motion.g initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.0, delay: 0.1 }}>
+                  {/* Outer + inner circles of border ring */}
+                  <circle cx={cxW} cy={cyW} r="380" fill="none" stroke={C.gold} strokeWidth="1.5" strokeOpacity="0.5" />
+                  <circle cx={cxW} cy={cyW} r="360" fill="none" stroke={C.gold} strokeWidth="1" strokeOpacity="0.4" />
+                  {/* Cross-hatch fill between the two border circles */}
+                  <path d={`M ${cxW} ${cyW - 380} A 380 380 0 1 1 ${cxW - 0.01} ${cyW - 380} Z M ${cxW} ${cyW - 360} A 360 360 0 1 0 ${cxW - 0.01} ${cyW - 360} Z`} fillRule="evenodd" fill="url(#whlCrossHatch)" opacity="0.6" />
+                  {/* 40 small tick marks every 9° (skip step positions) */}
+                  {Array.from({ length: 40 }, (_, i) => {
+                    const angle = i * 9;
+                    if (angle % 36 === 0) return null;
+                    return <line key={`whlTk${i}`} x1={pxW(cxW, 361, angle)} y1={pyW(cyW, 361, angle)} x2={pxW(cxW, 376, angle)} y2={pyW(cyW, 376, angle)} stroke={C.gold} strokeWidth="0.6" strokeOpacity="0.35" />;
+                  })}
+                  {/* 10 major ticks with diamonds at step positions */}
+                  {Array.from({ length: 10 }, (_, i) => {
+                    const angle = i * 36 - 90;
+                    const dmx = pxW(cxW, 388, angle), dmy = pyW(cyW, 388, angle);
+                    return (
+                      <g key={`whlMj${i}`}>
+                        <line x1={pxW(cxW, 358, angle)} y1={pyW(cyW, 358, angle)} x2={pxW(cxW, 382, angle)} y2={pyW(cyW, 382, angle)} stroke={C.gold} strokeWidth="1.2" strokeOpacity="0.6" />
+                        <path d={`M ${dmx} ${dmy - 4} L ${dmx + 3} ${dmy} L ${dmx} ${dmy + 4} L ${dmx - 3} ${dmy} Z`} fill={C.gold} fillOpacity="0.5" />
+                      </g>
+                    );
+                  })}
+                  {/* Cardinal arrow markers at top, right, bottom, left */}
+                  {[-90, 0, 90, 180].map((angle, ci) => {
+                    const tipR = 396, baseR = 385, spread = 4;
+                    const tx = pxW(cxW, tipR, angle), ty = pyW(cyW, tipR, angle);
+                    const blx = pxW(cxW, baseR, angle - spread), bly = pyW(cyW, baseR, angle - spread);
+                    const brx = pxW(cxW, baseR, angle + spread), bry = pyW(cyW, baseR, angle + spread);
+                    return <path key={`whlCd${ci}`} d={`M ${tx} ${ty} L ${blx} ${bly} L ${brx} ${bry} Z`} fill={C.brightGold} fillOpacity="0.7" />;
+                  })}
+                </motion.g>
+
+                {/* ═══ PETAL OVERLAYS (behind step ring for depth) ═══ */}
+                <motion.g initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.5, delay: 0.3 }}>
+                  {Array.from({ length: 10 }, (_, i) => {
+                    const a1 = i * 36 - 90, a2 = (i + 1) * 36 - 90;
+                    const mid = (a1 + a2) / 2;
+                    const iR = 140, oR = 300, bulge = 40;
+                    const p1x = pxW(cxW, iR, a1), p1y = pyW(cyW, iR, a1);
+                    const p2x = pxW(cxW, oR, a1), p2y = pyW(cyW, oR, a1);
+                    const p3x = pxW(cxW, oR, a2), p3y = pyW(cyW, oR, a2);
+                    const p4x = pxW(cxW, iR, a2), p4y = pyW(cyW, iR, a2);
+                    const c1x = pxW(cxW, (iR + oR) / 2 + bulge, mid - 8);
+                    const c1y = pyW(cyW, (iR + oR) / 2 + bulge, mid - 8);
+                    const c2x = pxW(cxW, (iR + oR) / 2 + bulge, mid + 8);
+                    const c2y = pyW(cyW, (iR + oR) / 2 + bulge, mid + 8);
+                    return (
+                      <path key={`whlPt${i}`} d={`M ${p1x} ${p1y} Q ${c1x} ${c1y} ${p2x} ${p2y} A ${oR} ${oR} 0 0 1 ${p3x} ${p3y} Q ${c2x} ${c2y} ${p4x} ${p4y} A ${iR} ${iR} 0 0 0 ${p1x} ${p1y}`} fill={i % 2 === 0 ? C.gold : C.paleGold} fillOpacity={i % 2 === 0 ? 0.04 : 0.06} stroke={C.gold} strokeWidth="0.3" strokeOpacity="0.08" />
+                    );
+                  })}
+                </motion.g>
+
+                {/* ═══ RADIAL SPOKES ═══ */}
+                <motion.g initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
+                  {Array.from({ length: 10 }, (_, i) => {
+                    const angle = i * 36 - 90;
+                    return <line key={`whlSp${i}`} x1={pxW(cxW, 88, angle)} y1={pyW(cyW, 88, angle)} x2={pxW(cxW, 348, angle)} y2={pyW(cyW, 348, angle)} stroke={C.gold} strokeWidth="0.5" strokeOpacity="0.2" />;
+                  })}
+                </motion.g>
+
+                {/* ═══ LAYER 2: Step ring (r~270–345) ═══ */}
+                <motion.g initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }}>
+                  {/* 10 arc segments */}
+                  {proc.map((s, i) => {
+                    const startA = i * 36 - 90 - 18;
+                    const endA = i * 36 - 90 + 18;
+                    return (
+                      <g key={`whlSS${i}`}>
+                        <path d={segPath(270, 345, startA, endA)} fill={i % 2 === 0 ? `${C.forest}30` : `${C.deepForest}40`} stroke={C.gold} strokeWidth="0.5" strokeOpacity="0.25" />
+                      </g>
+                    );
+                  })}
+                  {/* Gold radial dividers between segments */}
+                  {Array.from({ length: 10 }, (_, i) => {
+                    const angle = i * 36 - 90 - 18;
+                    return <line key={`whlSD${i}`} x1={pxW(cxW, 270, angle)} y1={pyW(cyW, 270, angle)} x2={pxW(cxW, 345, angle)} y2={pyW(cyW, 345, angle)} stroke={C.gold} strokeWidth="0.7" strokeOpacity="0.3" />;
+                  })}
+                  {/* Step numbers centered in each segment */}
+                  {proc.map((s, i) => {
+                    const angle = i * 36 - 90;
+                    return (
+                      <text key={`whlSN${i}`} x={pxW(cxW, 295, angle)} y={pyW(cyW, 295, angle)} textAnchor="middle" dominantBaseline="central" fill={C.gold} fillOpacity="0.8" fontSize="13" fontFamily={F.heading} fontWeight="bold">{s.n}</text>
+                    );
+                  })}
+                  {/* Step names along outer arc edge via textPath */}
+                  {proc.map((s, i) => (
+                    <text key={`whlSL${i}`} fill={C.paleGold} fillOpacity="0.7" fontSize="9" fontFamily={F.heading} letterSpacing="1.5">
+                      <textPath href={`#whlStpArc${i}`} startOffset="50%" textAnchor="middle">{s.name.toUpperCase()}</textPath>
+                    </text>
+                  ))}
+                </motion.g>
+
+                {/* ═══ LAYER 3: Phase ring (r~145–260) ═══ */}
+                <motion.g initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.5 }}>
+                  {wheelPhases.map((phase, j) => {
+                    const startA = j * 72 - 90 - 36;
+                    const endA = j * 72 - 90 + 36;
+                    const fillColors = [`${C.emerald}20`, `${C.sage}18`, `${C.leaf}20`, `${C.moss}18`, `${C.forest}22`];
+                    const midAngle = j * 72 - 90;
+                    const iconX = pxW(cxW, 190, midAngle);
+                    const iconY = pyW(cyW, 190, midAngle);
+                    return (
+                      <g key={`whlPS${j}`}>
+                        <path d={segPath(145, 260, startA, endA)} fill={fillColors[j]} stroke={C.gold} strokeWidth="0.6" strokeOpacity="0.3" />
+                        {/* Phase segment divider */}
+                        <line x1={pxW(cxW, 145, startA)} y1={pyW(cyW, 145, startA)} x2={pxW(cxW, 260, startA)} y2={pyW(cyW, 260, startA)} stroke={C.gold} strokeWidth="0.8" strokeOpacity="0.35" />
+                        {/* Phase icon motif */}
+                        <g transform={`translate(${iconX}, ${iconY})`} opacity="0.35">
+                          <path d={phase.icon} fill="none" stroke={C.paleGold} strokeWidth="1" />
+                        </g>
+                      </g>
+                    );
+                  })}
+                  {/* Phase name labels along arcs */}
+                  {wheelPhases.map((phase, j) => (
+                    <text key={`whlPL${j}`} fill={C.paleGold} fillOpacity="0.65" fontSize="11" fontFamily={F.heading} letterSpacing="3" fontWeight="600">
+                      <textPath href={`#whlPhArc${j}`} startOffset="50%" textAnchor="middle">{phase.name}</textPath>
+                    </text>
+                  ))}
+                </motion.g>
+
+                {/* ═══ LAYER 4: Inner decorative ring (r~130–135) ═══ */}
+                <motion.g initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.7 }}>
+                  <circle cx={cxW} cy={cyW} r="135" fill="none" stroke="url(#whlInnerRingGrad)" strokeWidth="2" />
+                  <circle cx={cxW} cy={cyW} r="130" fill="none" stroke="url(#whlInnerRingGrad)" strokeWidth="0.8" strokeOpacity="0.5" />
+                  {/* 20 dots, alternating thick-thin */}
+                  {Array.from({ length: 20 }, (_, i) => {
+                    const angle = i * 18;
+                    const dotR = i % 2 === 0 ? 2.5 : 1.5;
+                    return <circle key={`whlID${i}`} cx={pxW(cxW, 132.5, angle)} cy={pyW(cyW, 132.5, angle)} r={dotR} fill={C.gold} fillOpacity={i % 2 === 0 ? 0.6 : 0.35} />;
+                  })}
+                </motion.g>
+
+                {/* ═══ LAYER 5: Center hub (r~85) ═══ */}
+                <motion.g initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}>
+                  {/* Outer thin gold circle */}
+                  <circle cx={cxW} cy={cyW} r="85" fill="none" stroke={C.gold} strokeWidth="1" strokeOpacity="0.5" />
+                  {/* 8-pointed star: two overlapping rotated squares */}
+                  <rect x={cxW - 50} y={cyW - 50} width="100" height="100" fill="none" stroke={C.gold} strokeWidth="0.8" strokeOpacity="0.3" />
+                  <rect x={cxW - 50} y={cyW - 50} width="100" height="100" fill="none" stroke={C.gold} strokeWidth="0.8" strokeOpacity="0.3" transform={`rotate(45, ${cxW}, ${cyW})`} />
+                  {/* Filled center circle */}
+                  <circle cx={cxW} cy={cyW} r="45" fill={C.deepForest} stroke={C.gold} strokeWidth="1.5" strokeOpacity="0.6" />
+                  {/* Inner decorative circle */}
+                  <circle cx={cxW} cy={cyW} r="38" fill="none" stroke={C.gold} strokeWidth="0.5" strokeOpacity="0.3" />
+                  {/* 4-pointed star ornament (behind monogram) */}
+                  <path d={`M ${cxW} ${cyW - 12} L ${cxW + 2.5} ${cyW} L ${cxW} ${cyW + 12} L ${cxW - 2.5} ${cyW} Z`} fill={C.gold} fillOpacity="0.15" />
+                  <path d={`M ${cxW - 12} ${cyW} L ${cxW} ${cyW - 2.5} L ${cxW + 12} ${cyW} L ${cxW} ${cyW + 2.5} Z`} fill={C.gold} fillOpacity="0.15" />
+                  {/* Studio monogram "O" */}
+                  <text x={cxW} y={cyW + 2} textAnchor="middle" dominantBaseline="central" fill={C.brightGold} fontSize="36" fontFamily={F.display} fontWeight="400" opacity="0.9">O</text>
+                </motion.g>
+              </motion.svg>
+            </motion.div>
+
+            {/* ── Detail strip: 2x5 grid of all 10 steps ── */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.7, delay: 0.3 }} className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+              {proc.map((s, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 + i * 0.04 }} className="flex gap-4 items-start">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ border: `1.5px solid ${C.gold}50`, background: `${C.deepForest}80` }}>
+                    <span className="text-xs font-bold" style={{ color: C.gold, fontFamily: F.heading }}>{s.n}</span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div>
+                    <p className="text-sm tracking-[0.18em] uppercase mb-1" style={{ fontFamily: F.heading, color: C.paleGold }}>{s.name}</p>
+                    <p className="text-sm leading-[1.75] opacity-55" style={{ fontFamily: "'Crimson Text', serif", color: C.parchment }}>{s.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
+          );
+        })()}
+
       </Section>
       </LeafReveal>
 
@@ -1728,9 +2806,9 @@ export default function App() {
       {/* ═══════════════════ FOOTER — Grand Banner ═══════════════════ */}
       {(() => {
         const navLinks = [
-          { label: "Our Craft", href: "#craft" },
-          { label: "The Journey", href: "#journey" },
-          { label: "Portfolio", href: "#portfolio" },
+          { label: "Services", href: "#craft" },
+          { label: "Process", href: "#journey" },
+          { label: "Work", href: "#portfolio" },
           { label: "Contact", href: "#contact" },
         ];
         const yr = new Date().getFullYear();

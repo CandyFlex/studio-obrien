@@ -7,7 +7,23 @@
       "mcp__figma__generate_figma_design",
       "mcp__figma__get_metadata",
       "mcp__figma__get_design_context",
-      "mcp__figma__get_screenshot"
+      "mcp__figma__get_screenshot",
+      "mcp__stitch__list_projects",
+      "WebFetch(domain:image.pollinations.ai)",
+      "WebFetch(domain:enter.pollinations.ai)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:developer.puter.com)",
+      "WebFetch(domain:blog.laozhang.ai)",
+      "WebFetch(domain:www.pixellab.ai)",
+      "WebFetch(domain:api.pixellab.ai)",
+      "WebFetch(domain:www.uptownshelby.com)",
+      "WebFetch(domain:www.townofforestcity.com)",
+      "WebFetch(domain:www.exploreforestcity.com)",
+      "WebFetch(domain:carolina-arcade-museum.com-place.com)",
+      "WebFetch(domain:www.visitncsmalltowns.com)",
+      "WebFetch(domain:karrenwalls.wixsite.com)",
+      "WebFetch(domain:www.yelp.com)",
+      "WebFetch(domain:www.antiquemarketofshelby.com)"
     ]
   }
 }
