@@ -856,6 +856,11 @@ export default function App() {
   const [linkSize, setLinkSize] = useState(1);
   const [philCombo, setPhilCombo] = useState(4);
   const [processCombo, setProcessCombo] = useState(0);
+  const [contactCombo, setContactCombo] = useState(0);
+  const [contactStep, setContactStep] = useState(0);
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedBudget, setSelectedBudget] = useState("");
+  const [selectedTimeline, setSelectedTimeline] = useState("");
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
   const [tourStep, setTourStep] = useState(-1);
   const [stepInfoVisible, setStepInfoVisible] = useState(false);
@@ -1587,8 +1592,8 @@ export default function App() {
               <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: `linear-gradient(to top, ${C.deepForest}, transparent)` }} />
             </div>
             <div className="mt-4 text-center">
-              <span className="block text-sm tracking-wider uppercase" style={{ fontFamily: F.heading, color: C.parchment }}>J. O'Brien</span>
-              <span className="text-xs opacity-50">Founder</span>
+              <span className="block text-base tracking-[0.2em] uppercase font-bold" style={{ fontFamily: F.heading, color: C.parchment }}>J. O'Brien</span>
+              <span className="text-sm tracking-wider opacity-65" style={{ fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>Founder</span>
             </div>
           </motion.div>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.15 }} className="flex-1 md:pt-0">
@@ -1634,7 +1639,7 @@ export default function App() {
             </>)}
             {philCombo === 4 && (<>
               {/* 5 — "craft is the strategy" + Cinzel 700 */}
-              <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
+              <p className="text-xs tracking-[0.4em] uppercase mb-2" style={{ fontFamily: F.heading, color: C.gold }}>Our Philosophy</p>
               <h2 className="text-5xl md:text-7xl tracking-[0.04em] mb-4 leading-[0.95]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>craft is the strategy</h2>
               <p className="text-sm tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: F.heading, color: C.parchment }}>Design · Development · Strategy</p>
               <div className="w-20 mb-5" style={{ height: "1px", background: C.gold }} />
@@ -1716,7 +1721,7 @@ export default function App() {
         {/* ── Section Header ── */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center mb-16 md:mb-24">
           <p className="text-[10px] tracking-[0.45em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400 }}>Our Process</p>
-          <h2 className="text-3xl md:text-5xl tracking-[0.02em] leading-[1]" style={{ fontFamily: "'Cormorant Garamond', serif", color: C.parchment, fontWeight: 600, fontStyle: "italic" }}>Ten Steps to Something Real</h2>
+          <h2 className="text-3xl md:text-5xl tracking-[0.04em] leading-[1]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>Ten Steps to Something Real</h2>
           <p className="text-[11px] tracking-[0.25em] uppercase mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400 }}>From First Conversation to Final Pixel</p>
         </motion.div>
 
@@ -2723,82 +2728,428 @@ export default function App() {
         );
       })()}
 
-      {/* ═══════════════════ CONTACT FORM ═══════════════════ */}
+      {/* ═══════════════════ CONTACT — 10 Deep CTA Variants ═══════════════════
+        ┌─────────────────────────────────────────────────────────────────────┐
+        │  THREE RUBRICS (independent axes of variation):                     │
+        │                                                                     │
+        │  A · CONVERSION PSYCHOLOGY (why they act)                          │
+        │    1. Low Friction — remove every barrier, just email              │
+        │    2. Qualifying Funnel — filter for serious leads                 │
+        │    3. Value Exchange — give before asking (audit, strategy)        │
+        │    4. Social Authority — proof & credibility first                 │
+        │    5. Scarcity Signal — limited slots, exclusivity                 │
+        │                                                                     │
+        │  B · INFORMATION ARCHITECTURE (what & how we gather)               │
+        │    1. Single Field — email only, zero friction                     │
+        │    2. Standard Form — name/email/message                          │
+        │    3. Interactive Selection — click-to-choose pills/cards          │
+        │    4. Multi-Step Wizard — progressive disclosure                   │
+        │    5. Diagnostic — answer → score → capture                       │
+        │                                                                     │
+        │  C · VISUAL PATTERN (layout & presence)                            │
+        │    1. Split Panel — asymmetric left/right                         │
+        │    2. Centered Monument — full-width stacked                      │
+        │    3. Card Overlay — floating container                           │
+        │    4. Step Flow — sequential inline                               │
+        │    5. Editorial Magazine — text-heavy, minimal chrome             │
+        │                                                                     │
+        │  MATRIX:                                                           │
+        │   1. A1+B1+C2  The Drop        (low friction, email, monument)    │
+        │   2. A5+B4+C4  The Application (scarcity, wizard, step flow)      │
+        │   3. A3+B3+C1  The Quick Match (value, interactive, split)        │
+        │   4. A4+B2+C5  The Proof Wall  (authority, standard, editorial)   │
+        │   5. A2+B4+C3  The Brief       (qualifying, wizard, card)         │
+        │   6. A3+B5+C2  The Diagnostic  (value, diagnostic, monument)      │
+        │   7. A1+B2+C1  The Conversation(low friction, standard, split)    │
+        │   8. A5+B3+C5  The Studio Select(scarcity, interactive, editorial)│
+        │   9. A4+B1+C3  The Signal      (authority, single field, card)    │
+        │  10. A2+B3+C2  The Architect   (qualifying, interactive, monument)│
+        └─────────────────────────────────────────────────────────────────────┘
+      ═══════════════════════════════════════════════════════════════════════ */}
       <LeafReveal side="left">
-      <section
-        id="contact"
-        className="relative pt-24 md:pt-32 pb-32 md:pb-44 px-6 md:px-16 lg:px-20 overflow-hidden"
-        style={{ background: C.deepForest, color: C.parchment }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: foliagePattern,
-            backgroundSize: "120px 120px",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 50% 60% at 50% 50%, ${C.gold}08, transparent)`,
-          }}
-        />
+      <section id="contact" className="relative overflow-hidden" style={{ background: C.deepForest, color: C.parchment }}>
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: foliagePattern, backgroundSize: "120px 120px" }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 50% 60% at 50% 50%, ${C.gold}08, transparent)` }} />
 
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-            {/* Left column — headline + info */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={vp}
-              transition={{ duration: 1 }}
-              className="md:w-[40%] flex-shrink-0"
-            >
-              <div className="w-40 mb-8">
-                <Ornament />
+
+        {/* ════════ 1. THE DROP — A1+B1+C2 ════════ */}
+        {/* Low friction · Email only · Centered monument */}
+        {contactCombo === 0 && (
+          <div className="relative z-10 py-40 md:py-56 px-6 flex flex-col items-center text-center">
+            <Ornament className="w-32 md:w-44 mb-10" color={C.gold} />
+            <p className="text-[10px] tracking-[0.5em] uppercase mb-4 opacity-40" style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 600 }}>One Step</p>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl tracking-[0.03em] leading-[0.85] mb-6" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700 }}>
+              drop your email.<br /><span style={{ color: C.gold }}>we'll take it from here.</span>
+            </h2>
+            <div className="w-20 mb-8" style={{ height: "1px", background: C.gold }} />
+            <p className="text-lg md:text-xl leading-[1.7] opacity-60 max-w-xl mb-10" style={{ fontFamily: "'Crimson Text', serif" }}>No forms. No twenty questions. Just your email — and a personal reply within 24 hours from the person who'll actually build your site.</p>
+            <form onSubmit={async (e) => { e.preventDefault(); const fd = new FormData(e.currentTarget); await fetch("https://formsubmit.co/ajax/hello@studioobrien.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ email: fd.get("email"), _subject: "The Drop — new email from studioobrien.com" }) }); e.currentTarget.reset(); }} className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
+              <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} />
+              <input type="email" name="email" required placeholder="Email Address" className="flex-1 w-full px-5 py-4 rounded-sm text-sm tracking-wider outline-none transition-all duration-300 focus:ring-2" style={{ fontFamily: F.heading, background: "rgba(255,255,255,0.07)", border: `1px solid ${C.gold}30`, color: C.parchment, letterSpacing: "0.08em", ["--tw-ring-color" as string]: C.gold }} />
+              <button type="submit" className="px-12 py-4 text-sm tracking-[0.15em] uppercase font-bold rounded-sm transition-all duration-500 hover:scale-105 whitespace-nowrap" style={{ fontFamily: "'Crimson Text', serif", background: C.gold, color: C.deepForest, fontWeight: 600, letterSpacing: "0.12em" }}>Send</button>
+            </form>
+            <p className="text-xs opacity-30 mt-4" style={{ fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>We respond to every message personally.</p>
+          </div>
+        )}
+
+        {/* ════════ 2. THE APPLICATION — A5+B4+C4 ════════ */}
+        {/* Scarcity · Multi-step wizard · Step flow */}
+        {contactCombo === 1 && (
+          <div className="relative z-10 py-32 md:py-44 px-6 max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full" style={{ background: C.gold }} />
+                <span className="text-[10px] tracking-[0.4em] uppercase" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 600 }}>2 of 3 spots remaining this quarter</span>
+                <div className="w-2 h-2 rounded-full" style={{ background: C.gold }} />
               </div>
-              <h2
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[0.9] mb-6"
-                style={{ fontFamily: F.display }}
-              >
-                Let Us Build
-                <br />
-                <span style={{ color: C.gold }}>Your Kingdom</span>
-              </h2>
-              <p
-                className="text-base md:text-lg italic opacity-60 mb-8"
-                style={{ fontWeight: 300 }}
-              >
-                Every great legacy begins with a single step.
-                <br />
-                Take yours today.
-              </p>
-              <div className="space-y-3 text-sm opacity-70">
-                <a href="mailto:hello@studioobrien.com" className="flex items-center gap-3 hover:opacity-100 transition-opacity">
-                  <span style={{ color: C.gold }}>&#9993;</span>
-                  hello@studioobrien.com
-                </a>
-                <div className="flex items-center gap-3">
-                  <span style={{ color: C.gold }}>&#9670;</span>
-                  Shelby, NC
+              <h2 className="text-4xl md:text-6xl tracking-[0.02em] leading-[0.9] mb-4" style={{ fontFamily: F.heading, fontWeight: 700 }}>Apply to Work<br /><span style={{ color: C.gold }}>With Us</span></h2>
+              <p className="text-base opacity-50 max-w-md mx-auto" style={{ fontFamily: "'Crimson Text', serif" }}>We take on a limited number of projects to give each one full attention. Three steps — takes under two minutes.</p>
+            </div>
+            {/* Step indicators */}
+            <div className="flex items-center justify-center gap-0 mb-10">
+              {["What", "When", "You"].map((label, i) => (
+                <div key={label} className="flex items-center">
+                  <div className="flex flex-col items-center">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300" style={{ fontFamily: F.heading, background: contactStep >= i ? C.gold : "transparent", color: contactStep >= i ? C.deepForest : C.parchment, border: `2px solid ${contactStep >= i ? C.gold : C.gold + "40"}` }}>{i + 1}</div>
+                    <span className="text-[9px] tracking-[0.2em] uppercase mt-2 opacity-50" style={{ fontFamily: F.heading }}>{label}</span>
+                  </div>
+                  {i < 2 && <div className="w-16 md:w-24 h-px mx-3" style={{ background: contactStep > i ? C.gold : `${C.gold}20` }} />}
                 </div>
-              </div>
-            </motion.div>
+              ))}
+            </div>
+            {/* Step content */}
+            <div className="p-8 md:p-10 rounded-lg" style={{ background: `${C.forest}80`, border: `1px solid ${C.gold}15` }}>
+              {contactStep === 0 && (<div>
+                <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ fontFamily: F.heading, color: C.gold }}>What do you need?</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {["Full Website", "Landing Page", "Redesign", "Branding", "E-Commerce", "Strategy Only"].map(s => (
+                    <button key={s} onClick={() => { setSelectedService(s); setContactStep(1); }} className="px-4 py-4 rounded-sm text-sm tracking-wider transition-all duration-300 hover:scale-[1.02]" style={{ fontFamily: F.heading, background: selectedService === s ? C.gold : "rgba(255,255,255,0.05)", color: selectedService === s ? C.deepForest : C.parchment, border: `1px solid ${selectedService === s ? C.gold : C.gold + "20"}` }}>{s}</button>
+                  ))}
+                </div>
+              </div>)}
+              {contactStep === 1 && (<div>
+                <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ fontFamily: F.heading, color: C.gold }}>Timeline & budget range</p>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {["This Month", "1–2 Months", "3+ Months", "Flexible"].map(t => (
+                    <button key={t} onClick={() => setSelectedTimeline(t)} className="px-4 py-3 rounded-sm text-sm tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedTimeline === t ? C.gold : "rgba(255,255,255,0.05)", color: selectedTimeline === t ? C.deepForest : C.parchment, border: `1px solid ${selectedTimeline === t ? C.gold : C.gold + "20"}` }}>{t}</button>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                  {["Under $2k", "$2k–$5k", "$5k–$10k", "$10k+"].map(b => (
+                    <button key={b} onClick={() => setSelectedBudget(b)} className="px-4 py-3 rounded-sm text-sm tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedBudget === b ? C.gold : "rgba(255,255,255,0.05)", color: selectedBudget === b ? C.deepForest : C.parchment, border: `1px solid ${selectedBudget === b ? C.gold : C.gold + "20"}` }}>{b}</button>
+                  ))}
+                </div>
+                <button onClick={() => setContactStep(2)} className="px-8 py-3 text-sm tracking-[0.15em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ fontFamily: F.heading, background: C.gold, color: C.deepForest }}>Continue</button>
+              </div>)}
+              {contactStep === 2 && (<div>
+                <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ fontFamily: F.heading, color: C.gold }}>Almost there — how do we reach you?</p>
+                <ContactForm />
+              </div>)}
+            </div>
+            <button onClick={() => contactStep > 0 && setContactStep(contactStep - 1)} className="mt-4 text-xs tracking-[0.2em] uppercase opacity-30 hover:opacity-60 transition-opacity" style={{ fontFamily: F.heading, visibility: contactStep > 0 ? "visible" : "hidden" }}>&larr; Back</button>
+          </div>
+        )}
 
-            {/* Right column — form */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={vp}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1"
-            >
-              <ContactForm />
+        {/* ════════ 3. THE QUICK MATCH — A3+B3+C1 ════════ */}
+        {/* Value exchange · Interactive selection · Split panel */}
+        {contactCombo === 2 && (
+          <div className="relative z-10 py-28 md:py-40 px-6 md:px-16 lg:px-20">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="md:w-[50%]">
+                <p className="text-xs tracking-[0.4em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>Project Match</p>
+                <h2 className="text-4xl md:text-6xl tracking-[0.02em] leading-[0.9] mb-4" style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, color: C.parchment }}>Tell us what<br />you need</h2>
+                <p className="text-base leading-[1.7] opacity-60 mb-8" style={{ fontFamily: "'Crimson Text', serif" }}>Select everything that applies. We'll tailor our response to exactly what you're looking for — no guesswork on either side.</p>
+                <p className="text-xs tracking-[0.3em] uppercase mb-4 opacity-40" style={{ fontFamily: F.heading }}>I need help with:</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {["New Website", "Redesign", "Landing Page", "Branding", "SEO & Strategy", "E-Commerce", "Ongoing Support", "Not Sure Yet"].map(tag => (
+                    <button key={tag} onClick={() => setSelectedService(prev => prev.includes(tag) ? prev.replace(tag + ",", "").replace(tag, "") : prev + tag + ",")} className="px-4 py-2.5 rounded-full text-xs tracking-wider transition-all duration-300 hover:scale-105" style={{ fontFamily: F.heading, background: selectedService.includes(tag) ? C.gold : "rgba(255,255,255,0.06)", color: selectedService.includes(tag) ? C.deepForest : C.parchment, border: `1px solid ${selectedService.includes(tag) ? C.gold : C.gold + "25"}`, fontWeight: selectedService.includes(tag) ? 700 : 400 }}>{tag}</button>
+                  ))}
+                </div>
+                <div className="space-y-3 text-sm opacity-50">
+                  <div className="flex items-center gap-3"><span style={{ color: C.gold }}>&#9993;</span> hello@studioobrien.com</div>
+                  <div className="flex items-center gap-3"><span style={{ color: C.gold }}>&#9670;</span> Shelby, NC</div>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.2 }} className="flex-1">
+                <ContactForm />
+              </motion.div>
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 4. THE PROOF WALL — A4+B2+C5 ════════ */}
+        {/* Authority · Standard form · Editorial magazine */}
+        {contactCombo === 3 && (
+          <div className="relative z-10 py-28 md:py-40 px-6 md:px-16 lg:px-20">
+            <div className="max-w-5xl mx-auto">
+              {/* Proof strip */}
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="grid grid-cols-2 md:grid-cols-4 gap-px mb-16" style={{ background: `${C.gold}15` }}>
+                {[
+                  { num: "15+", label: "Sites Built" },
+                  { num: "100%", label: "Hand-Coded" },
+                  { num: "<24h", label: "Response Time" },
+                  { num: "0", label: "Templates Used" },
+                ].map(stat => (
+                  <div key={stat.label} className="p-6 md:p-8 text-center" style={{ background: C.deepForest }}>
+                    <div className="text-3xl md:text-4xl font-bold mb-1" style={{ fontFamily: F.heading, color: C.gold }}>{stat.num}</div>
+                    <div className="text-[10px] tracking-[0.25em] uppercase opacity-45" style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 500 }}>{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+              <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+                <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="md:w-[40%] flex-shrink-0">
+                  <p className="text-[10px] tracking-[0.5em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 600 }}>Trusted Craft</p>
+                  <h2 className="text-4xl md:text-6xl tracking-tight leading-[0.9] mb-5" style={{ fontFamily: "'Bodoni Moda', serif", fontWeight: 700 }}>The work<br /><span style={{ color: C.gold }}>speaks.</span></h2>
+                  <div className="w-16 mb-6" style={{ height: "1px", background: C.gold }} />
+                  <p className="text-base leading-[1.7] opacity-60 mb-6" style={{ fontFamily: "'Crimson Text', serif" }}>Every site in our portfolio was built from scratch — designed, coded, and refined by one person who refuses to cut corners. That person will build yours.</p>
+                  <div className="space-y-3 text-sm opacity-50">
+                    <a href="mailto:hello@studioobrien.com" className="flex items-center gap-3 hover:opacity-80 transition-opacity"><span style={{ color: C.gold }}>&#9993;</span> hello@studioobrien.com</a>
+                    <div className="flex items-center gap-3"><span style={{ color: C.gold }}>&#9670;</span> Shelby, NC</div>
+                  </div>
+                </motion.div>
+                <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.2 }} className="flex-1">
+                  <ContactForm />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 5. THE BRIEF — A2+B4+C3 ════════ */}
+        {/* Qualifying · Multi-step wizard · Card overlay */}
+        {contactCombo === 4 && (
+          <div className="relative z-10 py-32 md:py-44 px-6 flex flex-col items-center">
+            <div className="w-full max-w-2xl p-8 md:p-12 rounded-lg relative" style={{ background: `linear-gradient(135deg, ${C.forest}dd, ${C.deepForest}f0)`, border: `1px solid ${C.gold}20`, boxShadow: `0 24px 80px rgba(0,0,0,0.5)` }}>
+              <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.gold}40, transparent)` }} />
+              <div className="text-center mb-8">
+                <Ornament className="w-24 mx-auto mb-6" color={C.gold} />
+                <h2 className="text-3xl md:text-5xl tracking-tight leading-[0.95] mb-3" style={{ fontFamily: F.heading, fontWeight: 700 }}>Project Brief</h2>
+                <p className="text-sm opacity-50" style={{ fontFamily: "'Crimson Text', serif" }}>The better we understand your goals, the sharper our first conversation will be.</p>
+              </div>
+              {/* Progress */}
+              <div className="flex gap-1 mb-8">
+                {[0, 1, 2].map(i => (
+                  <div key={i} className="flex-1 h-1 rounded-full transition-all duration-500" style={{ background: contactStep >= i ? C.gold : `${C.gold}15` }} />
+                ))}
+              </div>
+              {contactStep === 0 && (<div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What are you looking for?</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { val: "New Website", desc: "Starting from zero" },
+                    { val: "Redesign", desc: "Rebuild what you have" },
+                    { val: "Landing Page", desc: "One focused page" },
+                    { val: "Branding", desc: "Identity & visuals" },
+                    { val: "E-Commerce", desc: "Sell online" },
+                    { val: "Consultation", desc: "Strategy session" },
+                  ].map(s => (
+                    <button key={s.val} onClick={() => { setSelectedService(s.val); setContactStep(1); }} className="p-4 rounded-sm text-left transition-all duration-300 hover:scale-[1.02] group" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${C.gold}15` }}>
+                      <span className="block text-sm font-bold tracking-wider" style={{ fontFamily: F.heading, color: C.parchment }}>{s.val}</span>
+                      <span className="block text-xs opacity-40 mt-1" style={{ fontFamily: "'Crimson Text', serif" }}>{s.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>)}
+              {contactStep === 1 && (<div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What's your timeline?</p>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {["ASAP", "1–2 Months", "3–6 Months", "Just Exploring"].map(t => (
+                    <button key={t} onClick={() => { setSelectedTimeline(t); setContactStep(2); }} className="px-4 py-4 rounded-sm text-sm tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: "rgba(255,255,255,0.04)", color: C.parchment, border: `1px solid ${C.gold}15` }}>{t}</button>
+                  ))}
+                </div>
+                <button onClick={() => setContactStep(0)} className="text-xs tracking-[0.15em] uppercase opacity-30 hover:opacity-60 transition-opacity" style={{ fontFamily: F.heading }}>&larr; Back</button>
+              </div>)}
+              {contactStep === 2 && (<div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-2" style={{ fontFamily: F.heading, color: C.gold }}>Last step — your details</p>
+                <p className="text-xs opacity-30 mb-5" style={{ fontFamily: "'Crimson Text', serif" }}>Selected: {selectedService} · {selectedTimeline}</p>
+                <ContactForm />
+                <button onClick={() => setContactStep(1)} className="mt-3 text-xs tracking-[0.15em] uppercase opacity-30 hover:opacity-60 transition-opacity" style={{ fontFamily: F.heading }}>&larr; Back</button>
+              </div>)}
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 6. THE DIAGNOSTIC — A3+B5+C2 ════════ */}
+        {/* Value exchange · Diagnostic assessment · Centered monument */}
+        {contactCombo === 5 && (
+          <div className="relative z-10 py-32 md:py-44 px-6 max-w-3xl mx-auto text-center">
+            <p className="text-[10px] tracking-[0.5em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 600 }}>Free Assessment</p>
+            <h2 className="text-4xl md:text-6xl tracking-tight leading-[0.9] mb-4" style={{ fontFamily: "'Literata', serif", fontWeight: 900 }}>How's your website<br /><span style={{ color: C.gold }}>actually performing?</span></h2>
+            <p className="text-base opacity-55 max-w-lg mx-auto mb-10" style={{ fontFamily: "'Crimson Text', serif" }}>Answer three quick questions. We'll give you an honest read — and a recommendation you can act on, whether you hire us or not.</p>
+            <div className="max-w-xl mx-auto text-left">
+              {contactStep === 0 && (<div>
+                <p className="text-xs tracking-[0.3em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>Do you have a website right now?</p>
+                <div className="grid grid-cols-1 gap-3">
+                  {[
+                    { val: "none", label: "No website yet", desc: "Starting fresh — need the whole thing built" },
+                    { val: "outdated", label: "Yes, but it's outdated", desc: "Looks old, doesn't represent us anymore" },
+                    { val: "template", label: "Yes, it's a template", desc: "Wix / Squarespace / WordPress theme" },
+                    { val: "custom", label: "Yes, custom-built", desc: "But something isn't working" },
+                  ].map(opt => (
+                    <button key={opt.val} onClick={() => { setSelectedService(opt.val); setContactStep(1); }} className="p-5 rounded-sm text-left transition-all duration-300 hover:scale-[1.01] flex items-start gap-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${C.gold}15` }}>
+                      <div className="w-5 h-5 rounded-full flex-shrink-0 mt-0.5" style={{ border: `2px solid ${C.gold}40` }} />
+                      <div>
+                        <span className="block text-sm font-bold" style={{ fontFamily: F.heading }}>{opt.label}</span>
+                        <span className="block text-xs opacity-40 mt-1" style={{ fontFamily: "'Crimson Text', serif" }}>{opt.desc}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>)}
+              {contactStep === 1 && (<div>
+                <p className="text-xs tracking-[0.3em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What's the #1 thing you wish your site could do better?</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Attract customers", "Look professional", "Rank on Google", "Convert visitors", "Tell our story", "Just exist"].map(goal => (
+                    <button key={goal} onClick={() => { setSelectedTimeline(goal); setContactStep(2); }} className="px-4 py-4 rounded-sm text-sm tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: "rgba(255,255,255,0.04)", color: C.parchment, border: `1px solid ${C.gold}15` }}>{goal}</button>
+                  ))}
+                </div>
+                <button onClick={() => setContactStep(0)} className="mt-4 text-xs tracking-[0.15em] uppercase opacity-30 hover:opacity-60" style={{ fontFamily: F.heading }}>&larr; Back</button>
+              </div>)}
+              {contactStep === 2 && (<div className="text-center">
+                <div className="inline-block p-8 rounded-lg mb-8" style={{ background: `${C.gold}10`, border: `1px solid ${C.gold}25` }}>
+                  <p className="text-xs tracking-[0.3em] uppercase mb-3 opacity-50" style={{ fontFamily: F.heading }}>Your Situation</p>
+                  <p className="text-2xl font-bold mb-2" style={{ fontFamily: F.heading, color: C.gold }}>You're leaving money on the table.</p>
+                  <p className="text-sm opacity-60" style={{ fontFamily: "'Crimson Text', serif" }}>A {selectedService === "none" ? "missing" : selectedService === "template" ? "template-based" : "dated"} website that can't {selectedTimeline?.toLowerCase()} is costing you customers every day.</p>
+                </div>
+                <p className="text-sm opacity-50 mb-6" style={{ fontFamily: "'Crimson Text', serif" }}>Drop your email for a free, personalized assessment of what a purpose-built site could do for your business.</p>
+                <form onSubmit={async (e) => { e.preventDefault(); const fd = new FormData(e.currentTarget); await fetch("https://formsubmit.co/ajax/hello@studioobrien.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ email: fd.get("email"), situation: selectedService, goal: selectedTimeline, _subject: "Diagnostic — free assessment request" }) }); e.currentTarget.reset(); }} className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
+                  <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} />
+                  <input type="email" name="email" required placeholder="your@email.com" className="flex-1 w-full px-5 py-4 rounded-sm text-base outline-none" style={{ fontFamily: F.body, background: "rgba(255,255,255,0.07)", border: `1px solid ${C.gold}30`, color: C.parchment }} />
+                  <button type="submit" className="px-8 py-4 text-sm tracking-[0.15em] uppercase font-bold rounded-sm" style={{ fontFamily: F.heading, background: C.gold, color: C.deepForest }}>Get My Assessment</button>
+                </form>
+              </div>)}
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 7. THE CONVERSATION — A1+B2+C1 ════════ */}
+        {/* Low friction · Standard form · Split panel — classic refined */}
+        {contactCombo === 6 && (
+          <div className="relative z-10 py-28 md:py-40 px-6 md:px-16 lg:px-20">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="md:w-[40%] flex-shrink-0">
+                <div className="w-40 mb-8"><Ornament /></div>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[0.9] mb-6" style={{ fontFamily: F.heading, fontWeight: 700 }}>
+                  let us build<br /><span style={{ color: C.gold }}>your kingdom</span>
+                </h2>
+                <div className="w-16 mb-6" style={{ height: "1px", background: C.gold }} />
+                <p className="text-lg leading-[1.7] opacity-65 mb-8" style={{ fontFamily: "'Crimson Text', serif" }}>Every great legacy begins with a single step. Take yours — tell us about your business and what you're trying to build.</p>
+                <div className="space-y-3 text-sm opacity-50">
+                  <a href="mailto:hello@studioobrien.com" className="flex items-center gap-3 hover:opacity-80 transition-opacity"><span style={{ color: C.gold }}>&#9993;</span> hello@studioobrien.com</a>
+                  <div className="flex items-center gap-3"><span style={{ color: C.gold }}>&#9670;</span> Shelby, NC</div>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} transition={{ delay: 0.2 }} className="flex-1">
+                <ContactForm />
+              </motion.div>
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 8. THE STUDIO SELECT — A5+B3+C5 ════════ */}
+        {/* Scarcity · Interactive selection · Editorial */}
+        {contactCombo === 7 && (
+          <div className="relative z-10 py-28 md:py-40 px-6 md:px-16 lg:px-20">
+            <div className="max-w-5xl mx-auto">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="mb-14">
+                <div className="flex items-center gap-6 mb-6">
+                  <div className="h-px flex-1" style={{ background: `${C.gold}20` }} />
+                  <p className="text-[10px] tracking-[0.5em] uppercase" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 600 }}>Limited Availability</p>
+                  <div className="h-px flex-1" style={{ background: `${C.gold}20` }} />
+                </div>
+                <h2 className="text-5xl md:text-7xl tracking-tight leading-[0.9] text-center mb-4" style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}>Select your service</h2>
+                <p className="text-center text-base opacity-50 max-w-lg mx-auto" style={{ fontFamily: "'Crimson Text', serif" }}>Choose what you're after, then tell us the details. We'll confirm availability within one business day.</p>
+              </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+                {[
+                  { name: "Full Website", price: "From $3,500", desc: "Complete design, development, and launch. The whole thing, built by hand.", icon: "&#9733;" },
+                  { name: "Landing Page", price: "From $1,200", desc: "One high-converting page designed to drive a single action.", icon: "&#9670;" },
+                  { name: "Redesign", price: "From $2,500", desc: "Tear it down and rebuild it right. Same brand, better everything.", icon: "&#8634;" },
+                ].map(svc => (
+                  <button key={svc.name} onClick={() => setSelectedService(svc.name)} className="p-6 md:p-8 rounded-sm text-left transition-all duration-300 hover:scale-[1.02]" style={{ background: selectedService === svc.name ? `${C.gold}15` : "rgba(255,255,255,0.03)", border: `1px solid ${selectedService === svc.name ? C.gold : C.gold + "15"}` }}>
+                    <span className="text-2xl block mb-3" style={{ color: C.gold }} dangerouslySetInnerHTML={{ __html: svc.icon }} />
+                    <span className="block text-lg font-bold tracking-wider mb-1" style={{ fontFamily: F.heading, color: C.parchment }}>{svc.name}</span>
+                    <span className="block text-xs tracking-[0.2em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>{svc.price}</span>
+                    <span className="block text-sm leading-relaxed opacity-50" style={{ fontFamily: "'Crimson Text', serif" }}>{svc.desc}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="max-w-xl mx-auto">
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ════════ 9. THE SIGNAL — A4+B1+C3 ════════ */}
+        {/* Authority · Single field · Card overlay */}
+        {contactCombo === 8 && (
+          <div className="relative z-10 py-36 md:py-48 px-6 flex items-center justify-center">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-full max-w-lg text-center p-10 md:p-14 rounded-lg relative" style={{ background: `linear-gradient(180deg, ${C.forest}e0, ${C.deepForest}f8)`, border: `1px solid ${C.gold}18`, boxShadow: `0 32px 80px rgba(0,0,0,0.6)` }}>
+              <div className="absolute -top-px left-1/2 -translate-x-1/2 w-24 h-px" style={{ background: C.gold }} />
+              <Ornament className="w-20 mx-auto mb-6" color={C.gold} />
+              <p className="text-[10px] tracking-[0.5em] uppercase mb-3 opacity-40" style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 600 }}>15 Sites Built · 0 Templates Used</p>
+              <h2 className="text-3xl md:text-5xl tracking-tight leading-[0.95] mb-4" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400 }}>Ready when<br /><span style={{ color: C.gold }}>you are</span></h2>
+              <p className="text-base leading-[1.7] opacity-55 mb-8" style={{ fontFamily: "'Crimson Text', serif" }}>One email starts the conversation. We'll respond personally within 24 hours with our honest take on what we can build together.</p>
+              <form onSubmit={async (e) => { e.preventDefault(); const fd = new FormData(e.currentTarget); await fetch("https://formsubmit.co/ajax/hello@studioobrien.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ email: fd.get("email"), _subject: "The Signal — new contact from studioobrien.com" }) }); e.currentTarget.reset(); }} className="space-y-3">
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} />
+                <input type="email" name="email" required placeholder="your@email.com" className="w-full px-5 py-4 rounded-sm text-base text-center outline-none" style={{ fontFamily: F.body, background: "rgba(255,255,255,0.07)", border: `1px solid ${C.gold}30`, color: C.parchment }} />
+                <button type="submit" className="w-full px-8 py-4 text-sm tracking-[0.2em] uppercase font-bold rounded-sm transition-all duration-500 hover:scale-105" style={{ fontFamily: F.heading, background: C.gold, color: C.deepForest }}>Start the Conversation</button>
+              </form>
+              <p className="text-xs opacity-25 mt-4" style={{ fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>hello@studioobrien.com · Shelby, NC</p>
             </motion.div>
           </div>
-        </div>
+        )}
+
+        {/* ════════ 10. THE ARCHITECT — A2+B3+C2 ════════ */}
+        {/* Qualifying · Interactive selection · Centered monument */}
+        {contactCombo === 9 && (
+          <div className="relative z-10 py-28 md:py-40 px-6 max-w-4xl mx-auto">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center mb-14">
+              <p className="text-xs tracking-[0.4em] uppercase mb-3" style={{ fontFamily: F.heading, color: C.gold }}>New Project</p>
+              <h2 className="text-5xl md:text-7xl tracking-[0.03em] leading-[0.85] mb-5" style={{ fontFamily: F.heading, fontWeight: 700 }}>architect<br /><span style={{ color: C.gold }}>your vision</span></h2>
+              <p className="text-base opacity-50 max-w-md mx-auto" style={{ fontFamily: "'Crimson Text', serif" }}>Configure your project below. The more we know upfront, the faster we can show you what's possible.</p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              <div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Project Type</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {["Full Website", "Redesign", "Landing Page", "E-Commerce"].map(s => (
+                    <button key={s} onClick={() => setSelectedService(s)} className="px-3 py-3 rounded-sm text-xs tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedService === s ? C.gold : "rgba(255,255,255,0.04)", color: selectedService === s ? C.deepForest : C.parchment, border: `1px solid ${selectedService === s ? C.gold : C.gold + "15"}` }}>{s}</button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Budget Range</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {["Under $2k", "$2k–$5k", "$5k–$10k", "$10k+"].map(b => (
+                    <button key={b} onClick={() => setSelectedBudget(b)} className="px-3 py-3 rounded-sm text-xs tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedBudget === b ? C.gold : "rgba(255,255,255,0.04)", color: selectedBudget === b ? C.deepForest : C.parchment, border: `1px solid ${selectedBudget === b ? C.gold : C.gold + "15"}` }}>{b}</button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Timeline</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {["ASAP", "1–2 Months", "3–6 Months", "Flexible"].map(t => (
+                    <button key={t} onClick={() => setSelectedTimeline(t)} className="px-3 py-3 rounded-sm text-xs tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedTimeline === t ? C.gold : "rgba(255,255,255,0.04)", color: selectedTimeline === t ? C.deepForest : C.parchment, border: `1px solid ${selectedTimeline === t ? C.gold : C.gold + "15"}` }}>{t}</button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ fontFamily: F.heading, color: C.gold }}>Must-Haves</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {["SEO", "Mobile-First", "Animations", "CMS", "Analytics", "Speed"].map(feat => (
+                    <button key={feat} onClick={() => setSelectedService(prev => prev.includes("+" + feat) ? prev.replace("+" + feat, "") : prev + "+" + feat)} className="px-3 py-3 rounded-sm text-xs tracking-wider transition-all duration-300" style={{ fontFamily: F.heading, background: selectedService.includes("+" + feat) ? `${C.gold}30` : "rgba(255,255,255,0.04)", color: C.parchment, border: `1px solid ${selectedService.includes("+" + feat) ? C.gold + "60" : C.gold + "15"}` }}>{feat}</button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="max-w-xl mx-auto">
+              <ContactForm />
+            </div>
+          </div>
+        )}
+
       </section>
       </LeafReveal>
 
