@@ -979,8 +979,7 @@ export default function App() {
               </div>
               <img src="/images/logo.webp" alt="Studio O'Brien" className="h-8 md:h-10 w-auto absolute left-1/2 -translate-x-1/2" />
               <div className="flex items-center gap-4 ml-auto">
-                <a href="#login" className="text-xs tracking-[0.15em] uppercase font-bold hover:text-[#c9a84c] transition-colors duration-300" style={{ ...hF, color: C.deepForest }}>Login</a>
-                <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Book a Call</a>
+                <a href="#contact" className="px-5 py-2 text-xs tracking-[0.12em] uppercase font-bold rounded-sm transition-all duration-300 hover:scale-105" style={{ ...hF, background: C.deepForest, color: C.parchment }}>Get in Touch</a>
               </div>
             </div>
           </motion.nav>
@@ -1557,7 +1556,7 @@ export default function App() {
                   className="text-[11px] md:text-xs tracking-[0.45em] uppercase"
                   style={{ fontFamily: F.heading, color: C.gold, fontWeight: 400 }}
                 >
-                  A selection of past work
+                  Selected Work
                 </p>
                 <div className="h-px w-10 md:w-16" style={{ background: `${C.gold}40` }} />
               </div>
@@ -1690,7 +1689,10 @@ export default function App() {
         ];
         const yr = new Date().getFullYear();
         const fStyle = { fontFamily: F.heading };
-        const socials = ["Twitter", "Instagram", "LinkedIn"];
+        const socials = [
+          { label: "GitHub", href: "https://github.com/CandyFlex" },
+          { label: "Email", href: "mailto:hello@studioobrien.com" },
+        ];
 
         return (
           <footer className="py-16 md:py-24 px-6 md:px-16" style={{ background: C.parchment, color: C.deepForest }}>
@@ -1706,7 +1708,7 @@ export default function App() {
                 ))}
               </div>
               <div className="flex gap-8 text-xs tracking-[0.2em] uppercase opacity-50 mb-10" style={{ ...fStyle, color: C.deepForest }}>
-                {socials.map((s) => <a key={s} href="#" className="hover:opacity-100 transition-opacity">{s}</a>)}
+                {socials.map((s) => <a key={s.label} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined} className="hover:opacity-100 transition-opacity">{s.label}</a>)}
               </div>
               <Ornament className="w-32 md:w-40 mb-6" color={C.gold} />
               <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs opacity-40" style={{ color: C.deepForest }}>
