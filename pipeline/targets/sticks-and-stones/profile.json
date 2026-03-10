@@ -1,0 +1,226 @@
+{
+  "business": {
+    "name": "Sticks and Stones Art & Tattoo",
+    "tagline": "Uptown Shelby's First Full-Service Tattoo Shop & Art Gallery",
+    "slug": "sticks-and-stones",
+    "industry": "Tattoo Shop / Art Gallery",
+    "location": {
+      "address": "217 North Lafayette St",
+      "city": "Shelby",
+      "state": "NC",
+      "zip": "28150",
+      "neighborhood": "Uptown Shelby",
+      "county": "Cleveland County",
+      "region": "The Foothills / Greater Charlotte"
+    },
+    "phone": null,
+    "hours": {
+      "tueSat": "Tuesday - Saturday (hours not publicly listed)",
+      "closed": "Sunday, Monday",
+      "note": "Appointment-only for tattoos. Walk-ins welcome for flash designs and art gallery."
+    },
+    "owners": ["Brandon Paul"],
+    "ownerTitles": ["Owner / Tattoo Artist / Oil Painter"],
+    "established": "Circa 2018-2020 (copyright on Wix site reads 2020)",
+    "appointmentPolicy": "By appointment only. Often booked 1+ month out. One client per day. Larger projects fitting his style take priority."
+  },
+  "voice": {
+    "tone": "Grounded, confident, no-nonsense craftsman. Not flashy or trendy. Lets the work speak. Quiet authority from years of practice. Approachable but serious about the craft.",
+    "vocabulary": [
+      "custom pieces",
+      "original flash",
+      "hand drawn",
+      "black & gray",
+      "full color",
+      "portraits",
+      "oil painting",
+      "art",
+      "craft",
+      "experience"
+    ],
+    "avoid": [
+      "cheap",
+      "deal",
+      "discount",
+      "fast",
+      "quick",
+      "rush",
+      "trendy",
+      "viral",
+      "influencer",
+      "hype",
+      "tattoo parlor (use 'shop' or 'studio')"
+    ],
+    "sampleQuotes": [
+      "His specialty is creating completely custom pieces of art, both in tattooing and oil painting.",
+      "He offers many original tattoo designs to choose from with his hand drawn flash sheets.",
+      "Brandon's time is limited and he usually takes one client per day, with larger projects that fit into his style taking precedence."
+    ]
+  },
+  "brand": {
+    "colorDirection": "Dark, moody, and textured. Think aged parchment, dark ink, warm wood tones. Not neon-punk. More fine art gallery meets traditional tattoo shop. Rich blacks, warm creams, maybe a deep burgundy or forest green accent.",
+    "existingColors": {
+      "wixSite": "Dark/black background with white text, minimal color usage. The current site is extremely bare-bones."
+    },
+    "mood": "Artisan workshop. Old-world craftsmanship meets modern tattoo culture. The dual identity (tattoo shop + art gallery) is central. Should feel like walking into a curated space where real art lives on the walls and gets permanently etched into skin.",
+    "archetype": "The Creator / The Craftsman. Brandon is an artist first. The shop is his studio. Every piece is one-of-a-kind.",
+    "fonts": {
+      "display": "Something with weight and character. Serif or slab serif. Not script/cursive. Think classic tattoo signage meets gallery typography.",
+      "body": "Clean, readable sans-serif."
+    },
+    "visualDirection": "Hand-drawn textures, ink splatter or brush stroke accents, warm lighting feel. Subtle nods to oil painting (canvas texture, palette knife strokes). Portfolio-forward layout. The art should dominate."
+  },
+  "content": {
+    "heroHeadline": "One Artist. One Client. One Masterpiece.",
+    "heroSubtext": "Custom tattoos and original fine art in the heart of Uptown Shelby. Over 14 years of experience. Every piece created from scratch.",
+    "services": [
+      {
+        "name": "Custom Tattoo Design",
+        "description": "Completely original pieces designed specifically for you. Brandon works with each client to create something that has never existed before. This is the core of the business. Consultations required.",
+        "isPrimary": true
+      },
+      {
+        "name": "Original Flash Designs",
+        "description": "Hand-drawn flash sheets with original designs ready to tattoo. Not pulled from a catalog. Every flash design is Brandon's original artwork.",
+        "isPrimary": true
+      },
+      {
+        "name": "Portraits",
+        "description": "Realistic portrait tattoos in both black & gray and full color. A specialty requiring years of mastery.",
+        "isPrimary": true
+      },
+      {
+        "name": "Black & Gray",
+        "description": "Classic black and gray tattoo work spanning all styles and subjects.",
+        "isPrimary": false
+      },
+      {
+        "name": "Full Color",
+        "description": "Vibrant full-color tattoo work for pieces that demand it.",
+        "isPrimary": false
+      },
+      {
+        "name": "Art Gallery",
+        "description": "Rotating display of original paintings by local artists, including Brandon's own oil paintings. The shop doubles as a genuine art gallery.",
+        "isPrimary": true
+      },
+      {
+        "name": "Oil Painting",
+        "description": "Brandon also creates original oil paintings. His fine art background informs every tattoo he creates.",
+        "isPrimary": false
+      }
+    ],
+    "testimonials": [
+      {
+        "text": "Unable to locate verified online reviews for this specific business. Google, Yelp, and Facebook reviews were not found in search results. This may indicate a low online review footprint or that the business relies heavily on word-of-mouth and Instagram portfolio.",
+        "source": "Research note",
+        "verified": false
+      }
+    ],
+    "story": "Brandon Paul brings over 14 years of tattooing experience to Uptown Shelby. After being away for many years (records show he registered a 'sticks & Stones' trade name in Bayfield, Colorado in 2017), he returned home to open Shelby's first full-service tattoo shop. The shop is more than a tattoo studio. It functions as an art gallery featuring original paintings by local artists, reflecting Brandon's own dual practice as both tattoo artist and oil painter. His approach is deliberately unhurried: one client per day, custom work only, larger projects that fit his style taking priority. This scarcity and intentionality has kept him booked a month or more out.",
+    "sellingPoints": [
+      "Uptown Shelby's FIRST full-service tattoo shop",
+      "14+ years of professional tattooing experience",
+      "One client per day. Every piece gets full attention.",
+      "Dual artist: custom tattoos AND original oil paintings",
+      "Hand-drawn original flash sheets (not catalog art)",
+      "Doubles as an art gallery featuring local artists",
+      "Custom-first approach. Larger projects that fit his style take priority.",
+      "Located in historic Uptown Shelby on Lafayette Street",
+      "Walk-ins welcome for flash designs"
+    ],
+    "sections": [
+      "Hero (portfolio-forward, strong imagery)",
+      "About Brandon (artist story, 14+ years, dual practice)",
+      "Services (custom tattoos, portraits, black & gray, color, flash, gallery)",
+      "Portfolio Gallery (tattoo work + oil paintings)",
+      "The Gallery (art gallery side, local artists)",
+      "Booking / Consultation Request",
+      "Policies (appointment-only, deposit, cancellation)",
+      "Location & Hours",
+      "Footer (Instagram link, address)"
+    ]
+  },
+  "socialMedia": {
+    "instagram": {
+      "handle": "Not definitively confirmed. The Wix site says 'Follow Brandon on Instagram to see his current portfolio' but does not include a link or handle. @sticks_and_stones_tattoo_co exists but appears to be a DIFFERENT business (Navarre, FL location with 532 followers). Brandon's personal IG handle was not found in search.",
+      "status": "NEEDS MANUAL VERIFICATION - ask client directly"
+    },
+    "facebook": {
+      "url": "Not found in web search results. No Facebook page appeared for this specific Shelby NC business.",
+      "status": "NEEDS MANUAL VERIFICATION"
+    },
+    "website": "https://sticksandstones283.wixsite.com/sticksandstones"
+  },
+  "assets": {
+    "logo": "needs-manual - no logo found on Wix site beyond text treatment",
+    "heroImage": "needs-manual - Wix site has two static images (interior shot, logo/banner). Quality and resolution are poor.",
+    "galleryImages": [],
+    "hasOwnerPhoto": false,
+    "wixImages": [
+      "https://static.wixstatic.com/media/11062b_e8eeddbd40a74e7e9aca472d941c3e1a~mv2_d_5472_3648_s_4_2.jpg (shop interior or stock image)",
+      "https://static.wixstatic.com/media/f5b690_53b9f4386d154dd88a83d1afb9111572~mv2_d_3763_1950_s_2.png (logo/banner image)"
+    ],
+    "notes": "Portfolio images will need to come from Brandon's Instagram or be photographed directly. The Wix site has essentially zero portfolio content. This is a MAJOR gap for a tattoo shop website."
+  },
+  "competitors": {
+    "shelbyNC": [
+      {
+        "name": "Shiny New Tattoo",
+        "address": "217 N Lafayette St, Shelby, NC 28150 (SAME ADDRESS as Sticks and Stones - may have taken over the space)",
+        "phone": "(980) 404-0968",
+        "rating": "4.8 stars (89+ reviews on Google)",
+        "notes": "Multiple artists. Also an uptown Shelby shop. Has strong online presence and reviews. Originally at 524 E Dixon Blvd, appears to have moved uptown to the Lafayette St address."
+      },
+      {
+        "name": "Greeneworks Tattoo",
+        "website": "greeneworkstattoo.com",
+        "instagram": "@greeneworkstattoo",
+        "notes": "2,577 Instagram followers. Active online presence."
+      },
+      {
+        "name": "Dead Hero Tattoo LLC",
+        "address": "1243-3 E Dixon Blvd, Shelby",
+        "instagram": "@deadherotattoo"
+      },
+      {
+        "name": "T&C Tattoo Studios",
+        "address": "242 N Main St, Shelby, NC 28152"
+      },
+      {
+        "name": "Almost Heaven Body Art Collective",
+        "address": "625 S. Lafayette St, Shelby, NC",
+        "notes": "CLOSED as of May 31, 2024"
+      }
+    ]
+  },
+  "meta": {
+    "currentWebPresence": "Very poor. A bare-bones Wix site with outdated COVID-19 policies as the primary content. No portfolio. No pricing info. No phone number. No social media links. Copyright reads 2020. The site actively hurts the business - it looks abandoned.",
+    "googleBusinessListing": "Not confirmed in search results. May not have a Google Business Profile, or it may be unclaimed.",
+    "yelpUrl": "Not found. Sticks and Stones Art & Tattoo does not appear in Yelp search results for Shelby NC tattoo shops.",
+    "ratings": {
+      "google": "Not found",
+      "yelp": "Not found",
+      "facebook": "Not found",
+      "note": "This business appears to have almost zero review footprint online. This could be because: (1) the business is small/solo operation, (2) it relies on Instagram and word-of-mouth, (3) it may have closed or reduced operations, or (4) the Google Business Profile may not exist or may be unclaimed."
+    },
+    "dateProfiled": "2026-03-05",
+    "readyToBuild": false,
+    "blockers": [
+      "CRITICAL: Verify business is still operating at 217 N Lafayette St. Shiny New Tattoo now lists that same address. Sticks and Stones may have moved or closed.",
+      "No phone number found anywhere online.",
+      "Brandon Paul's Instagram handle is unknown. The Wix site references it but doesn't link it.",
+      "No portfolio images available. A tattoo shop site without portfolio images is a non-starter.",
+      "No customer reviews or testimonials found online.",
+      "No Facebook page found.",
+      "Need to verify current hours of operation.",
+      "Need owner photo / headshot of Brandon.",
+      "Need high-quality photos of tattoo work, oil paintings, and the gallery space."
+    ],
+    "researchNotes": {
+      "coloradoConnection": "A Colorado trade name registration shows 'sticks & Stones' was registered by 'Brandon J Paul' at 15003 County Road 501, Bayfield, CO 81122, effective July 5, 2017. This aligns with the Wix site copy saying Brandon returned to Shelby 'after being away for many years.' He likely operated in Colorado before coming home to NC.",
+      "addressConflict": "Shiny New Tattoo (run by artist Tevin Greene and others) now shows 217 N Lafayette St as their address on Yelp, Chamber of Commerce, and multiple directories. They previously operated at 524 E Dixon Blvd. One review mentions 'so glad they got to move uptown.' This strongly suggests Shiny New Tattoo moved into the space that was Sticks and Stones. Brandon may have closed, moved to a different location, or is operating from a private studio.",
+      "onlineFootprint": "Extremely minimal. Despite being described as Uptown Shelby's 'first' tattoo shop, there is almost no digital trail beyond the Wix site. No Yelp listing, no confirmed Google Business Profile, no Facebook page found, no Instagram handle confirmed. This is either a very word-of-mouth business or it may no longer be operating in its original form."
+    }
+  }
+}

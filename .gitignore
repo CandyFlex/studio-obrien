@@ -24,3 +24,24 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Dev artifacts
+screenshots/
+*.png
+!public/**/*.png
+audit/
+combo-screenshots.mjs
+perf-audit.mjs
+portfolio-targets.md
+src/App.tsx.bak
+src/variants/
+public/fonts/google-fonts-css.txt
+public/vite.svg
+
+# Pipeline browser data
+pipeline/.chrome-scraper/
+pipeline/.chrome-scraper-work/
+pipeline/.chrome-scraper-work2/
+
+# Claude worktrees
+.claude/worktrees/

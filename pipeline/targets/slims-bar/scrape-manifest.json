@@ -1,0 +1,20 @@
+{
+  "business": "Slim's Bar & Grill",
+  "slug": "slims-bar",
+  "scrapedAt": "2026-03-05T19:07:16.955Z",
+  "platforms": {
+    "facebook": false,
+    "yelp": true,
+    "tripadvisor": true,
+    "instagram": false,
+    "google": true,
+    "wix": false
+  },
+  "images": [],
+  "textBlocks": [],
+  "summary": {
+    "totalImagesFound": 0,
+    "totalDownloaded": 0,
+    "totalTextBlocks": 0
+  }
+}

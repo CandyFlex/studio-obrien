@@ -4,6 +4,7 @@ import {
   useScroll,
   useTransform,
   useSpring,
+  AnimatePresence,
 } from "motion/react";
 import {
   Globe,
@@ -754,18 +755,18 @@ function FoliageCurtain({
     /* Lock scroll for the entire intro sequence */
     document.body.style.overflow = "hidden";
 
-    /* 0.8s — brief hold, then hedges start parting */
-    const startTimer = setTimeout(() => setPhase("opening"), 800);
+    /* 0.3s — brief hold, then hedges start parting */
+    const startTimer = setTimeout(() => setPhase("opening"), 300);
 
-    /* 1.8s — hedges ~40 % open → hero text starts appearing through the gap */
-    const revealTimer = setTimeout(() => onReveal(), 1800);
+    /* 0.7s — hedges parting → hero text starts appearing through the gap */
+    const revealTimer = setTimeout(() => onReveal(), 700);
 
-    /* 3.5s — hedges fully offscreen → unlock scroll, clean up */
+    /* 1.5s — hedges fully offscreen → unlock scroll, clean up */
     const doneTimer = setTimeout(() => {
       setPhase("open");
       document.body.style.overflow = "";
       onComplete();
-    }, 3500);
+    }, 1500);
 
     return () => {
       clearTimeout(startTimer);
@@ -780,7 +781,7 @@ function FoliageCurtain({
 
   const tweenTransition = {
     type: "tween" as const,
-    duration: 2.5,
+    duration: 1.1,
     ease: [0.4, 0, 0.2, 1],
   };
 
@@ -805,8 +806,12 @@ function FoliageCurtain({
         <img
           src="/images/side-one.webp"
           alt=""
+          // @ts-expect-error fetchPriority is valid HTML
+          fetchPriority="low"
+          loading="eager"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "right 56%" }}
+          style={{ objectPosition: "right 56%", contentVisibility: "auto" as string }}
         />
       </motion.div>
 
@@ -830,8 +835,12 @@ function FoliageCurtain({
         <img
           src="/images/side-two.webp"
           alt=""
+          // @ts-expect-error fetchPriority is valid HTML
+          fetchPriority="low"
+          loading="eager"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "left 44%" }}
+          style={{ objectPosition: "left 44%", contentVisibility: "auto" as string }}
         />
       </motion.div>
     </>
@@ -857,6 +866,7 @@ export default function App() {
   const [philCombo, setPhilCombo] = useState(4);
   const [processCombo, setProcessCombo] = useState(0);
   const [contactCombo, setContactCombo] = useState(0);
+  const [heroCtaCombo, setHeroCtaCombo] = useState(0);
   const [contactStep, setContactStep] = useState(0);
   const [selectedService, setSelectedService] = useState("");
   const [selectedBudget, setSelectedBudget] = useState("");
@@ -1092,24 +1102,45 @@ export default function App() {
   }, [processCombo]);
 
   /* ─── Zoom transform calculation ─── */
-  /* The SVG is max(vw,vh) square inside a vw×vh container.
-     Translate % is relative to the container, so Y needs
-     aspect-ratio correction (svgSize / containerH) to land
-     every node at the exact same screen position. */
-  const zoomScale = 2.6;
+  /* Portrait vs landscape drives SVG sizing:
+     - Portrait (H > W): SVG = screenW square. Prevents X-axis distortion
+       from the SVG being wider than the screen.
+     - Landscape (W >= H): SVG = max(vw,vh) square. Covers full section.
+     Three layout tiers control zoom, target position, and overview scale:
+     - Mobile (<640w): Smaller zoom, node in upper-third, compact info panel
+     - Tablet (640-1279): Medium zoom, moderate node position
+     - Desktop (1280+): Full zoom experience */
+  const isPortrait = screenH > screenW;
   const safeIdx = tourStep >= 0 ? tourStep : 0;
   const nodeXPct = cNodes[safeIdx].x * 100 / 800;
   const nodeYPct = cNodes[safeIdx].y * 100 / 800;
-  const svgSize = Math.max(screenW, screenH);
-  const aspectX = svgSize / screenW; // 1 on landscape, >1 on portrait
-  const aspectY = svgSize / screenH; // >1 on landscape, 1 on portrait
-  const targetY = 38; // node lands between title and info panel
-  /* Overview: scale down so full diagram fits below the header text */
-  const overviewScale = Math.min(screenW, screenH) / svgSize * 0.72;
+  const svgSize = isPortrait ? screenW : Math.max(screenW, screenH);
+  const aspectX = svgSize / screenW;   // 1 on portrait, 1 on square landscape, ~1 always now
+  const aspectY = svgSize / screenH;   // <1 on portrait, >=1 on landscape
+  /* Per-tier zoom, target Y (% from top where node lands), and overview scale */
+  let zoomScale: number, targetY: number, overviewScale: number;
+  if (screenW < 640) {
+    /* ── Mobile ── */
+    zoomScale = 5.5;
+    targetY = 28;
+    overviewScale = 1.15;
+  } else if (screenW < 1280) {
+    /* ── Tablet / small laptop ── */
+    zoomScale = 2.3;
+    targetY = isPortrait ? 30 : 35;
+    overviewScale = isPortrait ? 0.6 : Math.min(screenW, screenH) / svgSize * 0.72;
+  } else {
+    /* ── Desktop ── */
+    zoomScale = 2.6;
+    targetY = 38;
+    overviewScale = Math.min(screenW, screenH) / svgSize * 0.72;
+  }
   const tourTx = tourStep === -1 ? 0 : zoomScale * (50 - nodeXPct) * aspectX;
   const tourTy = tourStep === -1 ? 0 : (targetY - 50) + zoomScale * (50 - nodeYPct) * aspectY;
   const tourScale = tourStep === -1 ? overviewScale : zoomScale;
   const tourRotate = 0;
+  /* SVG CSS dimension — portrait: width-based, landscape: max(vw,vh) */
+  const svgDim = isPortrait ? `${screenW}px` : "max(100vw, 100vh)";
 
   return (
     <div className="min-h-screen" style={{ fontFamily: F.body }}>
@@ -1138,12 +1169,46 @@ export default function App() {
         const hF = { fontFamily: F.heading };
         const v = navCombo;
 
-        /* shared hamburger */
+        /* shared hamburger — morphs to X */
         const burger = (color: string) => (
-          <button className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]" onClick={() => setMobileMenuOpen(true)} aria-label="Open menu">
-            <span className="block w-5 h-[1.5px]" style={{ background: color }} />
-            <span className="block w-5 h-[1.5px]" style={{ background: color }} />
-            <span className="block w-3.5 h-[1.5px]" style={{ background: color }} />
+          <button
+            className="md:hidden relative flex items-center justify-center w-10 h-10 z-[71]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <div className="relative w-6 h-5 flex flex-col justify-center items-center">
+              {/* Top line — rotates to first arm of X */}
+              <span
+                className="absolute block h-[1.5px] rounded-full"
+                style={{
+                  background: mobileMenuOpen ? C.gold : color,
+                  width: mobileMenuOpen ? "22px" : "20px",
+                  transform: mobileMenuOpen ? "rotate(45deg)" : "translateY(-6px)",
+                  transition: "all 0.4s cubic-bezier(0.77, 0, 0.175, 1)",
+                }}
+              />
+              {/* Middle line — collapses to nothing */}
+              <span
+                className="absolute block h-[1.5px] rounded-full"
+                style={{
+                  background: mobileMenuOpen ? C.gold : color,
+                  width: "20px",
+                  opacity: mobileMenuOpen ? 0 : 1,
+                  transform: mobileMenuOpen ? "scaleX(0)" : "scaleX(1)",
+                  transition: "all 0.3s cubic-bezier(0.77, 0, 0.175, 1)",
+                }}
+              />
+              {/* Bottom line — rotates to second arm of X */}
+              <span
+                className="absolute block h-[1.5px] rounded-full"
+                style={{
+                  background: mobileMenuOpen ? C.gold : color,
+                  width: mobileMenuOpen ? "22px" : "14px",
+                  transform: mobileMenuOpen ? "rotate(-45deg)" : "translateY(6px)",
+                  transition: "all 0.4s cubic-bezier(0.77, 0, 0.175, 1)",
+                }}
+              />
+            </div>
           </button>
         );
 
@@ -1202,7 +1267,8 @@ export default function App() {
         const navContent = (
           <div className="w-full flex flex-col items-center" style={{ background: C.parchment }}>
             <div className="w-full flex justify-between items-center px-6 md:px-12 py-2">
-              {burger(C.deepForest)}
+              {/* Spacer for hamburger position on mobile */}
+              <div className="md:hidden w-10 h-10" />
               <div className="hidden md:flex gap-7 uppercase ml-16" style={{ color: C.deepForest, fontFamily: linkFont.family, fontSize: linkFont.size, letterSpacing: linkFont.tracking, fontWeight: linkFont.weight }}>
                 {navLinks.slice(0, 3).map(l => (
                   <a key={l.label} href={l.href} className={linkClass} style={{ color: C.deepForest }}
@@ -1211,12 +1277,12 @@ export default function App() {
                   >{l.label}</a>
                 ))}
               </div>
-              {logo("h-8 md:h-11")}
-              <div className="flex items-center gap-4 ml-auto mr-16">
+              {logo("h-7 md:h-11")}
+              <div className="hidden md:flex items-center gap-4 ml-auto mr-16">
                 <a href="#contact" className={`${btnClass} uppercase`} style={{ ...btnStyle, ...btnShape, textTransform: "uppercase" } as React.CSSProperties}>Let's Talk</a>
               </div>
             </div>
-            {orn}
+            <div className="hidden md:block">{orn}</div>
           </div>
         );
 
@@ -1226,41 +1292,78 @@ export default function App() {
               {navContent}
             </motion.nav>
 
-            {/* Mobile fullscreen menu */}
-            {mobileMenuOpen && (
-              <div className="fixed inset-0 z-[70] flex flex-col items-center justify-center" style={{ background: C.deepForest }}>
-                <button
-                  className="absolute top-5 right-6 w-10 h-10 flex items-center justify-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="Close menu"
+            {/* Hamburger — fixed, above everything including menu overlay */}
+            <motion.div
+              className="md:hidden fixed top-0 left-0 z-[75]"
+              style={{ opacity: headerBlur, y: headerY, padding: "8px 16px" }}
+            >
+              {burger(mobileMenuOpen ? C.gold : C.deepForest)}
+            </motion.div>
+
+            {/* Mobile fullscreen menu — animated */}
+            <AnimatePresence>
+              {mobileMenuOpen && (
+                <motion.div
+                  key="mobile-menu"
+                  className="fixed inset-0 z-[70] flex flex-col items-center justify-center"
+                  style={{ background: C.deepForest }}
+                  initial={{ clipPath: "circle(0% at 28px 28px)" }}
+                  animate={{ clipPath: "circle(150% at 28px 28px)" }}
+                  exit={{ clipPath: "circle(0% at 28px 28px)" }}
+                  transition={{ duration: 0.6, ease: [0.77, 0, 0.175, 1] }}
                 >
-                  <span className="block w-6 h-[1.5px] rotate-45 absolute" style={{ background: C.gold }} />
-                  <span className="block w-6 h-[1.5px] -rotate-45 absolute" style={{ background: C.gold }} />
-                </button>
-                <nav className="flex flex-col items-center gap-8">
-                  {navLinks.map(l => (
-                    <a
-                      key={l.label}
-                      href={l.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="text-2xl tracking-[0.3em] uppercase transition-colors duration-300 hover:text-[#c9a84c]"
-                      style={{ fontFamily: F.heading, color: C.parchment }}
-                    >
-                      {l.label}
-                    </a>
-                  ))}
-                </nav>
-                <div className="mt-12">
-                  <Ornament className="w-32" color={C.gold} />
-                </div>
-              </div>
-            )}
+                  {/* Background texture */}
+                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />
+                  {/* Subtle radial glow */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 60% 50% at 50% 50%, ${C.emerald}15, transparent)` }} />
+
+                  <nav className="relative flex flex-col items-center gap-10">
+                    {navLinks.map((l, i) => (
+                      <motion.a
+                        key={l.label}
+                        href={l.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="text-2xl tracking-[0.3em] uppercase"
+                        style={{ fontFamily: F.heading, color: C.parchment }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ delay: 0.15 + i * 0.08, duration: 0.4, ease: "easeOut" }}
+                        whileHover={{ color: C.gold, x: 4 }}
+                      >
+                        {l.label}
+                      </motion.a>
+                    ))}
+                  </nav>
+
+                  {/* Ornament — fades in last */}
+                  <motion.div
+                    className="mt-12"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.55, duration: 0.4 }}
+                  >
+                    <Ornament className="w-32" color={C.gold} />
+                  </motion.div>
+
+                  {/* Gold hairline at top */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-[1px]"
+                    style={{ background: `linear-gradient(90deg, transparent, ${C.gold}40, transparent)` }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </>
         );
       })()}
 
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col items-start overflow-hidden" style={{ background: C.parchment }}>
+        <h1 className="sr-only">Studio O'Brien — Web Design, Development & Strategy in Shelby, NC</h1>
         <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />
         <motion.div style={{ y: heroY, opacity: heroContentOpacity }} className="relative z-10 flex flex-col items-center px-4 w-full pt-[12vh] sm:pt-[14vh]">
           {/* Motif top */}
@@ -1288,8 +1391,10 @@ export default function App() {
           {/* Logo */}
           <motion.img
             src="/images/logo.webp" alt="Studio O'Brien"
+            // @ts-expect-error fetchPriority is valid HTML
+            fetchPriority="high"
             className="w-[80vw] sm:w-[70vw] md:w-[60vw] lg:w-[720px] max-w-[780px]"
-            initial={{ opacity: 0, y: 16 }} animate={heroVisible ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 1, y: 16 }} animate={heroVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           />
           {/* Location label */}
@@ -1331,6 +1436,24 @@ export default function App() {
           >
             Design &bull; Development &bull; Strategy
           </motion.p>
+          {/* Mobile-only CTAs — Gilt Frame */}
+          <motion.div
+            className="flex md:hidden gap-4 mt-16"
+            initial={{ opacity: 0, y: 12 }}
+            animate={scrollUnlocked ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.35 }}
+          >
+            <a
+              href="#contact"
+              className="uppercase"
+              style={{ fontFamily: F.heading, fontWeight: 700, background: C.gold, color: C.deepForest, borderRadius: "2px", padding: "10px 28px", fontSize: "11px", letterSpacing: "0.15em", border: "none", boxShadow: `0 1px 4px ${C.deepForest}25` }}
+            >Let's Talk</a>
+            <a
+              href="#portfolio"
+              className="uppercase"
+              style={{ fontFamily: F.heading, fontWeight: 700, background: "transparent", color: C.deepForest, borderRadius: "2px", padding: "10px 28px", fontSize: "11px", letterSpacing: "0.15em", border: `1px solid ${C.deepForest}30` }}
+            >See Our Work</a>
+          </motion.div>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={scrollUnlocked ? { opacity: 1 } : {}} transition={{ delay: 0.5 }} style={{ opacity: scrollUnlocked ? scrollPromptOpacity : 0 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
           <span className="text-[10px] tracking-[0.3em] uppercase" style={{ fontFamily: F.heading, color: C.sage }}>Scroll</span>
@@ -1367,19 +1490,20 @@ export default function App() {
         />
 
         {/* ── Section Header ── */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="relative z-30 pt-[282px] sm:pt-[357px] pb-6 px-6">
-          <div className="text-center">
-            <p className="text-[13px] tracking-[0.6em] uppercase mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What We Do</p>
-            <div className="relative" style={{ marginTop: "31px" }}>
-              <h2 className="text-[4.5rem] sm:text-[12rem] md:text-[19.2rem] tracking-[0.14em] uppercase leading-[0.85] font-bold" style={{
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="relative z-30 pt-[492px] sm:pt-[357px] pb-6 px-2 sm:px-6" style={{ overflow: "visible" }}>
+          <div className="text-center" style={{ overflow: "visible" }}>
+            <p className="text-[11px] sm:text-[13px] tracking-[0.6em] uppercase mb-3 sm:mb-5" style={{ fontFamily: F.heading, color: C.gold }}>What We Do</p>
+            <div className="relative" style={{ marginTop: isMobile ? "12px" : "31px", overflow: "visible" }}>
+              <h2 className="text-[29vw] sm:text-[12rem] md:text-[19.2rem] tracking-[-0.02em] sm:tracking-[0.14em] uppercase leading-[0.85] font-bold" style={{
                 fontFamily: F.heading,
                 color: C.gold,
                 maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
                 WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)",
+                textIndent: isMobile ? "-5px" : "0",
               }}>
                 CRAFT
               </h2>
-              <p className="relative text-lg sm:text-xl tracking-[0.2em] uppercase opacity-60" style={{ fontFamily: F.heading, color: C.parchment, marginTop: "-22px" }}>
+              <p className="relative text-[14.3px] sm:text-xl tracking-[0.15em] sm:tracking-[0.2em] uppercase opacity-60" style={{ fontFamily: F.heading, color: C.parchment, marginTop: isMobile ? "-10px" : "-22px" }}>
                 Design · Development · Strategy
               </p>
             </div>
@@ -1602,7 +1726,7 @@ export default function App() {
       {/* ═══════════════════ PHILOSOPHY ═══════════════════ */}
       <Section bg={C.deepForest} color={C.parchment} className="!py-64 md:!py-80" overlay={<div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: leafPattern, backgroundSize: "80px 80px" }} />}>
         <div className="flex flex-col md:flex-row items-start gap-10 md:gap-14">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-full md:w-[28%] flex-shrink-0">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="w-[70%] mx-auto md:w-[28%] md:mx-0 flex-shrink-0">
             <div className="relative aspect-[3/4] rounded-sm overflow-hidden" style={{ border: `2px solid ${C.gold}` }}>
               <img src="/images/portrait.webp" alt="J. O'Brien, Founder" className="w-full h-full object-cover" loading="lazy" decoding="async" width={700} height={700} />
               <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: `linear-gradient(to top, ${C.deepForest}, transparent)` }} />
@@ -1744,7 +1868,7 @@ export default function App() {
               className="absolute inset-0 flex items-center justify-center"
               style={{ willChange: "transform", transformOrigin: "50% 50%", backfaceVisibility: "hidden" as const }}
             >
-                <svg viewBox="0 0 800 800" style={{ width: "max(100vw, 100vh)", height: "max(100vw, 100vh)", shapeRendering: "geometricPrecision" }}>
+                <svg viewBox="0 0 800 800" style={{ width: svgDim, height: svgDim, shapeRendering: "geometricPrecision" }}>
                   <defs>
                     <pattern id="hatchGold" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
                       <line x1="0" y1="0" x2="0" y2="6" stroke={C.gold} strokeWidth="0.5" opacity="0.18" />
@@ -1983,18 +2107,18 @@ export default function App() {
         {/* ── Content overlay layer (above constellation) ── */}
         <div className="relative" style={{ zIndex: 2, minHeight: "100vh" }}>
           {/* ── Section Header — drop-shadowed overlay ── */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center pt-16 md:pt-20 pb-6">
-            <p className="text-[10px] tracking-[0.45em] uppercase mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400, textShadow: `0 2px 12px rgba(0,0,0,0.8)` }}>Our Process</p>
-            <h2 className="text-3xl md:text-5xl tracking-[0.04em] leading-[1]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700, textShadow: `0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.5)` }}>Ten Steps to Something Real</h2>
-            <p className="text-[11px] tracking-[0.25em] uppercase mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400, textShadow: `0 2px 8px rgba(0,0,0,0.9)` }}>From First Conversation to Final Pixel</p>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp} className="text-center pt-10 sm:pt-16 md:pt-20 pb-4 sm:pb-6 px-6 sm:px-4">
+            <p className="text-[9px] sm:text-[10px] tracking-[0.45em] uppercase mb-2 sm:mb-4" style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontWeight: 400, textShadow: `0 2px 12px rgba(0,0,0,0.8)` }}>Our Process</p>
+            <h2 className="text-[22px] sm:text-3xl md:text-5xl tracking-[0.02em] sm:tracking-[0.04em] leading-[1.1] sm:leading-[1]" style={{ fontFamily: F.heading, color: C.parchment, fontWeight: 700, textShadow: `0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.5)` }}>Ten Steps to Something Real</h2>
+            <p className="text-[9px] sm:text-[11px] tracking-[0.25em] uppercase mt-2 sm:mt-4 opacity-35" style={{ fontFamily: "'Cormorant SC', serif", color: C.parchment, fontWeight: 400, textShadow: `0 2px 8px rgba(0,0,0,0.9)` }}>From First Conversation to Final Pixel</p>
           </motion.div>
 
           {/* ── Info overlay panel — fixed position below node circle ── */}
           {processCombo === 0 && (
             <>
               <motion.div
-                className="absolute left-1/2 -translate-x-1/2 pointer-events-none px-6"
-                style={{ top: "62%", width: "100%" }}
+                className="absolute left-1/2 -translate-x-1/2 pointer-events-none px-4 sm:px-6"
+                style={{ top: screenW < 640 ? "52%" : isPortrait ? "55%" : "62%", width: "100%" }}
                 animate={{ opacity: stepInfoVisible ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
@@ -2008,17 +2132,17 @@ export default function App() {
                     <motion.div
                       className="text-left pointer-events-none mx-auto"
                       style={{
-                        width: "min(380px, 90%)",
+                        width: screenW < 640 ? "min(320px, 92%)" : "min(380px, 90%)",
                         background: `linear-gradient(135deg, ${C.deepForest}, ${C.darkBark})`,
                         borderLeft: `2px solid ${C.gold}`,
                         boxShadow: `0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px ${C.gold}0a`,
-                        padding: "20px 24px 18px",
+                        padding: screenW < 640 ? "14px 16px 12px" : "20px 24px 18px",
                       }}
                       initial={{ y: 14, opacity: 0.8 }} animate={{ y: stepInfoVisible ? 0 : 14, opacity: stepInfoVisible ? 1 : 0.8 }} transition={{ duration: 0.28, ease: "easeOut" }}
                     >
                       {/* Top row: number + phase + mini progress bar */}
                       <div className="flex items-end gap-4 mb-3">
-                        <span style={{ fontFamily: "'Cormorant Garamond', serif", color: C.gold, fontSize: "34px", fontWeight: 300, lineHeight: 0.85, letterSpacing: "-1px" }}>{num}</span>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", color: C.gold, fontSize: screenW < 640 ? "26px" : "34px", fontWeight: 300, lineHeight: 0.85, letterSpacing: "-1px" }}>{num}</span>
                         <div style={{ paddingBottom: "2px" }}>
                           <p style={{ fontFamily: "'Cormorant SC', serif", color: C.gold, fontSize: "10px", letterSpacing: "3px", lineHeight: 1, marginBottom: "4px", opacity: 0.75 }}>{phase}</p>
                           <div className="flex items-center gap-1.5">
@@ -2029,11 +2153,11 @@ export default function App() {
                         </div>
                       </div>
                       {/* Step name */}
-                      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: C.parchment, fontSize: "24px", fontWeight: 600, fontStyle: "italic", lineHeight: 1.1, marginBottom: "10px", letterSpacing: "0.3px" }}>{name}</h3>
+                      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: C.parchment, fontSize: screenW < 640 ? "19px" : "24px", fontWeight: 600, fontStyle: "italic", lineHeight: 1.1, marginBottom: screenW < 640 ? "6px" : "10px", letterSpacing: "0.3px" }}>{name}</h3>
                       {/* Gold rule */}
                       <div style={{ width: "32px", height: "1px", background: `linear-gradient(to right, ${C.gold}50, ${C.gold}00)`, marginBottom: "10px" }} />
                       {/* Description */}
-                      <p style={{ fontFamily: "'DM Sans', sans-serif", color: C.parchment, fontSize: "13.5px", lineHeight: 1.7, opacity: 0.78, fontWeight: 400 }}>{desc}</p>
+                      <p style={{ fontFamily: "'DM Sans', sans-serif", color: C.parchment, fontSize: screenW < 640 ? "12px" : "13.5px", lineHeight: screenW < 640 ? 1.55 : 1.7, opacity: 0.78, fontWeight: 400 }}>{desc}</p>
                     </motion.div>
                   );
                 })()}
@@ -2053,16 +2177,16 @@ export default function App() {
                       setStepInfoVisible(true);
                     }}
                     className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
-                    style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                    style={{ opacity: 0.5, width: "32px", height: "32px" }}
                     aria-label="Previous step"
                   >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                       <path d="M7 1L3 5L7 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
 
                   {/* Dots */}
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-0">
                     {proc.map((_, i) => (
                       <button
                         key={i}
@@ -2073,10 +2197,12 @@ export default function App() {
                           setTourStep(i);
                           setStepInfoVisible(true);
                         }}
-                        className="relative cursor-pointer transition-all duration-400"
-                        style={{ width: tourStep === i ? "22px" : "6px", height: "6px", borderRadius: "3px", background: tourStep === i ? C.gold : `${C.gold}30`, opacity: tourStep === i ? 1 : 0.5 }}
+                        className="relative cursor-pointer transition-all duration-400 flex items-center justify-center"
+                        style={{ width: "24px", height: "24px", padding: 0 }}
                         aria-label={`Step ${i + 1}: ${proc[i].name}`}
-                      />
+                      >
+                        <span style={{ display: "block", width: tourStep === i ? "22px" : "6px", height: "6px", borderRadius: "3px", background: tourStep === i ? C.gold : `${C.gold}30`, opacity: tourStep === i ? 1 : 0.5, transition: "all 0.4s" }} />
+                      </button>
                     ))}
                   </div>
 
@@ -2091,32 +2217,64 @@ export default function App() {
                       setStepInfoVisible(true);
                     }}
                     className="cursor-pointer transition-opacity duration-200 hover:opacity-100 flex items-center justify-center"
-                    style={{ opacity: 0.5, width: "20px", height: "20px" }}
+                    style={{ opacity: 0.5, width: "32px", height: "32px" }}
                     aria-label="Next step"
                   >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                       <path d="M3 1L7 5L3 9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
               </div>
 
-              {/* ── Overview / Reset button ── */}
-              {tourStep >= 0 && (
+              {/* ── Overview / Play toggle — centered above progress bar ── */}
+              <div className="absolute bottom-[68px] left-1/2 -translate-x-1/2 flex justify-center">
                 <button
                   onClick={() => {
-                    tourActiveRef.current = false;
-                    tourTimers.current.forEach(clearTimeout);
-                    tourTimers.current = [];
-                    setTourStep(-1);
-                    setStepInfoVisible(false);
+                    if (tourStep >= 0) {
+                      /* Zoom out to overview */
+                      tourActiveRef.current = false;
+                      tourTimers.current.forEach(clearTimeout);
+                      tourTimers.current = [];
+                      setTourStep(-1);
+                      setStepInfoVisible(false);
+                    } else {
+                      /* Start tour from step 0 */
+                      tourActiveRef.current = true;
+                      tourTimers.current.forEach(clearTimeout);
+                      tourTimers.current = [];
+                      const schedule = (fn: () => void, ms: number) => {
+                        const t = setTimeout(() => { if (tourActiveRef.current) fn(); }, ms);
+                        tourTimers.current.push(t);
+                      };
+                      const runStep = (step: number) => {
+                        if (!tourActiveRef.current) return;
+                        setTourStep(step);
+                        setStepInfoVisible(false);
+                        schedule(() => {
+                          setStepInfoVisible(true);
+                          schedule(() => {
+                            setStepInfoVisible(false);
+                            schedule(() => {
+                              if (step >= 9) {
+                                setTourStep(-1);
+                                schedule(() => runStep(0), 1600);
+                              } else {
+                                runStep(step + 1);
+                              }
+                            }, 350);
+                          }, 2400);
+                        }, 1200);
+                      };
+                      runStep(0);
+                    }
                   }}
-                  className="absolute top-16 md:top-20 right-6 px-3 py-1.5 rounded text-[9px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 hover:opacity-100"
-                  style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 400, color: C.gold, background: `${C.deepForest}cc`, border: `1px solid ${C.gold}25`, opacity: 0.55, backdropFilter: "blur(8px)" }}
+                  className="px-4 py-1.5 rounded-full text-[9px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 hover:opacity-100"
+                  style={{ fontFamily: "'Cormorant SC', serif", fontWeight: 400, color: C.gold, background: `${C.deepForest}cc`, border: `1px solid ${C.gold}25`, opacity: 0.65, backdropFilter: "blur(8px)" }}
                 >
-                  Overview
+                  {tourStep >= 0 ? "Overview" : "Play"}
                 </button>
-              )}
+              </div>
             </>
           )}
         </div>
@@ -2644,13 +2802,13 @@ export default function App() {
       {(() => {
         const pieces = [
           { src: "/images/portfolio/crestview-property.webp", name: "Crestview Property Group", tag: "Real Estate", href: "/mock-sites/crestview-property.html" },
-          { src: "/images/portfolio/carolina-arcade.webp", name: "Carolina Arcade Museum", tag: "Entertainment", href: "/mock-sites/carolina-arcade.html" },
+          { src: "/images/portfolio/carolina-arcade.webp", name: "Carolina Arcade Museum", tag: "Entertainment", href: "/for/carolina-arcade.html" },
           { src: "/images/portfolio/mason-jar.webp", name: "The Mason Jar Provisions", tag: "Restaurant", href: "/mock-sites/mason-jar.html" },
           { src: "/images/portfolio/foothills-chiro.webp", name: "Foothills Family Chiropractic", tag: "Healthcare", href: "/mock-sites/foothills-chiro.html" },
-          { src: "/images/portfolio/wahoos-sports.webp", name: "Wahoo's Sports & Collectibles", tag: "Retail", href: "/mock-sites/wahoos-sports.html" },
+          { src: "/images/portfolio/wahoos-sports.webp", name: "Wahoo's Sports & Collectibles", tag: "Retail", href: "/for/wahoos-sports.html" },
           { src: "/images/portfolio/keller-built.webp", name: "Keller Built", tag: "Construction", href: "/mock-sites/keller-built.html" },
           { src: "/images/portfolio/carolina-brewing.webp", name: "Carolina Craft Brewing Co.", tag: "Brewery", href: "/mock-sites/carolina-brewing.html" },
-          { src: "/images/portfolio/hoot-nannie.webp", name: "The Hoot Nannie", tag: "Restaurant", href: "/mock-sites/hoot-nannie.html" },
+          { src: "/images/portfolio/hoot-nannie.webp", name: "The Hoot Nannie", tag: "Restaurant", href: "/for/hoot-nannie.html" },
           { src: "/images/portfolio/morningside-coffee.webp", name: "Morningside Coffee", tag: "Cafe", href: "/mock-sites/morningside-coffee.html" },
           { src: "/images/portfolio/pinnacle-realty.webp", name: "Pinnacle Realty", tag: "Real Estate", href: "/mock-sites/pinnacle-realty.html" },
           { src: "/images/portfolio/hickory-dental.webp", name: "Hickory Dental Arts", tag: "Healthcare", href: "/mock-sites/hickory-dental.html" },
@@ -3190,7 +3348,7 @@ export default function App() {
             <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
               <Ornament className="w-40 md:w-56 mb-8" color={C.gold} />
               <img src="/images/logo.webp" alt="Studio O'Brien" className="h-12 md:h-16 w-auto mb-6" />
-              <p className="text-sm md:text-base italic opacity-60 max-w-md mb-10" style={{ fontWeight: 400, color: C.forest }}>
+              <p className="text-sm md:text-base italic opacity-75 max-w-md mb-10" style={{ fontWeight: 400, color: C.forest }}>
                 Where timeless craft meets the art of the digital age.
               </p>
               <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-xs tracking-[0.25em] uppercase mb-10" style={fStyle}>
@@ -3198,11 +3356,11 @@ export default function App() {
                   <a key={l.label} href={l.href} className="opacity-70 hover:opacity-100 transition-all duration-300" style={{ color: C.deepForest }}>{l.label}</a>
                 ))}
               </div>
-              <div className="flex gap-8 text-xs tracking-[0.2em] uppercase opacity-50 mb-10" style={{ ...fStyle, color: C.deepForest }}>
+              <div className="flex gap-8 text-xs tracking-[0.2em] uppercase opacity-65 mb-10" style={{ ...fStyle, color: C.deepForest }}>
                 {socials.map((s) => <a key={s.label} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined} className="hover:opacity-100 transition-opacity">{s.label}</a>)}
               </div>
               <Ornament className="w-32 md:w-40 mb-6" color={C.gold} />
-              <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs opacity-40" style={{ color: C.deepForest }}>
+              <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs opacity-70" style={{ color: C.deepForest }}>
                 <span>&copy; {yr} Studio O'Brien</span>
                 <span className="hidden md:inline">&middot;</span>
                 <span>Shelby, NC</span>

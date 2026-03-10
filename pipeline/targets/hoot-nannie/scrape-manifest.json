@@ -1,0 +1,478 @@
+{
+  "business": "The Hoot Nannie",
+  "slug": "hoot-nannie",
+  "scrapedAt": "2026-03-05T19:07:49.138Z",
+  "platforms": {
+    "facebook": false,
+    "yelp": true,
+    "tripadvisor": true,
+    "instagram": false,
+    "google": true,
+    "wix": false
+  },
+  "images": [
+    {
+      "filename": "yelp-0.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The salad was delicious! - Forest City, NC",
+      "width": 533,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/VGxZIKJBSiUYggZLBcDHYg/l.jpg"
+    },
+    {
+      "filename": "yelp-1.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 300,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/pS36UFaLlCj6Jo5JDANS5A/l.jpg"
+    },
+    {
+      "filename": "yelp-2.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The steak was delicious, cooked perfectly, Mac and cheese was good too! - Forest City, NC",
+      "width": 533,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/cyoY5meoeFqhIThh921gEA/l.jpg"
+    },
+    {
+      "filename": "yelp-3.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 533,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/_hdvF1YX5Px3XlyWIHDPNg/l.jpg"
+    },
+    {
+      "filename": "yelp-4.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Tequila Sunrise yum - Forest City, NC",
+      "width": 225,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uUWEPjqRycBncrbAJ1JiNA/l.jpg"
+    },
+    {
+      "filename": "yelp-5.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - a hand holding a hamburger and fries - Forest City, NC",
+      "width": 533,
+      "height": 400,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/bpQCrraLU93qpkNHBojHQQ/l.jpg"
+    },
+    {
+      "filename": "yelp-6.jpg",
+      "platform": "yelp",
+      "alt": "Fried Chicken Sandwich",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fAASBECeQK46OJlaoA0O0w/258s.jpg"
+    },
+    {
+      "filename": "yelp-7.jpg",
+      "platform": "yelp",
+      "alt": "Chicken Tenders",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/91VnrXXYgCm8MqC301SB1w/258s.jpg"
+    },
+    {
+      "filename": "yelp-8.jpg",
+      "platform": "yelp",
+      "alt": "Smoked Wings",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/qxdhJiXDOxvpPc6CfC6OYw/258s.jpg"
+    },
+    {
+      "filename": "yelp-9.jpg",
+      "platform": "yelp",
+      "alt": "Pulled Pork Plate",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/roXL4JjgKHstSrQwwtr_JA/258s.jpg"
+    },
+    {
+      "filename": "yelp-10.jpg",
+      "platform": "yelp",
+      "alt": "Big Samantha Sandwich",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/W6Uq8T0-4ZHuSd2hi8G0jQ/258s.jpg"
+    },
+    {
+      "filename": "yelp-11.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/pS36UFaLlCj6Jo5JDANS5A/258s.jpg"
+    },
+    {
+      "filename": "yelp-12.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/3MYYlm1OK0XOCmik2Sfxew/258s.jpg"
+    },
+    {
+      "filename": "yelp-13.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/xnK2uZKlgDjS6JUtXMe23w/258s.jpg"
+    },
+    {
+      "filename": "yelp-14.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/qEpflG1GQN7AOfwA_1BPqw/258s.jpg"
+    },
+    {
+      "filename": "yelp-15.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/V4uOonwLvnnS70TzXFk7gQ/258s.jpg"
+    },
+    {
+      "filename": "yelp-16.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/_hdvF1YX5Px3XlyWIHDPNg/258s.jpg"
+    },
+    {
+      "filename": "yelp-17.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/VGxZIKJBSiUYggZLBcDHYg/258s.jpg"
+    },
+    {
+      "filename": "yelp-18.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/cyoY5meoeFqhIThh921gEA/258s.jpg"
+    },
+    {
+      "filename": "yelp-19.jpg",
+      "platform": "yelp",
+      "alt": "",
+      "width": 258,
+      "height": 258,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uUWEPjqRycBncrbAJ1JiNA/258s.jpg"
+    },
+    {
+      "filename": "yelp-21.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Dirty Sanchez Burger with Mac and Cheese - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/DA7dS8IACfpC9-BQGo-lCA/348s.jpg"
+    },
+    {
+      "filename": "yelp-22.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Dirty Sandwich Burger - Forest City, NC",
+      "width": 300,
+      "height": 225,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/SeDo6atGU7DERlW0FzlBoQ/348s.jpg"
+    },
+    {
+      "filename": "yelp-23.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The steak was delicious, cooked perfectly, Mac and cheese was good too! - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/cyoY5meoeFqhIThh921gEA/348s.jpg"
+    },
+    {
+      "filename": "yelp-24.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The salad was delicious! - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/VGxZIKJBSiUYggZLBcDHYg/348s.jpg"
+    },
+    {
+      "filename": "yelp-25.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The turkey looks as if it was simply taken from a deli package and stacked on the sandwich... - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uxes8BXnhuiu3XlpjNlAQw/348s.jpg"
+    },
+    {
+      "filename": "yelp-26.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The Crispy Chicken Sandwich with fries. - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fAASBECeQK46OJlaoA0O0w/348s.jpg"
+    },
+    {
+      "filename": "yelp-27.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - The Big Samantha sandwich with fries. - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/W6Uq8T0-4ZHuSd2hi8G0jQ/348s.jpg"
+    },
+    {
+      "filename": "yelp-28.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/PlxnbuX-VGWOKIgzb6_Xcg/348s.jpg"
+    },
+    {
+      "filename": "yelp-29.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 174,
+      "height": 132,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uz0cn12eMmHut4Doz-ysQQ/348s.jpg"
+    },
+    {
+      "filename": "yelp-30.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/MdbbMQI2NWbIsQhcUYYCFw/348s.jpg"
+    },
+    {
+      "filename": "yelp-31.jpg",
+      "platform": "yelp",
+      "alt": "The Hoot Nannie - Forest City, NC",
+      "width": 348,
+      "height": 348,
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/AgL15j0DYjeRShqNbAYwNA/348s.jpg"
+    },
+    {
+      "filename": "yelp-32.png",
+      "platform": "yelp",
+      "alt": "Company Logo",
+      "width": 600,
+      "height": 106,
+      "url": "https://cdn.cookielaw.org/logos/static/ot_company_logo.png"
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "Do you recommend this business?",
+      "platform": "yelp"
+    },
+    {
+      "text": "Fried Chicken Sandwich",
+      "platform": "yelp"
+    },
+    {
+      "text": "Big Samantha Sandwich",
+      "platform": "yelp"
+    },
+    {
+      "text": "People also searched for",
+      "platform": "yelp"
+    },
+    {
+      "text": "Forest City, NC 28043",
+      "platform": "yelp"
+    },
+    {
+      "text": "Powered by Health Department Intelligence",
+      "platform": "yelp"
+    },
+    {
+      "text": "Yelp users haven’t asked any questions yet about The Hoot Nannie.",
+      "platform": "yelp"
+    },
+    {
+      "text": "If comfort food and good vibes ever had a rowdy little love child, its name would be Hoot Nannie. From the moment we walked in, it felt like stepping straight into the coziest Southern restaurant/bar if that grandma also had a killer playlist, a sassy sense of humor, and a talent for feeding people until they're blissfully immobile.The food? Spectacular. Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were the perfect mix of generous and \"you're definitely taking leftovers home and happily eating them cold at midnight.\" And the flavors? Mercy. One bite in and you're suddenly questioning why you ever wasted calories anywhere else.The staff deserves special mention (Jada) friendly, hilarious, and quicker than a hummingbird after a double espresso. They made the whole meal feel like a celebration, even though all we celebrated was how fast we could inhale dinner.Whether you're craving hearty home cooking, a place to laugh with friends, or just a restaurant with a name that's as fun to say as it is to eat at, Hoot Nannie absolutely delivers. Five stars, two thumbs up, and one very happy, very full customer.",
+      "platform": "yelp"
+    },
+    {
+      "text": "Dirty Sanchez Burger with Mac and Cheese",
+      "platform": "yelp"
+    },
+    {
+      "text": "Dirty Sandwich Burger",
+      "platform": "yelp"
+    },
+    {
+      "text": "After a long day of running errand and chores it's time to fuel up.   Saw this establishment close by and it looked good.   The parking is next to the restaurant and it has plenty of seating.   The vibe was relaxed and inviting.   Lots to choose from but this time I had the pulled pork plate.  It was the perfect size and everything tasted fresh.   Ned time I'll have to try the burgers and fried chicken.",
+      "platform": "yelp"
+    },
+    {
+      "text": "We haven't been here in awhile but we stopped because we wanted to have steak.Have to say the steak was delicious, cooked exactly as we wanted them.The waitress was very nice too. Checked back numerous times. Over all we enjoyed the service and sitting outside on the patio. We were the only ones out there.Pet friendly too if you bring your dog they will give you a water dish for them. Next time we get a steak craving we will for sure go back here.Check them out!",
+      "platform": "yelp"
+    },
+    {
+      "text": "The steak was delicious, cooked perfectly, Mac and cheese was good too!",
+      "platform": "yelp"
+    },
+    {
+      "text": "The salad was delicious!",
+      "platform": "yelp"
+    },
+    {
+      "text": "Well this is the second time coming to this restaurant. The first time was a flop!We ended up walking out and not very happy after waiting so long for our food.We decided to come back and try it again.This time we had a wonderful waitress by the name of Alexis , she was one of their newer waitresses but very good!!!What a difference from the first time.I wanted to try the wings because the owner of this place always advertises on FB the wings looked so good and they have a special on thursday nights the waitress said for .50 cents each. I ordered the lunch wings which were a half order buffalo style.One thing is the wings are big! They smoke them first then they fry them.I am not a smoke flavor person  but I do love wings. The sauce was good. I did get a Irish cream Drink when I was done, I was craving a good cream drink.Alexis was very good. She made sure everything was good. She even got a sample of strawberry cider, that was some good stuff, and I am not a cider drinker.Over all very satisfied this time over the last time.We will for sure go back and try some dinner dishes and we will ask for Alexis again. If you haven't been here definitely stop and ask for her. (Just wanted to note this is a farm to table type of place, so most likely you will get food sourced locally as well as the beers they serve)",
+      "platform": "yelp"
+    },
+    {
+      "text": "First time visiting this establishment.  The food was acceptable but lacked any significant development.  I had their Big Samantha sandwich, ( a club sandwich with red onion, lettuce, tomato,cheese  & pickle slices on Texas Toast) and fries. The sandwich contained all of the listed requirements of a club sandwich but was poorly prepared. Large slices of red onion, too many pickles and turkey that seemed straight out of a deli package made the sandwich bland and soul-less with no thought to its assembly. The fries were tasteful and the better of the two items served. The lack of timely service and the lack of  overall ambiance in the restaurant made.this a less than ideal experience. In my opinion better leadership from management regarding customer service would make this a more appealing eatery.",
+      "platform": "yelp"
+    },
+    {
+      "text": "Two sided laminated menu for pricey & not so pricey.  Arriving in the parking lot drew me in because you can smell the grill. I had the cheddar cheese hamburger with a side of grilled asparagus.  Can't believe I ate everything.    My partner had steak tacos with fries.  No complaints there!  We truly enjoyed our lunch and will be back soon.  Because this place is a great place to get a steak, it quite a cowboy's dream!  Our server aimed to please. She was energetic and made sure we were happy!",
+      "platform": "yelp"
+    },
+    {
+      "text": "They serve a variety of craft beers, wine & spirits.  Great selections for Lunch & dinner with excellent prices.  With the exception of fries, the Food comes out hot & quick.  Server on on point with iced tea refills.  A great place to hang out with friends.",
+      "platform": "yelp"
+    },
+    {
+      "text": "Best. Chicken. Sandwich. EVER.  We will be back for sure!!!Crowded so go early!!Nice people too.",
+      "platform": "yelp"
+    },
+    {
+      "text": "Great food and service! My whole family loved it. Karissa was a great server and so patient with all my kids and their needs.",
+      "platform": "yelp"
+    },
+    {
+      "text": "Everything we've had has been delicious! The classic crispy sandwich is so big and juicy! The drinks are really good too! So many choices on the cocktail menu!",
+      "platform": "yelp"
+    },
+    {
+      "text": "I'm shocked I haven't done a review before this. I've been here a few times already. I've never had a bad meal here but I've heard from friends they had a bad experience. They do some foods very, very good and some not so much. My wife enjoys the Catfish plate but tonight is Thursday and it's .50 cent wing night. Wings are great, not too Smokey and the sauces are good. I'm getting the Cubano sandwich, one of my favorites. Place is usually busy and sometimes there's a wait. We'll foods here so.... Time to eat!",
+      "platform": "yelp"
+    },
+    {
+      "text": "See all photos from Tony R. for The Hoot Nannie",
+      "platform": "yelp"
+    },
+    {
+      "text": "Went here for the first time today. We have previously avoided the Hoot Nannie because of some negative Yelp reviews. Boy, was that a mistake! I had the smashed Double Bacon Cheeseburger with chips, and it was amazing. My wife had the the BBQ fries as a meal, and it was awesome as well! We started with the Cheese Curds, and they may have been the best I've ever had. We took 1/2 of all 3 home and reheated them for dinner. The food reheated excellently. Service was a little slow, but they were very busy, so it is what it is. Worth the wait for sure! We will be going back for sure!",
+      "platform": "yelp"
+    },
+    {
+      "text": "A friend and myself met at the hoot nanny restaurant in downtown Forest city today. We had been there several years ago and enjoyed it so much that we wanted to meet there again. I ordered a Smokehouse Cuban sandwich, with their homemade chips, absolutely amazing!! The sandwich was made with delicious smoked ham on Swiss with mustard and homemade pork loin with dill pickles pressed in a nice bun. The chips were amazingly tasty, the best kettle type chips I've eaten!",
+      "platform": "yelp"
+    },
+    {
+      "text": "4 other reviews that are not currently recommended",
+      "platform": "yelp"
+    },
+    {
+      "text": "164 E Main St Forest City, NC 28043",
+      "platform": "yelp"
+    },
+    {
+      "text": "People found The Hoot Nannie by searching for…",
+      "platform": "yelp"
+    },
+    {
+      "text": "Country Cooking in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Wing Night in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Bourbon in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Dinner Takeout in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Meat and 3 in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Expensive Restaurants in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Unique Fun Dining Experiences in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Meatloaf in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Weekend Brunch in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Cheap Dinner in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Special Occasion Restaurant in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Late Night Eats in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Chili Cheese Fries in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Bison in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Sunday Breakfast in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Chili Burger in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Mashed Potatoes in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Holiday Dinner in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Waitlist in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Blooming Onion in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Seafood Boil in Forest City, North Carolina",
+      "platform": "yelp"
+    },
+    {
+      "text": "Food Network Diners Drive Ins and Dives in Forest City, North Carolina",
+      "platform": "yelp"
+    }
+  ],
+  "summary": {
+    "totalImagesFound": 33,
+    "totalDownloaded": 32,
+    "totalTextBlocks": 144
+  }
+}

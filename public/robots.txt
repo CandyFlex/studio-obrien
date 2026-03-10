@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /mock-sites/
+
+Sitemap: https://studioobrien.com/sitemap.xml

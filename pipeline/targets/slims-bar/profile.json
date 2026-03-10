@@ -1,0 +1,53 @@
+{
+  "business": {
+    "name": "Slim's Bar & Grill",
+    "tagline": "TO BE FILLED FROM COPY REVIEW",
+    "slug": "slims-bar",
+    "industry": "Restaurant / Bar",
+    "location": {
+      "address": "184 East Main St, Forest City, NC 28043",
+      "city": "Forest City",
+      "state": "NC"
+    },
+    "phone": "(828) 382-0283",
+    "hours": "TO BE CONFIRMED",
+    "owners": [],
+    "ownerTitles": []
+  },
+  "voice": {
+    "tone": "",
+    "vocabulary": [],
+    "avoid": [],
+    "sampleQuotes": []
+  },
+  "brand": {
+    "colorDirection": "",
+    "existingColors": [],
+    "mood": "",
+    "archetype": "",
+    "fonts": {
+      "display": "",
+      "body": ""
+    }
+  },
+  "content": {
+    "heroHeadline": "",
+    "heroSubtext": "",
+    "services": [],
+    "testimonials": [],
+    "story": "",
+    "sellingPoints": []
+  },
+  "assets": {
+    "logo": "needs-manual",
+    "heroImage": "needs-manual",
+    "galleryImages": [],
+    "hasOwnerPhoto": false
+  },
+  "meta": {
+    "currentWebPresence": "None",
+    "yelpUrl": "https://www.yelp.com/biz/slims-bar-and-grill-forest-city",
+    "dateProfiled": "2026-03-05",
+    "readyToBuild": false
+  }
+}

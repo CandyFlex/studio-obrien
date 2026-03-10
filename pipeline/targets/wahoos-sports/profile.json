@@ -1,0 +1,221 @@
+{
+  "business": {
+    "name": "Wahoo's Sports and Collectibles",
+    "tagline": "You never know what you will find at Wahoo's.",
+    "slug": "wahoos-sports",
+    "industry": "Retail / Sports Memorabilia / Streetwear / Sneakers",
+    "location": {
+      "address": "128 E Main St",
+      "city": "Forest City",
+      "county": "Rutherford County",
+      "state": "NC",
+      "zip": "28043",
+      "region": "The Foothills",
+      "downtown": true,
+      "note": "Located on Main Street in downtown Forest City"
+    },
+    "phone": "(828) 223-6060",
+    "hours": {
+      "monday": "Closed",
+      "tuesday": "Closed",
+      "wednesday": "2:15 PM - 6:00 PM",
+      "thursday": "2:15 PM - 6:00 PM",
+      "friday": "2:15 PM - 6:00 PM",
+      "saturday": "12:15 PM - 4:30 PM",
+      "sunday": "Closed",
+      "note": "Part-time hours suggest owner-operated, possibly a passion project alongside other work"
+    },
+    "owners": ["Bill"],
+    "ownerTitles": ["Owner"],
+    "ownerNotes": "Last name not publicly confirmed. Bill is consistently referenced by first name in reviews. Described as a knowledgeable collector and hobby shop owner. Clearly runs the shop himself."
+  },
+  "voice": {
+    "tone": "Friendly, casual, collector-to-collector. Not corporate. The vibe is a guy who loves what he sells and wants to share it. Approachable, knowledgeable, no-pressure. Think neighborhood hobby shop energy mixed with hype culture awareness.",
+    "vocabulary": [
+      "collectibles",
+      "vintage",
+      "one-of-a-kind",
+      "check us out",
+      "you never know what you'll find",
+      "new packs",
+      "good vintage",
+      "giveaway",
+      "in search of"
+    ],
+    "avoid": [
+      "luxury",
+      "premium experience",
+      "curated",
+      "exclusive drops",
+      "corporate retail language",
+      "aggressive sales copy"
+    ],
+    "customerWords": [
+      "knowledgeable",
+      "friendly",
+      "fair",
+      "great prices",
+      "great selection",
+      "go-to store",
+      "something for everyone",
+      "helpful",
+      "warm and welcoming"
+    ],
+    "sampleQuotes": {
+      "fromBusiness": "Wahoo's is a unique store featuring sports cards, memorabilia and sports-related gifts. We specialize in vintage sports cards, Rutherford County sports collectibles, NASCAR memorabilia and one-of-a-kind gifts. Check us out today! You never know what you will find at Wahoo's.",
+      "instagramBio": "Sneakers, Streetwear, Vintage, Sports Memorabilia and Sports Cards. 128 E Main Street, Forest City NC"
+    }
+  },
+  "brand": {
+    "colorDirection": "Bold, sporty, high-energy. The shop carries Supreme (red/white), Nike (orange/black), Jordan brand. The logo uses a blue W with red outline. Think: primary colors, streetwear energy, sports team color palettes.",
+    "existingColors": {
+      "logoPrimary": "Blue (royal/cobalt blue script W)",
+      "logoAccent": "Red (outline/trim on the W)",
+      "logoBackground": "White"
+    },
+    "mood": "Hype meets hometown. A small-town Main Street shop that stocks Supreme, Jordans, vintage Charlotte Hornets gear, and NASCAR jackets side by side. Not pretentious. The glass display cases, slatwall retail fixtures, and cardboard boxes in the background keep it real. This is a treasure hunt, not a boutique.",
+    "archetype": "The Collector / The Explorer",
+    "fonts": {
+      "display": "Something bold and sporty to match the W logo energy",
+      "body": "Clean, readable"
+    }
+  },
+  "content": {
+    "heroHeadline": "You Never Know What You'll Find at Wahoo's",
+    "heroSubtext": "Sneakers. Streetwear. Vintage. Sports Cards. Memorabilia. Right here on Main Street in Forest City, NC.",
+    "services": [
+      "Sports cards (baseball, football, basketball, racing, Pokemon) - new packs and vintage singles",
+      "Sneakers (Nike, Jordan, Yeezy-era releases, limited/collectible)",
+      "Streetwear (Supreme clothing, accessories, skate decks, hats, socks, bags, shower caps)",
+      "Vintage sports apparel (Charlotte Hornets, NFL teams, college, 80s-90s era)",
+      "NASCAR memorabilia (racing jackets, Texaco/Havoline Winston Cup gear)",
+      "Sports memorabilia (autographed items, signed bats, die-cast cars)",
+      "Hype accessories (Bravest Studios designer-inspired socks, Fear of God hats)",
+      "Rutherford County local sports collectibles",
+      "Card buying and trading (Bill buys older cards and does fair trades)"
+    ],
+    "testimonials": [
+      {
+        "text": "Bill is such a knowledgeable collector and hobby shop owner. Great prices and selection!! There is something for everyone at this collectible establishment!!",
+        "source": "Loc8NearMe / Google review",
+        "sentiment": "5-star"
+      },
+      {
+        "text": "Owner is friendly; has new packs & some good vintage; baseball, football, basketball, racing, pokemon etc. Buys older cards, does some trading and is fair & knowledgeable.",
+        "source": "Loc8NearMe / Google review",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I love this store. This is my go to store when it comes to buying cards to add to my collection. Very helpful and friendly as well.",
+        "source": "Loc8NearMe / Google review",
+        "sentiment": "5-star"
+      }
+    ],
+    "story": "Wahoo's Sports and Collectibles is a one-man operation on Main Street in downtown Forest City, NC. Owner Bill runs the shop with the hours of someone doing it for the love of it, open Wednesday through Saturday afternoons. The store started as a sports card and memorabilia shop, rooted in Rutherford County sports heritage and NASCAR country collecting. Over time it has evolved to also carry sneakers, Supreme streetwear, and vintage sports apparel, blending old-school hobby shop culture with newer hype and resale culture. The glass display cases hold everything from signed baseball bats to Supreme skate decks to Air Jordan 10s. The Instagram feed shows giveaways, 'in search of' posts for specific sneakers, and new product arrivals. It feels like walking into a collector's personal stash that happens to be for sale.",
+    "sellingPoints": [
+      "Only shop of its kind in Rutherford County and the Foothills region",
+      "Owner Bill is genuinely knowledgeable and buys/trades fairly",
+      "Mix of vintage sports cards, modern hype streetwear, and sneakers under one roof",
+      "Located on historic Main Street in downtown Forest City",
+      "Carries authentic Supreme, Nike, Jordan, Fear of God, and Bravest Studios",
+      "Specializes in Rutherford County sports collectibles and NASCAR memorabilia",
+      "Welcoming atmosphere, not intimidating for new collectors or casual browsers",
+      "Runs giveaways for the community via Instagram"
+    ],
+    "sections": [
+      "Hero (treasure hunt / discovery theme)",
+      "What We Carry (product categories with photos)",
+      "About Bill / The Shop Story",
+      "Customer Reviews",
+      "Instagram Feed / Latest Finds",
+      "Visit Us (hours, map, phone)",
+      "Buy / Sell / Trade CTA"
+    ]
+  },
+  "assets": {
+    "logo": "Blue script 'W' with red outline on white background (instagram-0.jpg, 150x150 profile picture). Simple, sports-team inspired.",
+    "heroImage": "Multiple strong options from Instagram scrape showing glass display cases full of product",
+    "galleryImages": [
+      {
+        "file": "instagram-4.jpg",
+        "description": "Three hats on glass display case: Supreme box logo cap, corduroy S cap, Atlanta Braves trucker hat. Sports cards visible under glass."
+      },
+      {
+        "file": "instagram-5.jpg",
+        "description": "Packaged streetwear t-shirt in brown, appears to be a hype/designer brand item in display case"
+      },
+      {
+        "file": "instagram-6.jpg",
+        "description": "Supreme x Hanes boxer briefs and cushion crew socks in pink packaging, Nike CR7 socks, displayed in glass case"
+      },
+      {
+        "file": "instagram-7.jpg",
+        "description": "Supreme skateboard deck with ornate chain pattern design, displayed alongside other items. Box visible labeled 'The 23 Collection Stand-Up Display'"
+      },
+      {
+        "file": "instagram-8.jpg",
+        "description": "Fear of God 'F' logo hat displayed on glass case, signed baseball bat and Supreme sticker visible underneath, clothing on slatwall behind"
+      },
+      {
+        "file": "instagram-9.jpg",
+        "description": "Nike Air 5-panel hat in black/blue mesh, held in hand. Shoe boxes visible in background. Good product shot."
+      },
+      {
+        "file": "instagram-10.jpg",
+        "description": "Vintage Charlotte Hornets 'Shooting Stars' teal crewneck sweatshirt hanging next to a NASCAR Texaco/Havoline Winston Cup racing jacket. Perfect image showing the store's range."
+      },
+      {
+        "file": "instagram-11.jpg",
+        "description": "Three vintage sports t-shirts laid out: Phoenix Cardinals NFL, 1992 Gator Bowl NC State Wolfpack, Pittsburgh Steelers. UNC Tar Heels banner above. Sports cards in row below."
+      },
+      {
+        "file": "instagram-12.jpg",
+        "description": "Nike Blazer Low Sacai in green/grey/white on orange Nike box. Sneakers and yellow Nike Air hoodie visible on slatwall behind."
+      },
+      {
+        "file": "instagram-13.jpg",
+        "description": "Air Jordan 10 Retro in white/grey/blue on box. Nike Air hoodie and sneakers on wall display behind."
+      },
+      {
+        "file": "instagram-14.jpg",
+        "description": "Three Bravest Studios designer-inspired socks (Dior pattern green, blue, LV pattern light blue) in glass display case. Supreme items visible in background."
+      },
+      {
+        "file": "instagram-15.jpg",
+        "description": "Supreme accessories display: Supreme socks, S Logo beanie, Supreme bandana-print shoulder bag. Streetwear accessories collection."
+      }
+    ],
+    "hasOwnerPhoto": false,
+    "imageNotes": "16 images scraped from Instagram. Profile photo is the blue W logo. Remaining 15 are product shots taken inside the store. Store interior visible: slatwall display panels, glass display cases with lit interiors, shoe boxes stacked, clothing hung on wall. No professional storefront exterior shot available. No photos of Bill himself."
+  },
+  "meta": {
+    "currentWebPresence": {
+      "website": "None",
+      "instagram": "https://www.instagram.com/wahoossports/ (107 followers, 199 following, 166 posts)",
+      "facebook": "Not found",
+      "yelp": "https://www.yelp.com/biz/wahoos-sports-and-collectibles-forest-city (10 photos, Hobby Shops category)",
+      "google": "Listed on Google Maps/Business",
+      "nextdoor": "https://nextdoor.com/pages/wahoo-s-sports-and-collectibles-forest-city-nc/",
+      "visitNC": "https://www.visitncsmalltowns.com/listing/wahoos-sports-and-collectibles/1458/",
+      "exploreForestCity": "Featured on Explore Forest City Instagram (April 2021) and listed on exploreforestcity.com/shop",
+      "loc8NearMe": "https://www.loc8nearme.com/north-carolina/forest-city/wahoos-sports-and-collectibles/5112067/"
+    },
+    "ratings": {
+      "yelp": "Positive (exact star count not confirmed, listed as top card shop near Forest City)",
+      "google": "Positive (reviews reference 5-star quality experiences)",
+      "overallSentiment": "Overwhelmingly positive across all platforms"
+    },
+    "yelpCategory": "Hobby Shops",
+    "accessibilityNotes": "Wheelchair accessible, accepts credit cards, bike parking available",
+    "estimatedOpenDate": "Instagram posts date back to at least June 2021. Featured by Explore Forest City in April 2021. Likely opened 2020-2021.",
+    "dateProfiled": "2026-03-05",
+    "readyToBuild": true,
+    "blockers": [
+      "No owner photo available. Need to get one from Bill during onboarding.",
+      "No storefront exterior photo. Need to photograph.",
+      "Bill's last name not confirmed publicly. Verify during intake.",
+      "Exact Yelp/Google star ratings not confirmed (reviews are all positive).",
+      "No confirmed website or domain currently owned."
+    ]
+  }
+}

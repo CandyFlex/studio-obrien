@@ -1,0 +1,130 @@
+{
+  "business": "Carolina Arcade Museum",
+  "slug": "carolina-arcade",
+  "scrapedAt": "2026-03-05T19:05:44.112Z",
+  "platforms": {
+    "facebook": true,
+    "yelp": true,
+    "tripadvisor": true,
+    "instagram": false,
+    "google": true,
+    "wix": false
+  },
+  "images": [
+    {
+      "filename": "facebook-0.jpg",
+      "platform": "facebook",
+      "alt": "profile-pic",
+      "width": 0,
+      "height": 0,
+      "url": "https://scontent-atl3-1.xx.fbcdn.net/v/t39.30808-6/474778508_1028967605915644_1699571303636967079_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=2a1932&_nc_ohc=TZr"
+    },
+    {
+      "filename": "facebook-1.jpg",
+      "platform": "facebook",
+      "alt": "profile-pic",
+      "width": 0,
+      "height": 0,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-1/305112737_455829943229416_5021424672323338801_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=102&ccb=1-7&_n"
+    },
+    {
+      "filename": "facebook-4.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 158,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/632804676_1337981695014232_5584767406878132703_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=105&ccb=1-7&_"
+    },
+    {
+      "filename": "facebook-5.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/626531240_1329430459202689_4415949626136135443_n.jpg?stp=c80.0.480.480a_dst-jpg_s160x160_tt6&_nc_ca"
+    },
+    {
+      "filename": "facebook-6.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-3.xx.fbcdn.net/v/t39.30808-6/619464340_1323282973150771_8841213187491075279_n.jpg?stp=c0.60.365.365a_dst-jpg_s160x160_tt6&_nc_ca"
+    },
+    {
+      "filename": "facebook-7.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-3.xx.fbcdn.net/v/t39.30808-6/619606960_1319160403563028_110458061559834828_n.jpg?stp=c0.44.168.168a_dst-jpg_s160x160_tt6&_nc_cat"
+    },
+    {
+      "filename": "facebook-8.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/618255266_1318610323618036_8102790519698205849_n.jpg?stp=c0.48.640.640a_dst-jpg_s160x160_tt6&_nc_ca"
+    },
+    {
+      "filename": "facebook-9.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/616186696_1315685047243897_8113166805145039231_n.jpg?stp=c0.12.204.204a_dst-jpg_s160x160_tt6&_nc_ca"
+    },
+    {
+      "filename": "facebook-10.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-3.xx.fbcdn.net/v/t39.30808-6/606889598_1305907624888306_7374992867944215048_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=111&ccb=1-7&_"
+    },
+    {
+      "filename": "facebook-11.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/605299101_1298221162323619_3706022542641901492_n.jpg?stp=c0.113.1290.1290a_cp6_dst-jpg_s160x160_tt6"
+    },
+    {
+      "filename": "facebook-12.jpg",
+      "platform": "facebook",
+      "alt": "",
+      "width": 160,
+      "height": 160,
+      "url": "https://scontent-atl3-1.xx.fbcdn.net/v/t39.30808-6/596929485_1287592436719825_3345780613305446780_n.jpg?stp=c0.296.1152.1152a_dst-jpg_s160x160_tt6&_nc"
+    },
+    {
+      "filename": "facebook-13.jpg",
+      "platform": "facebook",
+      "alt": "May be an image of gelato, ice cream and text that says 'Scoop Forest City Opens this Friday 2pT to 9pm C 00 0 S'",
+      "width": 526,
+      "height": 789,
+      "url": "https://scontent-atl3-1.xx.fbcdn.net/v/t39.30808-6/646738901_1471985588270420_3354259915220517625_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=100&ccb=1-7&_"
+    },
+    {
+      "filename": "facebook-14.png",
+      "platform": "facebook",
+      "alt": "",
+      "width": 360,
+      "height": 360,
+      "url": "https://www.facebook.com/images/icons/FBLogo_Blueprint.png"
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "Carolina Arcade Museum",
+      "platform": "facebook"
+    }
+  ],
+  "summary": {
+    "totalImagesFound": 15,
+    "totalDownloaded": 13,
+    "totalTextBlocks": 1
+  }
+}

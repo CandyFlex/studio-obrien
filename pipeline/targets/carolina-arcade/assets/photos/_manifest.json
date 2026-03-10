@@ -1,0 +1,14 @@
+{
+  "slug": "carolina-arcade",
+  "business": "Carolina Arcade Museum",
+  "scrapedAt": "2026-03-05T20:41:33.614Z",
+  "source": "Google Business Profile (Maps)",
+  "stats": {
+    "networkUrlsCaptured": 93,
+    "uniqueAfterDedup": 58,
+    "downloaded": 56,
+    "filteredOut": 0,
+    "finalUsable": 56
+  },
+  "workflow": "Review this folder. Delete any photos you don't want. Claude will use whatever remains."
+}

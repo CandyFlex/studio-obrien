@@ -1,0 +1,16 @@
+{
+  "name": "Studio O'Brien",
+  "short_name": "Studio O'Brien",
+  "description": "Design, Development & Strategy from Shelby, NC",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d2818",
+  "theme_color": "#0d2818",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

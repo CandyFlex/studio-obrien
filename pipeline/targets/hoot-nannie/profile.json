@@ -1,0 +1,313 @@
+{
+  "business": {
+    "name": "The Hoot Nannie",
+    "tagline": "The Farmer & The Pitmaster. Farm-raised steaks, whole hog BBQ, and a full bourbon bar on Main Street.",
+    "subtitle": "A Five Spur Steakhouse",
+    "slug": "hoot-nannie",
+    "industry": "Restaurant / BBQ / Steakhouse / Whiskey Bar",
+    "location": {
+      "address": "164 E Main St",
+      "city": "Forest City",
+      "state": "NC",
+      "zip": "28043",
+      "county": "Rutherford",
+      "neighborhood": "Downtown Main Street"
+    },
+    "phone": "(828) 229-3016",
+    "facebook": "https://www.facebook.com/thehootnannie",
+    "instagram": "https://www.instagram.com/thehootnannie/",
+    "instagramNeighborSteve": "https://www.instagram.com/neighbor_steve/",
+    "instagramJohnnyRay": "https://www.instagram.com/johnnyrays_smokehouse/",
+    "hours": {
+      "mon": "Closed",
+      "tue": "Closed",
+      "wed": "11am - 8pm",
+      "thu": "11am - 9pm",
+      "fri": "11am - 9pm",
+      "sat": "11am - 9pm",
+      "sun": "10am - 7pm"
+    },
+    "founded": "Mid-June 2021",
+    "owners": ["Johnny Ray Bousselot", "Stephen Soto"],
+    "ownerTitles": ["The Pitmaster / Ole Johnny Ray", "Executive Chef / Neighbor Steve"],
+    "ownerResidence": "Both live in Vale, NC",
+    "sisterRestaurants": [
+      "Johnny Ray's Smokehouse (formerly The Honey Hog) - Fallston, NC",
+      "Nannie's Fish Camp & Chicken Champ - Fallston, NC",
+      "Five Spur Steakhouse - Cherryville, NC (newest location)"
+    ],
+    "parentCompany": "Honey Hog Restaurant Group (formed 2018)",
+    "farmOperation": {
+      "name": "Honey Hog Farm",
+      "acresOwned": 126,
+      "acresLeased": 140,
+      "livestock": "Hogs, Wagyu cattle, chickens",
+      "model": "Farm-to-table: the restaurant group raises much of their own meat"
+    }
+  },
+  "voice": {
+    "tone": "casual, rowdy, Southern, unpretentious, fun-loving, bold",
+    "vocabulary": ["pitmaster", "farm-raised", "whole hog", "smoked", "bourbon", "cowboy", "sauces", "local", "fresh"],
+    "avoid": ["fine dining", "elevated", "curated", "artisanal", "craft experience", "fusion"],
+    "ownerPersona": "Johnny Ray advertises wings and specials heavily on Facebook. The branding leans into the nicknames (Ole Johnny Ray, Neighbor Steve). The name 'Hoot Nannie' itself signals fun, rowdy, good-time energy.",
+    "customerWords": ["cozy", "delicious", "amazing", "generous portions", "comfort food", "good vibes", "cowboy's dream", "best I've ever had", "farm to table"]
+  },
+  "brand": {
+    "colorDirection": "Faded brick building exterior on Main Street corner. Interior has retro country decor, bar area with warm lighting. Think aged wood, exposed brick, warm ambers, deep reds, charcoal smoke tones. Western/ranch influence.",
+    "existingColors": ["Warm reds/brick", "Dark wood tones", "Amber/bourbon gold"],
+    "mood": "Rowdy Southern roadhouse meets farm-to-table authenticity. Not polished, not trying to be fancy. Genuine, bold, smoky.",
+    "archetype": "The Outlaw Pitmaster - rebellious names (Dirty Sanchez burger), bold flavors, but backed by real farming and craft",
+    "fonts": {
+      "display": "CHECK Facebook/Instagram for actual logo typography. Likely a bold, rustic/western display face.",
+      "body": "Clean readable sans-serif"
+    }
+  },
+  "content": {
+    "heroHeadline": "Farm-Raised. Pit-Smoked. Full Bar.",
+    "heroSubtext": "Ole Johnny Ray and Neighbor Steve brought together the best of The Honey Hog and Nannie's Fish & Chicken, added steaks from local farms and 68 kinds of bourbon. Welcome to The Hoot Nannie.",
+    "originStory": "Johnny Ray Bousselot started making tomato-and-bourbon barbecue sauces around 2012 out of Mount Holly, NC, selling them to local shops and eventually landing on shelves at Food Lion and Ingles. In 2018, he partnered with Tyler Jones to form Honey Hog Restaurant Group, opening The Honey Hog in Fallston, NC as a true farm-and-table operation, raising their own hogs, Wagyu cattle, and chickens. When a spot opened on Main Street in Forest City after COVID, Johnny Ray and his business partner Stephen Soto (aka Neighbor Steve) combined the best of their two existing restaurants: The Honey Hog's BBQ and Nannie's Fish Camp & Chicken Champ's Southern comfort food. They added farm-raised steaks from Beam Farms in Rutherford County and built out a full liquor bar with 68 different bourbons. The Hoot Nannie opened in mid-June 2021.",
+    "menuHighlights": {
+      "appetizers": [
+        "Legendary Fried Cheese Curds - fresh curds from Brown Creek Creamery, hand-breaded and fried to order, served with house-made ranch and marinara (sells ~150 lbs per week)",
+        "Hand-Dipped Fried Pickles",
+        "Pork Rinds with Cheese",
+        "BBQ Sliders on Texas Toast"
+      ],
+      "burgers": [
+        "Hoot Burger (classic)",
+        "Dirty Sanchez Burger - pulled pork BBQ, onion rings, handmade beef patty",
+        "Mushroom Swiss Burger",
+        "Pimento & Bacon Burger",
+        "Smashed Double Bacon Cheeseburger",
+        "Cheddar Cheese Hamburger"
+      ],
+      "sandwiches": [
+        "Big Mama's Chicken Sandwich",
+        "Classic Crispy Chicken Sandwich",
+        "Fried Chicken Sandwich",
+        "Big Samantha Sandwich - club with red onion, lettuce, tomato, cheese, pickles on Texas Toast",
+        "Smokehouse Cuban - smoked ham, Swiss, mustard, homemade pork loin, dill pickles, pressed bun",
+        "Shaved Ribeye Sandwich",
+        "Texas BBQ Melt",
+        "Philly Cheese Steak with house chips"
+      ],
+      "bbq": [
+        "Pulled Pork Plate",
+        "Whole Hog BBQ",
+        "BBQ Fries (meal-sized)"
+      ],
+      "steaks": [
+        "Petite Sirloin Steak",
+        "Farm-raised steaks from Beam Farms, Rutherford County",
+        "Steak Tacos"
+      ],
+      "wings": [
+        "Smoked Wings - smoked first, then fried. Multiple sauce options.",
+        "Thursday Night Wing Special: $0.50 each",
+        "Buffalo style, various house sauces"
+      ],
+      "southern": [
+        "Country Fried Steak",
+        "Country Fried Chicken",
+        "Chicken Tenders",
+        "Catfish Plate",
+        "Shrimp and Grits",
+        "Grilled Pork Chops"
+      ],
+      "sides": [
+        "Mac and Cheese",
+        "Grilled Asparagus",
+        "Homemade Kettle-Style Chips",
+        "Fries",
+        "Coleslaw",
+        "House salad / Wedge Salad / Caesar Salad"
+      ],
+      "bar": [
+        "68 different bourbons / whiskeys",
+        "Bourbon flights",
+        "Signature cocktails (Tequila Sunrise, Irish Cream drinks)",
+        "Craft beers (locally sourced when possible)",
+        "Strawberry cider",
+        "Wine selection",
+        "Full liquor bar"
+      ]
+    },
+    "priceRange": "$$ (moderate)",
+    "menuFormat": "Two-sided laminated menu: one side pricey, one side budget-friendly",
+    "specials": [
+      "Thursday Night: $0.50 wings",
+      "Sunday: Opens at 10am (brunch hours)",
+      "Daily specials posted on Facebook"
+    ],
+    "testimonials": [
+      {
+        "quote": "If comfort food and good vibes ever had a rowdy little love child, its name would be Hoot Nannie.",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "The Cheese Curds may have been the best I've ever had. The smashed Double Bacon Cheeseburger was amazing.",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "The steak was delicious, cooked exactly as we wanted. Pet friendly too. Next time we get a steak craving we will for sure go back.",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "These were some of the best ribs I've ever had! Tender and juicy with a nice dark bark.",
+        "source": "TripAdvisor",
+        "stars": 5
+      },
+      {
+        "quote": "Smoked wings were unbelievable. Very good BBQ and the wings are the best in town.",
+        "source": "TripAdvisor / Google",
+        "stars": 5
+      },
+      {
+        "quote": "Arriving in the parking lot drew me in because you can smell the grill. A great place to get a steak. Quite a cowboy's dream!",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "I ordered a Smokehouse Cuban with their homemade chips, absolutely amazing! The best kettle type chips I've eaten!",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "Best. Chicken. Sandwich. EVER. We will be back for sure! Crowded so go early!",
+        "source": "Yelp",
+        "stars": 5
+      },
+      {
+        "quote": "This is a farm to table type of place, so most likely you will get food sourced locally as well as the beers they serve.",
+        "source": "Yelp",
+        "stars": 4
+      },
+      {
+        "quote": "The classic crispy sandwich is so big and juicy! The drinks are really good too! So many choices on the cocktail menu!",
+        "source": "Yelp",
+        "stars": 5
+      }
+    ],
+    "sellingPoints": [
+      "Farm-to-table: meat from their own Honey Hog Farm (126 acres owned, 140 leased) plus Beam Farms in Rutherford County",
+      "68 different bourbons, largest whiskey selection in western NC",
+      "Legendary fried cheese curds from Brown Creek Creamery (150 lbs/week)",
+      "Smoked-then-fried wings with house sauces, $0.50 wing Thursdays",
+      "Whole hog BBQ from a real pitmaster who started with sauce-making",
+      "Full liquor bar with signature cocktails",
+      "Dog-friendly patio seating",
+      "Downtown Main Street location in Forest City",
+      "Sunday brunch hours starting at 10am",
+      "Johnny Ray's signature sauces (sold in Food Lion and Ingles stores)"
+    ],
+    "sections": ["Hero", "Menu Highlights", "Our Story", "The Bar", "Reviews", "Specials", "Visit Us", "Footer"]
+  },
+  "assets": {
+    "logo": "NEEDS MANUAL - grab from Facebook page or Instagram",
+    "heroImage": "Storefront/exterior on brick corner building, or smoker/grill action shot",
+    "galleryImages": [
+      "yelp-0.jpg - salad plate",
+      "yelp-1.jpg - interior/atmosphere",
+      "yelp-2.jpg - steak with mac and cheese",
+      "yelp-3.jpg - interior shot",
+      "yelp-4.jpg - Tequila Sunrise cocktail",
+      "yelp-5.jpg - burger and fries in hand",
+      "yelp-6.jpg - Fried Chicken Sandwich (thumbnail)",
+      "yelp-7.jpg - Chicken Tenders (thumbnail)",
+      "yelp-8.jpg - Smoked Wings (thumbnail)",
+      "yelp-9.jpg - Pulled Pork Plate (thumbnail)",
+      "yelp-10.jpg - Big Samantha Sandwich (thumbnail)",
+      "yelp-21.jpg - Dirty Sanchez Burger with Mac and Cheese",
+      "yelp-22.jpg - Dirty Sandwich Burger",
+      "yelp-23.jpg - steak cooked perfectly with mac and cheese",
+      "yelp-24.jpg - salad",
+      "yelp-25.jpg - Big Samantha sandwich (critical review photo)",
+      "yelp-26.jpg - Crispy Chicken Sandwich with fries",
+      "yelp-27.jpg - Big Samantha sandwich with fries",
+      "yelp-28.jpg - interior/atmosphere",
+      "yelp-29.jpg - exterior/storefront (small)",
+      "yelp-30.jpg - food/atmosphere",
+      "yelp-31.jpg - food/atmosphere"
+    ],
+    "totalPhotos": 32,
+    "hasOwnerPhoto": false,
+    "needed": ["Logo from Facebook/Instagram", "High-res exterior shot", "Smoker/kitchen action shots", "Owner photos (Johnny Ray and Steve)", "Bourbon bar close-up", "Cheese curds hero shot"]
+  },
+  "meta": {
+    "currentWebPresence": "No dedicated website. Facebook page is primary online presence. Listed on Yelp, TripAdvisor, Google, Uber Eats, Postmates, Nextdoor, Untappd.",
+    "yelpUrl": "https://www.yelp.com/biz/the-hoot-nannie-forest-city",
+    "tripadvisorUrl": "https://www.tripadvisor.com/Restaurant_Review-g49141-d23985892-Reviews-The_Hoot_Nannie-Forest_City_North_Carolina.html",
+    "visitncUrl": "https://www.visitncsmalltowns.com/listing/the-hoot-nannie-a-five-spur-steakhouse/1980/",
+    "ratings": {
+      "yelp": "3.5 stars (88 reviews)",
+      "tripadvisor": "3.9 stars (ranked #12 of 45 in Forest City)",
+      "google": "4.2 stars (657+ reviews)",
+      "restaurantGuru": "4.3 stars (1794 reviews)"
+    },
+    "healthScore": "97.5 / 100",
+    "yelpCategories": ["Whiskey Bars", "Country Cooking", "BBQ"],
+    "yelpSearchTerms": ["Wing Night", "Bourbon", "Country Cooking", "Meat and 3", "Weekend Brunch", "Special Occasion"],
+    "pressCoverage": [
+      {
+        "outlet": "Our State Magazine",
+        "title": "A Guide to Forest City, NC",
+        "url": "https://www.ourstate.com/a-guide-to-forest-city/",
+        "note": "Featured as must-visit restaurant on Main Street. Highlights 150 lbs of cheese curds per week and 68 bourbons."
+      },
+      {
+        "outlet": "The Daily Courier (thedigitalcourier.com)",
+        "title": "New eateries fill the gap left by those lost during COVID",
+        "url": "https://www.thedigitalcourier.com/news/new-eateries-fill-the-gap-left-by-those-lost-during-covid/article_9251791d-cc01-5fba-b30d-d386e7c6b5da.html",
+        "note": "Coverage of Hoot Nannie opening in former Moe's location on Main Street."
+      },
+      {
+        "outlet": "Business North Carolina",
+        "title": "NC trend: First-generation farmers promote fresh food",
+        "url": "https://businessnc.com/nc-trend-first-generation-farmers-promote-fresh-food/",
+        "note": "Profile of Honey Hog Restaurant Group farm operations."
+      },
+      {
+        "outlet": "Our State Magazine",
+        "title": "The Honey Hog Restaurant Raises & Amazes",
+        "url": "https://www.ourstate.com/the-honey-hog-restaurant-raises-amazes/",
+        "note": "Deep profile of Johnny Ray and Tyler Jones's farm-to-table operation."
+      },
+      {
+        "outlet": "Barbecue Bros",
+        "title": "The Honey Hog - Fallston, NC",
+        "url": "https://barbecuebros.co/2019/01/28/the-honey-hog-fallston-nc/",
+        "note": "BBQ blog review of the original Honey Hog restaurant."
+      },
+      {
+        "outlet": "Gaston Alive Magazine",
+        "title": "New Steakhouse coming to Cherryville",
+        "url": "https://gastonalive.com/2023/12/new-steakhouse-coming-to-cherryville/",
+        "note": "Coverage of Five Spur Steakhouse expansion to Cherryville."
+      },
+      {
+        "outlet": "Wise News Network",
+        "title": "Five Spur Steakhouse Arrives In Cherryville, NC",
+        "url": "https://wisenewsnetwork.com/stories/five-spur-steakhouse-arrives-in-cherryville-nc,4067",
+        "note": "Identifies Johnny Ray as originally from Texas, Steve as executive chef."
+      },
+      {
+        "outlet": "Rutherford County Tourism (VisitNC Small Towns)",
+        "title": "The Hoot Nannie - A Five Spur Steakhouse listing",
+        "url": "https://www.visitncsmalltowns.com/listing/the-hoot-nannie-a-five-spur-steakhouse/1980/",
+        "note": "Official tourism listing for Rutherford County."
+      }
+    ],
+    "dateProfiled": "2026-03-05",
+    "readyToBuild": false,
+    "blockers": [
+      "Need logo from Facebook/Instagram",
+      "Need high-res exterior/storefront photo",
+      "Need owner photos (Johnny Ray and Steve)",
+      "Confirm current menu items and pricing (menu changes frequently)",
+      "Need bourbon bar interior photo"
+    ]
+  }
+}

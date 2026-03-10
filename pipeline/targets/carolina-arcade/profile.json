@@ -1,0 +1,97 @@
+{
+  "business": {
+    "name": "Carolina Arcade Museum",
+    "tagline": "Classic arcade and pinball games all on Freeplay",
+    "slug": "carolina-arcade",
+    "industry": "Entertainment / Arcade Museum",
+    "location": {
+      "address": "145 East Main Street",
+      "city": "Forest City",
+      "state": "NC",
+      "zip": "28043",
+      "county": "Rutherford"
+    },
+    "phone": "(828) 229-3089",
+    "email": "walker.darla5@gmail.com",
+    "facebook": "https://www.facebook.com/profile.php?id=100064072420803",
+    "hours": {
+      "mon": "12pm - 8pm",
+      "tue": "12pm - 8pm",
+      "wed": "12pm - 8pm",
+      "thu": "12pm - 8pm",
+      "fri": "12pm - 10pm",
+      "sat": "12pm - 10pm",
+      "sun": "Closed"
+    },
+    "founded": "August 2018",
+    "owners": ["Dave Walker"],
+    "ownerTitles": ["Owner & Founder"],
+    "gameCount": "105+ on floor, 80+ in storage"
+  },
+  "voice": {
+    "tone": "casual, unpretentious, nostalgic, welcoming",
+    "vocabulary": ["freeplay", "classic", "vintage", "fun", "family", "all ages"],
+    "avoid": ["retro-chic", "curated experience", "immersive", "artisanal"],
+    "ownerQuote": "You have more feedback, and more fun when you're playing with somebody, and you're there physically. It's more than just a screen you're looking at.",
+    "customerWords": ["awesome", "fun", "loved", "great place", "family"]
+  },
+  "brand": {
+    "colorDirection": "CHECK Facebook for actual branding colors. Interior photo suggests warm space with colorful arcade screens against darker walls.",
+    "existingColors": [],
+    "mood": "nostalgic fun",
+    "archetype": "Retro Arcade, grounded in their warmth, not over-designed",
+    "fonts": {
+      "display": "CHECK Facebook posts for typography cues before deciding",
+      "body": "Clean readable sans-serif"
+    }
+  },
+  "content": {
+    "heroHeadline": "Classic Arcade and Pinball. All on Freeplay.",
+    "heroSubtext": "Over 100 vintage arcade and pinball machines in downtown Forest City. Pay once, play all day.",
+    "pricing": [
+      { "name": "Hourly Pass", "price": "$8", "description": "One hour of unlimited play" },
+      { "name": "All-Day Pass", "price": "$13", "description": "Play all day, come and go" },
+      { "name": "Group Rate", "price": "$10/person", "description": "Groups of 15+, all day" }
+    ],
+    "birthdayParties": {
+      "price": "$150+",
+      "includes": "Party room for 2 hours, 15 all-day wristbands",
+      "extras": "Additional wristbands $8 each. Bring your own food and decorations.",
+      "deposit": "$25 non-refundable"
+    },
+    "testimonials": [
+      { "quote": "Great place to bring the family and enjoy the whole day.", "source": "Google" },
+      { "quote": "Awesome place for you to relive your childhood.", "source": "Yelp" },
+      { "quote": "This place is so much fun for everyone!", "source": "Google" },
+      { "quote": "It was so much fun, we will be visiting again soon.", "source": "TripAdvisor" },
+      { "quote": "A hidden fun spot for indoor activities. Forest City is an adorable little downtown.", "source": "TripAdvisor" }
+    ],
+    "story": "Dave Walker and a friend opened Carolina Arcade Museum in August 2018 in a converted storefront on Main Street in downtown Forest City. With over 100 classic arcade and pinball machines, all set to freeplay, the museum recreates the social experience of 1980s arcade culture. No tokens, no quarters. Just pay at the door and play everything.",
+    "sellingPoints": [
+      "100+ classic arcade and pinball machines, all on freeplay",
+      "One price, unlimited play, come and go all day",
+      "Family-friendly for all ages",
+      "Birthday party packages available",
+      "Featured on PBS North Carolina Weekend",
+      "Downtown Forest City on Main Street"
+    ],
+    "sections": ["Hero", "Pricing", "The Games", "Birthday Parties", "Our Story", "Reviews", "Plan Your Visit", "Footer"]
+  },
+  "assets": {
+    "logo": "NEEDS MANUAL - grab from Facebook profile picture",
+    "heroImage": "originals/visitnc-hero.jpg",
+    "galleryImages": [],
+    "hasOwnerPhoto": false,
+    "needed": ["Logo/signage", "Interior wide shot", "Game close-ups", "People playing", "Storefront"]
+  },
+  "meta": {
+    "currentWebPresence": "None - Facebook only",
+    "yelpReviews": 14,
+    "yelpPhotos": 28,
+    "pbsFeature": true,
+    "grouponPresence": true,
+    "dateProfiled": "2026-03-05",
+    "readyToBuild": false,
+    "blockers": ["Need logo from Facebook", "Need 1-2 more interior photos", "Confirm color/font direction"]
+  }
+}

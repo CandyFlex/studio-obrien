@@ -1,0 +1,86 @@
+{
+  "business": "Sticks and Stones Art & Tattoo",
+  "slug": "sticks-and-stones",
+  "scrapedAt": "2026-03-05T19:08:18.142Z",
+  "platforms": {
+    "facebook": false,
+    "yelp": false,
+    "tripadvisor": false,
+    "instagram": false,
+    "google": true,
+    "wix": true
+  },
+  "images": [
+    {
+      "filename": "wix-0.jpg",
+      "platform": "wix",
+      "alt": "",
+      "width": 1440,
+      "height": 1080,
+      "url": "https://static.wixstatic.com/media/11062b_e8eeddbd40a74e7e9aca472d941c3e1a~mv2_d_5472_3648_s_4_2.jpg/v1/fill/w_1200,h_800,al_c,q_85,usm_0.66_1.00_0.01"
+    },
+    {
+      "filename": "wix-1.png",
+      "platform": "wix",
+      "alt": "SS Logo.png",
+      "width": 534,
+      "height": 277,
+      "url": "https://static.wixstatic.com/media/f5b690_53b9f4386d154dd88a83d1afb9111572~mv2_d_3763_1950_s_2.png/v1/fill/w_1200,h_800,al_c,q_85,usm_0.66_1.00_0.01,e"
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "CONSULTATION & APPOINTMENT REQUEST",
+      "platform": "wix"
+    },
+    {
+      "text": "FEES & CANCELLATION POLICIES",
+      "platform": "wix"
+    },
+    {
+      "text": "WELCOME TO\nSTICKS AND STONES",
+      "platform": "wix"
+    },
+    {
+      "text": "Uptown Shelby's first full service tattoo shop.",
+      "platform": "wix"
+    },
+    {
+      "text": "Specializing in custom tattoos, original flash designs, portraits, black & gray, and full color.",
+      "platform": "wix"
+    },
+    {
+      "text": "Due to COVID-19, tattoos are done by appointment only and some rules have been implemented. If at any point you feel ill or unwell prior to your appointment, please reschedule ASAP and your deposit will not be forfeited.",
+      "platform": "wix"
+    },
+    {
+      "text": "Please come alone. You will be allowed to come in when your area is sanitized and set up. Please wear a mask for your appointment. If you do not have a mask, one will be provided to you. When you come in you will wash your hands and if needed complete paperwork prior to starting your appointment.",
+      "platform": "wix"
+    },
+    {
+      "text": "Opening this shop in Shelby after being away for many years, Brandon brings over 14 years of experience in tattooing. His specialty is creating completely custom pieces of art, both in tattooing and oil painting. He offers many original tattoo designs to choose from with his hand drawn flash sheets and works in both black & gray and full color.",
+      "platform": "wix"
+    },
+    {
+      "text": "Brandon tattoos by appointment only and is often booked over 1 month out. Brandon's time is limited and he usually takes one client per day, with larger projects that fit into his style taking precedence.",
+      "platform": "wix"
+    },
+    {
+      "text": "Follow Brandon on Instagram to see his current portfolio.",
+      "platform": "wix"
+    },
+    {
+      "text": "217 North Lafayette St",
+      "platform": "wix"
+    },
+    {
+      "text": "© 2020 Sticks and Stones Art & Tattoo",
+      "platform": "wix"
+    }
+  ],
+  "summary": {
+    "totalImagesFound": 2,
+    "totalDownloaded": 2,
+    "totalTextBlocks": 12
+  }
+}
