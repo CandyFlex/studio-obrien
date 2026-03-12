@@ -16,7 +16,7 @@ import {
 const t = {
   accent: "#34d399",
   baseBg: "#131318",
-  logoSrc: "/images/logo-obsidian.png",
+  logoSrc: "/images/logo-obsidian.webp",
   logoFilter: "none",
   motifFilter: "invert(1) sepia(1) saturate(3) hue-rotate(100deg) brightness(0.8)",
   hero: { bg: "linear-gradient(180deg, #131318 0%, #1a1a24 40%, #131318 100%)", text: "#f5f5f7", headingFont: "'DM Sans', sans-serif", labelFont: "'DM Sans', sans-serif" },
@@ -34,9 +34,9 @@ const t = {
 /* ─── CONTENT ─── */
 
 const portfolio = [
-  { name: "Carolina Arcade Museum", url: "/for/carolina-arcade.html", img: "/images/portfolio/carolina-arcade.png", tag: "Entertainment" },
-  { name: "Wahoo's Sports Bar", url: "/for/wahoos-sports.html", img: "/images/portfolio/wahoos-sports.png", tag: "Restaurant" },
-  { name: "Hoot Nannie", url: "/for/hoot-nannie.html", img: "/images/portfolio/hoot-nannie.png", tag: "Boutique" },
+  { name: "Carolina Arcade Museum", url: "/for/carolina-arcade.html", img: "/images/portfolio/carolina-arcade.webp", tag: "Entertainment" },
+  { name: "Wahoo's Sports Bar", url: "/for/wahoos-sports.html", img: "/images/portfolio/wahoos-sports.webp", tag: "Restaurant" },
+  { name: "Hoot Nannie", url: "/for/hoot-nannie.html", img: "/images/portfolio/hoot-nannie.webp", tag: "Boutique" },
 ];
 
 const faqs = [
@@ -256,7 +256,7 @@ export default function App() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14 md:h-16">
           <a href="#" className="flex items-center">
-            <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 md:h-13 w-auto" width={1200} height={200} fetchPriority="high" style={{ filter: t.logoFilter }} />
+            <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 md:h-13 w-auto" width={600} height={100} fetchPriority="high" style={{ filter: t.logoFilter }} />
           </a>
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((l) => <a key={l.label} href={l.href} className="text-sm tracking-wide hover:opacity-100 transition-opacity" style={{ color: `${t.hero.text}cc`, opacity: 0.9 }}>{l.label}</a>)}
@@ -417,7 +417,7 @@ export default function App() {
               <a href={portfolio[0].url} className="group block rounded-lg overflow-hidden" style={{ border: `1px solid ${t.accent}12` }}>
                 <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr]">
                   <div className="aspect-[16/10] md:aspect-auto overflow-hidden relative">
-                    <img src={portfolio[0].img} alt={portfolio[0].name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                    <img src={portfolio[0].img} alt={portfolio[0].name} width={1440} height={900} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
                   <div className="p-8 md:p-10 flex flex-col justify-center" style={{ background: t.portfolio.cardBg }}>
                     <span className="text-[10px] tracking-[0.2em] uppercase font-bold block mb-3" style={{ color: t.accent }}>{portfolio[0].tag}</span>
@@ -432,7 +432,7 @@ export default function App() {
                 <FadeIn key={p.name} delay={(i + 1) * 0.08}>
                   <a href={p.url} className="group block rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]" style={{ border: `1px solid ${t.accent}12`, background: t.portfolio.cardBg }}>
                     <div className="aspect-[16/9] overflow-hidden">
-                      <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <img src={p.img} alt={p.name} width={1440} height={900} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                     </div>
                     <div className="p-5 flex items-center justify-between">
                       <div>
@@ -531,7 +531,7 @@ export default function App() {
             </FadeIn>
             <FadeIn delay={0.1} className="shrink-0 order-1 md:order-2">
               <div className="relative">
-                <img src="/images/portrait.webp" alt="Jarred O'Brien" className="size-36 md:size-52 rounded-lg object-cover" style={{ border: `2px solid ${t.accent}15` }} loading="lazy" />
+                <img src="/images/portrait.webp" alt="Jarred O'Brien" width={600} height={600} className="size-36 md:size-52 rounded-lg object-cover" style={{ border: `2px solid ${t.accent}15` }} loading="lazy" />
                 <div className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded text-[10px] tracking-[0.15em] uppercase font-bold" style={{ background: t.accent, color: t.baseBg }}>Shelby, NC</div>
               </div>
             </FadeIn>
@@ -632,7 +632,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
             <div>
-              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" width={1200} height={200} loading="lazy" style={{ filter: t.logoFilter }} />
+              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" width={600} height={100} loading="lazy" style={{ filter: t.logoFilter }} />
               <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}88` }}>Custom websites for small businesses across Shelby, NC and Cleveland County.</p>
             </div>
             <div>
