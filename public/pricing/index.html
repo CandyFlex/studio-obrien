@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design Pricing | Studio O'Brien - Shelby, NC</title>
+  <meta name="description" content="Web design pricing for small businesses. Three tiers built for different needs. Custom websites from Studio O'Brien in Shelby, NC.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="canonical" href="https://studioobrien.com/pricing/">
+  <meta property="og:title" content="Web Design Pricing | Studio O'Brien">
+  <meta property="og:description" content="Web design pricing for small businesses. Three tiers built for different needs.">
+  <meta property="og:url" content="https://studioobrien.com/pricing/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://studioobrien.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web Design Pricing | Studio O'Brien">
+  <meta name="twitter:description" content="Web design pricing for small businesses. Three tiers built for different needs.">
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Web Design Pricing",
+    "description": "Web design pricing tiers for small businesses from Studio O'Brien in Shelby, NC.",
+    "url": "https://studioobrien.com/pricing/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://studioobrien.com" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://studioobrien.com/pricing/" }
+      ]
+    },
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Studio O'Brien",
+      "url": "https://studioobrien.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Shelby", "addressRegion": "NC", "addressCountry": "US" }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much does a custom website cost for a small business?", "acceptedAnswer": { "@type": "Answer", "text": "Pricing varies by scope. Studio O'Brien offers three tiers: Foundation for businesses getting online for the first time, Professional for full multi-page sites with SEO and copywriting, and Growth for ongoing optimization and content support. Contact us for a specific quote." } },
+      { "@type": "Question", "name": "What is included in web design pricing?", "acceptedAnswer": { "@type": "Answer", "text": "All tiers include custom design, mobile-first development, on-page SEO, and full code ownership. Higher tiers add multi-page layouts, professional copywriting, Google Business Profile setup, and ongoing content and performance support." } },
+      { "@type": "Question", "name": "Do I have to pay monthly for my website?", "acceptedAnswer": { "@type": "Answer", "text": "No. Foundation and Professional tiers are one-time projects. You own the code and can host it anywhere. The Growth tier includes optional ongoing support for businesses that want continued optimization." } }
+    ]
+  }]
+  </script>
+  <style>
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/dm-sans-400.woff2') format('woff2'); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --base: #131318; --surface: #1a1a22; --border: #2a2a35;
+      --accent: #34d399; --accent-dim: rgba(52,211,153,0.08);
+      --text: #f5f5f7; --text-mid: rgba(245,245,247,0.7); --text-dim: rgba(245,245,247,0.45);
+    }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--base); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(19,19,24,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 12px 24px;
+    }
+    .nav-inner { max-width: 940px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo:hover { text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; }
+    @media (min-width: 768px) { .nav-logo img { height: 52px; } }
+    .nav-back {
+      font-size: 13px; font-weight: 600; color: var(--base);
+      background: var(--accent); padding: 8px 18px; border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 7px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .nav-back:hover { background: #2ec48d; text-decoration: none; transform: translateX(-2px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 96px 24px 72px; text-align: center; position: relative;
+      background:
+        linear-gradient(rgba(52,211,153,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(52,211,153,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero::after {
+      content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(transparent, var(--base)); pointer-events: none;
+    }
+    .hero-label { font-size: 12px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero-inner { max-width: 940px; margin: 0 auto; padding: 0 24px; }
+    .hero h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; text-wrap: balance; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── TABLE ─── */
+    .table-wrap { max-width: 940px; margin: 0 auto; padding: 0 24px 80px; overflow-x: auto; }
+    .pricing-table { width: 100%; border-collapse: collapse; min-width: 620px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .pricing-table thead th {
+      padding: 24px 18px; font-weight: 700; vertical-align: bottom;
+      background: var(--surface); border-bottom: 2px solid var(--border);
+    }
+    .pricing-table thead th:first-child { text-align: left; font-size: 14px; color: var(--text-dim); font-weight: 600; width: 38%; }
+    .pricing-table thead th:not(:first-child) { text-align: center; font-size: 17px; width: 20.6%; }
+    .pricing-table thead th.featured-col {
+      background: rgba(52,211,153,0.05); border-bottom-color: var(--accent);
+    }
+    .pricing-table .tag { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+    .pricing-table tbody td { padding: 15px 18px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .pricing-table tbody td:first-child { color: var(--text-mid); }
+    .pricing-table tbody td:not(:first-child) { text-align: center; }
+    .pricing-table tbody td:nth-child(3) { background: rgba(52,211,153,0.02); }
+    .pricing-table tbody tr:hover { background: rgba(52,211,153,0.02); }
+
+    /* Category rows */
+    .cat-row td {
+      padding-top: 28px !important; font-size: 11px !important; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent) !important;
+      background: rgba(52,211,153,0.04) !important; border-bottom: none !important; position: relative;
+    }
+    .cat-row td:first-child { padding-left: 32px !important; }
+    .cat-row td:first-child::before {
+      content: ""; position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+      width: 3px; height: 14px; background: var(--accent); border-radius: 2px;
+    }
+
+    /* Icons */
+    .check { color: var(--accent); }
+    .dash { color: var(--text-dim); font-size: 16px; }
+
+    /* CTA row */
+    .cta-row { background: var(--surface); }
+    .cta-row td { padding: 28px 18px; border-bottom: none !important; }
+    .cta-btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .cta-btn:hover { text-decoration: none; }
+    .cta-filled { background: var(--accent); color: var(--base); }
+    .cta-filled:hover { background: #2ec48d; }
+    .cta-outline { border: 1px solid rgba(52,211,153,0.3); color: var(--accent); background: transparent; }
+    .cta-outline:hover { background: var(--accent-dim); border-color: rgba(52,211,153,0.5); }
+
+    /* ─── INCLUDES ─── */
+    .includes { max-width: 940px; margin: 0 auto; padding: 0 24px 80px; }
+    .includes h2 { font-size: 20px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 28px; }
+    .inc-item { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .inc-item:last-child { border-bottom: none; }
+    .inc-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .inc-item h3::before {
+      content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); margin-right: 10px; vertical-align: middle;
+    }
+    .inc-item p { font-size: 14px; color: var(--text-mid); line-height: 1.7; padding-left: 18px; }
+
+    /* ─── BOTTOM CTA ─── */
+    .bottom-cta { text-align: center; padding: 80px 24px 96px; max-width: 940px; margin: 0 auto; position: relative; }
+    .bottom-cta::before {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 48px; height: 1px; background: var(--accent);
+    }
+    .bottom-cta h2 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .bottom-cta p { font-size: 15px; color: var(--text-mid); margin-bottom: 28px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .bottom-cta .cta-btn { padding: 14px 32px; font-size: 15px; }
+
+    /* ─── FOOTER ─── */
+    .footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    .footer p { font-size: 13px; color: var(--text-dim); }
+    .footer a { color: var(--text-mid); }
+    .footer a:hover { color: var(--accent); }
+
+    /* ─── MOBILE CARDS ─── */
+    .tier-cards { display: none; }
+    @media (max-width: 640px) {
+      .tier-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 940px; margin: 0 auto; padding: 0 24px 40px; }
+      .tier-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+      .tier-card.feat { border-color: rgba(52,211,153,0.25); background: linear-gradient(180deg, rgba(52,211,153,0.04), var(--surface)); }
+      .tier-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+      .tier-card .card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: block; }
+      .tier-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+      .tier-card .card-ideal { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/images/logo-obsidian.png" alt="Studio O'Brien"></a>
+      <a href="/" class="nav-back">&larr; Back to home</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Pricing</p>
+      <h1>Compare every feature, side by side.</h1>
+      <p>See exactly what's included in each tier. Every feature listed. Nothing hidden. Every project is scoped after a discovery call.</p>
+    </div>
+  </div>
+
+  <!-- MOBILE TIER DESCRIPTIONS -->
+  <div class="tier-cards">
+    <div class="tier-card">
+      <h3>Foundation</h3>
+      <p>A clean, professional single-page website for businesses that need to get online with something real.</p>
+      <p class="card-ideal">Best for: New businesses, service providers, or anyone replacing a template site.</p>
+    </div>
+    <div class="tier-card feat">
+      <span class="card-tag">Most Popular</span>
+      <h3>Professional</h3>
+      <p>A full multi-page website with custom copywriting, local SEO, and everything connected to your Google Business Profile.</p>
+      <p class="card-ideal">Best for: Established businesses ready to compete online in their area.</p>
+    </div>
+    <div class="tier-card">
+      <h3>Growth</h3>
+      <p>Everything in Professional, plus ongoing content, performance monitoring, and strategic updates.</p>
+      <p class="card-ideal">Best for: Businesses that want their website to grow with them.</p>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="table-wrap">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Foundation</th>
+          <th class="featured-col">Professional<span class="tag">Most Popular</span></th>
+          <th>Growth</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td>Design & Development</td><td></td><td></td><td></td></tr>
+        <tr><td>Custom Design</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Mobile-First, Responsive Layout</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Single-Page Layout</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Multi-Page Layout</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Contact Form Integration</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Performance Optimization (Core Web Vitals)</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Call-to-Action Strategy</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+
+        <tr class="cat-row"><td>Content & SEO</td><td></td><td></td><td></td></tr>
+        <tr><td>On-Page SEO Setup</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Professional Copywriting</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Local SEO Strategy</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Google Business Profile Setup</td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Monthly Content Updates</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>SEO & Performance Monitoring</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+
+        <tr class="cat-row"><td>Infrastructure</td><td></td><td></td><td></td></tr>
+        <tr><td>Domain & Hosting Setup</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>SSL Security Certificate</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Google Analytics Connected</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Full Code Ownership</td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+
+        <tr class="cat-row"><td>Ongoing Support</td><td></td><td></td><td></td></tr>
+        <tr><td>Google Business Profile Management</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Quarterly Strategy Review</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Priority Support & Faster Turnaround</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Analytics Reporting</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+        <tr><td>Ongoing Technical Maintenance</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><svg class="check" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>
+
+        <tr class="cta-row">
+          <td></td>
+          <td><a href="/#contact" class="cta-btn cta-outline">Get a Quote</a></td>
+          <td><a href="/#contact" class="cta-btn cta-filled">Get a Quote</a></td>
+          <td><a href="/#contact" class="cta-btn cta-outline">Get a Quote</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHAT EVERY PROJECT INCLUDES -->
+  <div class="includes">
+    <h2>What every project includes.</h2>
+    <div class="inc-item">
+      <h3>You own everything.</h3>
+      <p>The code, the design, the copy, every file. No proprietary platform. No lock-in. If you ever want to take your site somewhere else, you can.</p>
+    </div>
+    <div class="inc-item">
+      <h3>One point of contact.</h3>
+      <p>You work directly with the person designing and building your site. From strategy to launch, there are no handoffs between departments.</p>
+    </div>
+    <div class="inc-item">
+      <h3>Built for speed and search.</h3>
+      <p>Every site is hand-coded for fast load times, strong Core Web Vitals, and local search visibility. This is custom code, not a template with your logo dropped in.</p>
+    </div>
+    <div class="inc-item">
+      <h3>Designed around your schedule.</h3>
+      <p>One discovery call. One form to fill out. One video walkthrough to review. The rest happens while you run your business.</p>
+    </div>
+    <div class="inc-item">
+      <h3>No surprise fees.</h3>
+      <p>You get a clear quote after our first call. If the scope changes, we discuss it before any work happens. The price you agree to is the price you pay.</p>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>Ready to talk about your project?</h2>
+    <p>Every project starts with a call. Tell me about your business and I'll put together a plan and a quote that fits.</p>
+    <a href="/#contact" class="cta-btn cta-filled">Start a Conversation</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 <a href="/">Studio O'Brien</a>. Web design and development in Shelby, NC.</p>
+  </footer>
+
+</body>
+</html>

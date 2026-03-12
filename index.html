@@ -3,49 +3,29 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d2818" />
-  <title>Studio O'Brien — Design, Development & Strategy</title>
-  <meta name="description" content="Studio O'Brien builds bold, high-performance websites for businesses that want to stand out. Design, development, and strategy from Shelby, NC.">
+  <meta name="theme-color" content="#131318" />
+  <title>Studio O'Brien — Web Design & Development in Shelby, NC</title>
+  <meta name="description" content="Custom websites for local businesses in Shelby and Cleveland County. Designed to bring in customers and built to rank on Google. Studio O'Brien.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Studio O'Brien — Design, Development & Strategy">
-  <meta property="og:description" content="Bold, high-performance websites for businesses that want to stand out.">
+  <meta property="og:title" content="Studio O'Brien — Custom Web Design for Local Businesses in Shelby, NC">
+  <meta property="og:description" content="Custom websites for local businesses in Shelby and Cleveland County. Designed to bring in customers and built to rank on Google.">
   <meta property="og:url" content="https://studioobrien.com">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://studioobrien.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://studioobrien.com/og-image.jpg">
-  <meta name="twitter:title" content="Studio O'Brien — Design, Development & Strategy">
-  <meta name="twitter:description" content="Bold, high-performance websites for businesses that want to stand out. Shelby, NC.">
+  <meta name="twitter:title" content="Studio O'Brien — Custom Web Design for Local Businesses in Shelby, NC">
+  <meta name="twitter:description" content="Custom websites for local businesses in Shelby and Cleveland County. Designed to bring in customers and built to rank on Google.">
   <link rel="canonical" href="https://studioobrien.com">
   <link rel="manifest" href="/manifest.json">
-  <!-- Preload critical fonts (hero + nav) -->
-  <link rel="preload" href="/fonts/cinzel-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Preload critical font -->
   <link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Preload LCP image -->
-  <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" fetchpriority="high">
-  <!-- Deferred fonts: combos + variants (loaded async, no render block) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Spectral:wght@300;400&family=EB+Garamond:wght@400;500&family=Josefin+Sans:wght@300;400&family=Raleway:wght@300;400&family=Nunito+Sans:wght@300;400&family=Cardo:wght@400;700&family=Quattrocento:wght@400;700&family=Playfair+Display:wght@400;500&family=Bodoni+Moda:wght@400;700;900&family=Cormorant+Infant:wght@700&family=DM+Serif+Display&family=Fraunces:wght@700;900&family=Young+Serif&family=Instrument+Serif&family=Literata:wght@700;900&family=Noto+Serif+Display:wght@700;900&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Spectral:wght@300;400&family=EB+Garamond:wght@400;500&family=Josefin+Sans:wght@300;400&family=Raleway:wght@300;400&family=Nunito+Sans:wght@300;400&family=Cardo:wght@400;700&family=Quattrocento:wght@400;700&family=Playfair+Display:wght@400;500&family=Bodoni+Moda:wght@400;700;900&family=Cormorant+Infant:wght@700&family=DM+Serif+Display&family=Fraunces:wght@700;900&family=Young+Serif&family=Instrument+Serif&family=Literata:wght@700;900&family=Noto+Serif+Display:wght@700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="preload" href="/images/logo-obsidian.png" as="image" type="image/png" fetchpriority="high">
   <style>
-    @font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cinzel-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/cinzel-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cinzel Decorative'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cinzel-decorative-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-garamond-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/cormorant-garamond-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-garamond-400-italic.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant SC'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-sc-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant SC'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/cormorant-sc-500.woff2') format('woff2'); }
-    @font-face { font-family: 'Cormorant SC'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/cormorant-sc-700.woff2') format('woff2'); }
-    @font-face { font-family: 'Crimson Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/crimson-text-400.woff2') format('woff2'); }
-    @font-face { font-family: 'Crimson Text'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/crimson-text-600.woff2') format('woff2'); }
-    @font-face { font-family: 'Archivo Black'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/archivo-black.woff2') format('woff2'); }
     @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/dm-sans-400.woff2') format('woff2'); }
-    @font-face { font-family: 'DM Sans'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/dm-sans-400-italic.woff2') format('woff2'); }
   </style>
   <script type="application/ld+json">
   [{
@@ -54,7 +34,10 @@
     "name": "Studio O'Brien",
     "url": "https://studioobrien.com",
     "email": "hello@studioobrien.com",
-    "description": "Studio O'Brien builds bold, high-performance websites for businesses that want to stand out. Design, development, and strategy from Shelby, NC.",
+    "image": "https://studioobrien.com/og-image.jpg",
+    "logo": "https://studioobrien.com/images/logo-obsidian.png",
+    "description": "Custom websites for local businesses in Shelby and Cleveland County. Designed to bring in customers and built to rank on Google.",
+    "priceRange": "$$",
     "founder": {
       "@type": "Person",
       "name": "Jarred O'Brien"
@@ -63,24 +46,33 @@
       "@type": "PostalAddress",
       "addressLocality": "Shelby",
       "addressRegion": "NC",
+      "postalCode": "28150",
       "addressCountry": "US"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.2924,
+      "longitude": -81.5357
+    },
     "areaServed": [
-      { "@type": "City", "name": "Shelby" },
+      { "@type": "City", "name": "Shelby", "containedInPlace": { "@type": "State", "name": "North Carolina" } },
+      { "@type": "AdministrativeArea", "name": "Cleveland County" },
       { "@type": "State", "name": "North Carolina" }
     ],
+    "knowsAbout": ["Web Design", "Web Development", "Copywriting", "Local SEO", "Small Business Marketing"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Web Services",
       "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Strategy" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Strategy" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Design", "description": "Unique website layouts designed around your business goals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "description": "Hand-coded, fast, mobile-first websites" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Copywriting", "description": "Market research and professional copy for every page" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Search-Ready Code", "description": "Clean code, meta tags, fast load times, mobile-first structure" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO Strategy", "description": "Google Business Profile setup and local search optimization" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Identity", "description": "Logo, color palette, and typography for your business" } }
       ]
-    }
+    },
+    "sameAs": []
   },
   {
     "@context": "https://schema.org",
