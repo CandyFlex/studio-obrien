@@ -419,7 +419,7 @@
       color: var(--yellow);
       text-transform: uppercase;
       line-height: 1.8;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .section-desc {
@@ -438,55 +438,63 @@
     .pricing {
       background: var(--darker);
       border-top: 1px solid rgba(245,214,35,0.1);
-      border-bottom: 1px solid rgba(245,214,35,0.1);
+      border-bottom: none;
     }
+
+    .pricing .container { text-align: center; }
+
+    .pricing .section-label { margin-bottom: 1rem; }
+    .pricing .section-title { margin-bottom: 1rem; }
+    .pricing .section-desc { max-width: 500px; margin: 0 auto; }
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      margin-top: 2.5rem;
+      margin-top: 3rem;
+      align-items: stretch;
     }
 
     .price-card {
       background: var(--dark);
-      border: 1px solid var(--gray-dark);
-      padding: 2rem;
+      border: 1px solid #1e1e26;
+      padding: 2.5rem 2rem;
       text-align: center;
-      transition: all 0.3s;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+      transition: all 0.3s;
+      border-radius: 8px;
     }
 
-    .price-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--yellow-dim);
-      transition: background 0.3s;
+    .price-card:hover { border-color: #3a3a44; transform: translateY(-3px); }
+
+    .price-card.featured {
+      border: 2px solid var(--yellow-dim);
+      box-shadow: 0 0 25px rgba(245,214,35,0.08), inset 0 0 25px rgba(245,214,35,0.03);
     }
 
-    .price-card:hover {
-      border-color: var(--yellow-dim);
-      transform: translateY(-4px);
+    .price-badge { display: none; }
+    .price-card.featured .price-badge {
+      display: inline-block; position: absolute;
+      top: -14px; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+      color: var(--yellow); text-transform: uppercase; letter-spacing: 2px;
+      background: var(--dark);
+      border: 1px solid rgba(245,214,35,0.3);
+      border-radius: 20px; padding: 0.3rem 1rem;
+      white-space: nowrap; z-index: 2;
     }
-
-    .price-card:hover::before { background: var(--yellow); }
-
-    .price-card.featured { border-color: var(--yellow-dim); }
-    .price-card.featured::before { background: var(--red); }
 
     .price-amount {
       font-family: var(--font-pixel);
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: var(--yellow);
       margin: 0.5rem 0;
     }
 
     .price-name {
       font-family: var(--font-pixel);
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--white);
@@ -495,8 +503,30 @@
 
     .price-desc {
       color: var(--gray);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.6;
+      font-family: var(--font-body);
+    }
+
+    .price-cta {
+      display: inline-block; margin-top: 1.2rem;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #666; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.4rem;
+      border: 1px solid #333; border-radius: 50px; transition: all 0.2s;
+    }
+    .price-cta:hover { color: var(--white); border-color: #666; }
+    .price-card.featured .price-cta {
+      background: var(--yellow); color: var(--black); border-color: var(--yellow);
+      box-shadow: 0 2px 0 #8a7100, 0 0 12px rgba(245,214,35,0.15);
+    }
+    .price-card.featured .price-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 #8a7100, 0 0 20px rgba(245,214,35,0.25);
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
     }
 
     /* ========== GAMES SECTION ========== */
@@ -548,9 +578,10 @@
       .games-detail-grid { grid-template-columns: 1fr; }
     }
 
+    #games-stats { padding-top: 0; }
     .games-marquee {
       overflow: hidden;
-      margin: 2.5rem 0;
+      margin: 0 0 1.5rem;
       border-top: 1px solid var(--gray-dark);
       border-bottom: 1px solid var(--gray-dark);
       padding: 1rem 0;
@@ -579,26 +610,36 @@
       100% { transform: translateX(-50%); }
     }
 
-    .games-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    /* ========== STATS ========== */
+
+    .games-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 4.5rem; }
+    .stat-item {
+      text-align: center; padding: 1.6rem 1rem 1.3rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 100%);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 10px;
+      backdrop-filter: blur(8px); position: relative; overflow: hidden;
     }
-
-    .stat-item { text-align: center; }
-
-    .stat-number {
-      font-family: var(--font-pixel);
-      font-size: 1.5rem;
-      color: var(--green);
+    .stat-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
-
+    .stat-item:nth-child(1)::before { background: var(--green); box-shadow: 0 0 14px rgba(57,255,20,0.5); }
+    .stat-item:nth-child(2)::before { background: var(--cyan); box-shadow: 0 0 14px rgba(0,212,255,0.5); }
+    .stat-item:nth-child(3)::before { background: var(--yellow); box-shadow: 0 0 14px rgba(245,214,35,0.5); }
+    .stat-item:nth-child(4)::before { background: var(--red); box-shadow: 0 0 14px rgba(232,52,46,0.5); }
+    .stat-number { font-family: var(--font-pixel); font-size: 1.8rem; line-height: 1; }
+    .stat-item:nth-child(1) .stat-number { color: var(--green); text-shadow: 0 0 12px rgba(57,255,20,0.3); }
+    .stat-item:nth-child(2) .stat-number { color: var(--cyan); text-shadow: 0 0 12px rgba(0,212,255,0.3); }
+    .stat-item:nth-child(3) .stat-number { color: var(--yellow); text-shadow: 0 0 12px rgba(245,214,35,0.3); }
+    .stat-item:nth-child(4) .stat-number { color: var(--red); text-shadow: 0 0 12px rgba(232,52,46,0.3); }
     .stat-label {
-      font-size: 0.85rem;
-      color: var(--gray);
-      margin-top: 0.3rem;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
+      color: #999; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1.5px;
     }
+    .stat-sub {
+      font-family: var(--font-body); font-size: 0.72rem; font-weight: 400;
+      color: #555; margin-top: 0.25rem; line-height: 1.4;
+    }
+    @media (max-width: 600px) { .games-stats { grid-template-columns: 1fr 1fr; } }
 
     /* ========== GALLERY ========== */
     .gallery {
@@ -645,6 +686,7 @@
       }
     }
 
+
     /* ========== BIRTHDAY ========== */
     .birthday {
       position: relative;
@@ -661,143 +703,205 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 75%;
     }
 
     .birthday-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(13,13,20,0.95) 0%, rgba(13,13,20,0.82) 100%);
+      background: linear-gradient(to right, rgba(13,13,20,0.93) 0%, rgba(13,13,20,0.78) 100%);
     }
 
     .birthday > .container { position: relative; z-index: 1; }
 
-    .birthday-content {
+    /* --- Birthday: Side-by-side — title+experience left, booking right, equal height --- */
+    .bday-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+      gap: 2.5rem;
       margin-top: 2rem;
+      align-items: stretch;
     }
+    @media (max-width: 768px) { .bday-layout { grid-template-columns: 1fr; } }
 
-    @media (max-width: 768px) {
-      .birthday-content { grid-template-columns: 1fr; }
-    }
-
-    .birthday-features {
-      list-style: none;
+    .bday-left {
       display: flex;
       flex-direction: column;
+    }
+    .bday-left .bday-label {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.6rem;
+    }
+    .bday-left .bday-title {
+      font-family: var(--font-pixel);
+      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.6;
+      margin-bottom: 2.2rem;
+    }
+
+    .bday-left .exp-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    .bday-left .exp-item:last-child { margin-bottom: 0; }
+    .bday-left .exp-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .bday-left .exp-text h4 {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #eee;
+      margin-bottom: 0.25rem;
+    }
+    .bday-left .exp-text p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.55;
+    }
+
+    .bday-booking {
+      background: rgba(17,17,24,0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+    }
+    .bday-booking-head {
+      background: var(--red);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
     }
-
-    .birthday-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    .birthday-features li::before {
-      content: '>';
+    .bday-booking-head .book-price {
       font-family: var(--font-pixel);
-      color: var(--green);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      margin-top: 3px;
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      color: #fff;
+      line-height: 1;
     }
-
-    .birthday-price-box {
-      background: rgba(17,17,24,0.9);
-      border: 2px solid var(--red);
-      padding: 2.5rem;
+    .bday-booking-head .book-sub {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      text-align: right;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .bday-booking-body {
+      padding: 1.2rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bday-booking-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .bday-booking-row:last-child { border-bottom: none; }
+    .bday-booking-row .row-label {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: #bbb;
+      font-weight: 500;
+    }
+    .bday-booking-row .row-val {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: right;
+    }
+    .bday-booking-foot {
+      padding: 1.5rem 2rem;
       text-align: center;
-      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
     }
-
-    .birthday-price-box .price-amount {
-      font-size: 2.5rem;
-      color: var(--red);
-      text-shadow: 0 0 30px rgba(232,52,46,0.3);
-    }
-
-    .birthday-price-box .price-note {
-      color: var(--gray);
-      font-size: 0.85rem;
-      margin-top: 1rem;
-      line-height: 1.6;
+    .bday-booking-foot .deposit-tag {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: #666;
     }
 
     /* ========== STORY ========== */
     .story { background: var(--dark); }
-
-    .story-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .story-content { grid-template-columns: 1fr; }
-    }
-
-    .story-text p {
-      color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
-
-    .story-quote {
-      border-left: 3px solid var(--yellow);
-      padding-left: 1.25rem;
-      margin: 1.5rem 0;
-    }
-
-    .story-quote p {
-      font-style: italic;
-      color: var(--white);
-      font-size: 1.05rem;
-    }
-
-    .story-quote cite {
-      font-family: var(--font-pixel);
-      font-size: 0.5rem;
-      color: var(--yellow-dim);
-      font-style: normal;
-      display: block;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .story-image {
-      aspect-ratio: 16/9;
-      background: var(--darker);
-      overflow: hidden;
-      border: 1px solid var(--gray-dark);
-    }
-
-    .story-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .pbs-badge {
+    /* Story V5 Triptych — LOCKED */
+    .story .pbs-badge {
       display: inline-block;
       font-family: var(--font-pixel);
-      font-size: 0.45rem;
-      background: rgba(0,212,255,0.1);
-      border: 1px solid var(--cyan);
+      font-size: 0.4rem;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.3);
       color: var(--cyan);
-      padding: 0.4rem 0.8rem;
+      padding: 0.35rem 0.7rem;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-top: 1rem;
+    }
+
+    /* --- V5: Story Triptych — three cards telling a story arc --- */
+    .sv5-triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
+    @media (max-width: 768px) { .sv5-triptych { grid-template-columns: 1fr; } }
+    .sv5-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; overflow: hidden; position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .sv5-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
+    .sv5-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 2; }
+    .sv5-card:nth-child(1)::before { background: var(--cyan); box-shadow: 0 0 12px rgba(0,212,255,0.4); }
+    .sv5-card:nth-child(2)::before { background: var(--green); box-shadow: 0 0 12px rgba(57,255,20,0.4); }
+    .sv5-card:nth-child(3)::before { background: var(--yellow); box-shadow: 0 0 12px rgba(245,214,35,0.4); }
+    .sv5-card-img { aspect-ratio: 16/9; overflow: hidden; }
+    .sv5-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .sv5-card:hover .sv5-card-img img { transform: scale(1.05); }
+    .sv5-card-body { padding: 1.2rem 1.3rem 1.4rem; }
+    .sv5-card-year { font-family: var(--font-pixel); font-size: 0.8rem; margin-bottom: 0.45rem; letter-spacing: 1px; }
+    .sv5-card:nth-child(1) .sv5-card-year { color: var(--cyan); text-shadow: 0 0 10px rgba(0,212,255,0.3); }
+    .sv5-card:nth-child(2) .sv5-card-year { color: var(--green); text-shadow: 0 0 10px rgba(57,255,20,0.3); }
+    .sv5-card:nth-child(3) .sv5-card-year { color: var(--yellow); text-shadow: 0 0 10px rgba(245,214,35,0.3); }
+    .sv5-card-heading {
+      font-family: var(--font-body); font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .sv5-card-desc { color: #888; font-size: 0.88rem; line-height: 1.6; }
+    .sv5-quote-row { margin-top: 1.5rem; text-align: center; padding-bottom: 0.5rem; }
+    .sv5-quote-row blockquote {
+      font-style: italic; color: var(--white); font-size: 1.1rem; line-height: 1.6;
+      max-width: 650px; margin: 0 auto 0.6rem;
+    }
+    .sv5-quote-row cite {
+      font-family: var(--font-pixel); font-size: 0.4rem; color: var(--yellow-dim);
+      font-style: normal; text-transform: uppercase; letter-spacing: 2px;
     }
 
     /* ========== REVIEWS ========== */
@@ -828,222 +932,160 @@
       letter-spacing: 1px;
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+    /* Reviews — RV1 Refined Grid — LOCKED */
+    .rv-stars { color: var(--yellow); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.6rem; }
+    .rv-text { color: #999; font-size: 0.92rem; line-height: 1.65; font-style: italic; margin-bottom: 0.8rem; }
+    .rv-author { font-weight: 600; font-size: 0.85rem; color: var(--white); }
+    .rv-google-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+    .rv-google-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: #fff; border-radius: 50%; flex-shrink: 0;
     }
-
-    .review-card {
-      background: var(--dark);
-      border: 1px solid var(--gray-dark);
-      padding: 1.75rem;
-      position: relative;
+    .rv-google-circle img { width: 14px; height: 14px; }
+    .rv-google-text {
+      font-family: var(--font-body); font-size: 0.75rem; color: #666; font-weight: 500;
     }
-
-    .review-card::before {
-      content: '\201C';
-      font-family: var(--font-pixel);
-      font-size: 2rem;
-      color: var(--yellow-dim);
-      opacity: 0.3;
-      position: absolute;
-      top: 0.75rem;
-      right: 1rem;
+    .rv1-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem;
     }
-
-    .review-stars {
-      color: var(--yellow);
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: 2px;
-    }
-
-    .review-text {
-      color: var(--gray);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-
-    .review-author {
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--white);
-      margin-bottom: 0.15rem;
-    }
-
-    .review-source {
-      font-family: var(--font-pixel);
-      font-size: 0.4rem;
-      color: var(--gray-dark);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    @media (max-width: 900px) { .rv1-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .rv1-grid { grid-template-columns: 1fr; } }
+    .rv1-card {
+      background: var(--dark); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.4rem 1.5rem;
     }
 
     /* ========== VISIT ========== */
     .visit { background: var(--dark); }
-
-    .visit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2.5rem;
+    /* Visit — shared */
+    .vt-h3 {
+      font-family: var(--font-pixel); font-size: 0.6rem; color: var(--yellow);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .visit-grid { grid-template-columns: 1fr; }
+    /* --- Visit: Map + Stacked Info — LOCKED --- */
+    .vt3-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+    @media (max-width: 768px) { .vt3-layout { grid-template-columns: 1fr; } }
+    .vt3-map { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+    .vt3-map iframe { width: 100%; height: 100%; min-height: 440px; border: 0; }
+    .vt3-map-footer {
+      background: var(--darker); padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .visit-info h3 {
-      font-family: var(--font-pixel);
-      font-size: 0.6rem;
-      color: var(--yellow);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      margin-top: 1.5rem;
+    .vt3-map-addr {
+      font-family: var(--font-pixel); font-size: 0.55rem; color: var(--white);
+      letter-spacing: 1px;
     }
-
-    .visit-info h3:first-child { margin-top: 0; }
-
-    .visit-info p, .visit-info a {
-      color: var(--gray);
-      font-size: 0.95rem;
-      line-height: 1.8;
+    .vt3-map-dir {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; display: inline-block;
+      border: 2px solid var(--yellow); border-radius: 50px;
+      padding: 0.45rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .vt3-map-dir:hover { background: var(--yellow); color: var(--black); }
+    .vt3-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+    .vt3-block { background: var(--darker); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.3rem 1.5rem; }
+    .vt3-block .vt-h3 { margin-bottom: 0.8rem; }
+    /* VT3 hours — larger day names, pixel-font times, colored Friday/Saturday */
+    .vt3-block .vt3-hours { list-style: none; }
+    .vt3-block .vt3-hours li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vt3-block .vt3-hours li .day {
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .vt3-block .vt3-hours li .time {
+      font-family: var(--font-pixel); font-size: 0.65rem; color: var(--cyan);
+      letter-spacing: 1px;
+    }
+    .vt3-block .vt3-hours li.late .time { color: var(--green); }
+    .vt3-block .vt3-hours li.closed .day { color: var(--gray); font-weight: 400; }
+    .vt3-block .vt3-hours li.closed .time { font-family: var(--font-pixel); color: var(--red); }
+    /* VT3 contact — phone big, email subtle, stacked */
+    .vt3-contact-phone {
+      font-family: var(--font-pixel); font-size: 0.7rem; color: var(--white);
+      text-decoration: none; letter-spacing: 2px;
+      display: block; margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .vt3-contact-phone:hover { color: var(--yellow); }
+    .vt3-links {
+      display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem;
+    }
+    .vt3-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
       text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative; overflow: hidden;
     }
-
-    .visit-info a:hover { color: var(--yellow); }
-
-    .hours-list { list-style: none; }
-
-    .hours-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: var(--gray);
-      font-size: 0.9rem;
+    .vt3-link:hover { transform: translateY(-2px); }
+    .vt3-link::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
     }
-
-    .hours-list li .day { color: var(--white); font-weight: 500; }
-    .hours-list li.closed .time { color: var(--red); }
-
-    .visit-photos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+    .vt3-link-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-
-    .visit-photos .visit-photo {
-      overflow: hidden;
-      border: 1px solid var(--gray-dark);
+    .vt3-link-icon svg { width: 22px; height: 22px; }
+    .vt3-link-text { display: flex; flex-direction: column; }
+    .vt3-link-label {
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
     }
-
-    .visit-photos .visit-photo:first-child {
-      grid-column: 1 / -1;
-      aspect-ratio: 16/9;
+    .vt3-link-sub {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      text-transform: uppercase; letter-spacing: 2px; margin-top: 0.15rem;
     }
+    /* Call — cyan */
+    .vt3-link--call { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); }
+    .vt3-link--call::before { background: var(--cyan); }
+    .vt3-link--call .vt3-link-icon { background: rgba(0,212,255,0.12); }
+    .vt3-link--call .vt3-link-icon svg { fill: var(--cyan); }
+    .vt3-link--call .vt3-link-label { color: var(--white); }
+    .vt3-link--call .vt3-link-sub { color: var(--cyan); }
+    .vt3-link--call:hover { box-shadow: 0 4px 20px rgba(0,212,255,0.15); }
+    /* Facebook — yellow */
+    .vt3-link--fb { background: rgba(245,214,35,0.05); border: 1px solid rgba(245,214,35,0.12); }
+    .vt3-link--fb::before { background: var(--yellow); }
+    .vt3-link--fb .vt3-link-icon { background: rgba(245,214,35,0.1); }
+    .vt3-link--fb .vt3-link-icon svg { fill: var(--yellow); }
+    .vt3-link--fb .vt3-link-label { color: var(--white); }
+    .vt3-link--fb .vt3-link-sub { color: var(--yellow); }
+    .vt3-link--fb:hover { box-shadow: 0 4px 20px rgba(245,214,35,0.1); }
+    /* Reviews — green */
+    .vt3-link--review { background: rgba(57,255,20,0.05); border: 1px solid rgba(57,255,20,0.12); }
+    .vt3-link--review::before { background: var(--green); }
+    .vt3-link--review .vt3-link-icon { background: rgba(57,255,20,0.1); }
+    .vt3-link--review .vt3-link-icon svg { fill: var(--green); }
+    .vt3-link--review .vt3-link-label { color: var(--white); }
+    .vt3-link--review .vt3-link-sub { color: var(--green); }
+    .vt3-link--review:hover { box-shadow: 0 4px 20px rgba(57,255,20,0.1); }
 
-    .visit-photos .visit-photo:not(:first-child) {
-      aspect-ratio: 4/3;
-    }
-
-    .visit-photos img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .visit-address {
-      text-align: center;
-      padding: 1rem;
-      background: var(--darker);
-      border: 1px solid var(--gray-dark);
-      border-top: 0;
-      grid-column: 1 / -1;
-    }
-
-    .visit-address a {
-      font-family: var(--font-pixel);
-      font-size: 0.5rem;
-      color: var(--yellow);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .visit-address a:hover { color: var(--white); }
 
     /* ========== FOOTER ========== */
-    footer {
-      background: var(--black);
-      border-top: 2px solid var(--yellow-dim);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
+    /* Footer shared */
+    footer { background: var(--black); }
 
-    .footer-logo {
-      font-family: var(--font-pixel);
-      font-size: 0.6rem;
-      color: var(--yellow);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-contact {
-      color: var(--gray);
-      font-size: 0.85rem;
-      line-height: 1.8;
-    }
-
-    .footer-contact a {
-      color: var(--gray);
-      text-decoration: none;
-    }
-
-    .footer-contact a:hover { color: var(--yellow); }
-
-    .footer-social { margin-top: 1rem; }
-
-    .footer-social a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-pixel);
-      font-size: 0.5rem;
-      color: var(--cyan);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--cyan);
-      transition: all 0.2s;
-    }
-
-    .footer-social a:hover {
-      background: rgba(0,212,255,0.1);
-      color: var(--white);
-    }
-
-    .footer-credit {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      font-size: 0.75rem;
-      color: var(--gray-dark);
-    }
-
-    .footer-credit a {
-      color: var(--gray);
-      text-decoration: none;
-    }
-
-    .footer-credit a:hover { color: var(--yellow); }
+    /* --- Footer: CRT scanline bar — LOCKED --- */
+    .ft3 { position: relative; border-top: 3px solid var(--green); padding: 2.5rem 2rem; text-align: center; overflow: hidden; }
+    .ft3::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,255,20,0.03) 2px, rgba(57,255,20,0.03) 4px); z-index: 1; }
+    .ft3-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .ft3-logo { width: 200px; margin: 0 auto 1.8rem; filter: drop-shadow(0 0 20px rgba(57,255,20,0.2)); }
+    .ft3-addr { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .ft3-phone { font-family: var(--font-pixel); font-size: 0.6rem; color: var(--white); text-decoration: none; letter-spacing: 2px; }
+    .ft3-phone:hover { color: var(--green); }
+    .ft3-social { margin-top: 1.2rem; display: flex; justify-content: center; gap: 1rem; }
+    .ft3-social a { width: 40px; height: 40px; border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; }
+    .ft3-social a:hover { background: rgba(57,255,20,0.15); transform: translateY(-2px); }
+    .ft3-social a svg { width: 18px; height: 18px; fill: var(--green); }
+    .ft3-credit { margin-top: 1.5rem; font-size: 0.7rem; color: var(--gray-dark); }
+    .ft3-credit a { color: var(--gray); text-decoration: none; }
+    .ft3-credit a:hover { color: var(--green); }
 
     /* ========== SECTION DIVIDER ========== */
     .divider {
@@ -1067,343 +1109,6 @@
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
 
-    /* ========== SECTION VARIANT PICKER ========== */
-    .section-picker {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 16px; margin: 0;
-      background: rgba(17,17,24,0.95); backdrop-filter: blur(12px);
-      border-top: 1px solid #222; border-bottom: 1px solid #222;
-      position: relative; z-index: 50;
-    }
-    .section-picker-label {
-      font-family: var(--font-pixel); font-size: 0.38rem;
-      color: var(--gray); text-transform: uppercase; letter-spacing: 2px;
-      margin-right: 8px;
-    }
-    .sp-btn {
-      min-width: 36px; height: 34px;
-      border: 2px solid #333; background: transparent; color: #666;
-      font-family: var(--font-pixel); font-size: 0.45rem;
-      cursor: pointer; padding: 0 8px;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .sp-btn:hover { border-color: #555; color: #ccc; }
-    .sp-btn.active { border-color: var(--yellow); color: var(--yellow); background: rgba(245,214,35,0.08); }
-    .sp-desc {
-      font-family: var(--font-pixel); font-size: 0.28rem;
-      color: #555; margin-left: 8px; text-transform: uppercase; letter-spacing: 1px;
-    }
-    @media (max-width: 600px) { .sp-desc { display: none; } }
-
-    .pricing-v { display: none; }
-    .pricing-v.active { display: block; }
-
-    /* ========== PRICING V2: ARCADE TICKETS ========== */
-    .pricing-v2 .price-card {
-      background: var(--dark); border: 2px dashed #333;
-      padding: 2.5rem 2rem; text-align: center;
-      position: relative; overflow: hidden; transition: all 0.3s;
-    }
-    .pricing-v2 .price-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 10px;
-      background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 10px, transparent 10px, transparent 20px);
-      opacity: 0.6;
-    }
-    .pricing-v2 .price-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 10px;
-      background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 10px, transparent 10px, transparent 20px);
-      opacity: 0.6;
-    }
-    .pricing-v2 .price-card:hover { border-color: var(--yellow-dim); transform: translateY(-4px); }
-    .pricing-v2 .price-card.featured { border-color: var(--yellow-dim); }
-    .pricing-v2 .price-card.featured::before,
-    .pricing-v2 .price-card.featured::after {
-      background: repeating-linear-gradient(90deg, var(--yellow) 0px, var(--yellow) 10px, transparent 10px, transparent 20px);
-    }
-    .pricing-v2 .price-amount {
-      font-family: var(--font-pixel); font-size: 2.4rem;
-      color: var(--yellow); margin: 0.3rem 0;
-      text-shadow: 0 0 20px rgba(245,214,35,0.2);
-    }
-    .pricing-v2 .price-name {
-      font-family: var(--font-pixel); font-size: 0.55rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 3px;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-v2 .price-desc { color: var(--gray); font-size: 0.85rem; line-height: 1.6; }
-
-    /* ========== PRICING V3: HORIZONTAL COMPARE ========== */
-    .pricing-v3 .pricing-stack {
-      display: flex; flex-direction: column; gap: 0;
-      margin-top: 2.5rem;
-      border: 1px solid #222; overflow: hidden;
-    }
-    .pricing-v3 .price-row {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; gap: 0;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #1a1a22;
-      transition: background 0.2s;
-    }
-    .pricing-v3 .price-row:last-child { border-bottom: none; }
-    .pricing-v3 .price-row:hover { background: rgba(245,214,35,0.02); }
-    .pricing-v3 .price-row.featured { background: rgba(245,214,35,0.03); }
-    .pricing-v3 .pr-left {
-      display: flex; flex-direction: column; gap: 4px;
-    }
-    .pricing-v3 .pr-left .price-name {
-      font-family: var(--font-pixel); font-size: 0.55rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-    }
-    .pricing-v3 .pr-left .price-desc { color: #666; font-size: 0.85rem; line-height: 1.5; }
-    .pricing-v3 .pr-price {
-      font-family: var(--font-pixel); font-size: 2rem;
-      color: var(--yellow); text-align: center;
-      padding: 0 2rem;
-      text-shadow: 0 0 15px rgba(245,214,35,0.15);
-    }
-    .pricing-v3 .pr-right { text-align: right; }
-    .pricing-v3 .pr-right a {
-      font-family: var(--font-pixel); font-size: 0.38rem;
-      color: var(--red); text-decoration: none; text-transform: uppercase;
-      letter-spacing: 1px; padding: 0.4rem 1rem;
-      border: 1px solid rgba(232,52,46,0.3); border-radius: 3px;
-      transition: all 0.2s;
-    }
-    .pricing-v3 .pr-right a:hover {
-      background: rgba(232,52,46,0.1); border-color: var(--red);
-    }
-    .pricing-v3 .price-row.featured .pr-right a { color: var(--yellow); border-color: rgba(245,214,35,0.3); }
-    .pricing-v3 .price-row.featured .pr-right a:hover { background: rgba(245,214,35,0.08); border-color: var(--yellow); }
-    @media (max-width: 768px) {
-      .pricing-v3 .price-row { grid-template-columns: 1fr; text-align: center; gap: 12px; }
-      .pricing-v3 .pr-price { padding: 0; }
-      .pricing-v3 .pr-right { text-align: center; }
-    }
-
-    /* ========== PRICING V4a: EQUAL CARDS + RIBBON + GLOW ========== */
-    .pricing-v4a .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 2.5rem; align-items: stretch;
-    }
-    .pricing-v4a .price-card {
-      background: var(--dark); border: 1px solid #222;
-      padding: 2.5rem 2rem; text-align: center;
-      position: relative; overflow: hidden; transition: all 0.3s;
-    }
-    .pricing-v4a .price-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: #333; transition: background 0.3s;
-    }
-    .pricing-v4a .price-card:hover { border-color: #444; transform: translateY(-3px); }
-    .pricing-v4a .price-card.featured {
-      border-color: var(--yellow-dim);
-      box-shadow: 0 0 30px rgba(245,214,35,0.06);
-    }
-    .pricing-v4a .price-card.featured::before { background: var(--yellow); }
-    .pricing-v4a .price-card.featured::after {
-      content: 'BEST VALUE'; position: absolute; top: 14px; right: -28px;
-      background: var(--red); color: var(--white);
-      font-family: var(--font-pixel); font-size: 0.28rem;
-      padding: 4px 36px; transform: rotate(45deg);
-      letter-spacing: 1px;
-    }
-    .pricing-v4a .price-amount {
-      font-family: var(--font-pixel); font-size: 2.2rem;
-      color: var(--yellow); margin: 0.5rem 0;
-    }
-    .pricing-v4a .price-card.featured .price-amount {
-      text-shadow: 0 0 20px rgba(245,214,35,0.25);
-    }
-    .pricing-v4a .price-name {
-      font-family: var(--font-pixel); font-size: 0.55rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-v4a .price-desc { color: var(--gray); font-size: 0.85rem; line-height: 1.6; }
-    .pricing-v4a .price-card .card-cta {
-      display: inline-block; margin-top: 1.2rem;
-      font-family: var(--font-pixel); font-size: 0.35rem;
-      color: #666; text-decoration: none; text-transform: uppercase;
-      letter-spacing: 1px; padding: 0.4rem 1rem;
-      border: 1px solid #333; border-radius: 3px;
-      transition: all 0.2s;
-    }
-    .pricing-v4a .price-card .card-cta:hover { color: var(--white); border-color: #666; }
-    .pricing-v4a .price-card.featured .card-cta {
-      color: var(--yellow); border-color: var(--yellow-dim);
-    }
-    .pricing-v4a .price-card.featured .card-cta:hover {
-      background: rgba(245,214,35,0.06); border-color: var(--yellow);
-    }
-    @media (max-width: 768px) {
-      .pricing-v4a .pricing-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ========== PRICING V4b: EQUAL CARDS + NEON BORDER FEATURED ========== */
-    .pricing-v4b .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 2.5rem; align-items: stretch;
-    }
-    .pricing-v4b .price-card {
-      background: var(--dark); border: 1px solid #1e1e26;
-      padding: 2.5rem 2rem; text-align: center;
-      position: relative; overflow: visible; transition: all 0.3s;
-      border-radius: 8px;
-    }
-    .pricing-v4b .price-card:hover { border-color: #3a3a44; transform: translateY(-3px); }
-    .pricing-v4b .price-card.featured {
-      border: 2px solid var(--yellow-dim);
-      box-shadow: 0 0 25px rgba(245,214,35,0.08), inset 0 0 25px rgba(245,214,35,0.03);
-    }
-    .pricing-v4b .feat-badge { display: none; }
-    .pricing-v4b .price-card.featured .feat-badge {
-      display: inline-block; position: absolute;
-      top: -14px; left: 50%; transform: translateX(-50%);
-      font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
-      color: var(--yellow); text-transform: uppercase; letter-spacing: 2px;
-      background: var(--dark);
-      border: 1px solid rgba(245,214,35,0.3);
-      border-radius: 20px; padding: 0.3rem 1rem;
-      white-space: nowrap; z-index: 2;
-    }
-    .pricing-v4b .price-amount {
-      font-family: var(--font-pixel); font-size: 2.2rem;
-      color: var(--yellow); margin: 0.5rem 0;
-    }
-    .pricing-v4b .price-name {
-      font-family: var(--font-pixel); font-size: 0.55rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-v4b .price-desc { color: var(--gray); font-size: 0.85rem; line-height: 1.6; font-family: var(--font-body); }
-    .pricing-v4b .price-card .card-cta {
-      display: inline-block; margin-top: 1.2rem;
-      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
-      color: #666; text-decoration: none; text-transform: uppercase;
-      letter-spacing: 1px; padding: 0.5rem 1.4rem;
-      border: 1px solid #333; border-radius: 50px;
-      transition: all 0.2s;
-    }
-    .pricing-v4b .price-card .card-cta:hover { color: var(--white); border-color: #666; }
-    .pricing-v4b .price-card.featured .card-cta {
-      background: var(--yellow); color: var(--black); border-color: var(--yellow);
-      box-shadow: 0 2px 0 #8a7100, 0 0 12px rgba(245,214,35,0.15);
-    }
-    .pricing-v4b .price-card.featured .card-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 3px 0 #8a7100, 0 0 20px rgba(245,214,35,0.25);
-    }
-    @media (max-width: 768px) {
-      .pricing-v4b .pricing-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ========== PRICING V4c: EQUAL CARDS + RED ACCENT FEATURED + DARK CONTRAST ========== */
-    .pricing-v4c .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; margin-top: 2.5rem; align-items: stretch;
-      border: 1px solid #1a1a22; overflow: hidden;
-    }
-    .pricing-v4c .price-card {
-      background: var(--dark);
-      border-right: 1px solid #1a1a22;
-      padding: 2.5rem 2rem; text-align: center;
-      position: relative; transition: background 0.3s;
-    }
-    .pricing-v4c .price-card:last-child { border-right: none; }
-    .pricing-v4c .price-card:hover { background: rgba(255,255,255,0.015); }
-    .pricing-v4c .price-card.featured {
-      background: rgba(232,52,46,0.04);
-    }
-    .pricing-v4c .price-card.featured::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--red);
-    }
-    .pricing-v4c .price-card.featured .feat-tag {
-      display: inline-block;
-      font-family: var(--font-pixel); font-size: 0.25rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-      background: var(--red); padding: 0.25rem 0.7rem;
-      margin-bottom: 1rem;
-    }
-    .pricing-v4c .feat-tag { display: none; }
-    .pricing-v4c .price-amount {
-      font-family: var(--font-pixel); font-size: 2.2rem;
-      color: var(--yellow); margin: 0.5rem 0;
-    }
-    .pricing-v4c .price-name {
-      font-family: var(--font-pixel); font-size: 0.55rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-v4c .price-desc { color: var(--gray); font-size: 0.85rem; line-height: 1.6; }
-    .pricing-v4c .price-card .card-cta {
-      display: inline-block; margin-top: 1.2rem;
-      font-family: var(--font-pixel); font-size: 0.35rem;
-      color: #555; text-decoration: none; text-transform: uppercase;
-      letter-spacing: 1px; padding: 0.4rem 1rem;
-      border: 1px solid #2a2a32; transition: all 0.2s;
-    }
-    .pricing-v4c .price-card .card-cta:hover { color: var(--white); border-color: #555; }
-    .pricing-v4c .price-card.featured .card-cta {
-      color: var(--red); border-color: rgba(232,52,46,0.3);
-    }
-    .pricing-v4c .price-card.featured .card-cta:hover {
-      background: rgba(232,52,46,0.08); border-color: var(--red);
-    }
-    @media (max-width: 768px) {
-      .pricing-v4c .pricing-grid { grid-template-columns: 1fr; }
-      .pricing-v4c .price-card { border-right: none; border-bottom: 1px solid #1a1a22; }
-      .pricing-v4c .price-card:last-child { border-bottom: none; }
-    }
-
-    /* ========== PRICING V5: COIN-OP DISPLAY ========== */
-    .pricing-v5 .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; margin-top: 2.5rem;
-      border: 2px solid #222; overflow: hidden;
-    }
-    .pricing-v5 .price-cell {
-      padding: 2.5rem 1.5rem; text-align: center;
-      background: var(--dark);
-      border-right: 1px solid #1a1a22;
-      position: relative; transition: background 0.3s;
-    }
-    .pricing-v5 .price-cell:last-child { border-right: none; }
-    .pricing-v5 .price-cell:hover { background: rgba(245,214,35,0.02); }
-    .pricing-v5 .price-cell.featured {
-      background: rgba(232,52,46,0.04);
-    }
-    .pricing-v5 .price-cell.featured::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: var(--red);
-    }
-    .pricing-v5 .pc-icon {
-      font-size: 1.8rem; margin-bottom: 1rem; opacity: 0.6;
-    }
-    .pricing-v5 .price-amount {
-      font-family: var(--font-pixel); font-size: 2.2rem;
-      color: var(--yellow); margin: 0.3rem 0;
-      text-shadow: 0 0 20px rgba(245,214,35,0.15);
-    }
-    .pricing-v5 .price-name {
-      font-family: var(--font-pixel); font-size: 0.5rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-    .pricing-v5 .price-desc { color: #666; font-size: 0.85rem; line-height: 1.6; }
-    .pricing-v5 .price-note {
-      font-family: var(--font-pixel); font-size: 0.3rem;
-      color: var(--cyan); text-transform: uppercase; letter-spacing: 1px;
-      margin-top: 1rem; opacity: 0.7;
-    }
-    @media (max-width: 768px) {
-      .pricing-v5 .pricing-grid { grid-template-columns: 1fr; }
-      .pricing-v5 .price-cell { border-right: none; border-bottom: 1px solid #1a1a22; }
-      .pricing-v5 .price-cell:last-child { border-bottom: none; }
-    }
   </style>
 </head>
 <body>
@@ -1480,231 +1185,6 @@
 
   <div class="divider"></div>
 
-  <!-- PRICING -->
-  <div class="section-picker" id="pricing-picker">
-    <span class="section-picker-label">Pricing</span>
-    <button class="sp-btn active" onclick="pickPricing(1)">1</button>
-    <button class="sp-btn" onclick="pickPricing(2)">2</button>
-    <button class="sp-btn" onclick="pickPricing(3)">3</button>
-    <button class="sp-btn" onclick="pickPricing('4a')">4a</button>
-    <button class="sp-btn" onclick="pickPricing('4b')">4b</button>
-    <button class="sp-btn" onclick="pickPricing('4c')">4c</button>
-    <button class="sp-btn" onclick="pickPricing(5)">5</button>
-    <span class="sp-desc" id="pricing-desc">Original — cards with top accent bar</span>
-  </div>
-
-  <!-- V1: ORIGINAL -->
-  <section class="pricing pricing-v active" id="pricing" data-v="1">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
-      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <p class="price-name">Hourly Pass</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
-        </div>
-        <div class="price-card featured">
-          <p class="price-name">All-Day Pass</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
-        </div>
-        <div class="price-card">
-          <p class="price-name">Group Rate</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">Per person for groups of 15 or more. All-day admission included.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V2: ARCADE TICKETS -->
-  <section class="pricing pricing-v pricing-v2" data-v="2">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Grab Your<br>Wristband.</h2>
-      <p class="section-desc">Every machine. Every floor. One price. No quarters required.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <p class="price-name">Hourly Pass</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
-        </div>
-        <div class="price-card featured">
-          <p class="price-name">All-Day Pass</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
-        </div>
-        <div class="price-card">
-          <p class="price-name">Group Rate</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">Per person for groups of 15+. All-day admission included.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V3: HORIZONTAL COMPARE -->
-  <section class="pricing pricing-v pricing-v3" data-v="3">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Pick Your<br>Play Style.</h2>
-      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
-      <div class="pricing-stack">
-        <div class="price-row">
-          <div class="pr-left">
-            <p class="price-name">Hourly Pass</p>
-            <p class="price-desc">One hour of unlimited play on every machine.</p>
-          </div>
-          <div class="pr-price">$8</div>
-          <div class="pr-right"><a href="#visit">Get Pass</a></div>
-        </div>
-        <div class="price-row featured">
-          <div class="pr-left">
-            <p class="price-name">All-Day Pass</p>
-            <p class="price-desc">Play all day. Come and go with your wristband.</p>
-          </div>
-          <div class="pr-price">$13</div>
-          <div class="pr-right"><a href="#visit">Get Pass</a></div>
-        </div>
-        <div class="price-row">
-          <div class="pr-left">
-            <p class="price-name">Group Rate</p>
-            <p class="price-desc">15+ people. All-day admission included.</p>
-          </div>
-          <div class="pr-price">$10</div>
-          <div class="pr-right"><a href="#visit">Get Pass</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V4a: EQUAL CARDS + RIBBON + GLOW -->
-  <section class="pricing pricing-v pricing-v4a" data-v="4a">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
-      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <p class="price-name">Hourly Pass</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card featured">
-          <p class="price-name">All-Day Pass</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card">
-          <p class="price-name">Group Rate</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">Per person for groups of 15+. All-day admission included.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V4b: EQUAL CARDS + NEON BORDER + PILL CTAs -->
-  <section class="pricing pricing-v pricing-v4b" data-v="4b">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
-      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <p class="feat-badge"></p>
-          <p class="price-name">Hourly Pass</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card featured">
-          <p class="feat-badge">Most Popular</p>
-          <p class="price-name">All-Day Pass</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card">
-          <p class="feat-badge"></p>
-          <p class="price-name">Group Rate</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">Per person for groups of 15+. All-day admission included.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V4c: EQUAL CARDS + RED ACCENT + FLUSH BORDERS -->
-  <section class="pricing pricing-v pricing-v4c" data-v="4c">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
-      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <p class="feat-tag"></p>
-          <p class="price-name">Hourly Pass</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card featured">
-          <p class="feat-tag">Best Value</p>
-          <p class="price-name">All-Day Pass</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-        <div class="price-card">
-          <p class="feat-tag"></p>
-          <p class="price-name">Group Rate</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">Per person for groups of 15+. All-day admission included.</p>
-          <a href="#visit" class="card-cta">Get Pass</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- V5: COIN-OP DISPLAY -->
-  <section class="pricing pricing-v pricing-v5" data-v="5">
-    <div class="container">
-      <p class="section-label">Admission</p>
-      <h2 class="section-title">No Quarters<br>Required.</h2>
-      <p class="section-desc">Every machine on freeplay. Pick your pass and start playing.</p>
-      <div class="pricing-grid">
-        <div class="price-cell">
-          <div class="pc-icon">&#9201;</div>
-          <p class="price-name">Hourly</p>
-          <p class="price-amount">$8</p>
-          <p class="price-desc">One hour. Every machine. Unlimited play.</p>
-          <p class="price-note">Walk-in only</p>
-        </div>
-        <div class="price-cell featured">
-          <div class="pc-icon">&#127918;</div>
-          <p class="price-name">All Day</p>
-          <p class="price-amount">$13</p>
-          <p class="price-desc">Play all day. Come and go with your wristband.</p>
-          <p class="price-note">Most popular</p>
-        </div>
-        <div class="price-cell">
-          <div class="pc-icon">&#128101;</div>
-          <p class="price-name">Groups</p>
-          <p class="price-amount">$10</p>
-          <p class="price-desc">15+ people. All-day admission per person.</p>
-          <p class="price-note">Call ahead</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- GAMES -->
   <section class="games" id="games">
     <div class="container">
@@ -1728,7 +1208,42 @@
         </div>
       </div>
     </div>
+  </section>
 
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <p class="section-label">Admission</p>
+      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
+      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <p class="price-badge"></p>
+          <p class="price-name">Hourly Pass</p>
+          <p class="price-amount">$8</p>
+          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
+        <div class="price-card featured">
+          <p class="price-badge">Most Popular</p>
+          <p class="price-name">All-Day Pass</p>
+          <p class="price-amount">$13</p>
+          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
+        <div class="price-card">
+          <p class="price-badge"></p>
+          <p class="price-name">Group Rate</p>
+          <p class="price-amount">$10</p>
+          <p class="price-desc">Per person for groups of 15 or more. All-day admission included.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES MARQUEE + STATS -->
+  <section class="games" id="games-stats">
     <div class="games-marquee">
       <div class="games-marquee-inner">
         <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Double Dragon <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Centipede <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Whirlwind <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Mars Attacks!</span>
@@ -1740,23 +1255,29 @@
       <div class="games-stats">
         <div class="stat-item">
           <p class="stat-number">105+</p>
-          <p class="stat-label">Games on the floor</p>
+          <p class="stat-label">Playable Machines</p>
+          <p class="stat-sub">Cabinets and pinball, all powered up</p>
         </div>
         <div class="stat-item">
           <p class="stat-number">80+</p>
-          <p class="stat-label">More in rotation</p>
+          <p class="stat-label">In Rotation</p>
+          <p class="stat-sub">New games swapped in regularly</p>
         </div>
         <div class="stat-item">
-          <p class="stat-number">100%</p>
-          <p class="stat-label">On freeplay</p>
+          <p class="stat-number">$0</p>
+          <p class="stat-label">Per Play</p>
+          <p class="stat-sub">One price, no quarters required</p>
         </div>
         <div class="stat-item">
-          <p class="stat-number">0</p>
-          <p class="stat-label">Quarters needed</p>
+          <p class="stat-number">2</p>
+          <p class="stat-label">Floors</p>
+          <p class="stat-sub">Main floor plus blacklight basement</p>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="divider"></div>
 
   <!-- GALLERY -->
   <section class="gallery" id="gallery">
@@ -1793,59 +1314,119 @@
       <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="" loading="lazy" width="1400" height="1055">
     </div>
     <div class="container">
-      <p class="section-label">Private Events</p>
-      <h2 class="section-title">Birthday Parties</h2>
-      <p class="section-desc">Give your kid (or yourself) the best party in the foothills. Two hours in our private party room with all-day game access.</p>
+      <div class="bday-layout">
+          <div class="bday-left">
+            <p class="bday-label">Private Events</p>
+            <h2 class="bday-title">Birthday<br>Parties</h2>
 
-      <div class="birthday-content">
-        <ul class="birthday-features">
-          <li>Private party room for 2 hours</li>
-          <li>15 all-day wristbands included</li>
-          <li>Additional wristbands just $8 each</li>
-          <li>Bring your own food, drinks, and decorations</li>
-          <li>Only people playing games need a wristband</li>
-          <li>$25 non-refundable deposit to reserve your date</li>
-          <li>Snacks and drinks also available at the museum</li>
-        </ul>
+            <div class="exp-item">
+              <div class="exp-icon">&#127881;</div>
+              <div class="exp-text">
+                <h4>Your Own Party Room</h4>
+                <p>Two hours, fully private. Bring decorations, cake, food, drinks. Make it yours.</p>
+              </div>
+            </div>
 
-        <div class="birthday-price-box">
-          <p class="price-name">Starting At</p>
-          <p class="price-amount">$150</p>
-          <p class="price-note">Plus tax. Includes party room and 15 all-day wristbands. That's $10 per person for unlimited arcade games all day.</p>
-          <a href="#visit" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Book a Party</a>
+            <div class="exp-item">
+              <div class="exp-icon">&#127918;</div>
+              <div class="exp-text">
+                <h4>All-Day Arcade Access</h4>
+                <p>Every guest plays unlimited games on 105+ machines, both floors, all day long.</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#128161;</div>
+              <div class="exp-text">
+                <h4>The Blacklight Basement</h4>
+                <p>Neon carpet, glowing screens, a whole floor of cabinets under blacklights. Kids go wild for it.</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#10133;</div>
+              <div class="exp-text">
+                <h4>Invite More People</h4>
+                <p>Extra wristbands just $8 each. Only guests playing games need one.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bday-booking">
+            <div class="bday-booking-head">
+              <p class="book-price">$150</p>
+              <p class="book-sub">15 guests included<br>all-day play</p>
+            </div>
+            <div class="bday-booking-body">
+              <div class="bday-booking-row">
+                <span class="row-label">Party room</span>
+                <span class="row-val">2 hours</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Wristbands</span>
+                <span class="row-val">15 included</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Extra guests</span>
+                <span class="row-val">$8 each</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Game access</span>
+                <span class="row-val">All day</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Per kid</span>
+                <span class="row-val">$10</span>
+              </div>
+            </div>
+            <div class="bday-booking-foot">
+              <a href="#visit" class="btn-primary">Book a Party</a>
+              <p class="deposit-tag">$25 deposit to reserve your date</p>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- OUR STORY -->
   <section class="story" id="story">
     <div class="container">
       <p class="section-label">Our Story</p>
-      <h2 class="section-title">More Than Just<br>a Screen</h2>
+      <h2 class="section-title">More Than Just a Screen</h2>
 
-      <div class="story-content">
-        <div class="story-text">
-          <p>Dave Walker opened Carolina Arcade Museum in August 2018 in a converted storefront right here on Main Street in downtown Forest City.</p>
-
-          <p>With over 100 classic arcade and pinball machines, all set to freeplay, the museum recreates the social experience of 1980s arcade culture. No tokens. No quarters. Just pay at the door and play everything.</p>
-
-          <div class="story-quote">
-            <p>"You have more feedback, and more fun when you're playing with somebody, and you're there physically. It's more than just a screen you're looking at."</p>
-            <cite>Dave Walker, Founder</cite>
+      <div class="sv5-triptych">
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">Est.2018</p>
+              <h4 class="sv5-card-heading">Where It All Started</h4>
+              <p class="sv5-card-desc">145 East Main Street in Forest City, NC used to be just another empty building on a quiet downtown strip. Dave Walker filled it with the machines he grew up playing and opened the doors to everyone.</p>
+            </div>
           </div>
-
-          <p>What started as a spot for 30-to-50-year-olds reliving their childhood quickly became a destination for families, teenagers, and anyone who wants to put down their phone and play side by side.</p>
-
-          <span class="pbs-badge">As seen on PBS North Carolina Weekend</span>
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Dave Walker with family at pinball" loading="lazy" width="1400" height="788"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">The Founder</p>
+              <h4 class="sv5-card-heading">Dave Walker</h4>
+              <p class="sv5-card-desc">Collector turned curator. Dave built this place because he believed playing side by side beats playing alone. Every machine is freeplay. No quarters, no tokens, no timers. Just walk in and play.</p>
+            </div>
+          </div>
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade" loading="lazy" width="1400" height="788"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">PBS</p>
+              <h4 class="sv5-card-heading">Small Town, National Spotlight</h4>
+              <p class="sv5-card-desc">PBS came to Forest City to tell the story of a small-town arcade preserving gaming history. Two floors, 105+ machines, and a blacklight basement that feels like stepping into 1985.</p>
+            </div>
+          </div>
+        </div>
+        <div class="sv5-quote-row">
+          <blockquote>"It's more than just a screen you're looking at."</blockquote>
+          <cite>Dave Walker, Founder</cite>
         </div>
 
-        <div class="story-image">
-          <img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Dad with kid on his shoulders playing pinball at Carolina Arcade Museum" loading="lazy" width="1400" height="788">
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1859,49 +1440,45 @@
         <span class="rating-text">4.9 stars on Google &bull; 40+ reviews</span>
       </div>
 
-      <div class="reviews-grid">
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"We were there for almost 9 hours! I was shocked. The children had a blast playing all the retro games. All of them were under 14 and had never seen any game except for the new ones. They didn't want to leave!"</p>
-          <p class="review-author">Amos Famous</p>
-          <p class="review-source">Google Review</p>
+      <div class="rv1-grid">
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"We were there for almost 9 hours! The children had a blast playing all the retro games. They didn't want to leave!"</p>
+            <p class="rv-author">Amos Famous</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Our kids (10 &amp; 13) had a blast, and their grandparents (64 &amp; 74) found some old favorites."</p>
+            <p class="rv-author">Stephanie Girard</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"By far the best way to spend an evening downtown. The downstairs room has blacklights and 80s arcade carpet."</p>
+            <p class="rv-author">Alex J</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"We never had to wait for a game and could have spent all day here. Worth the drive from Charlotte!"</p>
+            <p class="rv-author">Jill B.</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Best arcade museum in the region! The owners are fantastic people. Machines maintained well and very clean!"</p>
+            <p class="rv-author">James Donaldson</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Good selection of games, especially pinball including classics like The Munsters and Mars Attacks!"</p>
+            <p class="rv-author">Christian Mabe</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
         </div>
 
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"A great way to spend a few hours in a small, quaint town. Our kids (10 &amp; 13) had a blast, and their grandparents (64 &amp; 74) found some old favorites."</p>
-          <p class="review-author">Stephanie Girard</p>
-          <p class="review-source">Google Review</p>
-        </div>
-
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"Amazing attraction, by far the best way to spend an evening downtown. Huge selection of arcade and pinball machines, and it's never very crowded. The downstairs room has blacklights and 80s arcade carpet."</p>
-          <p class="review-author">Alex J</p>
-          <p class="review-source">Google Review</p>
-        </div>
-
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"Reasonable admission and lots of options to play! We never had to wait for a game and could have spent all day here. Worth the drive from Charlotte for a day trip!"</p>
-          <p class="review-author">Jill B.</p>
-          <p class="review-source">Google Review</p>
-        </div>
-
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"Hands down best arcade museum in the region! The owners are fantastic people. The machines are maintained well and the place is very clean!"</p>
-          <p class="review-author">James Donaldson</p>
-          <p class="review-source">Google Review</p>
-        </div>
-
-        <div class="review-card">
-          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <p class="review-text">"A really cool place to spend a Friday evening. Good selection of games, especially pinball including classics like The Munsters and Mars Attacks! I've already been several times."</p>
-          <p class="review-author">Christian Mabe</p>
-          <p class="review-source">Google Review</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1911,84 +1488,77 @@
       <p class="section-label">Plan Your Visit</p>
       <h2 class="section-title">Come Play</h2>
 
-      <div class="visit-grid">
-        <div class="visit-info">
-          <h3>Hours</h3>
-          <ul class="hours-list">
-            <li><span class="day">Monday</span><span class="time">12:00 PM - 8:00 PM</span></li>
-            <li><span class="day">Tuesday</span><span class="time">12:00 PM - 8:00 PM</span></li>
-            <li><span class="day">Wednesday</span><span class="time">12:00 PM - 8:00 PM</span></li>
-            <li><span class="day">Thursday</span><span class="time">12:00 PM - 8:00 PM</span></li>
-            <li><span class="day">Friday</span><span class="time">12:00 PM - 10:00 PM</span></li>
-            <li><span class="day">Saturday</span><span class="time">12:00 PM - 10:00 PM</span></li>
-            <li class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
-          </ul>
-
-          <h3>Contact</h3>
-          <p>
-            <a href="tel:8282293089">(828) 229-3089</a><br>
-            <a href="mailto:walker.darla5@gmail.com">walker.darla5@gmail.com</a>
-          </p>
-
-          <h3>Location</h3>
-          <p>145 East Main Street<br>Forest City, NC 28043</p>
-          <p style="margin-top: 0.5rem; font-size: 0.85rem;">Right in the heart of downtown Forest City, on Main Street. Street parking available.</p>
+      <!-- VT3 LOCKED: Map + Stacked Info -->
+        <div class="vt3-layout">
+          <div class="vt3-map">
+            <iframe src="https://maps.google.com/maps?q=Carolina+Arcade+Museum,+145+E+Main+St,+Forest+City,+NC+28043&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="vt3-map-footer">
+              <span class="vt3-map-addr">145 East Main St, Forest City</span>
+              <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="vt3-map-dir">Directions &rarr;</a>
+            </div>
+          </div>
+          <div class="vt3-stack">
+            <div class="vt3-block">
+              <h3 class="vt-h3">Hours</h3>
+              <ul class="vt3-hours">
+                <li><span class="day">Monday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Tuesday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Wednesday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Thursday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li class="late"><span class="day">Friday</span><span class="time">12:00 - 10:00 PM</span></li>
+                <li class="late"><span class="day">Saturday</span><span class="time">12:00 - 10:00 PM</span></li>
+                <li class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
+              </ul>
+            </div>
+            <div class="vt3-block">
+              <h3 class="vt-h3">Connect</h3>
+              <div class="vt3-links">
+                <a href="tel:8282293089" class="vt3-link vt3-link--call">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">(828) 229-3089</span>
+                    <span class="vt3-link-sub">Tap to call</span>
+                  </span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="vt3-link vt3-link--fb">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">Carolina Arcade Museum</span>
+                    <span class="vt3-link-sub">Follow on Facebook</span>
+                  </span>
+                </a>
+                <a href="https://g.page/r/review" target="_blank" rel="noopener" class="vt3-link vt3-link--review">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">4.9 Stars on Google</span>
+                    <span class="vt3-link-sub">Leave a review</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="visit-photos">
-          <div class="visit-photo">
-            <img src="/mock-sites/assets/carolina-arcade/exterior-mario.webp" alt="Carolina Arcade Museum storefront with Mario decal on window" loading="lazy" width="1200" height="900">
-          </div>
-          <div class="visit-photo">
-            <img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum sign and entrance on Main Street" loading="lazy" width="1200" height="900">
-          </div>
-          <div class="visit-photo">
-            <img src="/mock-sites/assets/carolina-arcade/exterior-open-sign.webp" alt="Carolina Arcade Museum with OPEN sign on sidewalk" loading="lazy" width="900" height="1200">
-          </div>
-          <div class="visit-address">
-            <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener">Get Directions &rarr;</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER — FT3 LOCKED -->
   <footer>
-    <p class="footer-logo">Carolina Arcade Museum</p>
-    <p class="footer-contact">
-      145 East Main Street, Forest City, NC 28043<br>
-      <a href="tel:8282293089">(828) 229-3089</a>
-    </p>
-    <div class="footer-social">
-      <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener">
-        Follow on Facebook
-      </a>
+    <div class="ft3">
+      <div class="ft3-inner">
+        <img src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" class="ft3-logo">
+        <p class="ft3-addr">145 East Main St &bull; Forest City, NC</p>
+        <a href="tel:8282293089" class="ft3-phone">(828) 229-3089</a>
+        <div class="ft3-social">
+          <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="tel:8282293089" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" aria-label="Directions"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+        <p class="ft3-credit">Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></p>
+      </div>
     </div>
-    <p class="footer-credit">
-      Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a>
-    </p>
   </footer>
 
-<script>
-  const pricingDescs = {
-    1: 'Original — cards with top accent bar',
-    2: 'Arcade tickets — dashed border, striped top/bottom edges',
-    3: 'Horizontal rows — side-by-side compare with CTA buttons',
-    '4a': 'Equal cards + corner ribbon + yellow glow on featured',
-    '4b': 'Equal cards + neon border + pill badge + yellow CTA',
-    '4c': 'Equal cards + flush borders + red accent tag + red CTA',
-    5: 'Coin-op display — borderless cells, icons, info notes'
-  };
 
-  function pickPricing(n) {
-    document.querySelectorAll('.pricing-v').forEach(v => v.classList.remove('active'));
-    document.querySelector('.pricing-v[data-v="' + n + '"]').classList.add('active');
-    const btns = document.querySelectorAll('#pricing-picker .sp-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById('pricing-desc').textContent = pricingDescs[n];
-  }
-</script>
 </body>
 </html>
