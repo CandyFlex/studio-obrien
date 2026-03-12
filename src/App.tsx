@@ -256,7 +256,7 @@ export default function App() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14 md:h-16">
           <a href="#" className="flex items-center">
-            <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 md:h-13 w-auto" fetchPriority="high" style={{ filter: t.logoFilter }} />
+            <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 md:h-13 w-auto" width={1200} height={200} fetchPriority="high" style={{ filter: t.logoFilter }} />
           </a>
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((l) => <a key={l.label} href={l.href} className="text-sm tracking-wide hover:opacity-100 transition-opacity" style={{ color: `${t.hero.text}cc`, opacity: 0.9 }}>{l.label}</a>)}
@@ -481,11 +481,11 @@ export default function App() {
           <FadeIn>
             <p className="text-sm tracking-[0.15em] uppercase text-center mb-3 font-medium" style={{ color: t.accent }}>How It Works</p>
             <h2 className="text-2xl md:text-4xl font-bold text-center mb-4 text-balance" style={{ color: t.process.text }}>Here's your part. Here's ours.</h2>
-            <p className="text-sm text-center mb-14" style={{ color: `${t.process.text}44` }}>Simple handoff. You give us what we need, we handle the rest.</p>
+            <p className="text-sm text-center mb-14" style={{ color: `${t.process.text}77` }}>Simple handoff. You give us what we need, we handle the rest.</p>
           </FadeIn>
           <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-[1fr_auto_1fr] gap-0 mb-4">
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: `${t.process.text}44` }}>You</p>
+              <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: `${t.process.text}77` }}>You</p>
               <div className="w-12" />
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: t.accent }}>Us</p>
             </div>
@@ -505,7 +505,7 @@ export default function App() {
               </FadeIn>
             ))}
           </div>
-          <p className="text-center text-sm mt-10" style={{ color: `${t.process.text}44` }}>You focus on your business. We focus on your site.</p>
+          <p className="text-center text-sm mt-10" style={{ color: `${t.process.text}77` }}>You focus on your business. We focus on your site.</p>
         </div>
       </section>
 
@@ -632,8 +632,8 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
             <div>
-              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" loading="lazy" style={{ filter: t.logoFilter }} />
-              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}66` }}>Custom websites for small businesses across Shelby, NC and Cleveland County.</p>
+              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" width={1200} height={200} loading="lazy" style={{ filter: t.logoFilter }} />
+              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}88` }}>Custom websites for small businesses across Shelby, NC and Cleveland County.</p>
             </div>
             <div>
               <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Navigate</p>
@@ -644,11 +644,11 @@ export default function App() {
             <div>
               <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Contact</p>
               <a href="mailto:hello@studioobrien.com" className="text-sm block mb-2 hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.7 }}>hello@studioobrien.com</a>
-              <p className="text-xs" style={{ color: `${t.footer.text}55` }}>Shelby, North Carolina</p>
+              <p className="text-xs" style={{ color: `${t.footer.text}77` }}>Shelby, North Carolina</p>
             </div>
           </div>
           <div className="pt-6" style={{ borderTop: `1px solid ${t.accent}0a` }}>
-            <p className="text-xs" style={{ color: `${t.footer.text}55` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
+            <p className="text-xs" style={{ color: `${t.footer.text}77` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
           </div>
         </div>
       </footer>
