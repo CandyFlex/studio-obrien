@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Nav Variants v2</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --magenta: #ff2eaa;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+
+    /* Scanlines */
+    body::after {
+      content: '';
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9998;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+    }
+
+    .nav-variant { display: none; }
+    .nav-variant.active { display: block; }
+
+    /* ===== HERO PREVIEW ===== */
+    .hero-preview {
+      min-height: 100vh;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-preview-bg {
+      position: absolute; inset: 0;
+      background: url('/mock-sites/assets/carolina-arcade/hero-interior-wide.webp') center center / cover no-repeat;
+      z-index: 0;
+    }
+    .hero-preview-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(10,10,10,0.82);
+    }
+    .hero-preview .orbit-wrap {
+      position: relative; z-index: 5;
+      width: 100%; max-width: 1200px;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-preview .center {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; position: relative; z-index: 3;
+    }
+    .hero-preview .logo-img {
+      display: block; width: min(800px, 82vw);
+      filter: drop-shadow(0 0 40px rgba(245,214,35,0.25));
+      margin-bottom: 24px;
+    }
+    .hero-preview .tagline {
+      font-family: var(--font-pixel); font-size: 0.65rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 3px; text-align: center; margin-bottom: 48px;
+    }
+    .hero-preview .cta-row {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .hero-preview .cta-primary {
+      display: inline-block; font-family: var(--font-pixel); font-size: 0.55rem;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
+      background: var(--yellow); color: var(--black);
+      border: 3px solid #c9a200; border-radius: 50px; padding: 0.6rem 1.5rem;
+      box-shadow: 0 4px 0 #8a7100, 0 0 25px rgba(245,214,35,0.3);
+    }
+    .hero-preview .cta-secondary {
+      display: inline-block; font-family: var(--font-pixel); font-size: 0.55rem;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
+      background: transparent; color: #ccc;
+      border: 3px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 0.6rem 1.5rem;
+    }
+    .hero-preview .chip {
+      position: absolute; z-index: 4; text-align: center; min-width: 120px;
+    }
+    .chip .chip-val { font-family: var(--font-pixel); font-size: 1.5rem; margin-bottom: 4px; }
+    .chip .chip-lbl { font-family: var(--font-pixel); font-size: 0.5rem; color: #bbb; text-transform: uppercase; letter-spacing: 2px; line-height: 1.5; }
+    .accent-yellow { color: var(--yellow); }
+    .accent-cyan { color: var(--cyan); }
+    .accent-green { color: var(--green); }
+    .accent-red { color: var(--red); }
+    .glow-yellow { text-shadow: 0 0 20px rgba(245,214,35,0.3); }
+    .glow-cyan { text-shadow: 0 0 20px rgba(0,212,255,0.3); }
+    .glow-green { text-shadow: 0 0 20px rgba(57,255,20,0.3); }
+    .c1 { top: 18%; left: 8%; } .c5 { bottom: 22%; left: 8%; }
+    .c2 { top: 18%; right: 8%; } .c6 { bottom: 22%; right: 8%; }
+    .c3 { top: 43%; left: 1%; } .c4 { top: 43%; right: 1%; }
+    .google-circle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: #fff; border-radius: 50%; }
+    .google-icon { width: 28px; height: 28px; }
+    .badge-row { display: flex; align-items: center; gap: 8px; }
+    .badge-row img { width: 40px; height: 40px; border-radius: 4px; }
+    @media (max-width: 900px) {
+      .hero-preview .chip { display: none; }
+      .hero-preview .logo-img { width: calc(100vw - 20px); max-width: 460px; }
+      .hero-preview .tagline { font-size: 0.5rem; margin-bottom: 24px; }
+    }
+
+    /* ==========================================================
+       V1 — CAPSULE EVOLVED (builds on old V4)
+       Floating capsule + animated rainbow border pulse.
+       Tighter, more refined. Links glow on hover.
+       ========================================================== */
+    .nav-v1 {
+      position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      width: calc(100% - 48px); max-width: 1100px;
+      background: rgba(13,13,20,0.94);
+      backdrop-filter: blur(20px);
+      border-radius: 50px;
+      padding: 0.55rem 0.6rem 0.55rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(245,214,35,0.1);
+    }
+    .nav-v1::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 50px;
+      background: linear-gradient(90deg, rgba(232,52,46,0.2), rgba(245,214,35,0.2), rgba(57,255,20,0.15), rgba(0,212,255,0.2), rgba(232,52,46,0.2));
+      background-size: 200% 100%;
+      animation: borderShift 8s linear infinite;
+      z-index: -1; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude; -webkit-mask-composite: xor; padding: 1px;
+    }
+    @keyframes borderShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .nav-v1 .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.45rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; white-space: nowrap;
+    }
+    .nav-v1 .nav-links {
+      display: flex; gap: 1rem; list-style: none;
+    }
+    .nav-v1 .nav-links a {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.3rem 0.6rem; border-radius: 20px;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .nav-v1 .nav-links a:hover {
+      color: var(--yellow);
+      text-shadow: 0 0 12px rgba(245,214,35,0.3);
+    }
+    .nav-v1 .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.38rem;
+      background: var(--yellow); color: var(--black);
+      border: none; border-radius: 50px;
+      padding: 0.5rem 1.2rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer; white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 0 #8a7100, 0 0 15px rgba(245,214,35,0.2);
+    }
+    .nav-v1 .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 #8a7100, 0 0 25px rgba(245,214,35,0.35);
+    }
+    @media (max-width: 900px) {
+      .nav-v1 { width: calc(100% - 24px); top: 8px; padding: 0.5rem 0.5rem 0.5rem 1.2rem; }
+      .nav-v1 .nav-links { display: none; }
+      .nav-v1 .nav-logo { font-size: 0.38rem; }
+    }
+
+    /* ==========================================================
+       V2 — NEON SIGN
+       Each link glows a different arcade color on hover.
+       Dark bar, text logo with persistent yellow glow.
+       CTA pulses red like a cabinet START button.
+       ========================================================== */
+    .nav-v2 {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,12,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 0.7rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-v2 .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.55rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(245,214,35,0.25), 0 0 30px rgba(245,214,35,0.1);
+    }
+    .nav-v2 .nav-links {
+      display: flex; gap: 1.8rem; list-style: none;
+    }
+    .nav-v2 .nav-links a {
+      font-family: var(--font-pixel); font-size: 0.42rem;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; transition: color 0.25s, text-shadow 0.25s;
+    }
+    .nav-v2 .nav-links li:nth-child(1) a:hover { color: var(--yellow); text-shadow: 0 0 14px rgba(245,214,35,0.5), 0 0 30px rgba(245,214,35,0.2); }
+    .nav-v2 .nav-links li:nth-child(2) a:hover { color: var(--red); text-shadow: 0 0 14px rgba(232,52,46,0.5), 0 0 30px rgba(232,52,46,0.2); }
+    .nav-v2 .nav-links li:nth-child(3) a:hover { color: var(--cyan); text-shadow: 0 0 14px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.2); }
+    .nav-v2 .nav-links li:nth-child(4) a:hover { color: var(--green); text-shadow: 0 0 14px rgba(57,255,20,0.5), 0 0 30px rgba(57,255,20,0.2); }
+    .nav-v2 .nav-links li:nth-child(5) a:hover { color: var(--magenta); text-shadow: 0 0 14px rgba(255,46,170,0.5), 0 0 30px rgba(255,46,170,0.2); }
+    .nav-v2 .nav-links li:nth-child(6) a:hover { color: var(--yellow); text-shadow: 0 0 14px rgba(245,214,35,0.5), 0 0 30px rgba(245,214,35,0.2); }
+    .nav-v2 .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.42rem;
+      background: var(--red); color: var(--white);
+      border: 2px solid rgba(255,68,68,0.4); border-radius: 4px;
+      padding: 0.5rem 1.1rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer;
+      box-shadow: 0 0 15px rgba(232,52,46,0.3), inset 0 0 15px rgba(232,52,46,0.15);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .nav-v2 .nav-cta:hover {
+      box-shadow: 0 0 25px rgba(232,52,46,0.5), inset 0 0 20px rgba(232,52,46,0.2);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+      .nav-v2 .nav-links { display: none; }
+    }
+
+    /* ==========================================================
+       V3 — COIN SLOT
+       Links styled as recessed arcade buttons.
+       Logo left, chunky button links, INSERT COIN CTA.
+       Industrial, tactile feel.
+       ========================================================== */
+    .nav-v3 {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: linear-gradient(180deg, #141418 0%, #0e0e12 100%);
+      border-bottom: 2px solid #1a1a22;
+      padding: 0.6rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-v3 .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-v3 .nav-links {
+      display: flex; gap: 0.5rem; list-style: none;
+    }
+    .nav-v3 .nav-links a {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      color: #777; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 0 rgba(0,0,0,0.4);
+      transition: all 0.15s;
+    }
+    .nav-v3 .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 0 rgba(0,0,0,0.4);
+    }
+    .nav-v3 .nav-links a:active {
+      transform: translateY(2px);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 0 0 rgba(0,0,0,0);
+    }
+    .nav-v3 .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.38rem;
+      background: linear-gradient(180deg, #c9a200 0%, #8a7100 100%);
+      color: var(--black);
+      border: 2px solid #a08500; border-radius: 6px;
+      padding: 0.45rem 1rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer;
+      box-shadow: 0 3px 0 #5a4000, inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .nav-v3 .nav-cta:hover {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #5a4000, inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .nav-v3 .nav-cta:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 #5a4000, inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .nav-v3 .nav-links { display: none; }
+    }
+
+    /* ==========================================================
+       V4 — MINIMAL WIRE
+       Ultra-thin, transparent. Just a thin yellow line at bottom.
+       Text logo small. Links appear on hover/scroll.
+       Feels like the nav is barely there until you need it.
+       ========================================================== */
+    .nav-v4 {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: transparent;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s, padding 0.3s;
+    }
+    .nav-v4::after {
+      content: ''; position: absolute; bottom: 0; left: 2rem; right: 2rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,214,35,0.2), transparent);
+    }
+    .nav-v4 .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.4rem;
+      color: rgba(245,214,35,0.6); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; transition: color 0.2s;
+    }
+    .nav-v4:hover .nav-logo { color: var(--yellow); }
+    .nav-v4 .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+      opacity: 0.4; transition: opacity 0.3s;
+    }
+    .nav-v4:hover .nav-links { opacity: 1; }
+    .nav-v4 .nav-links a {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; transition: color 0.2s;
+    }
+    .nav-v4 .nav-links a:hover { color: var(--white); }
+    .nav-v4 .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      background: transparent; color: rgba(245,214,35,0.5);
+      border: 1px solid rgba(245,214,35,0.15);
+      border-radius: 0; padding: 0.4rem 1rem;
+      text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .nav-v4:hover .nav-cta {
+      color: var(--yellow); border-color: rgba(245,214,35,0.3);
+    }
+    .nav-v4 .nav-cta:hover {
+      background: rgba(245,214,35,0.06);
+      border-color: var(--yellow-dim);
+    }
+    @media (max-width: 768px) {
+      .nav-v4 .nav-links { display: none; }
+      .nav-v4 .nav-cta { display: none; }
+      .nav-v4 .nav-logo { opacity: 1; color: var(--yellow); }
+      .nav-v4 { justify-content: center; }
+    }
+
+    /* ==========================================================
+       V5 — STACKED TICKER
+       Logo top-left, links below in a scrolling ticker strip.
+       Info bar feel. Links separated by colored bullets.
+       CTA is a small fixed badge in top-right corner.
+       ========================================================== */
+    .nav-v5 {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    }
+    .nav-v5-bar {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(14px);
+      padding: 0.55rem 2rem 0.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-v5-bar .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-v5-bar .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      background: var(--red); color: var(--white);
+      border: none; border-radius: 3px;
+      padding: 0.4rem 0.9rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nav-v5-bar .nav-cta:hover { background: var(--red-glow); }
+    .nav-v5-ticker {
+      background: rgba(17,17,24,0.9);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(245,214,35,0.08);
+      padding: 0.35rem 0;
+      overflow: hidden;
+    }
+    .nav-v5-ticker-inner {
+      display: flex; align-items: center; gap: 0;
+      justify-content: center;
+    }
+    .nav-v5-ticker a {
+      font-family: var(--font-pixel); font-size: 0.32rem;
+      color: #666; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; padding: 0 1.2rem;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-v5-ticker a:hover { color: var(--cyan); }
+    .nav-v5-ticker .tick-sep {
+      color: var(--red); font-size: 0.4rem; opacity: 0.4;
+      flex-shrink: 0;
+    }
+    .nav-v5-ticker .tick-sep:nth-child(4n) { color: var(--yellow); }
+    .nav-v5-ticker .tick-sep:nth-child(6n) { color: var(--cyan); }
+    .nav-v5-ticker .tick-sep:nth-child(8n) { color: var(--green); }
+    @media (max-width: 768px) {
+      .nav-v5-ticker { display: none; }
+      .nav-v5-bar .nav-logo { font-size: 0.42rem; }
+    }
+
+    /* ===== HAMBURGER (shared) ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--yellow); border-radius: 1px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    @media (max-width: 768px) {
+      .nav-v1 .hamburger,
+      .nav-v2 .hamburger,
+      .nav-v3 .hamburger,
+      .nav-v5-bar .hamburger { display: flex; }
+    }
+
+    /* ===== PICKER BAR ===== */
+    .picker {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(10,10,10,0.96); backdrop-filter: blur(16px);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      border-top: 2px solid #222;
+    }
+    .picker-label {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem; color: var(--gray);
+      text-transform: uppercase; letter-spacing: 2px; margin-right: 12px;
+    }
+    .pick-btn {
+      min-width: 40px; height: 38px;
+      border: 2px solid #333; background: transparent; color: #888;
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      cursor: pointer; padding: 0 10px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .pick-btn:hover { border-color: #555; color: #ccc; }
+    .pick-btn.active { border-color: var(--yellow); color: var(--yellow); background: rgba(245,214,35,0.08); }
+    .picker-desc {
+      font-family: var(--font-pixel);
+      font-size: 0.32rem; color: #666; margin-left: 12px;
+      text-transform: uppercase; letter-spacing: 1px;
+      max-width: 500px;
+    }
+    @media (max-width: 700px) {
+      .picker-desc { display: none; }
+      .picker-label { margin-right: 6px; font-size: 0.35rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: 0s !important; } }
+  </style>
+</head>
+<body>
+
+<!-- ===== V1: CAPSULE EVOLVED ===== -->
+<div class="nav-variant active" id="v1">
+  <nav class="nav-v1">
+    <a href="#" class="nav-logo">Carolina Arcade</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Plan Visit</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</div>
+
+<!-- ===== V2: NEON SIGN ===== -->
+<div class="nav-variant" id="v2">
+  <nav class="nav-v2">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Press Start</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</div>
+
+<!-- ===== V3: COIN SLOT ===== -->
+<div class="nav-variant" id="v3">
+  <nav class="nav-v3">
+    <a href="#" class="nav-logo">Carolina Arcade</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Insert Coin</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</div>
+
+<!-- ===== V4: MINIMAL WIRE ===== -->
+<div class="nav-variant" id="v4">
+  <nav class="nav-v4">
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Parties</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="#">Visit</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Plan Your Visit</a>
+  </nav>
+</div>
+
+<!-- ===== V5: STACKED TICKER ===== -->
+<div class="nav-variant" id="v5">
+  <nav class="nav-v5">
+    <div class="nav-v5-bar">
+      <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+      <a href="#" class="nav-cta">Plan Visit</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-v5-ticker">
+      <div class="nav-v5-ticker-inner">
+        <a href="#">Pricing</a><span class="tick-sep">&#9670;</span>
+        <a href="#">Games</a><span class="tick-sep">&#9670;</span>
+        <a href="#">Photos</a><span class="tick-sep">&#9670;</span>
+        <a href="#">Parties</a><span class="tick-sep">&#9670;</span>
+        <a href="#">Our Story</a><span class="tick-sep">&#9670;</span>
+        <a href="#">Visit</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- ===== HERO PREVIEW ===== -->
+<section class="hero-preview">
+  <div class="hero-preview-bg"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1">
+      <div class="chip-val accent-green glow-green">105+</div>
+      <div class="chip-lbl">Playable<br>Machines</div>
+    </div>
+    <div class="chip c2">
+      <div class="chip-val accent-yellow glow-yellow">$13</div>
+      <div class="chip-lbl">All Day<br>Pass</div>
+    </div>
+    <div class="chip c3">
+      <div style="margin-bottom:8px;display:flex;justify-content:center;">
+        <span class="google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=28&format=png" alt="Google" class="google-icon"></span>
+      </div>
+      <div class="chip-val accent-red" style="letter-spacing:-2px;">4.9</div>
+      <div class="chip-lbl">Google<br>Rating</div>
+    </div>
+    <div class="chip c4">
+      <div class="chip-val accent-cyan glow-cyan">2</div>
+      <div class="chip-lbl">Floors of<br>Gaming</div>
+    </div>
+    <div class="chip c5">
+      <div class="chip-val accent-yellow">2018</div>
+      <div class="chip-lbl">Est. Forest<br>City, NC</div>
+    </div>
+    <div class="chip c6">
+      <div class="badge-row" style="justify-content:center;">
+        <img src="https://img.logo.dev/pbs.org?token=pk_R8_8hLshSwmse1iaY7Qzww&size=40&format=png" alt="PBS">
+      </div>
+      <div class="chip-lbl" style="margin-top:10px;">As Seen<br>on PBS</div>
+    </div>
+    <div class="center">
+      <img src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" class="logo-img">
+      <p class="tagline">100+ classics. Two floors. Zero quarters.</p>
+      <div class="cta-row">
+        <a href="#" class="cta-primary">Press Start</a>
+        <a href="#" class="cta-secondary">Plan Your Visit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PICKER ===== -->
+<div class="picker">
+  <span class="picker-label">Nav</span>
+  <button class="pick-btn active" onclick="pick(1)">1</button>
+  <button class="pick-btn" onclick="pick(2)">2</button>
+  <button class="pick-btn" onclick="pick(3)">3</button>
+  <button class="pick-btn" onclick="pick(4)">4</button>
+  <button class="pick-btn" onclick="pick(5)">5</button>
+  <span class="picker-desc" id="picker-desc">Capsule evolved — floating pill, rainbow border pulse, yellow pill CTA</span>
+</div>
+
+<script>
+  const descs = {
+    1: 'Capsule evolved — floating pill, rainbow border pulse, yellow pill CTA',
+    2: 'Neon sign — each link glows a different arcade color, red START CTA',
+    3: 'Coin slot — recessed arcade buttons, tactile press, INSERT COIN CTA',
+    4: 'Minimal wire — barely there, links fade in on hover, ghost CTA',
+    5: 'Stacked ticker — logo bar + link strip below, colored diamond separators'
+  };
+
+  function pick(n) {
+    document.querySelectorAll('.nav-variant').forEach(v => v.classList.remove('active'));
+    document.getElementById('v' + n).classList.add('active');
+    document.querySelectorAll('.pick-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pick-btn')[n - 1].classList.add('active');
+    document.getElementById('picker-desc').textContent = descs[n];
+  }
+</script>
+
+</body>
+</html>
