@@ -481,11 +481,11 @@ export default function App() {
           <FadeIn>
             <p className="text-sm tracking-[0.15em] uppercase text-center mb-3 font-medium" style={{ color: t.accent }}>How It Works</p>
             <h2 className="text-2xl md:text-4xl font-bold text-center mb-4 text-balance" style={{ color: t.process.text }}>Here's your part. Here's ours.</h2>
-            <p className="text-sm text-center mb-14" style={{ color: `${t.process.text}77` }}>Simple handoff. You give us what we need, we handle the rest.</p>
+            <p className="text-sm text-center mb-14" style={{ color: `${t.process.text}88` }}>Simple handoff. You give us what we need, we handle the rest.</p>
           </FadeIn>
           <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-[1fr_auto_1fr] gap-0 mb-4">
-              <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: `${t.process.text}77` }}>You</p>
+              <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: `${t.process.text}88` }}>You</p>
               <div className="w-12" />
               <p className="text-xs uppercase tracking-[0.2em] font-bold text-center py-2" style={{ color: t.accent }}>Us</p>
             </div>
@@ -505,7 +505,7 @@ export default function App() {
               </FadeIn>
             ))}
           </div>
-          <p className="text-center text-sm mt-10" style={{ color: `${t.process.text}77` }}>You focus on your business. We focus on your site.</p>
+          <p className="text-center text-sm mt-10" style={{ color: `${t.process.text}88` }}>You focus on your business. We focus on your site.</p>
         </div>
       </section>
 
