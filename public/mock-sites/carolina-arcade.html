@@ -120,7 +120,16 @@
       background: var(--yellow); border-radius: 1px;
     }
 
-    @media (max-width: 768px) {
+    /* Tablet nav: shrink spacing and font to fit */
+    @media (max-width: 1100px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.35rem; letter-spacing: 1px; }
+      .nav-logo { font-size: 0.45rem; }
+      .nav-cta { font-size: 0.35rem; padding: 0.4rem 0.8rem; white-space: nowrap; }
+    }
+
+    /* Switch to hamburger at 900px to match hero mobile breakpoint */
+    @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .hamburger { display: flex; }
@@ -357,11 +366,11 @@
     /* Mobile positions locked */
     @media (max-width: 900px) {
       .orbit-wrap {
-        --top-side: 25%;
-        --top-center: 16%;
-        --bot-side: 25%;
-        --bot-center: 16%;
-        --h-edge: 3%;
+        --top-side: 22%;
+        --top-center: 13%;
+        --bot-side: 24%;
+        --bot-center: 18%;
+        --h-edge: 8%;
       }
     }
 
@@ -1147,13 +1156,13 @@
         <div class="chip-val accent-yellow glow-yellow">$13</div>
         <div class="chip-lbl">All Day<br>Pass</div>
       </div>
-      <div class="chip c3">
+      <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="chip c3" style="text-decoration:none;color:inherit;">
         <div style="margin-bottom:8px;display:flex;justify-content:center;">
           <span class="google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=28&format=png" alt="Google" class="google-icon"></span>
         </div>
         <div class="chip-val accent-red" style="letter-spacing:-2px;">4.9</div>
         <div class="chip-lbl">Google<br>Rating</div>
-      </div>
+      </a>
 
       <!-- BOTTOM ROW on mobile: c5 left, c4 center, c6 right -->
       <div class="chip c4">
@@ -1435,10 +1444,10 @@
     <div class="container">
       <p class="section-label">What People Say</p>
       <h2 class="section-title">Player Reviews</h2>
-      <div class="reviews-rating">
+      <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="reviews-rating" style="text-decoration:none;color:inherit;">
         <span class="big-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span class="rating-text">4.9 stars on Google &bull; 40+ reviews</span>
-      </div>
+      </a>
 
       <div class="rv1-grid">
           <div class="rv1-card">
@@ -1527,7 +1536,7 @@
                     <span class="vt3-link-sub">Follow on Facebook</span>
                   </span>
                 </a>
-                <a href="https://g.page/r/review" target="_blank" rel="noopener" class="vt3-link vt3-link--review">
+                <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="vt3-link vt3-link--review">
                   <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
                   <span class="vt3-link-text">
                     <span class="vt3-link-label">4.9 Stars on Google</span>
