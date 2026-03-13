@@ -39,17 +39,17 @@ body{width:100%;max-width:680px;font-family:'Cormorant Garamond',serif;-webkit-t
 }
 
 .fraktur{font-family:'UnifrakturMaguntia',cursive;font-size:28px;color:var(--ink);text-align:center;line-height:1.2;margin-bottom:4px}
-.eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-bottom:20px;opacity:0.7}
+.eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-bottom:20px;opacity:0.75}
 .divline{height:1px;background:linear-gradient(90deg,transparent,var(--ink3),transparent);margin:16px 0}
 
-.section-head{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px;margin-top:20px}
+.section-head{font-family:'Cinzel',serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:10px;margin-top:22px;font-weight:500}
 
-p.flavor{font-size:16px;font-style:italic;color:var(--ink2);line-height:1.75;margin-bottom:10px;font-weight:400}
-p.rule{font-size:15px;color:var(--ink);line-height:1.7;margin-bottom:8px;font-weight:400}
-p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.5px}
+p.flavor{font-size:17px;font-style:italic;color:var(--ink2);line-height:1.75;margin-bottom:12px;font-weight:400}
+p.rule{font-size:16px;color:var(--ink);line-height:1.7;margin-bottom:10px;font-weight:400}
+p.rule strong{font-weight:600;font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.5px}
 
 /* TRACK */
-.track-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;justify-content:space-between}
+.track-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;justify-content:space-between;font-weight:500}
 .track{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
 .pip{
   width:32px;height:32px;border:1.5px solid var(--ink3);border-radius:2px;
@@ -66,7 +66,7 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
 .pip.filled.peak{background:var(--red);border-color:var(--red2)}
 
 .threshold-labels{display:flex;justify-content:space-between;margin-bottom:16px;gap:8px}
-.tl{font-size:11px;font-style:italic;color:var(--ink3);text-align:center;flex:1}
+.tl{font-size:13px;font-style:italic;color:var(--ink3);text-align:center;flex:1}
 
 /* REWARD TIERS */
 .tier-block{
@@ -81,27 +81,27 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
 .tier-dot.mid{background:var(--gold2)}
 .tier-dot.high{background:var(--red2)}
 .tier-dot.full{background:var(--red);box-shadow:0 0 6px rgba(107,16,16,0.4)}
-.tier-text{font-size:14px;color:var(--ink);line-height:1.65;font-weight:400}
-.tier-text .label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-right:6px;font-weight:500}
+.tier-text{font-size:15px;color:var(--ink);line-height:1.7;font-weight:400}
+.tier-text .label{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-right:6px;font-weight:600}
 
 /* ACTION TABLE */
-.action-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.action-table{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
 .action-table th{
-  font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--ink3);padding:7px 10px;border-bottom:1px solid var(--parch3);text-align:left;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink3);padding:8px 10px;border-bottom:1px solid var(--parch3);text-align:left;font-weight:500;
 }
 .action-table td{padding:9px 10px;border-bottom:1px solid rgba(74,48,24,0.15);vertical-align:top;color:var(--ink)}
 .action-table tr:last-child td{border-bottom:none}
 .roll-num{
-  font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:var(--parchment);
-  background:var(--ink2);padding:2px 6px;border-radius:2px;display:inline-block;min-width:22px;text-align:center
+  font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--parchment);
+  background:var(--ink2);padding:3px 8px;border-radius:2px;display:inline-block;min-width:26px;text-align:center
 }
 
 /* ZONES */
 .zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .zone{border:1px solid rgba(74,48,24,0.3);border-radius:2px;padding:10px 12px;background:rgba(26,48,32,0.05)}
-.zone .zname{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
-.zone .zdesc{font-size:13px;font-style:italic;color:var(--ink2);line-height:1.6;font-weight:400}
+.zone .zname{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:5px;font-weight:500}
+.zone .zdesc{font-size:14px;font-style:italic;color:var(--ink2);line-height:1.65;font-weight:400}
 
 /* TREMOR INDICATOR */
 .tremor-row{display:flex;gap:8px;align-items:center;margin:14px 0}
@@ -110,11 +110,11 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
   padding:10px 14px;color:rgba(210,245,235,0.9);font-size:14px;line-height:1.65;
   font-style:italic;font-weight:400;
 }
-.tremor-box .th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(64,168,152,0.8);margin-bottom:5px}
+.tremor-box .th{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(64,168,152,0.85);margin-bottom:6px;font-weight:500}
 
 /* SAVE STATE INDICATOR */
 .save-indicator{
-  font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
   color:var(--ink3);text-align:center;margin-top:12px;opacity:0.5;
   transition:opacity 0.3s;
 }
@@ -126,9 +126,9 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
   .card{padding:20px 16px}
   .card::before{inset:4px}
   .fraktur{font-size:22px}
-  .eyebrow{font-size:8px;letter-spacing:3px}
+  .eyebrow{font-size:10px;letter-spacing:2px}
 
-  .track-label{font-size:8px;letter-spacing:1.5px}
+  .track-label{font-size:10px;letter-spacing:1.5px}
   .pip{width:28px;height:28px;font-size:10px}
 
   .threshold-labels{flex-direction:column;gap:6px}
@@ -150,27 +150,31 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
   .action-table td{padding:4px 0;border-bottom:none}
   .action-table td:first-child{margin-bottom:4px}
   .action-table td:last-child{
-    font-family:'Cinzel',serif;font-size:11px;color:var(--green2);
+    font-family:'Cinzel',serif;font-size:13px;color:var(--green2);font-weight:600;
     margin-top:6px;padding-top:6px;border-top:1px solid rgba(74,48,24,0.1);
   }
   .action-table td:last-child::before{
-    content:'Pips: ';font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);
+    content:'Pips: ';font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);
   }
 
   .zone-grid{grid-template-columns:1fr}
-  .tier-text{font-size:14px}
-  p.flavor{font-size:16px;font-weight:500}
-  p.rule{font-size:15px;font-weight:500}
-  .zone .zdesc{font-size:14px;font-weight:400}
-  .tremor-box{font-size:14px}
-  .action-table{font-size:14px}
+  .tier-text{font-size:15px}
+  .tier-text .label{font-size:12px}
+  .section-head{font-size:12px}
+  p.flavor{font-size:17px;font-weight:500}
+  p.rule{font-size:16px;font-weight:500}
+  .zone .zname{font-size:12px}
+  .zone .zdesc{font-size:15px;font-weight:400}
+  .tremor-box{font-size:15px}
+  .tremor-box .th{font-size:11px}
+  .action-table{font-size:15px}
 }
 
 @media (max-width:360px){
   .card{padding:16px 12px}
-  .pip{width:24px;height:24px;font-size:9px}
-  p.flavor{font-size:14px}
-  p.rule{font-size:13px}
+  .pip{width:26px;height:26px;font-size:10px}
+  p.flavor{font-size:16px}
+  p.rule{font-size:15px}
 }
 
 /* PRINT */
@@ -180,16 +184,16 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
   .no-print{display:none}
 }
 .print-btn{
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
   background:none;border:1px solid rgba(240,232,208,0.3);color:rgba(240,232,208,0.5);
-  padding:8px 16px;border-radius:2px;cursor:pointer;display:block;margin:16px auto 0;
+  padding:10px 20px;border-radius:2px;cursor:pointer;display:block;margin:16px auto 0;
   transition:all 0.2s;
 }
 .print-btn:hover{border-color:rgba(240,232,208,0.6);color:rgba(240,232,208,0.8)}
 .reset-btn{
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
   background:none;border:1px solid rgba(107,16,16,0.3);color:rgba(240,232,208,0.4);
-  padding:8px 16px;border-radius:2px;cursor:pointer;display:block;margin:8px auto 0;
+  padding:10px 20px;border-radius:2px;cursor:pointer;display:block;margin:8px auto 0;
   transition:all 0.2s;
 }
 .reset-btn:hover{border-color:rgba(107,16,16,0.6);color:rgba(240,232,208,0.7)}
@@ -327,7 +331,7 @@ p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-s
 
   <div class="divline"></div>
   <div style="text-align:center;margin-top:6px">
-    <span style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3)">Do not share this card. Do not read it aloud. Play what you feel.</span>
+    <span style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-weight:500">Do not share this card. Do not read it aloud. Play what you feel.</span>
   </div>
 
   <div class="save-indicator" id="saveMsg">Progress saved to this device</div>
