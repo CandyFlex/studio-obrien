@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="robots" content="noindex, nofollow">
+<title>The Undercurrent — Field Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --parchment:#f0e8d0;--parch2:#e4d8b8;--parch3:#d4c49a;
+  --ink:#1a1008;--ink2:#2e1e0a;--ink3:#4a3018;
+  --red:#6b1010;--red2:#8b2020;
+  --green:#1a3020;--green2:#2d5038;--green3:#4a7858;
+  --teal:#0e2828;--teal2:#1e4040;
+  --gold:#7a5c18;--gold2:#a87c28;
+  --stain:rgba(100,60,20,0.12);
+}
+html{background:#2a1a08;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:30px 16px}
+body{width:100%;max-width:680px;font-family:'Cormorant Garamond',serif;-webkit-text-size-adjust:100%}
+
+.card{
+  background:var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 15% 20%,var(--stain) 0%,transparent 50%),
+    radial-gradient(ellipse at 85% 80%,var(--stain) 0%,transparent 40%),
+    radial-gradient(ellipse at 70% 15%,rgba(80,40,10,0.08) 0%,transparent 35%);
+  border:2px solid var(--ink3);
+  border-radius:2px;
+  padding:32px 36px;
+  position:relative;
+  box-shadow:0 8px 40px rgba(0,0,0,0.6),inset 0 0 80px rgba(0,0,0,0.04);
+}
+.card::before{
+  content:'';position:absolute;inset:6px;
+  border:1px solid rgba(74,48,24,0.3);
+  border-radius:1px;pointer-events:none;
+}
+
+.fraktur{font-family:'UnifrakturMaguntia',cursive;font-size:28px;color:var(--ink);text-align:center;line-height:1.2;margin-bottom:4px}
+.eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-bottom:20px;opacity:0.7}
+.divline{height:1px;background:linear-gradient(90deg,transparent,var(--ink3),transparent);margin:16px 0}
+
+.section-head{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px;margin-top:20px}
+
+p.flavor{font-size:16px;font-style:italic;color:var(--ink2);line-height:1.75;margin-bottom:10px;font-weight:400}
+p.rule{font-size:15px;color:var(--ink);line-height:1.7;margin-bottom:8px;font-weight:400}
+p.rule strong{font-weight:500;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.5px}
+
+/* TRACK */
+.track-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;justify-content:space-between}
+.track{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.pip{
+  width:32px;height:32px;border:1.5px solid var(--ink3);border-radius:2px;
+  background:transparent;cursor:pointer;transition:all 0.15s;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:transparent;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.pip.filled{background:var(--green2);border-color:var(--green);color:var(--parchment)}
+.pip.threshold{border-color:var(--gold2);border-width:2px}
+.pip.filled.threshold{background:var(--gold);border-color:var(--gold2)}
+.pip.peak{border-color:var(--red2);border-width:2px}
+.pip.filled.peak{background:var(--red);border-color:var(--red2)}
+
+.threshold-labels{display:flex;justify-content:space-between;margin-bottom:16px;gap:8px}
+.tl{font-size:11px;font-style:italic;color:var(--ink3);text-align:center;flex:1}
+
+/* REWARD TIERS */
+.tier-block{
+  background:rgba(26,48,32,0.07);border:1px solid rgba(45,80,56,0.3);
+  border-radius:2px;padding:10px 14px;margin-bottom:8px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.tier-dot{
+  width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px;
+}
+.tier-dot.low{background:var(--green3)}
+.tier-dot.mid{background:var(--gold2)}
+.tier-dot.high{background:var(--red2)}
+.tier-dot.full{background:var(--red);box-shadow:0 0 6px rgba(107,16,16,0.4)}
+.tier-text{font-size:14px;color:var(--ink);line-height:1.65;font-weight:400}
+.tier-text .label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-right:6px;font-weight:500}
+
+/* ACTION TABLE */
+.action-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.action-table th{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink3);padding:7px 10px;border-bottom:1px solid var(--parch3);text-align:left;
+}
+.action-table td{padding:9px 10px;border-bottom:1px solid rgba(74,48,24,0.15);vertical-align:top;color:var(--ink)}
+.action-table tr:last-child td{border-bottom:none}
+.roll-num{
+  font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:var(--parchment);
+  background:var(--ink2);padding:2px 6px;border-radius:2px;display:inline-block;min-width:22px;text-align:center
+}
+
+/* ZONES */
+.zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.zone{border:1px solid rgba(74,48,24,0.3);border-radius:2px;padding:10px 12px;background:rgba(26,48,32,0.05)}
+.zone .zname{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.zone .zdesc{font-size:13px;font-style:italic;color:var(--ink2);line-height:1.6;font-weight:400}
+
+/* TREMOR INDICATOR */
+.tremor-row{display:flex;gap:8px;align-items:center;margin:14px 0}
+.tremor-box{
+  flex:1;background:var(--teal);border:1px solid var(--teal2);border-radius:2px;
+  padding:10px 14px;color:rgba(210,245,235,0.9);font-size:14px;line-height:1.65;
+  font-style:italic;font-weight:400;
+}
+.tremor-box .th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(64,168,152,0.8);margin-bottom:5px}
+
+/* SAVE STATE INDICATOR */
+.save-indicator{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);text-align:center;margin-top:12px;opacity:0.5;
+  transition:opacity 0.3s;
+}
+.save-indicator.flash{opacity:1;color:var(--green3)}
+
+/* MOBILE RESPONSIVE */
+@media (max-width:520px){
+  html{padding:12px 6px}
+  .card{padding:20px 16px}
+  .card::before{inset:4px}
+  .fraktur{font-size:22px}
+  .eyebrow{font-size:8px;letter-spacing:3px}
+
+  .track-label{font-size:8px;letter-spacing:1.5px}
+  .pip{width:28px;height:28px;font-size:10px}
+
+  .threshold-labels{flex-direction:column;gap:6px}
+  .tl{max-width:100%;text-align:left;padding-left:4px;border-left:2px solid var(--parch3)}
+
+  /* Stack action table into cards on mobile */
+  .action-table thead{display:none}
+  .action-table,
+  .action-table tbody,
+  .action-table tr,
+  .action-table td{display:block;width:100%}
+  .action-table tr{
+    border:1px solid rgba(74,48,24,0.2);
+    border-radius:2px;
+    padding:10px;
+    margin-bottom:8px;
+    background:rgba(26,48,32,0.03);
+  }
+  .action-table td{padding:4px 0;border-bottom:none}
+  .action-table td:first-child{margin-bottom:4px}
+  .action-table td:last-child{
+    font-family:'Cinzel',serif;font-size:11px;color:var(--green2);
+    margin-top:6px;padding-top:6px;border-top:1px solid rgba(74,48,24,0.1);
+  }
+  .action-table td:last-child::before{
+    content:'Pips: ';font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);
+  }
+
+  .zone-grid{grid-template-columns:1fr}
+  .tier-text{font-size:14px}
+  p.flavor{font-size:16px;font-weight:500}
+  p.rule{font-size:15px;font-weight:500}
+  .zone .zdesc{font-size:14px;font-weight:400}
+  .tremor-box{font-size:14px}
+  .action-table{font-size:14px}
+}
+
+@media (max-width:360px){
+  .card{padding:16px 12px}
+  .pip{width:24px;height:24px;font-size:9px}
+  p.flavor{font-size:14px}
+  p.rule{font-size:13px}
+}
+
+/* PRINT */
+@media print{
+  html{background:white;padding:0}
+  .card{box-shadow:none;border:1px solid #999;max-width:100%}
+  .no-print{display:none}
+}
+.print-btn{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  background:none;border:1px solid rgba(240,232,208,0.3);color:rgba(240,232,208,0.5);
+  padding:8px 16px;border-radius:2px;cursor:pointer;display:block;margin:16px auto 0;
+  transition:all 0.2s;
+}
+.print-btn:hover{border-color:rgba(240,232,208,0.6);color:rgba(240,232,208,0.8)}
+.reset-btn{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  background:none;border:1px solid rgba(107,16,16,0.3);color:rgba(240,232,208,0.4);
+  padding:8px 16px;border-radius:2px;cursor:pointer;display:block;margin:8px auto 0;
+  transition:all 0.2s;
+}
+.reset-btn:hover{border-color:rgba(107,16,16,0.6);color:rgba(240,232,208,0.7)}
+</style>
+</head>
+<body>
+
+<div style="width:100%">
+<div class="card">
+
+  <div class="fraktur">The Undercurrent</div>
+  <div class="eyebrow">Field Observer's Guide · Classified — One Player Only</div>
+  <div class="divline"></div>
+
+  <p class="flavor">Something moves beneath the arena grounds. The earth trembles in irregular rhythms that don't match the crowd's weight. People near the outer districts report strange sounds — like something large swallowing. No one has seen what it is. No one has looked.</p>
+  <p class="rule">You are the only one who knows to look. Your role this session is to track, guide, and protect the thing moving underground — while staying invisible to the crowd, the officials, and the enforcers.</p>
+
+  <div class="divline"></div>
+  <div class="section-head">The Feeding Track</div>
+  <p class="rule" style="margin-bottom:10px">Each time you successfully complete a guidance action, mark one pip. Threshold milestones unlock something. You won't always know what.</p>
+
+  <div class="track-label">
+    <span>Dormant</span>
+    <span>Stirring</span>
+    <span>Consuming</span>
+    <span>Apex</span>
+  </div>
+  <div class="track" id="track"></div>
+  <div class="threshold-labels">
+    <div class="tl">The ground is quiet. You can feel it breathing.</div>
+    <div class="tl">Tremors increase. Something emerges briefly in the south district.</div>
+    <div class="tl">Three districts are emptying. Officials are confused. No one connects it to you.</div>
+    <div class="tl">The appetite is enormous now. What happens next changes the fight above.</div>
+  </div>
+
+  <div class="section-head">Threshold Rewards</div>
+  <div class="tier-block">
+    <div class="tier-dot low"></div>
+    <div class="tier-text"><span class="label">5 pips —</span>The ground softens in one arena zone. Combatants above you choose: it becomes difficult terrain for enemies only, or one hidden passage opens into the arena floor.</div>
+  </div>
+  <div class="tier-block">
+    <div class="tier-dot mid"></div>
+    <div class="tier-text"><span class="label">10 pips —</span>Something large and fed surfaces briefly near the outer wall. The crowd in that district scatters. Officials redirect. For two rounds, Enforcer attention is split — your allies in the arena have a window.</div>
+  </div>
+  <div class="tier-block">
+    <div class="tier-dot high"></div>
+    <div class="tier-text"><span class="label">16 pips —</span>The districts you guided have been quietly emptied. Their absence has weight — something important that was present in those seats is now gone. Pass a note to the DM: name one person from the crowd you made sure was NOT in the feeding path. They owe you something.</div>
+  </div>
+  <div class="tier-block">
+    <div class="tier-dot full"></div>
+    <div class="tier-text"><span class="label">22 pips —</span>The thing underground is enormous with what it has consumed. It can act once in the final confrontation — directly, visibly, decisively. The DM will tell you how. What it does will not be subtle.</div>
+  </div>
+
+  <div class="divline"></div>
+  <div class="section-head">Your Actions — Roll d10 Each Round You Act</div>
+  <p class="rule" style="margin-bottom:10px">On your turn, describe what your character does in the crowd or district area, then roll d10. The result modifies what happens — not always what you intended.</p>
+
+  <table class="action-table">
+    <thead><tr><th>d10</th><th>What Occurs</th><th>Pips</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="roll-num">1</span></td>
+        <td><em>The ground shakes at the wrong moment.</em> Officials near you look toward the tremor. You are noticed — not identified, but watched. Make a DC 12 Deception or Stealth check or lose your next action avoiding attention.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">0</td>
+      </tr>
+      <tr>
+        <td><span class="roll-num">2–3</span></td>
+        <td><em>Guidance was partial.</em> You directed successfully but the path underground veers. The feeding reaches a district adjacent to where you intended. +1 pip, but the DM places the effect one zone off from your choice.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">+1</td>
+      </tr>
+      <tr>
+        <td><span class="roll-num">4–5</span></td>
+        <td><em>Clean guidance.</em> The district you indicated empties of the people you meant. No complications. The tremor is mistaken for fireworks preparation by nearby officials.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">+2</td>
+      </tr>
+      <tr>
+        <td><span class="roll-num">6–7</span></td>
+        <td><em>Efficient pass.</em> You guided two adjacent districts simultaneously — the path underground moved through both. Mark pips for each. Choose which district to empty first: the larger feeding gives more but slower; the smaller is immediate and quiet.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">+2 or +3</td>
+      </tr>
+      <tr>
+        <td><span class="roll-num">8–9</span></td>
+        <td><em>The underground is responsive.</em> It moved where you pointed with unusual precision. +3 pips. Additionally, something surfaces briefly in a crack near your feet — not hostile, not visible to others. It seems to recognize you. You may ask it one yes/no question about what it has seen underground.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">+3</td>
+      </tr>
+      <tr>
+        <td><span class="roll-num">10</span></td>
+        <td><em>It acts on its own.</em> The thing underground moves faster than your guidance — it makes a choice independently. +4 pips immediately. Roll d4: 1 = it surfaces in the wrong district (DM places); 2 = it collapses a section of outer wall, creating a breach; 3 = something it consumed surfaces with it — an object, a memory, a message the DM will deliver; 4 = it feeds in exactly the right place at the right time as if it understood perfectly.</td>
+        <td style="text-align:center;font-family:'Cinzel',serif">+4</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divline"></div>
+  <div class="section-head">District Zones — Where to Point</div>
+  <p class="rule" style="margin-bottom:10px">The tournament grounds are divided into zones. You can only guide to zones you have line-of-sight to or have scouted previously. Each zone has different feeding density and risk.</p>
+
+  <div class="zone-grid">
+    <div class="zone">
+      <div class="zname">The Outer Press</div>
+      <div class="zdesc">Densest crowd. Most undead among common attendees. High yield, high tremor visibility. Officials patrol the edge.</div>
+    </div>
+    <div class="zone">
+      <div class="zname">The Devotee Stands</div>
+      <div class="zdesc">Chimerakind faithful, packed tight. Medium yield. If tremors are noticed here, religious panic could cascade. High chaos risk.</div>
+    </div>
+    <div class="zone">
+      <div class="zname">The Noble Boxes</div>
+      <div class="zdesc">Low density, extraordinary quality. Each soul here counts double on the track. High Enforcer proximity. Very high detection risk.</div>
+    </div>
+    <div class="zone">
+      <div class="zname">The Underground Staging</div>
+      <div class="zdesc">Tunnels beneath the arena. Contestants, servants, handlers. Direct access to the underground path. No crowd to witness tremors.</div>
+    </div>
+    <div class="zone">
+      <div class="zname">The Outer Nations Camp</div>
+      <div class="zdesc">Foreign dignitaries and their retinues camped beyond the arena wall. Lowest detection risk. Slowest feeding — the path must travel farther.</div>
+    </div>
+    <div class="zone">
+      <div class="zname">The Dead Sections</div>
+      <div class="zdesc">Undead attendees congregate here by tradition. Feeding yields nothing — but leading the underground through here generates no tremors. Use as a transit corridor.</div>
+    </div>
+  </div>
+
+  <div class="tremor-row">
+    <div class="tremor-box">
+      <div class="th">When Tremors Are Noticed</div>
+      Officials and nearby crowd members who notice a tremor will investigate toward the last zone you guided. If questioned, your character has heard: <em>"the old cistern system runs beneath the grounds — collapses occasionally during events of this size."</em> This explanation works twice. On a third inquiry, officials call for a structural inspection. The underground must go dormant for one full round or risk exposure.
+    </div>
+  </div>
+
+  <div class="divline"></div>
+  <div class="section-head">What You Are Not Told</div>
+  <p class="flavor">"The tremors are hunger. The hunger has a name you have heard before, spoken gently in a different context. Whatever is moving beneath this arena came here for a reason that has nothing to do with the tournament. It is here because something it loves is in danger above. Guide it well."</p>
+
+  <div class="divline"></div>
+  <div style="text-align:center;margin-top:6px">
+    <span style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3)">Do not share this card. Do not read it aloud. Play what you feel.</span>
+  </div>
+
+  <div class="save-indicator" id="saveMsg">Progress saved to this device</div>
+
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
+<button class="reset-btn no-print" id="resetBtn">Reset Track</button>
+</div>
+
+<script>
+const TOTAL = 24;
+const thresholds = [5,10,16,22];
+const STORAGE_KEY = 'undercurrent-pips';
+const track = document.getElementById('track');
+
+// Load saved state
+function getSavedPips(){
+  try { return parseInt(localStorage.getItem(STORAGE_KEY)) || 0; } catch(e){ return 0; }
+}
+function savePips(n){
+  try { localStorage.setItem(STORAGE_KEY, n); flashSave(); } catch(e){}
+}
+function flashSave(){
+  const el = document.getElementById('saveMsg');
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 800);
+}
+
+function fillTo(n){
+  document.querySelectorAll('.pip').forEach(p => {
+    const pn = parseInt(p.dataset.n);
+    if(pn <= n) p.classList.add('filled');
+    else p.classList.remove('filled');
+  });
+  savePips(n);
+}
+
+const saved = getSavedPips();
+
+for(let i=1;i<=TOTAL;i++){
+  const pip = document.createElement('div');
+  pip.className = 'pip';
+  if(thresholds.includes(i)){
+    pip.classList.add(i >= 22 ? 'peak' : 'threshold');
+  }
+  pip.dataset.n = i;
+  pip.title = 'Pip '+i;
+  pip.innerHTML = '&#10022;';
+  if(i <= saved) pip.classList.add('filled');
+  pip.onclick = () => {
+    const n = parseInt(pip.dataset.n);
+    // Tapping a filled pip that's the current max unfills it (toggle behavior)
+    const current = getSavedPips();
+    if(n === current){
+      fillTo(n - 1);
+    } else {
+      fillTo(n);
+    }
+  };
+  track.appendChild(pip);
+}
+
+// Reset button
+document.getElementById('resetBtn').addEventListener('click', function(){
+  if(confirm('Reset all pips to zero?')){
+    fillTo(0);
+  }
+});
+</script>
+</body>
+</html>
