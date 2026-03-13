@@ -150,82 +150,65 @@ function FaqItem({ q, a, dark, accent, link, linkText }: { q: string; a: string;
 }
 
 /* ─── BROWSER MOCKUP ─── */
-type DropVariant = "soft" | "snap" | "bounce" | "drift" | "punch";
+type SlideAnim = "fade-up" | "scale-in" | "slide-left" | "blur-in" | "flip-down";
 
-function getImageStyle(variant: DropVariant, isActive: boolean): React.CSSProperties {
+const slideAnims: SlideAnim[] = ["fade-up", "scale-in", "slide-left", "blur-in", "flip-down"];
+
+function getImageStyle(anim: SlideAnim, isActive: boolean): React.CSSProperties {
   const base: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", backfaceVisibility: "hidden" };
 
-  switch (variant) {
-    case "soft":
-      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0) scale(1)" : "translateY(-12px) scale(0.98)", transition: "opacity 0.5s ease, transform 0.6s ease" };
-    case "snap":
-      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0) scale(1)" : "translateY(-20px) scale(0.96)", transition: "opacity 0.25s ease-out, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)" };
-    case "bounce":
-      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0) scale(1)" : "translateY(-18px) scale(0.97)", transition: "opacity 0.35s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)" };
-    case "drift":
-      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0) translateX(0)" : "translateY(-10px) translateX(8px)", transition: "opacity 0.6s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)" };
-    case "punch":
-      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0) scale(1)" : "translateY(-25px) scale(0.92)", transition: "opacity 0.2s ease-out, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)" };
+  switch (anim) {
+    case "fade-up":
+      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.6s ease, transform 0.6s ease" };
+    case "scale-in":
+      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "scale(1)" : "scale(1.06)", transition: "opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)" };
+    case "slide-left":
+      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "translateX(0)" : "translateX(30px)", transition: "opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)" };
+    case "blur-in":
+      return { ...base, opacity: isActive ? 1 : 0, filter: isActive ? "blur(0)" : "blur(6px)", transform: isActive ? "scale(1)" : "scale(1.02)", transition: "opacity 0.5s ease, filter 0.6s ease, transform 0.6s ease" };
+    case "flip-down":
+      return { ...base, opacity: isActive ? 1 : 0, transform: isActive ? "perspective(800px) rotateX(0)" : "perspective(800px) rotateX(-4deg)", transformOrigin: "top center", transition: "opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" };
   }
 }
 
-function BrowserMockup({ img, accent, className = "", showLive = false, carousel = false, dropVariant = "soft" as DropVariant }: { img: string; accent: string; className?: string; showLive?: boolean; carousel?: boolean; dropVariant?: DropVariant }) {
+function ShowcaseCarousel({ accent, className = "" }: { accent: string; className?: string }) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (!carousel) return;
     const timer = setInterval(() => setActive((p) => (p + 1) % heroShowcaseImages.length), 4000);
     return () => clearInterval(timer);
-  }, [carousel]);
+  }, []);
 
   return (
-    <div className={`rounded-lg overflow-hidden shadow-2xl ${className}`} style={{ background: "#1a1a2e", border: `1px solid ${accent}18` }}>
-      <div className="flex items-center gap-2 px-4 py-2.5" style={{ background: "#0f0f1a" }}>
-        <div className="flex gap-1.5">
-          <div className="size-3 rounded-full" style={{ background: "#ff5f57" }} />
-          <div className="size-3 rounded-full" style={{ background: "#ffbd2e" }} />
-          <div className="size-3 rounded-full" style={{ background: "#28c840" }} />
+    <div className={`rounded-lg overflow-hidden shadow-2xl ${className}`} style={{ border: `1px solid ${accent}18` }}>
+      <div className="relative">
+        <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
+          {heroShowcaseImages.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`Website preview ${i + 1}`}
+              style={getImageStyle(slideAnims[i % slideAnims.length], active === i)}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
         </div>
-        <div className="flex-1 mx-3 px-3 py-1 rounded text-xs text-center" style={{ background: "#1a1a2e", color: "#666" }}>studioobrien.com</div>
-        {showLive && (
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-medium tracking-wider uppercase" style={{ color: accent, background: `${accent}10`, border: `1px solid ${accent}18` }}>
-            <div className="size-1.5 rounded-full" style={{ background: accent }} />
-            Live
-          </div>
-        )}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+          {heroShowcaseImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className="size-2.5 rounded-full transition-all cursor-pointer"
+              style={{
+                background: active === i ? accent : "#ffffff40",
+                boxShadow: active === i ? `0 0 8px ${accent}60` : "none",
+                transform: active === i ? "scale(1.3)" : "scale(1)",
+              }}
+              aria-label={`Preview ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
-      {carousel ? (
-        <div className="relative">
-          <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
-            {heroShowcaseImages.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt={`Website preview ${i + 1}`}
-                style={getImageStyle(dropVariant, active === i)}
-                loading={i === 0 ? "eager" : "lazy"}
-              />
-            ))}
-          </div>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-            {heroShowcaseImages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className="size-2.5 rounded-full transition-all cursor-pointer"
-                style={{
-                  background: active === i ? accent : "#ffffff40",
-                  boxShadow: active === i ? `0 0 8px ${accent}60` : "none",
-                  transform: active === i ? "scale(1.3)" : "scale(1)",
-                }}
-                aria-label={`Preview ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <img src={img} alt="Website preview" className="w-full block" loading="lazy" />
-      )}
     </div>
   );
 }
@@ -278,8 +261,8 @@ export default function App() {
       <section className="relative overflow-hidden" style={{ background: t.hero.bg, minHeight: "100dvh", display: "flex", alignItems: "center" }}>
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `linear-gradient(${t.accent} 1px, transparent 1px), linear-gradient(90deg, ${t.accent} 1px, transparent 1px)`, backgroundSize: "60px 60px" }} />
         <div className="absolute top-0 left-0 right-0 h-48" style={{ background: `linear-gradient(${t.accent}0a, transparent)` }} />
-        <div className="relative max-w-6xl mx-auto px-6 w-full pt-10 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="relative max-w-6xl mx-auto px-6 w-full pt-10 pb-6 lg:pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-8 lg:gap-10 items-center">
             <div>
               <FadeIn>
                 <div className="mb-3 w-8 h-1 rounded-full" style={{ background: t.accent }} />
@@ -308,8 +291,8 @@ export default function App() {
                 </div>
               </FadeIn>
             </div>
-            <FadeIn delay={0.2} className="hidden lg:block">
-              <BrowserMockup img="/images/portfolio/carolina-arcade.webp" accent={t.accent} carousel dropVariant="punch" />
+            <FadeIn delay={0.2}>
+              <ShowcaseCarousel accent={t.accent} className="w-full md:max-w-xl md:mx-auto lg:max-w-none" />
             </FadeIn>
           </div>
         </div>
