@@ -372,28 +372,16 @@ export default function App() {
       </section>
 
       {/* ═══════ BRIDGE CTA ═══════ */}
-      <section className="relative overflow-hidden" style={{ background: t.baseBg }}>
-        <div className="py-14 md:py-20 px-6 relative" style={{ borderTop: `1px solid ${t.accent}12`, borderBottom: `1px solid ${t.accent}12` }}>
-          <div className="max-w-5xl mx-auto">
-            <FadeIn>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                <div className="max-w-lg">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance" style={{ color: t.portfolio.text }}>
-                    Like what you see? Let's build yours.
-                  </h2>
-                  <p className="text-sm" style={{ color: `${t.portfolio.text}77` }}>
-                    Your business deserves a site this good. Tell us what you need and we'll put together a quote.
-                  </p>
-                </div>
-                <div className="shrink-0 flex flex-col items-start md:items-end gap-3">
-                  <a href="#contact" className="inline-flex items-center gap-2 px-10 py-4 text-base font-semibold rounded-sm transition-all hover:scale-105" style={{ background: t.accent, color: t.baseBg }}>
-                    Get a Quote <ArrowRight size={18} />
-                  </a>
-                  <span className="text-xs" style={{ color: `${t.portfolio.text}55` }}>No commitment required</span>
-                </div>
-              </div>
-            </FadeIn>
+      {/* ═══════ BRIDGE CTA ═══════ */}
+      <section className="py-14 md:py-20 px-6" style={{ background: t.accent }}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-1" style={{ color: t.baseBg }}>Like what you see?</h2>
+            <p className="text-sm" style={{ color: `${t.baseBg}cc` }}>Tell us about your business and we'll put together a quote.</p>
           </div>
+          <a href="#contact" className="inline-flex items-center gap-2 px-10 py-4 text-base font-semibold rounded-sm transition-all hover:scale-105 shrink-0" style={{ background: t.baseBg, color: t.accent }}>
+            Start a Project <ArrowRight size={18} />
+          </a>
         </div>
       </section>
 
@@ -527,14 +515,21 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-start">
             <FadeIn>
               <div className="md:sticky md:top-32">
-                <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Let's Talk</p>
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance" style={{ color: t.contact.text }}>Tell us about your business.</h2>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: `${t.contact.text}77` }}>Tell us what you're working with and we'll come back with a clear answer within 24 hours.</p>
-                <div className="space-y-3">
-                  {["Response within 24 hours", "Clear pricing, no surprises", "No commitment required"].map((txt) => (
-                    <div key={txt} className="flex items-center gap-2">
-                      <Check size={14} color={t.accent} />
-                      <span className="text-sm" style={{ color: `${t.contact.text}aa` }}>{txt}</span>
+                <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Start Here</p>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance" style={{ color: t.contact.text }}>Tell us what you're working with.</h2>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: `${t.contact.text}99` }}>
+                  Just the basics. What your business does, whether you have a site now, and what you want the new one to accomplish. We take it from there.
+                </p>
+                <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium mt-6" style={{ color: t.accent }}>What happens next</p>
+                <div className="space-y-2.5">
+                  {[
+                    "We research your market, your competitors, and your area",
+                    "You get a written quote with a clear scope within 24 hours",
+                    "If it makes sense, we start. If not, no pressure",
+                  ].map((txt) => (
+                    <div key={txt} className="flex items-start gap-2">
+                      <Check size={14} color={t.accent} className="shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed" style={{ color: `${t.contact.text}aa` }}>{txt}</span>
                     </div>
                   ))}
                 </div>
@@ -589,27 +584,37 @@ export default function App() {
       </section>
 
       {/* ═══════ FOOTER ═══════ */}
-      <footer className="py-14 md:py-20 px-6" style={{ background: t.footer.bg, borderTop: `1px solid ${t.accent}0a` }}>
+      <footer className="py-12 md:py-16 px-6" style={{ background: t.footer.bg }}>
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" width={600} height={100} loading="lazy" style={{ filter: t.logoFilter }} />
-              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}88` }}>Custom websites for small businesses across Shelby, NC and Cleveland County.</p>
+              <img src={t.logoSrc} alt="Studio O'Brien" className="h-9 w-auto mb-3" width={600} height={100} loading="lazy" style={{ filter: t.logoFilter }} />
+              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}55` }}>Web design studio<br />Shelby, NC 28150</p>
             </div>
             <div>
-              <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Navigate</p>
-              <div className="flex flex-col gap-2.5">
-                {navLinks.map((l) => <a key={l.label} href={l.href} className="text-sm hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.7 }}>{l.label}</a>)}
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Services</p>
+              <div className="flex flex-col gap-1.5">
+                {["Web Design", "Development", "Copywriting", "Local SEO", "Brand Identity"].map(s => (
+                  <span key={s} className="text-xs" style={{ color: `${t.footer.text}77` }}>{s}</span>
+                ))}
               </div>
             </div>
             <div>
-              <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Contact</p>
-              <a href="mailto:hello@studioobrien.com" className="text-sm block mb-2 hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.7 }}>hello@studioobrien.com</a>
-              <p className="text-xs" style={{ color: `${t.footer.text}77` }}>Shelby, North Carolina</p>
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Serving</p>
+              <div className="flex flex-col gap-1.5">
+                {["Shelby, NC", "Cleveland County", "Kings Mountain", "Gastonia", "North Carolina"].map(s => (
+                  <span key={s} className="text-xs" style={{ color: `${t.footer.text}77` }}>{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Contact</p>
+              <a href="mailto:hello@studioobrien.com" className="text-xs block mb-3" style={{ color: `${t.footer.text}77` }}>hello@studioobrien.com</a>
+              <div className="flex flex-col gap-1.5">{navLinks.map((l) => <a key={l.label} href={l.href} className="text-xs hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.6 }}>{l.label}</a>)}</div>
             </div>
           </div>
-          <div className="pt-6" style={{ borderTop: `1px solid ${t.accent}0a` }}>
-            <p className="text-xs" style={{ color: `${t.footer.text}77` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
+          <div className="pt-5" style={{ borderTop: `1px solid ${t.accent}0a` }}>
+            <p className="text-xs" style={{ color: `${t.footer.text}55` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
           </div>
         </div>
       </footer>
