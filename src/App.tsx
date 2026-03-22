@@ -373,7 +373,7 @@ export default function App() {
 
       {/* ═══════ BRIDGE CTA ═══════ */}
       {/* ═══════ BRIDGE CTA ═══════ */}
-      <section className="py-14 md:py-20 px-6" style={{ background: t.accent }}>
+      <section className="py-8 md:py-10 px-6" style={{ background: t.accent }}>
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold mb-1" style={{ color: t.baseBg }}>Like what you see?</h2>
