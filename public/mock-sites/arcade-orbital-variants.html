@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Orbital Hero Variants</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Bungee&family=Orbitron:wght@400;500;700;900&family=VT323&family=Silkscreen:wght@400;700&family=Russo+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f0f0f0; overflow-x: hidden; padding-bottom: 70px; }
+
+    /* ===== SHARED STRUCTURE ===== */
+    .variant { min-height: 100vh; position: relative; overflow: hidden; display: none; align-items: center; justify-content: center; }
+    .variant.active { display: flex; }
+
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+    .orbit-wrap { position: relative; z-index: 5; width: 100%; max-width: 1200px; min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+
+    .center-col { display: flex; flex-direction: column; align-items: center; gap: 16px; position: relative; z-index: 3; }
+
+    .logo-img { display: block; filter: drop-shadow(0 0 40px rgba(245,214,35,0.25)); }
+
+    .chip { position: absolute; z-index: 4; text-align: center; min-width: 110px; }
+
+    /* Chip positions */
+    .c1 { top: 14%; left: 7%; }
+    .c2 { top: 11%; right: 7%; }
+    .c3 { top: 43%; left: 4%; }
+    .c4 { top: 43%; right: 4%; }
+    .c5 { bottom: 20%; left: 9%; }
+    .c6 { bottom: 17%; right: 9%; }
+
+    @media (max-width: 900px) {
+      .chip { display: none; }
+      .logo-img { width: min(400px, 80vw) !important; }
+    }
+
+    /* ======================================================================
+       O1: NEON GLASS — frosted glassmorphism, soft glows, rounded
+       ====================================================================== */
+    #o1 .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at center 45%, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.92) 100%); }
+    #o1 .logo-img { width: min(520px, 60vw); }
+    #o1 .tagline { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(0,212,255,0.9); text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
+    #o1 .cta { display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 700; background: rgba(232,52,46,0.9); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; padding: 14px 32px; border-radius: 6px; border: none; cursor: pointer; backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(232,52,46,0.3); transition: transform 0.15s; }
+    #o1 .cta:hover { transform: translateY(-2px); }
+    #o1 .chip { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; }
+    #o1 .chip-val { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 800; color: #39ff14; text-shadow: 0 0 20px rgba(57,255,20,0.3); margin-bottom: 4px; }
+    #o1 .chip-lbl { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+
+    /* ======================================================================
+       O2: PIXEL BRUTALIST — thick borders, stark, chunky
+       ====================================================================== */
+    #o2 .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,10,0.88); }
+    #o2::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 50; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px); }
+    #o2 .logo-img { width: min(500px, 58vw); filter: drop-shadow(0 0 0 transparent); image-rendering: pixelated; }
+    #o2 .tagline { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: #f5d623; text-transform: uppercase; letter-spacing: 3px; }
+    #o2 .cta { display: inline-block; font-family: 'Press Start 2P', monospace; font-size: 0.55rem; background: #e8342e; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 14px 28px; border: 4px solid #fff; cursor: pointer; transition: transform 0.1s; }
+    #o2 .cta:hover { transform: scale(1.05); background: #ff4444; }
+    #o2 .chip { background: #0a0a0a; border: 3px solid #f5d623; padding: 14px 16px; }
+    #o2 .chip-val { font-family: 'Press Start 2P', monospace; font-size: 0.9rem; color: #f5d623; margin-bottom: 6px; }
+    #o2 .chip-lbl { font-family: 'Press Start 2P', monospace; font-size: 0.25rem; color: #888; text-transform: uppercase; letter-spacing: 2px; line-height: 1.6; }
+
+    /* ======================================================================
+       O3: CRT TERMINAL — green phosphor, monospace, scanlines heavy
+       ====================================================================== */
+    #o3 .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(0,8,0,0.92); }
+    #o3::before { content: ''; position: absolute; inset: 0; z-index: 1; background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,255,65,0.02) 1px, rgba(0,255,65,0.02) 2px); pointer-events: none; }
+    #o3 .logo-img { width: min(480px, 55vw); filter: drop-shadow(0 0 30px rgba(0,255,65,0.2)) brightness(0.9) sepia(1) saturate(5) hue-rotate(70deg); }
+    #o3 .tagline { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: #00ff41; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 10px rgba(0,255,65,0.4); }
+    #o3 .cta { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: transparent; color: #00ff41; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 12px 28px; border: 2px solid #00ff41; cursor: pointer; box-shadow: 0 0 15px rgba(0,255,65,0.2), inset 0 0 15px rgba(0,255,65,0.05); transition: all 0.15s; }
+    #o3 .cta:hover { background: rgba(0,255,65,0.1); box-shadow: 0 0 25px rgba(0,255,65,0.4); }
+    #o3 .chip { border: 1px solid rgba(0,255,65,0.3); padding: 12px 14px; background: rgba(0,8,0,0.6); }
+    #o3 .chip-val { font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 700; color: #00ff41; text-shadow: 0 0 12px rgba(0,255,65,0.4); margin-bottom: 4px; }
+    #o3 .chip-lbl { font-family: 'Space Mono', monospace; font-size: 0.55rem; color: rgba(0,255,65,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ======================================================================
+       O4: MARQUEE LIGHTS — dotted borders like bulbs, warm tones
+       ====================================================================== */
+    #o4 .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.95) 100%); }
+    #o4 .logo-img { width: min(540px, 62vw); filter: drop-shadow(0 0 60px rgba(255,200,50,0.3)); }
+    #o4 .tagline { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #ffd700; text-transform: uppercase; letter-spacing: 10px; text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    #o4 .cta { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; background: #e8342e; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 6px; padding: 14px 36px; border: 3px dotted #ffd700; cursor: pointer; transition: transform 0.15s; }
+    #o4 .cta:hover { transform: translateY(-2px); }
+    #o4 .chip { border: 3px dotted rgba(255,215,0,0.5); border-radius: 50%; width: 120px; height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0; background: rgba(10,10,10,0.7); }
+    #o4 .chip-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: #ffd700; text-shadow: 0 0 15px rgba(255,215,0,0.4); margin-bottom: 2px; }
+    #o4 .chip-lbl { font-family: 'Inter', sans-serif; font-size: 0.55rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ======================================================================
+       O5: BLACKLIGHT UV — purple/magenta dominant, UV glow
+       ====================================================================== */
+    #o5 .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20,0,40,0.92) 0%, rgba(40,0,20,0.88) 50%, rgba(10,0,30,0.95) 100%); }
+    #o5 .logo-img { width: min(520px, 60vw); filter: drop-shadow(0 0 50px rgba(180,0,255,0.3)) brightness(1.1); }
+    #o5 .tagline { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 500; color: #ff2eaa; text-transform: uppercase; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255,46,170,0.5); }
+    #o5 .cta { display: inline-block; font-family: 'Orbitron', sans-serif; font-size: 0.65rem; font-weight: 700; background: linear-gradient(135deg, #ff2eaa, #b400ff); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; padding: 14px 32px; border: none; border-radius: 4px; cursor: pointer; box-shadow: 0 0 30px rgba(180,0,255,0.4); transition: transform 0.15s; }
+    #o5 .cta:hover { transform: translateY(-2px); }
+    #o5 .chip { background: rgba(180,0,255,0.08); border: 1px solid rgba(180,0,255,0.35); border-radius: 8px; padding: 14px 18px; box-shadow: 0 0 20px rgba(180,0,255,0.1); }
+    #o5 .chip-val { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; color: #e879f9; text-shadow: 0 0 15px rgba(232,121,249,0.4); margin-bottom: 4px; }
+    #o5 .chip-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.4rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; font-weight: 400; }
+
+    /* ======================================================================
+       O6: HIGH SCORE BOARD — amber/green on black, leaderboard style
+       ====================================================================== */
+    #o6 .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.94); }
+    #o6 .orbit-wrap { max-width: 1100px; }
+    #o6 .logo-img { width: min(460px, 55vw); filter: drop-shadow(0 0 20px rgba(255,170,0,0.2)); }
+    #o6 .tagline { font-family: 'VT323', monospace; font-size: 1.6rem; color: #ffaa00; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 8px rgba(255,170,0,0.3); }
+    #o6 .cta { display: inline-block; font-family: 'VT323', monospace; font-size: 1.3rem; background: transparent; color: #ffaa00; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; padding: 10px 28px; border: 2px solid #ffaa00; cursor: pointer; text-shadow: 0 0 8px rgba(255,170,0,0.3); transition: all 0.15s; }
+    #o6 .cta:hover { background: rgba(255,170,0,0.1); }
+    #o6 .chip { background: rgba(0,0,0,0.8); border: 1px solid rgba(255,170,0,0.25); padding: 10px 14px; }
+    #o6 .chip::before { content: ''; display: block; width: 100%; height: 2px; background: rgba(255,170,0,0.2); margin-bottom: 8px; }
+    #o6 .chip-val { font-family: 'VT323', monospace; font-size: 1.8rem; color: #39ff14; text-shadow: 0 0 10px rgba(57,255,20,0.3); margin-bottom: 0; letter-spacing: 2px; }
+    #o6 .chip-lbl { font-family: 'VT323', monospace; font-size: 0.85rem; color: #ffaa00; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7; }
+
+    /* ======================================================================
+       O7: COMIC POP ART — bold outlines, halftone, saturated
+       ====================================================================== */
+    #o7 .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,10,0.85); }
+    #o7::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle 1.5px, rgba(255,255,255,0.04) 100%, transparent 100%); background-size: 6px 6px; }
+    #o7 .logo-img { width: min(520px, 60vw); filter: drop-shadow(4px 4px 0 #e8342e) drop-shadow(-2px -2px 0 #00d4ff); }
+    #o7 .tagline { font-family: 'Bungee', cursive; font-size: 0.9rem; color: #f5d623; text-transform: uppercase; letter-spacing: 2px; text-shadow: 3px 3px 0 #e8342e; }
+    #o7 .cta { display: inline-block; font-family: 'Bungee', cursive; font-size: 0.7rem; background: #f5d623; color: #0a0a0a; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 14px 28px; border: 4px solid #0a0a0a; cursor: pointer; box-shadow: 5px 5px 0 #e8342e; transition: transform 0.1s, box-shadow 0.1s; }
+    #o7 .cta:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #e8342e; }
+    #o7 .chip { background: #f5d623; border: 3px solid #0a0a0a; padding: 12px 14px; box-shadow: 4px 4px 0 #e8342e; transform: rotate(-2deg); }
+    #o7 .chip:nth-child(even) { transform: rotate(2deg); background: #00d4ff; }
+    #o7 .chip-val { font-family: 'Bungee', cursive; font-size: 1rem; color: #0a0a0a; margin-bottom: 2px; }
+    #o7 .chip-lbl { font-family: 'Bungee', cursive; font-size: 0.35rem; color: rgba(10,10,10,0.6); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ======================================================================
+       O8: VHS RETRO — tracking lines, chromatic aberration, 80s pastel neon
+       ====================================================================== */
+    #o8 .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,5,20,0.88) 0%, rgba(20,10,30,0.92) 100%); }
+    #o8::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px); animation: vhs-drift 8s linear infinite; }
+    @keyframes vhs-drift { 0% { transform: translateY(0); } 100% { transform: translateY(4px); } }
+    #o8 .logo-img { width: min(500px, 58vw); filter: drop-shadow(3px 0 0 rgba(255,0,100,0.3)) drop-shadow(-3px 0 0 rgba(0,200,255,0.3)); }
+    #o8 .tagline { font-family: 'Permanent Marker', cursive; font-size: 1.2rem; color: #ff6ec7; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 2px 0 rgba(0,200,255,0.4); }
+    #o8 .cta { display: inline-block; font-family: 'Permanent Marker', cursive; font-size: 1rem; background: linear-gradient(90deg, #ff6ec7, #00c8ff); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; padding: 12px 30px; border: none; border-radius: 2px; cursor: pointer; transition: transform 0.15s; }
+    #o8 .cta:hover { transform: translateY(-2px); }
+    #o8 .chip { background: rgba(255,110,199,0.08); border: 1px solid rgba(255,110,199,0.3); padding: 12px 16px; border-radius: 2px; }
+    #o8 .chip-val { font-family: 'Permanent Marker', cursive; font-size: 1.3rem; color: #00c8ff; text-shadow: 2px 2px 0 rgba(255,110,199,0.3); margin-bottom: 2px; }
+    #o8 .chip-lbl { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 600; color: rgba(255,110,199,0.6); text-transform: uppercase; letter-spacing: 2px; }
+
+    /* ======================================================================
+       O9: PINBALL BACKGLASS — ornate borders, metallic, dramatic
+       ====================================================================== */
+    #o9 .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center 40%, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.95) 100%); }
+    #o9 .logo-img { width: min(500px, 58vw); filter: drop-shadow(0 0 40px rgba(245,214,35,0.35)); }
+    #o9 .tagline { font-family: 'Russo One', sans-serif; font-size: 1rem; color: #c0c0c0; text-transform: uppercase; letter-spacing: 8px; text-shadow: 0 1px 0 #666, 0 2px 4px rgba(0,0,0,0.5); }
+    #o9 .cta { display: inline-block; font-family: 'Russo One', sans-serif; font-size: 0.85rem; background: linear-gradient(180deg, #e8342e, #a01010); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; padding: 14px 32px; border: 2px solid #ff6644; border-radius: 3px; cursor: pointer; box-shadow: 0 4px 20px rgba(232,52,46,0.4), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.15s; }
+    #o9 .cta:hover { transform: translateY(-2px); }
+    #o9 .chip { background: linear-gradient(180deg, rgba(30,30,30,0.9), rgba(15,15,15,0.95)); border: 2px solid; border-image: linear-gradient(180deg, #c0a040, #806020) 1; padding: 14px 16px; }
+    #o9 .chip-val { font-family: 'Russo One', sans-serif; font-size: 1.2rem; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.3), 0 1px 0 #996600; margin-bottom: 4px; }
+    #o9 .chip-lbl { font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* ======================================================================
+       O10: CLEAN EDITORIAL — minimal, lots of whitespace, refined
+       ====================================================================== */
+    #o10 .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,10,0.92); }
+    #o10 .logo-img { width: min(440px, 50vw); filter: drop-shadow(0 0 0 transparent); opacity: 0.95; }
+    #o10 .tagline { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 8px; }
+    #o10 .cta { display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; background: transparent; color: #f0f0f0; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; padding: 14px 32px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s; }
+    #o10 .cta:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.03); }
+    #o10 .chip { padding: 12px 16px; border-left: 2px solid rgba(255,255,255,0.1); }
+    #o10 .chip-val { font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 800; color: rgba(255,255,255,0.85); margin-bottom: 4px; letter-spacing: -0.5px; }
+    #o10 .chip-lbl { font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 400; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 3px; }
+
+    /* ===== PICKER BAR ===== */
+    .picker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 8px; border-top: 2px solid #222; }
+    .picker-label { font-family: 'Press Start 2P', monospace; font-size: 0.35rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-right: 12px; }
+    .pick-btn { width: 36px; height: 36px; border: 2px solid #333; background: transparent; color: #888; font-family: 'Press Start 2P', monospace; font-size: 0.45rem; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+    .pick-btn:hover { border-color: #555; color: #ccc; }
+    .pick-btn.active { border-color: #f5d623; color: #f5d623; background: rgba(245,214,35,0.08); }
+    .picker-desc { font-size: 0.72rem; color: #666; margin-left: 16px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: 0s !important; } }
+  </style>
+</head>
+<body>
+
+<!-- ===== O1: NEON GLASS ===== -->
+<section class="variant active" id="o1">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Playable Machines</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#f5d623;">$13</div><div class="chip-lbl">All Day Pass</div></div>
+    <div class="chip c3"><div class="chip-val" style="color:#00d4ff;">2</div><div class="chip-lbl">Floors of Gaming</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#e8342e;">4.9&#9733;</div><div class="chip-lbl">Google Rating</div></div>
+    <div class="chip c5"><div class="chip-val" style="color:#f5d623;">2018</div><div class="chip-lbl">Est. Forest City</div></div>
+    <div class="chip c6"><div class="chip-val" style="color:#00d4ff;">0</div><div class="chip-lbl">Quarters Needed</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">No quarters. Just play.</p>
+      <a href="#" class="cta">Plan Your Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O2: PIXEL BRUTALIST ===== -->
+<section class="variant" id="o2">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Machines<br>on Floor</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#e8342e;">$13</div><div class="chip-lbl">All Day<br>Pass</div></div>
+    <div class="chip c3"><div class="chip-val" style="color:#00d4ff;">2</div><div class="chip-lbl">Full<br>Floors</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#39ff14;">4.9&#9733;</div><div class="chip-lbl">Google<br>Rating</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">Est. Forest<br>City NC</div></div>
+    <div class="chip c6"><div class="chip-val" style="color:#e8342e;">$0</div><div class="chip-lbl">Per Game<br>Played</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">Every game on. Every game free.</p>
+      <a href="#" class="cta">Insert Coin &#9654;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O3: CRT TERMINAL ===== -->
+<section class="variant" id="o3">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">GAMES.EXE</div></div>
+    <div class="chip c2"><div class="chip-val">$13</div><div class="chip-lbl">ALL_DAY.BAT</div></div>
+    <div class="chip c3"><div class="chip-val">002</div><div class="chip-lbl">FLOORS.SYS</div></div>
+    <div class="chip c4"><div class="chip-val">4.9</div><div class="chip-lbl">RATING.LOG</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">BOOT.INI</div></div>
+    <div class="chip c6"><div class="chip-val">$0</div><div class="chip-lbl">QUARTERS.NULL</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">&gt; PRESS START TO PLAY_</p>
+      <a href="#" class="cta">RUN ARCADE.EXE</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O4: MARQUEE LIGHTS ===== -->
+<section class="variant" id="o4">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Games</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#ff4444;">$13</div><div class="chip-lbl">All Day</div></div>
+    <div class="chip c3"><div class="chip-val" style="color:#fff;">2</div><div class="chip-lbl">Floors</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#39ff14;">4.9&#9733;</div><div class="chip-lbl">Google</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">Est.</div></div>
+    <div class="chip c6"><div class="chip-val" style="color:#ff4444;">PBS</div><div class="chip-lbl">Featured</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">NOW SHOWING</p>
+      <a href="#" class="cta">Step Right Up</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O5: BLACKLIGHT UV ===== -->
+<section class="variant" id="o5">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="" width="1600" height="1200"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Machines</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#ff2eaa;">$13</div><div class="chip-lbl">All Day Pass</div></div>
+    <div class="chip c3"><div class="chip-val" style="color:#00d4ff;">2</div><div class="chip-lbl">Full Floors</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#ffd700;">4.9&#9733;</div><div class="chip-lbl">Google Stars</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">Established</div></div>
+    <div class="chip c6"><div class="chip-val" style="color:#39ff14;">$0</div><div class="chip-lbl">Per Game</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">All Freeplay. All Day.</p>
+      <a href="#" class="cta">Enter the Basement</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O6: HIGH SCORE BOARD ===== -->
+<section class="variant" id="o6">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105</div><div class="chip-lbl">MACHINES</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#ffaa00;">013</div><div class="chip-lbl">DOLLARS</div></div>
+    <div class="chip c3"><div class="chip-val">002</div><div class="chip-lbl">FLOORS</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#ffaa00;">4.9</div><div class="chip-lbl">SCORE</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">YEAR</div></div>
+    <div class="chip c6"><div class="chip-val">000</div><div class="chip-lbl">QUARTERS</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">HIGH SCORE TABLE</p>
+      <a href="#" class="cta">ENTER INITIALS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O7: COMIC POP ART ===== -->
+<section class="variant" id="o7">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">GAMES!</div></div>
+    <div class="chip c2"><div class="chip-val">$13</div><div class="chip-lbl">ALL DAY</div></div>
+    <div class="chip c3"><div class="chip-val">2</div><div class="chip-lbl">FLOORS</div></div>
+    <div class="chip c4"><div class="chip-val">4.9&#9733;</div><div class="chip-lbl">RATED</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">SINCE</div></div>
+    <div class="chip c6"><div class="chip-val">FREE</div><div class="chip-lbl">PLAY!</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">POW! ZAP! PLAY!</p>
+      <a href="#" class="cta">GAME ON!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O8: VHS RETRO ===== -->
+<section class="variant" id="o8">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Machines</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#ff6ec7;">$13</div><div class="chip-lbl">All Day</div></div>
+    <div class="chip c3"><div class="chip-val">2</div><div class="chip-lbl">Floors</div></div>
+    <div class="chip c4"><div class="chip-val" style="color:#ff6ec7;">4.9&#9733;</div><div class="chip-lbl">Google</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">Est.</div></div>
+    <div class="chip c6"><div class="chip-val">FREE</div><div class="chip-lbl">All Games</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">Rewind to the Good Times</p>
+      <a href="#" class="cta">Press Play &#9654;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O9: PINBALL BACKGLASS ===== -->
+<section class="variant" id="o9">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Machines</div></div>
+    <div class="chip c2"><div class="chip-val" style="color:#ff6644;">$13</div><div class="chip-lbl">All Day Pass</div></div>
+    <div class="chip c3"><div class="chip-val" style="color:#c0c0c0;">2</div><div class="chip-lbl">Full Floors</div></div>
+    <div class="chip c4"><div class="chip-val">4.9&#9733;</div><div class="chip-lbl">Google Stars</div></div>
+    <div class="chip c5"><div class="chip-val" style="color:#c0c0c0;">2018</div><div class="chip-lbl">Established</div></div>
+    <div class="chip c6"><div class="chip-val" style="color:#ff6644;">PBS</div><div class="chip-lbl">As Seen On</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">Forest City, North Carolina</p>
+      <a href="#" class="cta">Launch Ball</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O10: CLEAN EDITORIAL ===== -->
+<section class="variant" id="o10">
+  <div class="hero-bg"><img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" alt="" width="1189" height="787"></div>
+  <div class="orbit-wrap">
+    <div class="chip c1"><div class="chip-val">105+</div><div class="chip-lbl">Machines</div></div>
+    <div class="chip c2"><div class="chip-val">$13</div><div class="chip-lbl">All Day</div></div>
+    <div class="chip c3"><div class="chip-val">2</div><div class="chip-lbl">Floors</div></div>
+    <div class="chip c4"><div class="chip-val">4.9</div><div class="chip-lbl">Google</div></div>
+    <div class="chip c5"><div class="chip-val">2018</div><div class="chip-lbl">Established</div></div>
+    <div class="chip c6"><div class="chip-val">$0</div><div class="chip-lbl">Per Game</div></div>
+    <div class="center-col">
+      <img class="logo-img" src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" width="1200" height="400">
+      <p class="tagline">Classic Arcade &amp; Pinball</p>
+      <a href="#" class="cta">Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- PICKER BAR -->
+<nav class="picker" role="toolbar" aria-label="Variant picker">
+  <span class="picker-label">Orbital</span>
+  <button class="pick-btn active" data-v="1">1</button>
+  <button class="pick-btn" data-v="2">2</button>
+  <button class="pick-btn" data-v="3">3</button>
+  <button class="pick-btn" data-v="4">4</button>
+  <button class="pick-btn" data-v="5">5</button>
+  <button class="pick-btn" data-v="6">6</button>
+  <button class="pick-btn" data-v="7">7</button>
+  <button class="pick-btn" data-v="8">8</button>
+  <button class="pick-btn" data-v="9">9</button>
+  <button class="pick-btn" data-v="10">10</button>
+  <span class="picker-desc" id="pdesc">Neon Glass</span>
+</nav>
+
+<script>
+  const names = {
+    1: "Neon Glass — frosted glassmorphism, soft glows",
+    2: "Pixel Brutalist — thick borders, stark, chunky",
+    3: "CRT Terminal — green phosphor, monospace, DOS",
+    4: "Marquee Lights — dotted circle chips, showtime",
+    5: "Blacklight UV — purple/magenta, basement vibes",
+    6: "High Score Board — amber/green, leaderboard",
+    7: "Comic Pop Art — bold outlines, halftone, POW!",
+    8: "VHS Retro — chromatic aberration, 80s pastel",
+    9: "Pinball Backglass — metallic, ornate, dramatic",
+    10: "Clean Editorial — minimal, refined, modern"
+  };
+  const btns = document.querySelectorAll('.pick-btn');
+  const desc = document.getElementById('pdesc');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const n = parseInt(btn.dataset.v);
+      document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+      document.getElementById('o' + n).classList.add('active');
+      btns.forEach(b => b.classList.toggle('active', parseInt(b.dataset.v) === n));
+      desc.textContent = names[n] || '';
+      window.scrollTo(0, 0);
+    });
+  });
+</script>
+
+</body>
+</html>

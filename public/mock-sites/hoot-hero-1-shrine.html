@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#161312",
+                        "surface-container-low": "#1E1B1A",
+                        "surface-container": "#221F1E",
+                        "primary": "#C9933A",
+                        "primary-container": "#C9933A",
+                        "secondary-container": "#892400",
+                        "on-surface": "#F5EDE0",
+                        "outline-variant": "#504537",
+                    },
+                    fontFamily: {
+                        "headline": ["DM Serif Display", "serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "mono": ["IBM Plex Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "md": "0.375rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .paper-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(201,147,58,0.15) 0%, transparent 70%);
+        }
+        .logo-shadow {
+            filter: drop-shadow(0 0 30px rgba(201,147,58,0.2));
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30 selection:text-primary overflow-hidden">
+<!-- Shared Component: TopAppBar -->
+<nav class="flex justify-between items-center w-full px-8 py-6 max-w-full mx-auto fixed top-0 z-50">
+<div class="text-2xl font-headline tracking-tight text-[#F5EDE0]">The Hoot Nannie</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#C9933A] border-b border-[#C9933A] pb-1 font-body text-sm uppercase tracking-widest transition-colors duration-300" href="#">Menu</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] font-body text-sm uppercase tracking-widest transition-colors duration-300" href="#">Bourbon</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] font-body text-sm uppercase tracking-widest transition-colors duration-300" href="#">Story</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] font-body text-sm uppercase tracking-widest transition-colors duration-300" href="#">Specials</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] font-body text-sm uppercase tracking-widest transition-colors duration-300" href="#">Visit</a>
+</div>
+<button class="bg-secondary-container text-[#F5EDE0] px-6 py-2 rounded-md font-body font-semibold uppercase tracking-widest text-xs hover:opacity-90 transition-all duration-200 scale-95 hover:scale-100">
+            Reserve
+        </button>
+</nav>
+<!-- Hero Section -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center bg-[#141110] overflow-hidden">
+<!-- Textures & Glows -->
+<div class="absolute inset-0 paper-grain pointer-events-none"></div>
+<div class="absolute inset-0 hero-glow pointer-events-none"></div>
+<!-- Center Content: Logo Shrine -->
+<div class="relative z-10 flex flex-col items-center text-center px-4">
+<!-- Above Logo -->
+<p class="font-mono text-primary text-[11px] uppercase tracking-[0.35em] mb-12">
+                THE FARMER &amp; THE PITMASTER
+            </p>
+<!-- Logo Placeholder -->
+<div class="relative mb-12 group">
+<div class="w-[400px] h-[400px] rounded-full bg-[#2A2420] border border-primary/10 flex items-center justify-center logo-shadow transition-transform duration-700 group-hover:scale-[1.02]">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary/40 text-6xl mb-4" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-headline text-primary/30 text-3xl tracking-[0.2em]">LOGO</span>
+</div>
+</div>
+<!-- Decorative accents -->
+<div class="absolute -top-4 -left-4 w-8 h-8 border-t border-l border-primary/20"></div>
+<div class="absolute -bottom-4 -right-4 w-8 h-8 border-b border-r border-primary/20"></div>
+</div>
+<!-- Below Logo -->
+<h1 class="font-headline italic text-primary text-[1.75rem] leading-none mb-6">
+                A Five Spur Steakhouse
+            </h1>
+<div class="h-[1px] w-12 bg-outline-variant/30 mb-6"></div>
+<p class="font-body text-[#F5EDE0]/70 text-[1.1rem] max-w-lg mb-2">
+                Farm-raised steaks. Whole hog BBQ. 68 bourbons.
+            </p>
+<p class="font-mono text-primary/60 text-xs tracking-widest uppercase mb-10">
+                Main Street, Forest City, NC
+            </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-[#8B2500] text-[#F5EDE0] px-10 py-4 rounded-md font-body font-semibold uppercase tracking-[0.15em] text-xs hover:brightness-110 transition-all duration-300">
+                    See the Menu
+                </button>
+<button class="border border-primary text-primary px-10 py-4 rounded-md font-body font-semibold uppercase tracking-[0.15em] text-xs hover:bg-primary/5 transition-all duration-300">
+                    Plan Your Visit
+                </button>
+</div>
+</div>
+<!-- Footer Stats Bar -->
+<div class="absolute bottom-0 w-full">
+<div class="w-full h-[1px] bg-primary/15"></div>
+<div class="max-w-6xl mx-auto py-8 px-8 grid grid-cols-3 gap-4 text-center">
+<div class="flex flex-col items-center border-r border-outline-variant/10">
+<span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">68 Bourbons</span>
+</div>
+<div class="flex flex-col items-center border-r border-outline-variant/10">
+<span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">657+ Reviews</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">150 lbs Cheese Curds / Week</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Hidden Image Data for Accessibility -->
+<div class="hidden">
+<img data-alt="Dark warm charcoal texture background for high-end steakhouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqmedVbKTRYLxKsiHP5s6qenKqlA2a5h0U7Iq5DEdOMulALjKNzjvMrjhf06mzDWTKnB6_B1wO5nXVntnRMevXPLizztwDhJtH8Zdbsn4obpPcOuUS4kRmTvQ4huDBgSqn62FHJlc4SsuAin11KlZgtbHR-HRwG_qM8_Zp0Lgbg2GKxU1kUtUz1U12wajqfUSK5wQvGnnQ5K9XmSHg3tseLhqYgK6qGqmy9ijywSLoypbi-hNWxjUylm-y4fTro29wxwKBzOsnC00bUQ"/>
+<img data-alt="Circular logo icon with rustic minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6fLBiHoaVtfMhQ_0gEKObp7bmXqiTnEPJt-vpa0iB_WrhawMR3TBAqS4HfXqFD-xr-Mf9kKkVk2uXbi6oKPDQNLIMg_Ck72xPlanBezGZU0csalIQXpRE73Cd8w424JBU5xVH1H4fDBoykslZeG5JDIgRghdHaRAqr_giMgk4ZoMly8TNMKBST26d4DDSne_IsCUy5FgYclDkDIDUktC7Q4AgmOU_k_cD7PABCoPH1kitkhK8DKIvxLuCR_eFpZs-0gopLfFC34Pa5A"/>
+</div>
+</body></html>
