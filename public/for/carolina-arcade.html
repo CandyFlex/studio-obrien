@@ -284,6 +284,50 @@
     }
     .foot a { color: var(--accent); text-decoration: none; opacity: 0.7; }
     .foot a:hover { opacity: 1; }
+
+    /* ---- Video Walkthrough ---- */
+    .video-section {
+      padding: 48px 24px 40px;
+      text-align: center;
+      background: var(--bg);
+    }
+    .video-section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .video-section .video-sub {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .video-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .video-wrap video {
+      width: 100%;
+      display: block;
+      background: #09090b;
+    }
+    .video-cta {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
@@ -296,19 +340,15 @@
       <p class="sub">Your real pricing, hours, reviews, and story. No templates, no stock photos.</p>
     </div>
 
-    <div class="preview-wrap">
-      <div class="preview">
-        <div class="preview-bar">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <span class="preview-url">carolinaarcademuseum.com</span>
-        </div>
-        <img src="/images/portfolio/carolina-arcade.webp" alt="Carolina Arcade Museum website concept" loading="lazy" />
-        <div class="preview-cta">
-          <a href="/mock-sites/carolina-arcade.html" target="_blank">View the Full Interactive Site &rarr;</a>
-        </div>
-      </div>
+    <div class="video-wrap" style="max-width: 820px; margin: 28px auto 0;">
+      <video autoplay muted loop playsinline>
+        <source src="/videos/arcade-walkthrough.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="video-cta" style="padding-bottom: 12px;">
+      <a href="/mock-sites/carolina-arcade.html" target="_blank" class="btn btn-primary">Explore the Full Site &rarr;</a>
+      <a href="https://studioobrien.com/#contact" class="btn btn-ghost">Let's Make It Real</a>
     </div>
   </div>
 

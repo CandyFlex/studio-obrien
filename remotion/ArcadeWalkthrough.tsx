@@ -186,38 +186,38 @@ const ThePitch: React.FC = () => {
 
       <div style={{ position: "absolute", inset: 0, zIndex: 5, display: "flex", flexDirection: "column" }}>
         {/* Nav */}
-        <div style={{ padding: "44px 72px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ padding: "28px 72px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <Img src={staticFile("/images/logo-obsidian.webp")} style={{ height: 44, objectFit: "contain" }} />
           <p style={{ fontFamily: FM, fontSize: 14, color: "rgba(250,250,250,0.28)", letterSpacing: 2 }}>studioobrien.com</p>
         </div>
 
         {/* Main */}
-        <div style={{ flex: 1, display: "flex", padding: "0 72px", gap: 48 }}>
+        <div style={{ flex: 1, display: "flex", padding: "0 72px", gap: 32 }}>
           {/* LEFT */}
           <div style={{ flex: 1.3, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ width: 40, height: 3, background: G, borderRadius: 2, marginBottom: 24, opacity: barSpring }} />
+            <div style={{ width: 40, height: 3, background: G, borderRadius: 2, marginBottom: 10, opacity: barSpring }} />
 
             <div style={{ opacity: headSpring, transform: `translateY(${interpolate(headSpring, [0, 1], [20, 0])}px)` }}>
-              <h1 style={{ fontFamily: F, fontSize: 78, fontWeight: 800, color: "#fafafa", lineHeight: 1.02, letterSpacing: -3 }}>Someone just Googled you.</h1>
-              <h1 style={{ fontFamily: F, fontSize: 78, fontWeight: 800, color: G, lineHeight: 1.02, letterSpacing: -3, marginTop: 2 }}>Now what?</h1>
+              <h1 style={{ fontFamily: F, fontSize: 78, fontWeight: 800, color: "#fafafa", lineHeight: 0.95, letterSpacing: -3 }}>Someone just Googled you.</h1>
+              <h1 style={{ fontFamily: F, fontSize: 78, fontWeight: 800, color: G, lineHeight: 0.95, letterSpacing: -3, marginTop: 0 }}>Now what?</h1>
             </div>
 
-            <p style={{ fontFamily: F, fontSize: 26, fontWeight: 400, color: "rgba(250,250,250,0.55)", lineHeight: 1.5, marginTop: 22, maxWidth: 560, opacity: bodySpring, transform: `translateY(${interpolate(bodySpring, [0, 1], [14, 0])}px)` }}>
+            <p style={{ fontFamily: F, fontSize: 26, fontWeight: 400, color: "rgba(250,250,250,0.55)", lineHeight: 1.35, marginTop: 10, maxWidth: 560, opacity: bodySpring, transform: `translateY(${interpolate(bodySpring, [0, 1], [14, 0])}px)` }}>
               Without a site, that button is dead. They see your name and pick a competitor.
             </p>
 
             {/* Stats */}
-            <div style={{ display: "flex", alignItems: "flex-start", marginTop: 32, paddingTop: 28, borderTop: "1px solid rgba(250,250,250,0.07)", opacity: statSpring, transform: `translateY(${interpolate(statSpring, [0, 1], [14, 0])}px)` }}>
+            <div style={{ display: "flex", alignItems: "flex-start", marginTop: 14, paddingTop: 14, borderTop: "1px solid rgba(250,250,250,0.07)", opacity: statSpring, transform: `translateY(${interpolate(statSpring, [0, 1], [14, 0])}px)` }}>
               {[
                 { num: "46%", label: "of searches are local" },
                 { num: "88%", label: "visit within 24 hours" },
                 { num: "70%", label: "decide online first" },
               ].map((s, i) => (
                 <React.Fragment key={s.num}>
-                  {i > 0 && <div style={{ width: 1, height: 76, background: "rgba(250,250,250,0.07)", flexShrink: 0 }} />}
-                  <div style={{ flex: 1, paddingLeft: i > 0 ? 32 : 0, paddingRight: 20 }}>
+                  {i > 0 && <div style={{ width: 1, height: 60, background: "rgba(250,250,250,0.07)", flexShrink: 0 }} />}
+                  <div style={{ flex: 1, paddingLeft: i > 0 ? 24 : 0, paddingRight: 16 }}>
                     <p style={{ fontFamily: FM, fontSize: 52, fontWeight: 700, color: G, lineHeight: 1, letterSpacing: -2 }}>{s.num}</p>
-                    <p style={{ fontFamily: F, fontSize: 20, fontWeight: 500, color: "rgba(250,250,250,0.4)", marginTop: 10 }}>{s.label}</p>
+                    <p style={{ fontFamily: F, fontSize: 20, fontWeight: 500, color: "rgba(250,250,250,0.4)", marginTop: 4 }}>{s.label}</p>
                   </div>
                 </React.Fragment>
               ))}
@@ -234,25 +234,25 @@ const ThePitch: React.FC = () => {
                   <div style={{ flex: 1, overflow: "hidden" }}><Img src={img("pinball-row.webp")} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
                   <div style={{ flex: 1, overflow: "hidden" }}><Img src={img("blacklight-basement.webp")} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
                 </div>
-                <div style={{ padding: `${GBP_W * 0.038}px ${GBP_W * 0.045}px ${GBP_W * 0.045}px` }}>
-                  <p style={{ fontSize: GBP_W * 0.042, fontWeight: 700, color: "#1a1a1a", marginBottom: GBP_W * 0.01 }}>Carolina Arcade Museum</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: GBP_W * 0.012, marginBottom: GBP_W * 0.014 }}>
+                <div style={{ padding: `${GBP_W * 0.03}px ${GBP_W * 0.04}px ${GBP_W * 0.035}px` }}>
+                  <p style={{ fontSize: GBP_W * 0.042, fontWeight: 700, color: "#1a1a1a", marginBottom: GBP_W * 0.006 }}>Carolina Arcade Museum</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: GBP_W * 0.012, marginBottom: GBP_W * 0.008 }}>
                     <span style={{ fontSize: GBP_W * 0.03, color: "#1a1a1a", fontWeight: 600 }}>4.9</span>
                     <span style={{ fontSize: GBP_W * 0.03, color: "#f4b400" }}>★★★★★</span>
                     <span style={{ fontSize: GBP_W * 0.026, color: "#70757a" }}>(40+)</span>
                   </div>
-                  <p style={{ fontSize: GBP_W * 0.024, color: "#70757a", marginBottom: GBP_W * 0.024 }}>145 East Main St, Forest City, NC · (828) 229-3089</p>
+                  <p style={{ fontSize: GBP_W * 0.024, color: "#70757a", marginBottom: GBP_W * 0.016 }}>145 East Main St, Forest City, NC · (828) 229-3089</p>
                   <div style={{ display: "flex", gap: GBP_W * 0.016 }}>
-                    <div style={{ flex: 1, background: "#1a73e8", borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.02}px 0`, textAlign: "center" }}>
+                    <div style={{ flex: 1, background: "#1a73e8", borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.018}px 0`, textAlign: "center" }}>
                       <span style={{ fontSize: GBP_W * 0.026, color: "#fff", fontWeight: 600 }}>Directions</span>
                     </div>
-                    <div style={{ flex: 1, borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.02}px 0`, textAlign: "center", background: `${G}15`, border: `3px solid ${G}`, position: "relative" }}>
+                    <div style={{ flex: 1, borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.018}px 0`, textAlign: "center", background: `${G}15`, border: `3px solid ${G}`, position: "relative" }}>
                       <span style={{ fontSize: GBP_W * 0.026, color: "#15803d", fontWeight: 700 }}>Website</span>
                       <div style={{ position: "absolute", top: -10, right: -6, background: "#ef4444", borderRadius: 8, padding: "2px 8px", boxShadow: "0 2px 8px rgba(239,68,68,0.5)" }}>
                         <span style={{ fontSize: 11, color: "#fff", fontWeight: 800, letterSpacing: 1 }}>KEY</span>
                       </div>
                     </div>
-                    <div style={{ flex: 1, background: "#f1f3f4", borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.02}px 0`, textAlign: "center" }}>
+                    <div style={{ flex: 1, background: "#f1f3f4", borderRadius: GBP_W * 0.046, padding: `${GBP_W * 0.018}px 0`, textAlign: "center" }}>
                       <span style={{ fontSize: GBP_W * 0.026, color: "#1a73e8", fontWeight: 600 }}>Call</span>
                     </div>
                   </div>
@@ -261,13 +261,13 @@ const ThePitch: React.FC = () => {
             </div>
 
             {/* Callouts */}
-            <div style={{ marginTop: 24, opacity: calloutSpring, transform: `translateY(${interpolate(calloutSpring, [0, 1], [14, 0])}px)` }}>
+            <div style={{ marginTop: 12, opacity: calloutSpring, transform: `translateY(${interpolate(calloutSpring, [0, 1], [14, 0])}px)` }}>
               {[
                 { text: "Your digital front door", c: G },
                 { text: "No site means buried in local search", c: RD },
                 { text: "A linked site puts you in the top 3", c: BL },
               ].map((s, i) => (
-                <div key={s.text} style={{ padding: "18px 0 18px 22px", borderLeft: `3px solid ${s.c}65`, borderBottom: i < 2 ? "1px solid rgba(250,250,250,0.05)" : "none" }}>
+                <div key={s.text} style={{ padding: "10px 0 10px 18px", borderLeft: `3px solid ${s.c}65`, borderBottom: i < 2 ? "1px solid rgba(250,250,250,0.05)" : "none" }}>
                   <p style={{ fontFamily: F, fontSize: 24, fontWeight: 600, color: "rgba(250,250,250,0.7)" }}>{s.text}</p>
                 </div>
               ))}
@@ -276,7 +276,7 @@ const ThePitch: React.FC = () => {
         </div>
 
         {/* Citation */}
-        <div style={{ padding: "18px 72px 28px", borderTop: "1px solid rgba(250,250,250,0.04)" }}>
+        <div style={{ padding: "12px 72px 20px", borderTop: "1px solid rgba(250,250,250,0.04)" }}>
           <p style={{ fontFamily: FM, fontSize: 11, color: "rgba(250,250,250,0.14)", letterSpacing: 0.5 }}>
             Sources: Google/Ipsos Consumer Search Behavior Study · BrightLocal Consumer Review Survey 2024 · Safari Digital Local SEO Statistics
           </p>
@@ -304,12 +304,12 @@ const Outro: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#09090b", justifyContent: "center", alignItems: "center", opacity: fadeOut }}>
       <div style={{ transform: `scale(${logoSpring})`, opacity: logoSpring }}>
-        <Img src={staticFile("/images/logo-obsidian.webp")} style={{ height: 90, objectFit: "contain" }} />
+        <Img src={staticFile("/images/logo-obsidian.webp")} style={{ height: 140, objectFit: "contain" }} />
       </div>
-      <div style={{ position: "absolute", top: "60%", width: lineWidth, height: 1, background: "linear-gradient(90deg, transparent, #34d399, transparent)" }} />
-      <div style={{ position: "absolute", top: "65%", opacity: textOpacity, textAlign: "center" }}>
-        <p style={{ fontFamily: F2, fontSize: 18, fontWeight: 500, color: "rgba(250,250,250,0.35)", letterSpacing: 4, textTransform: "uppercase" }}>Web Design & Development</p>
-        <p style={{ fontFamily: FM2, fontSize: 15, color: "#34d399", marginTop: 10, letterSpacing: 2 }}>studioobrien.com</p>
+      <div style={{ position: "absolute", top: "62%", width: lineWidth, height: 1, background: "linear-gradient(90deg, transparent, #34d399, transparent)" }} />
+      <div style={{ position: "absolute", top: "68%", opacity: textOpacity, textAlign: "center" }}>
+        <p style={{ fontFamily: F2, fontSize: 24, fontWeight: 500, color: "rgba(250,250,250,0.35)", letterSpacing: 5, textTransform: "uppercase" }}>Web Design & Development</p>
+        <p style={{ fontFamily: FM2, fontSize: 20, color: "#34d399", marginTop: 12, letterSpacing: 3 }}>studioobrien.com</p>
       </div>
     </AbsoluteFill>
   );
