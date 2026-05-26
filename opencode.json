@@ -1,0 +1,31 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "pencil": {
+      "command": [
+        "c:\\Users\\Jarre\\.vscode\\extensions\\highagency.pencildev-0.6.24\\out\\mcp-server-windows-x64.exe",
+        "--app",
+        "visual_studio_code"
+      ],
+      "enabled": true,
+      "type": "local"
+    }
+  },
+  "agents": {
+    "copy-architect": {
+      "description": "Generates website copy from business profiles using real data only",
+      "skill": ".agents/skills/copy-architect/SKILL.md",
+      "tools": ["read", "write", "grep", "glob"]
+    },
+    "seo-engine": {
+      "description": "Generates SEO metadata, schema markup, and local SEO signals for mock sites",
+      "skill": ".agents/skills/seo-engine/SKILL.md",
+      "tools": ["read", "write", "grep", "glob"]
+    },
+    "aesthetic-engine": {
+      "description": "Builds complete single-page HTML mock sites from archetypes and business profiles",
+      "skill": ".agents/skills/aesthetic-engine/SKILL.md",
+      "tools": ["read", "write", "grep", "glob", "bash"]
+    }
+  }
+}
