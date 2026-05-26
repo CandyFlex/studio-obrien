@@ -1,0 +1,14 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-dark-atmosphere",
+  "commonParams": { "background": "dark moody background, atmospheric, no bright white", "lighting": "neon ambient lighting, colored rim lights, dramatic", "composition": "centered or offset, cinematic framing", "resolution": "1024x1024", "avoid": "no white backgrounds, no bright daylight, no corporate feel" },
+  "images": {
+    "hero-arcade": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional interior photography of a retro arcade filled with glowing neon cabinets and pinball machines, purple and cyan ambient lighting, no people, wide angle, cinematic, atmospheric, dark floor reflecting neon lights" },
+    "pinball-closeup": { "usage": "Gallery", "aspect": "square", "prompt": "Professional close-up photography of a vintage pinball machine with glowing neon playfield, chrome ball visible, colorful lights reflecting off the glass, shallow depth of field, retro arcade atmosphere, dark background" },
+    "arcade-cabinet": { "usage": "Gallery", "aspect": "square", "prompt": "Professional photography of a classic arcade cabinet like Pac-Man or Street Fighter, glowing CRT screen, colorful side art visible, dark arcade background with neon ambient light, nostalgic gaming aesthetic" },
+    "people-playing": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional photography of two people playing arcade games side by side, silhouetted against glowing screens, neon lights reflecting, dark arcade interior, candid genuine moment, shallow depth of field, cinematic" },
+    "party-room": { "usage": "Services", "aspect": "landscape", "prompt": "Professional interior photography of a birthday party room in an arcade, decorated table, colorful balloons, arcade games in background, warm festive lighting, fun atmosphere, no people visible, welcoming setup" },
+    "neon-sign": { "usage": "Hero detail", "aspect": "square", "prompt": "Professional photography of a large neon sign reading ARCADE in bright pink and cyan, hanging on a dark brick wall, glowing ambient light, cinematic, retro 80s aesthetic, shallow depth of field" },
+    "snack-bar": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional photography of a retro arcade snack bar counter, neon menu board, colorful candy and snacks displayed, dark background with ambient colored lighting, nostalgic 80s feel, no people" }
+  }
+}

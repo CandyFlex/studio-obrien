@@ -1,0 +1,14 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-botanical-natural-light",
+  "commonParams": { "background": "soft cream or sage surface, natural morning light", "lighting": "diffused natural window light, soft and airy", "composition": "centered, elegant, breathing room", "resolution": "1024x1024", "avoid": "no harsh shadows, no dark backgrounds, no studio strobes" },
+  "images": {
+    "hero-bouquet": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional photography of a stunning bridal bouquet with blush garden roses, white peonies, eucalyptus, and dusty miller greenery, tied with silk ribbon, on a cream linen table, soft natural window light, romantic and elegant, editorial floral style" },
+    "wedding-arch": { "usage": "Service", "aspect": "landscape", "prompt": "Professional photography of a beautiful floral wedding ceremony arch decorated with flowing white and blush flowers and greenery, outdoor garden setting, soft golden hour light, romantic, editorial" },
+    "flower-shop": { "usage": "Interior", "aspect": "landscape", "prompt": "Professional interior photography of a charming flower shop, wooden work table with loose stems and tools, buckets of fresh flowers along the walls, large window with natural light streaming in, cozy and inviting, no people, editorial" },
+    "arrangement-table": { "usage": "Service", "aspect": "square", "prompt": "Professional photography of a floral designer's work table with fresh cut stems, floral shears, ribbon spools, and a half-finished arrangement in a ceramic vase, white marble surface, soft natural light, artistic process shot" },
+    "succulent-garden": { "usage": "Gallery", "aspect": "square", "prompt": "Professional photography of a beautiful arrangement of succulents and air plants in a modern white ceramic planter, sage green wall background, soft natural light, botanical minimal aesthetic, clean and serene" },
+    "spa-room": { "usage": "Service", "aspect": "landscape", "prompt": "Professional interior photography of a serene spa treatment room, massage table with white linens and a small flower arrangement, soft sage green walls, diffused natural light through sheer curtains, calming and luxurious, no people" },
+    "yoga-space": { "usage": "Service", "aspect": "landscape", "prompt": "Professional interior photography of a bright empty yoga studio with wooden floors, large windows with natural light, a few plants in corners, yoga mats neatly rolled, serene and peaceful atmosphere, no people" }
+  }
+}

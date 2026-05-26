@@ -1,0 +1,15 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-warm-pet-friendly",
+  "commonParams": { "background": "warm cream or terracotta surfaces, natural light", "lighting": "bright natural window light, warm and inviting", "composition": "centered, approachable, joyful", "resolution": "1024x1024", "avoid": "no dark backgrounds, no sterile environments, no sad animals" },
+  "images": {
+    "hero-dog": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional pet photography of a happy golden retriever sitting in a bright warm pet store interior, aisles of colorful pet products in background, natural window light, joyful and welcoming, commercial quality" },
+    "treats-display": { "usage": "Product", "aspect": "square", "prompt": "Professional product photography of glass apothecary jars filled with colorful natural dog treats on a warm wooden shelf, terracotta wall background, bright natural light, premium pet store aesthetic" },
+    "grooming-station": { "usage": "Service", "aspect": "landscape", "prompt": "Professional interior photography of a bright clean dog grooming station, stainless steel tub, grooming tools organized on a shelf, fluffy towels, warm natural light through a window, welcoming and professional, no people or animals" },
+    "cat-toys": { "usage": "Product", "aspect": "square", "prompt": "Professional product photography of colorful cat toys arranged beautifully on a warm cream surface, feather wands, crinkle balls, catnip mice, bright natural light, playful and premium" },
+    "pet-beds": { "usage": "Product", "aspect": "square", "prompt": "Professional product photography of two cozy plush pet beds in different sizes on a warm wooden floor, sage green wall behind, natural window light, inviting and premium, home aesthetic" },
+    "adoption-event": { "usage": "Community", "aspect": "landscape", "prompt": "Professional photography of a bright community adoption event setup, colorful banners, pet crates with soft blankets, toys and treats displayed, warm natural light, welcoming atmosphere, no people or animals prominently" },
+    "store-interior": { "usage": "Interior", "aspect": "landscape", "prompt": "Professional interior photography of a warm charming independent pet store, wooden shelving filled with premium pet products, terracotta and sage color palette, large front window with natural light, cozy and inviting, no people or animals" },
+    "staff-area": { "usage": "About", "aspect": "square", "prompt": "Professional photography of a warm pet store counter area, a jar of dog treats on the counter, a vintage scale, product samples displayed, sage green wall, natural light, welcoming small business feel, no people" }
+  }
+}

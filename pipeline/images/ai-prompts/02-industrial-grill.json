@@ -1,0 +1,13 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-food-photography-dark-moody",
+  "commonParams": { "background": "dark wood or charcoal surface, moody atmosphere", "lighting": "warm directional light, dramatic shadows, amber tones", "composition": "centered subject, appetizing and rustic", "resolution": "1024x1024", "avoid": "no white backgrounds, no bright daylight, no pastels" },
+  "images": {
+    "hero-burger": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional food photography of a towering gourmet cheeseburger with melted cheddar, crispy bacon, lettuce, and tomato on a toasted brioche bun, dark wooden surface, warm dramatic lighting from left, shallow depth of field, steam rising, appetizing and rustic" },
+    "wings-plate": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of crispy chicken wings glazed with orange buffalo sauce on a dark slate plate, blue cheese dip in a small ramekin, celery sticks, dark wooden table, warm lighting, appetizing" },
+    "cocktail": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of a craft whiskey cocktail in a crystal rocks glass with a large ice cube and orange peel, dark bar counter, warm amber lighting, shallow depth of field, sophisticated" },
+    "bar-interior": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional interior photography of a dark industrial bar interior with exposed brick walls, wood bar counter lined with bottles, warm amber pendant lights, leather bar stools, atmospheric and moody, no people" },
+    "fries-plate": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of golden crispy french fries in a metal basket, ketchup and aioli dipping sauces in small bowls, dark wooden table, warm lighting, rustic gastropub style" },
+    "steak": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of a perfectly grilled ribeye steak with visible grill marks, rosemary sprig, flaky sea salt, dark slate plate, warm directional lighting, appetizing and premium, shallow depth of field" }
+  }
+}

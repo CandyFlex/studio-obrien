@@ -1,0 +1,14 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-industrial-dark",
+  "commonParams": { "background": "dark workshop or black background, sparks and metal", "lighting": "dramatic, welding sparks as light source, warm amber and cool blue", "composition": "action-focused, dynamic angles", "resolution": "1024x1024", "avoid": "no clean studios, no white backgrounds, no sterile environments" },
+  "images": {
+    "hero-welding": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional action photography of a welder at work, bright orange welding sparks flying, dark workshop background, protective mask visible, dramatic lighting from the arc, industrial, powerful, cinematic, no face visible clearly" },
+    "sparks-closeup": { "usage": "Gallery", "aspect": "square", "prompt": "Professional macro photography of welding sparks in mid-air, bright orange and white particles against a pitch black background, dramatic lighting, industrial art, shallow depth of field" },
+    "iron-gate": { "usage": "Portfolio", "aspect": "portrait", "prompt": "Professional photography of a beautiful custom wrought iron garden gate with ornate scrollwork, installed at a brick entrance, warm afternoon light, craftsmanship detail visible, architectural" },
+    "workshop-interior": { "usage": "Interior", "aspect": "landscape", "prompt": "Professional interior photography of an industrial metal fabrication workshop, welding stations, metal workbenches, tools on pegboard walls, sparks in the distance, dark atmosphere with warm amber glow, authentic workshop feel, no people prominently" },
+    "metal-staircase": { "usage": "Portfolio", "aspect": "portrait", "prompt": "Professional architectural photography of a custom fabricated steel and wood staircase with cable railing system, modern industrial interior, natural light from skylight, craftsmanship on display, premium" },
+    "tools-bench": { "usage": "Gallery", "aspect": "square", "prompt": "Professional photography of a metalwork bench with hammers, anvil, tongs, and a half-forged steel piece, dark workshop background, warm overhead light, craftsman's tools, rustic industrial aesthetic" },
+    "finished-railing": { "usage": "Portfolio", "aspect": "landscape", "prompt": "Professional photography of a custom steel railing with glass panels on an outdoor deck overlooking a landscape, modern clean lines, golden hour light, architectural craftsmanship, premium installation" }
+  }
+}

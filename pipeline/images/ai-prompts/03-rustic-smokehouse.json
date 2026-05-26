@@ -1,0 +1,14 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-food-photography-rustic-warm",
+  "commonParams": { "background": "warm wood surface, rustic kitchen setting", "lighting": "warm natural light from window, golden tones", "composition": "centered, generous with sides, family-style", "resolution": "1024x1024", "avoid": "no white backgrounds, no modern/minimal settings" },
+  "images": {
+    "hero-smoker": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional photography of a large black barbecue smoker with smoke billowing out, wood pile nearby, rustic outdoor setting, warm golden hour light, shallow depth of field, authentic smokehouse feel" },
+    "pulled-pork": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of a generous pile of smoked pulled pork on a rustic wooden board, barbecue sauce drizzled, pickles and white bread on the side, warm natural lighting, appetizing and hearty southern style" },
+    "ribs-plate": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of a full rack of smoked St. Louis ribs with barbecue sauce glaze, on a rustic wooden platter with cornbread and coleslaw, warm lighting, smoky atmosphere, southern comfort food" },
+    "brisket-sliced": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of perfectly sliced smoked beef brisket with visible smoke ring, arranged on butcher paper on a wooden board, juicy and tender, warm natural lighting, authentic Texas-style" },
+    "mac-cheese": { "usage": "Menu", "aspect": "square", "prompt": "Professional food photography of creamy baked mac and cheese in a cast iron skillet, golden crispy top, cheese pull visible, rustic wooden table, warm lighting, comfort food, appetizing" },
+    "bbq-interior": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional interior photography of a rustic barbecue restaurant, wooden tables, red checkered tablecloths, vintage signs on the wall, warm pendant lighting, cozy and authentic, no people, southern charm" },
+    "sweet-tea": { "usage": "Gallery detail", "aspect": "square", "prompt": "Professional food photography of a tall mason jar filled with sweet iced tea, condensation on the glass, lemon wedge on the rim, rustic wooden table, warm afternoon sunlight streaming through, refreshing southern style" }
+  }
+}

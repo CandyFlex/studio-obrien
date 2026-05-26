@@ -1,0 +1,13 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-dark-gallery-editorial",
+  "commonParams": { "background": "dark or black background, gallery aesthetic", "lighting": "dramatic spotlight or rim lighting, high contrast", "composition": "editorial, art-focused, negative space", "resolution": "1024x1024", "avoid": "no bright commercial lighting, no white backgrounds, no casual snapshots" },
+  "images": {
+    "hero-studio": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional interior photography of a dark modern tattoo studio, black walls, framed flash art on the walls, tattoo chair in center, gallery spotlighting, clean and professional, no people, editorial style" },
+    "tattoo-closeup": { "usage": "Gallery", "aspect": "square", "prompt": "Professional macro photography of a hyper-realistic black and grey tattoo sleeve in progress on skin, tattoo machine in frame, dark background, dramatic lighting showing the detail and shading, editorial" },
+    "flash-wall": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional interior photography of a gallery wall covered in framed tattoo flash art sheets, black frames, white matting, dark wall, gallery spotlighting, minimalist and artistic, no people" },
+    "artist-portrait": { "usage": "About", "aspect": "square", "prompt": "Professional portrait photography of a tattoo artist at work station, tattoo machine in gloved hand, concentrating, dark studio background, dramatic rim lighting, black and white editorial style" },
+    "color-tattoo": { "usage": "Gallery", "aspect": "square", "prompt": "Professional macro photography of a vibrant color tattoo of a rose and geometric shapes, rich reds and greens, on skin, dark background, dramatic lighting, editorial quality, artistic" },
+    "studio-wide": { "usage": "Interior", "aspect": "landscape", "prompt": "Professional interior photography of a wide shot of a high-end tattoo studio, multiple stations, black walls, gallery lighting, leather chairs, clean minimal aesthetic, no people, architectural" }
+  }
+}

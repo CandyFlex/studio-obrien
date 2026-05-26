@@ -1,0 +1,14 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-fitness-dark-energy",
+  "commonParams": { "background": "dark gym, black walls, industrial space", "lighting": "dramatic rim lighting, green accent lights, high contrast", "composition": "action shots, dynamic angles, powerful", "resolution": "1024x1024", "avoid": "no bright commercial gym lighting, no pastels, no yoga aesthetic" },
+  "images": {
+    "hero-gym": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional interior photography of a dark industrial strength gym, power racks, barbells, chalk dust in the air, green accent lighting, no people, powerful atmosphere, cinematic wide angle" },
+    "deadlift-action": { "usage": "Program", "aspect": "landscape", "prompt": "Professional action photography of an athlete mid-deadlift with a loaded barbell, dramatic side lighting showing muscle definition, dark gym background, chalk dust, powerful and intense, cinematic sports photography" },
+    "sled-push": { "usage": "Program", "aspect": "landscape", "prompt": "Professional action photography of an athlete pushing a weighted sled on artificial turf, determined expression, sweat visible, dark gym background, dramatic lighting, intense training moment, sports editorial" },
+    "kettlebell": { "usage": "Program", "aspect": "square", "prompt": "Professional photography of a row of kettlebells on a dark rubber gym floor, chalk residue, industrial gym background, dramatic overhead spotlight, simple and powerful" },
+    "boxing-bag": { "usage": "Gallery", "aspect": "square", "prompt": "Professional photography of a heavy boxing bag hanging in a dark gym corner, wrapped hands in frame, dramatic spotlight lighting, gritty and authentic training atmosphere" },
+    "group-training": { "usage": "Community", "aspect": "landscape", "prompt": "Professional action photography of a small group fitness class doing burpees in a dark gym, dramatic lighting, silhouettes, intense energy, community fitness, cinematic, no identifiable faces" },
+    "weights-rack": { "usage": "Gallery", "aspect": "landscape", "prompt": "Professional interior photography of a loaded weight plate rack in a dark gym, iron plates, chalk marks, green accent light strips on the wall, industrial aesthetic, powerful atmosphere" }
+  }
+}

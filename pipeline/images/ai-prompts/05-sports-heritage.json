@@ -1,0 +1,13 @@
+{
+  "generator": "Hugging Face FLUX.1-schnell",
+  "style": "professional-photography-clean-studio",
+  "commonParams": { "background": "clean white or dark navy surface, studio lighting", "lighting": "bright even studio lighting, no harsh shadows", "composition": "product-focused, centered, professional", "resolution": "1024x1024", "avoid": "no cluttered backgrounds, no warm/yellow casts" },
+  "images": {
+    "hero-cards": { "usage": "Hero", "aspect": "landscape", "prompt": "Professional product photography of vintage baseball cards spread on a dark navy velvet surface, one rare card in a graded case featured prominently, magnifying glass nearby, bright studio lighting, collector aesthetic" },
+    "graded-card": { "usage": "Product", "aspect": "square", "prompt": "Professional product photography of a PSA graded sports card in a clear case with a high grade label, isolated on a clean white background, bright studio lighting, premium collector item aesthetic" },
+    "vintage-memorabilia": { "usage": "Gallery", "aspect": "square", "prompt": "Professional product photography of a vintage signed baseball in a glass display case, wooden bat beside it, dark navy surface, studio lighting, sports heritage aesthetic, premium presentation" },
+    "shop-interior": { "usage": "Interior", "aspect": "landscape", "prompt": "Professional interior photography of a modern card shop, glass display cases filled with graded cards, wooden shelves with sealed boxes, bright clean lighting, organized and premium, no people" },
+    "card-break": { "usage": "Service", "aspect": "square", "prompt": "Professional product photography of sealed trading card booster boxes arranged in a fan pattern, dark navy background, studio lighting, exciting and premium, collector's dream" },
+    "jersey-display": { "usage": "Gallery", "aspect": "portrait", "prompt": "Professional photography of a framed autographed sports jersey in a shadow box, dark wall, museum spotlight, premium presentation, sports heritage, collectible art" }
+  }
+}
