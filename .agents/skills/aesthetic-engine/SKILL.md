@@ -98,7 +98,25 @@ Write `public/for/{slug}.html` — a complete, standalone HTML file with:
 - **Subtle animations.** CSS-only: fade-in on scroll, gentle hover states. No JS animation libraries.
 - **Images.** Use styled div placeholders with `data-asset="description"` attributes where real photos go later. Include descriptive alt text.
 - **The footer credit.** Always include: `<p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a></p>` — small, subtle, bottom of footer.
-- **Fonts.** Use Google Fonts only. Select fonts that match the archetype vibe. No external icon libraries — use emoji, CSS shapes, or SVG inline.
+- **Fonts.** Use Google Fonts only. No external icon libraries — use emoji, CSS shapes, or SVG inline.
+
+### Photo-First Business Rule
+
+Businesses that PRODUCE a visual product (bakeries, restaurants, florists, tattoo studios, barbers, pet groomers, metalwork, gyms) MUST use real photographs as the primary visual element. The product IS the design.
+
+**For photo-first businesses:**
+- Every menu/service card must have a real product photo at the top (not an emoji or icon)
+- The hero should use a full-bleed or large product/interior photograph
+- Add a photo strip or gallery section showing the product, space, and process
+- Menu grids should be photo-card layouts: image top, title + price + description below
+- Only use icons/emojis for information sections (hours, address, contact) — never for products
+- If `image-candidates.json` is available, embed images directly from the recommended URLs
+- If no images are sourced yet, use CSS gradient placeholders with `data-asset` attributes AND a descriptive label of what photo goes there — never substitute emojis for missing product photos
+
+**For service-only businesses** (legal, real estate, consulting):
+- Icons and abstract visuals are acceptable since there's no physical product
+- Use photos of the office, the professional, or the local area
+- The hero can be more typography-focused
 
 ## Quality Checklist (Self-Check Before Output)
 

@@ -39,9 +39,9 @@
 - **Buttons:** Terracotta fill, white text, heavily rounded (24px+)
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Pet stores sell visual products. Product and service cards must use real photos — pets, products, grooming, staff. Never emoji for products.
+- Product cards: photo-top layout, product name + price + description
 - Warmth and approachability above all else
 - Rounded corners on everything — nothing sharp or intimidating
 - Terracotta as the primary action color, sage for secondary accents
-- Typography should feel friendly and readable
-- Photography should show happy pets, smiling people, community moments
-- Paw print, heart, or nature-inspired decorative elements
+- Photography should show happy pets, smiling people, real products on shelves

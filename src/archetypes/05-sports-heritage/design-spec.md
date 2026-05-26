@@ -39,7 +39,9 @@
 - **Dividers:** Thin gold lines
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Visual products. Cards must show real photos of cards, memorabilia, and the shop interior.
 - Use trading card / trophy case design language throughout
+- Collection cards: large product photo, grade/price callout, description
 - Gold is sacred — use only for primary accents and CTAs
 - Typography should feel athletic: bold, clean, impactful
-- Cards should have "stats" layout: image top, details below with numeric emphasis
+- Gallery of featured items with stats-style information alongside

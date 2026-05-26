@@ -30,24 +30,23 @@
       --mint: #98d8c8;
       --mint-light: #b8e8dc;
       --vanilla: #f7dc6f;
-      --vanilla-light: #faec9c;
       --choc: #5c3a21;
       --choc-light: #8a5c3a;
       --cream: #fef9ef;
-      --radius: 20px;
-      --radius-lg: 28px;
+      --radius: 18px;
+      --radius-lg: 26px;
       --shadow-sm: 0 2px 12px rgba(255,143,163,0.12);
       --shadow-card: 0 4px 20px rgba(255,143,163,0.1);
       --font-display: 'Fredoka', sans-serif;
       --font-body: 'Nunito', sans-serif;
     }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1150px; margin: 0 auto; padding: 0 24px; }
 
     /* Nav */
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,245,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--pink-pale); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--pink); font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--pink); font-weight: 600; }
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--choc); opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
     .nav-links a:hover { opacity: 1; color: var(--pink); }
@@ -55,151 +54,100 @@
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,143,163,0.35); }
     @media (max-width: 768px) { .nav-links { display: none; } }
 
-    /* Decorative background shapes */
-    .bg-decoration { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
-    .bg-decoration.pink { background: rgba(255,143,163,0.08); }
-    .bg-decoration.mint { background: rgba(152,216,200,0.08); }
-    .bg-decoration.vanilla { background: rgba(247,220,111,0.1); }
+    section { padding: 80px 0; }
+    .section-label { display: inline-block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 8px; font-weight: 700; background: var(--pink-pale); padding: 4px 14px; border-radius: 50px; }
+    .section-heading { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.2; color: var(--choc); margin-bottom: 12px; }
+    .section-sub { color: var(--choc-light); margin-bottom: 40px; max-width: 560px; font-size: 1rem; }
 
-    /* Sprinkle pattern */
-    .sprinkles { position: relative; }
-    .sprinkles::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, var(--pink-light) 1px, transparent 1px),
-        radial-gradient(circle, var(--mint) 1px, transparent 1px),
-        radial-gradient(circle, var(--vanilla) 1px, transparent 1px),
-        radial-gradient(circle, var(--pink) 1px, transparent 1px);
-      background-size: 40px 40px, 60px 60px, 50px 50px, 70px 70px;
-      background-position: 0 0, 10px 15px, 25px 5px, 5px 25px;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
-    /* Drip separator */
-    .drip-separator {
-      position: relative;
-      height: 28px;
-      overflow: hidden;
-    }
-    .drip-separator::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -5%;
-      width: 110%;
-      height: 24px;
-      background: var(--pink);
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    }
-
-    /* Hero */
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: linear-gradient(170deg, #fff5f5 0%, #fff0f3 40%, #fef9ef 100%); }
-    .hero-bg { position: absolute; inset: 0; }
-    .hero .bg-decoration.pink { width: 400px; height: 400px; top: -100px; right: -100px; }
-    .hero .bg-decoration.mint { width: 300px; height: 300px; bottom: 20%; left: -80px; }
-    .hero .bg-decoration.vanilla { width: 180px; height: 180px; top: 30%; left: 60%; }
-    .hero-content { position: relative; z-index: 2; max-width: 580px; padding: 120px 0 80px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: white; padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; color: var(--pink); box-shadow: var(--shadow-sm); margin-bottom: 24px; }
-    .hero-badge .dot { width: 8px; height: 8px; background: var(--pink); border-radius: 50%; display: inline-block; }
-    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.12; color: var(--choc); margin-bottom: 16px; }
-    .hero h1 em { font-style: normal; color: var(--pink); }
-    .hero p { font-size: 1.1rem; color: var(--choc-light); margin-bottom: 32px; }
-    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
     .btn-primary { background: var(--pink); color: white; box-shadow: 0 4px 16px rgba(255,143,163,0.3); }
     .btn-primary:hover { background: #ff7a92; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,143,163,0.4); }
     .btn-outline { background: white; color: var(--pink); border: 2px solid var(--pink-light); }
     .btn-outline:hover { border-color: var(--pink); background: var(--pink-pale); }
 
-    /* Hero visual */
-    .hero-visual { display: none; }
-    @media (min-width: 1024px) {
-      .hero-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-      .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
-      .hero-visual img { width: 320px; height: 380px; object-fit: cover; border-radius: 50% 50% 50% 50% / 35% 35% 65% 65%; box-shadow: 0 20px 60px rgba(255,143,163,0.25); }
-      .hero-orbit { position: absolute; }
-      .hero-orbit.sprinkle1 { width: 50px; height: 50px; background: var(--vanilla); border-radius: 50%; top: -20px; right: 60px; }
-      .hero-orbit.sprinkle2 { width: 35px; height: 35px; background: var(--mint); border-radius: 40%; bottom: 40px; right: -20px; transform: rotate(25deg); }
-      .hero-orbit.sprinkle3 { width: 28px; height: 28px; background: var(--pink-light); border-radius: 30%; top: 60px; left: -10px; transform: rotate(-15deg); }
-    }
-
-    /* Sections */
-    section { padding: 80px 0; position: relative; }
-    .section-label { display: inline-block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink); margin-bottom: 8px; font-weight: 700; background: var(--pink-pale); padding: 4px 14px; border-radius: 50px; }
-    .section-heading { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.2; color: var(--choc); margin-bottom: 12px; }
-    .section-sub { color: var(--choc-light); margin-bottom: 40px; max-width: 560px; font-size: 1rem; }
-
-    /* Alternating section backgrounds */
     .bg-cream { background: var(--cream); }
-    .bg-mint { background: rgba(152,216,200,0.1); }
 
-    /* Story */
+    /* ===== HERO — full-bleed photo ===== */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg-img { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg-img img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(255,245,245,0.92) 0%, rgba(255,240,243,0.82) 45%, rgba(254,249,239,0.88) 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 560px; padding: 120px 0 80px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: white; padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; color: var(--pink); box-shadow: var(--shadow-sm); margin-bottom: 24px; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.12; color: var(--choc); margin-bottom: 16px; }
+    .hero h1 em { font-style: normal; color: var(--pink); }
+    .hero p { font-size: 1.1rem; color: var(--choc-light); margin-bottom: 32px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ===== PHOTO STRIP — between sections ===== */
+    .photo-strip { display: grid; grid-template-columns: repeat(4, 1fr); height: 240px; overflow: hidden; }
+    .photo-strip img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 768px) { .photo-strip { grid-template-columns: repeat(2, 1fr); height: 160px; } }
+
+    /* ===== STORY — image-first ===== */
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .story-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); }
+    .story-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
     .story-text p { margin-bottom: 16px; color: var(--choc-light); font-size: 0.95rem; }
     .story-text .pullquote { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.3; color: var(--pink); margin: 24px 0; padding-left: 20px; border-left: 4px solid var(--mint); }
-    .story-image { background: linear-gradient(135deg, var(--pink-pale) 0%, white 100%); border-radius: var(--radius-lg); aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; font-size: 64px; border: 1px solid rgba(255,143,163,0.15); }
-    @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; gap: 32px; } .story-image { aspect-ratio: 4/3; } }
+    @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; gap: 28px; } .story-photo img { aspect-ratio: 4/3; } }
 
-    /* Menu */
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-    .menu-card { background: white; border-radius: var(--radius); padding: 28px; border: 1px solid rgba(255,143,163,0.1); box-shadow: var(--shadow-card); transition: transform 0.2s, box-shadow 0.2s; }
-    .menu-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,143,163,0.15); }
-    .menu-card .emoji { font-size: 2rem; margin-bottom: 12px; display: block; }
-    .menu-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--choc); margin-bottom: 4px; }
-    .menu-card .price { display: inline-block; font-family: var(--font-display); font-size: 0.95rem; color: var(--pink); font-weight: 600; margin-bottom: 8px; }
+    /* ===== MENU — photo-first cards ===== */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; }
+    .menu-card { background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); transition: transform 0.2s, box-shadow 0.2s; }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(255,143,163,0.15); }
+    .menu-card-img { aspect-ratio: 4/3; overflow: hidden; }
+    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .menu-card:hover .menu-card-img img { transform: scale(1.05); }
+    .menu-card-body { padding: 20px 22px 24px; }
+    .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .menu-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--choc); }
+    .menu-card .price { font-family: var(--font-display); font-size: 1rem; color: var(--pink); font-weight: 600; white-space: nowrap; }
     .menu-card p { color: var(--choc-light); font-size: 0.88rem; line-height: 1.6; }
 
-    /* Points */
-    .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
-    .points-item .icon { font-size: 2.25rem; margin-bottom: 12px; display: block; }
-    .points-item h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--choc); margin-bottom: 8px; }
-    .points-item p { color: var(--choc-light); font-size: 0.88rem; }
-    @media (max-width: 768px) { .points-grid { grid-template-columns: 1fr; } }
+    /* ===== GALLERY GRID — photo showcase ===== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item.featured { grid-column: span 2; grid-row: span 1; } }
 
-    /* Testimonials */
+    /* ===== TESTIMONIALS ===== */
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testimonial-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-card); border: 1px solid rgba(255,143,163,0.08); }
+    .testimonial-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-card); }
     .testimonial-card .stars { color: var(--vanilla); font-size: 1.2rem; margin-bottom: 12px; letter-spacing: 3px; }
     .testimonial-card .text { color: var(--choc); font-style: italic; font-size: 0.92rem; margin-bottom: 16px; line-height: 1.65; }
     .testimonial-card .author { color: var(--pink); font-weight: 700; font-size: 0.88rem; }
     .testimonial-card .source { color: var(--choc-light); font-size: 0.78rem; opacity: 0.6; }
     @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
 
-    /* CTA Band */
+    /* ===== CTA BAND ===== */
     .cta-band { background: linear-gradient(135deg, var(--pink) 0%, #ff7a92 100%); text-align: center; padding: 72px 0; position: relative; overflow: hidden; }
     .cta-band h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); color: white; margin-bottom: 12px; position: relative; }
     .cta-band p { color: rgba(255,255,255,0.9); margin-bottom: 28px; font-size: 1.05rem; position: relative; }
     .cta-band .btn { background: white; color: var(--pink); }
     .cta-band .btn:hover { background: var(--cream); transform: translateY(-2px); }
-    .cta-band .float-sprinkle { position: absolute; border-radius: 50%; opacity: 0.15; }
-    .cta-band .float-sprinkle:nth-child(1) { width: 80px; height: 80px; background: white; top: 20px; left: 10%; }
-    .cta-band .float-sprinkle:nth-child(2) { width: 50px; height: 50px; background: white; bottom: 30px; right: 15%; }
-    .cta-band .float-sprinkle:nth-child(3) { width: 120px; height: 120px; background: white; top: -30px; right: -20px; }
 
-    /* Visit Info */
-    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .info-card { background: white; border-radius: var(--radius); padding: 28px; text-align: center; box-shadow: var(--shadow-card); border: 1px solid rgba(255,143,163,0.08); }
-    .info-card .icon { font-size: 1.75rem; margin-bottom: 10px; display: block; }
+    /* ===== VISIT ===== */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .info-card { background: white; border-radius: var(--radius); padding: 28px; text-align: center; box-shadow: var(--shadow-card); }
     .info-card h4 { font-family: var(--font-display); color: var(--pink); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .info-card p { color: var(--choc-light); font-size: 0.9rem; line-height: 1.7; }
     .info-card a { color: var(--pink); font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
     .info-card a:hover { border-color: var(--pink); }
-    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; gap: 16px; } }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
 
-    /* Footer */
+    /* ===== FOOTER ===== */
     .footer { background: #fff0f3; padding: 48px 0 32px; border-top: 1px solid var(--pink-pale); }
     .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
     .footer-brand { font-family: var(--font-display); font-size: 1.25rem; color: var(--pink); font-weight: 600; }
     .footer p, .footer a { color: var(--choc-light); font-size: 0.85rem; }
     .footer-bottom { border-top: 1px solid rgba(255,143,163,0.12); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .credit { color: rgba(92,58,33,0.35); font-size: 0.8rem; }
-    .credit a { color: rgba(92,58,33,0.35); }
+    .credit { color: rgba(92,58,33,0.4); font-size: 0.8rem; }
+    .credit a { color: rgba(92,58,33,0.4); }
     .credit a:hover { color: var(--pink); }
 
-    /* Animations */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
@@ -212,22 +160,24 @@
     <ul class="nav-links">
       <li><a href="#story">Our Story</a></li>
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
     <a href="#menu" class="nav-cta">Order Ahead</a>
   </div>
 </nav>
 
-<section class="hero sprinkles">
-  <div class="hero-bg">
-    <div class="bg-decoration pink"></div>
-    <div class="bg-decoration mint"></div>
-    <div class="bg-decoration vanilla"></div>
+<!-- ═══ HERO — full-bleed bakery photo ═══ -->
+<section class="hero">
+  <div class="hero-bg-img">
+    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1400&q=80"
+         alt="Bakery display case filled with fresh pastries and cakes"
+         loading="eager" />
   </div>
-  <div class="container hero-layout">
+  <div class="hero-overlay"></div>
+  <div class="container">
     <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span> Woman-Owned &bull; Est. 2019</div>
+      <div class="hero-badge">Woman-Owned &bull; Est. 2019</div>
       <h1>Butter makes it <em>better</em>.</h1>
       <p>From-scratch cakes, French macarons, and butter croissants made fresh daily in Uptown Shelby. Custom celebration cakes designed with a baker's heart and a designer's eye.</p>
       <div class="hero-buttons">
@@ -235,140 +185,139 @@
         <a href="#visit" class="btn btn-outline">Visit Us</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80"
-           alt="Decorated celebration cake with buttercream flowers"
-           loading="eager" />
-      <div class="hero-orbit sprinkle1"></div>
-      <div class="hero-orbit sprinkle2"></div>
-      <div class="hero-orbit sprinkle3"></div>
-    </div>
   </div>
 </section>
 
+<!-- ═══ PHOTO STRIP — visual break ═══ -->
+<div class="photo-strip">
+  <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80" alt="Golden croissants" loading="lazy" />
+  <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Colorful macarons" loading="lazy" />
+  <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="Frosted cupcakes" loading="lazy" />
+  <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Decorated cake" loading="lazy" />
+</div>
+
+<!-- ═══ STORY ═══ -->
 <section class="bg-cream" id="story">
   <div class="container story-grid">
+    <div class="story-photo fade-in">
+      <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=700&q=80"
+           alt="Baker's hands working fresh dough on a floured counter" loading="lazy" />
+    </div>
     <div class="story-text fade-in">
       <span class="section-label">Our Story</span>
       <h2 class="section-heading">Beautiful things should taste beautiful, too.</h2>
       <p>Maya Chen left a career in graphic design to go to pastry school in 2016. She spent three years working in Charlotte bakeries before opening Butter + Bloom in a tiny storefront on Lafayette Street in 2019.</p>
-      <p>Her philosophy is simple: every cake deserves both a designer's eye and a baker's heart. The name comes from her two favorite ingredients — "butter" because everything starts with good butter, and "bloom" because flowers are her primary design inspiration.</p>
-      <div class="pullquote">"The shop quickly became a Uptown Shelby favorite — croissants sell out by 9am."</div>
-      <p>Today, Butter + Bloom is Shelby's go-to for custom wedding cakes, delicate French macarons in rotating seasonal flavors, and butter croissants that rival anything in Charlotte.</p>
-    </div>
-    <div class="story-image fade-in">
-      <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=600&q=80"
-           alt="Baker's hands working dough on a floured surface"
-           style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-lg);" loading="lazy" />
+      <p>Her philosophy is simple: every cake deserves both a designer's eye and a baker's heart. The name comes from her two favorite ingredients — butter because everything starts with good butter, and bloom because flowers are her design inspiration.</p>
+      <div class="pullquote">"The croissants sell out by 9am. The custom cakes make people cry at weddings."</div>
+      <p>Today, Butter + Bloom is Shelby's go-to for custom wedding cakes, delicate French macarons, and butter croissants that rival anything in Charlotte.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <span class="section-label">What We Believe</span>
-    <h2 class="section-heading">Real butter. Real ingredients. Real joy.</h2>
-    <p class="section-sub">Everything we make starts with the same question: would we serve this to our own family?</p>
-    <div class="points-grid">
-      <div class="points-item fade-in">
-        <span class="icon">&#x1f9c8;</span>
-        <h3>All-Butter Everything</h3>
-        <p>No margarine. No shortening. No corners cut. European-style butter in every croissant, cake, and cookie.</p>
-      </div>
-      <div class="points-item fade-in">
-        <span class="icon">&#x1f33e;</span>
-        <h3>Seasonal & Local</h3>
-        <p>We source eggs from Rutherford County farms and feature seasonal fruits from Carolina orchards.</p>
-      </div>
-      <div class="points-item fade-in">
-        <span class="icon">&#x1f3a8;</span>
-        <h3>Designed With Love</h3>
-        <p>Every cake starts with a consultation. Bring your inspiration or let Maya create something just for you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-mint" id="menu">
+<!-- ═══ MENU — photo-first cards ═══ -->
+<section id="menu">
   <div class="container">
     <span class="section-label">Menu</span>
     <h2 class="section-heading">What's Baking Today</h2>
-    <p class="section-sub">Everything made from scratch. Everything worth the calories.</p>
+    <p class="section-sub">Everything made from scratch daily. Everything worth the calories.</p>
     <div class="menu-grid">
       <div class="menu-card fade-in">
-        <span class="emoji">&#x1f382;</span>
-        <h3>Custom Celebration Cakes</h3>
-        <span class="price">From $65</span>
-        <p>Weddings, birthdays, baby showers, graduations. Two weeks notice preferred. Tasting boxes available. Every cake is a conversation.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80" alt="Custom decorated celebration cake with buttercream flowers" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>Custom Celebration Cakes</h3>
+            <span class="price">From $65</span>
+          </div>
+          <p>Weddings, birthdays, baby showers, graduations. Two weeks notice preferred. Tasting boxes available. Every cake is a conversation between you and Maya.</p>
+        </div>
       </div>
       <div class="menu-card fade-in">
-        <span class="emoji">&#x1f36a;</span>
-        <h3>French Macarons</h3>
-        <span class="price">$24/dozen</span>
-        <p>A dozen delicate macarons in seasonal flavors. Classic vanilla bean, raspberry rose, pistachio, salted caramel, and rotating specials.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500&q=80" alt="Colorful French macarons in a display box" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>French Macarons</h3>
+            <span class="price">$24/dozen</span>
+          </div>
+          <p>A dozen delicate macarons in seasonal flavors. Vanilla bean, raspberry rose, pistachio, salted caramel, and rotating specials. Beautiful gift boxes available.</p>
+        </div>
       </div>
       <div class="menu-card fade-in">
-        <span class="emoji">&#x1f36a;</span>
-        <h3>Decorated Sugar Cookies</h3>
-        <span class="price">From $36/dozen</span>
-        <p>Custom royal icing cookies for any occasion. Perfect for party favors, corporate gifts, and edible art.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" alt="Frosted cupcakes topped with colorful sprinkles" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>Cupcake Box</h3>
+            <span class="price">$22 / six</span>
+          </div>
+          <p>Six cupcakes in your choice of flavors. Vanilla bean, chocolate fudge, lemon-raspberry, and seasonal specials. Perfect for parties or a Tuesday treat.</p>
+        </div>
       </div>
       <div class="menu-card fade-in">
-        <span class="emoji">&#x1f950;</span>
-        <h3>Croissants & Pastries</h3>
-        <span class="price">From $4</span>
-        <p>Butter croissants, pain au chocolat, morning buns, and seasonal danishes. Baked fresh by 7am. Come early — they go fast.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=500&q=80" alt="Fresh butter croissants on a wooden board" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>Croissants & Pastries</h3>
+            <span class="price">From $4</span>
+          </div>
+          <p>Butter croissants, pain au chocolat, morning buns, and seasonal danishes. Baked fresh by 7am. Come early — they go fast.</p>
+        </div>
       </div>
       <div class="menu-card fade-in">
-        <span class="emoji">&#x1f9c1;</span>
-        <h3>Cupcake Box</h3>
-        <span class="price">$22 / six</span>
-        <p>Six cupcakes in your choice of flavors. Vanilla bean, chocolate fudge, lemon-raspberry, and seasonal specials.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=500&q=80" alt="Table spread of decorated cookies and baked goods" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>Decorated Sugar Cookies</h3>
+            <span class="price">From $36/dozen</span>
+          </div>
+          <p>Custom royal icing cookies for any occasion. Birthdays, baby showers, corporate gifts — edible art in a box.</p>
+        </div>
       </div>
       <div class="menu-card fade-in">
-        <span class="emoji">&#x2615;</span>
-        <h3>Coffee & Tea</h3>
-        <span class="price">From $3</span>
-        <p>Locally roasted Pure Intentions Coffee. Whole milk, oat milk, or almond milk. Loose leaf teas from Spice & Tea Exchange.</p>
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=500&q=80" alt="Bakery display case with fresh pastries and breads" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-header">
+            <h3>Coffee & Pastry Pairing</h3>
+            <span class="price">From $7</span>
+          </div>
+          <p>Your choice of pastry plus locally roasted Pure Intentions Coffee. Whole milk, oat, or almond. The perfect morning stop.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bg-cream" id="testimonials">
+<!-- ═══ GALLERY ═══ -->
+<section class="bg-cream" id="gallery">
   <div class="container">
-    <span class="section-label">Our Space</span>
-    <h2 class="section-heading">Come See Us</h2>
-    <p class="section-sub">A warm space in Uptown Shelby. Grab a croissant, stay for the coffee, leave with a cake.</p>
-    <div class="menu-grid">
-      <div class="menu-card fade-in">
-        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80"
-             alt="Cozy cafe interior with natural light and warm seating"
-             loading="lazy"
-             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
-        <h3>The Cafe</h3>
-        <p>Our cozy seating area — perfect for a morning coffee and croissant.</p>
+    <span class="section-label">Gallery</span>
+    <h2 class="section-heading">The Bakery</h2>
+    <p class="section-sub">A warm space in Uptown Shelby. Look for the pink door on Lafayette Street.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item featured fade-in">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=80" alt="Cozy cafe interior with warm lighting and bakery counter" loading="lazy" />
       </div>
-      <div class="menu-card fade-in">
-        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&q=80"
-             alt="Bakery display case filled with fresh pastries"
-             loading="lazy"
-             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
-        <h3>The Counter</h3>
-        <p>Fresh pastries, macarons, and cakes displayed daily. Come see what's baking.</p>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&q=80" alt="Charming bakery storefront with outdoor seating" loading="lazy" />
       </div>
-      <div class="menu-card fade-in">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80"
-             alt="Charming cafe storefront with outdoor seating"
-             loading="lazy"
-             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
-        <h3>The Storefront</h3>
-        <p>Look for the pink door on South Lafayette Street in Uptown Shelby.</p>
+      <div class="gallery-item fade-in">
+        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=80" alt="Baker preparing fresh dough on a floured counter" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ TESTIMONIALS ═══ -->
 <section id="testimonials">
   <div class="container">
     <span class="section-label">Kind Words</span>
@@ -383,7 +332,7 @@
       </div>
       <div class="testimonial-card fade-in">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="text">"I send cookies here for every birthday, every baby shower, every Tuesday when I need a pick-me-up. The decorated sugar cookies are almost too pretty to eat. Almost."</p>
+        <p class="text">"I send cookies here for every birthday, every baby shower, every Tuesday. The decorated sugar cookies are almost too pretty to eat. Almost."</p>
         <div class="author">Jen M.</div>
         <div class="source">Google Review</div>
       </div>
@@ -397,17 +346,16 @@
   </div>
 </section>
 
-<div class="cta-band sprinkles">
-  <div class="float-sprinkle"></div>
-  <div class="float-sprinkle"></div>
-  <div class="float-sprinkle"></div>
-  <div class="container" style="position: relative; z-index: 1;">
+<!-- ═══ CTA BAND ═══ -->
+<div class="cta-band">
+  <div class="container">
     <h2>Let's Make Something Sweet</h2>
     <p>Custom cakes, weekly pastry boxes, and celebration cookie platters. Order ahead or stop by the shop.</p>
     <a href="#visit" class="btn">Get Directions</a>
   </div>
 </div>
 
+<!-- ═══ VISIT ═══ -->
 <section class="bg-cream" id="visit">
   <div class="container">
     <span class="section-label">Visit Us</span>
@@ -415,17 +363,14 @@
     <p class="section-sub">In the heart of Uptown Shelby. Look for the pink door on Lafayette Street.</p>
     <div class="info-grid">
       <div class="info-card fade-in">
-        <span class="icon">&#x1f4cd;</span>
         <h4>Address</h4>
         <p>312 S Lafayette St<br>Shelby, NC 28150</p>
       </div>
       <div class="info-card fade-in">
-        <span class="icon">&#x1f4f1;</span>
         <h4>Phone</h4>
         <p><a href="tel:+17045550234">(704) 555-0234</a></p>
       </div>
       <div class="info-card fade-in">
-        <span class="icon">&#x1f556;</span>
         <h4>Hours</h4>
         <p>Mon: Closed<br>Tue–Wed: 7am – 3pm<br>Thu–Fri: 7am – 5pm<br>Sat: 8am – 4pm<br>Sun: Closed</p>
       </div>
@@ -444,18 +389,14 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Butter + Bloom Bakery. All rights reserved.</p>
-      <p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a> &mdash; Photography courtesy of <a href="https://unsplash.com">Unsplash</a></p>
+      <p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a> &mdash; Photos courtesy of <a href="https://unsplash.com">Unsplash</a></p>
     </div>
   </div>
 </footer>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>

@@ -39,7 +39,9 @@
 - **Dividers:** Thick single-color bars
 
 ## Component Guidelines
-- Use heavy, condensed typography for impact
+- **PHOTO-FIRST.** Food business. Every menu card must have a real food photo at top. Use the 06-sweet-nostalgia menu card pattern as reference.
+- Hero: large food or interior photo with dark gradient overlay for text
+- Menu cards: photo 4:3 top, title + price + description. Image zoom on hover.
+- Heavy, condensed typography for impact
 - Orange as the singular pop color — use sparingly for CTAs and accents
-- Keep backgrounds consistently dark (charcoal through black)
-- Photos should feel warm and appetizing
+- Photos should feel warm, appetizing, and well-lit

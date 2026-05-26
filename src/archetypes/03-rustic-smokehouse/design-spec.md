@@ -40,6 +40,9 @@
 - **Dividers:** Thin brown lines or decorative motif bars
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Food business. Every menu card must have a real food photo. Never use emojis for food items.
+- Menu cards: photo 4:3 top, title + price + description. Image zoom on hover.
+- Hero: smoker, interior, or food plate photo with warm brown gradient overlay
 - Use serif fonts throughout for a hand-crafted, traditional feel
 - Cream/light sections for text-heavy areas, dark wood for imagery
 - Keep the palette warm and natural — nothing neon or synthetic

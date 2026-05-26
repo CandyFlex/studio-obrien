@@ -39,8 +39,9 @@
 - **Buttons:** Amber fill, dark text, sharp corners, slight metallic sheen
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Visual trade. Service cards must show real welding/metalwork photography — sparks, finished projects, the workshop.
 - Sharp, angular design — avoid rounded corners
 - Amber/orange is the only color — use for CTAs and key accents
 - Typography should feel technical and precise (condensed, clean sans-serif)
-- Industrial textures (metal, spark, blueprint) add depth
-- Photography should show craftsmanship and the workshop environment
+- Service cards: large project or action photo, service name + description
+- Photography should show craftsmanship: welding sparks, finished metalwork, workshop environment

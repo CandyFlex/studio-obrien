@@ -39,7 +39,9 @@
 - **Buttons:** White outline on dark, fills red on hover
 
 ## Component Guidelines
-- Let imagery dominate — this archetype is visual-first
+- **PHOTO-FIRST.** Visual art business. Every service/artist card must feature a real photo of the artwork or tattoo.
+- Let imagery dominate — this archetype is visual-first. Photos should be large, prominent, and gallery-styled.
 - Use white sparingly as a border/accent against black
 - Red is the only color — use it for CTAs only
 - Typography must feel editorial and elevated
+- Service cards: large artwork photo, artist name, style description

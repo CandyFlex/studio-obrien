@@ -40,8 +40,9 @@
 - **Buttons:** Sage fill, white text, slightly rounded, no harsh edges
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Florist/spa. Service cards must feature real flower arrangement photos or treatment room photos.
 - Typography is the hero — let serif fonts carry the elegance
 - Colors are soft and natural — nothing synthetic
 - Whitespace is abundant — breathe between elements
-- Botanical illustration accents for decorative touches
-- Photography should be light, airy, natural light
+- Service cards: large photo of arrangement or treatment, service name + description
+- Photography should be light, airy, natural light — real flowers, real spaces

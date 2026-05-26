@@ -39,8 +39,12 @@
 - **Dividers:** Dotted or dashed pastel lines
 
 ## Component Guidelines
-- Everything must feel warm, sweet, approachable
+- **PHOTO-FIRST.** This archetype is for food businesses. Every product card must have a real photo. Never use icons or emojis to represent food.
+- Menu cards: photo 4:3 ratio at top, title + price + description below. Image zoom on hover.
+- Hero: full-bleed bakery/product photo with a warm white overlay for text readability
+- Photo strip or gallery section between major content blocks to keep the visual appetite going
 - Rounded corners everywhere (16-24px minimum)
 - Pastels only — no harsh colors
-- Typography should feel like a candy shop sign: friendly, rounded, inviting
-- Photos should show colorful, appetizing products
+- Photography should show colorful, appetizing products in natural light
+- Typography: friendly, rounded, inviting — Fredoka for display, Nunito for body
+- Photo credit in footer: "Photography courtesy of Unsplash" for faux sites

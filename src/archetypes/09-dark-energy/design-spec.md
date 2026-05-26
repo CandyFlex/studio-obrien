@@ -39,8 +39,10 @@
 - **Buttons:** Green fill, black text, sharp, aggressive styling
 
 ## Component Guidelines
+- **PHOTO-FIRST.** Fitness is visual. Every program/trainer card must have real action photography. Never use emoji icons for fitness services.
 - Aggressive, energetic, motivating — this is not a calm yoga studio
 - Green is the electric energy color — use for all CTAs and accents
+- Program cards: large action photo, program name + description + CTA
 - Typography should feel powerful and athletic
-- Statistics and numbers should be prominent (before/after, class counts, member results)
-- Photography should show action, sweat, community, intensity
+- Statistics and numbers should be prominent
+- Photography should show action, sweat, community, intensity — real training photos, not posed stock

@@ -39,7 +39,9 @@
 - **Dividers:** Thin neon lines between sections
 
 ## Component Guidelines
-- Use grid backgrounds, scanline overlays, and neon glow effects
-- Cards have slight glow borders
+- **PHOTO-FIRST.** Entertainment venue. Use real arcade interior photography. Hero should be a wide arcade shot with dark overlay.
+- Cards have game/machine photos, neon-accented borders
+- Use grid backgrounds, scanline overlays, and neon glow effects for atmosphere
 - Hover states add intensity to glow effects
 - Mobile: reduce glow complexity, keep neon accents visible
+- Gallery section showing machines, people playing, and event space
