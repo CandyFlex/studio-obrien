@@ -1,0 +1,84 @@
+{
+  "business": {
+    "name": "Butter + Bloom Bakery",
+    "tagline": "Butter makes it better. Flowers make it yours.",
+    "slug": "butter-bloom-bakery",
+    "industry": "Artisan Bakery / Custom Cakes",
+    "location": {
+      "address": "312 S Lafayette St",
+      "city": "Shelby",
+      "state": "NC",
+      "zip": "28150",
+      "county": "Cleveland"
+    },
+    "phone": "(704) 555-0234",
+    "hours": {
+      "mon": "Closed",
+      "tue": "7am - 3pm",
+      "wed": "7am - 3pm",
+      "thu": "7am - 5pm",
+      "fri": "7am - 5pm",
+      "sat": "8am - 4pm",
+      "sun": "Closed"
+    },
+    "founded": "2019",
+    "owners": ["Maya Chen"],
+    "ownerTitles": ["Pastry Chef & Owner"]
+  },
+  "voice": {
+    "tone": "warm, sweet, joyful, community-centered, Instagram-friendly",
+    "vocabulary": ["buttercream", "from scratch", "celebration", "hand-decorated", "seasonal", "local", "custom", "joy"],
+    "avoid": ["artisanal", "curated", "bespoke", "elevated"],
+    "sampleQuotes": [
+      "Maya made our wedding cake and it was everything. Not just beautiful — the lemon-raspberry layer was the best cake I've ever eaten.",
+      "I send cookies here for every birthday, every baby shower, every Tuesday when I need a pick-me-up."
+    ]
+  },
+  "brand": {
+    "colorDirection": "Pastel pink, mint, vanilla, warm white",
+    "existingColors": ["#fff5f5", "#ff8fa3", "#98d8c8", "#f7dc6f"],
+    "mood": "Sweet and celebratory",
+    "archetype": "06-sweet-nostalgia",
+    "fonts": {
+      "display": "Fredoka One",
+      "body": "Nunito"
+    }
+  },
+  "content": {
+    "heroHeadline": "Butter Makes It Better",
+    "heroSubtext": "From-scratch cakes, cookies, and pastries made fresh daily in Uptown Shelby. Custom celebration cakes that taste as good as they look.",
+    "services": [
+      { "name": "Custom Celebration Cakes", "description": "Weddings, birthdays, baby showers, graduations. Two weeks notice preferred. Tasting boxes available.", "price": "From $65" },
+      { "name": "French Macarons", "description": "A dozen delicate macarons in seasonal flavors. Classic vanilla bean, raspberry rose, pistachio, salted caramel, and rotating specials.", "price": "$24/dozen" },
+      { "name": "Decorated Sugar Cookies", "description": "Custom royal icing cookies for any occasion. Perfect for party favors and corporate gifts.", "price": "From $36/dozen" },
+      { "name": "Croissants & Pastries", "description": "Butter croissants, pain au chocolat, morning buns, and seasonal danishes. Baked fresh by 7am.", "price": "From $4" },
+      { "name": "Cupcake Box", "description": "Six cupcakes in your choice of flavors. Vanilla bean, chocolate fudge, lemon-raspberry, and seasonal specials.", "price": "$22" }
+    ],
+    "testimonials": [
+      { "quote": "Maya made our wedding cake and it was everything. The lemon-raspberry layer was the best cake I've ever eaten. She's a true artist.", "author": "Sarah K.", "source": "Google" },
+      { "quote": "I send cookies here for every birthday, every baby shower, every Tuesday when I need a pick-me-up. The decorated sugar cookies are almost too pretty to eat. Almost.", "author": "Jen M.", "source": "Google" },
+      { "quote": "The croissants are better than anything I've had in Charlotte. We're lucky to have Butter + Bloom in Shelby.", "author": "David R.", "source": "Yelp" }
+    ],
+    "story": "Maya Chen left a career in graphic design to go to pastry school in 2016. She spent three years working in Charlotte bakeries before opening Butter + Bloom in a tiny storefront on Lafayette Street in 2019. Her philosophy is simple: beautiful things should taste beautiful too. Every cake is designed with a designer's eye and a baker's heart. The name comes from her two favorite ingredients — "butter" because everything starts with good butter, and "bloom" because flowers are her primary design inspiration. The shop quickly became a Uptown Shelby favorite, known for croissants that sell out by 9am and custom cakes that make people cry at weddings.",
+    "sellingPoints": [
+      "Everything made from scratch daily using real butter, local eggs, and seasonal ingredients",
+      "Custom celebration cakes designed to your vision — bring inspiration photos or let Maya create",
+      "French macarons in 5+ rotating seasonal flavors",
+      "Beautiful decorated sugar cookies for any occasion",
+      "Downtown Shelby storefront with coffee, pastries, and a cake consultation table"
+    ]
+  },
+  "assets": {
+    "hasOwnerPhoto": true,
+    "logoQuality": "needs-creation",
+    "heroImage": "needs-photo",
+    "galleryImages": []
+  },
+  "meta": {
+    "currentWebPresence": "None — this is a faux portfolio showcase",
+    "isFaux": true,
+    "archetype": "06-sweet-nostalgia",
+    "dateProfiled": "2026-05-25",
+    "readyToBuild": true
+  }
+}
