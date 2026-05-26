@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butter + Bloom Bakery | Custom Cakes in Shelby, NC</title>
+  <meta name="description" content="From-scratch cakes, French macarons, and butter croissants. Woman-owned bakery in Uptown Shelby, NC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+    .serif{font-family:'DM Serif Display',serif}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
+    nav .container{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-brand{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#d4786e}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#888;transition:color .2s}
+    .nav-links a:hover{color:#d4786e}
+    .nav-cta{background:#d4786e;color:#fff;padding:8px 18px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+    @media(max-width:768px){.nav-links{display:none}}
+
+    /* ===== Variant 4: SPLIT-SCREEN MODERN ===== */
+    .split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+    .split-half{display:flex;align-items:center;padding:100px 60px}
+    .split-half.image{overflow:hidden;padding:0}
+    .split-half.image img{width:100%;height:100%;object-fit:cover}
+    .split-content{max-width:440px}
+    .split-content .eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:#d4786e;font-weight:600;margin-bottom:16px}
+    .split-content h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1;margin-bottom:20px;color:#1a1a1a}
+    .split-content h1 em{font-style:italic;color:#d4786e}
+    .split-content p{color:#666;font-size:1.05rem;margin-bottom:32px;line-height:1.7}
+    @media(max-width:900px){.split{grid-template-columns:1fr}.split-half{min-height:50vh;padding:60px 30px}.split-half.image{min-height:40vh;order:-1}}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;border:none;cursor:pointer;transition:all .25s;text-transform:uppercase;letter-spacing:.06em}
+    .btn-dark{background:#1a1a1a;color:#fff}
+    .btn-dark:hover{background:#333}
+    .btn-line{background:transparent;color:#d4786e;border-bottom:2px solid #d4786e;padding:14px 0;border-radius:0}
+    .btn-line:hover{color:#a05040;border-color:#a05040}
+
+    section{padding:100px 0}
+    .container{max-width:1200px;margin:0 auto;padding:0 40px}
+    .sec-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:#d4786e;font-weight:600;margin-bottom:12px}
+    .sec-heading{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.2;margin-bottom:16px}
+    @media(max-width:768px){section{padding:60px 0}.container{padding:0 24px}}
+
+    /* Split sections */
+    .split-row{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px;align-items:stretch}
+    .split-row.reverse .split-text{order:2}
+    .split-row.reverse .split-img{order:1}
+    .split-text{display:flex;align-items:center;padding:60px}
+    .split-text .inner{max-width:440px}
+    .split-text h3{font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1.2;margin-bottom:16px}
+    .split-text p{color:#666;font-size:.92rem;line-height:1.8;margin-bottom:16px}
+    .split-img{overflow:hidden}
+    .split-img img{width:100%;height:100%;object-fit:cover}
+    @media(max-width:768px){.split-row{grid-template-columns:1fr;min-height:auto}.split-text{padding:40px 24px}.split-img{height:300px}.split-row.reverse .split-text{order:1}.split-row.reverse .split-img{order:2}}
+
+    /* Menu split */
+    .split-card{display:grid;grid-template-columns:280px 1fr;gap:0;border-top:1px solid #eee;align-items:center}
+    .split-card .sc-img{height:200px;overflow:hidden}
+    .split-card .sc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .split-card:hover .sc-img img{transform:scale(1.05)}
+    .split-card .sc-body{padding:24px 32px}
+    .split-card h3{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:6px}
+    .split-card p{color:#666;font-size:.85rem;line-height:1.6}
+    .split-card .sc-price{font-family:'DM Serif Display',serif;font-size:1.15rem;color:#d4786e}
+    @media(max-width:768px){.split-card{grid-template-columns:1fr}.split-card .sc-img{height:180px}}
+
+    /* Testimonial split */
+    .testimonial-split{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#eee}
+    .testimonial-split .ts{background:#fff;padding:48px 32px}
+    .testimonial-split .ts .stars{color:#d4a060;margin-bottom:12px;font-size:.9rem;letter-spacing:2px}
+    .testimonial-split .ts .quote{font-style:italic;color:#555;font-size:.9rem;line-height:1.7;margin-bottom:16px}
+    .testimonial-split .ts .name{font-weight:600;font-size:.88rem}
+    .testimonial-split .ts .src{font-size:.75rem;color:#aaa}
+    @media(max-width:768px){.testimonial-split{grid-template-columns:1fr}}
+
+    /* CTA split */
+    .cta-split{display:grid;grid-template-columns:1fr 1fr;min-height:400px}
+    .cta-split .cta-text{background:#d4786e;display:flex;align-items:center;justify-content:center;padding:60px;color:#fff}
+    .cta-split .cta-text h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:16px}
+    .cta-split .cta-text p{opacity:.9;margin-bottom:24px;font-size:1rem}
+    .cta-split .cta-img{overflow:hidden}
+    .cta-split .cta-img img{width:100%;height:100%;object-fit:cover}
+    .cta-split .btn{background:#fff;color:#d4786e}
+    @media(max-width:768px){.cta-split{grid-template-columns:1fr}}
+
+    footer{background:#fafafa;padding:48px 0 32px;border-top:1px solid #eee}
+    footer .credit{font-size:.78rem;color:#bbb}
+    footer .credit a{color:#bbb;transition:color .2s}
+    footer .credit a:hover{color:#d4786e}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">Butter + Bloom</a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#menu" class="nav-cta">Order</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="split">
+  <div class="split-half">
+    <div class="split-content">
+      <p class="eyebrow">Shelby, NC &bull; Est. 2019</p>
+      <h1>Butter makes it <em>better</em>.</h1>
+      <p>Custom cakes, French macarons, and butter croissants baked from scratch daily in Uptown Shelby. Woman-owned. Everything starts with real butter.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+        <a href="#menu" class="btn btn-dark">See Menu</a>
+        <a href="#story" class="btn btn-line">Our Story</a>
+      </div>
+    </div>
+  </div>
+  <div class="split-half image">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Decorated cake" loading="eager">
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <p class="sec-tag">What We Believe</p>
+    <h2 class="sec-heading">Real butter. Real ingredients. No shortcuts.</h2>
+  </div>
+</section>
+
+<div class="split-row" id="story">
+  <div class="split-text"><div class="inner">
+    <p class="sec-tag">Our Story</p>
+    <h3>Designer turned baker.</h3>
+    <p>Maya Chen left graphic design for pastry school in 2016. Three years of Charlotte bakeries taught her craft. A tiny storefront on Lafayette Street gave her a home. Butter + Bloom opened in 2019 &mdash; named for her two favorite ingredients.</p>
+    <a href="#menu" class="btn btn-line">See Our Work</a>
+  </div></div>
+  <div class="split-img"><img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=700&q=80" alt="Baker working" loading="lazy"></div>
+</div>
+
+<section id="menu">
+  <div class="container">
+    <p class="sec-tag">Menu</p>
+    <h2 class="sec-heading" style="margin-bottom:40px">What we bake.</h2>
+    <div class="split-card">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Custom cake" loading="lazy"></div>
+      <div class="sc-body"><h3>Custom Celebration Cakes</h3><p class="sc-price">From $65</p><p>Weddings, birthdays, graduations. Designed with a designer's eye and a baker's heart.</p></div>
+    </div>
+    <div class="split-card">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Macarons" loading="lazy"></div>
+      <div class="sc-body"><h3>French Macarons</h3><p class="sc-price">$24 / dozen</p><p>Vanilla bean, raspberry rose, pistachio, salted caramel, and rotating seasonal specials.</p></div>
+    </div>
+    <div class="split-card">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80" alt="Croissants" loading="lazy"></div>
+      <div class="sc-body"><h3>Butter Croissants & Pastries</h3><p class="sc-price">From $4</p><p>Pain au chocolat, morning buns, seasonal danishes. Baked fresh by 7am. Come early.</p></div>
+    </div>
+    <div class="split-card">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="Cupcakes" loading="lazy"></div>
+      <div class="sc-body"><h3>Cupcake Box</h3><p class="sc-price">$22 / six</p><p>Vanilla bean, chocolate fudge, lemon-raspberry, and seasonal specials.</p></div>
+    </div>
+    <div class="split-card">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80" alt="Cookies" loading="lazy"></div>
+      <div class="sc-body"><h3>Decorated Sugar Cookies</h3><p class="sc-price">From $36 / dozen</p><p>Custom royal icing cookies for any occasion. Edible art in a box.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="split-row reverse">
+  <div class="split-text"><div class="inner">
+    <p class="sec-tag">The Space</p>
+    <h3>A pink door on Lafayette Street.</h3>
+    <p>Our bakery is a warm, bright space in the heart of Uptown Shelby. Grab a croissant and a coffee at the counter. Stay a while at the window seats. Leave with a cake that someone will remember.</p>
+  </div></div>
+  <div class="split-img"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=700&q=80" alt="Cafe interior" loading="lazy"></div>
+</div>
+
+<section id="reviews">
+  <div class="container">
+    <p class="sec-tag">Kind Words</p>
+    <h2 class="sec-heading">What our neighbors say.</h2>
+    <div class="testimonial-split" style="margin-top:32px">
+      <div class="ts"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"Maya made our wedding cake and it was everything. The lemon-raspberry layer was the best cake I've ever eaten."</p><p class="name">Sarah K.</p><p class="src">Google</p></div>
+      <div class="ts"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"I send cookies here for every birthday, every Tuesday. The decorated sugar cookies are almost too pretty to eat."</p><p class="name">Jen M.</p><p class="src">Google</p></div>
+      <div class="ts"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"The croissants are better than anything in Charlotte. We're lucky to have this right here in Shelby."</p><p class="name">David R.</p><p class="src">Yelp</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-split">
+  <div class="cta-text">
+    <div style="max-width:400px">
+      <h2>Let's make something sweet.</h2>
+      <p>Custom cakes, pastry boxes, and celebration cookies. Stop by or order ahead.</p>
+      <a href="#visit" class="btn">Find the Bakery</a>
+    </div>
+  </div>
+  <div class="cta-img"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=700&q=80" alt="Bakery display" loading="lazy"></div>
+</div>
+
+<section id="visit" style="text-align:center">
+  <div class="container">
+    <p class="sec-tag">Visit Us</p>
+    <h2 class="sec-heading">312 S Lafayette St</h2>
+    <p style="color:#666;margin-bottom:8px">Shelby, NC 28150</p>
+    <p style="color:#d4786e;font-weight:600;margin-bottom:24px"><a href="tel:+17045550234">(704) 555-0234</a></p>
+    <p style="color:#666;line-height:2">Mon: Closed<br>Tue–Wed: 7am–3pm &bull; Thu–Fri: 7am–5pm<br>Sat: 8am–4pm &bull; Sun: Closed</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:32px">
+      <div><div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#d4786e">Butter + Bloom</div><p style="color:#999;font-size:.85rem;margin-top:4px">312 S Lafayette St, Shelby, NC 28150</p></div>
+      <p style="color:#999;font-size:.85rem">(704) 555-0234<br>Made from scratch daily</p>
+    </div>
+    <p class="credit">&copy; 2026 Butter + Bloom Bakery. Website designed by <a href="https://studioobrien.com">Studio O'Brien</a>. Photos courtesy of <a href="https://unsplash.com">Unsplash</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

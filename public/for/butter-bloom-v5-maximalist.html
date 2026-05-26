@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butter + Bloom Bakery | Custom Cakes in Shelby, NC</title>
+  <meta name="description" content="From-scratch cakes, French macarons, and butter croissants. Woman-owned bakery in Uptown Shelby, NC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:#fff8f5;color:#3a2218;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+    .container{max-width:1200px;margin:0 auto;padding:0 28px}
+
+    /* ===== Variant 5: PLAYFUL MAXIMALIST ===== */
+    :root{--pink:#ff6b8a;--peach:#ff9a76;--cream:#fff8f5;--mint:#8ed6c4;--berry:#c44569;--choc:#3a2218;--gold:#f5c842;--radius:20px;--radius-lg:32px}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,248,245,0.93);backdrop-filter:blur(14px);border-bottom:2px solid rgba(255,107,138,0.15)}
+    nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
+    .nav-brand{font-family:'Baloo 2',serif;font-size:1.3rem;font-weight:800;color:var(--berry)}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{font-weight:700;font-size:.88rem;color:#3a2218;opacity:.75;transition:all .2s}
+    .nav-links a:hover{opacity:1;color:var(--berry)}
+    .nav-pill{background:var(--pink);color:#fff!important;padding:8px 20px;border-radius:50px;opacity:1!important}
+    .nav-pill:hover{background:var(--berry)}
+    @media(max-width:768px){.nav-links{display:none}}
+
+    /* Floating shapes */
+    .float-shape{position:absolute;pointer-events:none;opacity:.12}
+    .float-shape.circle{border-radius:50%}
+    .float-shape.squircle{border-radius:30%}
+
+    /* Hero - big friendly maximalist */
+    .hero-mx{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#fff8f5 0%,#fff0ea 50%,#fff8f5 100%)}
+    .hero-mx .bg-blob{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,138,0.12) 0%,transparent 70%);top:-100px;right:-100px;border-radius:50%}
+    .hero-mx .bg-blob2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(142,214,196,0.1) 0%,transparent 70%);bottom:-50px;left:-50px;border-radius:50%}
+    .hero-mx .bg-blob3{position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(245,200,66,0.12) 0%,transparent 70%);top:40%;left:50%;border-radius:50%}
+    .hero-mx-content{position:relative;z-index:1;max-width:600px}
+    .hero-mx-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;padding:10px 22px;border-radius:50px;font-weight:800;font-size:.82rem;color:var(--berry);box-shadow:0 4px 20px rgba(255,107,138,0.15);margin-bottom:24px}
+    .hero-mx-pill .dot{width:10px;height:10px;background:var(--pink);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.5);opacity:.5}}
+    .hero-mx h1{font-family:'Baloo 2',serif;font-size:clamp(2.6rem,6.5vw,5rem);line-height:1.08;color:var(--choc);margin-bottom:16px}
+    .hero-mx h1 .highlight{color:var(--pink);position:relative;display:inline-block}
+    .hero-mx h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:8px;background:rgba(255,107,138,0.2);border-radius:4px;z-index:-1}
+    .hero-mx p{font-size:1.15rem;color:#6b4530;margin-bottom:32px;line-height:1.7}
+    .hero-mx-visual{position:absolute;right:40px;bottom:80px;z-index:1;display:none}
+    @media(min-width:900px){.hero-mx-visual{display:block}}
+    .hero-mx-visual .cake-stack{position:relative;width:280px}
+    .hero-mx-visual .cake-stack img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(196,69,105,0.2);transform:rotate(3deg)}
+    .hero-mx-visual .float-card{position:absolute;background:#fff;border-radius:16px;padding:12px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.08);font-weight:700;font-size:.85rem;color:var(--berry)}
+    .hero-mx-visual .float-card.top{top:-20px;left:-40px;transform:rotate(-8deg)}
+    .hero-mx-visual .float-card.bottom{bottom:-20px;right:-30px;transform:rotate(5deg)}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .25s}
+    .btn-mx{background:var(--pink);color:#fff;border-radius:50px;box-shadow:0 6px 24px rgba(255,107,138,0.35)}
+    .btn-mx:hover{background:var(--berry);transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,69,105,0.4)}
+    .btn-out{background:transparent;color:var(--berry);border:3px solid rgba(255,107,138,0.25);border-radius:50px}
+    .btn-out:hover{border-color:var(--pink);background:rgba(255,107,138,0.05)}
+
+    /* Marquee */
+    .marquee{background:var(--pink);overflow:hidden;padding:16px 0;white-space:nowrap}
+    .marquee-track{display:inline-flex;animation:marquee 25s linear infinite}
+    .marquee span{color:#fff;font-weight:800;font-size:1.2rem;padding:0 32px;font-family:'Baloo 2',serif}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    section{padding:80px 0;position:relative;overflow:hidden}
+    .sec-pill{display:inline-block;background:rgba(255,107,138,0.1);color:var(--berry);padding:8px 20px;border-radius:50px;font-weight:800;font-size:.82rem;margin-bottom:16px}
+    .sec-heading{font-family:'Baloo 2',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;color:var(--choc);margin-bottom:16px}
+
+    /* Story card stack */
+    .story-stack{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .story-stack .ss-photos{position:relative;height:450px}
+    .story-stack .ss-photos img{position:absolute;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.08);object-fit:cover}
+    .story-stack .ss-photos img:nth-child(1){width:75%;aspect-ratio:3/4;top:0;left:0;z-index:3}
+    .story-stack .ss-photos img:nth-child(2){width:55%;aspect-ratio:1;bottom:0;right:0;z-index:2;border:6px solid #fff8f5}
+    .story-stack .ss-photos .ss-badge{position:absolute;bottom:40px;left:20px;z-index:4;background:var(--gold);color:var(--choc);padding:12px 24px;border-radius:50px;font-weight:800;font-family:'Baloo 2',serif;box-shadow:0 4px 16px rgba(245,200,66,0.3);transform:rotate(-5deg)}
+    @media(max-width:768px){.story-stack{grid-template-columns:1fr}.story-stack .ss-photos{height:350px}}
+
+    /* Product card carousel feel */
+    .product-bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:20px}
+    .product-bento .bento-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;transition:transform .25s}
+    .product-bento .bento-card:hover{transform:translateY(-6px)}
+    .product-bento .bento-card.featured{grid-column:span 2;grid-row:span 2}
+    .product-bento .bento-card .bc-img{aspect-ratio:1;overflow:hidden}
+    .product-bento .bento-card .bc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .product-bento .bento-card:hover .bc-img img{transform:scale(1.06)}
+    .product-bento .bento-card .bc-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,0.55))}
+    .product-bento .bento-card .bc-overlay h3{color:#fff;font-family:'Baloo 2',serif;font-size:1.3rem;margin-bottom:4px}
+    .product-bento .bento-card .bc-overlay .price{color:var(--gold);font-weight:800;font-size:1rem}
+    .product-bento .bento-card .bc-tag{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--choc);padding:6px 14px;border-radius:50px;font-weight:800;font-size:.72rem}
+    @media(max-width:768px){.product-bento{grid-template-columns:1fr 1fr}.product-bento .bento-card.featured{grid-column:span 2}}
+
+    /* Reviews - overlapping cards */
+    .reviews-stack{position:relative;max-width:700px;margin:0 auto;height:200px}
+    .review-floating{position:absolute;background:#fff;border-radius:var(--radius);padding:24px 28px;box-shadow:0 6px 28px rgba(0,0,0,0.06);max-width:380px}
+    .review-floating:nth-child(1){top:0;left:0;z-index:3}
+    .review-floating:nth-child(2){top:40px;right:0;z-index:2}
+    .review-floating:nth-child(3){top:100px;left:60px;z-index:1}
+    .review-floating .rf-stars{color:var(--gold);margin-bottom:8px;letter-spacing:2px}
+    .review-floating .rf-quote{font-style:italic;font-size:.88rem;color:#6b4530;line-height:1.6;margin-bottom:10px}
+    .review-floating .rf-name{font-weight:800;font-size:.82rem}
+    @media(max-width:768px){.reviews-stack{height:auto;display:flex;flex-direction:column;gap:16px}.review-floating{position:static;max-width:100%}}
+
+    /* CTA - big bold */
+    .cta-mx{background:linear-gradient(135deg,var(--berry) 0%,var(--pink) 100%);text-align:center;padding:80px 0;position:relative;overflow:hidden}
+    .cta-mx h2{font-family:'Baloo 2',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:12px;position:relative;z-index:1}
+    .cta-mx p{color:rgba(255,255,255,.85);margin-bottom:28px;font-size:1.1rem;position:relative;z-index:1}
+    .cta-mx .btn{background:#fff;color:var(--berry);border-radius:50px;position:relative;z-index:1}
+    .cta-mx .float-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,0.06)}
+    .cta-mx .float-circle:nth-child(1){width:200px;height:200px;top:-40px;left:10%}
+    .cta-mx .float-circle:nth-child(2){width:140px;height:140px;bottom:-20px;right:15%}
+    .cta-mx .float-circle:nth-child(3){width:80px;height:80px;top:30%;left:60%}
+
+    footer{background:#3a2218;color:rgba(255,248,245,0.7);padding:48px 0 32px}
+    footer .credit{font-size:.78rem;color:rgba(255,248,245,0.35)}
+    footer .credit a{color:rgba(255,248,245,0.35);transition:color .2s}
+    footer .credit a:hover{color:var(--gold)}
+
+    @media(max-width:768px){section{padding:50px 0}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">Butter + Bloom</a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#menu" class="nav-pill">Order</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero-mx">
+  <div class="bg-blob"></div><div class="bg-blob2"></div><div class="bg-blob3"></div>
+  <div class="container">
+    <div class="hero-mx-content">
+      <div class="hero-mx-pill"><span class="dot"></span> Woman-Owned &bull; Est. 2019 &bull; Shelby, NC</div>
+      <h1>Butter makes it <span class="highlight">better</span>.</h1>
+      <p>From-scratch cakes, dreamy macarons, and croissants that sell out by 9am. A pink door on Lafayette Street. A bakery that feels like a hug.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#menu" class="btn btn-mx">See What's Baking</a>
+        <a href="#story" class="btn btn-out">Our Story</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-mx-visual">
+    <div class="cake-stack">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Celebration cake" loading="eager">
+      <div class="float-card top">&#127856; Custom Cakes</div>
+      <div class="float-card bottom">&#129391; Macarons</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>&#127856; Custom Cakes</span><span>&#129391; French Macarons</span><span>&#129360; Butter Croissants</span><span>&#129473; Cupcakes</span><span>&#127850; Sugar Cookies</span><span>&#9749; Fresh Coffee</span>
+    <span>&#127856; Custom Cakes</span><span>&#129391; French Macarons</span><span>&#129360; Butter Croissants</span><span>&#129473; Cupcakes</span><span>&#127850; Sugar Cookies</span><span>&#9749; Fresh Coffee</span>
+  </div>
+</div>
+
+<section id="story">
+  <div class="container story-stack">
+    <div class="ss-photos">
+      <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=80" alt="Baker" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=300&q=80" alt="Croissants" loading="lazy">
+      <div class="ss-badge">Est. 2019</div>
+    </div>
+    <div>
+      <span class="sec-pill">Our Story</span>
+      <h2 class="sec-heading">Designer. Baker. Cake whisperer.</h2>
+      <p style="color:#6b4530;margin-bottom:16px;line-height:1.8">Maya Chen left graphic design for pastry school because she wanted to make things people could actually <em>eat</em>. Three years of Charlotte bakeries. One tiny storefront. A pink door. A dream.</p>
+      <p style="color:#6b4530;margin-bottom:16px;line-height:1.8">She named it Butter + Bloom &mdash; butter because everything starts with good butter, bloom because flowers are her inspiration. The croissants started selling out by 9am. The custom cakes started making people cry at weddings. Shelby had found its bakery.</p>
+      <a href="#menu" class="btn btn-mx" style="margin-top:8px">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:rgba(255,107,138,0.04)" id="menu">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="sec-pill">Menu</span>
+      <h2 class="sec-heading">What's Baking Today</h2>
+    </div>
+    <div class="product-bento">
+      <div class="bento-card featured">
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Custom cake" loading="lazy"></div>
+        <div class="bc-overlay"><span class="bc-tag">Popular</span><h3>Custom Celebration Cakes</h3><span class="price">From $65</span></div>
+      </div>
+      <div class="bento-card">
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Macarons" loading="lazy"></div>
+        <div class="bc-overlay"><h3>French Macarons</h3><span class="price">$24/doz</span></div>
+      </div>
+      <div class="bento-card">
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80" alt="Croissants" loading="lazy"></div>
+        <div class="bc-overlay"><span class="bc-tag">Sells out fast!</span><h3>Butter Croissants</h3><span class="price">From $4</span></div>
+      </div>
+      <div class="bento-card">
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="Cupcakes" loading="lazy"></div>
+        <div class="bc-overlay"><h3>Cupcake Box</h3><span class="price">$22 / six</span></div>
+      </div>
+      <div class="bento-card">
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80" alt="Cookies" loading="lazy"></div>
+        <div class="bc-overlay"><h3>Sugar Cookies</h3><span class="price">From $36/doz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" style="background:var(--mint)">
+  <div class="marquee-track">
+    <span>&#9733;&#9733;&#9733;&#9733;&#9733; "Best cake I've ever eaten" &mdash; Sarah K.</span><span>&#9733;&#9733;&#9733;&#9733;&#9733; "Almost too pretty to eat" &mdash; Jen M.</span><span>&#9733;&#9733;&#9733;&#9733;&#9733; "Better than Charlotte" &mdash; David R.</span>
+    <span>&#9733;&#9733;&#9733;&#9733;&#9733; "Best cake I've ever eaten" &mdash; Sarah K.</span><span>&#9733;&#9733;&#9733;&#9733;&#9733; "Almost too pretty to eat" &mdash; Jen M.</span><span>&#9733;&#9733;&#9733;&#9733;&#9733; "Better than Charlotte" &mdash; David R.</span>
+  </div>
+</div>
+
+<section id="reviews">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="sec-pill">Kind Words</span>
+      <h2 class="sec-heading">What our neighbors say.</h2>
+    </div>
+    <div class="reviews-stack">
+      <div class="review-floating"><div class="rf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rf-quote">"Maya made our wedding cake and it was everything. The lemon-raspberry layer was the best cake I've ever eaten."</p><p class="rf-name">Sarah K.</p></div>
+      <div class="review-floating"><div class="rf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rf-quote">"I send cookies here for every birthday, every baby shower, every Tuesday. Almost too pretty to eat. Almost."</p><p class="rf-name">Jen M.</p></div>
+      <div class="review-floating"><div class="rf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rf-quote">"The croissants are better than anything I've had in Charlotte. We're lucky to have this in Shelby."</p><p class="rf-name">David R.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="text-align:center">
+  <div class="container">
+    <span class="sec-pill">Visit Us</span>
+    <h2 class="sec-heading">Find the pink door.</h2>
+    <p style="color:#6b4530;font-size:1.1rem;margin-bottom:8px">312 S Lafayette St, Shelby, NC 28150</p>
+    <p style="color:var(--berry);font-weight:800;font-size:1.1rem;margin-bottom:24px"><a href="tel:+17045550234">(704) 555-0234</a></p>
+    <div style="display:inline-block;text-align:left;line-height:2.2;color:#6b4530">
+      <strong>Mon:</strong> Closed<br>
+      <strong>Tue–Wed:</strong> 7am – 3pm<br>
+      <strong>Thu–Fri:</strong> 7am – 5pm<br>
+      <strong>Sat:</strong> 8am – 4pm<br>
+      <strong>Sun:</strong> Closed
+    </div>
+  </div>
+</section>
+
+<div class="cta-mx">
+  <div class="float-circle"></div><div class="float-circle"></div><div class="float-circle"></div>
+  <div class="container">
+    <h2>Let's make something sweet!</h2>
+    <p>Custom cakes, pastry boxes, and cookies that taste like home. Come see us.</p>
+    <a href="#visit" class="btn">Come Visit</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:32px">
+      <div><div style="font-family:'Baloo 2',serif;font-size:1.2rem;font-weight:800;color:var(--gold)">Butter + Bloom</div><p style="margin-top:4px">312 S Lafayette St, Shelby, NC 28150</p></div>
+      <p>(704) 555-0234<br>Made from scratch daily</p>
+    </div>
+    <p class="credit">&copy; 2026 Butter + Bloom Bakery. Website designed by <a href="https://studioobrien.com">Studio O'Brien</a>. Photos courtesy of <a href="https://unsplash.com">Unsplash</a>.</p>
+  </div>
+</footer>
+</body>
+</html>
