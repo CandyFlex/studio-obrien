@@ -1,58 +1,86 @@
 {
-  "generator": "DALL-E 3 / Midjourney / Flux / Ideogram",
-  "style": "professional-food-photography-white-bg",
+  "generator": "Hugging Face FLUX.1-schnell via Inference API",
+  "style": "professional-food-photography-white-bg-consistent",
   "commonParams": {
-    "background": "pure white background, studio lighting",
-    "style": "professional food photography, 85mm lens, f/2.8, soft natural light",
-    "composition": "centered, slight angle, negative space for text overlay",
-    "resolution": "1024x1024 square or 1792x1024 landscape",
-    "avoid": "no shadows on background, no props, no hands, no text, no logos"
+    "background": "pure white background, seamless white, no shadows on background",
+    "lighting": "soft natural studio lighting from left, 5600K, no harsh shadows",
+    "lens": "85mm f/2.8 macro lens, shallow depth of field",
+    "composition": "centered subject, clean negative space for text overlay",
+    "resolution": "1024x1024 square, HD quality",
+    "avoid": "no props, no hands, no text, no logos, no dark backgrounds, no warm yellow casts"
   },
   "images": {
+
     "hero-cake": {
-      "prompt": "Professional food photography of a stunning three-tier vanilla buttercream celebration cake decorated with fresh pink roses and mint leaves, pure white background, studio lighting, 85mm lens, shallow depth of field, centered composition with space for text",
+      "usage": "Hero section — main showcase cake",
+      "aspect": "portrait",
+      "prompt": "Professional food photography of a stunning three-tier vanilla buttercream celebration cake decorated with fresh pink peonies and soft green eucalyptus leaves cascading down the tiers, pure white seamless background, soft studio lighting from left, 85mm f/2.8, shallow depth of field focusing on the front tier, centered composition, elegant and romantic"
+    },
+
+    "custom-cake-classic": {
+      "usage": "Menu card — Classic celebration cake",
+      "aspect": "square",
+      "prompt": "Professional food photography of an elegant round vanilla cake with smooth pink buttercream frosting, decorated with delicate buttercream rosettes and gold leaf accents on top, pure white background, studio lighting, 85mm macro lens, top-down slightly angled shot, clean and minimal"
+    },
+
+    "macarons-array": {
+      "usage": "Menu card — French macarons",
+      "aspect": "square",
+      "prompt": "Professional food photography of twelve colorful French macarons arranged in three neat rows of four on a pure white surface, colors include pink raspberry, mint green pistachio, yellow vanilla, lavender blackberry, and coral passionfruit, pure white background, bright studio lighting, overhead shot, perfect symmetry, vibrant and appetizing"
+    },
+
+    "croissants-stack": {
+      "usage": "Menu card — Butter croissants",
+      "aspect": "square",
+      "prompt": "Professional food photography of three golden brown butter croissants stacked beautifully with flaky layers visible and one croissant cut in half showing the honeycomb interior, pure white background, warm studio lighting from left, 85mm macro lens, front angle at 45 degrees, steam rising gently"
+    },
+
+    "cupcakes-row": {
+      "usage": "Menu card — Cupcake box",
+      "aspect": "square",
+      "prompt": "Professional food photography of six beautifully frosted cupcakes in a neat row from left to right: vanilla pink, chocolate, lemon yellow, raspberry, blueberry, and vanilla confetti with rainbow sprinkles, each with a perfect swirl of buttercream, pure white background, bright studio lighting, front angle, colorful and joyful"
+    },
+
+    "sugar-cookies-decorated": {
+      "usage": "Menu card — Sugar cookies",
+      "aspect": "square",
+      "prompt": "Professional food photography of decorated royal icing sugar cookies in flower shapes, heart shapes, and round shapes with pink, white, mint green, and gold metallic icing details, arranged in a beautiful pattern on a pure white surface, pure white background, studio lighting, overhead flat lay shot, intricate detail visible"
+    },
+
+    "baker-hands-dough": {
+      "usage": "Story section — baker at work",
       "aspect": "landscape",
-      "usage": "Hero section"
+      "prompt": "Professional photography of a baker's hands dusted with flour kneading fresh dough on a marble countertop, soft natural window light from the left, shallow depth of field focusing on the dough, warm authentic tones, lifestyle editorial style, rustic and genuine, white marble surface"
     },
-    "custom-cake": {
-      "prompt": "Professional food photography of an elegant custom decorated birthday cake with pink buttercream rosettes and gold leaf accents, pure white background, studio lighting, 85mm macro lens, top-down slight angle",
-      "aspect": "square",
-      "usage": "Menu card — Custom Celebration Cakes"
-    },
-    "macarons": {
-      "prompt": "Professional food photography of a colorful assortment of French macarons in pink, mint green, yellow, and lavender arranged in a neat row on a pure white surface, white background, studio lighting, overhead shot, perfect symmetry",
-      "aspect": "square",
-      "usage": "Menu card — French Macarons"
-    },
-    "croissants": {
-      "prompt": "Professional food photography of three golden butter croissants stacked slightly overlapping on a pure white surface, flaky layers visible, warm golden color, pure white background, studio lighting, 85mm lens, front angle",
-      "aspect": "square",
-      "usage": "Menu card — Butter Croissants"
-    },
-    "cupcakes": {
-      "prompt": "Professional food photography of six beautifully frosted cupcakes in pink and vanilla buttercream with colorful sprinkles, arranged in a neat row on a pure white surface, white background, studio lighting, 85mm, bright and playful",
-      "aspect": "square",
-      "usage": "Menu card — Cupcake Box"
-    },
-    "sugar-cookies": {
-      "prompt": "Professional food photography of decorated royal icing sugar cookies in flower and heart shapes with pink, white, and gold icing details, arranged on a pure white surface, pure white background, studio lighting, overhead shot",
-      "aspect": "square",
-      "usage": "Menu card — Decorated Sugar Cookies"
-    },
-    "baker-hands": {
-      "prompt": "Professional photography of a baker's hands dusted with flour working fresh dough on a marble counter, soft natural window light, warm tones, shallow depth of field focusing on the dough, lifestyle editorial style",
+
+    "bakery-interior-counter": {
+      "usage": "Gallery — bakery interior",
       "aspect": "landscape",
-      "usage": "Story section"
+      "prompt": "Professional interior photography of a beautiful modern bakery display counter filled with colorful pastries, cakes, and croissants, warm natural light streaming through a large window, pink tile backsplash, marble countertops, shallow depth of field, lifestyle editorial style, cozy and inviting atmosphere, no people visible"
     },
-    "bakery-counter": {
-      "prompt": "Professional interior photography of a beautiful pink-toned bakery display counter filled with colorful pastries and cakes, warm natural light through a window, shallow depth of field, lifestyle editorial style, cozy and inviting",
+
+    "bakery-storefront": {
+      "usage": "Visit section — storefront",
       "aspect": "landscape",
-      "usage": "Gallery / About section"
+      "prompt": "Professional exterior photography of a charming small bakery storefront with a soft pink painted door, flower boxes filled with pink and white blooms below the window, warm golden hour afternoon light, brick building facade, welcoming and inviting, ground-level straight-on shot, lifestyle editorial style"
     },
-    "storefront": {
-      "prompt": "Professional exterior photography of a charming small bakery storefront with a pink door, flower boxes, warm afternoon light, welcoming feel, ground-level shot, editorial style",
-      "aspect": "landscape",
-      "usage": "Visit / Location section"
+
+    "cake-slice": {
+      "usage": "Gallery detail — cake slice",
+      "aspect": "square",
+      "prompt": "Professional food photography of a perfectly cut slice of vanilla layer cake with pink buttercream and fresh raspberries between layers, placed on a white ceramic plate with a silver fork beside it, pure white background, soft studio lighting, 85mm macro lens, side angle showing layers, appetizing and elegant"
+    },
+
+    "macaron-single": {
+      "usage": "Gallery detail — single macaron",
+      "aspect": "square",
+      "prompt": "Professional food photography of a single pink raspberry French macaron split in half showing the smooth filling, the delicate feet of the macaron visible, pure white background, soft studio lighting, 85mm macro lens extreme close up, shallow depth of field, artful and minimal"
+    },
+
+    "coffee-pastry-pairing": {
+      "usage": "Menu or gallery — coffee pairing",
+      "aspect": "square",
+      "prompt": "Professional food photography of a white ceramic latte cup with perfect latte art rosetta beside a golden butter croissant on a small white plate, pure white background, soft warm morning light from left, 85mm lens, slightly overhead angle, cozy and comforting"
     }
   }
 }
