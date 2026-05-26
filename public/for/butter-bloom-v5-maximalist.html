@@ -12,12 +12,7 @@
     body{font-family:'Nunito',sans-serif;background:#fff8f5;color:#3a2218;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
     .container{max-width:1200px;margin:0 auto;padding:0 28px}
-    :root{--pink:#ff6b8a;--peach:#ff9a76;--cream:#fff8f5;--mint:#8ed6c4;--berry:#c44569;--choc:#3a2218;--gold:#f5c842;--white:#ffffff;--radius:20px;--radius-lg:32px}
-
-    /* Image system: data-ai-src = local AI image (preferred when generated) */
-    /* src = Unsplash fallback (works now) */
-    .ai-img{background:linear-gradient(135deg,rgba(255,107,138,0.04) 0%,rgba(142,214,196,0.04) 100%)}
-    .ai-img img{width:100%;height:100%;object-fit:cover}
+    :root{--pink:#ff6b8a;--peach:#ff9a76;--cream:#fff8f5;--mint:#8ed6c4;--berry:#c44569;--choc:#3a2218;--gold:#f5c842;--radius:20px;--radius-lg:32px}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,248,245,0.94);backdrop-filter:blur(14px);border-bottom:2px solid rgba(255,107,138,0.12)}
     nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
@@ -28,9 +23,11 @@
     .nav-pill{background:var(--pink);color:#fff!important;padding:8px 20px;border-radius:50px;opacity:1!important}
     @media(max-width:768px){.nav-links{display:none}}
 
+    /* ===== HERO — maximalist blob shapes + floating cake ===== */
     .hero-mx{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#fff8f5 0%,#fff0ea 50%,#fff8f5 100%)}
     .hero-mx .bg-blob{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,138,0.10) 0%,transparent 70%);top:-100px;right:-100px;border-radius:50%}
     .hero-mx .bg-blob2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(142,214,196,0.08) 0%,transparent 70%);bottom:-50px;left:-50px;border-radius:50%}
+    .hero-mx .bg-blob3{position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(245,200,66,0.10) 0%,transparent 70%);top:40%;left:50%;border-radius:50%}
     .hero-mx-content{position:relative;z-index:1;max-width:580px}
     .hero-mx-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;padding:10px 22px;border-radius:50px;font-weight:800;font-size:.82rem;color:var(--berry);box-shadow:0 4px 20px rgba(255,107,138,0.15);margin-bottom:24px}
     .hero-mx-pill .dot{width:10px;height:10px;background:var(--pink);border-radius:50%;animation:pulse 2s infinite}
@@ -42,7 +39,7 @@
     .hero-mx-visual{position:absolute;right:20px;bottom:60px;z-index:1;display:none}
     @media(min-width:900px){.hero-mx-visual{display:block}}
     .hero-mx-visual .cake-frame{width:320px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 60px rgba(196,69,105,0.18);transform:rotate(3deg);border:5px solid #fff}
-    .hero-mx-visual .cake-frame .ai-img{aspect-ratio:3/4}
+    .hero-mx-visual .cake-frame img{width:100%;aspect-ratio:3/4;object-fit:cover}
     .hero-mx-visual .float-tag{position:absolute;background:#fff;border-radius:16px;padding:12px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.07);font-weight:800;font-size:.82rem;color:var(--berry)}
     .hero-mx-visual .float-tag.top{top:-15px;left:-35px;transform:rotate(-5deg)}
     .hero-mx-visual .float-tag.bottom{bottom:-15px;right:-25px;transform:rotate(4deg)}
@@ -53,6 +50,7 @@
     .btn-outline{background:transparent;color:var(--berry);border:3px solid rgba(255,107,138,0.2);border-radius:50px}
     .btn-outline:hover{border-color:var(--pink);background:rgba(255,107,138,0.04)}
 
+    /* ===== MARQUEE ===== */
     .marquee{overflow:hidden;padding:18px 0;white-space:nowrap}
     .marquee.pink{background:var(--pink)}
     .marquee.mint{background:var(--mint)}
@@ -65,20 +63,25 @@
     .sec-pill{display:inline-block;background:rgba(255,107,138,0.08);color:var(--berry);padding:8px 20px;border-radius:50px;font-weight:800;font-size:.82rem;margin-bottom:16px}
     .sec-heading{font-family:'Baloo 2',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;color:var(--choc);margin-bottom:16px}
 
+    /* ===== STORY — overlapping photo stack ===== */
     .story-stack{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
     .story-stack .ss-photos{position:relative;height:440px}
-    .story-stack .ss-photo-frame{position:absolute;overflow:hidden;border-radius:var(--radius-lg);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
-    .story-stack .ss-photo-frame.main{width:70%;aspect-ratio:3/4;top:0;left:0;z-index:3;border:5px solid #fff}
+    .story-stack .ss-photo-frame{position:absolute;overflow:hidden;border-radius:var(--radius-lg)}
+    .story-stack .ss-photo-frame.main{width:70%;aspect-ratio:3/4;top:0;left:0;z-index:3;box-shadow:0 12px 40px rgba(0,0,0,0.08);border:5px solid #fff}
+    .story-stack .ss-photo-frame.main img{width:100%;height:100%;object-fit:cover}
     .story-stack .ss-photo-frame.second{width:55%;aspect-ratio:1;bottom:0;right:0;z-index:2;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+    .story-stack .ss-photo-frame.second img{width:100%;height:100%;object-fit:cover}
     .story-stack .ss-photos .ss-badge{position:absolute;bottom:60px;left:15px;z-index:4;background:var(--gold);color:var(--choc);padding:12px 24px;border-radius:50px;font-weight:800;font-family:'Baloo 2',serif;box-shadow:0 4px 16px rgba(245,200,66,0.3);transform:rotate(-4deg)}
     .story-text p{color:#6b4530;margin-bottom:16px;line-height:1.8;font-size:.95rem}
     @media(max-width:768px){.story-stack{grid-template-columns:1fr}.story-stack .ss-photos{height:340px}}
 
+    /* ===== BENTO PRODUCT GRID ===== */
     .product-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .bento-card{border-radius:var(--radius-lg);overflow:hidden;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform .25s,box-shadow .25s;border:1px solid rgba(0,0,0,0.04)}
     .bento-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,0.08)}
     .bento-card.featured{grid-column:span 2;grid-row:span 2}
-    .bento-card .bc-img{aspect-ratio:1;overflow:hidden;background:#fff}
+    .bento-card .bc-img{overflow:hidden;background:#fff}
+    .bento-card .bc-img{aspect-ratio:1}
     .bento-card.featured .bc-img{aspect-ratio:4/3}
     .bento-card .bc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
     .bento-card:hover .bc-img img{transform:scale(1.05)}
@@ -91,6 +94,7 @@
     .bento-card .bc-desc{font-size:.82rem;color:#8a7060;line-height:1.5}
     @media(max-width:768px){.product-bento{grid-template-columns:1fr 1fr}.bento-card.featured{grid-column:span 2}}
 
+    /* ===== GALLERY ===== */
     .gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
     .gallery-grid .g-item{border-radius:var(--radius-lg);overflow:hidden;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform .25s}
     .gallery-grid .g-item:hover{transform:translateY(-4px)}
@@ -103,6 +107,7 @@
     .gallery-grid .g-item:hover img{transform:scale(1.06)}
     @media(max-width:768px){.gallery-grid{grid-template-columns:1fr 1fr}.gallery-grid .g-item{grid-column:span 1!important}}
 
+    /* ===== REVIEWS — floating overlap ===== */
     .reviews-stack{position:relative;max-width:700px;margin:0 auto;height:190px}
     .review-floating{position:absolute;background:#fff;border-radius:var(--radius-lg);padding:24px 28px;box-shadow:0 6px 28px rgba(0,0,0,0.05);max-width:370px;border:1px solid rgba(0,0,0,0.03)}
     .review-floating:nth-child(1){top:0;left:0;z-index:3}
@@ -129,6 +134,10 @@
 
     .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* AI image placeholder gradients */
+    .ai-placeholder{background:linear-gradient(135deg,rgba(255,107,138,0.06) 0%,rgba(142,214,196,0.04) 100%)}
+
     @media(max-width:768px){section{padding:50px 0}}
   </style>
 </head>
@@ -149,7 +158,7 @@
 </nav>
 
 <section class="hero-mx">
-  <div class="bg-blob"></div><div class="bg-blob2"></div>
+  <div class="bg-blob"></div><div class="bg-blob2"></div><div class="bg-blob3"></div>
   <div class="container">
     <div class="hero-mx-content">
       <div class="hero-mx-pill"><span class="dot"></span> Woman-Owned &bull; Est. 2019 &bull; Shelby, NC</div>
@@ -162,8 +171,12 @@
     </div>
   </div>
   <div class="hero-mx-visual">
-    <div class="cake-frame">
-      <div class="ai-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80" alt="Decorated celebration cake" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/hero-cake.jpg" loading="eager"></div>
+    <div class="cake-frame ai-placeholder">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80"
+           alt="Decorated celebration cake with buttercream flowers"
+           data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/hero-cake.jpg"
+           loading="eager"
+           onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80'}">
     </div>
     <div class="float-tag top">Custom Cakes</div>
     <div class="float-tag bottom">Macarons</div>
@@ -172,19 +185,27 @@
 
 <div class="marquee pink">
   <div class="marquee-track">
-    <span>Custom Cakes</span><span>French Macarons</span><span>Butter Croissants</span><span>Cupcakes</span><span>Sugar Cookies</span><span>Fresh Coffee</span>
-    <span>Custom Cakes</span><span>French Macarons</span><span>Butter Croissants</span><span>Cupcakes</span><span>Sugar Cookies</span><span>Fresh Coffee</span>
+    <span>&#127856; Custom Cakes</span><span>&#129391; French Macarons</span><span>&#129360; Butter Croissants</span><span>&#129473; Cupcakes</span><span>&#127850; Sugar Cookies</span><span>&#9749; Fresh Coffee</span>
+    <span>&#127856; Custom Cakes</span><span>&#129391; French Macarons</span><span>&#129360; Butter Croissants</span><span>&#129473; Cupcakes</span><span>&#127850; Sugar Cookies</span><span>&#9749; Fresh Coffee</span>
   </div>
 </div>
 
 <section id="story">
   <div class="container story-stack">
     <div class="ss-photos fade-up">
-      <div class="ss-photo-frame main ai-img">
-        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=80" alt="Baker's hands working dough" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/baker-hands-dough.jpg" loading="lazy">
+      <div class="ss-photo-frame main ai-placeholder">
+        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=80"
+             alt="Baker's hands kneading fresh dough"
+             data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/baker-hands-dough.jpg"
+             loading="lazy"
+             onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=80'}">
       </div>
-      <div class="ss-photo-frame second ai-img">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=300&q=80" alt="Golden croissants" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/croissants-stack.jpg" loading="lazy">
+      <div class="ss-photo-frame second ai-placeholder">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=300&q=80"
+             alt="Golden butter croissants"
+             data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/croissants-stack.jpg"
+             loading="lazy"
+             onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=300&q=80'}">
       </div>
       <div class="ss-badge">Est. 2019</div>
     </div>
@@ -206,38 +227,58 @@
     </div>
     <div class="product-bento">
       <div class="bento-card featured">
-        <div class="bc-img ai-img">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Custom celebration cake" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/custom-cake-classic.jpg" loading="lazy">
+        <div class="bc-img ai-placeholder">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80"
+               alt="Custom decorated celebration cake"
+               data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/custom-cake-classic.jpg"
+               loading="lazy"
+               onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80'}">
         </div>
         <div class="bc-body">
           <span class="bc-tag">Most Popular</span>
           <h3>Custom Celebration Cakes</h3><span class="bc-price">From $65</span>
-          <p class="bc-desc">Weddings, birthdays, graduations. Designer's eye, baker's heart. Two weeks notice. Tasting boxes available.</p>
+          <p class="bc-desc">Weddings, birthdays, graduations. Designed with a designer's eye and a baker's heart. Two weeks notice. Tasting boxes available.</p>
         </div>
       </div>
       <div class="bento-card">
-        <div class="bc-img ai-img">
-          <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="French macarons" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/macarons-array.jpg" loading="lazy">
+        <div class="bc-img ai-placeholder">
+          <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80"
+               alt="Colorful French macarons"
+               data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/macarons-array.jpg"
+               loading="lazy"
+               onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80'}">
         </div>
-        <div class="bc-body"><h3>French Macarons</h3><span class="bc-price">$24 per dozen</span><p class="bc-desc">Pistachio, raspberry rose, vanilla bean, salted caramel, seasonal specials.</p></div>
+        <div class="bc-body"><h3>French Macarons</h3><span class="bc-price">$24/dozen</span><p class="bc-desc">Pistachio, raspberry rose, vanilla bean, salted caramel, seasonal specials.</p></div>
       </div>
       <div class="bento-card">
-        <div class="bc-img ai-img">
-          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80" alt="Butter croissants" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/croissants-stack.jpg" loading="lazy">
+        <div class="bc-img ai-placeholder">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80"
+               alt="Golden butter croissants"
+               data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/croissants-stack.jpg"
+               loading="lazy"
+               onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=400&q=80'}">
         </div>
-        <div class="bc-body"><span class="bc-tag">Sells out by 9am</span><h3>Butter Croissants</h3><span class="bc-price">From $4</span><p class="bc-desc">Pain au chocolat, morning buns, seasonal danishes. Baked fresh daily.</p></div>
+        <div class="bc-body"><span class="bc-tag">Sells out by 9am</span><h3>Butter Croissants</h3><span class="bc-price">From $4</span><p class="bc-desc">Pain au chocolat, morning buns, seasonal danishes. Baked fresh daily. Come early.</p></div>
       </div>
       <div class="bento-card">
-        <div class="bc-img ai-img">
-          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="Frosted cupcakes" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/cupcakes-row.jpg" loading="lazy">
+        <div class="bc-img ai-placeholder">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80"
+               alt="Frosted cupcakes with sprinkles"
+               data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/cupcakes-row.jpg"
+               loading="lazy"
+               onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80'}">
         </div>
         <div class="bc-body"><h3>Cupcake Box</h3><span class="bc-price">$22 for six</span><p class="bc-desc">Vanilla bean, chocolate fudge, lemon-raspberry, seasonal specials.</p></div>
       </div>
       <div class="bento-card">
-        <div class="bc-img ai-img">
-          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80" alt="Decorated cookies" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/sugar-cookies-decorated.jpg" loading="lazy">
+        <div class="bc-img ai-placeholder">
+          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80"
+               alt="Decorated sugar cookies"
+               data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/sugar-cookies-decorated.jpg"
+               loading="lazy"
+               onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80'}">
         </div>
-        <div class="bc-body"><h3>Sugar Cookies</h3><span class="bc-price">From $36 per dozen</span><p class="bc-desc">Custom royal icing cookies. Edible art — perfect for favors and gifts.</p></div>
+        <div class="bc-body"><h3>Sugar Cookies</h3><span class="bc-price">From $36/dozen</span><p class="bc-desc">Custom royal icing cookies. Edible art — perfect party favors and corporate gifts.</p></div>
       </div>
     </div>
   </div>
@@ -246,15 +287,14 @@
 <section id="gallery">
   <div class="container">
     <div style="text-align:center;margin-bottom:36px">
-      <span class="sec-pill">The Bakery</span>
-      <h2 class="sec-heading">Come inside.</h2>
+      <span class="sec-pill">The Bakery</span><h2 class="sec-heading">Come inside.</h2>
     </div>
     <div class="gallery-grid">
-      <div class="g-item ai-img"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80" alt="Bakery interior" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/bakery-interior-counter.jpg" loading="lazy"></div>
-      <div class="g-item ai-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Bakery storefront" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/bakery-storefront.jpg" loading="lazy"></div>
-      <div class="g-item ai-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Cake slice" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/cake-slice.jpg" loading="lazy"></div>
-      <div class="g-item ai-img"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Macaron closeup" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/macaron-single.jpg" loading="lazy"></div>
-      <div class="g-item ai-img"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" alt="Coffee and pastry" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/coffee-pastry-pairing.jpg" loading="lazy"></div>
+      <div class="g-item ai-placeholder"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80" alt="Bakery interior" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/bakery-interior-counter.jpg" loading="lazy" onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80'}"></div>
+      <div class="g-item ai-placeholder"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Storefront" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/bakery-storefront.jpg" loading="lazy" onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80'}"></div>
+      <div class="g-item ai-placeholder"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Cake slice" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/cake-slice.jpg" loading="lazy" onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'}"></div>
+      <div class="g-item ai-placeholder"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Macaron closeup" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/macaron-single.jpg" loading="lazy" onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80'}"></div>
+      <div class="g-item ai-placeholder"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" alt="Coffee" data-ai-src="../pipeline/targets/butter-bloom-bakery/assets/photos/ai/coffee-pastry-pairing.jpg" loading="lazy" onerror="if(!this.src.includes('unsplash')){this.src='https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80'}"></div>
     </div>
   </div>
 </section>
@@ -299,7 +339,7 @@
       <div><div style="font-family:'Baloo 2',serif;font-size:1.2rem;font-weight:800;color:var(--gold)">Butter + Bloom</div><p style="margin-top:4px">312 S Lafayette St, Shelby, NC 28150</p></div>
       <p>(704) 555-0234<br>Made from scratch daily</p>
     </div>
-    <p class="credit">&copy; 2026 Butter + Bloom Bakery. Website designed by <a href="https://studioobrien.com">Studio O'Brien</a>. Photos courtesy <a href="https://unsplash.com">Unsplash</a> — <a href="#" style="text-decoration:underline">generate AI images</a> to replace with studio-quality product shots.</p>
+    <p class="credit">&copy; 2026 Butter + Bloom Bakery. Website designed by <a href="https://studioobrien.com">Studio O'Brien</a>. Photos courtesy <a href="https://unsplash.com">Unsplash</a>.</p>
   </div>
 </footer>
 
@@ -308,6 +348,17 @@
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, {threshold:0.12});
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // AI image upgrade: if local AI images exist (200 status), swap src
+  // This runs after page load and silently upgrades Unsplash → AI photos
+  document.querySelectorAll('img[data-ai-src]').forEach(img => {
+    const aiSrc = img.getAttribute('data-ai-src');
+    if (!aiSrc) return;
+    const testImg = new Image();
+    testImg.onload = () => { img.src = aiSrc; };
+    testImg.onerror = () => { /* keep Unsplash fallback */ };
+    testImg.src = aiSrc;
+  });
 </script>
 </body>
 </html>
