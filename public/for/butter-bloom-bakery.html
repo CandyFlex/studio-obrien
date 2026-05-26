@@ -119,9 +119,7 @@
     @media (min-width: 1024px) {
       .hero-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
       .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
-      .hero-cake { width: 280px; height: 340px; background: linear-gradient(180deg, #fff 0%, var(--pink-pale) 100%); border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%; position: relative; box-shadow: 0 20px 60px rgba(255,143,163,0.2); }
-      .hero-cake::before { content: ''; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: var(--pink); border-radius: 50%; box-shadow: 0 4px 12px rgba(255,143,163,0.4); }
-      .hero-cake::after { content: ''; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 200px; height: 8px; background: var(--mint); border-radius: 4px; }
+      .hero-visual img { width: 320px; height: 380px; object-fit: cover; border-radius: 50% 50% 50% 50% / 35% 35% 65% 65%; box-shadow: 0 20px 60px rgba(255,143,163,0.25); }
       .hero-orbit { position: absolute; }
       .hero-orbit.sprinkle1 { width: 50px; height: 50px; background: var(--vanilla); border-radius: 50%; top: -20px; right: 60px; }
       .hero-orbit.sprinkle2 { width: 35px; height: 35px; background: var(--mint); border-radius: 40%; bottom: 40px; right: -20px; transform: rotate(25deg); }
@@ -238,7 +236,9 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-cake"></div>
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80"
+           alt="Decorated celebration cake with buttercream flowers"
+           loading="eager" />
       <div class="hero-orbit sprinkle1"></div>
       <div class="hero-orbit sprinkle2"></div>
       <div class="hero-orbit sprinkle3"></div>
@@ -256,8 +256,10 @@
       <div class="pullquote">"The shop quickly became a Uptown Shelby favorite — croissants sell out by 9am."</div>
       <p>Today, Butter + Bloom is Shelby's go-to for custom wedding cakes, delicate French macarons in rotating seasonal flavors, and butter croissants that rival anything in Charlotte.</p>
     </div>
-    <div class="story-image fade-in" data-asset="baker-portrait">
-      &#x1f9c1;
+    <div class="story-image fade-in">
+      <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=600&q=80"
+           alt="Baker's hands working dough on a floured surface"
+           style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-lg);" loading="lazy" />
     </div>
   </div>
 </section>
@@ -328,6 +330,40 @@
         <h3>Coffee & Tea</h3>
         <span class="price">From $3</span>
         <p>Locally roasted Pure Intentions Coffee. Whole milk, oat milk, or almond milk. Loose leaf teas from Spice & Tea Exchange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-cream" id="testimonials">
+  <div class="container">
+    <span class="section-label">Our Space</span>
+    <h2 class="section-heading">Come See Us</h2>
+    <p class="section-sub">A warm space in Uptown Shelby. Grab a croissant, stay for the coffee, leave with a cake.</p>
+    <div class="menu-grid">
+      <div class="menu-card fade-in">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80"
+             alt="Cozy cafe interior with natural light and warm seating"
+             loading="lazy"
+             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
+        <h3>The Cafe</h3>
+        <p>Our cozy seating area — perfect for a morning coffee and croissant.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&q=80"
+             alt="Bakery display case filled with fresh pastries"
+             loading="lazy"
+             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
+        <h3>The Counter</h3>
+        <p>Fresh pastries, macarons, and cakes displayed daily. Come see what's baking.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80"
+             alt="Charming cafe storefront with outdoor seating"
+             loading="lazy"
+             style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; margin-bottom:12px;" />
+        <h3>The Storefront</h3>
+        <p>Look for the pink door on South Lafayette Street in Uptown Shelby.</p>
       </div>
     </div>
   </div>
@@ -408,7 +444,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Butter + Bloom Bakery. All rights reserved.</p>
-      <p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a></p>
+      <p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a> &mdash; Photography courtesy of <a href="https://unsplash.com">Unsplash</a></p>
     </div>
   </div>
 </footer>
