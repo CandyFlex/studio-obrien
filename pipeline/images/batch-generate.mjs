@@ -1,19 +1,22 @@
 /**
  * AI Image Batch Generator — generates all images for an archetype at once.
  *
- * Supports 3 backends:
- *   ideogram (FREE — 25 images/day)
- *   replicate (Flux Pro — ~$0.05/image, highest quality)
- *   openai   (DALL-E 3 — ~$0.04/image)
+ * Supports 4 backends:
+ *   huggingface (FREE — FLUX.1-schnell via HF Inference API) ★ RECOMMENDED
+ *   ideogram    (FREE — 25 images/day)
+ *   replicate   (Flux Pro — ~$0.05/image, highest quality)
+ *   openai      (DALL-E 3 — ~$0.04/image)
  *
  * Usage:
+ *   bun run pipeline/images/batch-generate.mjs 06-sweet-nostalgia butter-bloom-bakery huggingface
  *   bun run pipeline/images/batch-generate.mjs 06-sweet-nostalgia butter-bloom-bakery ideogram
  *   bun run pipeline/images/batch-generate.mjs 06-sweet-nostalgia butter-bloom-bakery replicate
  *
  * Env vars needed:
- *   IDEOGRAM_API_KEY   — from https://ideogram.ai/manage-api
- *   REPLICATE_API_TOKEN — from https://replicate.com/account/api-tokens
- *   OPENAI_API_KEY      — from https://platform.openai.com/api-keys
+ *   HF_TOKEN             — from https://huggingface.co/settings/tokens (FREE account works)
+ *   IDEOGRAM_API_KEY     — from https://ideogram.ai/manage-api
+ *   REPLICATE_API_TOKEN  — from https://replicate.com/account/api-tokens
+ *   OPENAI_API_KEY       — from https://platform.openai.com/api-keys
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
@@ -22,9 +25,9 @@ import { join } from "path";
 const ROOT = join(import.meta.dirname, "..", "..");
 const TARGETS = join(ROOT, "pipeline", "targets");
 
-const [_bun, _script, archetype, slug, backend = "ideogram"] = process.argv;
+const [_bun, _script, archetype, slug, backend = "huggingface"] = process.argv;
 if (!archetype || !slug) {
-  console.error("Usage: bun run pipeline/images/batch-generate.mjs <archetype> <slug> [ideogram|replicate|openai]");
+  console.error("Usage: bun run pipeline/images/batch-generate.mjs <archetype> <slug> [huggingface|ideogram|replicate|openai]");
   process.exit(1);
 }
 
@@ -45,6 +48,50 @@ console.log(`   Style: ${data.style}\n`);
 // ── Output dir ──
 const outDir = join(TARGETS, slug, "assets", "photos", "ai");
 mkdirSync(outDir, { recursive: true });
+
+// ── Backend: Hugging Face (FLUX.1-schnell — FREE, Apache 2.0) ──
+async function generateHuggingFace(prompt) {
+  const token = process.env.HF_TOKEN;
+  if (!token) throw new Error("HF_TOKEN not set. Get one FREE at https://huggingface.co/settings/tokens");
+  
+  // Use FLUX.1-schnell — Apache 2.0, 1-4 steps, quality matches closed-source models
+  // The HF Inference API auto-routes to the fastest free provider (Nscale, Together, etc.)
+  const res = await fetch(
+    "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "x-wait-for-model": "true", // wait if model needs to warm up
+      },
+      body: JSON.stringify({
+        inputs: prompt,
+        parameters: {
+          num_inference_steps: 4,  // schnell only needs 1-4 steps
+          guidance_scale: 0,       // schnell uses 0 guidance
+          width: 1024,
+          height: 1024,
+        },
+      }),
+    }
+  );
+  
+  if (!res.ok) {
+    const err = await res.text();
+    // If model is loading (503), wait and retry once
+    if (res.status === 503 && err.includes("loading")) {
+      console.log("   ⏳ Model warming up, waiting 30s...");
+      await new Promise(r => setTimeout(r, 30000));
+      return generateHuggingFace(prompt);
+    }
+    throw new Error(`HF API ${res.status}: ${err.slice(0, 200)}`);
+  }
+  
+  // HF returns the image as a blob directly
+  const buffer = Buffer.from(await res.arrayBuffer());
+  return buffer;
+}
 
 // ── Backend: Ideogram ──
 async function generateIdeogram(prompt, aspectRatio = "ASPECT_1_1") {
@@ -149,9 +196,10 @@ function getAspect(aspect) {
 }
 
 // ── Pick generator ──
-const generate = backend === "replicate" ? generateReplicate
-  : backend === "openai" ? generateOpenAI
-  : generateIdeogram;
+const backendFn = backend === "replicate" ? "replicate"
+  : backend === "openai" ? "openai"
+  : backend === "ideogram" ? "ideogram"
+  : "huggingface";
 
 let completed = 0;
 const results = {};
@@ -159,27 +207,44 @@ const results = {};
 for (const [id, img] of Object.entries(prompts)) {
   const aspectOpt = getAspect(img.aspect || "square");
   console.log(`[${++completed}/${total}] Generating ${id}...`);
-  console.log(`   "${img.prompt.slice(0, 80)}..."`);
+  console.log(`   "${img.prompt.slice(0, 90)}..."`);
   
   try {
-    const url = await generate(img.prompt, aspectOpt);
-    if (!url) {
+    let url, buffer;
+    
+    if (backendFn === "huggingface") {
+      buffer = await generateHuggingFace(img.prompt);
+    } else {
+      const genFn = backendFn === "replicate" ? generateReplicate
+        : backendFn === "openai" ? generateOpenAI
+        : generateIdeogram;
+      url = await genFn(img.prompt, aspectOpt);
+    }
+    
+    const filepath = join(outDir, `${id}.jpg`);
+    
+    if (buffer) {
+      writeFileSync(filepath, buffer);
+    } else if (url) {
+      await downloadImage(url, filepath);
+    } else {
       console.log(`   ⚠ No image returned — skipping\n`);
       continue;
     }
     
-    const filepath = join(outDir, `${id}.jpg`);
-    await downloadImage(url, filepath);
-    
     results[id] = filepath;
-    console.log(`   ✅ Saved to ${id}.jpg\n`);
+    console.log(`   ✅ Saved ${id}.jpg\n`);
   } catch (err) {
     console.log(`   ❌ ${err.message}\n`);
   }
   
-  // Rate limit: Ideogram free tier is 1 req/sec
-  if (backend === "ideogram" && completed < total) {
+  // Rate limit for free tiers
+  if (backendFn === "ideogram" && completed < total) {
     await new Promise(r => setTimeout(r, 1500));
+  }
+  // HF free tier: be gentle
+  if (backendFn === "huggingface" && completed < total) {
+    await new Promise(r => setTimeout(r, 2000));
   }
 }
 
