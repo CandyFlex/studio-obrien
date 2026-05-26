@@ -54,41 +54,33 @@ async function generateHuggingFace(prompt) {
   const token = process.env.HF_TOKEN;
   if (!token) throw new Error("HF_TOKEN not set. Get one FREE at https://huggingface.co/settings/tokens");
   
-  // Use FLUX.1-schnell — Apache 2.0, 1-4 steps, quality matches closed-source models
-  // The HF Inference API auto-routes to the fastest free provider (Nscale, Together, etc.)
+  // Use HF Router (newer endpoint — api-inference.huggingface.co may not resolve)
   const res = await fetch(
-    "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell",
+    "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell",
     {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "x-wait-for-model": "true", // wait if model needs to warm up
       },
       body: JSON.stringify({
         inputs: prompt,
         parameters: {
-          num_inference_steps: 4,  // schnell only needs 1-4 steps
-          guidance_scale: 0,       // schnell uses 0 guidance
+          num_inference_steps: 4,
+          guidance_scale: 0,
           width: 1024,
           height: 1024,
         },
       }),
+      signal: AbortSignal.timeout(90000),
     }
   );
   
   if (!res.ok) {
     const err = await res.text();
-    // If model is loading (503), wait and retry once
-    if (res.status === 503 && err.includes("loading")) {
-      console.log("   ⏳ Model warming up, waiting 30s...");
-      await new Promise(r => setTimeout(r, 30000));
-      return generateHuggingFace(prompt);
-    }
     throw new Error(`HF API ${res.status}: ${err.slice(0, 200)}`);
   }
   
-  // HF returns the image as a blob directly
   const buffer = Buffer.from(await res.arrayBuffer());
   return buffer;
 }

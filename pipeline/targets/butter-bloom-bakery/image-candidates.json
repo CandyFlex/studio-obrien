@@ -1,106 +1,68 @@
 {
-  "searchedAt": "2026-05-25T23:00:00.000Z",
-  "source": "Unsplash Source API (free, no key required)",
+  "generatedAt": "2026-05-26T03:52:00.742Z",
+  "backend": "huggingface",
+  "archetype": "06-sweet-nostalgia",
+  "slug": "butter-bloom-bakery",
   "images": [
     {
-      "id": "hero-bg",
-      "role": "Hero background — bakery display case",
-      "priority": "critical",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1400&q=80",
-        "source": "unsplash",
-        "photographer": "Brooke Lark",
-        "score": 9,
-        "notes": "Warm bakery counter with pastries, excellent hero backdrop"
-      },
-      "candidates": [
-        { "url": "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1400&q=80", "source": "unsplash", "photographer": "Brooke Lark", "width": 1400, "height": 933, "score": 9 },
-        { "url": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=1400&q=80", "source": "unsplash", "photographer": "Anastasia Zhenina", "width": 1400, "height": 933, "score": 8 }
-      ]
+      "id": "hero-cake",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/hero-cake.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\hero-cake.jpg"
     },
     {
-      "id": "pastry-1",
-      "role": "Menu — croissants",
-      "priority": "high",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=800&q=80",
-        "source": "unsplash",
-        "photographer": "Mae Mu",
-        "score": 9,
-        "notes": "Golden croissants on wooden board, warm tones"
-      }
+      "id": "custom-cake-classic",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/custom-cake-classic.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\custom-cake-classic.jpg"
     },
     {
-      "id": "pastry-2",
-      "role": "Menu — macarons",
-      "priority": "high",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=80",
-        "source": "unsplash",
-        "photographer": "Mae Mu",
-        "score": 9,
-        "notes": "Colorful macarons neatly arranged, bright and playful"
-      }
+      "id": "macarons-array",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/macarons-array.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\macarons-array.jpg"
     },
     {
-      "id": "cake",
-      "role": "Menu — custom celebration cake",
-      "priority": "high",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80",
-        "source": "unsplash",
-        "photographer": "Deva Williamson",
-        "score": 8,
-        "notes": "Beautifully decorated layer cake with flowers"
-      }
+      "id": "croissants-stack",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/croissants-stack.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\croissants-stack.jpg"
     },
     {
-      "id": "cupcakes",
-      "role": "Menu — cupcakes",
-      "priority": "high",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
-        "source": "unsplash",
-        "photographer": "Brooke Lark",
-        "score": 8,
-        "notes": "Frosted cupcakes with sprinkles, colorful and fun"
-      }
+      "id": "cupcakes-row",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/cupcakes-row.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\cupcakes-row.jpg"
     },
     {
-      "id": "baker",
-      "role": "Story — baker at work",
-      "priority": "medium",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&q=80",
-        "source": "unsplash",
-        "photographer": "Anastasia Zhenina",
-        "score": 7,
-        "notes": "Baker's hands working dough on floured surface"
-      }
+      "id": "sugar-cookies-decorated",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/sugar-cookies-decorated.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\sugar-cookies-decorated.jpg"
     },
     {
-      "id": "interior",
-      "role": "Interior — cozy cafe",
-      "priority": "high",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1000&q=80",
-        "source": "unsplash",
-        "photographer": "Micheile Henderson",
-        "score": 8,
-        "notes": "Warm cafe interior with natural light, cozy seating"
-      }
+      "id": "baker-hands-dough",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/baker-hands-dough.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\baker-hands-dough.jpg"
     },
     {
-      "id": "exterior",
-      "role": "Exterior — bakery storefront",
-      "priority": "medium",
-      "recommended": {
-        "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80",
-        "source": "unsplash",
-        "photographer": "Nate Johnston",
-        "score": 7,
-        "notes": "Cafe storefront with outdoor seating, warm evening light"
-      }
+      "id": "bakery-interior-counter",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/bakery-interior-counter.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\bakery-interior-counter.jpg"
+    },
+    {
+      "id": "bakery-storefront",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/bakery-storefront.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\bakery-storefront.jpg"
+    },
+    {
+      "id": "cake-slice",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/cake-slice.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\cake-slice.jpg"
+    },
+    {
+      "id": "macaron-single",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/macaron-single.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\macaron-single.jpg"
+    },
+    {
+      "id": "coffee-pastry-pairing",
+      "localPath": "targets/butter-bloom-bakery/assets/photos/ai/coffee-pastry-pairing.jpg",
+      "fullPath": "C:\\Users\\Jarre\\Projects\\Portfolio website\\pipeline\\targets\\butter-bloom-bakery\\assets\\photos\\ai\\coffee-pastry-pairing.jpg"
     }
   ]
 }
