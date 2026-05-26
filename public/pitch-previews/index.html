@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitch Slide Versions — Studio O'Brien</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #f0f0f0; font-family: system-ui, -apple-system, sans-serif; }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
+
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .sub { font-size: 1rem; color: rgba(240,240,240,0.4); margin-bottom: 32px; }
+
+    .slider-wrap { position: relative; }
+
+    .slide-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: none;
+    }
+    .slide-img.active { display: block; }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tab {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: rgba(240,240,240,0.5);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab:hover { border-color: rgba(255,255,255,0.15); color: #f0f0f0; }
+    .tab.active { border-color: #34d399; color: #34d399; background: rgba(52,211,153,0.08); }
+
+    .label {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: rgba(240,240,240,0.6);
+    }
+    .label strong { color: #34d399; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pitch Slide Versions</h1>
+    <p class="sub">Pick the one that works best. These go after the site walkthrough, before the outro.</p>
+
+    <div class="slider-wrap">
+      <img src="v1.png" alt="V1 — The Google Problem" class="slide-img active" data-idx="0">
+      <img src="v2.png" alt="V2 — Customer Journey" class="slide-img" data-idx="1">
+      <img src="v3.png" alt="V3 — With vs Without" class="slide-img" data-idx="2">
+      <img src="v4.png" alt="V4 — Cost of Not Having" class="slide-img" data-idx="3">
+    </div>
+
+    <div class="controls">
+      <button class="tab active" data-idx="0">V1 — The Google Problem</button>
+      <button class="tab" data-idx="1">V2 — Customer Journey</button>
+      <button class="tab" data-idx="2">V3 — With vs Without</button>
+      <button class="tab" data-idx="3">V4 — Cost of Not Having</button>
+    </div>
+
+    <p class="label" id="desc"></p>
+  </div>
+
+  <script>
+    const descs = [
+      "<strong>V1 — The Google Problem:</strong> Shows the GMB panel with the 'Website' button highlighted. Stats: 46% local searches, 88% lead to visits, 70% visit based on online info. Makes the case that the button goes nowhere without a site.",
+      "<strong>V2 — Customer Journey:</strong> 4-step path: Search → Find You → Click Website → Show Up. Red warning callout on step 3: 'Without a website, the journey ends here.' Bottom stats on trust and credibility.",
+      "<strong>V3 — With vs Without:</strong> Side-by-side comparison. Left: bare GMB listing, no photos, no pricing, customer leaves. Right: full GMB with photos, website button active, customer arrives convinced.",
+      "<strong>V4 — Cost of Not Having:</strong> 4 impact cards with hard numbers. Invisible (36% less likely), They Leave (56% won't trust), Revenue Lost ($3,380/yr), Mobile Decides (78% convert). GMB panel + business card on right.",
+    ];
+
+    const tabs = document.querySelectorAll('.tab');
+    const imgs = document.querySelectorAll('.slide-img');
+    const desc = document.getElementById('desc');
+
+    desc.innerHTML = descs[0];
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const idx = tab.dataset.idx;
+        tabs.forEach(t => t.classList.remove('active'));
+        imgs.forEach(i => i.classList.remove('active'));
+        tab.classList.add('active');
+        imgs[idx].classList.add('active');
+        desc.innerHTML = descs[idx];
+      });
+    });
+  </script>
+</body>
+</html>

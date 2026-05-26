@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  Search,
-  BarChart3,
   ArrowRight,
   Check,
   ChevronDown,
   Menu,
   X,
-  Star,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════ *
@@ -221,7 +218,6 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", business: "", message: "" });
   const [formSent, setFormSent] = useState(false);
-
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h, { passive: true });
@@ -298,24 +294,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ═══════ PROOF BAR ═══════ */}
-      <section className="py-10 md:py-12 px-6" style={{ background: `linear-gradient(135deg, ${t.baseBg}, ${t.accent}12)`, borderTop: `1px solid ${t.accent}18`, borderBottom: `1px solid ${t.accent}18` }}>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { icon: Search, num: "Search Ready", label: "Built for Google", sub: "Clean code, fast load times, meta tags, and mobile-first structure. Every site ships search-ready." },
-            { icon: BarChart3, num: "90+", label: "Google Lighthouse Score", sub: "Google's own speed test. Every site we build passes it. Visitors stay, rankings climb." },
-            { icon: Star, num: "Shelby, NC", label: "Cleveland County", sub: "Not a Charlotte agency. A local builder who knows your market." },
-          ].map((item) => (
-            <div key={item.label} className="flex flex-col items-center text-center py-5 px-3 rounded-lg" style={{ background: `${t.accent}08`, border: `1px solid ${t.accent}15` }}>
-              <item.icon size={24} color={t.accent} />
-              <span className="text-2xl md:text-3xl font-bold mt-2" style={{ color: t.accent }}>{item.num}</span>
-              <span className="text-xs uppercase tracking-[0.2em] mt-1 font-medium" style={{ color: `${t.hero.text}88` }}>{item.label}</span>
-              <span className="text-xs mt-2 leading-snug max-w-[220px]" style={{ color: `${t.hero.text}66` }}>{item.sub}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ═══════ PROBLEM / FIX ═══════ */}
       <section className="py-16 md:py-24 px-6" style={{ background: t.problem.bg }}>
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -337,45 +315,6 @@ export default function App() {
               <a href="/research/cleveland-county-digital-landscape.html#tourism-economy" className="underline decoration-1 underline-offset-2 hover:opacity-80 transition-opacity" style={{ color: t.accent }}>$149 million flows through Cleveland County tourism every year.</a> A fast, professional, Google-connected website puts your business in front of that traffic. Custom-built in Shelby, NC for the way people actually search.
             </p>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* ═══════ SERVICES: COMPARISON ═══════ */}
-      <section id="services" className="py-20 md:py-28 px-6 relative" style={{ background: t.services.bg }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse at 30% 20%, ${t.accent}04 0%, transparent 60%)` }} />
-        <div className="max-w-5xl mx-auto relative">
-          <FadeIn>
-            <p className="text-sm tracking-[0.15em] uppercase text-center mb-3 font-medium" style={{ color: t.accent }}>Why Us</p>
-            <h2 className="text-2xl md:text-4xl font-bold text-center mb-14 text-balance" style={{ color: t.services.text }}>{compData.heading}</h2>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <FadeIn>
-              <div className="p-6 rounded-lg h-full" style={{ background: `${t.services.cardBg}`, border: `1px solid #ef444420` }}>
-                <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-6" style={{ color: "#ef4444" }}>Most Agencies</p>
-                <div className="space-y-4">
-                  {compData.left.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <X size={14} color="#ef4444" className="shrink-0 mt-1" />
-                      <p className="text-sm" style={{ color: `${t.services.text}77` }}>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="p-6 rounded-lg h-full" style={{ background: `${t.accent}08`, border: `1px solid ${t.accent}25` }}>
-                <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-6" style={{ color: t.accent }}>Studio O'Brien</p>
-                <div className="space-y-4">
-                  {compData.right.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <Check size={14} color={t.accent} className="shrink-0 mt-1" />
-                      <p className="text-sm" style={{ color: t.services.text }}>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </section>
 
@@ -433,24 +372,51 @@ export default function App() {
       </section>
 
       {/* ═══════ BRIDGE CTA ═══════ */}
-      <section className="relative overflow-hidden" style={{ background: t.baseBg }}>
-        <div className="py-14 md:py-20 px-6 relative" style={{ borderTop: `1px solid ${t.accent}12`, borderBottom: `1px solid ${t.accent}12` }}>
-          <div className="max-w-5xl mx-auto">
+      {/* ═══════ BRIDGE CTA ═══════ */}
+      <section className="py-8 md:py-10 px-6" style={{ background: t.accent }}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-1" style={{ color: t.baseBg }}>Like what you see?</h2>
+            <p className="text-sm" style={{ color: `${t.baseBg}cc` }}>Tell us about your business and we'll put together a quote.</p>
+          </div>
+          <a href="#contact" className="inline-flex items-center gap-2 px-10 py-4 text-base font-semibold rounded-sm transition-all hover:scale-105 shrink-0" style={{ background: t.baseBg, color: t.accent }}>
+            Start a Project <ArrowRight size={18} />
+          </a>
+        </div>
+      </section>
+
+      {/* ═══════ SERVICES: COMPARISON ═══════ */}
+      <section id="services" className="py-20 md:py-28 px-6 relative" style={{ background: t.services.bg }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse at 30% 20%, ${t.accent}04 0%, transparent 60%)` }} />
+        <div className="max-w-5xl mx-auto relative">
+          <FadeIn>
+            <p className="text-sm tracking-[0.15em] uppercase text-center mb-3 font-medium" style={{ color: t.accent }}>Why Us</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-center mb-14 text-balance" style={{ color: t.services.text }}>{compData.heading}</h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <FadeIn>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                <div className="max-w-lg">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance" style={{ color: t.portfolio.text }}>
-                    Like what you see? Let's build yours.
-                  </h2>
-                  <p className="text-sm" style={{ color: `${t.portfolio.text}77` }}>
-                    Your business deserves a site this good. Tell us what you need and we'll put together a quote.
-                  </p>
+              <div className="p-6 rounded-lg h-full" style={{ background: `${t.services.cardBg}`, border: `1px solid #ef444420` }}>
+                <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-6" style={{ color: "#ef4444" }}>Most Agencies</p>
+                <div className="space-y-4">
+                  {compData.left.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <X size={14} color="#ef4444" className="shrink-0 mt-1" />
+                      <p className="text-sm" style={{ color: `${t.services.text}77` }}>{item}</p>
+                    </div>
+                  ))}
                 </div>
-                <div className="shrink-0 flex flex-col items-start md:items-end gap-3">
-                  <a href="#contact" className="inline-flex items-center gap-2 px-10 py-4 text-base font-semibold rounded-sm transition-all hover:scale-105" style={{ background: t.accent, color: t.baseBg }}>
-                    Get a Quote <ArrowRight size={18} />
-                  </a>
-                  <span className="text-xs" style={{ color: `${t.portfolio.text}55` }}>No commitment required</span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="p-6 rounded-lg h-full" style={{ background: `${t.accent}08`, border: `1px solid ${t.accent}25` }}>
+                <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-6" style={{ color: t.accent }}>Studio O'Brien</p>
+                <div className="space-y-4">
+                  {compData.right.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <Check size={14} color={t.accent} className="shrink-0 mt-1" />
+                      <p className="text-sm" style={{ color: t.services.text }}>{item}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </FadeIn>
@@ -549,14 +515,21 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-start">
             <FadeIn>
               <div className="md:sticky md:top-32">
-                <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Let's Talk</p>
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance" style={{ color: t.contact.text }}>Tell us about your business.</h2>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: `${t.contact.text}77` }}>Tell us what you're working with and we'll come back with a clear answer within 24 hours.</p>
-                <div className="space-y-3">
-                  {["Response within 24 hours", "Clear pricing, no surprises", "No commitment required"].map((txt) => (
-                    <div key={txt} className="flex items-center gap-2">
-                      <Check size={14} color={t.accent} />
-                      <span className="text-sm" style={{ color: `${t.contact.text}aa` }}>{txt}</span>
+                <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Start Here</p>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance" style={{ color: t.contact.text }}>Tell us what you're working with.</h2>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: `${t.contact.text}99` }}>
+                  Just the basics. What your business does, whether you have a site now, and what you want the new one to accomplish. We take it from there.
+                </p>
+                <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium mt-6" style={{ color: t.accent }}>What happens next</p>
+                <div className="space-y-2.5">
+                  {[
+                    "We research your market, your competitors, and your area",
+                    "You get a written quote with a clear scope within 24 hours",
+                    "If it makes sense, we start. If not, no pressure",
+                  ].map((txt) => (
+                    <div key={txt} className="flex items-start gap-2">
+                      <Check size={14} color={t.accent} className="shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed" style={{ color: `${t.contact.text}aa` }}>{txt}</span>
                     </div>
                   ))}
                 </div>
@@ -611,27 +584,37 @@ export default function App() {
       </section>
 
       {/* ═══════ FOOTER ═══════ */}
-      <footer className="py-14 md:py-20 px-6" style={{ background: t.footer.bg, borderTop: `1px solid ${t.accent}0a` }}>
+      <footer className="py-12 md:py-16 px-6" style={{ background: t.footer.bg }}>
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <img src={t.logoSrc} alt="Studio O'Brien" className="h-10 w-auto mb-3" width={600} height={100} loading="lazy" style={{ filter: t.logoFilter }} />
-              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}88` }}>Custom websites for small businesses across Shelby, NC and Cleveland County.</p>
+              <img src={t.logoSrc} alt="Studio O'Brien" className="h-9 w-auto mb-3" width={600} height={100} loading="lazy" style={{ filter: t.logoFilter }} />
+              <p className="text-xs leading-relaxed" style={{ color: `${t.footer.text}55` }}>Web design studio<br />Shelby, NC 28150</p>
             </div>
             <div>
-              <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Navigate</p>
-              <div className="flex flex-col gap-2.5">
-                {navLinks.map((l) => <a key={l.label} href={l.href} className="text-sm hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.7 }}>{l.label}</a>)}
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Services</p>
+              <div className="flex flex-col gap-1.5">
+                {["Web Design", "Development", "Copywriting", "Local SEO", "Brand Identity"].map(s => (
+                  <span key={s} className="text-xs" style={{ color: `${t.footer.text}77` }}>{s}</span>
+                ))}
               </div>
             </div>
             <div>
-              <p className="text-xs tracking-[0.15em] uppercase mb-4 font-medium" style={{ color: t.accent }}>Contact</p>
-              <a href="mailto:hello@studioobrien.com" className="text-sm block mb-2 hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.7 }}>hello@studioobrien.com</a>
-              <p className="text-xs" style={{ color: `${t.footer.text}77` }}>Shelby, North Carolina</p>
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Serving</p>
+              <div className="flex flex-col gap-1.5">
+                {["Shelby, NC", "Cleveland County", "Kings Mountain", "Gastonia", "North Carolina"].map(s => (
+                  <span key={s} className="text-xs" style={{ color: `${t.footer.text}77` }}>{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Contact</p>
+              <a href="mailto:hello@studioobrien.com" className="text-xs block mb-3" style={{ color: `${t.footer.text}77` }}>hello@studioobrien.com</a>
+              <div className="flex flex-col gap-1.5">{navLinks.map((l) => <a key={l.label} href={l.href} className="text-xs hover:opacity-100 transition-opacity" style={{ color: t.footer.text, opacity: 0.6 }}>{l.label}</a>)}</div>
             </div>
           </div>
-          <div className="pt-6" style={{ borderTop: `1px solid ${t.accent}0a` }}>
-            <p className="text-xs" style={{ color: `${t.footer.text}77` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
+          <div className="pt-5" style={{ borderTop: `1px solid ${t.accent}0a` }}>
+            <p className="text-xs" style={{ color: `${t.footer.text}55` }}>&copy; {yr} Studio O'Brien. All rights reserved.</p>
           </div>
         </div>
       </footer>

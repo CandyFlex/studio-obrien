@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Hoot Nannie | High-End Steakhouse &amp; BBQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#100e0d",
+              "surface-container-high": "#2d2928",
+              "inverse-surface": "#e9e1df",
+              "tertiary-container": "#a29c91",
+              "primary-fixed-dim": "#f8bc5f",
+              "secondary-fixed": "#ffdbd1",
+              "surface-dim": "#161312",
+              "on-surface": "#e9e1df",
+              "primary": "#f8bc5f",
+              "on-primary-container": "#492f00",
+              "surface-bright": "#3c3837",
+              "on-secondary": "#5e1600",
+              "surface-container": "#221f1e",
+              "primary-fixed": "#ffddb0",
+              "tertiary-fixed": "#e9e2d5",
+              "on-tertiary-container": "#38342b",
+              "surface-tint": "#f8bc5f",
+              "surface-variant": "#383433",
+              "tertiary": "#cdc6b9",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#4b463d",
+              "background": "#161312",
+              "outline": "#9c8f7d",
+              "on-secondary-fixed": "#3a0a00",
+              "on-secondary-fixed-variant": "#852300",
+              "on-error-container": "#ffdad6",
+              "inverse-on-surface": "#33302e",
+              "on-primary-fixed": "#281800",
+              "on-surface-variant": "#d4c4b1",
+              "on-background": "#e9e1df",
+              "inverse-primary": "#805600",
+              "surface": "#161312",
+              "tertiary-fixed-dim": "#cdc6b9",
+              "on-primary-fixed-variant": "#614000",
+              "secondary-fixed-dim": "#ffb59f",
+              "on-tertiary-fixed": "#1e1b14",
+              "secondary-container": "#892400",
+              "surface-container-highest": "#383433",
+              "on-error": "#690005",
+              "outline-variant": "#504537",
+              "primary-container": "#c9933a",
+              "on-primary": "#442c00",
+              "error": "#ffb4ab",
+              "on-tertiary": "#343027",
+              "secondary": "#ffb59f",
+              "surface-container-low": "#1e1b1a",
+              "on-secondary-container": "#ffa084"
+            },
+            fontFamily: {
+              "headline": ["DM Serif Display", "serif"],
+              "body": ["IBM Plex Sans", "sans-serif"],
+              "label": ["IBM Plex Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #161312;
+            color: #F5EDE0;
+            overflow-x: hidden;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        @keyframes logoIn {
+            0% { opacity: 0; transform: scale(0.85) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .marquee-animation {
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="grain-overlay"></div>
+<!-- Navigation -->
+<nav class="flex justify-between items-center w-full px-8 py-6 max-w-full mx-auto fixed top-0 z-50 bg-[#161312]">
+<div class="text-2xl font-headline tracking-tight text-[#F5EDE0]">The Hoot Nannie</div>
+<div class="hidden md:flex space-x-10 items-center">
+<a class="text-[#C9933A] border-b border-[#C9933A] pb-1 font-label text-xs uppercase tracking-widest" href="#">Menu</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] transition-colors duration-300 font-label text-xs uppercase tracking-widest" href="#">Bourbon</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] transition-colors duration-300 font-label text-xs uppercase tracking-widest" href="#">Story</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] transition-colors duration-300 font-label text-xs uppercase tracking-widest" href="#">Specials</a>
+<a class="text-[#F5EDE0]/80 hover:text-[#C9933A] transition-colors duration-300 font-label text-xs uppercase tracking-widest" href="#">Visit</a>
+</div>
+<button class="bg-secondary-container text-on-surface px-6 py-2 rounded-lg font-label text-xs uppercase tracking-widest hover:brightness-110 transition-all duration-300 scale-95 duration-200">
+            Reserve
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 bg-surface-dim overflow-hidden">
+<!-- Warm radial glow behind logo -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(201,147,58,0.12)_0%,rgba(201,147,58,0.04)_40%,transparent_70%)]"></div>
+</div>
+<div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+<span class="font-label text-primary uppercase tracking-[0.35em] text-xs mb-8 block">THE FARMER &amp; THE PITMASTER</span>
+<!-- Logo: the dominant hero element -->
+<div class="w-[320px] md:w-[420px] lg:w-[480px] mb-8" style="animation: logoIn 0.85s 0.3s cubic-bezier(0.22, 1.4, 0.36, 1) both;">
+<img src="assets/hoot-nannie/logo.png" alt="The Hoot Nannie — cowgirl riding a hog" class="w-full h-auto object-contain drop-shadow-[0_4px_30px_rgba(201,147,58,0.2)]" />
+</div>
+<p class="font-headline italic text-primary text-2xl md:text-3xl mb-6">A Five Spur Steakhouse</p>
+<p class="max-w-2xl mx-auto text-on-surface/70 text-lg md:text-xl font-light mb-12">
+                Farm-raised steaks. Whole hog BBQ. 68 bourbons.<br/>
+<span class="font-label text-sm tracking-wide text-primary/80">Main Street, Forest City, NC.</span>
+</p>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<a class="bg-secondary-container text-on-surface px-10 py-4 rounded-lg font-medium tracking-wide hover:brightness-110 transition-all min-w-[220px]" href="#menu">
+                    See the Menu
+                </a>
+<a class="border border-primary text-primary px-10 py-4 rounded-lg font-medium tracking-wide hover:bg-primary/10 transition-all min-w-[220px]" href="#visit">
+                    Plan Your Visit
+                </a>
+</div>
+</div>
+<div class="absolute bottom-12 w-full max-w-4xl px-6">
+<div class="border-t border-outline-variant/30 pt-6 flex justify-between items-center font-label text-[10px] md:text-xs text-primary uppercase tracking-widest">
+<span>68 Bourbons</span>
+<span class="text-outline-variant">|</span>
+<span>657+ Reviews</span>
+<span class="text-outline-variant">|</span>
+<span>150 lbs Cheese Curds / Week</span>
+</div>
+</div>
+</header>
+<!-- Marquee Strip -->
+<div class="bg-secondary-container w-full overflow-hidden py-4 border-y border-on-secondary/10 relative z-20">
+<div class="flex whitespace-nowrap marquee-animation">
+<div class="flex items-center space-x-8 px-4">
+<span class="font-label text-on-surface text-sm uppercase font-semibold">Smoked Wings ★ Legendary Cheese Curds ★ 68 Bourbons ★ Farm-Raised Steaks ★ Whole Hog BBQ ★ Thursday Wing Night ★ Dirty Sanchez Burger ★ Smokehouse Cuban</span>
+<span class="font-label text-on-surface text-sm uppercase font-semibold">Smoked Wings ★ Legendary Cheese Curds ★ 68 Bourbons ★ Farm-Raised Steaks ★ Whole Hog BBQ ★ Thursday Wing Night ★ Dirty Sanchez Burger ★ Smokehouse Cuban</span>
+</div>
+<div class="flex items-center space-x-8 px-4">
+<span class="font-label text-on-surface text-sm uppercase font-semibold">Smoked Wings ★ Legendary Cheese Curds ★ 68 Bourbons ★ Farm-Raised Steaks ★ Whole Hog BBQ ★ Thursday Wing Night ★ Dirty Sanchez Burger ★ Smokehouse Cuban</span>
+<span class="font-label text-on-surface text-sm uppercase font-semibold">Smoked Wings ★ Legendary Cheese Curds ★ 68 Bourbons ★ Farm-Raised Steaks ★ Whole Hog BBQ ★ Thursday Wing Night ★ Dirty Sanchez Burger ★ Smokehouse Cuban</span>
+</div>
+</div>
+</div>
+<!-- Menu Highlights -->
+<section class="py-24 px-8 bg-surface-container-low" id="menu">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 text-center md:text-left">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] block mb-4">WHAT WE'RE KNOWN FOR</span>
+<h2 class="font-headline text-5xl text-on-surface mb-6">The Menu Highlights</h2>
+<p class="max-w-2xl text-on-surface/60 leading-relaxed">
+                    Every plate built from scratch. Meats from Honey Hog Farm and Beam Farms, Rutherford County. From the pit to your plate, no shortcuts taken.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Item 1 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a perfectly seared farm raised ribeye steak" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXN6xBcz0XR0uS8ZU-u9HXDm47VbPgjKjPE3Ot944tWt5ONHYyjO1ZtJls3jJ5WW8yGV9RkbhXasX6e0VTCNRyFGss_uMiLrQXhWaS5RtKtJqj4-a_BqIu9PDar_mPA7WGTXH5DdD4Nxb3mvHBFJILFibBmi2WLsUllvhJ3Wy-0KI4c_Qqd-6VGCIb9TlFWnXtOYdmM1ZzQy-57fnrpcz5cnYpmVTfyqtWGZSKjqT7GVRqalXc6JEVZ5khwE7YAk8fT3AypwXnOrBs2g"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary-container font-label text-[10px] px-3 py-1 rounded-full uppercase font-bold">Farm Raised</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Farm-Raised Steaks</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">From Beam Farms in Rutherford County. Petite sirloin, ribeye, prime rib when available. Grilled over open flame.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Deep fried golden brown local cheese curds with dip" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZCf_Yh7EX2CZy45qmjZYvfKOEpuUtsGWYHJ2c4uB7NfMLEC23JAPX0CfaPxYJf_Cr8LaTlXFBB0fezk30T0mbRyAMdhhMNH-Z17545AgYNNgjjGvbKFDsPRw3ckyFaAmJ2Fw-3sQj2UQP-mzmBfiKFVQVYEvaTQ0WwUboQNKoP7urMSkIiXqGe2enQJz_ZT4LmHd1PA0w5fWsxjmDaki-srn0lzGlipSzRCnEh9CLrti2L7g0sZeNkpH192EJobK8HD6jVft3SvbEIA"/>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-surface font-label text-[10px] px-3 py-1 rounded-full uppercase font-bold">150 lbs/week</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Legendary Fried Cheese Curds</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">Fresh curds from Brown Creek Creamery, hand-breaded and fried to order. Served with house ranch and marinara.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Traditional whole hog bbq platter with sides" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcWFV8RAXg62fePicmM7G-8R928mUxW2jXFg9yJTCb6lLebEtX58rZ_QGxVXl4vIscerVVg9X-ONsMBIc1GM2MvqzLpcMjsh9W__-Yclrom0Y_N-VrHgWlWfQm99IUkcxYye4CkrlAC99T4A2VqisvYjhd7dpllbGg4N-7F79x4RrEHd0OS5dgeK-iWVnhpuuGS9Fl3muurIeFdTYddr-RCZM1KE0eAtMFHDfeasgHS2f7T79msZ73kVNkCIcjWCM_QkdjS-10zobfoQ"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary-container font-label text-[10px] px-3 py-1 rounded-full uppercase font-bold">Pitmaster Select</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Pulled Pork BBQ</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">Whole hog, smoked on site. Served with our kettle chips and Texas toast. Johnny Ray's signature sauces on the side.</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Large gourmet burger with jalapenos and special sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCslxe0zDBA4PHlBfS2W1WSNWrJNQ9pFmJ_BfaUvHmX-DbBjrUjQanrL2ygYAMDcGi8l19aJEDLfZ-IAp1Srk4XLvsaH7SAjelxk5zi3kezkUwJUrtMAl0yhtXand9A2zGwcexEQO3LKE4zuN9AASUMjHVmWbUzXDNk0GYMRZlQFwxaALRMsiMtu5TmwhRzawOgGnrFrXDWqxQt5uinYEXZZNmpJD1o3iJhKPF95pv42vPHSFUYicQBuZ77srwyvLEffoTy_zeosl7BA"/>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-surface font-label text-[10px] px-3 py-1 rounded-full uppercase font-bold">Signature</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Dirty Sanchez Burger</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">Pulled pork BBQ piled on a handmade beef patty with crispy onion rings. Messy in the best possible way.</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Pressed cuban sandwich with smoked meats" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_YxRsE_ozr9a5AW9K5JD_RCJYcTUmdzrzbcz7krPsDefg3xwjpS-1tByH59Ph8tIyvwe95NFnZ23n-74OFlJOH57Hwa1PIROVuop8yseA5bD8_KN1ePVi8mwCtbKjvTjSC6wyFVXR3aN19JFuUQIVwoJdgvDMZ2knQePBNdYMrYZjJ0kr_b2ImJH9u_RGFYct0cNaKFgVKo7INOAzR3IvUVsagiM3R1a4gFjpKUnCYFQWVQv_6-CW_pDujZSsxhFMtiyRqkvFPwAQ1g"/>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Smokehouse Cuban</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">Smoked ham, Swiss, mustard, homemade pork loin, and dill pickles. Pressed on a toasted bun until golden.</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="group bg-surface-container border border-primary/10 rounded-lg overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[16/10] overflow-hidden bg-surface-bright relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Crispy smoked chicken wings with dry rub" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQMKSFKoc29g1yQwPjFt6ZuumBA_tgDFLXWtyFL1-Lz7k6jfm9bXEVm0VWtFa8dDCMmsNAAtJqPo22JgaLBeFJ3s4piGmilqkoaHwBIBhuQIMINPl8tpl2i1G0raK_OyvV8ZxdpW_5LxwMzVR0dRTmK3mCaOBoqCMqZm6riEuMVu8lII_midoXR8S9rQ-T_nLoaD2VMhxrnd-Xdf94JEnX1YS_lFFBlCQQ6KYz4ljCcvVVsJYV5A0N1rCvyyygHyB014i8UzVdMy6FVQ"/>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-surface font-label text-[10px] px-3 py-1 rounded-full uppercase font-bold">Fan Favorite</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Smoked Wings</h3>
+<p class="text-on-surface/50 text-sm leading-relaxed mb-6">Smoked low and slow, then fried to crispy perfection. House-made sauces. Big, bold, and worth the trip.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bourbon Bar Section -->
+<section class="py-24 px-8 bg-surface-dim overflow-hidden" id="bourbon">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-[55%] space-y-10">
+<div>
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] block mb-4">FULL LIQUOR BAR</span>
+<h2 class="font-headline text-6xl text-on-surface mb-8">The Bourbon Bar</h2>
+<p class="text-on-surface/60 text-lg leading-relaxed max-w-xl">
+                        The best bourbon selection in western North Carolina. From rare small-batch releases to local distilleries, come sit at the bar and let us prove it.
+                    </p>
+</div>
+<div class="flex gap-12 border-y border-outline-variant/20 py-10">
+<div class="text-center">
+<div class="font-label text-5xl md:text-7xl text-primary font-bold mb-2">68</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface/50">Bourbons</div>
+</div>
+<div class="text-center">
+<div class="font-label text-5xl md:text-7xl text-primary font-bold mb-2">4</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface/50">Flights</div>
+</div>
+<div class="text-center">
+<div class="font-label text-5xl md:text-7xl text-primary font-bold mb-2">12+</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface/50">Craft Beers</div>
+</div>
+</div>
+<ul class="grid grid-cols-2 gap-4">
+<li class="flex items-center space-x-3 text-on-surface/80">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label text-sm uppercase tracking-wider">Bourbon Flights</span>
+</li>
+<li class="flex items-center space-x-3 text-on-surface/80">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label text-sm uppercase tracking-wider">Signature Cocktails</span>
+</li>
+<li class="flex items-center space-x-3 text-on-surface/80">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label text-sm uppercase tracking-wider">Craft Beer on Tap</span>
+</li>
+<li class="flex items-center space-x-3 text-on-surface/80">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label text-sm uppercase tracking-wider">Full Wine Selection</span>
+</li>
+</ul>
+</div>
+<div class="w-full md:w-[45%] flex flex-col gap-8">
+<div class="h-80 bg-surface-container rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Shelf stocked with premium bourbon bottles in a warm light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLoQsX725E1KGYIKMvaSb8SEtf77XTICDWPXEZBwxjHgtDVt1FVuIrzn5y5U6egFoo5M-R6P5OZzk5jyHP9zqs66j4VDlecqK9ORz7KZNyTwwV1x2AGPzeKiXSslZekX4TTDXlvAs5tBDa_jVfHSus26g87Ctl-WEk8Sph4RH7Cr_yqLUvxHSyD94TNgfwhDD5tVYQt4zD3FjgjipzgUGQuzfMKeWUWTd16EssLfrM7IcsTvw18o5TLkRbgRj_qY0FRxk0lxYtNPgQsQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 to-transparent"></div>
+</div>
+<div class="h-64 bg-surface-container rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Bartender preparing a cocktail with an orange peel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjhXH57P3U22fvBLpEb4IcX1pYWY052GFobhq6Mfd85Jt3fh2DgfYQvhqk-eS2-wKjlhMxMo98STxgOkEoRD9ulgwvcLsdd-SyNHCB3e0qQnUNPMrtAcW5BQ3U2SQvz1rmueDyO0tfmzrDgGTh9OYcEte-a2_A322FyPlO7OkXz5gx67GzWmDwnSw-uZ7rq8_WLAmqDcw-CH_c_s12W-5B1ha8y-Su58TucNmFuAbdEwTIGjBL4ggMSSKDJdbiXZtLpX26YJCLv7HbtA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Story -->
+<section class="py-24 px-8 bg-surface-container-low" id="story">
+<div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-20 items-center">
+<div class="w-full md:w-[45%] relative">
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative z-10">
+<img class="w-full h-full object-cover" data-alt="Pitmaster working over a smokehouse with firelight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGgczkSBunn3JEiGeHMQTaPsQAZBX93ohiLMS6D_YVbm7VD0lwDoo1VBy6OHHu0JMFKgPcFHG4PD_XbxtKs8gC_j72ailqpEIgp75F4p8wHSwGcaaubFngdr9qNUIzYZgUQeFo1GZHiP0DEAZJkjCZrR2HeasyGzHFBDdAbr_wo1VFs-vPXU3pT7aVe8s9q7UcFjBiMZ3kPTk6oAEV4DmRbl-uhDa4yJMuRWbA5xiE2L0my-l-i5uHe9L3tgXjMO2yT3HvJ8mUHtIlxw"/>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-secondary-container p-8 z-20 rounded-lg">
+<span class="font-label text-on-surface text-3xl font-bold block mb-1">Since</span>
+<span class="font-label text-on-surface text-5xl font-extrabold">2018</span>
+</div>
+</div>
+<div class="w-full md:w-[55%] space-y-8">
+<div>
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] block mb-4">HOW IT STARTED</span>
+<h2 class="font-headline text-5xl text-on-surface mb-8">The Farmer &amp; The Pitmaster</h2>
+<div class="space-y-6 text-on-surface/70 text-lg leading-relaxed">
+<p>
+                            Johnny Ray Bousselot and Stephen Soto took the best of two Fallston restaurants, The Honey Hog and Nannie's Fish Camp, added farm-raised steaks and a full bar, and brought it all to Main Street in Forest City.
+                        </p>
+<p>
+                            Behind every plate is Honey Hog Farm. 126 acres of their own land, plus another 140 leased, raising hogs, Wagyu cattle, and chickens. Their steaks come from Beam Farms right here in Rutherford County. The cheese curds come fresh from Brown Creek Creamery.
+                        </p>
+</div>
+</div>
+<blockquote class="border-l-4 border-primary pl-8 py-4 italic text-2xl font-headline text-on-surface leading-snug">
+                    "Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse."
+                </blockquote>
+</div>
+</div>
+</section>
+<!-- Reviews -->
+<section class="py-24 px-8 bg-surface-dim">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl text-center text-on-surface mb-16">Words from our Regulars</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="bg-surface-container p-10 rounded-xl">
+<div class="flex text-primary mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline italic text-on-surface/80 text-lg mb-8 leading-relaxed">
+                        "Tonight is Thursday and it's fifty-cent wing night. Wings are great, not too smoky, and the sauces are good. I'm getting the Cubano sandwich, one of my favorites. Place is usually busy."
+                    </p>
+<span class="font-label text-primary text-xs uppercase tracking-widest">— GOOGLE REVIEWER</span>
+</div>
+<!-- Review 2 -->
+<div class="bg-surface-container p-10 rounded-xl">
+<div class="flex text-primary mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline italic text-on-surface/80 text-lg mb-8 leading-relaxed">
+                        "If comfort food and good vibes ever had a rowdy little love child, its name would be Hoot Nannie."
+                    </p>
+<span class="font-label text-primary text-xs uppercase tracking-widest">— YELP REVIEWER</span>
+</div>
+<!-- Review 3 -->
+<div class="bg-surface-container p-10 rounded-xl">
+<div class="flex text-primary mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline italic text-on-surface/80 text-lg mb-8 leading-relaxed">
+                        "Every plate that came out looked like it had been handcrafted by angels who apprenticed in a BBQ smokehouse. The portions were generous. The staff deserves special mention. Friendly, hilarious, and quick."
+                    </p>
+<span class="font-label text-primary text-xs uppercase tracking-widest">— GOOGLE REVIEWER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Specials -->
+<section class="py-24 px-8 bg-surface-container-low" id="specials">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="group relative aspect-[16/9] rounded-2xl overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Massive platter of buffalo and honey wings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjWZjVJss0P-gtgmapWD3BGbrfkyrFB26Xl8xLQZ9q2HJc2GQ5KGUereZBHNszuNPlrzIYVnpai_X5P2RfBHyoB5M5kMZ3LKplp2IfeM2t_1wyKYY70Pw00zIz05AAEbuUC4wZjpl2_PLosv5DWolzJSK2DaX12P43eKX90vUJ_6brbQzJJ1W2zpXKaIphJW0m0YJKZW7bsVWkzJNfV3m4N_-SyEWbH0NcBsUs0rNPD2FOryoPIUD4MUA_yT48y-ZVYMFQsIqgSIEnMg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-12">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] mb-4">THURSDAYS</span>
+<h3 class="font-headline text-5xl text-on-surface mb-4">50¢ Wing Night</h3>
+<p class="text-on-surface/80">Smoke-fried and tossed in any of our 12 house sauces.</p>
+</div>
+</div>
+<div class="group relative aspect-[16/9] rounded-2xl overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Juicy thick slice of prime rib with rosemary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArpYNwkdKYY4LFLMgs7d7KKZDJLZvvuW0UFx2G23Y_OD9bT1J1beyauE0Aclwo59Oll0qyO5KiATeMGaLXeaM_EbIbCOKs5nsB_jAXic_NHoBzpqU4FdyNjeVvhlOMUKBVqrTBHDc5F0QLDFYdin-1bHdQQUOBBoOIUwvvjQIatKvSuTDTHdUB59dX0BPNwwjNRpJuEEqKnUNLMGADTBut685Yfniei4vox9GKY2J3-busmfDr3mEDGjbax32e00FysrkjvBQIWNp4IA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-12">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] mb-4">FRIDAY &amp; SATURDAY</span>
+<h3 class="font-headline text-5xl text-on-surface mb-4">Prime Rib Night</h3>
+<p class="text-on-surface/80">Herb-crusted and slow-roasted for 12 hours. While it lasts.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visit Us -->
+<section class="min-h-[819px] flex flex-col md:flex-row bg-surface-dim" id="visit">
+<div class="w-full md:w-1/2 p-12 md:p-24 flex flex-col justify-center">
+<h2 class="font-headline text-5xl text-on-surface mb-12">Join Us at the Hearth</h2>
+<div class="space-y-12 mb-16">
+<div>
+<h4 class="font-label text-primary text-xs uppercase tracking-widest mb-6">HOURS OF OPERATION</h4>
+<table class="w-full max-w-sm">
+<tbody class="text-on-surface/80">
+<tr class="border-b border-outline-variant/10">
+<td class="py-3 font-label text-sm uppercase">Mon - Tue</td>
+<td class="py-3 text-right text-secondary-container font-semibold uppercase">Closed</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-3 font-label text-sm uppercase">Wednesday</td>
+<td class="py-3 text-right">11am – 8pm</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-3 font-label text-sm uppercase">Thu - Sat</td>
+<td class="py-3 text-right">11am – 9pm</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-3 font-label text-sm uppercase">Sunday</td>
+<td class="py-3 text-right">10am – 7pm</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-6 rounded-lg border border-primary/10 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary mb-4">location_on</span>
+<p class="text-on-surface/90 text-sm leading-relaxed">
+                            164 E Main St,<br/>Forest City, NC 28043
+                        </p>
+</div>
+<div class="p-6 rounded-lg border border-primary/10 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary mb-4">call</span>
+<p class="text-on-surface/90 text-sm">
+                            (828) 229-3016
+                        </p>
+<div class="flex space-x-4 mt-4">
+<span class="material-symbols-outlined text-primary/60 cursor-pointer hover:text-primary">share</span>
+<span class="material-symbols-outlined text-primary/60 cursor-pointer hover:text-primary">star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 min-h-[400px] bg-surface-bright grayscale hover:grayscale-0 transition-all duration-1000">
+<div class="w-full h-full bg-surface-container flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60" data-alt="Atmospheric dark map of Forest City NC downtown area" data-location="Forest City, NC" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW60dLkLK-WzKYDlW_wr0xDDHqcE1CqKrCWswOIMx4oCM0sE44rVVdpNxnlSAXsYTsFVFc-tP4xtob0kVZ0FiC041RSxBXP5p5Q0-gWXMtvO3pETkEwhF5VkkzPrVXHcdGlMcwZojnwzDQQWy7dl55_-vG-DmuIkEDyZiD1Ct7idpv84NoPAMpPiLqTc6TcWMw1YLzImMM7CdjHX-kPGdDe0wTd9LirwT5VON7RyHjWZARWMkCDg-9LV6PlFdJfgTpfpbP-hefmbkyKQ"/>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="relative z-10 bg-surface-dim p-4 rounded border border-primary/20 flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label text-[10px] uppercase tracking-tighter">THE HOOT NANNIE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="flex flex-col items-center py-12 space-y-4 w-full bg-[#100E0D] border-t border-[#504537]/15">
+<div class="text-lg font-headline text-[#F5EDE0]/50">The Hoot Nannie</div>
+<div class="font-label text-[#F5EDE0]/30 text-xs uppercase tracking-widest mb-4">A Five Spur Steakhouse &bull; Honey Hog Restaurant Group</div>
+<div class="flex flex-wrap justify-center gap-6 px-4">
+<span class="font-label text-[#F5EDE0]/30 text-xs uppercase tracking-widest hover:text-[#F5EDE0] transition-opacity cursor-pointer">164 E Main St, Forest City, NC 28043</span>
+<span class="font-label text-[#F5EDE0]/30 text-xs uppercase tracking-widest hover:text-[#F5EDE0] transition-opacity cursor-pointer">(828) 229-3016</span>
+<span class="font-label text-[#F5EDE0]/30 text-xs uppercase tracking-widest hover:text-[#F5EDE0] transition-opacity cursor-pointer">Instagram</span>
+<span class="font-label text-[#F5EDE0]/30 text-xs uppercase tracking-widest hover:text-[#F5EDE0] transition-opacity cursor-pointer">Facebook</span>
+</div>
+<p class="font-label text-[10px] uppercase tracking-widest text-[#F5EDE0]/20 mt-8">
+            © 2026 The Hoot Nannie.
+        </p>
+</footer>
+</body></html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum - Pricing Variants</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-dark: #333;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+
+    /* Scanlines */
+    body::after {
+      content: '';
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9998;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+    }
+
+    .pricing-variant { display: none; }
+    .pricing-variant.active { display: block; }
+
+    /* ===== SHARED ===== */
+    .pricing-section {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+      border-bottom: 1px solid rgba(245,214,35,0.1);
+      padding: 5rem 2rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ==========================================================
+       V1 — CENTERED HEADER + EQUAL ROUNDED CARDS + FLOATING BADGE
+       Header centered above cards. Cards equal size, rounded,
+       neon yellow border on featured. "Most Popular" pill badge
+       floats above featured. Inter font for badges/CTAs.
+       ========================================================== */
+    .v1 .header { text-align: center; margin-bottom: 3rem; }
+    .v1 .header .label {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 4px; margin-bottom: 1rem;
+    }
+    .v1 .header .title {
+      font-family: var(--font-pixel); font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow); text-transform: uppercase;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .v1 .header .desc {
+      color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;
+    }
+    .v1 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; align-items: stretch;
+    }
+    .v1 .card {
+      background: var(--dark); border: 1px solid #1e1e26;
+      padding: 2.5rem 2rem; text-align: center;
+      position: relative; overflow: visible; transition: all 0.3s;
+      border-radius: 8px;
+    }
+    .v1 .card:hover { border-color: #3a3a44; transform: translateY(-3px); }
+    .v1 .card.feat {
+      border: 2px solid var(--yellow-dim);
+      box-shadow: 0 0 25px rgba(245,214,35,0.08), inset 0 0 25px rgba(245,214,35,0.03);
+    }
+    .v1 .badge { display: none; }
+    .v1 .card.feat .badge {
+      display: inline-block; position: absolute;
+      top: -14px; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+      color: var(--yellow); text-transform: uppercase; letter-spacing: 2px;
+      background: var(--dark); border: 1px solid rgba(245,214,35,0.3);
+      border-radius: 20px; padding: 0.3rem 1rem; white-space: nowrap; z-index: 2;
+    }
+    .v1 .amount {
+      font-family: var(--font-pixel); font-size: 2.2rem;
+      color: var(--yellow); margin: 0.5rem 0;
+    }
+    .v1 .name {
+      font-family: var(--font-pixel); font-size: 0.55rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .v1 .info { color: var(--gray); font-size: 0.85rem; line-height: 1.6; font-family: var(--font-body); }
+    .v1 .cta {
+      display: inline-block; margin-top: 1.2rem;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #666; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.4rem;
+      border: 1px solid #333; border-radius: 50px; transition: all 0.2s;
+    }
+    .v1 .cta:hover { color: var(--white); border-color: #666; }
+    .v1 .card.feat .cta {
+      background: var(--yellow); color: var(--black); border-color: var(--yellow);
+      box-shadow: 0 2px 0 #8a7100, 0 0 12px rgba(245,214,35,0.15);
+    }
+    .v1 .card.feat .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 #8a7100, 0 0 20px rgba(245,214,35,0.25);
+    }
+    @media (max-width: 768px) { .v1 .grid { grid-template-columns: 1fr; } }
+
+    /* ==========================================================
+       V2 — CENTERED HEADER + PRICE-FIRST LAYOUT
+       Big price on top, name below, description under.
+       Minimal borders. Featured has subtle yellow top glow.
+       CTA buttons on all cards.
+       ========================================================== */
+    .v2 .header { text-align: center; margin-bottom: 3rem; }
+    .v2 .header .label {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 4px; margin-bottom: 1rem;
+    }
+    .v2 .header .title {
+      font-family: var(--font-pixel); font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow); text-transform: uppercase;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .v2 .header .desc {
+      color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;
+    }
+    .v2 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; align-items: stretch;
+    }
+    .v2 .card {
+      background: var(--dark); border: 1px solid #1a1a22;
+      padding: 3rem 2rem 2.5rem; text-align: center;
+      position: relative; transition: all 0.3s;
+    }
+    .v2 .card:hover { border-color: #333; transform: translateY(-3px); }
+    .v2 .card.feat {
+      border-color: #333;
+      box-shadow: 0 -3px 20px rgba(245,214,35,0.08);
+    }
+    .v2 .card.feat::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--yellow);
+    }
+    .v2 .amount {
+      font-family: var(--font-pixel); font-size: 2.8rem;
+      color: var(--yellow); margin-bottom: 0.8rem;
+      text-shadow: 0 0 20px rgba(245,214,35,0.15);
+    }
+    .v2 .name {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+      color: var(--white); text-transform: uppercase; letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+    .v2 .info { color: #666; font-size: 0.85rem; line-height: 1.6; font-family: var(--font-body); }
+    .v2 .cta {
+      display: inline-block; margin-top: 1.5rem;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.4rem;
+      border: 1px solid #2a2a32; transition: all 0.2s;
+    }
+    .v2 .cta:hover { color: var(--white); border-color: #555; }
+    .v2 .card.feat .cta {
+      color: var(--yellow); border-color: var(--yellow-dim);
+    }
+    .v2 .card.feat .cta:hover {
+      background: rgba(245,214,35,0.06); border-color: var(--yellow);
+    }
+    @media (max-width: 768px) { .v2 .grid { grid-template-columns: 1fr; } }
+
+    /* ==========================================================
+       V3 — CENTERED EVERYTHING + STACKED FULL-WIDTH
+       Each tier is a full-width band. Price left, info right.
+       Clean horizontal layout. Featured has yellow left accent.
+       ========================================================== */
+    .v3 .header { text-align: center; margin-bottom: 3rem; }
+    .v3 .header .label {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 4px; margin-bottom: 1rem;
+    }
+    .v3 .header .title {
+      font-family: var(--font-pixel); font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow); text-transform: uppercase;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .v3 .header .desc {
+      color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;
+    }
+    .v3 .stack { display: flex; flex-direction: column; gap: 12px; }
+    .v3 .row {
+      display: flex; align-items: center; gap: 2rem;
+      background: var(--dark); border: 1px solid #1a1a22;
+      padding: 2rem 2.5rem; transition: all 0.2s;
+      position: relative;
+    }
+    .v3 .row:hover { border-color: #333; }
+    .v3 .row.feat {
+      border-left: 3px solid var(--yellow);
+    }
+    .v3 .row .amount {
+      font-family: var(--font-pixel); font-size: 2rem;
+      color: var(--yellow); min-width: 100px; text-align: center; flex-shrink: 0;
+    }
+    .v3 .row .content { flex: 1; }
+    .v3 .row .name {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 0.4rem;
+    }
+    .v3 .row .info { color: #666; font-size: 0.85rem; line-height: 1.5; font-family: var(--font-body); }
+    .v3 .row .cta {
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.4rem 1.2rem;
+      border: 1px solid #2a2a32; border-radius: 4px;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .v3 .row .cta:hover { color: var(--white); border-color: #555; }
+    .v3 .row.feat .cta { color: var(--yellow); border-color: var(--yellow-dim); }
+    .v3 .row.feat .cta:hover { background: rgba(245,214,35,0.06); }
+    @media (max-width: 768px) {
+      .v3 .row { flex-direction: column; text-align: center; gap: 1rem; }
+      .v3 .row .amount { min-width: auto; }
+    }
+
+    /* ==========================================================
+       V4 — CENTERED HEADER + COIN-SLOT BUTTONS
+       Cards look like arcade control panels. Recessed button
+       feel on cards. Gold gradient CTA on featured. Tactile.
+       ========================================================== */
+    .v4 .header { text-align: center; margin-bottom: 3rem; }
+    .v4 .header .label {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 4px; margin-bottom: 1rem;
+    }
+    .v4 .header .title {
+      font-family: var(--font-pixel); font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow); text-transform: uppercase;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .v4 .header .desc {
+      color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;
+    }
+    .v4 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; align-items: stretch;
+    }
+    .v4 .card {
+      background: linear-gradient(180deg, #141418 0%, #0e0e12 100%);
+      border: 2px solid #1a1a22;
+      padding: 2.5rem 2rem; text-align: center;
+      position: relative; transition: all 0.2s;
+      border-radius: 6px;
+    }
+    .v4 .card:hover { border-color: #2a2a32; }
+    .v4 .card.feat { border-color: var(--yellow-dim); }
+    .v4 .amount {
+      font-family: var(--font-pixel); font-size: 2.2rem;
+      color: var(--yellow); margin: 0.5rem 0;
+    }
+    .v4 .name {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .v4 .info { color: #666; font-size: 0.85rem; line-height: 1.6; font-family: var(--font-body); }
+    .v4 .cta {
+      display: inline-block; margin-top: 1.2rem;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #777; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.3rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06); border-radius: 6px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 0 rgba(0,0,0,0.4);
+      transition: all 0.15s;
+    }
+    .v4 .cta:hover {
+      color: var(--white); background: rgba(255,255,255,0.06);
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 0 rgba(0,0,0,0.4);
+    }
+    .v4 .card.feat .cta {
+      background: linear-gradient(180deg, #c9a200 0%, #8a7100 100%);
+      color: var(--black); border: 2px solid #a08500;
+      box-shadow: 0 3px 0 #5a4000, inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .v4 .card.feat .cta:hover {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #5a4000, inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    @media (max-width: 768px) { .v4 .grid { grid-template-columns: 1fr; } }
+
+    /* ==========================================================
+       V5 — CENTERED + TWO-PART CARD (PRICE TOP / INFO BOTTOM)
+       Card split: dark top half with price+name, lighter bottom
+       half with description+CTA. Clean divider between halves.
+       Featured gets red divider and red CTA accent.
+       ========================================================== */
+    .v5 .header { text-align: center; margin-bottom: 3rem; }
+    .v5 .header .label {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 4px; margin-bottom: 1rem;
+    }
+    .v5 .header .title {
+      font-family: var(--font-pixel); font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow); text-transform: uppercase;
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .v5 .header .desc {
+      color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;
+    }
+    .v5 .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; align-items: stretch;
+    }
+    .v5 .card {
+      border: 1px solid #1e1e26; overflow: hidden;
+      transition: all 0.3s; border-radius: 8px;
+      display: flex; flex-direction: column;
+    }
+    .v5 .card:hover { border-color: #333; transform: translateY(-3px); }
+    .v5 .card.feat { border-color: #333; }
+    .v5 .card-top {
+      background: var(--dark);
+      padding: 2.5rem 2rem 2rem; text-align: center;
+      border-bottom: 1px solid #1e1e26;
+    }
+    .v5 .card.feat .card-top { border-bottom-color: var(--red); }
+    .v5 .card-bottom {
+      background: rgba(17,17,24,0.6);
+      padding: 1.5rem 2rem 2rem; text-align: center; flex: 1;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    .v5 .amount {
+      font-family: var(--font-pixel); font-size: 2.4rem;
+      color: var(--yellow); margin-bottom: 0.5rem;
+    }
+    .v5 .name {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--white); text-transform: uppercase; letter-spacing: 2px;
+    }
+    .v5 .info {
+      color: #666; font-size: 0.85rem; line-height: 1.6;
+      font-family: var(--font-body); margin-bottom: 1.2rem;
+    }
+    .v5 .cta {
+      display: inline-block;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.4rem;
+      border: 1px solid #2a2a32; border-radius: 50px; transition: all 0.2s;
+    }
+    .v5 .cta:hover { color: var(--white); border-color: #555; }
+    .v5 .card.feat .cta {
+      color: var(--red); border-color: rgba(232,52,46,0.3);
+    }
+    .v5 .card.feat .cta:hover {
+      background: rgba(232,52,46,0.08); border-color: var(--red);
+    }
+    @media (max-width: 768px) { .v5 .grid { grid-template-columns: 1fr; } }
+
+    /* ===== PICKER BAR ===== */
+    .picker {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(10,10,10,0.96); backdrop-filter: blur(16px);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      border-top: 2px solid #222;
+    }
+    .picker-label {
+      font-family: var(--font-pixel);
+      font-size: 0.4rem; color: var(--gray);
+      text-transform: uppercase; letter-spacing: 2px; margin-right: 12px;
+    }
+    .pick-btn {
+      min-width: 40px; height: 38px;
+      border: 2px solid #333; background: transparent; color: #888;
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      cursor: pointer; padding: 0 10px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .pick-btn:hover { border-color: #555; color: #ccc; }
+    .pick-btn.active { border-color: var(--yellow); color: var(--yellow); background: rgba(245,214,35,0.08); }
+    .picker-desc {
+      font-family: var(--font-pixel);
+      font-size: 0.32rem; color: #666; margin-left: 12px;
+      text-transform: uppercase; letter-spacing: 1px; max-width: 500px;
+    }
+    @media (max-width: 700px) {
+      .picker-desc { display: none; }
+      .picker-label { margin-right: 6px; font-size: 0.35rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: 0s !important; } }
+  </style>
+</head>
+<body>
+
+<!-- V1: ROUNDED CARDS + FLOATING BADGE -->
+<div class="pricing-variant active" id="v1">
+  <section class="pricing-section v1">
+    <div class="container">
+      <div class="header">
+        <p class="label">Admission</p>
+        <h2 class="title">Insert Coin.<br>Just Kidding.</h2>
+        <p class="desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <p class="badge"></p>
+          <p class="name">Hourly Pass</p>
+          <p class="amount">$8</p>
+          <p class="info">One hour of unlimited play on every machine in the museum.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="card feat">
+          <p class="badge">Most Popular</p>
+          <p class="name">All-Day Pass</p>
+          <p class="amount">$13</p>
+          <p class="info">Play all day long. Come and go as you please with your wristband.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="card">
+          <p class="badge"></p>
+          <p class="name">Group Rate</p>
+          <p class="amount">$10</p>
+          <p class="info">Per person for groups of 15 or more. All-day admission included.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- V2: PRICE-FIRST LAYOUT -->
+<div class="pricing-variant" id="v2">
+  <section class="pricing-section v2">
+    <div class="container">
+      <div class="header">
+        <p class="label">Admission</p>
+        <h2 class="title">Grab Your<br>Wristband.</h2>
+        <p class="desc">Every machine. Every floor. One price. No quarters required.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <p class="amount">$8</p>
+          <p class="name">Hourly Pass</p>
+          <p class="info">One hour of unlimited play on every machine in the museum.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="card feat">
+          <p class="amount">$13</p>
+          <p class="name">All-Day Pass</p>
+          <p class="info">Play all day long. Come and go as you please with your wristband.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="card">
+          <p class="amount">$10</p>
+          <p class="name">Group Rate</p>
+          <p class="info">Per person for groups of 15 or more. All-day admission included.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- V3: FULL-WIDTH ROWS -->
+<div class="pricing-variant" id="v3">
+  <section class="pricing-section v3">
+    <div class="container">
+      <div class="header">
+        <p class="label">Admission</p>
+        <h2 class="title">Pick Your<br>Play Style.</h2>
+        <p class="desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+      </div>
+      <div class="stack">
+        <div class="row">
+          <div class="amount">$8</div>
+          <div class="content">
+            <p class="name">Hourly Pass</p>
+            <p class="info">One hour of unlimited play on every machine.</p>
+          </div>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="row feat">
+          <div class="amount">$13</div>
+          <div class="content">
+            <p class="name">All-Day Pass</p>
+            <p class="info">Play all day. Come and go with your wristband.</p>
+          </div>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="row">
+          <div class="amount">$10</div>
+          <div class="content">
+            <p class="name">Group Rate</p>
+            <p class="info">15+ people. All-day admission per person.</p>
+          </div>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- V4: COIN-SLOT ARCADE BUTTONS -->
+<div class="pricing-variant" id="v4">
+  <section class="pricing-section v4">
+    <div class="container">
+      <div class="header">
+        <p class="label">Admission</p>
+        <h2 class="title">No Quarters<br>Required.</h2>
+        <p class="desc">Every machine on freeplay. Pick your pass and start playing.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <p class="name">Hourly Pass</p>
+          <p class="amount">$8</p>
+          <p class="info">One hour of unlimited play on every machine in the museum.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+        <div class="card feat">
+          <p class="name">All-Day Pass</p>
+          <p class="amount">$13</p>
+          <p class="info">Play all day long. Come and go as you please with your wristband.</p>
+          <a href="#" class="cta">Insert Coin</a>
+        </div>
+        <div class="card">
+          <p class="name">Group Rate</p>
+          <p class="amount">$10</p>
+          <p class="info">Per person for groups of 15 or more. All-day admission included.</p>
+          <a href="#" class="cta">Get Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- V5: TWO-PART SPLIT CARDS -->
+<div class="pricing-variant" id="v5">
+  <section class="pricing-section v5">
+    <div class="container">
+      <div class="header">
+        <p class="label">Admission</p>
+        <h2 class="title">Insert Coin.<br>Just Kidding.</h2>
+        <p class="desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-top">
+            <p class="amount">$8</p>
+            <p class="name">Hourly Pass</p>
+          </div>
+          <div class="card-bottom">
+            <p class="info">One hour of unlimited play on every machine in the museum.</p>
+            <a href="#" class="cta">Get Pass</a>
+          </div>
+        </div>
+        <div class="card feat">
+          <div class="card-top">
+            <p class="amount">$13</p>
+            <p class="name">All-Day Pass</p>
+          </div>
+          <div class="card-bottom">
+            <p class="info">Play all day long. Come and go as you please with your wristband.</p>
+            <a href="#" class="cta">Get Pass</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <p class="amount">$10</p>
+            <p class="name">Group Rate</p>
+          </div>
+          <div class="card-bottom">
+            <p class="info">Per person for groups of 15 or more. All-day admission included.</p>
+            <a href="#" class="cta">Get Pass</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PICKER -->
+<div class="picker">
+  <span class="picker-label">Pricing</span>
+  <button class="pick-btn active" onclick="pick(1)">1</button>
+  <button class="pick-btn" onclick="pick(2)">2</button>
+  <button class="pick-btn" onclick="pick(3)">3</button>
+  <button class="pick-btn" onclick="pick(4)">4</button>
+  <button class="pick-btn" onclick="pick(5)">5</button>
+  <span class="picker-desc" id="picker-desc">Rounded cards, floating "Most Popular" badge, yellow pill CTA</span>
+</div>
+
+<script>
+  const descs = {
+    1: 'Rounded cards, floating "Most Popular" badge, yellow pill CTA',
+    2: 'Price-first big numbers, top glow on featured, minimal borders',
+    3: 'Full-width rows, price left, info center, CTA right, yellow left accent',
+    4: 'Arcade control panel, recessed buttons, gold gradient CTA on featured',
+    5: 'Split cards: price/name top half, description/CTA bottom half, red divider'
+  };
+
+  function pick(n) {
+    document.querySelectorAll('.pricing-variant').forEach(v => v.classList.remove('active'));
+    document.getElementById('v' + n).classList.add('active');
+    document.querySelectorAll('.pick-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pick-btn')[n - 1].classList.add('active');
+    document.getElementById('picker-desc').textContent = descs[n];
+  }
+</script>
+
+</body>
+</html>

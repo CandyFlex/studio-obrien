@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hoot Nannie — Design Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: #0a0a0f;
+      color: #f5f5f7;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+    }
+    .header-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #34d399;
+      margin-bottom: 0.75rem;
+    }
+    .header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      font-size: 0.9rem;
+      color: rgba(245,245,247,0.5);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #16161f;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      border-color: rgba(52,211,153,0.3);
+      transform: translateY(-4px);
+    }
+    .card-preview {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #0d0d12;
+    }
+    .card-preview iframe {
+      width: 1440px;
+      height: 900px;
+      border: none;
+      transform: scale(0.25);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .card-num {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #34d399;
+      background: rgba(52,211,153,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 0.6rem;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: rgba(245,245,247,0.5);
+      line-height: 1.55;
+      margin-bottom: 0.75rem;
+    }
+    .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.04);
+      color: rgba(245,245,247,0.4);
+    }
+    .card-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #34d399;
+      transition: opacity 0.2s;
+    }
+    .card-link:hover { opacity: 0.8; }
+    .footer-note {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.8rem;
+      color: rgba(245,245,247,0.3);
+    }
+    .footer-note a {
+      color: #34d399;
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+    @media (max-width: 400px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Studio O'Brien</div>
+  <h1>The Hoot Nannie</h1>
+  <p>Five design directions for your new website. Same menu, same photos, drastically different vibes. 21 food items, 68 bourbons, one Forest City original. Click any to view full site.</p>
+</div>
+
+<div class="grid">
+  <a class="card" href="hoot-nannie-v1.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="hoot-nannie-v1.html" loading="lazy" tabindex="-1"></iframe>
+    </div>
+    <div class="card-body">
+      <div class="card-num">V1</div>
+      <h2>Neon Honky Tonk</h2>
+      <p class="card-desc">Dark navy with neon glows. Flickering "68" bourbon counter, text-shadow effects, hot pink accents. Late-night bar energy turned up loud.</p>
+      <div class="card-meta">
+        <span class="tag">Dark</span>
+        <span class="tag">Righteous + DM Sans</span>
+        <span class="tag">Neon Yellow &amp; Pink</span>
+      </div>
+      <span class="card-link">View Full Site &rarr;</span>
+    </div>
+  </a>
+
+  <a class="card" href="hoot-nannie-v2.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="hoot-nannie-v2.html" loading="lazy" tabindex="-1"></iframe>
+    </div>
+    <div class="card-body">
+      <div class="card-num">V2</div>
+      <h2>Broadsheet Newspaper</h2>
+      <p class="card-desc">Newsprint editorial layout. Multi-column text, drop caps, classified ads reviews. One red accent. Reads like a front page from a Southern paper.</p>
+      <div class="card-meta">
+        <span class="tag">Light</span>
+        <span class="tag">Lora + Source Sans 3</span>
+        <span class="tag">Ink &amp; Newsprint</span>
+      </div>
+      <span class="card-link">View Full Site &rarr;</span>
+    </div>
+  </a>
+
+  <a class="card" href="hoot-nannie-v3.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="hoot-nannie-v3.html" loading="lazy" tabindex="-1"></iframe>
+    </div>
+    <div class="card-body">
+      <div class="card-num">V3</div>
+      <h2>Maximalist Collage</h2>
+      <p class="card-desc">Scrapbook chaos. Polaroid frames, corkboard pinboard, torn paper edges, sticky note reviews. Photos scattered at angles like a family bulletin board.</p>
+      <div class="card-meta">
+        <span class="tag">Light</span>
+        <span class="tag">Archivo Black + Caveat</span>
+        <span class="tag">Mustard &amp; Forest Green</span>
+      </div>
+      <span class="card-link">View Full Site &rarr;</span>
+    </div>
+  </a>
+
+  <a class="card" href="hoot-nannie-v4.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="hoot-nannie-v4.html" loading="lazy" tabindex="-1"></iframe>
+    </div>
+    <div class="card-body">
+      <div class="card-num">V4</div>
+      <h2>Zen Minimal</h2>
+      <p class="card-desc">Extreme whitespace and restraint. Ultra-light serif headings, hairline borders, one terra cotta accent. Square photos. The food speaks for itself.</p>
+      <div class="card-meta">
+        <span class="tag">Light</span>
+        <span class="tag">Cormorant + Karla</span>
+        <span class="tag">Off-White &amp; Terra Cotta</span>
+      </div>
+      <span class="card-link">View Full Site &rarr;</span>
+    </div>
+  </a>
+
+  <a class="card" href="hoot-nannie-v5.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="hoot-nannie-v5.html" loading="lazy" tabindex="-1"></iframe>
+    </div>
+    <div class="card-body">
+      <div class="card-num">V5</div>
+      <h2>Retro 70s Steakhouse</h2>
+      <p class="card-desc">Burnt orange sunburst, harvest gold headers, rounded pill buttons. Wave dividers between sections. Warm retro supper club that never left the '70s.</p>
+      <div class="card-meta">
+        <span class="tag">Warm</span>
+        <span class="tag">Passion One + Questrial</span>
+        <span class="tag">Burnt Orange &amp; Gold</span>
+      </div>
+      <span class="card-link">View Full Site &rarr;</span>
+    </div>
+  </a>
+</div>
+
+<div class="footer-note">
+  Demo by <a href="https://studioobrien.com" target="_blank">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.
+</div>
+
+</body>
+</html>

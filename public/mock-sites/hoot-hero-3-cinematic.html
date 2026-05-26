@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Hoot Nannie | Heritage Steakhouse</title>
+<!-- Typography: DM Serif Display, IBM Plex Sans, IBM Plex Mono -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f8bc5f",
+              "primary-container": "#c9933a",
+              "secondary-container": "#892400",
+              "surface": "#161312",
+              "surface-dim": "#161312",
+              "surface-container-low": "#1e1b1a",
+              "surface-container": "#221f1e",
+              "surface-container-highest": "#383433",
+              "on-surface": "#f5ede0",
+              "outline": "#9c8f7d",
+              "outline-variant": "#504537",
+            },
+            fontFamily: {
+              "serif": ["DM Serif Display", "serif"],
+              "sans": ["IBM Plex Sans", "sans-serif"],
+              "mono": ["IBM Plex Mono", "monospace"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem",
+              "md": "0.375rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Paper Grain Texture */
+        .paper-grain::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 60;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased paper-grain overflow-x-hidden">
+<!-- Hero Section Container -->
+<section class="relative h-screen w-full flex flex-col overflow-hidden bg-surface-dim">
+<!-- Full-Bleed Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Smoky upscale steakhouse interior with amber lighting" class="w-full h-full object-cover grayscale-[20%] contrast-[110%]" data-alt="Atmospheric dimly lit steakhouse interior with swirling white oak smoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD45_6l2UbgrPA4xf2M3RzP7WArqyeEWT97vbdUTP60a5KJljWFVMcEKp3idaIaDgQ5_cCnIJ0OnVAlT5l4nYsJ6V15Y6grqU1Egxr8FamGCpsDMvgnmSbcXZBVL6PUnLnf3leK44gcpqUQDvLeJjezfHqnwCidd1e3xLIg6FmxBBimzVA1NjhfJRhrVpFY0tzA8t1wpQOfnkCqej0yUS8T8REqkbJAlD-Azxwn9nXQf7K7YVvXQO3U5JMSoPz5MesYqDdFOuZOUUhrRQ"/>
+<!-- Cinematic Gradient Overlays -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#141110]/85 via-[#141110]/50 to-[#141110]/95"></div>
+</div>
+<!-- Shared Component: TopAppBar -->
+<header class="relative z-50 flex justify-between items-center w-full px-8 py-6 max-w-none bg-[#161312]/80 backdrop-blur-md">
+<div class="flex items-center gap-12">
+<!-- Brand Anchor -->
+<h1 class="text-3xl font-serif tracking-tight text-[#C9933A]">The Hoot Nannie</h1>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[11px] font-mono tracking-[0.15em] uppercase text-on-surface/80 hover:text-[#C9933A] transition-colors duration-300" href="#">Menu</a>
+<a class="text-[11px] font-mono tracking-[0.15em] uppercase text-on-surface/80 hover:text-[#C9933A] transition-colors duration-300" href="#">Bourbon</a>
+<a class="text-[11px] font-mono tracking-[0.15em] uppercase text-on-surface/80 hover:text-[#C9933A] transition-colors duration-300" href="#">Story</a>
+<a class="text-[11px] font-mono tracking-[0.15em] uppercase text-on-surface/80 hover:text-[#C9933A] transition-colors duration-300" href="#">Visit</a>
+</nav>
+</div>
+<!-- Trailing Action -->
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 bg-secondary-container text-on-surface text-sm font-medium rounded-md hover:bg-secondary-container/90 transition-all active:scale-95 shadow-xl shadow-black/20">
+                    Reserve
+                </button>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Center Identity & Content -->
+<div class="relative z-10 flex-grow flex flex-col items-center justify-center text-center px-6">
+<!-- Large Logo Placeholder / Focal Point -->
+<div class="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] mb-8 group">
+<!-- Ambient Firelight Glow -->
+<div class="absolute inset-0 rounded-full bg-primary-container/20 blur-[60px] group-hover:bg-primary-container/30 transition-all duration-700"></div>
+<!-- Main Logo Container -->
+<div class="relative w-full h-full rounded-full border border-outline-variant/30 bg-surface-container/40 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+<img alt="The Hoot Nannie owl crest logo" class="w-4/5 h-4/5 object-contain opacity-90 drop-shadow-2xl" data-alt="Ornate owl illustration in burnished gold on a dark circular badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK0OVBDneJvnfU0rXTdnTtoJp2F0F5p_zp2ygIUaDPwxVfzgBgdeGYeBfZ9MZt5m-GAgb4miQUN2C5-Z9b_yrFCaCP_uSLKgP72O7omtUnKV3RU3PsAIA2TGUPdUKoBq2HbOwkCMziYwa3-W0mdkYDdFclsxmwihbnuKF6FokvCD3YmkuqbN-kOZ0xV_8PIVlwpecaSuYjVy78vqSpsQDSYYCmR4O7wwIII4PNdxXt57MpAucgq-7RnVJmMQOKncQyTpOUao7pqT1dWg"/>
+</div>
+</div>
+<!-- Taglines -->
+<div class="space-y-4 max-w-2xl">
+<h2 class="font-serif italic text-2xl md:text-3xl text-primary-container tracking-tight">
+                    A Five Spur Steakhouse
+                </h2>
+<p class="font-sans text-on-surface/80 text-lg md:text-xl font-light tracking-wide">
+                    Farm-raised steaks. Whole hog BBQ. 68 bourbons.
+                </p>
+</div>
+<!-- Primary CTAs -->
+<div class="flex flex-col sm:flex-row gap-6 mt-12">
+<button class="px-10 py-4 bg-secondary-container text-on-surface font-medium rounded-md hover:brightness-110 transition-all active:scale-[0.98] text-sm uppercase tracking-widest flex items-center gap-3">
+                    See the Menu
+                    <span class="material-symbols-outlined text-sm">restaurant_menu</span>
+</button>
+<button class="px-10 py-4 border border-primary-container/60 text-primary-container font-medium rounded-md hover:bg-primary-container/10 transition-all active:scale-[0.98] text-sm uppercase tracking-widest flex items-center gap-3">
+                    Plan Your Visit
+                    <span class="material-symbols-outlined text-sm">map</span>
+</button>
+</div>
+</div>
+<!-- Bottom Metadata -->
+<footer class="relative z-10 w-full px-8 py-10 flex flex-col items-center gap-3 border-t border-white/5 bg-gradient-to-t from-surface-dim to-transparent">
+<!-- Stats -->
+<div class="flex items-center gap-6 md:gap-12">
+<div class="flex flex-col items-center">
+<span class="text-primary-container font-mono text-[10px] tracking-[0.2em] uppercase">68 Bourbons</span>
+</div>
+<div class="w-px h-4 bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="text-primary-container font-mono text-[10px] tracking-[0.2em] uppercase">657+ Reviews</span>
+</div>
+<div class="w-px h-4 bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="text-primary-container font-mono text-[10px] tracking-[0.2em] uppercase">Open Wed–Sun</span>
+</div>
+</div>
+<!-- Address -->
+<p class="text-on-surface/30 text-[11px] font-sans tracking-wide">
+                164 E Main St, Forest City, NC
+            </p>
+</footer>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-32 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
+<span class="text-[9px] font-mono tracking-[0.3em] uppercase rotate-90 origin-center translate-y-4">Scroll</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary-container to-transparent"></div>
+</div>
+</section>
+</body></html>

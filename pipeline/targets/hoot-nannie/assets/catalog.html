@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoot Nannie Photo Catalog</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #eee; font-family: system-ui, sans-serif; padding: 20px; }
+  h1 { text-align: center; margin-bottom: 8px; font-size: 28px; color: #f0c040; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 14px; }
+  h2 { margin: 30px 0 15px; padding: 8px 16px; background: #222; border-left: 4px solid #f0c040; font-size: 18px; }
+  h2 span { color: #888; font-weight: normal; font-size: 14px; margin-left: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; padding: 0 8px; }
+  .card { background: #1a1a1a; border-radius: 8px; overflow: hidden; border: 1px solid #333; transition: border-color 0.2s; position: relative; }
+  .card:hover { border-color: #f0c040; }
+  .card img { width: 100%; height: 220px; object-fit: cover; display: block; cursor: pointer; }
+  .card .info { padding: 8px 12px; }
+  .card .filename { font-size: 12px; color: #aaa; font-family: monospace; word-break: break-all; }
+  .card .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-top: 4px; }
+  .tag-food { background: #2d5016; color: #8fd45a; }
+  .tag-drink { background: #4a1d6e; color: #c88af0; }
+  .tag-interior { background: #1d4a6e; color: #8ac0f0; }
+  .tag-exterior { background: #6e4a1d; color: #f0c88a; }
+  .tag-menu { background: #555; color: #ccc; }
+  .tag-junk { background: #6e1d1d; color: #f08a8a; }
+  .tag-logo { background: #1d6e5a; color: #8af0d8; }
+  .tag-duplicate { background: #333; color: #999; font-size: 10px; margin-left: 4px; }
+  .tag-new { background: #f0c040; color: #111; font-size: 10px; margin-left: 4px; }
+  .badge-production { position: absolute; top: 8px; right: 8px; background: #2d5016; color: #8fd45a; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; }
+  .section-note { color: #888; font-size: 13px; padding: 0 8px; margin-bottom: 10px; }
+
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; cursor: zoom-out; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 95vw; max-height: 95vh; object-fit: contain; }
+</style>
+</head>
+<body>
+
+<h1>The Hoot Nannie - Complete Photo Catalog</h1>
+<p class="subtitle">85 total images across all sources | Click any photo to enlarge</p>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ============ PRODUCTION (currently on the websites) ============ -->
+<h2>Currently In Production <span>21 files in mock-sites/assets/hoot-nannie/</span></h2>
+<p class="section-note">These are the WebP files the 5 website variants currently use. Note: 5 are mislabeled.</p>
+<div class="grid">
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/hero-uber.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">hero-uber.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/steak-mac-cheese.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">steak-mac-cheese.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/smoked-wings.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">smoked-wings.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/dirty-sanchez-burger.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">dirty-sanchez-burger.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/pulled-pork-plate.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">pulled-pork-plate.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/crispy-chicken.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">crispy-chicken.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/big-samantha.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">big-samantha.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/chicken-tenders.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">chicken-tenders.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/burger-hand.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">burger-hand.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/loaded-fries.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">loaded-fries.webp</div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/bbq-fries.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">bbq-fries.webp <span style="color:#f08a8a">(MISLABELED: actually chicken sandwich)</span></div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/chicken-famous.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">chicken-famous.webp <span style="color:#f08a8a">(MISLABELED: actually ribs)</span></div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/eggs-benedict.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">eggs-benedict.webp <span style="color:#f08a8a">(MISLABELED: actually paper menu)</span></div><span class="tag tag-menu">menu</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/patriot-burger.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">patriot-burger.webp <span style="color:#f08a8a">(MISLABELED: actually paper menu)</span></div><span class="tag tag-menu">menu</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/watermelon-marg.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">watermelon-marg.webp <span style="color:#f08a8a">(MISLABELED: actually loaded fries)</span></div><span class="tag tag-food">food</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/tequila-sunrise.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">tequila-sunrise.webp</div><span class="tag tag-drink">drink</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/interior1.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">interior1.webp</div><span class="tag tag-interior">interior</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/interior2.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">interior2.webp</div><span class="tag tag-interior">interior</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/exterior.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">exterior.webp</div><span class="tag tag-exterior">exterior</span></div></div>
+  <div class="card"><img src="../../../public/mock-sites/assets/hoot-nannie/logo.webp" onclick="openLightbox(this)"><div class="info"><div class="filename">logo.webp</div><span class="tag tag-logo">logo</span></div></div>
+</div>
+
+<!-- ============ NEW UNIQUE PHOTOS (not in production) ============ -->
+<h2>NEW - Unique Photos Not Yet In Production <span>Best candidates for adding to the sites</span></h2>
+<p class="section-note">These are genuinely new photos from the scrape that don't exist in the current hires or production folders.</p>
+<div class="grid">
+  <div class="card"><img src="new-scrape/pj-3435-3.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-3.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Fried cheese curds/nuggets</div></div>
+  <div class="card"><img src="new-scrape/pj-3435-8.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-8.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Shrimp and grits</div></div>
+  <div class="card"><img src="new-scrape/pj-3435-9.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-9.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Grilled cheese + chips</div></div>
+  <div class="card"><img src="new-scrape/rd-4.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-4.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Pulled pork sandwich hero</div></div>
+  <div class="card"><img src="new-scrape/rd-10.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-10.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Pulled pork + mac combo</div></div>
+  <div class="card"><img src="new-scrape/yelp-11.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-11.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Mac & cheese + pulled pork sandwich</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-17.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-17.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Crispy chicken sandwich table-level</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-18.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-18.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Pulled pork w/ hush puppies overhead</div></div>
+  <div class="card"><img src="new-scrape/pj-3435-7.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-7.jpg</div><span class="tag tag-food">food</span><span class="tag tag-new">NEW</span> Smoked wings (different angle)</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-14.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-14.jpg</div><span class="tag tag-drink">drink</span><span class="tag tag-new">NEW</span> Bar atmosphere shot</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-15.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-15.jpg</div><span class="tag tag-interior">interior</span><span class="tag tag-new">NEW</span> Full bar with taps + crowd</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-3.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-3.jpg</div><span class="tag tag-interior">interior</span><span class="tag tag-new">NEW</span> Christmas/seasonal dining room</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-8.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-8.jpg</div><span class="tag tag-exterior">exterior</span><span class="tag tag-new">NEW</span> Patio doorway angle</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-6.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-6.jpg</div><span class="tag tag-menu">menu</span><span class="tag tag-new">NEW</span> Full menu - steaks/appetizers</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-7.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-7.jpg</div><span class="tag tag-menu">menu</span><span class="tag tag-new">NEW</span> Full menu - burgers/seafood</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-11.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-11.jpg</div><span class="tag tag-menu">menu</span><span class="tag tag-new">NEW</span> Five Spur Steakhouse menu</div></div>
+</div>
+
+<!-- ============ HIRES (existing, not in production) ============ -->
+<h2>Existing Hires - Not In Production <span>Already downloaded but unused</span></h2>
+<p class="section-note">These were previously downloaded but never converted to WebP for the sites. Restaurant Guru ones have watermarks.</p>
+<div class="grid">
+  <div class="card"><img src="hires/yelp-buffalo-wings.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-buffalo-wings.jpg</div><span class="tag tag-food">food</span> Buffalo wings (clean, no watermark)</div></div>
+  <div class="card"><img src="hires/yelp-ribs.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-ribs.jpg</div><span class="tag tag-menu">menu</span> Actually a menu photo, not ribs</div></div>
+  <div class="card"><img src="hires/rg-burger.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-burger.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-club-sandwich.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-club-sandwich.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-design-hr.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-design-hr.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-drink.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-drink.jpg</div><span class="tag tag-drink">drink</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-exterior.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-exterior.jpg</div><span class="tag tag-exterior">exterior</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-facade.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-facade.jpg</div><span class="tag tag-exterior">exterior</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-filet-mignon.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-filet-mignon.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-fish-chips.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-fish-chips.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-interior.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-interior.jpg</div><span class="tag tag-interior">interior</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-interior-hr.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-interior-hr.jpg</div><span class="tag tag-interior">interior</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-prime-rib.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-prime-rib.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-pulled-pork.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-pulled-pork.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-steak.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-steak.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+  <div class="card"><img src="hires/rg-wings.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-wings.jpg</div><span class="tag tag-food">food</span><span class="tag tag-junk">watermark</span></div></div>
+</div>
+
+<!-- ============ DUPLICATES & JUNK ============ -->
+<h2>Duplicates & Junk <span>Wrong restaurants, watermarks, blurry shots</span></h2>
+<p class="section-note">These can be deleted. Wrong restaurants, CapCut watermarks, or exact duplicates of photos above.</p>
+<div class="grid">
+  <div class="card"><img src="new-scrape/pj-1.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-1.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> Jenny's Cafe UK</div></div>
+  <div class="card"><img src="new-scrape/pj-3430.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3430.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> Jenny's Cafe UK (dupe of pj-1)</div></div>
+  <div class="card"><img src="new-scrape/pj-3431.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3431.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> Hotel omelette station</div></div>
+  <div class="card"><img src="new-scrape/pj-3432.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3432.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> European restaurant</div></div>
+  <div class="card"><img src="new-scrape/pj-3433.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3433.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> The Getaway Pub</div></div>
+  <div class="card"><img src="new-scrape/pj-3434.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3434.jpg</div><span class="tag tag-junk">WRONG RESTAURANT</span> Wrong dining room</div></div>
+  <div class="card"><img src="new-scrape/pj-3435-10.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-10.jpg</div><span class="tag tag-junk">JUNK</span> CapCut TikTok watermark</div></div>
+  <div class="card"><img src="new-scrape/rd-2.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-2.jpg</div><span class="tag tag-junk">JUNK</span> CapCut TikTok watermark (dupe)</div></div>
+  <div class="card"><img src="new-scrape/yelp-31.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-31.jpg</div><span class="tag tag-junk">JUNK</span> Extreme macro, unusable</div></div>
+  <div class="card"><img src="new-scrape/yelp-new-13.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-13.jpg</div><span class="tag tag-junk">JUNK</span> Blurry cocktail close-up</div></div>
+  <div class="card"><img src="new-scrape/rg-french-fries.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-french-fries.jpg</div><span class="tag tag-junk">JUNK</span> Aggregator collage + watermark</div></div>
+  <div class="card"><img src="new-scrape/rg-interior.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rg-interior.jpg</div><span class="tag tag-junk">JUNK</span> Aggregator collage + watermark</div></div>
+</div>
+
+<!-- ============ DUPLICATES OF EXISTING ============ -->
+<h2>Duplicates of Existing Hires <span>Same photos we already had, re-downloaded from aggregators</span></h2>
+<div class="grid">
+  <div class="card"><img src="new-scrape/yelp-new-1.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-1.jpg</div><span class="tag tag-duplicate">= hires/yelp-exterior.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-2.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-2.jpg</div><span class="tag tag-duplicate">= hires/yelp-interior2.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-4.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-4.jpg</div><span class="tag tag-duplicate">= hires/yelp-chicken-tenders.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-9.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-9.jpg</div><span class="tag tag-duplicate">= hires/yelp-interior1.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-12.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-12.jpg</div><span class="tag tag-duplicate">= hires/yelp-pulled-pork.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-5.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-5.jpg</div><span class="tag tag-duplicate">~ hires/yelp-patriot-burger.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-16.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-16.jpg</div><span class="tag tag-duplicate">~ hires/yelp-steak-mac.jpg (or similar)</span></div></div>
+  <div class="card"><img src="new-scrape/pj-3435-1.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-1.jpg</div><span class="tag tag-duplicate">= rd-1.jpg (internal dupe)</span></div></div>
+  <div class="card"><img src="new-scrape/pj-3435-2.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-2.jpg</div><span class="tag tag-duplicate">~ yelp-new-1.jpg / exterior</span></div></div>
+  <div class="card"><img src="new-scrape/pj-3435-4.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-4.jpg</div><span class="tag tag-duplicate">= pj-3435-6.jpg = rd-6.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/pj-3435-5.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-5.jpg</div><span class="tag tag-duplicate">= rd-5.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/pj-3435-6.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">pj-3435-6.jpg</div><span class="tag tag-duplicate">= rd-6.jpg = pj-3435-4.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/rd-1.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-1.jpg</div><span class="tag tag-duplicate">= pj-3435-1.jpg (interior)</span></div></div>
+  <div class="card"><img src="new-scrape/rd-3.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-3.jpg</div><span class="tag tag-duplicate">Two food baskets overhead</span></div></div>
+  <div class="card"><img src="new-scrape/rd-5.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-5.jpg</div><span class="tag tag-duplicate">= pj-3435-5.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/rd-6.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-6.jpg</div><span class="tag tag-duplicate">= pj-3435-4/6</span></div></div>
+  <div class="card"><img src="new-scrape/rd-7.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-7.jpg</div><span class="tag tag-duplicate">= pj-3435-7.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/rd-8.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-8.jpg</div><span class="tag tag-duplicate">= pj-3435-8.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/rd-9.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">rd-9.jpg</div><span class="tag tag-duplicate">= pj-3435-9.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-new-10.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-new-10.jpg</div><span class="tag tag-duplicate">= yelp-21.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/yelp-21.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">yelp-21.jpg</div><span class="tag tag-duplicate">= yelp-new-10.jpg</span></div></div>
+  <div class="card"><img src="new-scrape/ld-photo-d.jpg" onclick="openLightbox(this)"><div class="info"><div class="filename">ld-photo-d.jpg</div><span class="tag tag-duplicate">Collage from LocalData</span></div></div>
+</div>
+
+<script>
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('active');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+});
+</script>
+
+</body>
+</html>

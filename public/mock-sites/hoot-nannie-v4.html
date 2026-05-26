@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hoot Nannie | A Five Spur Steakhouse | Forest City, NC</title>
+  <meta name="description" content="Farm-raised steaks, whole hog BBQ, 68 bourbons, legendary cheese curds, and a full bourbon bar on Main Street in Forest City, NC. Open Wed-Sun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================ */
+    /*  ZEN MINIMAL                                 */
+    /*  Ultra-clean, deliberate negative space       */
+    /* ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAFAF8;
+      --bg-warm: #F5F3EE;
+      --ink: #2A2A2A;
+      --ink-dim: rgba(42,42,42,0.45);
+      --ink-faint: rgba(42,42,42,0.1);
+      --terra: #C65D3E;
+      --terra-dim: rgba(198,93,62,0.15);
+      --font-serif: 'Cormorant', Georgia, serif;
+      --font-sans: 'Karla', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+    .container-sm { max-width: 720px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+
+    /* ============================================ */
+    /*  TYPOGRAPHY - RESTRAINED ELEGANCE             */
+    /* ============================================ */
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    .hairline {
+      border: none;
+      height: 1px;
+      background: var(--ink-faint);
+    }
+
+    /* ============================================ */
+    /*  ANIMATIONS - SUBTLE ONLY                    */
+    /* ============================================ */
+    .f {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .f.v { opacity: 1; transform: translateY(0); }
+
+    /* ============================================ */
+    /*  NAV - BARELY THERE                          */
+    /* ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem clamp(1.5rem, 5vw, 3rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.5s, padding 0.4s;
+    }
+    .nav.scrolled {
+      background: rgba(250,250,248,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      color: var(--terra) !important;
+      border-bottom: 1px solid var(--terra);
+      padding-bottom: 2px;
+    }
+    .nav-cta:hover { color: var(--ink) !important; border-color: var(--ink); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; z-index: 1001; }
+    .hamburger span { display: block; width: 20px; height: 1px; background: var(--ink); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(250,250,248,0.98);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 3rem;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+    .mobile-menu a:hover { color: var(--terra); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================ */
+    /*  HERO - VAST WHITESPACE + SINGLE IMAGE       */
+    /* ============================================ */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 6rem;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 6rem);
+      align-items: center;
+    }
+
+    .hero-text {
+      animation: heroFade 1s 0.3s ease both;
+    }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-label {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--terra);
+    }
+
+    .hero-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-dim);
+      max-width: 380px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
+
+    .btn-zen {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      transition: all 0.3s;
+    }
+    .btn-fill {
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .btn-fill:hover { background: var(--terra); }
+    .btn-text {
+      color: var(--ink-dim);
+      border-bottom: 1px solid var(--ink-faint);
+      padding: 0;
+      padding-bottom: 2px;
+    }
+    .btn-text:hover { color: var(--ink); border-color: var(--ink); }
+
+    .hero-image {
+      animation: heroFade 1s 0.6s ease both;
+    }
+    .hero-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-image { order: -1; }
+      .hero-image img { aspect-ratio: 16/10; }
+    }
+
+    /* ============================================ */
+    /*  INTRO TEXT                                   */
+    /* ============================================ */
+    .intro {
+      padding: clamp(4rem, 10vw, 8rem) 0;
+      text-align: center;
+    }
+    .intro p {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-dim);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .intro em { color: var(--terra); font-weight: 500; font-style: normal; }
+
+    /* ============================================ */
+    /*  MENU - CLEAN GRID                           */
+    /* ============================================ */
+    .menu-section {
+      padding: clamp(2rem, 4vw, 4rem) 0 clamp(5rem, 10vw, 8rem);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--ink-faint);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .menu-item { cursor: pointer; }
+    .menu-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      transition: opacity 0.4s;
+    }
+    .menu-item:hover img { opacity: 0.8; }
+
+    .menu-item-label {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.2rem;
+    }
+    .menu-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .menu-item p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--ink-dim);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; max-width: 400px; }
+    }
+
+    /* ============================================ */
+    /*  BOURBON - SINGLE FOCUS                      */
+    /* ============================================ */
+    .bourbon-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      background: var(--bg-warm);
+    }
+
+    .bourbon-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 6rem);
+      align-items: center;
+    }
+
+    .bourbon-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .bourbon-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .bourbon-text h2 em { font-style: italic; font-weight: 400; color: var(--terra); }
+
+    .bourbon-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-dim);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .bourbon-number {
+      font-family: var(--font-serif);
+      font-size: clamp(5rem, 12vw, 8rem);
+      font-weight: 300;
+      color: var(--ink-faint);
+      line-height: 0.85;
+      margin-top: 2rem;
+    }
+    .bourbon-number-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .bourbon-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  STORY                                       */
+    /* ============================================ */
+    .story-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(3rem, 8vw, 6rem);
+      align-items: start;
+    }
+
+    .story-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .story-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-dim);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .story-quote {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--terra);
+      margin: 2.5rem 0;
+      line-height: 1.45;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 3.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--ink-faint);
+    }
+    .story-stat-num {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .story-stat-label {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-top: 0.35rem;
+    }
+
+    .story-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .story-image { order: -1; max-width: 400px; }
+      .story-image img { aspect-ratio: 16/10; }
+    }
+
+    /* ============================================ */
+    /*  REVIEWS - MINIMAL CARDS                     */
+    /* ============================================ */
+    .reviews-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      background: var(--bg-warm);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--ink-faint);
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+
+    .review-card {
+      background: var(--bg-warm);
+      padding: 2.5rem;
+    }
+
+    .review-stars {
+      color: var(--terra);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .review-text {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .review-author {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 768px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  SPECIALS                                    */
+    /* ============================================ */
+    .specials-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+
+    .special-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .special-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .special-day {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.3rem;
+    }
+    .special-item h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .special-item p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--ink-dim);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .specials-grid { grid-template-columns: 1fr; }
+      .special-item { grid-template-columns: 120px 1fr; }
+    }
+
+    /* ============================================ */
+    /*  ORDER + VISIT                               */
+    /* ============================================ */
+    .visit-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .visit-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 6rem);
+      align-items: center;
+    }
+
+    .visit-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      color: var(--bg);
+    }
+    .visit-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(250,250,248,0.5);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .visit-hours { margin: 2rem 0; }
+    .visit-hour-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(250,250,248,0.06);
+      font-size: 0.85rem;
+    }
+    .visit-hour-day { color: rgba(250,250,248,0.35); font-weight: 300; }
+    .visit-hour-time { color: var(--bg); font-weight: 500; }
+
+    .visit-order { margin-top: 2rem; }
+    .visit-order-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.75rem;
+    }
+    .visit-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .visit-btn {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid rgba(250,250,248,0.15);
+      color: var(--bg);
+      transition: all 0.3s;
+    }
+    .visit-btn:hover { border-color: var(--terra); color: var(--terra); }
+
+    .visit-image img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .visit-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  FOOTER                                      */
+    /* ============================================ */
+    .footer {
+      padding: 3rem 0 1.5rem;
+      border-top: 1px solid var(--ink-faint);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      color: var(--ink-dim);
+      font-weight: 300;
+    }
+    .footer-copy a { color: var(--terra); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ============================================ */
+    /*  DEMO BANNER                                 */
+    /* ============================================ */
+    .demo-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: var(--ink);
+      color: rgba(250,250,248,0.5);
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.65rem;
+      font-weight: 400;
+    }
+    .demo-banner a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; }
+    body { padding-bottom: 30px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <span class="nav-brand">The Hoot Nannie</span>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#bar">Bar</a>
+      <a href="#story">Story</a>
+      <a href="#visit">Visit</a>
+      <a href="#order" class="nav-cta">Order Online</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#bar" onclick="closeMobile()">Bar</a>
+    <a href="#story" onclick="closeMobile()">Story</a>
+    <a href="#visit" onclick="closeMobile()">Visit</a>
+    <a href="#order" onclick="closeMobile()">Order</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="hero-label">A Five Spur Steakhouse</div>
+          <h1>Where the farm<br>meets <em>the flame</em></h1>
+          <p class="hero-body">Farm-raised Beam Farms steaks. Whole hog smoked on site. 68 bourbons behind the bar. Main Street, Forest City, NC.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn-zen btn-fill">The Menu</a>
+            <a href="#order" class="btn-zen btn-text">Order Online</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="Beam Farms steak with mac and cheese">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="hairline"></div>
+
+  <!-- INTRO -->
+  <div class="intro f">
+    <div class="container-sm">
+      <p>Every plate starts on the farm and ends over flame. <em>126 acres</em> of Beam Farms land, <em>68 bourbons</em> behind the bar, and Brown Creek cheese curds by the hundred-pound batch.</p>
+    </div>
+  </div>
+
+  <div class="container"><hr class="hairline"></div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header f">
+        <h2>The Menu</h2>
+        <span class="label">From the Kitchen</span>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="Beam Farms steak with mac and cheese" loading="lazy">
+          <div class="menu-item-label">Farm Raised</div>
+          <h3>Beam Farms Steaks</h3>
+          <p>Hand-cut, seared over open flame. Beam Farms beef.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy">
+          <div class="menu-item-label">Smoked</div>
+          <h3>Smoked Wings</h3>
+          <p>Low and slow, finished crisp. House sauces.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="The Dirty Sanchez burger" loading="lazy">
+          <div class="menu-item-label">Signature</div>
+          <h3>The Dirty Sanchez</h3>
+          <p>Mac and cheese on a burger. Every time.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork plate" loading="lazy">
+          <div class="menu-item-label">Whole Hog</div>
+          <h3>Pulled Pork Plate</h3>
+          <p>Eastern NC style. Vinegar-based. Two sides.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/crispy-chicken.webp" alt="Crispy chicken sandwich" loading="lazy">
+          <div class="menu-item-label">Hand-Breaded</div>
+          <h3>Crispy Chicken Sandwich</h3>
+          <p>Fried to order on brioche.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/big-samantha.webp" alt="The Big Samantha" loading="lazy">
+          <div class="menu-item-label">Signature</div>
+          <h3>The Big Samantha</h3>
+          <p>Stacked high. Named for a reason.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/chicken-tenders.webp" alt="Chicken tenders" loading="lazy">
+          <div class="menu-item-label">Classic</div>
+          <h3>Chicken Tenders</h3>
+          <p>Hand-breaded, golden fried. Dipping sauces on the side.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/burger-hand.webp" alt="The classic burger" loading="lazy">
+          <div class="menu-item-label">Burgers</div>
+          <h3>The Classic Burger</h3>
+          <p>Fresh ground, flame-grilled, no shortcuts.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/loaded-fries.webp" alt="Loaded fries" loading="lazy">
+          <div class="menu-item-label">Sides</div>
+          <h3>Loaded Fries</h3>
+          <p>Pork, cheese, jalapenos, house BBQ.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/cheese-curds.webp" alt="Fried cheese curds" loading="lazy">
+          <div class="menu-item-label">Fan Favorite</div>
+          <h3>Fried Cheese Curds</h3>
+          <p>Brown Creek cheese. Fried fresh every batch.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Shrimp and grits" loading="lazy">
+          <div class="menu-item-label">Southern</div>
+          <h3>Shrimp &amp; Grits</h3>
+          <p>Creamy stone-ground grits, sauteed shrimp.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/cuban-sandwich.webp" alt="The Cuban sandwich" loading="lazy">
+          <div class="menu-item-label">Pressed</div>
+          <h3>The Cuban</h3>
+          <p>Smoked pork, ham, swiss, pickles, mustard. Pressed hot.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/ribs-plate.webp" alt="Ribs and fried okra" loading="lazy">
+          <div class="menu-item-label">Smoked</div>
+          <h3>Ribs &amp; Fried Okra</h3>
+          <p>Fall-off-the-bone ribs with crispy okra on the side.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/bbq-burger-mac.webp" alt="BBQ burger and mac" loading="lazy">
+          <div class="menu-item-label">Combo</div>
+          <h3>BBQ Burger &amp; Mac</h3>
+          <p>BBQ-glazed patty with a side of house mac.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/glazed-wings.webp" alt="Glazed BBQ wings" loading="lazy">
+          <div class="menu-item-label">Sauced</div>
+          <h3>Glazed BBQ Wings</h3>
+          <p>Tossed in house-made BBQ glaze. Sticky and good.</p>
+        </div>
+        <div class="menu-item f">
+          <img src="assets/hoot-nannie/grilled-cheese.webp" alt="Grilled cheese and chips" loading="lazy">
+          <div class="menu-item-label">Simple</div>
+          <h3>Grilled Cheese &amp; Chips</h3>
+          <p>Melted on thick-cut bread. Kettle chips.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOURBON -->
+  <section class="bourbon-section" id="bar">
+    <div class="container">
+      <div class="bourbon-layout">
+        <div class="bourbon-image f">
+          <img src="assets/hoot-nannie/bourbon-bar.webp" alt="The bourbon bar" loading="lazy">
+        </div>
+        <div class="bourbon-text f">
+          <span class="label">The Bourbon Bar</span>
+          <h2>Pour something<br><em>worth sipping</em></h2>
+          <p>Full bar with a bourbon wall that goes deep. Craft cocktails mixed by people who care about the details. Ask about the weekly pour.</p>
+          <div class="bourbon-number">68</div>
+          <div class="bourbon-number-label">Bourbons on the wall</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text f">
+          <span class="label">Our Story</span>
+          <h2>Built from the ground up</h2>
+          <p>Johnny Roy started making barbecue sauces over 12 years ago. That sauce now sits on shelves at Food Lion and Ingles across North Carolina. Good sauce needs good meat. Good meat needs good land.</p>
+          <div class="story-quote">Good sauce needs good meat. Good meat needs good land.</div>
+          <p>He partnered with Stephen "Neighbor Steve" Soto, combined the best of The Honey Hog and Nannie's Fish Camp, added farm-raised steaks from Beam Farms, and built a full bar with 68 bourbons. The Hoot Nannie opened June 2021 on Main Street in Forest City.</p>
+          <p>Behind every plate is Honey Hog Farm. 126 acres owned, 140 leased. Hogs, Wagyu cattle, chickens. All of it raised right here in Rutherford County.</p>
+          <div class="story-stats">
+            <div class="f"><div class="story-stat-num">126</div><div class="story-stat-label">Acres Owned</div></div>
+            <div class="f"><div class="story-stat-num">68</div><div class="story-stat-label">Bourbons</div></div>
+            <div class="f"><div class="story-stat-num">2021</div><div class="story-stat-label">Established</div></div>
+          </div>
+        </div>
+        <div class="story-image f">
+          <img src="assets/hoot-nannie/interior1.webp" alt="The Hoot Nannie interior" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="section-header f">
+        <h2>What people say</h2>
+        <span class="label">Google Reviews</span>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card f">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"The steaks here are unbelievable. Hands down the best steak I've had in western NC."</p>
+          <div class="review-author">Marcus T.</div>
+        </div>
+        <div class="review-card f">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Cheese curds are the real deal. Brown Creek cheese, fried fresh. We drove 45 minutes."</p>
+          <div class="review-author">Sarah K.</div>
+        </div>
+        <div class="review-card f">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Farm-to-table done right without any of the pretension. Staff is great, food is better."</p>
+          <div class="review-author">Chris L.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials-section">
+    <div class="container">
+      <div class="section-header f">
+        <h2>Weekly features</h2>
+        <span class="label">Specials</span>
+      </div>
+      <div class="specials-grid">
+        <div class="special-item f">
+          <img src="assets/hoot-nannie/buffalo-burger.webp" alt="Stacked burger" loading="lazy">
+          <div>
+            <div class="special-day">Thursday</div>
+            <h3>Burger Night</h3>
+            <p>Half-price specialty burgers and the weekly kitchen special.</p>
+          </div>
+        </div>
+        <div class="special-item f">
+          <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Cocktails" loading="lazy">
+          <div>
+            <div class="special-day">Friday &amp; Saturday</div>
+            <h3>Live Music</h3>
+            <p>Local acts, cocktail specials, kitchen open late.</p>
+          </div>
+        </div>
+        <div class="special-item f">
+          <img src="assets/hoot-nannie/bbq-plate-hushpuppies.webp" alt="BBQ plate with hushpuppies" loading="lazy">
+          <div>
+            <div class="special-day">Saturday &amp; Sunday</div>
+            <h3>BBQ Brunch</h3>
+            <p>BBQ plates, hushpuppies, and the full bar. 10am to 2pm.</p>
+          </div>
+        </div>
+        <div class="special-item f">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy">
+          <div>
+            <div class="special-day">Wednesday</div>
+            <h3>Wing Night</h3>
+            <p>All-you-can-eat smoked wings with house sauces.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit-section" id="visit">
+    <div class="container">
+      <div class="visit-layout">
+        <div class="visit-text f" id="order">
+          <span class="label" style="color: var(--terra);">Come See Us</span>
+          <h2>Find the Hoot</h2>
+          <p>164 E Main Street, Forest City, NC 28043. Right on Main Street, downtown.</p>
+          <div class="visit-hours">
+            <div class="visit-hour-row"><span class="visit-hour-day">Wednesday</span><span class="visit-hour-time">4 PM - 9 PM</span></div>
+            <div class="visit-hour-row"><span class="visit-hour-day">Thursday</span><span class="visit-hour-time">4 PM - 9 PM</span></div>
+            <div class="visit-hour-row"><span class="visit-hour-day">Friday</span><span class="visit-hour-time">4 PM - 10 PM</span></div>
+            <div class="visit-hour-row"><span class="visit-hour-day">Saturday</span><span class="visit-hour-time">10 AM - 10 PM</span></div>
+            <div class="visit-hour-row"><span class="visit-hour-day">Sunday</span><span class="visit-hour-time">10 AM - 3 PM</span></div>
+            <div class="visit-hour-row"><span class="visit-hour-day">Mon &amp; Tue</span><span class="visit-hour-time">Closed</span></div>
+          </div>
+          <div class="visit-order">
+            <div class="visit-order-label">Order Online</div>
+            <div class="visit-btns">
+              <a href="https://www.ubereats.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="visit-btn">Uber Eats</a>
+              <a href="https://postmates.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="visit-btn">Postmates</a>
+            </div>
+          </div>
+        </div>
+        <div class="visit-image f">
+          <img src="assets/hoot-nannie/exterior.webp" alt="The Hoot Nannie exterior" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2025 The Hoot Nannie. Demo by <a href="https://studioobrien.com">Studio O'Brien</a>.</p>
+        <div class="footer-links">
+          <a href="https://www.facebook.com/TheHootNannie/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/thehootnannie/" target="_blank" rel="noopener">Instagram</a>
+          <a href="tel:+18282481479">Call</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="demo-banner">
+    Demo by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const d = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('v'), Number(d));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.f').forEach(el => {
+      const siblings = el.parentElement.querySelectorAll('.f');
+      el.dataset.delay = Array.from(siblings).indexOf(el) * 100;
+      obs.observe(el);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>

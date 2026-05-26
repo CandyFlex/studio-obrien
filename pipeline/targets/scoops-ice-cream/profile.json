@@ -1,0 +1,126 @@
+{
+  "business": {
+    "name": "Scoops Ice Cream",
+    "legalName": "Scoop Ice Cream LLC",
+    "tagline": "Hand-dipped ice cream, milkshakes, and more in the foothills of North Carolina.",
+    "slug": "scoops-ice-cream",
+    "industry": "Ice Cream / Dessert Shop",
+    "location": {
+      "address": "149 S Broadway St",
+      "city": "Forest City",
+      "state": "NC",
+      "zip": "28043",
+      "county": "Rutherford",
+      "neighborhood": "Downtown Broadway"
+    },
+    "otherLocations": [
+      {
+        "name": "Scoops Ice Cream - Lake Lure",
+        "address": "2930 Memorial Hwy, Lake Lure, NC 28746"
+      },
+      {
+        "name": "Scoops Ice Cream - Rutherfordton",
+        "address": "130 N Main St, Rutherfordton, NC 28139"
+      },
+      {
+        "name": "Scoops Ice Cream - Marion",
+        "address": "Marion, NC"
+      }
+    ],
+    "phone": "Not publicly listed (Facebook Messenger primary)",
+    "facebook": "https://www.facebook.com/scoopicecream/",
+    "instagram": "https://www.instagram.com/scoopicecreamnc/",
+    "instagramStats": {
+      "posts": 437,
+      "followers": 1196
+    },
+    "hours": {
+      "note": "Seasonal hours, typically open spring through fall",
+      "typical": "12pm - 9pm daily (may vary by location and season)",
+      "winter": "Reduced hours or closed"
+    },
+    "founded": "2016",
+    "owners": ["Amy Brevard", "Chris Brevard"],
+    "ownerNote": "Husband-wife team, local to Rutherford County"
+  },
+  "voice": {
+    "tone": "friendly, family-oriented, small-town cheerful, seasonal, fun",
+    "vocabulary": ["hand-dipped", "homemade", "fresh", "scoops", "milkshakes", "sundaes", "summer", "local", "family"],
+    "avoid": ["artisanal", "craft", "elevated", "curated", "gourmet"],
+    "customerWords": ["best ice cream", "great flavors", "friendly staff", "perfect summer spot", "kids love it", "generous scoops"]
+  },
+  "brand": {
+    "colorDirection": "Bright, cheerful, ice cream parlor vibes. Pastel pinks, blues, mint greens, creamy whites. Fun and inviting.",
+    "existingColors": ["Pink/magenta from branding", "White/cream", "Bright cheerful accents"],
+    "mood": "Happy, nostalgic, family-friendly. Think classic American ice cream parlor updated for a small-town Main Street. Summer vibes year-round.",
+    "archetype": "The Friendly Neighborhood Scoop Shop"
+  },
+  "content": {
+    "heroHeadline": "Hand-Dipped Happiness",
+    "heroSubtext": "Ice cream, milkshakes, sundaes, and smiles on Broadway Street in Forest City. Four locations across the NC foothills.",
+    "menuHighlights": {
+      "iceCream": [
+        "Hand-dipped ice cream (rotating flavors)",
+        "Premium flavors and seasonal specials",
+        "Kid-sized scoops available"
+      ],
+      "shakes": [
+        "Milkshakes (classic and specialty)",
+        "Floats",
+        "Smoothies"
+      ],
+      "treats": [
+        "Sundaes with toppings",
+        "Banana splits",
+        "Sno cones / shaved ice",
+        "Ice cream cakes (custom orders)"
+      ]
+    },
+    "priceRange": "$ (budget-friendly)",
+    "sellingPoints": [
+      "4 locations across the NC foothills (Forest City, Lake Lure, Rutherfordton, Marion)",
+      "Family-owned and operated since 2016",
+      "Hand-dipped ice cream with rotating flavors",
+      "Custom ice cream cakes for events",
+      "Active Instagram with 437+ posts showing daily flavors",
+      "Lake Lure location serves the tourist/vacation crowd",
+      "Downtown Forest City location on Broadway Street",
+      "Perfect family outing destination",
+      "Seasonal specials and new flavors regularly"
+    ],
+    "sections": ["Hero", "Menu/Flavors", "Locations", "About Us", "Gallery", "Contact", "Footer"]
+  },
+  "assets": {
+    "logo": "NEEDS MANUAL - grab from Facebook/Instagram",
+    "heroImage": "Ice cream shop exterior or colorful scoop shots from Instagram",
+    "galleryImages": "Instagram has 437 posts with excellent product photography",
+    "needed": [
+      "Logo from Facebook page header",
+      "Storefront photo (each location)",
+      "Product shots from Instagram (ice cream scoops, shakes, sundaes, cakes)",
+      "Interior photos if available"
+    ]
+  },
+  "meta": {
+    "currentWebPresence": "No dedicated website. Facebook and Instagram are primary online presence. Google Business listing.",
+    "ratings": {
+      "google": "4.7 stars (~330 reviews)",
+      "facebook": "Active page with regular flavor posts"
+    },
+    "competitors": [
+      "Kilwins (chain, tourist areas)",
+      "Local gas station/grocery ice cream",
+      "DQ/Baskin-Robbins (nearest chain locations)"
+    ],
+    "dateProfiled": "2026-03-12",
+    "readyToBuild": false,
+    "blockers": [
+      "Need logo from Facebook/Instagram",
+      "Need storefront photos (at least Forest City location)",
+      "Need product photos (can source from Instagram with permission)",
+      "Confirm current seasonal hours",
+      "Confirm full flavor/menu offerings"
+    ],
+    "replacedTarget": "wahoos-sports"
+  }
+}

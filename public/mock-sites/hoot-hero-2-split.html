@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Hoot Nannie | Heritage Hearth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-primary-container": "#492f00",
+                "surface-variant": "#383433",
+                "outline-variant": "#504537",
+                "on-error": "#690005",
+                "surface-container-highest": "#383433",
+                "on-secondary": "#5e1600",
+                "secondary": "#ffb59f",
+                "on-secondary-container": "#ffa084",
+                "secondary-container": "#892400",
+                "on-tertiary": "#343027",
+                "tertiary-fixed": "#e9e2d5",
+                "on-primary-fixed": "#281800",
+                "error": "#ffb4ab",
+                "surface": "#161312",
+                "surface-container-lowest": "#100e0d",
+                "on-secondary-fixed-variant": "#852300",
+                "inverse-surface": "#e9e1df",
+                "secondary-fixed": "#ffdbd1",
+                "on-primary-fixed-variant": "#614000",
+                "on-tertiary-fixed": "#1e1b14",
+                "on-primary": "#442c00",
+                "primary": "#f8bc5f",
+                "tertiary-fixed-dim": "#cdc6b9",
+                "inverse-on-surface": "#33302e",
+                "inverse-primary": "#805600",
+                "surface-tint": "#f8bc5f",
+                "on-background": "#e9e1df",
+                "tertiary-container": "#a29c91",
+                "surface-container": "#221f1e",
+                "outline": "#9c8f7d",
+                "tertiary": "#cdc6b9",
+                "surface-container-high": "#2d2928",
+                "on-tertiary-fixed-variant": "#4b463d",
+                "surface-dim": "#161312",
+                "primary-fixed-dim": "#f8bc5f",
+                "primary-container": "#c9933a",
+                "error-container": "#93000a",
+                "primary-fixed": "#ffddb0",
+                "surface-bright": "#3c3837",
+                "on-tertiary-container": "#38342b",
+                "on-secondary-fixed": "#3a0a00",
+                "surface-container-low": "#1e1b1a",
+                "on-surface-variant": "#d4c4b1",
+                "on-error-container": "#ffdad6",
+                "background": "#161312",
+                "on-surface": "#e9e1df",
+                "secondary-fixed-dim": "#ffb59f"
+              },
+              fontFamily: {
+                "serif": ["DM Serif Display", "serif"],
+                "sans": ["IBM Plex Sans", "sans-serif"],
+                "mono": ["IBM Plex Mono", "monospace"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>.paper-grain {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBGqTKQnK-3mQL9VQN4jO4wl3mwiDbSOE9_We7h0GoUKtGb7IRmYYPxXNQvjPw9d21lUs8qz92WjsZc3jfLA4FuISwMb3V7hTWyK2UZwkwCBRCbzf3aR3iSYoj7Fq74FFmThzMdpDbtIVUQhgMvnqsikX5ds0YuXrqLhXWufRnMPXxGazwVXJjMJo4NmVzSmmWyAhXsbKSUeBFL1Y9CkCR4w_al7KD5h8ZwfcbQXxOPnjyxigwpCq2yxH2yAkTGqHUAuEV4fJRI_XJuVA);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+</head>
+<body class="bg-surface text-on-surface font-sans selection:bg-primary/30 antialiased overflow-hidden">
+<!-- Global Grain Overlay -->
+<div class="fixed inset-0 paper-grain z-50"></div>
+<!-- Navigation Anchor (TopAppBar) -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 w-full max-w-none bg-[#161312] border-none">
+<div class="text-3xl font-serif tracking-tighter text-[#F5EDE0]">The Hoot Nannie</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#C9933A] border-b-2 border-[#C9933A] pb-1 hover:text-[#C9933A] transition-colors duration-300" href="#">Our Story</a>
+<a class="text-[#F5EDE0]/80 font-medium hover:text-[#C9933A] transition-colors duration-300" href="#">The Cuts</a>
+<a class="text-[#F5EDE0]/80 font-medium hover:text-[#C9933A] transition-colors duration-300" href="#">Distillery</a>
+<a class="text-[#F5EDE0]/80 font-medium hover:text-[#C9933A] transition-colors duration-300" href="#">Reservations</a>
+</div>
+<button class="bg-secondary-container text-on-surface px-6 py-2.5 rounded-md font-sans font-medium hover:brightness-110 active:scale-95 transition-all">
+            Book a Table
+        </button>
+</nav>
+<!-- Hero Section -->
+<main class="h-screen w-full flex relative">
+<!-- Vertical Divider Line -->
+<div class="absolute left-[45%] top-0 bottom-0 w-px bg-primary/20 z-20"></div>
+<!-- LEFT COLUMN: LOGO SHOWCASE -->
+<section class="w-[45%] bg-surface-container-lowest flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Radial Glow -->
+<div class="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="relative z-10 flex flex-col items-center">
+<!-- Logo Placeholder -->
+<div class="w-[360px] h-[360px] rounded-full border border-outline/20 bg-surface-container flex items-center justify-center group hover:bg-surface-container-high transition-colors duration-500">
+<div class="text-primary font-serif text-5xl tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">LOGO</div>
+<div class="absolute inset-4 rounded-full border border-primary/5"></div>
+</div>
+<!-- Establishment Text -->
+<div class="mt-12 text-[10px] font-mono text-primary/50 tracking-[0.3em] uppercase">
+                    EST. FOREST CITY, NC
+                </div>
+</div>
+</section>
+<!-- RIGHT COLUMN: EDITORIAL CONTENT -->
+<section class="w-[55%] bg-surface flex flex-col justify-center pl-20 pr-12 relative">
+<div class="max-w-[640px]">
+<!-- Top Tag -->
+<div class="font-mono text-[11px] text-primary tracking-[0.35em] mb-6 uppercase">
+                    THE FARMER &amp; THE PITMASTER
+                </div>
+<!-- Title Block -->
+<h1 class="font-serif text-[clamp(3rem,8vw,5rem)] text-on-surface leading-[0.95] mb-2">
+                    THE HOOT NANNIE
+                </h1>
+<h2 class="font-serif italic text-2xl text-primary mb-8">
+                    A Five Spur Steakhouse
+                </h2>
+<!-- Body Content -->
+<p class="font-sans text-lg text-on-surface/70 leading-relaxed mb-12 max-w-[480px]">
+                    Farm-raised steaks from Beam Farms. Whole hog BBQ from Honey Hog Farm. 68 bourbons. All on Main Street.
+                </p>
+<!-- Stats Row -->
+<div class="flex gap-12 mb-16">
+<div class="flex flex-col">
+<span class="font-serif text-4xl text-primary leading-none mb-2">68</span>
+<span class="font-mono text-[10px] text-on-surface/50 uppercase tracking-wider">Bourbons</span>
+</div>
+<div class="flex flex-col">
+<span class="font-serif text-4xl text-primary leading-none mb-2">657+</span>
+<span class="font-mono text-[10px] text-on-surface/50 uppercase tracking-wider">Reviews</span>
+</div>
+<div class="flex flex-col">
+<span class="font-serif text-4xl text-primary leading-none mb-2">150 lbs/wk</span>
+<span class="font-mono text-[10px] text-on-surface/50 uppercase tracking-wider">Curds</span>
+</div>
+</div>
+<!-- CTA Row -->
+<div class="flex items-center gap-6">
+<button class="bg-secondary-container text-on-surface px-8 py-4 rounded-md font-sans font-semibold tracking-wide hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-black/20">
+                        See the Menu
+                    </button>
+<button class="border border-primary/40 text-primary px-8 py-4 rounded-md font-sans font-semibold tracking-wide hover:bg-primary/5 hover:border-primary active:scale-95 transition-all">
+                        Plan Your Visit
+                    </button>
+</div>
+</div>
+<!-- Bottom Accents -->
+<div class="absolute bottom-12 right-12 flex gap-4 opacity-20">
+<span class="material-symbols-outlined text-4xl">restaurant</span>
+<span class="material-symbols-outlined text-4xl">liquor</span>
+</div>
+</section>
+</main>
+<!-- Background texture simulation -->
+<div class="fixed inset-0 bg-[#141110] -z-10"></div>
+</body></html>

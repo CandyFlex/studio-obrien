@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hoot Nannie — A Five Spur Steakhouse | Forest City, NC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #2a2a2a;
+      --charcoal-light: #333333;
+      --charcoal-mid: #222222;
+      --charcoal-dark: #1a1a1a;
+      --rust: #C45B28;
+      --rust-dark: #a34820;
+      --rust-light: #d96d35;
+      --steel: #6b7280;
+      --steel-light: #9ca3af;
+      --offwhite: #f5f0e8;
+      --cream: #ede8dc;
+      --tan: #c8b99a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--offwhite);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 26, 26, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(196, 91, 40, 0.25);
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--rust);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--steel-light);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rust); }
+
+    .nav-cta {
+      background: var(--rust);
+      color: var(--offwhite) !important;
+      padding: 0.4rem 0.9rem;
+      border-radius: 3px;
+    }
+    .nav-cta:hover { background: var(--rust-dark); color: var(--offwhite) !important; }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--offwhite);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal-dark);
+      text-align: center;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* Tin roof texture overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 38px,
+          rgba(255,255,255,0.018) 38px,
+          rgba(255,255,255,0.018) 40px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          transparent,
+          transparent 6px,
+          rgba(0,0,0,0.12) 6px,
+          rgba(0,0,0,0.12) 7px
+        );
+      pointer-events: none;
+    }
+
+    /* Glow behind logo area */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(196,91,40,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 760px; }
+
+    /* Logo placeholder — cowgirl on hog */
+    .hero-logo {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 2rem;
+      background: var(--charcoal-light);
+      border: 3px solid var(--rust);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .hero-logo-fallback {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--rust);
+      line-height: 1;
+      text-align: center;
+    }
+
+    .hero-logo-fallback span {
+      display: block;
+      font-size: 1rem;
+      color: var(--tan);
+      letter-spacing: 0.1em;
+    }
+
+    .hero-spurs {
+      color: var(--rust);
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .spur { display: inline-block; }
+
+    h1.hero-name {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.9;
+      color: var(--offwhite);
+      margin-bottom: 0.35rem;
+    }
+
+    h1.hero-name em {
+      color: var(--rust);
+      font-style: normal;
+      display: block;
+    }
+
+    .hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      letter-spacing: 0.2em;
+      color: var(--tan);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--steel-light);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--rust);
+      color: var(--offwhite);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--rust-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--offwhite);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 2px solid rgba(245,240,232,0.3);
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--rust); color: var(--rust); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      color: var(--rust);
+      line-height: 1;
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+    }
+
+    /* ─── SHARED SECTION STYLES ─── */
+    section { padding: 6rem 1.5rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      color: var(--offwhite);
+    }
+
+    .section-header p {
+      font-size: 1rem;
+      color: var(--steel-light);
+      max-width: 560px;
+      margin-top: 0.75rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--rust);
+      margin: 1rem 0;
+    }
+
+    /* ─── THE BAR ─── */
+    #bar { background: var(--charcoal-mid); }
+
+    .bar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .bar-big-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(196,91,40,0.2);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--rust);
+    }
+
+    .stat-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--rust);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-card-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      margin-top: 0.25rem;
+    }
+
+    .stat-card-desc {
+      font-size: 0.82rem;
+      color: var(--steel);
+      margin-top: 0.5rem;
+    }
+
+    .bar-copy p {
+      color: var(--steel-light);
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .bar-highlight {
+      background: var(--charcoal);
+      border-left: 3px solid var(--rust);
+      padding: 1rem 1.25rem;
+      border-radius: 0 3px 3px 0;
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: var(--cream);
+      font-size: 0.9rem;
+    }
+
+    .bourbon-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(196,91,40,0.15);
+      border: 1px solid rgba(196,91,40,0.35);
+      color: var(--rust-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: 2px;
+    }
+
+    /* ─── MENU ─── */
+    #menu { background: var(--charcoal); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .menu-card {
+      background: var(--charcoal-light);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .menu-card:hover {
+      border-color: rgba(196,91,40,0.4);
+      transform: translateY(-3px);
+    }
+
+    .menu-card-img {
+      height: 160px;
+      background: var(--charcoal-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Individual food card backgrounds */
+    .menu-card-img.wings {
+      background: linear-gradient(135deg, #3a1f10 0%, #5c2e14 50%, #3a1f10 100%);
+    }
+    .menu-card-img.steak {
+      background: linear-gradient(135deg, #1a1008 0%, #3d2010 50%, #1a1008 100%);
+    }
+    .menu-card-img.burger {
+      background: linear-gradient(135deg, #1f2a10 0%, #3a4f1c 50%, #1f2a10 100%);
+    }
+    .menu-card-img.curds {
+      background: linear-gradient(135deg, #2a2010 0%, #4a3a18 50%, #2a2010 100%);
+    }
+    .menu-card-img.pork {
+      background: linear-gradient(135deg, #2a1010 0%, #4a2020 50%, #2a1010 100%);
+    }
+    .menu-card-img.cuban {
+      background: linear-gradient(135deg, #101a2a 0%, #1c3040 50%, #101a2a 100%);
+    }
+
+    .menu-card-img-icon {
+      font-size: 3rem;
+      opacity: 0.5;
+    }
+
+    .menu-card-tag {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--rust);
+      color: var(--offwhite);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .menu-card-body { padding: 1.25rem; }
+
+    .menu-card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--offwhite);
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-card-desc {
+      font-size: 0.82rem;
+      color: var(--steel-light);
+      line-height: 1.5;
+    }
+
+    /* ─── FARM ─── */
+    #farm { background: var(--charcoal-dark); }
+
+    .farm-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .farm-copy p {
+      color: var(--steel-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .farm-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .farm-fact {
+      background: rgba(196,91,40,0.08);
+      border: 1px solid rgba(196,91,40,0.2);
+      border-radius: 3px;
+      padding: 1rem;
+    }
+
+    .farm-fact-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--rust);
+      line-height: 1;
+      display: block;
+    }
+
+    .farm-fact-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+    }
+
+    /* Cattle catalog */
+    .cattle-catalog {
+      background: var(--charcoal-light);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .catalog-header {
+      background: var(--rust);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .catalog-header h3 {
+      font-size: 1.1rem;
+      color: var(--offwhite);
+      letter-spacing: 0.08em;
+    }
+
+    .catalog-header span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(0,0,0,0.2);
+      color: rgba(255,255,255,0.8);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .catalog-list { padding: 0; }
+
+    .catalog-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+
+    .catalog-item:last-child { border-bottom: none; }
+    .catalog-item:hover { background: rgba(196,91,40,0.06); }
+
+    .catalog-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--charcoal-dark);
+      border: 1px solid rgba(196,91,40,0.25);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .catalog-item-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--offwhite);
+      letter-spacing: 0.04em;
+    }
+
+    .catalog-item-info p {
+      font-size: 0.78rem;
+      color: var(--steel);
+      margin-top: 0.15rem;
+    }
+
+    .catalog-item-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .badge-available {
+      background: rgba(80,160,80,0.15);
+      color: #7dcf7d;
+      border: 1px solid rgba(80,160,80,0.3);
+    }
+
+    .badge-seasonal {
+      background: rgba(196,91,40,0.15);
+      color: var(--rust-light);
+      border: 1px solid rgba(196,91,40,0.3);
+    }
+
+    .catalog-note {
+      background: var(--charcoal-dark);
+      border-top: 1px solid rgba(196,91,40,0.2);
+      padding: 1rem 1.5rem;
+      font-size: 0.78rem;
+      color: var(--steel);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .catalog-note strong { color: var(--tan); }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--charcoal-mid); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .review-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 0.75rem;
+      left: 1.25rem;
+      font-size: 4rem;
+      color: rgba(196,91,40,0.2);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .review-stars {
+      color: var(--rust);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .review-text {
+      font-size: 0.88rem;
+      color: var(--cream);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+    }
+
+    .review-source {
+      font-size: 0.7rem;
+      color: var(--steel);
+      margin-top: 0.15rem;
+    }
+
+    .reviews-footer {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 2rem;
+    }
+
+    .reviews-count {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--rust);
+      display: block;
+      line-height: 1;
+    }
+
+    .reviews-count-sub {
+      font-size: 0.78rem;
+      color: var(--steel-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .press-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(196,91,40,0.1);
+      border: 1px solid rgba(196,91,40,0.3);
+      padding: 0.6rem 1.25rem;
+      border-radius: 3px;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--tan);
+      font-weight: 600;
+    }
+
+    /* ─── SPECIALS ─── */
+    #specials { background: var(--charcoal); }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .special-card {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .special-card-head {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .special-card.thursday .special-card-head { background: #1a1f10; }
+    .special-card.friday .special-card-head { background: #1a1010; }
+    .special-card.saturday .special-card-head { background: #101018; }
+
+    .special-day {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .special-card.thursday .special-day { color: #a8c060; }
+    .special-card.friday .special-day { color: var(--rust-light); }
+    .special-card.saturday .special-day { color: #8090c0; }
+
+    .special-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--offwhite);
+      line-height: 1;
+    }
+
+    .special-card-body {
+      background: var(--charcoal-light);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .special-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--rust);
+      line-height: 1;
+      display: block;
+    }
+
+    .special-desc {
+      font-size: 0.82rem;
+      color: var(--steel-light);
+      margin-top: 0.4rem;
+    }
+
+    /* ─── VISIT ─── */
+    #visit { background: var(--charcoal-dark); }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+
+    .hours-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+    }
+
+    .hours-table .day {
+      color: var(--tan);
+      font-weight: 600;
+      width: 100px;
+    }
+
+    .hours-table .time { color: var(--offwhite); }
+
+    .hours-table .closed { color: var(--steel); font-style: italic; }
+
+    .hours-table tr.today { background: rgba(196,91,40,0.06); }
+    .hours-table tr.today td { color: var(--rust-light); }
+
+    .contact-block { margin-top: 2rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--charcoal-light);
+      border: 1px solid rgba(196,91,40,0.25);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: var(--offwhite);
+    }
+
+    .contact-value a {
+      color: var(--offwhite);
+      text-decoration: none;
+    }
+
+    .contact-value a:hover { color: var(--rust); }
+
+    .map-placeholder {
+      background: var(--charcoal-light);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--steel);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(255,255,255,0.02) 29px, rgba(255,255,255,0.02) 30px),
+        repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(255,255,255,0.02) 29px, rgba(255,255,255,0.02) 30px);
+    }
+
+    .map-pin {
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .map-address { color: var(--tan); font-weight: 600; font-size: 0.9rem; }
+
+    .directions-btn {
+      position: relative;
+      z-index: 1;
+      background: var(--rust);
+      color: var(--offwhite);
+      text-decoration: none;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+
+    .directions-btn:hover { background: var(--rust-dark); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal-dark);
+      border-top: 1px solid rgba(196,91,40,0.2);
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--rust);
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: var(--steel);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .footer-origin {
+      font-size: 0.78rem;
+      color: var(--steel);
+      line-height: 1.6;
+    }
+
+    .footer-col-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--tan);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a {
+      color: var(--steel);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rust); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--steel);
+    }
+
+    .footer-bottom a { color: var(--steel); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--rust); }
+
+    /* Christmas lights accent */
+    .lights-strip {
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      height: 22px;
+      background: var(--charcoal-dark);
+    }
+
+    .light-bulb {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 3px;
+    }
+
+    .light-bulb::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 8px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .light-bulb::after {
+      content: '';
+      width: 6px;
+      height: 8px;
+      border-radius: 50% 50% 40% 40%;
+      display: block;
+    }
+
+    .light-bulb:nth-child(4n+1)::after { background: #ff4444; box-shadow: 0 0 6px #ff4444; }
+    .light-bulb:nth-child(4n+2)::after { background: #44ff44; box-shadow: 0 0 6px #44ff44; }
+    .light-bulb:nth-child(4n+3)::after { background: #4444ff; box-shadow: 0 0 6px #4444ff; }
+    .light-bulb:nth-child(4n+4)::after { background: #ffff44; box-shadow: 0 0 6px #ffff44; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--charcoal-dark);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid rgba(196,91,40,0.2);
+        z-index: 99;
+      }
+
+      .nav-links.open a { font-size: 1rem; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .bar-grid,
+      .farm-layout,
+      .visit-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .bar-big-stats { grid-template-columns: 1fr 1fr; }
+
+      .menu-grid,
+      .reviews-grid,
+      .specials-grid { grid-template-columns: 1fr; }
+
+      .hero-logo { width: 150px; height: 150px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .farm-facts { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .bar-big-stats { grid-template-columns: 1fr; }
+      .farm-facts { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">The Hoot Nannie</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#bar">The Bar</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#farm">Farm</a></li>
+      <li><a href="#specials">Specials</a></li>
+      <li><a href="#visit" class="nav-cta">Visit Us</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+  </nav>
+
+  <!-- CHRISTMAS LIGHTS -->
+  <div class="lights-strip" aria-hidden="true">
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+    <div class="light-bulb"></div><div class="light-bulb"></div><div class="light-bulb"></div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-logo">
+        <img src="/mock-sites/assets/hoot-nannie/logo.png"
+             alt="The Hoot Nannie — Cowgirl Riding a Hog"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="hero-logo-fallback" style="display:none; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%;">
+          🐷
+          <span>Hoot Nannie</span>
+        </div>
+      </div>
+
+      <div class="hero-spurs">
+        <span class="spur">&#9733;</span>
+        <span class="spur">&#9733;</span>
+        <span class="spur">&#9733;</span>
+        <span class="spur">&#9733;</span>
+        <span class="spur">&#9733;</span>
+        &nbsp;A FIVE SPUR STEAKHOUSE
+      </div>
+
+      <h1 class="hero-name">
+        The Hoot<em>Nannie</em>
+      </h1>
+
+      <p class="hero-sub">The Farmer &amp; The Pitmaster</p>
+
+      <p class="hero-tagline">
+        "If comfort food and good vibes ever had a rowdy little love child, its name would be Hoot Nannie."
+      </p>
+
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">See the Menu</a>
+        <a href="#visit" class="btn-outline">Hours &amp; Directions</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">68</span>
+          <span class="hero-stat-label">Bourbons</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">657+</span>
+          <span class="hero-stat-label">Google Reviews</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">126</span>
+          <span class="hero-stat-label">Farm Acres</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">150</span>
+          <span class="hero-stat-label">lbs Cheese Curds/Wk</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE BAR -->
+  <section id="bar">
+    <div class="container">
+      <div class="bar-grid">
+
+        <div class="bar-big-stats">
+          <div class="stat-card">
+            <span class="stat-card-num">68</span>
+            <span class="stat-card-label">Bourbons</span>
+            <p class="stat-card-desc">One of the deepest shelves in Rutherford County</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-num">4</span>
+            <span class="stat-card-label">Bourbon Flights</span>
+            <p class="stat-card-desc">Curated for exploring, not just drinking</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-num">12+</span>
+            <span class="stat-card-label">Craft Beers</span>
+            <p class="stat-card-desc">Local and regional taps, always rotating</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-num">Full</span>
+            <span class="stat-card-label">Bar Service</span>
+            <p class="stat-card-desc">Cocktails, wine, and the classics done right</p>
+          </div>
+        </div>
+
+        <div class="bar-copy">
+          <span class="section-label">The Bar</span>
+          <div class="section-header" style="margin-bottom:1.5rem;">
+            <h2>Serious Bourbon.<br>Good Company.</h2>
+            <div class="divider"></div>
+          </div>
+          <p>This isn't an afterthought bar. Sixty-eight bourbons, four curated flights, and a crew who actually knows what they're pouring. You could spend three visits just working through the shelf.</p>
+          <p>Cold drafts, craft cocktails, wine, and the kind of full liquor service you'd expect at a place that takes its food this seriously. Sit at the bar, stay a while.</p>
+          <div class="bar-highlight">
+            "The bar is genuinely impressive for a town this size. Asked for a recommendation, got a ten-minute education I didn't mind one bit."
+          </div>
+          <div class="bourbon-badges">
+            <span class="badge">Bourbon Flights</span>
+            <span class="badge">Craft Drafts</span>
+            <span class="badge">Full Liquor</span>
+            <span class="badge">Cocktails</span>
+            <span class="badge">Wine</span>
+            <span class="badge">68 Bourbons</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What We're Cooking</span>
+        <h2>The Menu</h2>
+        <div class="divider"></div>
+        <p>Farm-raised, pit-smoked, made from scratch. These six are the ones people come back for.</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+          <div class="menu-card-img wings">
+            <span class="menu-card-img-icon">🍗</span>
+            <span class="menu-card-tag">Fan Favorite</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Smoked Wings</span>
+            <p class="menu-card-desc">Low-and-slow pit smoke before they hit the fryer. Thursday night, 50 cents each. Order a lot.</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img steak">
+            <span class="menu-card-img-icon">🥩</span>
+            <span class="menu-card-tag">Farm-Raised</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Farm-Raised Steaks</span>
+            <p class="menu-card-desc">Wagyu beef from Honey Hog Farm and Beam Farms, Rutherford County. Raised right here, cut fresh.</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img burger">
+            <span class="menu-card-img-icon">🍔</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Dirty Sanchez Burger</span>
+            <p class="menu-card-desc">The kind of burger that needs both hands and a stack of napkins. It earned the name.</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img curds">
+            <span class="menu-card-img-icon">🧀</span>
+            <span class="menu-card-tag">Legendary</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Fried Cheese Curds</span>
+            <p class="menu-card-desc">150 lbs a week from Brown Creek Creamery. Fresh. Local. Fried until they squeak. They go fast.</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img pork">
+            <span class="menu-card-img-icon">🐷</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Pulled Pork BBQ</span>
+            <p class="menu-card-desc">Johnny Ray's pit. Honey Hog Farm hogs. Long smoke, simple seasoning. The original reason this place exists.</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img cuban">
+            <span class="menu-card-img-icon">🥖</span>
+          </div>
+          <div class="menu-card-body">
+            <span class="menu-card-name">Smokehouse Cuban</span>
+            <p class="menu-card-desc">Smoked pork meets pressed sandwich. Stephen's call. Sounds weird for a country bar. Tastes like a great idea.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FARM & CATTLE -->
+  <section id="farm">
+    <div class="container">
+      <div class="farm-layout">
+
+        <div class="farm-copy">
+          <span class="section-label">Honey Hog Farm</span>
+          <div class="section-header" style="margin-bottom:1.5rem;">
+            <h2>They Raise It.<br>We Cook It.</h2>
+            <div class="divider"></div>
+          </div>
+          <p>Johnny Ray Bousselot runs Honey Hog Farm on 126 owned acres with another 140 leased. Hogs, Wagyu cattle, and chickens. The same animals you read about on the menu are living twenty minutes away.</p>
+          <p>Beam Farms out of Rutherford County handles their beef program. Brown Creek Creamery supplies 150 pounds of fresh cheese curds every week. When they say local, they mean it in a way most restaurants don't.</p>
+          <p>The farm also sells beef direct. Wagyu raised right, no middleman.</p>
+
+          <div class="farm-facts">
+            <div class="farm-fact">
+              <span class="farm-fact-num">126</span>
+              <span class="farm-fact-label">Owned Acres</span>
+            </div>
+            <div class="farm-fact">
+              <span class="farm-fact-num">140</span>
+              <span class="farm-fact-label">Leased Acres</span>
+            </div>
+            <div class="farm-fact">
+              <span class="farm-fact-num">150</span>
+              <span class="farm-fact-label">lbs Curds / Week</span>
+            </div>
+            <div class="farm-fact">
+              <span class="farm-fact-num">3</span>
+              <span class="farm-fact-label">Species Raised</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cattle-catalog">
+            <div class="catalog-header">
+              <h3>BEEF CATALOG</h3>
+              <span>Honey Hog Farm &bull; Rutherford Co.</span>
+            </div>
+            <ul class="catalog-list">
+
+              <li class="catalog-item">
+                <div class="catalog-item-icon">🐄</div>
+                <div class="catalog-item-info">
+                  <h4>Wagyu Beef — Whole/Half</h4>
+                  <p>Honey Hog Farm, 126 acres. Pasture-raised, no shortcuts.</p>
+                </div>
+                <span class="catalog-item-badge badge-available">Available</span>
+              </li>
+
+              <li class="catalog-item">
+                <div class="catalog-item-icon">🥩</div>
+                <div class="catalog-item-info">
+                  <h4>Prime Steakhouse Cuts</h4>
+                  <p>Beam Farms sourced. Appears on the Friday &amp; Saturday prime rib menu.</p>
+                </div>
+                <span class="catalog-item-badge badge-available">On Menu</span>
+              </li>
+
+              <li class="catalog-item">
+                <div class="catalog-item-icon">🐖</div>
+                <div class="catalog-item-info">
+                  <h4>Farm-Raised Hogs</h4>
+                  <p>Honey Hog Farm originals. Smoked in-house for BBQ and the Cuban.</p>
+                </div>
+                <span class="catalog-item-badge badge-available">On Menu</span>
+              </li>
+
+              <li class="catalog-item">
+                <div class="catalog-item-icon">🐔</div>
+                <div class="catalog-item-info">
+                  <h4>Pasture Chickens</h4>
+                  <p>Free-range on-farm birds. Wings go through 50¢ Wing Night every Thursday.</p>
+                </div>
+                <span class="catalog-item-badge badge-seasonal">Thu Nights</span>
+              </li>
+
+            </ul>
+            <div class="catalog-note">
+              <span>&#9432;</span>
+              <p><strong>Ask the staff about direct beef purchases</strong> from Honey Hog Farm. Call ahead for availability.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What People Say</span>
+        <h2>657+ Reviews.<br>They Keep Coming Back.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"This place is the real deal. Pulled pork is absolutely on point, bourbon list is ridiculous in the best way possible, and the staff treats you like they actually want you there. Forest City needed this."</p>
+          <p class="review-author">Michael T.</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"The fried cheese curds alone are worth the drive from Charlotte. The fact that they get them from a local creamery every week makes it even better. One of the most genuinely local restaurants I've been to in years."</p>
+          <p class="review-author">Sarah K.</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <p class="review-text">"Thursday wing night is a crime against my diet. 50 cents each and they're smoked before they fry them. I don't know who gave them permission to do this but I'm grateful. Back every week."</p>
+          <p class="review-author">Dave R.</p>
+          <p class="review-source">Google Review</p>
+        </div>
+
+      </div>
+
+      <div class="reviews-footer">
+        <span class="reviews-count">657+</span>
+        <p class="reviews-count-sub">Google Reviews &bull; Forest City, NC</p>
+        <div>
+          <span class="press-badge">&#9733; Featured in Our State Magazine</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section id="specials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Weekly Specials</span>
+        <h2>Three Nights.<br>Three Reasons to Show Up.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="specials-grid">
+
+        <div class="special-card thursday">
+          <div class="special-card-head">
+            <span class="special-day">Thursday</span>
+            <p class="special-name">Wing Night</p>
+          </div>
+          <div class="special-card-body">
+            <span class="special-price">50¢</span>
+            <p class="special-desc">Per wing. Smoked low-and-slow before they hit the fryer. No minimum. Come hungry.</p>
+          </div>
+        </div>
+
+        <div class="special-card friday">
+          <div class="special-card-head">
+            <span class="special-day">Friday</span>
+            <p class="special-name">Prime Rib Night</p>
+          </div>
+          <div class="special-card-body">
+            <span class="special-price">Prime</span>
+            <p class="special-desc">Local beef, slow-roasted. Limited cuts. Gets gone. No reservations, first come first served.</p>
+          </div>
+        </div>
+
+        <div class="special-card saturday">
+          <div class="special-card-head">
+            <span class="special-day">Saturday</span>
+            <p class="special-name">Prime Rib Night</p>
+          </div>
+          <div class="special-card-body">
+            <span class="special-price">Prime</span>
+            <p class="special-desc">Same deal as Friday. Same beef. If you missed it, you've got one more shot this weekend.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Find Us</span>
+        <h2>Come On In.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="visit-grid">
+
+        <div>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--tan);letter-spacing:0.1em;margin-bottom:0.5rem;">HOURS</h3>
+          <table class="hours-table">
+            <tbody>
+              <tr>
+                <td class="day">Monday</td>
+                <td class="time closed">Closed</td>
+              </tr>
+              <tr>
+                <td class="day">Tuesday</td>
+                <td class="time closed">Closed</td>
+              </tr>
+              <tr>
+                <td class="day">Wednesday</td>
+                <td class="time">11am &ndash; 8pm</td>
+              </tr>
+              <tr>
+                <td class="day">Thursday</td>
+                <td class="time">11am &ndash; 9pm</td>
+              </tr>
+              <tr>
+                <td class="day">Friday</td>
+                <td class="time">11am &ndash; 9pm</td>
+              </tr>
+              <tr>
+                <td class="day">Saturday</td>
+                <td class="time">11am &ndash; 9pm</td>
+              </tr>
+              <tr>
+                <td class="day">Sunday</td>
+                <td class="time">10am &ndash; 7pm</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="contact-block">
+
+            <div class="contact-item">
+              <div class="contact-icon">&#128222;</div>
+              <div>
+                <span class="contact-label">Phone</span>
+                <p class="contact-value"><a href="tel:8282293016">(828) 229-3016</a></p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">&#128205;</div>
+              <div>
+                <span class="contact-label">Address</span>
+                <p class="contact-value">164 E Main St<br>Forest City, NC 28043</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">&#127860;</div>
+              <div>
+                <span class="contact-label">Kitchen</span>
+                <p class="contact-value" style="font-size:0.85rem;color:var(--steel-light);">Kitchen closes 30 min before close.<br>Bar may stay open depending on the night.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <div class="map-placeholder">
+            <span class="map-pin">&#128205;</span>
+            <div class="map-text">
+              <p class="map-address">164 E Main St, Forest City, NC</p>
+              <p style="font-size:0.78rem;margin-top:0.25rem;">Downtown Forest City &bull; Easy parking on Main</p>
+            </div>
+            <a href="https://maps.google.com/?q=164+E+Main+St,+Forest+City,+NC+28043"
+               target="_blank"
+               rel="noopener"
+               class="directions-btn">Get Directions</a>
+          </div>
+
+          <div style="margin-top:2rem;background:var(--charcoal-light);border:1px solid rgba(196,91,40,0.2);border-radius:4px;padding:1.5rem;">
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--offwhite);letter-spacing:0.06em;margin-bottom:0.75rem;">THE STORY</h4>
+            <p style="font-size:0.82rem;color:var(--steel-light);line-height:1.65;">Born from two Forest City institutions: Johnny Ray Bousselot's <strong style="color:var(--tan)">The Honey Hog</strong> and Stephen Soto's <strong style="color:var(--tan)">Nannie's Fish Camp</strong> out of Fallston. They combined what they were each best at. The pitmaster and the chef, under one tin roof.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+
+      <div>
+        <span class="footer-brand-name">The Hoot Nannie</span>
+        <p class="footer-tagline">A Five Spur Steakhouse &bull; Forest City, NC</p>
+        <p class="footer-origin">Born from The Honey Hog + Nannie's Fish Camp. Pitmaster Johnny Ray Bousselot and Chef Stephen Soto. One roof, two legacies, all scratch.</p>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#bar">The Bar</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#farm">The Farm</a></li>
+          <li><a href="#specials">Weekly Specials</a></li>
+          <li><a href="#visit">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <ul class="footer-links">
+          <li><a href="tel:8282293016">(828) 229-3016</a></li>
+          <li><a href="https://maps.google.com/?q=164+E+Main+St,+Forest+City,+NC+28043" target="_blank" rel="noopener">164 E Main St</a></li>
+          <li><a href="#">Forest City, NC 28043</a></li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <p style="font-size:0.68rem;color:var(--steel);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">Featured In</p>
+          <span style="font-size:0.78rem;color:var(--tan);font-style:italic;">Our State Magazine</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 The Hoot Nannie &mdash; A Five Spur Steakhouse. All rights reserved.</p>
+      <p style="font-style:italic;">"The Farmer &amp; The Pitmaster"</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+
+</body>
+</html>

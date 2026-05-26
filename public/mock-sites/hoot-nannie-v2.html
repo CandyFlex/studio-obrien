@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hoot Nannie | A Five Spur Steakhouse | Forest City, NC</title>
+  <meta name="description" content="Farm-raised steaks, whole hog BBQ, 68 bourbons, legendary cheese curds, and a full bourbon bar on Main Street in Forest City, NC. Open Wed-Sun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================ */
+    /*  BROADSHEET NEWSPAPER                        */
+    /*  Actual newspaper layout, print-inspired     */
+    /* ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --paper: #F8F6F0;
+      --paper-aged: #EDE9DF;
+      --ink: #1A1A1A;
+      --ink-dim: rgba(26,26,26,0.55);
+      --ink-faint: rgba(26,26,26,0.18);
+      --ink-ghost: rgba(26,26,26,0.08);
+      --red: #CC0000;
+      --red-dim: rgba(204,0,0,0.7);
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
+
+    /* ============================================ */
+    /*  NEWSPAPER TYPOGRAPHIC SYSTEM                */
+    /* ============================================ */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    /* Thin horizontal rules */
+    .rule { border: none; height: 1px; background: var(--ink); margin: 0; }
+    .rule-thin { border: none; height: 1px; background: var(--ink-faint); margin: 0; }
+    .rule-double {
+      border: none;
+      height: 4px;
+      background: transparent;
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    /* Dateline / section header */
+    .dateline {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      padding: 0.6rem 0;
+    }
+
+    /* Drop cap */
+    .drop-cap::first-letter {
+      font-family: var(--font-serif);
+      font-size: 3.8rem;
+      font-weight: 700;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.15rem;
+      margin-top: 0.1rem;
+      color: var(--red);
+    }
+
+    /* ============================================ */
+    /*  SCROLL ANIMATIONS                           */
+    /* ============================================ */
+    .fade {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade.vis { opacity: 1; transform: translateY(0); }
+
+    /* ============================================ */
+    /*  MASTHEAD / NAV                              */
+    /* ============================================ */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--paper);
+      border-bottom: 2px solid var(--ink);
+      transition: box-shadow 0.3s;
+    }
+    .masthead.scrolled {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .masthead-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+    }
+
+    .mast-brand {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .mast-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .mast-links a {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      transition: color 0.2s;
+    }
+    .mast-links a:hover { color: var(--ink); }
+
+    .mast-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 0.4rem 1rem;
+      font-size: 0.62rem !important;
+      letter-spacing: 0.18em !important;
+      transition: background 0.2s;
+    }
+    .mast-cta:hover { background: #A00000; }
+
+    .hamburger { display: none; flex-direction: column; gap: 4px; padding: 4px; z-index: 1001; }
+    .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(248,246,240,0.98);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .mobile-menu a:hover { color: var(--red); }
+
+    @media (max-width: 768px) {
+      .mast-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================ */
+    /*  NEWSPAPER NAMEPLATE                         */
+    /* ============================================ */
+    .nameplate {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-bottom: 1px solid var(--ink);
+    }
+    .nameplate-sub {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: 0.5rem;
+    }
+    .nameplate h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+      margin-bottom: 0.5rem;
+    }
+    .nameplate-tagline {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink-dim);
+    }
+    .nameplate-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.75rem;
+      font-size: 0.65rem;
+      color: var(--ink-dim);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================ */
+    /*  HERO - ABOVE THE FOLD                       */
+    /* ============================================ */
+    .front-page {
+      padding: 1.5rem 0 0;
+    }
+
+    .fp-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .fp-main {
+      padding-right: 1.5rem;
+      border-right: 1px solid var(--ink-faint);
+    }
+
+    .fp-headline {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.75rem;
+    }
+    .fp-byline {
+      font-size: 0.7rem;
+      color: var(--ink-dim);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .fp-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+      filter: grayscale(0.15) contrast(1.05);
+    }
+    .fp-caption {
+      font-size: 0.68rem;
+      font-style: italic;
+      color: var(--ink-dim);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--ink-ghost);
+    }
+
+    .fp-text {
+      column-count: 2;
+      column-gap: 1.5rem;
+      column-rule: 1px solid var(--ink-ghost);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--ink);
+      text-align: justify;
+      padding-bottom: 1.5rem;
+    }
+
+    /* Sidebar */
+    .fp-sidebar {
+      padding-left: 1.5rem;
+    }
+
+    .sidebar-box {
+      border: 1px solid var(--ink-faint);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      background: var(--paper-aged);
+    }
+    .sidebar-box h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--red);
+    }
+    .sidebar-box p {
+      font-size: 0.82rem;
+      color: var(--ink-dim);
+      line-height: 1.6;
+    }
+
+    .sidebar-stat {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 2px solid var(--ink);
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-stat-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .sidebar-stat-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-top: 0.3rem;
+    }
+
+    .sidebar-hours h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--ink-ghost);
+      font-size: 0.78rem;
+    }
+    .hours-day { color: var(--ink-dim); }
+    .hours-time { font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .fp-layout { grid-template-columns: 1fr; }
+      .fp-main { padding-right: 0; border-right: none; border-bottom: 1px solid var(--ink-faint); padding-bottom: 1.5rem; }
+      .fp-sidebar { padding-left: 0; padding-top: 1.5rem; }
+      .fp-text { column-count: 1; }
+    }
+
+    /* ============================================ */
+    /*  MENU SECTION - MULTI-COLUMN                 */
+    /* ============================================ */
+    .menu-section {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .menu-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.5rem;
+    }
+    .menu-section-head h2 {
+      font-size: 1.5rem;
+    }
+    .menu-section-head .dateline { padding: 0; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .menu-item {
+      border-bottom: 1px solid var(--ink-ghost);
+      padding-bottom: 1rem;
+    }
+    .menu-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: grayscale(0.1) contrast(1.05);
+      margin-bottom: 0.6rem;
+    }
+    .menu-item-tag {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.2rem;
+    }
+    .menu-item h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+    .menu-item p {
+      font-size: 0.78rem;
+      color: var(--ink-dim);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  BOURBON - FEATURE ARTICLE                   */
+    /* ============================================ */
+    .bourbon-feature {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .bourbon-head {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .bourbon-head h2 { font-size: 1.5rem; }
+
+    .bourbon-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .bourbon-article {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      text-align: justify;
+    }
+    .bourbon-article p { margin-bottom: 1rem; }
+
+    .bourbon-pull {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--ink);
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 1rem 0;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .bourbon-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .bourbon-images img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: grayscale(0.1) contrast(1.05);
+    }
+    .bourbon-images .b-img:first-child { margin-top: 1.5rem; }
+    .bourbon-stat-strip {
+      grid-column: span 2;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--ink-faint);
+      margin-top: 0.5rem;
+    }
+    .bourbon-stat-strip .stat {
+      text-align: center;
+    }
+    .bourbon-stat-strip .stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .bourbon-stat-strip .stat-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 768px) {
+      .bourbon-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  REVIEWS - CLASSIFIED ADS STYLE              */
+    /* ============================================ */
+    .reviews-section {
+      padding: 2rem 0;
+      background: var(--paper-aged);
+      border-top: 1px solid var(--ink-faint);
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .reviews-head {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .reviews-head h2 { font-size: 1.3rem; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .review-col {
+      padding: 0 1rem;
+      border-right: 1px solid var(--ink-ghost);
+    }
+    .review-col:first-child { padding-left: 0; }
+    .review-col:last-child { border-right: none; padding-right: 0; }
+
+    .review-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--ink-ghost);
+    }
+    .review-item:last-child { border-bottom: none; }
+
+    .review-stars {
+      color: var(--red);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.35rem;
+    }
+    .review-text {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .review-author {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 768px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-col { padding: 0; border-right: none; border-bottom: 1px solid var(--ink-ghost); }
+      .review-col:last-child { border-bottom: none; }
+    }
+
+    /* ============================================ */
+    /*  SPECIALS - BOXED ADS                        */
+    /* ============================================ */
+    .specials-section {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+
+    .specials-head {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .specials-head h2 { font-size: 1.3rem; }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .special-ad {
+      border: 2px solid var(--ink);
+      padding: 1.25rem;
+      text-align: center;
+      position: relative;
+      background: var(--paper);
+    }
+
+    .special-ad img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      filter: grayscale(0.2) contrast(1.05);
+      margin-bottom: 0.75rem;
+    }
+
+    .special-day-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.3rem;
+    }
+    .special-ad h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .special-ad p {
+      font-size: 0.75rem;
+      color: var(--ink-dim);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .specials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .specials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  ORDER / VISIT                               */
+    /* ============================================ */
+    .bottom-strip {
+      padding: 2rem 0;
+    }
+
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 2rem;
+    }
+    .bottom-divider { background: var(--ink-faint); }
+
+    .bottom-col h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--ink);
+    }
+    .bottom-col p {
+      font-size: 0.88rem;
+      color: var(--ink-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .order-btns {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .order-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--ink-faint);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .order-link:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    .order-link-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--red);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      border-radius: 3px;
+    }
+
+    .visit-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      filter: grayscale(0.1) contrast(1.05);
+      margin-bottom: 0.75rem;
+    }
+    .visit-caption {
+      font-size: 0.68rem;
+      font-style: italic;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 768px) {
+      .bottom-layout { grid-template-columns: 1fr; }
+      .bottom-divider { display: none; }
+    }
+
+    /* ============================================ */
+    /*  FOOTER                                      */
+    /* ============================================ */
+    .footer {
+      border-top: 2px solid var(--ink);
+      padding: 1.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-copy {
+      font-size: 0.68rem;
+      color: var(--ink-dim);
+    }
+    .footer-copy a { color: var(--red); }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ============================================ */
+    /*  DEMO BANNER                                 */
+    /* ============================================ */
+    .demo-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+    }
+    .demo-banner a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    body { padding-bottom: 32px; }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD / NAV -->
+  <nav class="masthead" id="masthead">
+    <div class="container">
+      <div class="masthead-inner">
+        <span class="mast-brand">The Hoot Nannie</span>
+        <div class="mast-links">
+          <a href="#menu">Menu</a>
+          <a href="#bourbon">Bar</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#visit">Visit</a>
+          <a href="#order" class="mast-cta">Order Online</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#bourbon" onclick="closeMobile()">Bourbon Bar</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="#visit" onclick="closeMobile()">Visit</a>
+    <a href="#order" onclick="closeMobile()">Order Online</a>
+  </div>
+
+  <!-- NAMEPLATE -->
+  <header class="nameplate">
+    <div class="container">
+      <div class="nameplate-sub">Forest City, North Carolina</div>
+      <h1>The Hoot Nannie</h1>
+      <div class="nameplate-tagline">A Five Spur Steakhouse. Farm-Raised. Fire-Kissed.</div>
+      <div class="nameplate-meta">
+        <span>Est. 2021</span>
+        <span>164 E Main Street</span>
+        <span>Open Wed - Sun</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container"><hr class="rule-double"></div>
+
+  <!-- FRONT PAGE -->
+  <section class="front-page">
+    <div class="container">
+      <div class="fp-layout">
+        <div class="fp-main fade">
+          <h2 class="fp-headline">Where the Farmer Meets the Pitmaster, and 68 Bourbons Line the Wall</h2>
+          <div class="fp-byline">Forest City, N.C. // Staff Report</div>
+          <img class="fp-image" src="assets/hoot-nannie/hero-uber.webp" alt="Spread of dishes at The Hoot Nannie" loading="eager">
+          <div class="fp-caption">A sampling from the kitchen: farm-raised steaks, whole hog BBQ, and Brown Creek cheese curds.</div>
+          <div class="fp-text drop-cap">
+            <p>Every plate at The Hoot Nannie starts on the farm and ends over flame. Johnny Roy started making barbecue sauces over 12 years ago. That sauce now sits on shelves at Food Lion and Ingles across North Carolina.</p>
+            <p>Good sauce needs good meat. Good meat needs good land. He partnered with Stephen "Neighbor Steve" Soto, combined the best of The Honey Hog and Nannie's Fish Camp, added farm-raised steaks from Beam Farms, and built a full bar with 68 bourbons.</p>
+            <p>The Hoot Nannie opened June 2021 on Main Street in Forest City. Behind every plate is Honey Hog Farm. 126 acres owned, 140 leased. Hogs, Wagyu cattle, chickens. All of it raised right here in Rutherford County.</p>
+          </div>
+        </div>
+
+        <aside class="fp-sidebar fade">
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">126</div>
+            <div class="sidebar-stat-label">Acres Owned</div>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>Order Online</h3>
+            <p>Same food, delivered to your door via Uber Eats and Postmates. Available for delivery and pickup.</p>
+          </div>
+
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">68</div>
+            <div class="sidebar-stat-label">Bourbons on the Wall</div>
+          </div>
+
+          <div class="sidebar-hours" id="visit">
+            <h3>Hours of Operation</h3>
+            <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">4 - 9 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">4 - 9 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">4 - 10 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">10A - 10P</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">10A - 3P</span></div>
+            <div class="hours-row"><span class="hours-day">Mon &amp; Tue</span><span class="hours-time">Closed</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule-thin"></div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-section-head">
+        <h2>From the Kitchen</h2>
+        <span class="dateline">The Menu</span>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="Beam Farms steak with mac and cheese" loading="lazy">
+          <div class="menu-item-tag">Farm Raised</div>
+          <h3>Beam Farms Steaks</h3>
+          <p>Farm-raised, hand-cut, seared over open flame. The reason locals drive 30 minutes.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings with sriracha glaze" loading="lazy">
+          <div class="menu-item-tag">Smoked</div>
+          <h3>Smoked Wings</h3>
+          <p>Low and slow, finished crisp. House sriracha glaze.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="The Dirty Sanchez burger" loading="lazy">
+          <div class="menu-item-tag">Signature</div>
+          <h3>The Dirty Sanchez</h3>
+          <p>Hot and cheese-piled on a brioche bun. Not sorry about the mess.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork plate" loading="lazy">
+          <div class="menu-item-tag">Whole Hog</div>
+          <h3>Pulled Pork Plate</h3>
+          <p>Southern NC slow, vinegar-kissed. No shortcuts.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/crispy-chicken.webp" alt="Crispy chicken sandwich" loading="lazy">
+          <div class="menu-item-tag">Hand-Breaded</div>
+          <h3>Crispy Chicken Sandwich</h3>
+          <p>Fresh to order on brioche. Pickles and house sauce.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/big-samantha.webp" alt="The Big Samantha club sandwich" loading="lazy">
+          <div class="menu-item-tag">Signature</div>
+          <h3>The Big Samantha</h3>
+          <p>Stacked club with seasoned fries. Bring your appetite.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/chicken-tenders.webp" alt="Chicken tenders" loading="lazy">
+          <div class="menu-item-tag">Classic</div>
+          <h3>Chicken Tenders</h3>
+          <p>Hand-breaded with honey mustard and ranch.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/burger-hand.webp" alt="Classic burger" loading="lazy">
+          <div class="menu-item-tag">Classic</div>
+          <h3>The Classic Burger</h3>
+          <p>Lettuce, tomato, onion, American cheese. Done right.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/loaded-fries.webp" alt="Loaded fries" loading="lazy">
+          <div class="menu-item-tag">Loaded</div>
+          <h3>Loaded Fries</h3>
+          <p>Pulled pork, cheese, BBQ sauce. Shareable if you're generous.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/cheese-curds.webp" alt="Fried cheese curds" loading="lazy">
+          <div class="menu-item-tag">Fan Favorite</div>
+          <h3>Fried Cheese Curds</h3>
+          <p>Brown Creek cheese, fried fresh. Marinara and ranch on the side.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Shrimp and grits" loading="lazy">
+          <div class="menu-item-tag">Southern</div>
+          <h3>Shrimp &amp; Grits</h3>
+          <p>Seasoned shrimp over stone-ground grits.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/bbq-sandwich.webp" alt="BBQ pulled pork sandwich" loading="lazy">
+          <div class="menu-item-tag">Whole Hog</div>
+          <h3>BBQ Pulled Pork Sandwich</h3>
+          <p>Piled high on brioche with onion rings and fries.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/cuban-sandwich.webp" alt="The Cuban sandwich" loading="lazy">
+          <div class="menu-item-tag">Pressed</div>
+          <h3>The Cuban</h3>
+          <p>Pressed with ham, pork, pickles, mustard, and house chips.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/bbq-plate-hushpuppies.webp" alt="BBQ plate with hush puppies" loading="lazy">
+          <div class="menu-item-tag">Whole Hog</div>
+          <h3>BBQ Plate</h3>
+          <p>Pulled pork, fries, hush puppies, slaw, BBQ sauce. The full spread.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/ribs-plate.webp" alt="Ribs and fried okra" loading="lazy">
+          <div class="menu-item-tag">Smoked</div>
+          <h3>Ribs &amp; Fried Okra</h3>
+          <p>Full rack with fried okra and house chips.</p>
+        </div>
+        <div class="menu-item fade">
+          <img src="assets/hoot-nannie/buffalo-burger.webp" alt="Stacked burger" loading="lazy">
+          <div class="menu-item-tag">Stacked</div>
+          <h3>Stacked Burger</h3>
+          <p>Tall stack with cheese, lettuce, tomato, onion. Two hands required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOURBON FEATURE -->
+  <section class="bourbon-feature" id="bourbon">
+    <div class="container">
+      <div class="bourbon-head">
+        <h2>The Bourbon Bar</h2>
+        <span class="dateline">Feature</span>
+      </div>
+      <div class="bourbon-layout">
+        <div class="bourbon-article fade">
+          <p class="drop-cap">Full bar with a bourbon wall that goes deep. Sixty-eight labels and counting line the shelves behind the bar, from familiar faces to small-batch bottles most people have never seen.</p>
+          <p>Craft cocktails mixed by people who care about the details. House-made watermelon margaritas when the weather turns warm. The bar stays open late on Fridays and Saturdays, with live local music filling the room.</p>
+          <div class="bourbon-pull">"68 bourbons on the wall, and counting."</div>
+          <p>Sit at the bar. Wait for your steak. Let the bartender pour something you haven't tried yet. The drink menu gives you reasons to stay, and the staff knows every bottle on that wall.</p>
+        </div>
+        <div class="bourbon-images fade">
+          <div class="b-img">
+            <img src="assets/hoot-nannie/bourbon-bar.webp" alt="The bourbon bar" loading="lazy">
+          </div>
+          <div class="b-img">
+            <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Tequila sunrise" loading="lazy">
+          </div>
+          <div class="bourbon-stat-strip">
+            <div class="stat">
+              <div class="stat-num">68</div>
+              <div class="stat-label">Bourbons</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">12+</div>
+              <div class="stat-label">Cocktails</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="reviews-head">
+        <h2>What Customers Say</h2>
+        <span class="dateline">Google Reviews</span>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-col">
+          <div class="review-item fade">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"The steaks here are unbelievable. Hands down the best steak I've had in western NC."</p>
+            <div class="review-author">Marcus T.</div>
+          </div>
+          <div class="review-item fade">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Best burger I've ever had, period. The Dirty Sanchez with mac and cheese on top."</p>
+            <div class="review-author">Amanda P.</div>
+          </div>
+        </div>
+        <div class="review-col">
+          <div class="review-item fade">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Cheese curds are the real deal. Brown Creek cheese, fried fresh. We drove 45 minutes."</p>
+            <div class="review-author">Sarah K.</div>
+          </div>
+          <div class="review-item fade">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Eggs Benedict with smoked pork. Why doesn't every restaurant do this?"</p>
+            <div class="review-author">David R.</div>
+          </div>
+        </div>
+        <div class="review-col">
+          <div class="review-item fade">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">"Farm-to-table done right without any of the pretension. Staff is great, food is better."</p>
+            <div class="review-author">Chris L.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials-section">
+    <div class="container">
+      <div class="specials-head">
+        <h2>Weekly Features</h2>
+      </div>
+      <div class="specials-grid">
+        <div class="special-ad fade">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger night" loading="lazy">
+          <div class="special-day-label">Thursday</div>
+          <h3>Burger Night</h3>
+          <p>Half-price specialty burgers. The Dirty Sanchez, The Classic, and the weekly special.</p>
+        </div>
+        <div class="special-ad fade">
+          <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Cocktails" loading="lazy">
+          <div class="special-day-label">Fri &amp; Sat</div>
+          <h3>Live Music</h3>
+          <p>Local acts, cocktail specials, kitchen open late.</p>
+        </div>
+        <div class="special-ad fade">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Brunch" loading="lazy">
+          <div class="special-day-label">Sat &amp; Sun</div>
+          <h3>Brunch</h3>
+          <p>Shrimp and grits, chicken and waffles, Bloody Marys. 10am to 2pm.</p>
+        </div>
+        <div class="special-ad fade">
+          <img src="assets/hoot-nannie/glazed-wings.webp" alt="Wing night" loading="lazy">
+          <div class="special-day-label">Wednesday</div>
+          <h3>Wing Night</h3>
+          <p>All-you-can-eat smoked wings. Best deal in the county.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER & VISIT STRIP -->
+  <section class="bottom-strip" id="order">
+    <div class="container">
+      <div class="bottom-layout">
+        <div class="bottom-col fade">
+          <h2>Order Online</h2>
+          <p>Same food, delivered to your door. Available on Uber Eats and Postmates for delivery and pickup.</p>
+          <div class="order-btns">
+            <a href="https://www.ubereats.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="order-link">
+              <div class="order-link-icon">UE</div>Uber Eats
+            </a>
+            <a href="https://postmates.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="order-link">
+              <div class="order-link-icon">PM</div>Postmates
+            </a>
+          </div>
+        </div>
+        <div class="bottom-divider"></div>
+        <div class="bottom-col fade">
+          <h2>Find Us</h2>
+          <img class="visit-image" src="assets/hoot-nannie/exterior.webp" alt="The Hoot Nannie exterior" loading="lazy">
+          <div class="visit-caption">164 E Main Street, Forest City, NC 28043. Right on Main Street, downtown.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2025 The Hoot Nannie. Demo by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.</p>
+        <div class="footer-links">
+          <a href="https://www.facebook.com/TheHootNannie/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/thehootnannie/" target="_blank" rel="noopener">Instagram</a>
+          <a href="tel:+18282481479">Call</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="demo-banner">
+    Demo site by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.
+  </div>
+
+  <script>
+    const mast = document.getElementById('masthead');
+    window.addEventListener('scroll', () => {
+      mast.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const d = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('vis'), Number(d));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.fade').forEach(el => {
+      const siblings = el.parentElement.querySelectorAll('.fade');
+      el.dataset.delay = Array.from(siblings).indexOf(el) * 70;
+      obs.observe(el);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>

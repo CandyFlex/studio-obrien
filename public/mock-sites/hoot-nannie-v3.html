@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hoot Nannie | A Five Spur Steakhouse | Forest City, NC</title>
+  <meta name="description" content="Farm-raised steaks, whole hog BBQ, 68 bourbons, legendary cheese curds, and a full bourbon bar on Main Street in Forest City, NC. Open Wed-Sun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================ */
+    /*  MAXIMALIST COLLAGE / SCRAPBOOK              */
+    /*  Chaotic, layered, handmade energy            */
+    /* ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --mustard: #D4A017;
+      --mustard-light: #E8BB3A;
+      --green: #2D5016;
+      --green-light: #4A7A2E;
+      --brick: #A13333;
+      --brick-light: #C44A4A;
+      --cream: #FFF8ED;
+      --cream-dark: #F0E6D0;
+      --brown: #3D2B1F;
+      --brown-dim: rgba(61, 43, 31, 0.55);
+      --brown-faint: rgba(61, 43, 31, 0.15);
+      --tape: rgba(255, 248, 220, 0.7);
+      --font-display: 'Archivo Black', sans-serif;
+      --font-body: 'Cabin', sans-serif;
+      --font-hand: 'Caveat', cursive;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Paper texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+    /* ============================================ */
+    /*  SCRAPBOOK UTILITIES                         */
+    /* ============================================ */
+    /* Tape strip effect */
+    .tape {
+      position: absolute;
+      width: 60px;
+      height: 18px;
+      background: var(--tape);
+      border: 1px solid rgba(61,43,31,0.08);
+      z-index: 10;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .tape-tl { top: -6px; left: 20px; transform: rotate(-8deg); }
+    .tape-tr { top: -6px; right: 20px; transform: rotate(5deg); }
+    .tape-center { top: -8px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+
+    /* Pin effect */
+    .pin::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--brick);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    /* Polaroid frame */
+    .polaroid {
+      background: #fff;
+      padding: 8px 8px 32px;
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.12);
+    }
+    .polaroid img { width: 100%; }
+    .polaroid-label {
+      font-family: var(--font-hand);
+      font-size: 1rem;
+      color: var(--brown);
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* Handwritten style */
+    .handwritten {
+      font-family: var(--font-hand);
+      font-weight: 600;
+    }
+
+    /* Sticker badge */
+    .sticker {
+      display: inline-block;
+      background: var(--mustard);
+      color: var(--brown);
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      transform: rotate(-3deg);
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* ============================================ */
+    /*  ANIMATIONS                                  */
+    /* ============================================ */
+    .pop {
+      opacity: 0;
+      transform: scale(0.9) rotate(-1deg);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .pop.vis { opacity: 1; transform: scale(1) rotate(0deg); }
+
+    .slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .slide-up.vis { opacity: 1; transform: translateY(0); }
+
+    /* ============================================ */
+    /*  NAV                                         */
+    /* ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(255, 248, 237, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--brown);
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-dim);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--brown); }
+
+    .nav-cta {
+      background: var(--brick);
+      color: var(--cream) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--brick-light); transform: rotate(-1deg) scale(1.03); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; z-index: 1001; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--brown); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(255, 248, 237, 0.98);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+    .mobile-menu a:hover { color: var(--brick); }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================ */
+    /*  HERO - COLLAGE SPLASH                       */
+    /* ============================================ */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      overflow: hidden;
+      background: var(--cream-dark);
+    }
+
+    /* Scattered background photos */
+    .hero-photo {
+      position: absolute;
+      box-shadow: 3px 6px 16px rgba(0,0,0,0.15);
+      border: 6px solid #fff;
+      z-index: 1;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-photo-1 { width: 220px; height: 170px; top: 8%; left: 3%; transform: rotate(-6deg); }
+    .hero-photo-2 { width: 200px; height: 260px; top: 5%; right: 5%; transform: rotate(4deg); }
+    .hero-photo-3 { width: 240px; height: 180px; bottom: 12%; left: 5%; transform: rotate(3deg); }
+    .hero-photo-4 { width: 180px; height: 240px; bottom: 8%; right: 8%; transform: rotate(-5deg); }
+    .hero-photo-5 { width: 160px; height: 120px; top: 55%; left: 18%; transform: rotate(7deg); }
+    .hero-photo-6 { width: 170px; height: 130px; top: 50%; right: 18%; transform: rotate(-4deg); }
+
+    .hero-center {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      max-width: 650px;
+      animation: heroPopIn 0.8s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes heroPopIn {
+      from { opacity: 0; transform: scale(0.85) rotate(-2deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .hero-sticker {
+      display: inline-block;
+      background: var(--green);
+      color: var(--cream);
+      font-family: var(--font-hand);
+      font-size: 1.1rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 24px;
+      transform: rotate(-3deg);
+      margin-bottom: 1rem;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.12);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      color: var(--brown);
+    }
+    .hero h1 .accent { color: var(--brick); }
+
+    .hero-sub {
+      font-family: var(--font-hand);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--brown-dim);
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-scrap {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 24px;
+      transition: all 0.3s;
+    }
+    .btn-fill {
+      background: var(--brick);
+      color: var(--cream);
+      box-shadow: 2px 3px 8px rgba(161,51,51,0.2);
+    }
+    .btn-fill:hover { background: var(--brick-light); transform: rotate(-1deg) translateY(-2px); }
+    .btn-border {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--brown-faint);
+    }
+    .btn-border:hover { border-color: var(--brown); transform: rotate(1deg) translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .hero-photo { display: none; }
+      .hero { background: var(--cream-dark); }
+    }
+
+    /* ============================================ */
+    /*  MENU - PINBOARD                             */
+    /* ============================================ */
+    .menu-section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background: var(--cream);
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .menu-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .menu-header p {
+      font-family: var(--font-hand);
+      font-size: 1.3rem;
+      color: var(--brown-dim);
+    }
+
+    .pinboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+      background: #C4A882;
+      border-radius: 4px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .pin-card {
+      position: relative;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 2px 4px 12px rgba(0,0,0,0.12);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .pin-card:nth-child(1) { transform: rotate(-2deg); }
+    .pin-card:nth-child(2) { transform: rotate(1.5deg); }
+    .pin-card:nth-child(3) { transform: rotate(-1deg); }
+    .pin-card:nth-child(4) { transform: rotate(2.5deg); }
+    .pin-card:nth-child(5) { transform: rotate(1deg); }
+    .pin-card:nth-child(6) { transform: rotate(-3deg); }
+    .pin-card:nth-child(7) { transform: rotate(2deg); }
+    .pin-card:nth-child(8) { transform: rotate(-1.5deg); }
+    .pin-card:nth-child(9) { transform: rotate(1.8deg); }
+    .pin-card:nth-child(10) { transform: rotate(-2.5deg); }
+    .pin-card:nth-child(11) { transform: rotate(0.8deg); }
+    .pin-card:nth-child(12) { transform: rotate(-1.8deg); }
+    .pin-card:nth-child(13) { transform: rotate(2.2deg); }
+    .pin-card:nth-child(14) { transform: rotate(-0.5deg); }
+    .pin-card:nth-child(15) { transform: rotate(3deg); }
+    .pin-card:nth-child(16) { transform: rotate(-2.2deg); }
+
+    .pin-card:hover { transform: rotate(0deg) scale(1.04) !important; z-index: 5; }
+
+    .pin-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .pin-card-body {
+      padding: 8px 4px 4px;
+    }
+    .pin-card-tag {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 0.15rem;
+    }
+    .pin-card-body h3 {
+      font-family: var(--font-hand);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.15rem;
+    }
+    .pin-card-body p {
+      font-size: 0.72rem;
+      color: var(--brown-dim);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .pinboard { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .pinboard { grid-template-columns: 1fr; padding: 1rem; }
+    }
+
+    /* ============================================ */
+    /*  BOURBON BAR                                 */
+    /* ============================================ */
+    .bourbon-section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background: var(--green);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Torn paper edge top */
+    .bourbon-section::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: var(--cream);
+      clip-path: polygon(0 0, 2% 0, 3% 60%, 5% 0, 8% 0, 10% 70%, 12% 0, 15% 0, 17% 50%, 20% 0, 22% 0, 25% 65%, 27% 0, 30% 0, 32% 55%, 35% 0, 37% 0, 40% 60%, 42% 0, 45% 0, 48% 70%, 50% 0, 52% 0, 55% 50%, 58% 0, 60% 0, 62% 65%, 65% 0, 68% 0, 70% 55%, 72% 0, 75% 0, 78% 60%, 80% 0, 82% 0, 85% 70%, 88% 0, 90% 0, 92% 55%, 95% 0, 97% 0, 100% 60%, 100% 0);
+    }
+    .bourbon-section::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: var(--cream);
+      clip-path: polygon(0 40%, 3% 100%, 5% 30%, 8% 100%, 10% 45%, 13% 100%, 15% 35%, 18% 100%, 20% 50%, 23% 100%, 25% 40%, 28% 100%, 30% 45%, 33% 100%, 35% 35%, 38% 100%, 40% 50%, 43% 100%, 45% 30%, 48% 100%, 50% 45%, 53% 100%, 55% 35%, 58% 100%, 60% 50%, 63% 100%, 65% 40%, 68% 100%, 70% 35%, 73% 100%, 75% 50%, 78% 100%, 80% 40%, 83% 100%, 85% 45%, 88% 100%, 90% 35%, 93% 100%, 95% 50%, 98% 100%, 100% 40%, 100% 100%, 0 100%);
+    }
+
+    .bourbon-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bourbon-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .bourbon-text p {
+      font-size: 1rem;
+      color: rgba(255,248,237,0.7);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .bourbon-big {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 12vw, 9rem);
+      color: var(--mustard);
+      line-height: 0.85;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    }
+    .bourbon-big-label {
+      font-family: var(--font-hand);
+      font-size: 1.2rem;
+      color: rgba(255,248,237,0.6);
+      margin-top: 0.3rem;
+    }
+
+    .bourbon-polaroids {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .bourbon-polaroids .polaroid:first-child { transform: rotate(-5deg); }
+    .bourbon-polaroids .polaroid:last-child { transform: rotate(4deg); margin-top: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .bourbon-layout { grid-template-columns: 1fr; text-align: center; }
+      .bourbon-polaroids { max-width: 360px; margin: 0 auto; }
+    }
+
+    /* ============================================ */
+    /*  STORY                                       */
+    /* ============================================ */
+    .story-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .story-photos {
+      position: relative;
+      height: 400px;
+    }
+    .story-photo-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70%;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 3px 5px 14px rgba(0,0,0,0.12);
+      transform: rotate(-3deg);
+      z-index: 2;
+    }
+    .story-photo-1 img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    .story-photo-2 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60%;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 3px 5px 14px rgba(0,0,0,0.12);
+      transform: rotate(4deg);
+      z-index: 3;
+    }
+    .story-photo-2 img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    /* Handwritten note */
+    .story-note {
+      position: absolute;
+      top: 60%;
+      left: 5%;
+      background: var(--mustard-light);
+      padding: 0.75rem 1rem;
+      transform: rotate(-5deg);
+      z-index: 4;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      font-family: var(--font-hand);
+      font-size: 1rem;
+      color: var(--brown);
+      max-width: 160px;
+    }
+
+    .story-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .story-text p {
+      font-size: 0.95rem;
+      color: var(--brown-dim);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .story-text .quote {
+      font-family: var(--font-hand);
+      font-size: 1.5rem;
+      color: var(--green);
+      border-left: 3px solid var(--green);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      line-height: 1.3;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .story-stat {
+      background: var(--cream-dark);
+      padding: 0.75rem 1.25rem;
+      border-radius: 4px;
+      transform: rotate(-1deg);
+    }
+    .story-stat:nth-child(2) { transform: rotate(1.5deg); }
+    .story-stat:nth-child(3) { transform: rotate(-0.5deg); }
+    .story-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--brick);
+      line-height: 1;
+    }
+    .story-stat-label {
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      color: var(--brown-dim);
+    }
+
+    @media (max-width: 768px) {
+      .story-layout { grid-template-columns: 1fr; }
+      .story-photos { height: 300px; margin-bottom: 2rem; }
+    }
+
+    /* ============================================ */
+    /*  REVIEWS - STICKY NOTES                      */
+    /* ============================================ */
+    .reviews-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      background: var(--cream-dark);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .reviews-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      text-transform: uppercase;
+    }
+
+    .sticky-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+
+    .sticky-note {
+      padding: 1.25rem;
+      min-height: 160px;
+      position: relative;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.08);
+    }
+    .sticky-note:nth-child(1) { background: #FFEAA7; transform: rotate(-2deg); }
+    .sticky-note:nth-child(2) { background: #B8E6C8; transform: rotate(1.5deg); }
+    .sticky-note:nth-child(3) { background: #FFD0D0; transform: rotate(-1deg); }
+    .sticky-note:nth-child(4) { background: #D4EDFF; transform: rotate(2deg); }
+    .sticky-note:nth-child(5) { background: #FFF0C4; transform: rotate(-1.5deg); }
+
+    .sticky-note:hover { transform: rotate(0deg) scale(1.03) !important; z-index: 5; }
+
+    .sticky-stars {
+      color: var(--brick);
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .sticky-text {
+      font-family: var(--font-hand);
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--brown);
+      margin-bottom: 0.75rem;
+    }
+    .sticky-author {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--brown-dim);
+    }
+
+    @media (max-width: 768px) {
+      .sticky-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .sticky-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================ */
+    /*  SPECIALS                                    */
+    /* ============================================ */
+    .specials-section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+
+    .specials-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .specials-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .special-card {
+      background: #fff;
+      border: 2px dashed var(--brown-faint);
+      padding: 6px;
+      border-radius: 4px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .special-card:nth-child(1) { transform: rotate(-1deg); }
+    .special-card:nth-child(2) { transform: rotate(1.5deg); }
+    .special-card:nth-child(3) { transform: rotate(-0.5deg); }
+    .special-card:nth-child(4) { transform: rotate(1deg); }
+    .special-card:hover { transform: rotate(0deg) scale(1.02) !important; }
+
+    .special-card img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .special-card-body {
+      padding: 0.75rem 0.5rem;
+    }
+    .special-card-day {
+      display: inline-block;
+      background: var(--mustard);
+      color: var(--brown);
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 10px;
+      margin-bottom: 0.3rem;
+    }
+    .special-card-body h3 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    .special-card-body p {
+      font-size: 0.75rem;
+      color: var(--brown-dim);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 768px) {
+      .specials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .specials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  ORDER / VISIT                               */
+    /* ============================================ */
+    .bottom-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      background: var(--brick);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-section::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: var(--cream);
+      clip-path: polygon(0 0, 3% 0, 5% 70%, 8% 0, 10% 0, 13% 55%, 15% 0, 18% 0, 20% 65%, 23% 0, 25% 0, 28% 50%, 30% 0, 33% 0, 35% 70%, 38% 0, 40% 0, 43% 55%, 45% 0, 48% 0, 50% 65%, 53% 0, 55% 0, 58% 50%, 60% 0, 63% 0, 65% 70%, 68% 0, 70% 0, 73% 55%, 75% 0, 78% 0, 80% 65%, 83% 0, 85% 0, 88% 50%, 90% 0, 93% 0, 95% 70%, 98% 0, 100% 0, 100% 0);
+    }
+
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bottom-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .bottom-text p {
+      font-size: 0.95rem;
+      color: rgba(255,248,237,0.7);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .bottom-text .handwritten {
+      font-size: 1.3rem;
+      color: var(--mustard-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .bottom-btns {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .bottom-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.7rem 1.4rem;
+      border-radius: 20px;
+      transition: all 0.3s;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+    }
+    .bottom-btn:hover { transform: rotate(-1deg) translateY(-2px); box-shadow: 3px 5px 12px rgba(0,0,0,0.15); }
+
+    .bottom-image {
+      position: relative;
+    }
+    .bottom-image .polaroid {
+      transform: rotate(3deg);
+      max-width: 400px;
+    }
+    .bottom-image .polaroid img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .hours-badge {
+      position: absolute;
+      bottom: 20px;
+      left: -20px;
+      background: var(--mustard);
+      color: var(--brown);
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      transform: rotate(-5deg);
+      box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+      z-index: 5;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .hours-badge strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .bottom-layout { grid-template-columns: 1fr; text-align: center; }
+      .bottom-btns { justify-content: center; }
+      .bottom-image { margin: 0 auto; }
+      .bottom-image .polaroid { transform: rotate(0deg); }
+    }
+
+    /* ============================================ */
+    /*  FOOTER                                      */
+    /* ============================================ */
+    .footer {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 2rem 0 1.5rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,248,237,0.4);
+    }
+    .footer-copy a { color: var(--mustard); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,248,237,0.4);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cream); }
+
+    /* ============================================ */
+    /*  DEMO BANNER                                 */
+    /* ============================================ */
+    .demo-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: var(--green);
+      color: var(--cream);
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .demo-banner a { color: var(--mustard-light); text-decoration: underline; text-underline-offset: 2px; }
+    body { padding-bottom: 34px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <span class="nav-brand">The Hoot Nannie</span>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#bar">Bar</a>
+      <a href="#story">Story</a>
+      <a href="#visit">Visit</a>
+      <a href="#visit" class="nav-cta">Order Online</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#bar" onclick="closeMobile()">Bar</a>
+    <a href="#story" onclick="closeMobile()">Story</a>
+    <a href="#visit" onclick="closeMobile()">Visit</a>
+    <a href="#visit" onclick="closeMobile()">Order Online</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-photo hero-photo-1"><img src="assets/hoot-nannie/smoked-wings.webp" alt="" loading="eager"></div>
+    <div class="hero-photo hero-photo-2"><img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="" loading="eager"></div>
+    <div class="hero-photo hero-photo-3"><img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="" loading="eager"></div>
+    <div class="hero-photo hero-photo-4"><img src="assets/hoot-nannie/bbq-fries.webp" alt="" loading="eager"></div>
+    <div class="hero-photo hero-photo-5"><img src="assets/hoot-nannie/pulled-pork-plate.webp" alt="" loading="eager"></div>
+    <div class="hero-photo hero-photo-6"><img src="assets/hoot-nannie/watermelon-marg.webp" alt="" loading="eager"></div>
+
+    <div class="hero-center">
+      <div class="hero-sticker">A Five Spur Steakhouse</div>
+      <h1>The Hoot<br><span class="accent">Nannie</span></h1>
+      <p class="hero-sub">Farm-raised steaks, whole hog BBQ, 68 bourbons, and cheese curds that'll ruin you for anywhere else. Forest City, NC.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-scrap btn-fill">See the Menu</a>
+        <a href="#visit" class="btn-scrap btn-border">Order Online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header slide-up">
+        <span class="sticker">From the Kitchen</span>
+        <h2>The Menu</h2>
+        <p>Farm-raised, fire-kissed, and built for people who know the difference.</p>
+      </div>
+
+      <div class="pinboard">
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="Beam Farms steak with mac and cheese" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Farm Raised</div>
+            <h3>Beam Farms Steaks</h3>
+            <p>Hand-cut, seared over open flame.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Smoked</div>
+            <h3>Smoked Wings</h3>
+            <p>Low and slow, finished crisp.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="The Dirty Sanchez burger" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Signature</div>
+            <h3>The Dirty Sanchez</h3>
+            <p>Mac and cheese on a burger. Yeah.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork plate" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Whole Hog</div>
+            <h3>Pulled Pork Plate</h3>
+            <p>Eastern NC style, vinegar-based.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/crispy-chicken.webp" alt="Crispy chicken sandwich" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Hand-Breaded</div>
+            <h3>Crispy Chicken Sandwich</h3>
+            <p>Fried to order on brioche.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/big-samantha.webp" alt="The Big Samantha burger" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Signature</div>
+            <h3>The Big Samantha</h3>
+            <p>Stacked tall. Bring napkins.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/chicken-tenders.webp" alt="Chicken tenders" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Classic</div>
+            <h3>Chicken Tenders</h3>
+            <p>Hand-breaded, golden, no shortcuts.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/burger-hand.webp" alt="Classic burger" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Burgers</div>
+            <h3>The Classic Burger</h3>
+            <p>Two hands required.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/loaded-fries.webp" alt="Loaded fries" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Sides</div>
+            <h3>Loaded Fries</h3>
+            <p>Pork, cheese, jalapenos.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/cheese-curds.webp" alt="Fried cheese curds" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Legendary</div>
+            <h3>Fried Cheese Curds</h3>
+            <p>They will ruin you for anywhere else.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Shrimp and grits" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Southern</div>
+            <h3>Shrimp &amp; Grits</h3>
+            <p>Creamy stone-ground, blackened shrimp.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/cuban-sandwich.webp" alt="The Cuban sandwich" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Pressed</div>
+            <h3>The Cuban</h3>
+            <p>Smoked pork, ham, pickles, mustard, pressed hot.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/ribs-plate.webp" alt="Ribs with fried okra" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">BBQ</div>
+            <h3>Ribs &amp; Fried Okra</h3>
+            <p>Fall-off-the-bone. Every time.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/glazed-wings.webp" alt="Glazed BBQ wings" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Wings</div>
+            <h3>Glazed BBQ Wings</h3>
+            <p>Sticky, sweet, smoky.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/bbq-burger-mac.webp" alt="BBQ burger with mac and cheese" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Combo</div>
+            <h3>BBQ Burger &amp; Mac</h3>
+            <p>Burger and a side of mac. Done right.</p>
+          </div>
+        </div>
+        <div class="pin-card pop">
+          <img src="assets/hoot-nannie/grilled-cheese.webp" alt="Grilled cheese and chips" loading="lazy">
+          <div class="pin-card-body">
+            <div class="pin-card-tag">Comfort</div>
+            <h3>Grilled Cheese &amp; Chips</h3>
+            <p>Melty, crispy, simple done right.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOURBON -->
+  <section class="bourbon-section" id="bar">
+    <div class="container">
+      <div class="bourbon-layout">
+        <div class="bourbon-text slide-up">
+          <div class="sticker" style="margin-bottom: 1rem;">The Bourbon Bar</div>
+          <h2>Pour Something Worth Sipping</h2>
+          <p>Full bar with a bourbon wall that goes deep. Craft cocktails mixed by people who care. Watermelon margaritas when the weather turns warm.</p>
+          <div class="bourbon-big">68</div>
+          <div class="bourbon-big-label">bourbons on the wall, and counting</div>
+        </div>
+        <div class="bourbon-polaroids slide-up">
+          <div class="polaroid">
+            <img src="assets/hoot-nannie/watermelon-marg.webp" alt="Watermelon margarita" loading="lazy">
+            <div class="polaroid-label">Watermelon Marg</div>
+          </div>
+          <div class="polaroid">
+            <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Tequila sunrise" loading="lazy">
+            <div class="polaroid-label">Tequila Sunrise</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-photos slide-up">
+          <div class="story-photo-1">
+            <img src="assets/hoot-nannie/interior1.webp" alt="Interior" loading="lazy">
+          </div>
+          <div class="story-photo-2">
+            <img src="assets/hoot-nannie/interior2.webp" alt="Bar area" loading="lazy">
+          </div>
+          <div class="story-note">Good sauce needs good meat!</div>
+        </div>
+        <div class="story-text slide-up">
+          <div class="sticker" style="margin-bottom: 1rem;">Our Story</div>
+          <h2>Built from the Ground Up</h2>
+          <p>Johnny Roy started making barbecue sauces over 12 years ago. That sauce now sits on shelves at Food Lion and Ingles across North Carolina. Good sauce needs good meat. Good meat needs good land.</p>
+          <div class="quote">Good sauce needs good meat. Good meat needs good land.</div>
+          <p>He partnered with Stephen "Neighbor Steve" Soto, combined the best of The Honey Hog and Nannie's Fish Camp, added farm-raised steaks from Beam Farms, and built a full bar with 68 bourbons. The Hoot Nannie opened June 2021 on Main Street in Forest City.</p>
+          <div class="story-stats">
+            <div class="story-stat pop">
+              <div class="story-stat-num">126</div>
+              <div class="story-stat-label">Acres Owned</div>
+            </div>
+            <div class="story-stat pop">
+              <div class="story-stat-num">68</div>
+              <div class="story-stat-label">Bourbons</div>
+            </div>
+            <div class="story-stat pop">
+              <div class="story-stat-num">2021</div>
+              <div class="story-stat-label">Established</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="reviews-header slide-up">
+        <span class="sticker" style="margin-bottom: 0.75rem;">Straight from Google</span>
+        <h2>What People Say</h2>
+      </div>
+      <div class="sticky-grid">
+        <div class="sticky-note pop">
+          <div class="sticky-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="sticky-text">"Best steak I've had in western NC. The bourbon selection is insane too."</p>
+          <div class="sticky-author">Marcus T.</div>
+        </div>
+        <div class="sticky-note pop">
+          <div class="sticky-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="sticky-text">"Cheese curds are the real deal. Drove 45 minutes just for those."</p>
+          <div class="sticky-author">Sarah K.</div>
+        </div>
+        <div class="sticky-note pop">
+          <div class="sticky-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="sticky-text">"Farm-to-table done right. No pretension. Food is incredible."</p>
+          <div class="sticky-author">Chris L.</div>
+        </div>
+        <div class="sticky-note pop">
+          <div class="sticky-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="sticky-text">"The Dirty Sanchez with mac and cheese on top is absurd in the best way."</p>
+          <div class="sticky-author">Amanda P.</div>
+        </div>
+        <div class="sticky-note pop">
+          <div class="sticky-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="sticky-text">"Eggs Benedict with smoked pork. Why doesn't every restaurant do this?"</p>
+          <div class="sticky-author">David R.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials-section">
+    <div class="container">
+      <div class="specials-header slide-up">
+        <span class="sticker" style="margin-bottom: 0.75rem;">Weekly Features</span>
+        <h2>Don't Miss These</h2>
+      </div>
+      <div class="specials-grid">
+        <div class="special-card pop">
+          <img src="assets/hoot-nannie/patriot-burger.webp" alt="Burger" loading="lazy">
+          <div class="special-card-body">
+            <span class="special-card-day">Thursday</span>
+            <h3>Burger Night</h3>
+            <p>Half-price specialty burgers and the weekly kitchen special.</p>
+          </div>
+        </div>
+        <div class="special-card pop">
+          <img src="assets/hoot-nannie/watermelon-marg.webp" alt="Cocktails" loading="lazy">
+          <div class="special-card-body">
+            <span class="special-card-day">Fri &amp; Sat</span>
+            <h3>Live Music</h3>
+            <p>Local acts, cocktail specials, kitchen open late.</p>
+          </div>
+        </div>
+        <div class="special-card pop">
+          <img src="assets/hoot-nannie/eggs-benedict.webp" alt="Brunch" loading="lazy">
+          <div class="special-card-body">
+            <span class="special-card-day">Sat &amp; Sun</span>
+            <h3>Brunch</h3>
+            <p>Eggs Benedict, chicken and waffles, Bloody Marys. 10am-2pm.</p>
+          </div>
+        </div>
+        <div class="special-card pop">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Wings" loading="lazy">
+          <div class="special-card-body">
+            <span class="special-card-day">Wednesday</span>
+            <h3>Wing Night</h3>
+            <p>All-you-can-eat smoked wings. Best deal in the county.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM - ORDER / VISIT -->
+  <section class="bottom-section" id="visit">
+    <div class="container">
+      <div class="bottom-layout">
+        <div class="bottom-text slide-up">
+          <div class="sticker" style="margin-bottom: 1rem;">Come See Us</div>
+          <h2>Find the Hoot</h2>
+          <p>164 E Main Street, Forest City, NC 28043. Right on Main Street, downtown. Look for the brick building with the hog on the sign.</p>
+          <p class="handwritten">Open Wed-Sun. Closed Mon &amp; Tue.</p>
+          <p>Order online via Uber Eats or Postmates for delivery and pickup.</p>
+          <div class="bottom-btns">
+            <a href="https://www.ubereats.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="bottom-btn">Uber Eats</a>
+            <a href="https://postmates.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="bottom-btn">Postmates</a>
+            <a href="https://maps.google.com/?q=164+E+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="bottom-btn">Get Directions</a>
+          </div>
+        </div>
+        <div class="bottom-image slide-up">
+          <div class="polaroid">
+            <img src="assets/hoot-nannie/exterior.webp" alt="The Hoot Nannie exterior" loading="lazy">
+            <div class="polaroid-label">164 E Main St, Forest City</div>
+          </div>
+          <div class="hours-badge">
+            <strong>Hours</strong>
+            Wed-Thu: 4-9pm<br>
+            Fri: 4-10pm<br>
+            Sat: 10am-10pm<br>
+            Sun: 10am-3pm
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-brand">The Hoot Nannie</span>
+        <p class="footer-copy">&copy; 2025 Demo by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.</p>
+        <div class="footer-links">
+          <a href="https://www.facebook.com/TheHootNannie/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/thehootnannie/" target="_blank" rel="noopener">Instagram</a>
+          <a href="tel:+18282481479">Call</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="demo-banner">
+    Demo site by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const d = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('vis'), Number(d));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.pop, .slide-up').forEach(el => {
+      const siblings = el.parentElement.querySelectorAll('.pop, .slide-up');
+      el.dataset.delay = Array.from(siblings).indexOf(el) * 80;
+      obs.observe(el);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>

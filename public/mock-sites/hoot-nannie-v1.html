@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hoot Nannie | A Five Spur Steakhouse | Forest City, NC</title>
+  <meta name="description" content="Farm-raised steaks, whole hog BBQ, 68 bourbons, legendary cheese curds, and a full bourbon bar on Main Street in Forest City, NC. Open Wed-Sun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================ */
+    /*  NEON HONKY TONK                             */
+    /*  Glowing neon signs on a deep dark roadhouse */
+    /* ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #080C18;
+      --navy-raised: #0E1326;
+      --navy-card: #111730;
+      --neon-yellow: #FFE14D;
+      --neon-pink: #FF3B7A;
+      --neon-blue: #3BD4FF;
+      --neon-green: #39FF8E;
+      --cream: #F0ECE2;
+      --cream-dim: rgba(240, 236, 226, 0.45);
+      --cream-faint: rgba(240, 236, 226, 0.12);
+      --glow-yellow: 0 0 8px rgba(255,225,77,0.6), 0 0 24px rgba(255,225,77,0.25), 0 0 48px rgba(255,225,77,0.1);
+      --glow-pink: 0 0 8px rgba(255,59,122,0.6), 0 0 24px rgba(255,59,122,0.25), 0 0 48px rgba(255,59,122,0.1);
+      --glow-blue: 0 0 8px rgba(59,212,255,0.5), 0 0 20px rgba(59,212,255,0.2);
+      --font-display: 'Righteous', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle noise */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+    /* ============================================ */
+    /*  NEON TEXT UTILITY                            */
+    /* ============================================ */
+    .neon-yellow {
+      color: var(--neon-yellow);
+      text-shadow: var(--glow-yellow);
+    }
+    .neon-pink {
+      color: var(--neon-pink);
+      text-shadow: var(--glow-pink);
+    }
+    .neon-blue {
+      color: var(--neon-blue);
+      text-shadow: var(--glow-blue);
+    }
+
+    /* Neon flicker animation */
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.6; }
+    }
+    .flicker { animation: flicker 4s infinite; }
+
+    /* Neon border glow */
+    .neon-border-yellow {
+      border: 1px solid var(--neon-yellow);
+      box-shadow: inset 0 0 12px rgba(255,225,77,0.08), 0 0 12px rgba(255,225,77,0.12);
+    }
+    .neon-border-pink {
+      border: 1px solid var(--neon-pink);
+      box-shadow: inset 0 0 12px rgba(255,59,122,0.06), 0 0 12px rgba(255,59,122,0.1);
+    }
+
+    /* ============================================ */
+    /*  TYPOGRAPHY                                  */
+    /* ============================================ */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.1;
+      font-weight: 400; /* Righteous only has 400 */
+    }
+
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--neon-pink);
+      text-shadow: 0 0 6px rgba(255,59,122,0.3);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .heading {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--neon-yellow);
+      text-shadow: var(--glow-yellow);
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--cream-dim);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* ============================================ */
+    /*  SCROLL ANIMATIONS                           */
+    /* ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-left.vis { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-right.vis { opacity: 1; transform: translateX(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-scale.vis { opacity: 1; transform: scale(1); }
+
+    /* ============================================ */
+    /*  NAV                                         */
+    /* ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, padding 0.4s;
+    }
+    .nav.scrolled {
+      background: rgba(8, 12, 24, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.8rem 2rem;
+      border-bottom: 1px solid rgba(255, 225, 77, 0.08);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,225,77,0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,225,77,0.3);
+    }
+
+    .nav-cta {
+      color: var(--navy) !important;
+      background: var(--neon-yellow);
+      padding: 0.55rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      box-shadow: 0 0 14px rgba(255,225,77,0.3);
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover {
+      box-shadow: 0 0 24px rgba(255,225,77,0.5);
+      transform: translateY(-1px);
+      text-shadow: none !important;
+    }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; z-index: 1001; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--neon-yellow); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(8, 12, 24, 0.97);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--neon-yellow);
+      text-shadow: var(--glow-yellow);
+    }
+    .mobile-menu a:hover { color: var(--neon-pink); text-shadow: var(--glow-pink); }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================ */
+    /*  HERO                                        */
+    /* ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/hoot-nannie/hero-uber.webp') center center / cover no-repeat;
+      filter: brightness(0.15) saturate(0.4);
+      transform: scale(1.03);
+      animation: heroDrift 12s ease-out forwards;
+    }
+    @keyframes heroDrift { to { transform: scale(1); } }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, var(--navy) 100%),
+        linear-gradient(to bottom, rgba(8,12,24,0.4) 0%, transparent 30%, var(--navy) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
+      max-width: 800px;
+      animation: heroIn 1s 0.3s ease both;
+    }
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      filter: drop-shadow(0 0 20px rgba(255,225,77,0.2));
+      animation: heroIn 1s 0.5s ease both;
+    }
+    .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px rgba(255,59,122,0.4);
+      margin-bottom: 1rem;
+      animation: heroIn 1s 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      animation: heroIn 1s 0.7s ease both;
+    }
+    .hero h1 .line1 {
+      display: block;
+      color: var(--neon-yellow);
+      text-shadow: var(--glow-yellow);
+    }
+    .hero h1 .line2 {
+      display: block;
+      color: var(--neon-pink);
+      text-shadow: var(--glow-pink);
+      font-size: 0.75em;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-dim);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      animation: heroIn 1s 0.9s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: heroIn 1s 1.1s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-neon {
+      background: var(--neon-yellow);
+      color: var(--navy);
+      box-shadow: 0 0 16px rgba(255,225,77,0.3);
+    }
+    .btn-neon:hover {
+      box-shadow: 0 0 28px rgba(255,225,77,0.5);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream-dim);
+      border: 1px solid var(--cream-faint);
+    }
+    .btn-outline:hover {
+      border-color: var(--neon-blue);
+      color: var(--neon-blue);
+      box-shadow: 0 0 12px rgba(59,212,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll hint */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: heroIn 1s 1.5s ease both;
+    }
+    .hero-scroll span {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+    }
+    .scroll-arrow {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--neon-yellow), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; height: 32px; }
+      50% { opacity: 0.8; height: 40px; }
+    }
+
+    /* ============================================ */
+    /*  NEON DIVIDER                                */
+    /* ============================================ */
+    .neon-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neon-yellow), transparent);
+      box-shadow: 0 0 8px rgba(255,225,77,0.2);
+      opacity: 0.5;
+    }
+
+    /* ============================================ */
+    /*  INTRO STRIP                                 */
+    /* ============================================ */
+    .intro {
+      padding: 3.5rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--cream-faint);
+    }
+    .intro p {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      color: var(--cream-dim);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .intro .glow { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+
+    /* ============================================ */
+    /*  MENU                                        */
+    /* ============================================ */
+    .menu-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .menu-header .sub { margin: 0 auto; }
+
+    /* Category filter tabs */
+    .menu-filters {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .menu-filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      border-radius: 2px;
+      color: var(--cream-dim);
+      border: 1px solid var(--cream-faint);
+      background: transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .menu-filter-btn:hover {
+      border-color: var(--neon-yellow);
+      color: var(--neon-yellow);
+      box-shadow: 0 0 10px rgba(255,225,77,0.1);
+    }
+    .menu-filter-btn.active {
+      background: var(--neon-yellow);
+      color: var(--navy);
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 14px rgba(255,225,77,0.25);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--cream-faint);
+    }
+
+    .menu-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .menu-card.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+    .menu-card.hidden {
+      display: none;
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.55) saturate(0.8);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .menu-card:hover img {
+      filter: brightness(0.4) saturate(1);
+      transform: scale(1.05);
+    }
+
+    .menu-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem;
+      background: linear-gradient(to top, rgba(8,12,24,0.85) 0%, transparent 100%);
+    }
+    .menu-card-tag {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--neon-pink);
+      text-shadow: 0 0 6px rgba(255,59,122,0.3);
+      margin-bottom: 0.3rem;
+    }
+    .menu-card-info h3 {
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+    .menu-card-desc {
+      font-size: 0.75rem;
+      color: var(--cream-dim);
+      line-height: 1.5;
+      margin-top: 0.3rem;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s, opacity 0.4s;
+    }
+    .menu-card:hover .menu-card-desc {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .menu-card.featured .menu-card-info h3 { font-size: 1.25rem; }
+
+    /* Neon corner accents on featured */
+    .menu-card.featured::before,
+    .menu-card.featured::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .menu-card.featured::before {
+      top: 12px;
+      left: 12px;
+      width: 24px;
+      height: 24px;
+      border-top: 1px solid var(--neon-yellow);
+      border-left: 1px solid var(--neon-yellow);
+      box-shadow: -2px -2px 8px rgba(255,225,77,0.15);
+    }
+    .menu-card.featured::after {
+      bottom: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      border-bottom: 1px solid var(--neon-yellow);
+      border-right: 1px solid var(--neon-yellow);
+      box-shadow: 2px 2px 8px rgba(255,225,77,0.15);
+    }
+
+    /* "Show More" toggle */
+    .menu-toggle-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .menu-toggle-btn {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.75rem 2.2rem;
+      border-radius: 2px;
+      color: var(--cream-dim);
+      border: 1px solid var(--cream-faint);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .menu-toggle-btn:hover {
+      border-color: var(--neon-yellow);
+      color: var(--neon-yellow);
+      box-shadow: 0 0 16px rgba(255,225,77,0.12);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .menu-card.featured { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/10; }
+    }
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-card.featured { grid-column: span 1; }
+      .menu-card { aspect-ratio: 4/3; }
+    }
+
+    /* ============================================ */
+    /*  BOURBON BAR                                 */
+    /* ============================================ */
+    .bourbon-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      background: var(--navy-raised);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Neon line accent top */
+    .bourbon-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neon-pink), transparent);
+      box-shadow: 0 0 10px rgba(255,59,122,0.3);
+    }
+
+    .bourbon-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .bourbon-text .heading { color: var(--neon-pink); text-shadow: var(--glow-pink); }
+
+    .bourbon-big-num {
+      font-family: var(--font-display);
+      font-size: clamp(7rem, 16vw, 12rem);
+      color: var(--neon-yellow);
+      text-shadow: var(--glow-yellow);
+      line-height: 0.85;
+      margin: 1.5rem 0 0.5rem;
+      animation: flicker 6s infinite;
+    }
+    .bourbon-big-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .bourbon-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .bourbon-img {
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--cream-faint);
+    }
+    .bourbon-img:first-child { margin-top: 1.5rem; }
+    .bourbon-img img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(1.1);
+      transition: filter 0.4s;
+    }
+    .bourbon-img:hover img { filter: brightness(1) saturate(1.2); }
+
+    @media (max-width: 768px) {
+      .bourbon-layout { grid-template-columns: 1fr; text-align: center; }
+      .bourbon-text .sub { margin: 0 auto; }
+      .bourbon-images { max-width: 360px; margin: 0 auto; }
+    }
+
+    /* ============================================ */
+    /*  STORY                                       */
+    /* ============================================ */
+    .story-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(3rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .story-image-stack {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .story-img-main {
+      grid-column: span 2;
+      position: relative;
+    }
+    .story-img-main img {
+      width: 100%;
+      border-radius: 3px;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .story-img-secondary img {
+      width: 100%;
+      border-radius: 3px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    /* Neon frame around main photo */
+    .story-image-frame {
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(255,225,77,0.15);
+      border-radius: 4px;
+      box-shadow: 0 0 16px rgba(255,225,77,0.06);
+      pointer-events: none;
+    }
+
+    .story-text p {
+      font-size: 1rem;
+      color: var(--cream-dim);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .story-quote {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 10px rgba(57,255,142,0.2);
+      margin: 2rem 0;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--neon-green);
+      line-height: 1.4;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--cream-faint);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,225,77,0.3);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .story-layout { grid-template-columns: 1fr; }
+      .story-image-stack { max-width: 500px; }
+    }
+
+    /* ============================================ */
+    /*  REVIEWS                                     */
+    /* ============================================ */
+    .reviews-section {
+      background: var(--navy-raised);
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      border-top: 1px solid var(--cream-faint);
+      border-bottom: 1px solid var(--cream-faint);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 1.5rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+
+    .review-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      padding: 2rem;
+      background: var(--navy-card);
+      border: 1px solid var(--cream-faint);
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 2px;
+      background: linear-gradient(to right, var(--neon-yellow), var(--neon-pink));
+      box-shadow: 0 0 8px rgba(255,225,77,0.2);
+    }
+
+    .review-stars {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 4px rgba(255,225,77,0.3);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--cream);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cream-dim);
+    }
+    .review-source {
+      font-size: 0.62rem;
+      color: var(--cream-faint);
+      margin-top: 0.1rem;
+    }
+
+    /* ============================================ */
+    /*  SPECIALS                                    */
+    /* ============================================ */
+    .specials-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .specials-header {
+      margin-bottom: 3rem;
+    }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .special-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      border: 1px solid var(--cream-faint);
+      background: var(--navy-card);
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .special-card:hover { border-color: var(--neon-yellow); box-shadow: 0 0 16px rgba(255,225,77,0.08); }
+
+    .special-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      filter: brightness(0.55);
+      transition: all 0.5s;
+    }
+    .special-card:hover img {
+      filter: brightness(0.4);
+      transform: scale(1.04);
+    }
+
+    .special-body {
+      padding: 1.25rem 1.5rem;
+    }
+    .special-day {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--neon-pink);
+      text-shadow: 0 0 6px rgba(255,59,122,0.25);
+      margin-bottom: 0.4rem;
+    }
+    .special-body h3 {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .special-body p {
+      font-size: 0.8rem;
+      color: var(--cream-dim);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .specials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  ORDER ONLINE                                */
+    /* ============================================ */
+    .order-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      text-align: center;
+      background: var(--navy-raised);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Neon glow circle behind */
+    .order-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,225,77,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .order-section .sub { margin: 0 auto 2rem; }
+
+    .order-platforms {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .order-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 2rem;
+      background: var(--navy-card);
+      color: var(--cream);
+      border: 1px solid var(--cream-faint);
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .order-btn:hover {
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 16px rgba(255,225,77,0.12);
+      transform: translateY(-2px);
+    }
+    .order-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 5px;
+      background: var(--neon-yellow);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+
+    /* ============================================ */
+    /*  VISIT                                       */
+    /* ============================================ */
+    .visit-section {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .visit-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .visit-info p {
+      font-size: 0.95rem;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .hours-list { margin-top: 1.5rem; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--cream-faint);
+      font-size: 0.85rem;
+    }
+    .hours-day { color: var(--cream-dim); }
+    .hours-time { color: var(--cream); font-weight: 600; }
+
+    .visit-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .visit-img-main {
+      grid-column: span 2;
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .visit-img-secondary {
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .visit-img-main img,
+    .visit-img-secondary img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .visit-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--neon-yellow);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(255,225,77,0.3);
+    }
+
+    /* Neon border on image */
+    .visit-img-main::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(255,225,77,0.15);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .visit-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================ */
+    /*  FOOTER                                      */
+    /* ============================================ */
+    .footer {
+      background: var(--navy-card);
+      border-top: 1px solid var(--cream-faint);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--cream-faint);
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,225,77,0.3);
+    }
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--cream-dim);
+      margin-top: 0.3rem;
+      max-width: 280px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--neon-yellow); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+    .footer-copy {
+      font-size: 0.68rem;
+      color: var(--cream-faint);
+    }
+    .footer-copy a { color: var(--neon-pink); }
+
+    /* ============================================ */
+    /*  DEMO BANNER                                 */
+    /* ============================================ */
+    .demo-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: var(--neon-pink);
+      color: var(--cream);
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      box-shadow: 0 -2px 16px rgba(255,59,122,0.3);
+    }
+    .demo-banner a { color: var(--cream); text-decoration: underline; text-underline-offset: 2px; }
+
+    body { padding-bottom: 34px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <span class="nav-brand">The Hoot Nannie</span>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#bar">Bar</a>
+      <a href="#story">Story</a>
+      <a href="#visit">Visit</a>
+      <a href="#order" class="nav-cta">Order Online</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#bar" onclick="closeMobile()">Bar</a>
+    <a href="#story" onclick="closeMobile()">Story</a>
+    <a href="#visit" onclick="closeMobile()">Visit</a>
+    <a href="#order" onclick="closeMobile()">Order Online</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-content">
+      <div class="hero-logo"><img src="assets/hoot-nannie/logo.webp" alt="The Hoot Nannie logo"></div>
+      <div class="hero-eyebrow">A Five Spur Steakhouse</div>
+      <h1>
+        <span class="line1">The Hoot Nannie</span>
+        <span class="line2">Farm to Flame</span>
+      </h1>
+      <p class="hero-tagline">Farm-raised Beam Farms steaks. Whole hog smoked on site. 68 bourbons behind the bar. Main Street, Forest City, NC.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-neon">See the Menu</a>
+        <a href="#order" class="btn btn-outline">Order Online</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro reveal">
+    <div class="container">
+      <p>Every plate starts on the farm and ends over flame. <span class="glow">126 acres</span> of Beam Farms land, <span class="glow">68 bourbons</span> behind the bar, and Brown Creek cheese curds by the hundred-pound batch.</p>
+    </div>
+  </div>
+
+  <div class="neon-divider"></div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header reveal">
+        <span class="label">From the Kitchen</span>
+        <h2 class="heading">The Menu</h2>
+        <p class="sub">Farm-raised, fire-kissed, and built for people who know the difference.</p>
+      </div>
+
+      <div class="menu-filters reveal">
+        <button class="menu-filter-btn active" data-filter="all">All</button>
+        <button class="menu-filter-btn" data-filter="steaks">Steaks</button>
+        <button class="menu-filter-btn" data-filter="bbq">BBQ</button>
+        <button class="menu-filter-btn" data-filter="burgers">Burgers</button>
+        <button class="menu-filter-btn" data-filter="sandwiches">Sandwiches</button>
+        <button class="menu-filter-btn" data-filter="sides">Sides &amp; Snacks</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- ROW 1: Featured steak + 2 items -->
+        <div class="menu-card featured reveal-scale" data-cat="steaks">
+          <img src="assets/hoot-nannie/steak-mac-cheese.webp" alt="Beam Farms steak with mac and cheese" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Farm Raised</div>
+            <h3>Beam Farms Steaks</h3>
+            <p class="menu-card-desc">Farm-raised, hand-cut, seared over open flame.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="bbq">
+          <img src="assets/hoot-nannie/smoked-wings.webp" alt="Smoked wings with sriracha glaze" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Smoked</div>
+            <h3>Smoked Wings</h3>
+            <p class="menu-card-desc">Low and slow, finished crisp. House sriracha glaze.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="burgers">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="The Dirty Sanchez burger" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Signature</div>
+            <h3>The Dirty Sanchez</h3>
+            <p class="menu-card-desc">Hot and cheese-piled on a brioche bun.</p>
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="menu-card reveal" data-cat="bbq">
+          <img src="assets/hoot-nannie/pulled-pork-plate.webp" alt="Pulled pork plate" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Whole Hog</div>
+            <h3>Pulled Pork Plate</h3>
+            <p class="menu-card-desc">Southern NC slow, vinegar-kissed.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/crispy-chicken.webp" alt="Crispy chicken sandwich" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Hand-Breaded</div>
+            <h3>Crispy Chicken Sandwich</h3>
+            <p class="menu-card-desc">Fresh to order on brioche.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/big-samantha.webp" alt="The Big Samantha club sandwich" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Stacked</div>
+            <h3>The Big Samantha</h3>
+            <p class="menu-card-desc">Stacked club with seasoned fries.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sides">
+          <img src="assets/hoot-nannie/chicken-tenders.webp" alt="Hand-breaded chicken tenders" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Classic</div>
+            <h3>Chicken Tenders</h3>
+            <p class="menu-card-desc">Hand-breaded with honey mustard and ranch.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="burgers">
+          <img src="assets/hoot-nannie/burger-hand.webp" alt="Classic burger" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Classic</div>
+            <h3>The Classic Burger</h3>
+            <p class="menu-card-desc">Lettuce, tomato, onion, American cheese.</p>
+          </div>
+        </div>
+
+        <!-- ROW 3: Featured ribs + more items -->
+        <div class="menu-card reveal" data-cat="sides">
+          <img src="assets/hoot-nannie/loaded-fries.webp" alt="Loaded fries with pulled pork" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Loaded</div>
+            <h3>Loaded Fries</h3>
+            <p class="menu-card-desc">Pulled pork, cheese, BBQ sauce.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sides">
+          <img src="assets/hoot-nannie/cheese-curds.webp" alt="Fried cheese curds" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Legendary</div>
+            <h3>Fried Cheese Curds</h3>
+            <p class="menu-card-desc">Brown Creek cheese, fried fresh, marinara and ranch.</p>
+          </div>
+        </div>
+        <div class="menu-card featured reveal-scale" data-cat="steaks">
+          <img src="assets/hoot-nannie/ribs-plate.webp" alt="Full rack of ribs with fried okra" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Full Rack</div>
+            <h3>Ribs &amp; Fried Okra</h3>
+            <p class="menu-card-desc">Full rack with fried okra and house chips.</p>
+          </div>
+        </div>
+
+        <!-- ROW 4 -->
+        <div class="menu-card reveal" data-cat="steaks">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Shrimp and grits" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Southern</div>
+            <h3>Shrimp &amp; Grits</h3>
+            <p class="menu-card-desc">Seasoned shrimp over stone-ground grits.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/grilled-cheese.webp" alt="Grilled cheese with house chips" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Comfort</div>
+            <h3>Grilled Cheese &amp; Chips</h3>
+            <p class="menu-card-desc">Melted on sourdough with house chips.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/bbq-sandwich.webp" alt="BBQ pulled pork sandwich" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">BBQ</div>
+            <h3>BBQ Pulled Pork Sandwich</h3>
+            <p class="menu-card-desc">Piled high on brioche with onion rings and fries.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/cuban-sandwich.webp" alt="The Cuban sandwich" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Pressed</div>
+            <h3>The Cuban</h3>
+            <p class="menu-card-desc">Pressed with ham, pork, pickles, mustard, and house chips.</p>
+          </div>
+        </div>
+
+        <!-- ROW 5: More items -->
+        <div class="menu-card reveal" data-cat="burgers">
+          <img src="assets/hoot-nannie/bbq-burger-mac.webp" alt="BBQ burger and mac" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Combo</div>
+            <h3>BBQ Burger &amp; Mac</h3>
+            <p class="menu-card-desc">Brioche burger with a bowl of house mac.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="bbq">
+          <img src="assets/hoot-nannie/bbq-plate-hushpuppies.webp" alt="BBQ plate with hush puppies" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">The Works</div>
+            <h3>BBQ Plate</h3>
+            <p class="menu-card-desc">Pulled pork, fries, hush puppies, slaw, BBQ sauce.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="bbq">
+          <img src="assets/hoot-nannie/pulled-pork-fries.webp" alt="Pulled pork and fries" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Whole Hog</div>
+            <h3>Pulled Pork &amp; Fries</h3>
+            <p class="menu-card-desc">Whole hog pork with seasoned fries on toast.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="bbq">
+          <img src="assets/hoot-nannie/glazed-wings.webp" alt="Glazed BBQ wings" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Glazed</div>
+            <h3>Glazed BBQ Wings</h3>
+            <p class="menu-card-desc">Sticky sweet BBQ glaze, red checker basket.</p>
+          </div>
+        </div>
+
+        <!-- ROW 6 -->
+        <div class="menu-card reveal" data-cat="sandwiches">
+          <img src="assets/hoot-nannie/crispy-chicken-2.webp" alt="Chicken sandwich and fries" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Combo</div>
+            <h3>Chicken Sandwich &amp; Fries</h3>
+            <p class="menu-card-desc">Crispy chicken on brioche with seasoned fries.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-cat="burgers">
+          <img src="assets/hoot-nannie/buffalo-burger.webp" alt="Stacked burger" loading="lazy">
+          <div class="menu-card-info">
+            <div class="menu-card-tag">Stacked</div>
+            <h3>Stacked Burger</h3>
+            <p class="menu-card-desc">Tall stack with cheese, lettuce, tomato, onion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-toggle-wrap reveal">
+        <button class="menu-toggle-btn" id="menuToggle">Show Full Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOURBON BAR -->
+  <section class="bourbon-section" id="bar">
+    <div class="container">
+      <div class="bourbon-layout">
+        <div class="bourbon-text reveal-left">
+          <span class="label">The Bourbon Bar</span>
+          <h2 class="heading">Pour Something Worth Sipping</h2>
+          <p class="sub">Full bar with a bourbon wall that goes deep. Craft cocktails mixed by people who care about the details. Watermelon margaritas when the weather turns warm.</p>
+          <div class="bourbon-big-num flicker">68</div>
+          <div class="bourbon-big-label">Bourbons on the wall, and counting</div>
+        </div>
+        <div class="bourbon-images reveal-right">
+          <div class="bourbon-img">
+            <img src="assets/hoot-nannie/bourbon-bar.webp" alt="The bourbon bar at The Hoot Nannie" loading="lazy">
+          </div>
+          <div class="bourbon-img">
+            <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Tequila sunrise cocktail" loading="lazy">
+          </div>
+          <div class="bourbon-img" style="grid-column: span 2;">
+            <img src="assets/hoot-nannie/bar-crowd.webp" alt="Crowd at the bar" loading="lazy" style="aspect-ratio: 16/9;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-image-stack reveal-left">
+          <div class="story-img-main">
+            <img src="assets/hoot-nannie/interior1.webp" alt="The Hoot Nannie interior" loading="lazy">
+            <div class="story-image-frame"></div>
+          </div>
+          <div class="story-img-secondary">
+            <img src="assets/hoot-nannie/interior2.webp" alt="The Hoot Nannie dining room" loading="lazy">
+          </div>
+          <div class="story-img-secondary">
+            <img src="assets/hoot-nannie/interior3.webp" alt="The Hoot Nannie atmosphere" loading="lazy">
+          </div>
+        </div>
+        <div class="story-text reveal-right">
+          <span class="label">Our Story</span>
+          <h2 class="heading">Built from the Ground Up</h2>
+          <p>Johnny Roy started making barbecue sauces over 12 years ago. That sauce now sits on shelves at Food Lion and Ingles across North Carolina. Good sauce needs good meat. Good meat needs good land.</p>
+          <div class="story-quote">Good sauce needs good meat. Good meat needs good land.</div>
+          <p>He partnered with Stephen "Neighbor Steve" Soto, combined the best of The Honey Hog and Nannie's Fish Camp, added farm-raised steaks from Beam Farms, and built a full bar with 68 bourbons. The Hoot Nannie opened June 2021 on Main Street in Forest City.</p>
+          <p>Behind every plate is Honey Hog Farm. 126 acres owned, 140 leased. Hogs, Wagyu cattle, chickens. All of it raised right here in Rutherford County.</p>
+          <div class="story-stats">
+            <div class="reveal">
+              <div class="stat-num">126</div>
+              <div class="stat-label">Acres Owned</div>
+            </div>
+            <div class="reveal">
+              <div class="stat-num">68</div>
+              <div class="stat-label">Bourbons</div>
+            </div>
+            <div class="reveal">
+              <div class="stat-num">2021</div>
+              <div class="stat-label">Established</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="label">What People Say</span>
+        <h2 class="heading">Straight from Google</h2>
+      </div>
+      <div class="reviews-track">
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"The steaks here are unbelievable. Hands down the best steak I've had in western NC. The bourbon selection is insane too."</p>
+          <div class="review-author">Marcus T.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Cheese curds are the real deal. Brown Creek cheese, fried fresh. We drove 45 minutes just for those and the smoked wings."</p>
+          <div class="review-author">Sarah K.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"This place is a hidden gem. Farm-to-table done right without any of the pretension. Staff is great, food is better."</p>
+          <div class="review-author">Chris L.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Best burger I've ever had, period. The Dirty Sanchez with mac and cheese on top is absurd in the best way."</p>
+          <div class="review-author">Amanda P.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Ribs were fall-off-the-bone. The fried okra alongside was perfect. We sat on the patio and closed the place down."</p>
+          <div class="review-author">David R.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials-section">
+    <div class="container">
+      <div class="specials-header reveal">
+        <span class="label">Weekly Features</span>
+        <h2 class="heading">Don't Miss These</h2>
+        <p class="sub">Rotating specials that give you one more reason to come back.</p>
+      </div>
+      <div class="specials-grid">
+        <div class="special-card reveal">
+          <img src="assets/hoot-nannie/dirty-sanchez-burger.webp" alt="Burger night special" loading="lazy">
+          <div class="special-body">
+            <div class="special-day">Thursday</div>
+            <h3>Burger Night</h3>
+            <p>Half-price specialty burgers. The Dirty Sanchez, The Classic, and whatever the kitchen dreams up that week.</p>
+          </div>
+        </div>
+        <div class="special-card reveal">
+          <img src="assets/hoot-nannie/tequila-sunrise.webp" alt="Craft cocktails" loading="lazy">
+          <div class="special-body">
+            <div class="special-day">Friday &amp; Saturday</div>
+            <h3>Live Music + Late Bar</h3>
+            <p>Local acts on the stage, cocktail specials at the bar, and a kitchen that stays open late.</p>
+          </div>
+        </div>
+        <div class="special-card reveal">
+          <img src="assets/hoot-nannie/shrimp-grits.webp" alt="Weekend brunch" loading="lazy">
+          <div class="special-body">
+            <div class="special-day">Saturday &amp; Sunday</div>
+            <h3>Weekend Brunch</h3>
+            <p>Shrimp and grits, chicken and waffles, Bloody Marys, and mimosas. 10am to 2pm.</p>
+          </div>
+        </div>
+        <div class="special-card reveal">
+          <img src="assets/hoot-nannie/glazed-wings.webp" alt="Wing Wednesday" loading="lazy">
+          <div class="special-body">
+            <div class="special-day">Wednesday</div>
+            <h3>Wing Wednesday</h3>
+            <p>All-you-can-eat smoked wings with your choice of house sauces. One of the best deals in the county.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER ONLINE -->
+  <section class="order-section" id="order">
+    <div class="container reveal">
+      <span class="label" style="text-align:center; display:block;">Get It Delivered</span>
+      <h2 class="heading" style="text-align:center;">Order Online</h2>
+      <p class="sub" style="text-align:center; margin: 0 auto 2rem;">Same food, delivered to your door. Available on Uber Eats and Postmates.</p>
+      <div class="order-platforms">
+        <a href="https://www.ubereats.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="order-btn">
+          <div class="order-icon">UE</div>Uber Eats
+        </a>
+        <a href="https://postmates.com/store/the-hoot-nannie/lHRDhw3jSICfkKILKdVMgg" target="_blank" rel="noopener" class="order-btn">
+          <div class="order-icon">PM</div>Postmates
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit-section" id="visit">
+    <div class="container">
+      <div class="visit-layout">
+        <div class="visit-info reveal-left">
+          <span class="label">Come See Us</span>
+          <h2 class="heading">Find the Hoot</h2>
+          <p>164 E Main Street, Forest City, NC 28043. Right on Main Street, downtown. Look for the brick building with the hog on the sign.</p>
+          <div class="hours-list">
+            <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">4 PM - 9 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">4 PM - 9 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">4 PM - 10 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">10 AM - 10 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">10 AM - 3 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Mon &amp; Tue</span><span class="hours-time">Closed</span></div>
+          </div>
+        </div>
+        <div class="visit-images reveal-right">
+          <div class="visit-img-main">
+            <img src="assets/hoot-nannie/exterior.webp" alt="The Hoot Nannie exterior" loading="lazy">
+            <div class="visit-badge">Now Open</div>
+          </div>
+          <div class="visit-img-secondary">
+            <img src="assets/hoot-nannie/patio-entry.webp" alt="The Hoot Nannie patio entry" loading="lazy">
+          </div>
+          <div class="visit-img-secondary">
+            <img src="assets/hoot-nannie/interior1.webp" alt="Inside The Hoot Nannie" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">The Hoot Nannie</div>
+          <div class="footer-tagline">Farm-raised steaks, whole hog BBQ, 68 bourbons, and Brown Creek cheese curds. Forest City, NC.</div>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.facebook.com/TheHootNannie/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/thehootnannie/" target="_blank" rel="noopener">Instagram</a>
+          <a href="tel:+18282481479">Call Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 The Hoot Nannie. Demo site by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="demo-banner">
+    This is a demo site by <a href="https://studioobrien.com">Studio O'Brien</a>. Not affiliated with The Hoot Nannie.
+  </div>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const d = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('vis'), Number(d));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      const siblings = el.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      el.dataset.delay = Array.from(siblings).indexOf(el) * 80;
+      obs.observe(el);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Menu category filter
+    const filterBtns = document.querySelectorAll('.menu-filter-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        menuCards.forEach(card => {
+          if (filter === 'all' || card.dataset.cat === filter) {
+            card.classList.remove('hidden');
+            card.style.display = '';
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Show More / Show Less toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menuGrid = document.getElementById('menuGrid');
+    let expanded = false;
+    const INITIAL_SHOW = 12;
+
+    function applyMenuLimit() {
+      const visibleCards = Array.from(menuCards).filter(c => !c.classList.contains('hidden'));
+      if (!expanded) {
+        visibleCards.forEach((card, i) => {
+          card.style.display = i < INITIAL_SHOW ? '' : 'none';
+        });
+        menuToggle.textContent = 'Show Full Menu (' + visibleCards.length + ' items)';
+        menuToggle.style.display = visibleCards.length > INITIAL_SHOW ? '' : 'none';
+      } else {
+        visibleCards.forEach(card => card.style.display = '');
+        menuToggle.textContent = 'Show Less';
+        menuToggle.style.display = '';
+      }
+    }
+
+    menuToggle.addEventListener('click', () => {
+      expanded = !expanded;
+      applyMenuLimit();
+      if (!expanded) {
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    // Re-apply limit when filter changes
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        expanded = false;
+        setTimeout(applyMenuLimit, 10);
+      });
+    });
+
+    // Initial limit
+    applyMenuLimit();
+  </script>
+</body>
+</html>
