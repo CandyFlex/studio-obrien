@@ -9,6 +9,33 @@ You source and curate free-use images for mock business sites. For faux portfoli
 
 ## Image Sources (in priority order)
 
+### 0. AI-Generated Images (PREMIUM — best for faux sites)
+For faux portfolio sites, AI-generated product photos produce the most professional, consistent results. Every image has identical lighting, matching white backgrounds, and perfect composition.
+
+**How to generate:**
+1. Load the AI prompt library at `pipeline/images/ai-prompts/{archetype}.json`
+2. Use any of these generators:
+   - **Ideogram** (free tier, best text rendering) — ideogram.ai
+   - **DALL-E 3** via ChatGPT Plus — chatgpt.com
+   - **Midjourney** — midjourney.com
+   - **Flux** via Replicate (pay-per-use) — replicate.com/black-forest-labs/flux-pro
+3. Copy each prompt from the library, generate, download
+4. Save to `pipeline/targets/{slug}/assets/photos/ai/{id}.jpg`
+5. Update `image-candidates.json` with local paths
+
+**Prompt style requirements:**
+- All prompts must specify "pure white background, studio lighting"
+- All product shots: centered composition with space for text overlay
+- No shadows extending beyond the frame edge
+- Consistent color temperature across all images in a set
+- Each archetype's prompt library produces a cohesive visual set
+
+**Fallback when AI generation isn't available:**
+Use the Unsplash/Pexels search below, filtering specifically for white-background product photography:
+- Search terms MUST include "white background" or "studio"
+- Prefer photos shot on white surfaces
+- Reject photos with busy backgrounds, dark lighting, or mixed color temperatures
+
 ### 1. Pexels (primary)
 - **API:** `https://api.pexels.com/v1/search?query={query}&per_page=20&orientation=landscape`
 - **No API key needed for basic access** (rate-limited). For production use, get a free key at pexels.com/api.
