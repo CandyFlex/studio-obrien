@@ -1,429 +1,1573 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carolina Arcade Museum — Website Concept by Studio O'Brien</title>
-  <meta name="description" content="A custom website concept built for Carolina Arcade Museum in Forest City, NC. Designed and developed by Studio O'Brien in Shelby, NC." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://studioobrien.com/for/carolina-arcade.html" />
-  <meta property="og:title" content="Carolina Arcade Museum — Website Concept by Studio O'Brien" />
-  <meta property="og:description" content="A custom website concept built for Carolina Arcade Museum in Forest City, NC. Designed and developed by Studio O'Brien." />
-  <meta property="og:url" content="https://studioobrien.com/for/carolina-arcade.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://studioobrien.com/images/portfolio/carolina-arcade.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Carolina Arcade Museum — Website Concept by Studio O'Brien" />
-  <meta name="twitter:description" content="A custom website concept built for Carolina Arcade Museum in Forest City, NC." />
-  <meta name="twitter:image" content="https://studioobrien.com/images/portfolio/carolina-arcade.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Carolina Arcade Museum — Website Concept",
-    "description": "A custom website concept built for Carolina Arcade Museum in Forest City, NC by Studio O'Brien.",
-    "url": "https://studioobrien.com/for/carolina-arcade.html",
-    "author": { "@type": "ProfessionalService", "name": "Studio O'Brien", "url": "https://studioobrien.com" },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Studio O'Brien", "item": "https://studioobrien.com" },
-        { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://studioobrien.com/#work" },
-        { "@type": "ListItem", "position": 3, "name": "Carolina Arcade Museum" }
-      ]
-    }
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolina Arcade Museum | Classic Arcade & Pinball in Forest City, NC</title>
+  <meta name="description" content="Over 100 classic arcade and pinball machines, all on freeplay. Located on Main Street in downtown Forest City, NC. Pay once, play all day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Preload hero image for fast LCP -->
+  <link rel="preload" as="image" type="image/webp" href="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ========== RESET ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ========== TOKENS ========== */
     :root {
-      --accent: #34d399;
-      --bg: #131318;
-      --bg-raised: #1a1a24;
-      --bg-sunken: #0d0d12;
-      --text: #f5f5f7;
-      --text-dim: rgba(245,245,247,0.5);
-      --text-faint: rgba(245,245,247,0.3);
-      --border: rgba(52,211,153,0.1);
+      --black: #0a0a0a;
+      --dark: #111118;
+      --darker: #0d0d14;
+      --yellow: #f5d623;
+      --yellow-dim: #c4a910;
+      --red: #e8342e;
+      --red-glow: #ff4444;
+      --cyan: #00d4ff;
+      --magenta: #ff2eaa;
+      --green: #39ff14;
+      --white: #f0f0f0;
+      --gray: #888;
+      --gray-dark: #333;
+
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Inter', sans-serif;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    img { display: block; }
 
-    /* ---- Hero ---- */
+    /* ========== SCANLINE OVERLAY ========== */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+    }
+
+    /* ========== NAV (Neon Sign) ========== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,12,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 0.7rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-pixel); font-size: 0.55rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(245,214,35,0.25), 0 0 30px rgba(245,214,35,0.1);
+    }
+
+    .nav-links {
+      display: flex; gap: 1.8rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-pixel); font-size: 0.42rem;
+      color: #555; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; transition: color 0.25s, text-shadow 0.25s;
+    }
+
+    .nav-links li:nth-child(1) a:hover { color: var(--yellow); text-shadow: 0 0 14px rgba(245,214,35,0.5), 0 0 30px rgba(245,214,35,0.2); }
+    .nav-links li:nth-child(2) a:hover { color: var(--red); text-shadow: 0 0 14px rgba(232,52,46,0.5), 0 0 30px rgba(232,52,46,0.2); }
+    .nav-links li:nth-child(3) a:hover { color: var(--cyan); text-shadow: 0 0 14px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.2); }
+    .nav-links li:nth-child(4) a:hover { color: var(--green); text-shadow: 0 0 14px rgba(57,255,20,0.5), 0 0 30px rgba(57,255,20,0.2); }
+    .nav-links li:nth-child(5) a:hover { color: #ff2eaa; text-shadow: 0 0 14px rgba(255,46,170,0.5), 0 0 30px rgba(255,46,170,0.2); }
+    .nav-links li:nth-child(6) a:hover { color: var(--yellow); text-shadow: 0 0 14px rgba(245,214,35,0.5), 0 0 30px rgba(245,214,35,0.2); }
+
+    .nav-cta {
+      font-family: var(--font-pixel); font-size: 0.42rem;
+      background: var(--red); color: var(--white);
+      border: 2px solid rgba(255,68,68,0.4); border-radius: 4px;
+      padding: 0.5rem 1.1rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer;
+      box-shadow: 0 0 15px rgba(232,52,46,0.3), inset 0 0 15px rgba(232,52,46,0.15);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover {
+      box-shadow: 0 0 25px rgba(232,52,46,0.5), inset 0 0 20px rgba(232,52,46,0.2);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--yellow); border-radius: 1px;
+    }
+
+    /* Tablet nav: shrink spacing and font to fit */
+    @media (max-width: 1100px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.35rem; letter-spacing: 1px; }
+      .nav-logo { font-size: 0.45rem; }
+      .nav-cta { font-size: 0.35rem; padding: 0.4rem 0.8rem; white-space: nowrap; }
+    }
+
+    /* Switch to hamburger at 900px to match hero mobile breakpoint */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ========== HERO (Orbital Layout) ========== */
     .hero {
-      padding: 64px 24px 48px;
-      text-align: center;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-raised) 50%, var(--bg) 100%);
-    }
-    .label {
-      display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-    .hero .preamble {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      margin-bottom: 6px;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5.5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-    .hero .sub {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      max-width: 400px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* ---- Preview ---- */
-    .preview-wrap {
-      max-width: 760px;
-      margin: 32px auto 0;
-      padding: 0 24px;
-    }
-    .preview {
-      border-radius: 10px;
+      min-height: 100vh;
+      position: relative;
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .preview-bar {
-      background: var(--bg-sunken);
-      padding: 9px 14px;
-      display: flex; align-items: center; gap: 6px;
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; }
-    .dot:nth-child(1) { background: #ff5f56; }
-    .dot:nth-child(2) { background: #ffbd2e; }
-    .dot:nth-child(3) { background: #27c93f; }
-    .preview-url {
-      margin-left: 10px;
-      font-family: monospace;
+
+    .hero-bg img,
+    .hero-bg picture {
+      width: 100%; height: 100%; display: block;
+    }
+    .hero-bg picture img {
+      object-fit: cover;
+    }
+
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(10,10,10,0.82);
+    }
+
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      pointer-events: none; z-index: 50;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+    }
+
+    /* Orbital wrapper */
+    .orbit-wrap {
+      position: relative; z-index: 5;
+      width: 100%; max-width: 1200px;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .center {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; position: relative; z-index: 3;
+    }
+
+    .logo-img {
+      display: block;
+      width: min(800px, 82vw);
+      filter: drop-shadow(0 0 40px rgba(245,214,35,0.25));
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      position: absolute; z-index: 4;
+      text-align: center; min-width: 120px;
+    }
+
+    /* Desktop positions */
+    .c1 { top: 18%; left: 8%; }
+    .c5 { bottom: 22%; left: 8%; }
+    .c2 { top: 18%; right: 8%; }
+    .c6 { bottom: 22%; right: 8%; }
+    .c3 { top: 43%; left: 1%; }
+    .c4 { top: 43%; right: 1%; }
+
+    .chip .chip-val {
+      font-family: var(--font-pixel);
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    .chip .chip-lbl {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.5;
+    }
+
+    .accent-yellow { color: var(--yellow); }
+    .accent-cyan { color: var(--cyan); }
+    .accent-green { color: var(--green); }
+    .accent-red { color: var(--red); }
+    .glow-yellow { text-shadow: 0 0 20px rgba(245,214,35,0.3); }
+    .glow-cyan { text-shadow: 0 0 20px rgba(0,212,255,0.3); }
+    .glow-green { text-shadow: 0 0 20px rgba(57,255,20,0.3); }
+
+    .google-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      background: #fff;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .google-icon { width: 28px; height: 28px; }
+
+    .badge-row { display: flex; align-items: center; gap: 8px; }
+    .badge-row img { width: 40px; height: 40px; border-radius: 4px; }
+
+    .tagline {
+      font-family: var(--font-pixel);
       font-size: 0.65rem;
-      color: var(--text-faint);
-    }
-    .preview img { width: 100%; display: block; }
-    .preview-cta {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
       text-align: center;
-      padding: 16px;
-      background: var(--bg-sunken);
+      margin-bottom: 48px;
     }
-    .preview-cta a {
+
+    /* CTA Buttons */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-primary {
       display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--accent);
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
       text-decoration: none;
-      padding: 10px 28px;
-      border-radius: 4px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .preview-cta a:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(52,211,153,0.25);
-    }
-
-    /* ---- Sections ---- */
-    .section { padding: 48px 24px; }
-    .section-alt { background: var(--bg-raised); }
-    .section h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      background: var(--yellow);
+      color: var(--black);
+      border: 3px solid #c9a200;
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      box-shadow: 0 4px 0 #8a7100, 0 0 25px rgba(245,214,35,0.3);
     }
-    .section > .container > p {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.7;
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #8a7100, 0 0 40px rgba(245,214,35,0.45);
+    }
+    .cta-primary:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #8a7100;
     }
 
-    /* ---- Problem grid ---- */
-    .problem-grid {
+    .cta-secondary {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      background: transparent;
+      color: #ccc;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      box-shadow: none;
+    }
+    .cta-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255,255,255,0.08);
+    }
+
+    /* Tablet (900-1200px) — concave top/bottom */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .chip { min-width: 90px; }
+      .chip .chip-val { font-size: 1.1rem; }
+      .chip .chip-lbl { font-size: 0.38rem; letter-spacing: 1px; }
+      .google-icon { width: 20px; height: 20px; }
+      .google-circle { width: 34px; height: 34px; }
+      .badge-row img { width: 34px; height: 34px; }
+      .logo-img { width: min(520px, 58vw); }
+      .tagline { font-size: 0.55rem; letter-spacing: 3px; margin-bottom: 32px; }
+      .cta-primary { font-size: 0.5rem; padding: 0.55rem 1.4rem; }
+      .cta-secondary { font-size: 0.5rem; padding: 0.55rem 1.4rem; }
+
+      .c1 { top: 20%; left: 5%; }
+      .c2 { top: 14%; left: 50%; right: auto; transform: translateX(-50%); }
+      .c3 { top: 20%; right: 5%; left: auto; }
+
+      .c5 { bottom: 20%; left: 5%; top: auto; }
+      .c4 { bottom: 14%; left: 50%; right: auto; top: auto; transform: translateX(-50%); }
+      .c6 { bottom: 20%; right: 5%; top: auto; }
+    }
+
+    /* Mobile (under 900px) — concave top/bottom */
+    @media (max-width: 900px) {
+      .orbit-wrap {
+        min-height: 100vh;
+        min-height: 100svh;
+      }
+      .logo-img {
+        width: calc(100vw - 20px);
+        max-width: 460px;
+        margin-bottom: 14px;
+      }
+      .chip { min-width: auto; transition: top 0.3s, bottom 0.3s, left 0.3s, right 0.3s; }
+      .chip .chip-val { font-size: 1.25rem; }
+      .chip .chip-lbl { font-size: 0.42rem; letter-spacing: 1px; }
+      .google-circle { width: 38px; height: 38px; }
+      .google-icon { width: 24px; height: 24px; }
+      .badge-row img { width: 38px; height: 38px; }
+      .tagline {
+        font-size: 0.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 24px;
+        line-height: 1.8;
+      }
+      .cta-primary { font-size: 0.5rem; padding: 0.6rem 1.3rem; }
+      .cta-secondary { font-size: 0.5rem; padding: 0.6rem 1.3rem; }
+      .cta-row { gap: 12px; }
+
+      .c1 { left: var(--h-edge); top: var(--top-side); right: auto; bottom: auto; transform: none; }
+      .c2 { left: 50%; top: var(--top-center); right: auto; bottom: auto; transform: translateX(-50%); }
+      .c3 { right: var(--h-edge); top: var(--top-side); left: auto; bottom: auto; transform: none; }
+
+      .c5 { left: var(--h-edge); bottom: var(--bot-side); right: auto; top: auto; transform: none; }
+      .c4 { left: 50%; bottom: var(--bot-center); right: auto; top: auto; transform: translateX(-50%); }
+      .c6 { right: var(--h-edge); bottom: var(--bot-side); left: auto; top: auto; transform: none; }
+    }
+
+    /* Mobile positions locked */
+    @media (max-width: 900px) {
+      .orbit-wrap {
+        --top-side: 22%;
+        --top-center: 13%;
+        --bot-side: 24%;
+        --bot-center: 18%;
+        --h-edge: 8%;
+      }
+    }
+
+    /* Extra small (under 480px) */
+    @media (max-width: 480px) {
+      .logo-img { width: calc(100vw - 20px); max-width: 360px; }
+      .chip .chip-val { font-size: 1.1rem; }
+      .chip .chip-lbl { font-size: 0.38rem; }
+      .tagline { font-size: 0.42rem; letter-spacing: 1px; }
+      .cta-primary { font-size: 0.42rem; padding: 0.5rem 1.1rem; }
+      .cta-secondary { font-size: 0.42rem; padding: 0.5rem 1.1rem; }
+      .cta-row { gap: 10px; }
+      .google-circle { width: 34px; height: 34px; }
+      .google-icon { width: 20px; height: 20px; }
+      .badge-row img { width: 34px; height: 34px; }
+    }
+
+    /* Existing site btn-primary (used in other sections) */
+    .btn-primary {
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(232,52,46,0.4);
+    }
+
+    /* ========== SECTIONS COMMON ========== */
+    section { padding: 5rem 2rem; position: relative; }
+    .hero { padding: 0; }
+
+    .section-label {
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+      color: var(--yellow);
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+      border-bottom: none;
+    }
+
+    .pricing .container { text-align: center; }
+
+    .pricing .section-label { margin-bottom: 1rem; }
+    .pricing .section-title { margin-bottom: 1rem; }
+    .pricing .section-desc { max-width: 500px; margin: 0 auto; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: var(--dark);
+      border: 1px solid #1e1e26;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+      transition: all 0.3s;
+      border-radius: 8px;
+    }
+
+    .price-card:hover { border-color: #3a3a44; transform: translateY(-3px); }
+
+    .price-card.featured {
+      border: 2px solid var(--yellow-dim);
+      box-shadow: 0 0 25px rgba(245,214,35,0.08), inset 0 0 25px rgba(245,214,35,0.03);
+    }
+
+    .price-badge { display: none; }
+    .price-card.featured .price-badge {
+      display: inline-block; position: absolute;
+      top: -14px; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+      color: var(--yellow); text-transform: uppercase; letter-spacing: 2px;
+      background: var(--dark);
+      border: 1px solid rgba(245,214,35,0.3);
+      border-radius: 20px; padding: 0.3rem 1rem;
+      white-space: nowrap; z-index: 2;
+    }
+
+    .price-amount {
+      font-family: var(--font-pixel);
+      font-size: 2.2rem;
+      color: var(--yellow);
+      margin: 0.5rem 0;
+    }
+
+    .price-name {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .price-desc {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      font-family: var(--font-body);
+    }
+
+    .price-cta {
+      display: inline-block; margin-top: 1.2rem;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      color: #666; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.5rem 1.4rem;
+      border: 1px solid #333; border-radius: 50px; transition: all 0.2s;
+    }
+    .price-cta:hover { color: var(--white); border-color: #666; }
+    .price-card.featured .price-cta {
+      background: var(--yellow); color: var(--black); border-color: var(--yellow);
+      box-shadow: 0 2px 0 #8a7100, 0 0 12px rgba(245,214,35,0.15);
+    }
+    .price-card.featured .price-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 0 #8a7100, 0 0 20px rgba(245,214,35,0.25);
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== GAMES SECTION ========== */
+    .games { background: var(--dark); }
+
+    .games-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .games-photo {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .games-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .games-detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 2rem;
     }
-    .p-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 8px;
-      padding: 16px 18px;
-    }
-    .p-card .tag {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .p-card .tag.now { color: #f87171; }
-    .p-card .tag.after { color: var(--accent); }
-    .p-card p {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      line-height: 1.55;
-      margin: 0;
-    }
-    @media (max-width: 560px) { .problem-grid { grid-template-columns: 1fr; } }
 
-    /* ---- Features ---- */
-    .features {
+    .games-detail-grid .detail-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--gray-dark);
+    }
+
+    .games-detail-grid .detail-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .games-detail-grid .detail-img:hover img { transform: scale(1.05); }
+
+    @media (max-width: 768px) {
+      .games-top { grid-template-columns: 1fr; }
+      .games-detail-grid { grid-template-columns: 1fr; }
+    }
+
+    #games-stats { padding-top: 0; }
+    .games-marquee {
+      overflow: hidden;
+      margin: 0 0 1.5rem;
+      border-top: 1px solid var(--gray-dark);
+      border-bottom: 1px solid var(--gray-dark);
+      padding: 1rem 0;
+    }
+
+    .games-marquee-inner {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-left 25s linear infinite;
+      width: max-content;
+    }
+
+    .game-name {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .game-name .dot { color: var(--red); margin: 0 0.5rem; }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========== STATS ========== */
+
+    .games-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 4.5rem; }
+    .stat-item {
+      text-align: center; padding: 1.6rem 1rem 1.3rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 100%);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 10px;
+      backdrop-filter: blur(8px); position: relative; overflow: hidden;
+    }
+    .stat-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .stat-item:nth-child(1)::before { background: var(--green); box-shadow: 0 0 14px rgba(57,255,20,0.5); }
+    .stat-item:nth-child(2)::before { background: var(--cyan); box-shadow: 0 0 14px rgba(0,212,255,0.5); }
+    .stat-item:nth-child(3)::before { background: var(--yellow); box-shadow: 0 0 14px rgba(245,214,35,0.5); }
+    .stat-item:nth-child(4)::before { background: var(--red); box-shadow: 0 0 14px rgba(232,52,46,0.5); }
+    .stat-number { font-family: var(--font-pixel); font-size: 1.8rem; line-height: 1; }
+    .stat-item:nth-child(1) .stat-number { color: var(--green); text-shadow: 0 0 12px rgba(57,255,20,0.3); }
+    .stat-item:nth-child(2) .stat-number { color: var(--cyan); text-shadow: 0 0 12px rgba(0,212,255,0.3); }
+    .stat-item:nth-child(3) .stat-number { color: var(--yellow); text-shadow: 0 0 12px rgba(245,214,35,0.3); }
+    .stat-item:nth-child(4) .stat-number { color: var(--red); text-shadow: 0 0 12px rgba(232,52,46,0.3); }
+    .stat-label {
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
+      color: #999; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .stat-sub {
+      font-family: var(--font-body); font-size: 0.72rem; font-weight: 400;
+      color: #555; margin-top: 0.25rem; line-height: 1.4;
+    }
+    @media (max-width: 600px) { .games-stats { grid-template-columns: 1fr 1fr; } }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+      border-bottom: 1px solid rgba(245,214,35,0.1);
+    }
+
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
       gap: 12px;
-      margin-top: 16px;
-    }
-    .feat {
-      background: rgba(52,211,153,0.03);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px 18px;
-    }
-    .feat h3 {
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .feat p {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-      margin: 0;
-    }
-    @media (max-width: 640px) { .features { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 420px) { .features { grid-template-columns: 1fr; } }
-
-    /* ---- CTA ---- */
-    .cta {
-      text-align: center;
-      padding: 56px 24px;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-raised) 100%);
-    }
-    .cta h2 {
-      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 10px;
-    }
-    .cta h2 span { color: var(--accent); }
-    .cta p {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      margin-bottom: 28px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 12px 30px;
-      border-radius: 4px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg);
-    }
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 24px rgba(52,211,153,0.25);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-dim);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.25);
-      color: var(--text);
-      transform: scale(1.05);
+      margin-top: 2rem;
     }
 
-    /* ---- Footer ---- */
-    .foot {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.72rem;
-      color: var(--text-faint);
-      background: var(--bg-sunken);
-    }
-    .foot a { color: var(--accent); text-decoration: none; opacity: 0.7; }
-    .foot a:hover { opacity: 1; }
-
-    /* ---- Video Walkthrough ---- */
-    .video-section {
-      padding: 48px 24px 40px;
-      text-align: center;
-      background: var(--bg);
-    }
-    .video-section h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .video-section .video-sub {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      margin-bottom: 24px;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    .video-wrap {
-      max-width: 820px;
-      margin: 0 auto;
-      border-radius: 10px;
+    .gallery-img {
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      border: 1px solid var(--gray-dark);
     }
-    .video-wrap video {
+
+    .gallery-img img {
       width: 100%;
-      display: block;
-      background: #09090b;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
     }
-    .video-cta {
-      margin-top: 28px;
+
+    .gallery-img:hover img { transform: scale(1.05); }
+
+    .gallery-img.featured {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    .gallery-img:not(.featured) { aspect-ratio: 4/3; }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-img.featured {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        aspect-ratio: 16/9;
+      }
+    }
+
+
+    /* ========== BIRTHDAY ========== */
+    .birthday {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .birthday-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .birthday-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 75%;
+    }
+
+    .birthday-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(13,13,20,0.93) 0%, rgba(13,13,20,0.78) 100%);
+    }
+
+    .birthday > .container { position: relative; z-index: 1; }
+
+    /* --- Birthday: Side-by-side — title+experience left, booking right, equal height --- */
+    .bday-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      align-items: stretch;
+    }
+    @media (max-width: 768px) { .bday-layout { grid-template-columns: 1fr; } }
+
+    .bday-left {
       display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
+    .bday-left .bday-label {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.6rem;
+    }
+    .bday-left .bday-title {
+      font-family: var(--font-pixel);
+      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.6;
+      margin-bottom: 2.2rem;
+    }
+
+    .bday-left .exp-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    .bday-left .exp-item:last-child { margin-bottom: 0; }
+    .bday-left .exp-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .bday-left .exp-text h4 {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #eee;
+      margin-bottom: 0.25rem;
+    }
+    .bday-left .exp-text p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.55;
+    }
+
+    .bday-booking {
+      background: rgba(17,17,24,0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+    }
+    .bday-booking-head {
+      background: var(--red);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .bday-booking-head .book-price {
+      font-family: var(--font-pixel);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      color: #fff;
+      line-height: 1;
+    }
+    .bday-booking-head .book-sub {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      text-align: right;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .bday-booking-body {
+      padding: 1.2rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bday-booking-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .bday-booking-row:last-child { border-bottom: none; }
+    .bday-booking-row .row-label {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: #bbb;
+      font-weight: 500;
+    }
+    .bday-booking-row .row-val {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: right;
+    }
+    .bday-booking-foot {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .bday-booking-foot .deposit-tag {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* ========== STORY ========== */
+    .story { background: var(--dark); }
+    /* Story V5 Triptych — LOCKED */
+    .story .pbs-badge {
+      display: inline-block;
+      font-family: var(--font-pixel);
+      font-size: 0.4rem;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.3);
+      color: var(--cyan);
+      padding: 0.35rem 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* --- V5: Story Triptych — three cards telling a story arc --- */
+    .sv5-triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
+    @media (max-width: 768px) { .sv5-triptych { grid-template-columns: 1fr; } }
+    .sv5-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; overflow: hidden; position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .sv5-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
+    .sv5-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 2; }
+    .sv5-card:nth-child(1)::before { background: var(--cyan); box-shadow: 0 0 12px rgba(0,212,255,0.4); }
+    .sv5-card:nth-child(2)::before { background: var(--green); box-shadow: 0 0 12px rgba(57,255,20,0.4); }
+    .sv5-card:nth-child(3)::before { background: var(--yellow); box-shadow: 0 0 12px rgba(245,214,35,0.4); }
+    .sv5-card-img { aspect-ratio: 16/9; overflow: hidden; }
+    .sv5-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .sv5-card:hover .sv5-card-img img { transform: scale(1.05); }
+    .sv5-card-body { padding: 1.2rem 1.3rem 1.4rem; }
+    .sv5-card-year { font-family: var(--font-pixel); font-size: 0.8rem; margin-bottom: 0.45rem; letter-spacing: 1px; }
+    .sv5-card:nth-child(1) .sv5-card-year { color: var(--cyan); text-shadow: 0 0 10px rgba(0,212,255,0.3); }
+    .sv5-card:nth-child(2) .sv5-card-year { color: var(--green); text-shadow: 0 0 10px rgba(57,255,20,0.3); }
+    .sv5-card:nth-child(3) .sv5-card-year { color: var(--yellow); text-shadow: 0 0 10px rgba(245,214,35,0.3); }
+    .sv5-card-heading {
+      font-family: var(--font-body); font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .sv5-card-desc { color: #888; font-size: 0.88rem; line-height: 1.6; }
+    .sv5-quote-row { margin-top: 1.5rem; text-align: center; padding-bottom: 0.5rem; }
+    .sv5-quote-row blockquote {
+      font-style: italic; color: var(--white); font-size: 1.1rem; line-height: 1.6;
+      max-width: 650px; margin: 0 auto 0.6rem;
+    }
+    .sv5-quote-row cite {
+      font-family: var(--font-pixel); font-size: 0.4rem; color: var(--yellow-dim);
+      font-style: normal; text-transform: uppercase; letter-spacing: 2px;
+    }
+
+    /* ========== REVIEWS ========== */
+    .reviews {
+      background: var(--darker);
+      border-top: 1px solid rgba(245,214,35,0.1);
+    }
+
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .reviews-rating .big-stars {
+      color: var(--yellow);
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+    }
+
+    .reviews-rating .rating-text {
+      font-family: var(--font-pixel);
+      font-size: 0.55rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Reviews — RV1 Refined Grid — LOCKED */
+    .rv-stars { color: var(--yellow); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.6rem; }
+    .rv-text { color: #999; font-size: 0.92rem; line-height: 1.65; font-style: italic; margin-bottom: 0.8rem; }
+    .rv-author { font-weight: 600; font-size: 0.85rem; color: var(--white); }
+    .rv-google-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+    .rv-google-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; background: #fff; border-radius: 50%; flex-shrink: 0;
+    }
+    .rv-google-circle img { width: 14px; height: 14px; }
+    .rv-google-text {
+      font-family: var(--font-body); font-size: 0.75rem; color: #666; font-weight: 500;
+    }
+    .rv1-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) { .rv1-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .rv1-grid { grid-template-columns: 1fr; } }
+    .rv1-card {
+      background: var(--dark); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.4rem 1.5rem;
+    }
+
+    /* ========== VISIT ========== */
+    .visit { background: var(--dark); }
+    /* Visit — shared */
+    .vt-h3 {
+      font-family: var(--font-pixel); font-size: 0.6rem; color: var(--yellow);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;
+    }
+
+    /* --- Visit: Map + Stacked Info — LOCKED --- */
+    .vt3-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+    @media (max-width: 768px) { .vt3-layout { grid-template-columns: 1fr; } }
+    .vt3-map { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+    .vt3-map iframe { width: 100%; height: 100%; min-height: 440px; border: 0; }
+    .vt3-map-footer {
+      background: var(--darker); padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .vt3-map-addr {
+      font-family: var(--font-pixel); font-size: 0.55rem; color: var(--white);
+      letter-spacing: 1px;
+    }
+    .vt3-map-dir {
+      font-family: var(--font-pixel); font-size: 0.5rem;
+      color: var(--yellow); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 2px; display: inline-block;
+      border: 2px solid var(--yellow); border-radius: 50px;
+      padding: 0.45rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .vt3-map-dir:hover { background: var(--yellow); color: var(--black); }
+    .vt3-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+    .vt3-block { background: var(--darker); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.3rem 1.5rem; }
+    .vt3-block .vt-h3 { margin-bottom: 0.8rem; }
+    /* VT3 hours — larger day names, pixel-font times, colored Friday/Saturday */
+    .vt3-block .vt3-hours { list-style: none; }
+    .vt3-block .vt3-hours li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vt3-block .vt3-hours li .day {
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .vt3-block .vt3-hours li .time {
+      font-family: var(--font-pixel); font-size: 0.65rem; color: var(--cyan);
+      letter-spacing: 1px;
+    }
+    .vt3-block .vt3-hours li.late .time { color: var(--green); }
+    .vt3-block .vt3-hours li.closed .day { color: var(--gray); font-weight: 400; }
+    .vt3-block .vt3-hours li.closed .time { font-family: var(--font-pixel); color: var(--red); }
+    /* VT3 contact — phone big, email subtle, stacked */
+    .vt3-contact-phone {
+      font-family: var(--font-pixel); font-size: 0.7rem; color: var(--white);
+      text-decoration: none; letter-spacing: 2px;
+      display: block; margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .vt3-contact-phone:hover { color: var(--yellow); }
+    .vt3-links {
+      display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem;
+    }
+    .vt3-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative; overflow: hidden;
+    }
+    .vt3-link:hover { transform: translateY(-2px); }
+    .vt3-link::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    }
+    .vt3-link-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .vt3-link-icon svg { width: 22px; height: 22px; }
+    .vt3-link-text { display: flex; flex-direction: column; }
+    .vt3-link-label {
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+    }
+    .vt3-link-sub {
+      font-family: var(--font-pixel); font-size: 0.35rem;
+      text-transform: uppercase; letter-spacing: 2px; margin-top: 0.15rem;
+    }
+    /* Call — cyan */
+    .vt3-link--call { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); }
+    .vt3-link--call::before { background: var(--cyan); }
+    .vt3-link--call .vt3-link-icon { background: rgba(0,212,255,0.12); }
+    .vt3-link--call .vt3-link-icon svg { fill: var(--cyan); }
+    .vt3-link--call .vt3-link-label { color: var(--white); }
+    .vt3-link--call .vt3-link-sub { color: var(--cyan); }
+    .vt3-link--call:hover { box-shadow: 0 4px 20px rgba(0,212,255,0.15); }
+    /* Facebook — yellow */
+    .vt3-link--fb { background: rgba(245,214,35,0.05); border: 1px solid rgba(245,214,35,0.12); }
+    .vt3-link--fb::before { background: var(--yellow); }
+    .vt3-link--fb .vt3-link-icon { background: rgba(245,214,35,0.1); }
+    .vt3-link--fb .vt3-link-icon svg { fill: var(--yellow); }
+    .vt3-link--fb .vt3-link-label { color: var(--white); }
+    .vt3-link--fb .vt3-link-sub { color: var(--yellow); }
+    .vt3-link--fb:hover { box-shadow: 0 4px 20px rgba(245,214,35,0.1); }
+    /* Reviews — green */
+    .vt3-link--review { background: rgba(57,255,20,0.05); border: 1px solid rgba(57,255,20,0.12); }
+    .vt3-link--review::before { background: var(--green); }
+    .vt3-link--review .vt3-link-icon { background: rgba(57,255,20,0.1); }
+    .vt3-link--review .vt3-link-icon svg { fill: var(--green); }
+    .vt3-link--review .vt3-link-label { color: var(--white); }
+    .vt3-link--review .vt3-link-sub { color: var(--green); }
+    .vt3-link--review:hover { box-shadow: 0 4px 20px rgba(57,255,20,0.1); }
+
+
+    /* ========== FOOTER ========== */
+    /* Footer shared */
+    footer { background: var(--black); }
+
+    /* --- Footer: CRT scanline bar — LOCKED --- */
+    .ft3 { position: relative; border-top: 3px solid var(--green); padding: 2.5rem 2rem; text-align: center; overflow: hidden; }
+    .ft3::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57,255,20,0.03) 2px, rgba(57,255,20,0.03) 4px); z-index: 1; }
+    .ft3-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .ft3-logo { width: 200px; margin: 0 auto 1.8rem; filter: drop-shadow(0 0 20px rgba(57,255,20,0.2)); }
+    .ft3-addr { font-family: var(--font-pixel); font-size: 0.5rem; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .ft3-phone { font-family: var(--font-pixel); font-size: 0.6rem; color: var(--white); text-decoration: none; letter-spacing: 2px; }
+    .ft3-phone:hover { color: var(--green); }
+    .ft3-social { margin-top: 1.2rem; display: flex; justify-content: center; gap: 1rem; }
+    .ft3-social a { width: 40px; height: 40px; border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; }
+    .ft3-social a:hover { background: rgba(57,255,20,0.15); transform: translateY(-2px); }
+    .ft3-social a svg { width: 18px; height: 18px; fill: var(--green); }
+    .ft3-credit { margin-top: 1.5rem; font-size: 0.7rem; color: var(--gray-dark); }
+    .ft3-credit a { color: var(--gray); text-decoration: none; }
+    .ft3-credit a:hover { color: var(--green); }
+
+    /* ========== SECTION DIVIDER ========== */
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--yellow), var(--green), var(--cyan), var(--magenta));
+      opacity: 0.4;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="container">
-      <div class="label">Built for You</div>
-      <p class="preamble">A website concept for</p>
-      <h1>Carolina Arcade Museum</h1>
-      <p class="sub">Your real pricing, hours, reviews, and story. No templates, no stock photos.</p>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Carolina Arcade Museum</a>
+    <ul class="nav-links">
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#parties">Parties</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#visit" class="nav-cta">Press Start</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO (Orbital Layout) -->
+  <section class="hero">
+    <div class="hero-bg">
+      <picture>
+        <source srcset="/mock-sites/assets/carolina-arcade/hero-interior-wide.webp" type="image/webp">
+        <img src="/mock-sites/assets/carolina-arcade/hero-interior-wide.jpg" alt="Inside Carolina Arcade Museum - rows of classic arcade cabinets and colorful banners" width="1189" height="787">
+      </picture>
     </div>
+    <div class="orbit-wrap">
 
-    <div class="video-wrap" style="max-width: 820px; margin: 28px auto 0;">
-      <video autoplay muted loop playsinline>
-        <source src="/videos/arcade-walkthrough.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="video-cta" style="padding-bottom: 12px;">
-      <a href="/mock-sites/carolina-arcade.html" target="_blank" class="btn btn-primary">Explore the Full Site &rarr;</a>
-      <a href="https://studioobrien.com/#contact" class="btn btn-ghost">Let's Make It Real</a>
-    </div>
-  </div>
-
-  <div class="section section-alt">
-    <div class="container">
-      <h2>The Problem</h2>
-      <p>Someone searching "arcade Forest City NC" finds a Facebook page, a Groupon listing, and directory results. No website, no way to check pricing or hours without digging through posts.</p>
-
-      <div class="problem-grid">
-        <div class="p-card">
-          <div class="tag now">Right Now</div>
-          <p>No website. Basic info buried in Facebook posts. Customers give up before finding what they need.</p>
+      <!-- TOP ROW on mobile: c1 left, c2 center, c3 right -->
+      <div class="chip c1">
+        <div class="chip-val accent-green glow-green">105+</div>
+        <div class="chip-lbl">Playable<br>Machines</div>
+      </div>
+      <div class="chip c2">
+        <div class="chip-val accent-yellow glow-yellow">$13</div>
+        <div class="chip-lbl">All Day<br>Pass</div>
+      </div>
+      <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="chip c3" style="text-decoration:none;color:inherit;">
+        <div style="margin-bottom:8px;display:flex;justify-content:center;">
+          <span class="google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=28&format=png" alt="Google" class="google-icon"></span>
         </div>
-        <div class="p-card">
-          <div class="tag now">Right Now</div>
-          <p>Party inquiries through DMs with no details up front. Constant back-and-forth.</p>
+        <div class="chip-val accent-red" style="letter-spacing:-2px;">4.9</div>
+        <div class="chip-lbl">Google<br>Rating</div>
+      </a>
+
+      <!-- BOTTOM ROW on mobile: c5 left, c4 center, c6 right -->
+      <div class="chip c4">
+        <div class="chip-val accent-cyan glow-cyan">2</div>
+        <div class="chip-lbl">Floors of<br>Gaming</div>
+      </div>
+      <div class="chip c5">
+        <div class="chip-val accent-yellow">2018</div>
+        <div class="chip-lbl">Est. Forest<br>City, NC</div>
+      </div>
+      <div class="chip c6">
+        <div class="badge-row" style="justify-content:center;">
+          <img src="https://img.logo.dev/pbs.org?token=pk_R8_8hLshSwmse1iaY7Qzww&size=40&format=png" alt="PBS">
         </div>
-        <div class="p-card">
-          <div class="tag after">With This Site</div>
-          <p>Pricing, hours, party packages, and game list all in one place. Questions answered before they call.</p>
-        </div>
-        <div class="p-card">
-          <div class="tag after">With This Site</div>
-          <p>Ranks in Google for "arcade near me" and "birthday party venues Forest City."</p>
+        <div class="chip-lbl" style="margin-top:10px;">As Seen<br>on PBS</div>
+      </div>
+
+      <!-- Center -->
+      <div class="center">
+        <img src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" class="logo-img">
+        <p class="tagline">100+ classics. Two floors. Zero quarters.</p>
+        <div class="cta-row">
+          <a href="#pricing" class="cta-primary">Press Start</a>
+          <a href="#visit" class="cta-secondary">Plan Your Visit</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
+  <div class="divider"></div>
+
+  <!-- GAMES -->
+  <section class="games" id="games">
     <div class="container">
-      <h2>What's Included</h2>
-      <div class="features">
-        <div class="feat">
-          <h3>Custom Design</h3>
-          <p>Your brand, your photos. Not a template with your name swapped in.</p>
+      <div class="games-top">
+        <div>
+          <p class="section-label">The Collection</p>
+          <h2 class="section-title">105+ Machines.<br>All Playable.</h2>
+          <p class="section-desc">From Pac-Man to pinball, every cabinet is powered up and waiting. Classics from the '70s, '80s, and '90s. Plus a downstairs room with blacklights and vintage 80s arcade carpet.</p>
         </div>
-        <div class="feat">
-          <h3>Mobile First</h3>
-          <p>Looks great on phones, tablets, and desktop.</p>
+        <div class="games-photo">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-pinball.webp" alt="Star Wars pinball machine with someone playing at Carolina Arcade Museum" loading="lazy" width="1200" height="904">
         </div>
-        <div class="feat">
-          <h3>SEO Built In</h3>
-          <p>Hours, location, and pricing show up in Google results.</p>
+      </div>
+
+      <div class="games-detail-grid">
+        <div class="detail-img">
+          <img src="/mock-sites/assets/carolina-arcade/bad-dudes-cabinet.webp" alt="Bad Dudes vs Dragon Ninja arcade cabinet" loading="lazy" width="1200" height="675">
         </div>
-        <div class="feat">
-          <h3>Party Bookings</h3>
-          <p>Pricing and a booking form. No more repeating info in DMs.</p>
-        </div>
-        <div class="feat">
-          <h3>Fast Loading</h3>
-          <p>Under one second. Nobody waits for a slow site.</p>
-        </div>
-        <div class="feat">
-          <h3>Ongoing Support</h3>
-          <p>Need to update hours or add games? Just say the word.</p>
+        <div class="detail-img">
+          <img src="/mock-sites/assets/carolina-arcade/munsters-pinball.webp" alt="The Munsters pinball machine" loading="lazy" width="675" height="1200">
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="cta">
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
     <div class="container">
-      <h2>Ready to Make <span>This Real?</span></h2>
-      <p>This was built for Carolina Arcade Museum. Like what you see? Let's make it your actual website.</p>
-      <div class="cta-buttons">
-        <a href="https://studioobrien.com/#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="mailto:hello@studioobrien.com?subject=Carolina%20Arcade%20Museum%20Website" class="btn btn-ghost">Email Directly</a>
+      <p class="section-label">Admission</p>
+      <h2 class="section-title">Insert Coin.<br>Just Kidding.</h2>
+      <p class="section-desc">No tokens. No quarters. Just grab a wristband and play everything.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <p class="price-badge"></p>
+          <p class="price-name">Hourly Pass</p>
+          <p class="price-amount">$8</p>
+          <p class="price-desc">One hour of unlimited play on every machine in the museum.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
+        <div class="price-card featured">
+          <p class="price-badge">Most Popular</p>
+          <p class="price-name">All-Day Pass</p>
+          <p class="price-amount">$13</p>
+          <p class="price-desc">Play all day long. Come and go as you please with your wristband.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
+        <div class="price-card">
+          <p class="price-badge"></p>
+          <p class="price-name">Group Rate</p>
+          <p class="price-amount">$10</p>
+          <p class="price-desc">Per person for groups of 15 or more. All-day admission included.</p>
+          <a href="#visit" class="price-cta">Get Pass</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="foot">
-    Built by <a href="https://studioobrien.com">Studio O'Brien</a> &middot; Shelby, NC
-  </div>
+  <!-- GAMES MARQUEE + STATS -->
+  <section class="games" id="games-stats">
+    <div class="games-marquee">
+      <div class="games-marquee-inner">
+        <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Double Dragon <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Centipede <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Whirlwind <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Mars Attacks!</span>
+        <span class="game-name">Pac-Man <span class="dot">&bull;</span> Donkey Kong <span class="dot">&bull;</span> Double Dragon <span class="dot">&bull;</span> Street Fighter II <span class="dot">&bull;</span> Galaga <span class="dot">&bull;</span> Ms. Pac-Man <span class="dot">&bull;</span> Star Wars <span class="dot">&bull;</span> The Munsters <span class="dot">&bull;</span> Centipede <span class="dot">&bull;</span> Mortal Kombat <span class="dot">&bull;</span> Whirlwind <span class="dot">&bull;</span> NBA Jam <span class="dot">&bull;</span> Frogger <span class="dot">&bull;</span> Bad Dudes <span class="dot">&bull;</span> Mars Attacks!</span>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="games-stats">
+        <div class="stat-item">
+          <p class="stat-number">105+</p>
+          <p class="stat-label">Playable Machines</p>
+          <p class="stat-sub">Cabinets and pinball, all powered up</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">80+</p>
+          <p class="stat-label">In Rotation</p>
+          <p class="stat-sub">New games swapped in regularly</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">$0</p>
+          <p class="stat-label">Per Play</p>
+          <p class="stat-sub">One price, no quarters required</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">2</p>
+          <p class="stat-label">Floors</p>
+          <p class="stat-sub">Main floor plus blacklight basement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-label">Inside the Museum</p>
+      <h2 class="section-title">See the Floor</h2>
+
+      <div class="gallery-grid">
+        <div class="gallery-img featured">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-floor.webp" alt="Overhead view of Carolina Arcade Museum with dozens of machines and colorful banners" loading="lazy" width="1189" height="787">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement room with vintage 80s arcade carpet, foosball table, and arcade cabinets" loading="lazy" width="1600" height="1200">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/pinball-row.webp" alt="Row of pinball machines including High Speed with person playing" loading="lazy" width="1200" height="904">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/overhead-vertical.webp" alt="Overhead angle showing pinball machines and arcade cabinets with banners" loading="lazy" width="901" height="1600">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="Wide view of blacklight arcade basement with glowing carpet and game screens" loading="lazy" width="1400" height="1055">
+        </div>
+        <div class="gallery-img">
+          <img src="/mock-sites/assets/carolina-arcade/starwars-stormtrooper.webp" alt="Star Wars pinball machine with life-size Stormtrooper figure" loading="lazy" width="1200" height="1200">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIRTHDAY PARTIES -->
+  <section class="birthday" id="parties">
+    <div class="birthday-bg">
+      <img src="/mock-sites/assets/carolina-arcade/blacklight-wide.webp" alt="" loading="lazy" width="1400" height="1055">
+    </div>
+    <div class="container">
+      <div class="bday-layout">
+          <div class="bday-left">
+            <p class="bday-label">Private Events</p>
+            <h2 class="bday-title">Birthday<br>Parties</h2>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#127881;</div>
+              <div class="exp-text">
+                <h4>Your Own Party Room</h4>
+                <p>Two hours, fully private. Bring decorations, cake, food, drinks. Make it yours.</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#127918;</div>
+              <div class="exp-text">
+                <h4>All-Day Arcade Access</h4>
+                <p>Every guest plays unlimited games on 105+ machines, both floors, all day long.</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#128161;</div>
+              <div class="exp-text">
+                <h4>The Blacklight Basement</h4>
+                <p>Neon carpet, glowing screens, a whole floor of cabinets under blacklights. Kids go wild for it.</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-icon">&#10133;</div>
+              <div class="exp-text">
+                <h4>Invite More People</h4>
+                <p>Extra wristbands just $8 each. Only guests playing games need one.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bday-booking">
+            <div class="bday-booking-head">
+              <p class="book-price">$150</p>
+              <p class="book-sub">15 guests included<br>all-day play</p>
+            </div>
+            <div class="bday-booking-body">
+              <div class="bday-booking-row">
+                <span class="row-label">Party room</span>
+                <span class="row-val">2 hours</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Wristbands</span>
+                <span class="row-val">15 included</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Extra guests</span>
+                <span class="row-val">$8 each</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Game access</span>
+                <span class="row-val">All day</span>
+              </div>
+              <div class="bday-booking-row">
+                <span class="row-label">Per kid</span>
+                <span class="row-val">$10</span>
+              </div>
+            </div>
+            <div class="bday-booking-foot">
+              <a href="#visit" class="btn-primary">Book a Party</a>
+              <p class="deposit-tag">$25 deposit to reserve your date</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="story" id="story">
+    <div class="container">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">More Than Just a Screen</h2>
+
+      <div class="sv5-triptych">
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/exterior-front.webp" alt="Carolina Arcade Museum storefront" loading="lazy" width="1200" height="900"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">Est.2018</p>
+              <h4 class="sv5-card-heading">Where It All Started</h4>
+              <p class="sv5-card-desc">145 East Main Street in Forest City, NC used to be just another empty building on a quiet downtown strip. Dave Walker filled it with the machines he grew up playing and opened the doors to everyone.</p>
+            </div>
+          </div>
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/family-pinball.webp" alt="Dave Walker with family at pinball" loading="lazy" width="1400" height="788"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">The Founder</p>
+              <h4 class="sv5-card-heading">Dave Walker</h4>
+              <p class="sv5-card-desc">Collector turned curator. Dave built this place because he believed playing side by side beats playing alone. Every machine is freeplay. No quarters, no tokens, no timers. Just walk in and play.</p>
+            </div>
+          </div>
+          <div class="sv5-card">
+            <div class="sv5-card-img"><img src="/mock-sites/assets/carolina-arcade/blacklight-basement.webp" alt="Blacklight basement arcade" loading="lazy" width="1400" height="788"></div>
+            <div class="sv5-card-body">
+              <p class="sv5-card-year">PBS</p>
+              <h4 class="sv5-card-heading">Small Town, National Spotlight</h4>
+              <p class="sv5-card-desc">PBS came to Forest City to tell the story of a small-town arcade preserving gaming history. Two floors, 105+ machines, and a blacklight basement that feels like stepping into 1985.</p>
+            </div>
+          </div>
+        </div>
+        <div class="sv5-quote-row">
+          <blockquote>"It's more than just a screen you're looking at."</blockquote>
+          <cite>Dave Walker, Founder</cite>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <p class="section-label">What People Say</p>
+      <h2 class="section-title">Player Reviews</h2>
+      <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="reviews-rating" style="text-decoration:none;color:inherit;">
+        <span class="big-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="rating-text">4.9 stars on Google &bull; 40+ reviews</span>
+      </a>
+
+      <div class="rv1-grid">
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"We were there for almost 9 hours! The children had a blast playing all the retro games. They didn't want to leave!"</p>
+            <p class="rv-author">Amos Famous</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Our kids (10 &amp; 13) had a blast, and their grandparents (64 &amp; 74) found some old favorites."</p>
+            <p class="rv-author">Stephanie Girard</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"By far the best way to spend an evening downtown. The downstairs room has blacklights and 80s arcade carpet."</p>
+            <p class="rv-author">Alex J</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"We never had to wait for a game and could have spent all day here. Worth the drive from Charlotte!"</p>
+            <p class="rv-author">Jill B.</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Best arcade museum in the region! The owners are fantastic people. Machines maintained well and very clean!"</p>
+            <p class="rv-author">James Donaldson</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+          <div class="rv1-card">
+            <p class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="rv-text">"Good selection of games, especially pinball including classics like The Munsters and Mars Attacks!"</p>
+            <p class="rv-author">Christian Mabe</p>
+            <div class="rv-google-row"><span class="rv-google-circle"><img src="https://img.logo.dev/google.com?token=pk_R8_8hLshSwmse1iaY7Qzww&size=14&format=png" alt="G"></span><span class="rv-google-text">Google Review</span></div>
+          </div>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <p class="section-label">Plan Your Visit</p>
+      <h2 class="section-title">Come Play</h2>
+
+      <!-- VT3 LOCKED: Map + Stacked Info -->
+        <div class="vt3-layout">
+          <div class="vt3-map">
+            <iframe src="https://maps.google.com/maps?q=Carolina+Arcade+Museum,+145+E+Main+St,+Forest+City,+NC+28043&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="vt3-map-footer">
+              <span class="vt3-map-addr">145 East Main St, Forest City</span>
+              <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" class="vt3-map-dir">Directions &rarr;</a>
+            </div>
+          </div>
+          <div class="vt3-stack">
+            <div class="vt3-block">
+              <h3 class="vt-h3">Hours</h3>
+              <ul class="vt3-hours">
+                <li><span class="day">Monday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Tuesday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Wednesday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li><span class="day">Thursday</span><span class="time">12:00 - 8:00 PM</span></li>
+                <li class="late"><span class="day">Friday</span><span class="time">12:00 - 10:00 PM</span></li>
+                <li class="late"><span class="day">Saturday</span><span class="time">12:00 - 10:00 PM</span></li>
+                <li class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
+              </ul>
+            </div>
+            <div class="vt3-block">
+              <h3 class="vt-h3">Connect</h3>
+              <div class="vt3-links">
+                <a href="tel:8282293089" class="vt3-link vt3-link--call">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">(828) 229-3089</span>
+                    <span class="vt3-link-sub">Tap to call</span>
+                  </span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" class="vt3-link vt3-link--fb">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">Carolina Arcade Museum</span>
+                    <span class="vt3-link-sub">Follow on Facebook</span>
+                  </span>
+                </a>
+                <a href="https://www.google.com/maps/search/Carolina+Arcade+Museum+Forest+City+NC" target="_blank" rel="noopener" class="vt3-link vt3-link--review">
+                  <span class="vt3-link-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+                  <span class="vt3-link-text">
+                    <span class="vt3-link-label">4.9 Stars on Google</span>
+                    <span class="vt3-link-sub">Leave a review</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER — FT3 LOCKED -->
+  <footer>
+    <div class="ft3">
+      <div class="ft3-inner">
+        <img src="/mock-sites/assets/carolina-arcade/logo-wide.webp" alt="Carolina Arcade Museum" class="ft3-logo">
+        <p class="ft3-addr">145 East Main St &bull; Forest City, NC</p>
+        <a href="tel:8282293089" class="ft3-phone">(828) 229-3089</a>
+        <div class="ft3-social">
+          <a href="https://www.facebook.com/profile.php?id=100064072420803" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="tel:8282293089" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
+          <a href="https://maps.google.com/?q=145+East+Main+St+Forest+City+NC+28043" target="_blank" rel="noopener" aria-label="Directions"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+        <p class="ft3-credit">Website designed by <a href="https://studioobrien.com" target="_blank" rel="noopener">Studio O'Brien</a></p>
+      </div>
+    </div>
+  </footer>
+
 
 </body>
 </html>

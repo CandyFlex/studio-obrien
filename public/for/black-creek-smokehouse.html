@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Creek Smokehouse | Pit-Smoked BBQ in Shelby, NC</title>
+  <meta name="description" content="Three generations of Coleman family pitmasters. Whole hog BBQ, St. Louis ribs, smoked brisket. Open Wed-Sun on Buffalo Creek Road in Shelby, NC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: 'Lora', serif;
+      background: #2c1810;
+      color: #f5f0e8;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    :root {
+      --wood: #2c1810;
+      --wood-light: #3d2317;
+      --tan: #d4a574;
+      --tan-light: #e8c9a8;
+      --cream: #f5f0e8;
+      --burnt: #c1783a;
+      --burnt-dark: #9c5e2a;
+      --green: #4a6741;
+      --shadow: 0 2px 12px rgba(0,0,0,0.15);
+      --font-display: 'Abril Fatface', serif;
+      --font-heading: 'Lora', serif;
+      --font-body: 'Merriweather', serif;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(44,24,16,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(212,165,116,0.15); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--tan); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 500; color: var(--cream); opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+    .nav-links a:hover { opacity: 1; color: var(--tan); }
+    .nav-cta { background: var(--burnt); color: var(--cream); padding: 8px 20px; border-radius: 6px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--burnt-dark); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* Hero */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(44,24,16,0.3) 0%, rgba(44,24,16,0.85) 100%), linear-gradient(90deg, rgba(44,24,16,0.6) 0%, transparent 50%); z-index: 1; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #2c1810 0%, #1a0f08 40%, #3d2317 100%); z-index: 0; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212,165,116,0.02) 2px, rgba(212,165,116,0.02) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(212,165,116,0.02) 2px, rgba(212,165,116,0.02) 4px); }
+    .hero-content { position: relative; z-index: 2; max-width: 650px; padding: 120px 0 80px; }
+    .hero-established { display: inline-block; background: var(--burnt); color: var(--cream); padding: 6px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.15; color: var(--cream); margin-bottom: 16px; }
+    .hero h1 span { color: var(--tan); }
+    .hero p { font-size: 1.1rem; color: rgba(245,240,232,0.85); margin-bottom: 32px; max-width: 480px; }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-primary { background: var(--burnt); color: var(--cream); }
+    .btn-primary:hover { background: var(--burnt-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--cream); border: 2px solid rgba(212,165,116,0.4); }
+    .btn-outline:hover { border-color: var(--tan); color: var(--tan); }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tan); margin-bottom: 8px; font-weight: 600; }
+    .section-heading { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; color: var(--cream); margin-bottom: 16px; }
+    .section-sub { color: rgba(245,240,232,0.7); margin-bottom: 40px; max-width: 600px; }
+
+    /* Story */
+    .story { background: var(--wood-light); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .story-text p { margin-bottom: 16px; color: rgba(245,240,232,0.85); font-size: 0.95rem; }
+    .story-text .pullquote { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.3; color: var(--tan); margin: 28px 0; padding-left: 20px; border-left: 3px solid var(--burnt); }
+    .story-image { background: linear-gradient(135deg, #3d2317 0%, #2c1810 100%); border-radius: 12px; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; color: rgba(212,165,116,0.3); font-size: 48px; border: 1px solid rgba(212,165,116,0.1); }
+    @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; gap: 32px; } .story-image { aspect-ratio: 4/3; } }
+
+    /* Menu */
+    .menu { background: var(--wood); }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .menu-card { background: var(--wood-light); border-radius: 10px; padding: 28px; border: 1px solid rgba(212,165,116,0.1); transition: border-color 0.2s; }
+    .menu-card:hover { border-color: rgba(212,165,116,0.25); }
+    .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .menu-card h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--tan); }
+    .menu-card .price { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--burnt); white-space: nowrap; }
+    .menu-card p { color: rgba(245,240,232,0.7); font-size: 0.88rem; line-height: 1.6; }
+
+    /* Selling Points */
+    .points { background: var(--wood); border-top: 1px solid rgba(212,165,116,0.08); border-bottom: 1px solid rgba(212,165,116,0.08); }
+    .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+    .points-item .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .points-item h3 { font-family: var(--font-heading); font-size: 1.05rem; color: var(--tan); margin-bottom: 8px; }
+    .points-item p { color: rgba(245,240,232,0.7); font-size: 0.88rem; }
+    @media (max-width: 768px) { .points-grid { grid-template-columns: 1fr; } }
+
+    /* Testimonials */
+    .testimonials { background: var(--wood-light); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: var(--wood); border-radius: 10px; padding: 28px; border: 1px solid rgba(212,165,116,0.1); }
+    .testimonial-card .stars { color: var(--tan); font-size: 1.1rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testimonial-card p { color: rgba(245,240,232,0.85); font-style: italic; font-size: 0.92rem; margin-bottom: 16px; line-height: 1.6; }
+    .testimonial-card .author { color: var(--tan); font-size: 0.85rem; font-weight: 600; }
+    .testimonial-card .source { color: rgba(245,240,232,0.5); font-size: 0.78rem; }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* CTA Band */
+    .cta-band { background: var(--burnt); text-align: center; padding: 64px 0; }
+    .cta-band h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); color: var(--cream); margin-bottom: 12px; }
+    .cta-band p { color: rgba(245,240,232,0.85); margin-bottom: 28px; font-size: 1rem; }
+    .cta-band .btn { background: var(--wood); color: var(--tan); }
+    .cta-band .btn:hover { background: #1a0f08; }
+
+    /* Info */
+    .info { background: var(--wood); }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .info-card { text-align: center; }
+    .info-card .icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+    .info-card h4 { font-family: var(--font-heading); color: var(--tan); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .info-card p { color: rgba(245,240,232,0.75); font-size: 0.9rem; }
+    .info-card a { color: var(--tan); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .info-card a:hover { border-color: var(--tan); }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+    /* Footer */
+    .footer { background: #1a0f08; padding: 48px 0 32px; border-top: 1px solid rgba(212,165,116,0.08); }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.25rem; color: var(--tan); }
+    .footer p, .footer a { color: rgba(245,240,232,0.55); font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(212,165,116,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .credit { color: rgba(245,240,232,0.35); font-size: 0.8rem; }
+    .credit a { color: rgba(245,240,232,0.35); }
+    .credit a:hover { color: var(--tan); }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Black Creek Smokehouse</a>
+    <ul class="nav-links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#menu" class="nav-cta">See Menu</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <span class="hero-established">Est. 1987</span>
+    <h1>Pit-Smoked<br><span>Since 1987</span></h1>
+    <p>Three generations. One smoker. The best BBQ in Cleveland County. Come hungry.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">See the Menu</a>
+      <a href="#visit" class="btn btn-outline">Find Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-text fade-in">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-heading">Three Generations of Smoke</h2>
+      <p>Eddie Ray Coleman built his first smoker out of a 55-gallon drum in 1987. He was 22 years old, working at the textile mill by day and selling barbecue out of his driveway on weekends. Word spread. By 1992, the line stretched down Buffalo Creek Road every Saturday.</p>
+      <p>His son Travis grew up tending the pit alongside him &mdash; learning which wood burns hottest, when to wrap, when to rest. Today, they run the Smokehouse together. Eddie Ray still lights the pit every morning at 3am. Travis runs the kitchen. His daughter Maddie handles the front of house.</p>
+      <div class="pullquote">"The recipes are the same ones Eddie Ray's mother wrote down on a notecard in 1965."</div>
+      <p>Every sauce, side, and dessert is made from scratch daily. The Coleman family has been smoking meat over hickory and oak for three generations. Pull up a chair. Stay a while.</p>
+    </div>
+    <div class="story-image fade-in" data-asset="pitmaster-photo">
+      <span>&#x1f525;</span>
+    </div>
+  </div>
+</section>
+
+<section class="points">
+  <div class="container points-grid">
+    <div class="points-item fade-in">
+      <span class="icon">&#x1f4dc;</span>
+      <h3>Family Recipes Since 1965</h3>
+      <p>Every sauce and rub traces back to handwritten notecards from Eddie Ray's mother.</p>
+    </div>
+    <div class="points-item fade-in">
+      <span class="icon">&#x1f332;</span>
+      <h3>Hickory & Oak Smoked</h3>
+      <p>24-hour low-and-slow smoking over real hardwoods. No shortcuts. No gas assist. No liquid smoke.</p>
+    </div>
+    <div class="points-item fade-in">
+      <span class="icon">&#x1f3e0;</span>
+      <h3>Family Owned & Operated</h3>
+      <p>Eddie Ray, Travis, and Maddie run every part of the Smokehouse. When you eat here, you're family.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="container">
+    <p class="section-label">Menu</p>
+    <h2 class="section-heading">What's Coming Off the Pit</h2>
+    <p class="section-sub">Everything made from scratch. Everything served with cornbread and one side. Add a second side for $2.</p>
+    <div class="menu-grid">
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>Whole Hog BBQ</h3>
+          <span class="price">From $12</span>
+        </div>
+        <p>24-hour pit-smoked whole hog. Pulled or chopped. Served with our 1987 sauce recipe. The one that started it all.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>St. Louis Ribs</h3>
+          <span class="price">From $16</span>
+        </div>
+        <p>Dry-rubbed and smoked over hickory. Fall-off-the-bone tender. Half rack or full rack. Get extra napkins.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>Smoked Brisket</h3>
+          <span class="price">From $15</span>
+        </div>
+        <p>12-hour smoked Angus brisket. Sliced to order. Limited quantities daily. When it's gone, it's gone.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>Smoked Wings</h3>
+          <span class="price">From $10</span>
+        </div>
+        <p>Jumbo wings smoked then flash-fried. Tossed in your choice of house sauces: original, hot honey, or Carolina gold.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>Family Platter</h3>
+          <span class="price">$48</span>
+        </div>
+        <p>Feeds 4-6. Choice of 2 meats, 4 sides, cornbread, and a gallon of sweet tea. The Sunday special.</p>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-card-header">
+          <h3>Homemade Sides</h3>
+          <span class="price">$3 ea</span>
+        </div>
+        <p>Mac & cheese, coleslaw, baked beans, collard greens, hushpuppies, potato salad, fries. All made in-house daily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <p class="section-label">Reviews</p>
+    <h2 class="section-heading">What People Are Saying</h2>
+    <p class="section-sub">Three generations of satisfied customers. Here are a few of them.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Best pulled pork I've had in North Carolina. And I've tried a lot of pulled pork."</p>
+        <div class="author">Mike T.</div>
+        <div class="source">Google Review</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Black Creek is our family tradition. Every Sunday after church. The brisket and mac and cheese are unbeatable."</p>
+        <div class="author">Lisa R.</div>
+        <div class="source">Google Review</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Eddie Ray came out and talked to us for 20 minutes. You can tell he genuinely loves what he does. The food proves it."</p>
+        <div class="author">Chris D.</div>
+        <div class="source">Yelp Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Come Hungry. Leave Happy.</h2>
+    <p>Open Wednesday through Sunday. Indoor seating, outdoor picnic tables under the pecan trees, and takeout available.</p>
+    <a href="#visit" class="btn">Get Directions</a>
+  </div>
+</section>
+
+<section class="info" id="visit">
+  <div class="container">
+    <p class="section-label">Visit Us</p>
+    <h2 class="section-heading">Find the Smokehouse</h2>
+    <p class="section-sub">Down Buffalo Creek Road. Follow your nose.</p>
+    <div class="info-grid">
+      <div class="info-card fade-in">
+        <span class="icon">&#x1f4cd;</span>
+        <h4>Address</h4>
+        <p>847 Buffalo Creek Rd<br>Shelby, NC 28150</p>
+      </div>
+      <div class="info-card fade-in">
+        <span class="icon">&#x1f4de;</span>
+        <h4>Phone</h4>
+        <p><a href="tel:+17045550187">(704) 555-0187</a></p>
+      </div>
+      <div class="info-card fade-in">
+        <span class="icon">&#x1f556;</span>
+        <h4>Hours</h4>
+        <p>Mon-Tue: Closed<br>Wed: 11am – 8pm<br>Thu-Sat: 11am – 9pm<br>Sun: 11am – 4pm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Black Creek Smokehouse</div>
+        <p>847 Buffalo Creek Rd, Shelby, NC 28150</p>
+      </div>
+      <p>(704) 555-0187<br>Pit-smoked since 1987</p>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Black Creek Smokehouse. All rights reserved.</p>
+      <p class="credit">Website designed by <a href="https://studioobrien.com">Studio O'Brien</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

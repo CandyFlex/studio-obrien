@@ -1,0 +1,84 @@
+{
+  "business": {
+    "name": "Black Creek Smokehouse",
+    "tagline": "Pit-smoked since 1987. Third generation. Still family.",
+    "slug": "black-creek-smokehouse",
+    "industry": "BBQ / Southern Comfort Food",
+    "location": {
+      "address": "847 Buffalo Creek Rd",
+      "city": "Shelby",
+      "state": "NC",
+      "zip": "28150",
+      "county": "Cleveland"
+    },
+    "phone": "(704) 555-0187",
+    "hours": {
+      "mon": "Closed",
+      "tue": "Closed",
+      "wed": "11am - 8pm",
+      "thu": "11am - 9pm",
+      "fri": "11am - 9pm",
+      "sat": "11am - 9pm",
+      "sun": "11am - 4pm"
+    },
+    "founded": "1987",
+    "owners": ["Eddie Ray Coleman", "Travis Coleman"],
+    "ownerTitles": ["Pitmaster & Founder", "Head Chef"]
+  },
+  "voice": {
+    "tone": "warm, down-home, proud, unpretentious, family-first",
+    "vocabulary": ["pit-smoked", "whole hog", "family recipe", "from scratch", "low and slow", "sweet tea", "homemade"],
+    "avoid": ["artisanal", "curated", "craft", "elevated", "gastropub"],
+    "sampleQuotes": [
+      "Been coming here since I was a kid. The pulled pork hasn't changed in 30 years.",
+      "Eddie Ray still tends the pit himself. You can taste the difference."
+    ]
+  },
+  "brand": {
+    "colorDirection": "Warm wood tones, cream, burnt orange",
+    "existingColors": ["#2c1810", "#d4a574", "#f5f0e8", "#c1783a"],
+    "mood": "Rustic Southern hospitality",
+    "archetype": "03-rustic-smokehouse",
+    "fonts": {
+      "display": "Abril Fatface",
+      "body": "Lora"
+    }
+  },
+  "content": {
+    "heroHeadline": "Pit-Smoked Since 1987",
+    "heroSubtext": "Three generations. One smoker. The best BBQ in Cleveland County.",
+    "services": [
+      { "name": "Whole Hog BBQ", "description": "24-hour pit-smoked whole hog. Pulled or chopped. Served with our 1987 sauce recipe.", "price": "From $12" },
+      { "name": "St. Louis Ribs", "description": "Dry-rubbed and smoked over hickory. Fall-off-the-bone tender.", "price": "From $16" },
+      { "name": "Smoked Brisket", "description": "12-hour smoked Angus brisket. Sliced to order. Limited quantities daily.", "price": "From $15" },
+      { "name": "Smoked Wings", "description": "Jumbo wings smoked then flash-fried. Tossed in your choice of our house sauces.", "price": "From $10" },
+      { "name": "Family Platter", "description": "Feeds 4-6. Choice of 2 meats, 4 sides, cornbread, and a gallon of sweet tea.", "price": "$48" }
+    ],
+    "testimonials": [
+      { "quote": "Best pulled pork I've had in North Carolina. And I've tried a lot of pulled pork.", "author": "Mike T.", "source": "Google" },
+      { "quote": "Black Creek is our family tradition. Every Sunday after church. The brisket and mac and cheese are unbeatable.", "author": "Lisa R.", "source": "Google" },
+      { "quote": "Eddie Ray came out and talked to us for 20 minutes. You can tell he genuinely loves what he does. The food proves it.", "author": "Chris D.", "source": "Yelp" }
+    ],
+    "story": "Eddie Ray Coleman built his first smoker out of a 55-gallon drum in 1987. He was 22 years old, working at the textile mill by day and selling barbecue out of his driveway on weekends. Word spread. By 1992, the line stretched down Buffalo Creek Road every Saturday. His son Travis grew up tending the pit alongside him — learning which wood burns hottest, when to wrap, when to rest. Today, they run the Smokehouse together. Eddie Ray still lights the pit every morning at 3am. Travis runs the kitchen. His daughter Maddie handles the front of house. The recipes are the same ones Eddie Ray's mother wrote down on a notecard in 1965.",
+    "sellingPoints": [
+      "Three generations of pitmasters — the Coleman family has been smoking meat since 1987",
+      "Whole hog BBQ cooked low and slow for 24 hours over hickory and oak",
+      "Every sauce, side, and dessert made from scratch daily",
+      "Family-sized portions at family-friendly prices",
+      "Outdoor picnic seating under the pecan trees"
+    ]
+  },
+  "assets": {
+    "hasOwnerPhoto": true,
+    "logoQuality": "needs-creation",
+    "heroImage": "needs-photo",
+    "galleryImages": []
+  },
+  "meta": {
+    "currentWebPresence": "None — this is a faux portfolio showcase",
+    "isFaux": true,
+    "archetype": "03-rustic-smokehouse",
+    "dateProfiled": "2026-05-25",
+    "readyToBuild": true
+  }
+}

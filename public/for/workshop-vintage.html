@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkShop Vintage Market | Vintage Finds & Local Makers | Shelby, NC</title>
+  <meta name="description" content="80+ vendors, 6,000 square feet of vintage treasures, handcrafted goods, and local favorites in the heart of Uptown Shelby, NC. Est. 2018." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #5c4033;
+      background: #faf6ef;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --cream: #faf6ef;
+      --brown: #5c4033;
+      --sage: #8a9a7b;
+      --sage-light: #b3c2a6;
+      --sage-pale: #dae3d1;
+      --gold: #c4a35a;
+      --gold-light: #d9c382;
+      --gold-pale: #f0e4c0;
+      --terracotta: #c17c5e;
+      --terracotta-light: #d9a08a;
+      --linen: #f0ead6;
+      --dark: #3a2e25;
+      --dark-soft: #4d3f34;
+      --cream-dark: #e8e0cf;
+    }
+
+    /* ===== TEXTURES ===== */
+    .texture-linen {
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(92,64,51,0.015) 2px, rgba(92,64,51,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(92,64,51,0.015) 2px, rgba(92,64,51,0.015) 4px);
+    }
+    .texture-paper {
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    .texture-dots {
+      background-image: radial-gradient(circle, rgba(92,64,51,0.06) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+      color: var(--brown);
+    }
+    .font-hand {
+      font-family: 'Caveat', cursive;
+    }
+    .section-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      color: var(--terracotta);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+    .section-subtext {
+      font-size: 1.1rem;
+      max-width: 640px;
+      line-height: 1.8;
+      color: var(--dark-soft);
+      opacity: 0.85;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--dark);
+      transition: all 0.4s ease;
+    }
+    .nav.scrolled {
+      box-shadow: 0 4px 24px rgba(58,46,37,0.2);
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .nav-brand span {
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: rgba(250,246,239,0.75);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-cta {
+      background: var(--terracotta) !important;
+      color: var(--cream) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.06em;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: #d08a6e !important;
+      transform: translateY(-1px);
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+      padding: 120px 2rem 80px;
+    }
+    /* Large decorative background pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,163,90,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(138,154,123,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 80%, rgba(193,124,94,0.06) 0%, transparent 60%);
+    }
+    /* Decorative corner flourishes */
+    .hero-flourish {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(196,163,90,0.15);
+      pointer-events: none;
+    }
+    .hero-flourish.tl { top: 60px; left: 40px; border-right: none; border-bottom: none; }
+    .hero-flourish.tr { top: 60px; right: 40px; border-left: none; border-bottom: none; }
+    .hero-flourish.bl { bottom: 40px; left: 40px; border-right: none; border-top: none; }
+    .hero-flourish.br { bottom: 40px; right: 40px; border-left: none; border-top: none; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+    .hero-est {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-title .highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0.05em;
+      left: -0.05em;
+      right: -0.05em;
+      height: 0.2em;
+      background: linear-gradient(90deg, rgba(196,163,90,0.25), rgba(193,124,94,0.2));
+      z-index: -1;
+      border-radius: 2px;
+    }
+    /* Decorative divider below title */
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .hero-divider .line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .hero-divider .diamond {
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.6;
+    }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--dark-soft);
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      color: var(--dark-soft);
+      opacity: 0.75;
+      line-height: 1.8;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--brown);
+      color: var(--cream);
+    }
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(58,46,37,0.2);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--brown);
+    }
+    .btn-outline:hover {
+      background: var(--brown);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+    /* Floating decorative elements around hero */
+    .hero-deco {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-deco-circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,163,90,0.12);
+      top: 15%;
+      right: -80px;
+    }
+    .hero-deco-circle2 {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(138,154,123,0.12);
+      bottom: 15%;
+      left: -40px;
+    }
+    .hero-deco-dots {
+      width: 120px;
+      height: 120px;
+      bottom: 20%;
+      right: 8%;
+      background-image: radial-gradient(circle, var(--gold) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      opacity: 0.12;
+    }
+    .hero-deco-dots2 {
+      width: 80px;
+      height: 80px;
+      top: 25%;
+      left: 6%;
+      background-image: radial-gradient(circle, var(--terracotta) 1.5px, transparent 1.5px);
+      background-size: 14px 14px;
+      opacity: 0.1;
+    }
+
+    /* Large oversized WS monogram watermark */
+    .hero-monogram {
+      position: absolute;
+      z-index: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(15rem, 30vw, 28rem);
+      color: rgba(196,163,90,0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -0.05em;
+    }
+
+    /* ===== SECTION SPACING ===== */
+    section {
+      padding: 100px 0;
+    }
+
+    /* ===== COLLECTION ===== */
+    .collection {
+      background: var(--linen);
+      position: relative;
+    }
+    .collection::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--gold), var(--terracotta), var(--sage));
+    }
+    .collection-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .collection-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 2.25rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 1px solid rgba(92,64,51,0.06);
+    }
+    .collection-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(92,64,51,0.1);
+    }
+    /* Decorative top accent bar on each card */
+    .collection-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .collection-card:nth-child(1)::before { background: var(--sage); }
+    .collection-card:nth-child(2)::before { background: var(--gold); }
+    .collection-card:nth-child(3)::before { background: var(--terracotta); }
+    .collection-card:nth-child(4)::before { background: var(--terracotta); }
+    .collection-card:nth-child(5)::before { background: var(--sage); }
+    .collection-card:nth-child(6)::before { background: var(--gold); }
+
+    /* CSS-only category icon shapes */
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1.25rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-icon .icon-shape {
+      position: absolute;
+      border-radius: 50%;
+    }
+    /* Furniture icon - overlapping rectangles */
+    .card-icon-furniture .icon-shape {
+      width: 36px; height: 28px;
+      border-radius: 4px;
+      border: 2.5px solid var(--sage);
+      background: rgba(138,154,123,0.08);
+    }
+    .card-icon-furniture .icon-shape:nth-child(2) {
+      width: 28px; height: 20px;
+      transform: translate(8px, -6px);
+      border-color: var(--sage-light);
+    }
+    /* Antiques icon - circle with dot */
+    .card-icon-antiques .icon-shape:first-child {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold);
+      background: rgba(196,163,90,0.08);
+    }
+    .card-icon-antiques .icon-shape:nth-child(2) {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+    /* Handcrafted icon - diamond */
+    .card-icon-handcrafted .icon-shape:first-child {
+      width: 32px; height: 32px;
+      border-radius: 4px;
+      border: 2.5px solid var(--terracotta);
+      background: rgba(193,124,94,0.08);
+      transform: rotate(45deg);
+    }
+    .card-icon-handcrafted .icon-shape:nth-child(2) {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: rgba(193,124,94,0.15);
+    }
+    /* Home decor icon - house shape via borders */
+    .card-icon-decor .icon-shape:first-child {
+      width: 34px; height: 26px;
+      border-radius: 3px;
+      border: 2.5px solid var(--terracotta);
+      background: rgba(193,124,94,0.08);
+    }
+    .card-icon-decor .icon-shape:nth-child(2) {
+      width: 0; height: 0;
+      border-left: 22px solid transparent;
+      border-right: 22px solid transparent;
+      border-bottom: 16px solid rgba(193,124,94,0.15);
+      border-radius: 0;
+      transform: translateY(-22px);
+    }
+    /* Local favorites icon - star-ish */
+    .card-icon-local .icon-shape:first-child {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 2.5px solid var(--sage);
+      background: rgba(138,154,123,0.08);
+    }
+    .card-icon-local .icon-shape:nth-child(2) {
+      width: 16px; height: 16px;
+      border-radius: 2px;
+      background: rgba(138,154,123,0.2);
+      transform: rotate(45deg);
+    }
+    /* Fashion icon - overlapping circles */
+    .card-icon-fashion .icon-shape:first-child {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold);
+      background: rgba(196,163,90,0.08);
+      transform: translateX(-8px);
+    }
+    .card-icon-fashion .icon-shape:nth-child(2) {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold-light);
+      background: rgba(196,163,90,0.05);
+      transform: translateX(8px);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--brown);
+    }
+    .card-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dark-soft);
+      opacity: 0.8;
+    }
+
+    /* ===== VENDORS ===== */
+    .vendors {
+      background: var(--cream);
+      position: relative;
+    }
+    .vendors-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .vendors-text .section-subtext {
+      margin-bottom: 2.5rem;
+    }
+    /* CSS-only vendor booth mosaic */
+    .vendors-visual {
+      position: relative;
+      height: 480px;
+    }
+    .booth {
+      position: absolute;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+    .booth:hover {
+      transform: scale(1.03);
+    }
+    .booth-1 {
+      top: 0; left: 0;
+      width: 55%;
+      height: 55%;
+      background: linear-gradient(135deg, var(--sage-pale) 0%, var(--sage-light) 100%);
+    }
+    .booth-1::after {
+      content: 'BOOTH 12';
+      position: absolute;
+      bottom: 16px; left: 16px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--brown);
+      opacity: 0.5;
+    }
+    .booth-1-inner {
+      position: absolute;
+      inset: 20px;
+      border: 2px dashed rgba(92,64,51,0.1);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .booth-1-inner::before {
+      content: '';
+      width: 60px; height: 60px;
+      border: 3px solid rgba(92,64,51,0.12);
+      border-radius: 50%;
+    }
+    .booth-2 {
+      top: 0; right: 0;
+      width: 40%;
+      height: 35%;
+      background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold-light) 100%);
+    }
+    .booth-2::after {
+      content: 'BOOTH 34';
+      position: absolute;
+      bottom: 12px; right: 12px;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.5;
+    }
+    .booth-2-pattern {
+      position: absolute;
+      inset: 12px;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(92,64,51,0.04) 8px, rgba(92,64,51,0.04) 9px);
+    }
+    .booth-3 {
+      bottom: 0; left: 10%;
+      width: 45%;
+      height: 38%;
+      background: linear-gradient(135deg, var(--terracotta-light) 0%, rgba(193,124,94,0.3) 100%);
+    }
+    .booth-3::after {
+      content: 'BOOTH 58';
+      position: absolute;
+      top: 12px; left: 16px;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.5;
+    }
+    .booth-3-inner {
+      position: absolute;
+      inset: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .booth-3-item {
+      background: rgba(250,246,239,0.3);
+      border-radius: 4px;
+    }
+    .booth-4 {
+      bottom: 5%;
+      right: 0;
+      width: 38%;
+      height: 52%;
+      background: linear-gradient(180deg, var(--linen) 0%, var(--cream-dark) 100%);
+      border: 1px solid rgba(92,64,51,0.08);
+    }
+    .booth-4::after {
+      content: 'BOOTH 71';
+      position: absolute;
+      top: 14px; right: 14px;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.5;
+    }
+    .booth-4-shelves {
+      position: absolute;
+      inset: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .shelf {
+      height: 2px;
+      background: rgba(92,64,51,0.1);
+      position: relative;
+    }
+    .shelf-item {
+      position: absolute;
+      bottom: 4px;
+      border-radius: 2px;
+    }
+    .shelf-item-1 { left: 10%; width: 18px; height: 24px; background: rgba(138,154,123,0.2); }
+    .shelf-item-2 { left: 35%; width: 14px; height: 18px; background: rgba(196,163,90,0.25); border-radius: 50%; }
+    .shelf-item-3 { left: 60%; width: 22px; height: 16px; background: rgba(193,124,94,0.2); }
+    .shelf-item-4 { left: 80%; width: 12px; height: 28px; background: rgba(92,64,51,0.1); }
+
+    .vendors-quote {
+      margin-top: 3rem;
+      padding: 2rem 2.5rem;
+      background: var(--linen);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      position: relative;
+    }
+    .vendors-quote::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: 0.1em;
+      left: 0.5rem;
+      line-height: 1;
+    }
+    .vendors-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--dark-soft);
+      padding-left: 1.5rem;
+    }
+    .vendors-quote cite {
+      display: block;
+      margin-top: 1rem;
+      padding-left: 1.5rem;
+      font-style: normal;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: var(--terracotta);
+    }
+
+    /* ===== SPACE / HISTORY ===== */
+    .space {
+      background: var(--dark);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .space::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(250,246,239,0.008) 2px, rgba(250,246,239,0.008) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(250,246,239,0.008) 2px, rgba(250,246,239,0.008) 4px);
+    }
+    .space-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .space .section-label {
+      color: var(--gold);
+    }
+    .space .section-heading {
+      color: var(--cream);
+    }
+    .space .section-subtext {
+      color: rgba(250,246,239,0.75);
+      max-width: 100%;
+    }
+    /* CSS timeline visual */
+    .space-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), var(--terracotta), var(--sage));
+      opacity: 0.3;
+    }
+    .timeline-node {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+    .timeline-node:last-child { margin-bottom: 0; }
+    .timeline-node:nth-child(odd) {
+      justify-content: flex-start;
+      padding-right: calc(50% + 2rem);
+      text-align: right;
+    }
+    .timeline-node:nth-child(even) {
+      justify-content: flex-end;
+      padding-left: calc(50% + 2rem);
+      text-align: left;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: calc(50% - 8px);
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      background: var(--dark);
+    }
+    .timeline-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: rgba(250,246,239,0.65);
+      line-height: 1.6;
+    }
+    /* Large decorative year in background */
+    .space-big-year {
+      position: absolute;
+      right: -5%;
+      bottom: -10%;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(250,246,239,0.025);
+      z-index: 0;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews {
+      background: var(--linen);
+      position: relative;
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+      border: 1px solid rgba(92,64,51,0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(92,64,51,0.08);
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+    .star {
+      width: 18px;
+      height: 18px;
+      position: relative;
+    }
+    .star::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      transform: translate(-50%, -50%);
+    }
+    .review-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--dark-soft);
+      margin-bottom: 1rem;
+    }
+    .review-author {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--terracotta);
+    }
+    /* Decorative quotation mark */
+    .review-card::after {
+      content: '\201D';
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.08;
+      line-height: 1;
+    }
+
+    /* ===== VISIT ===== */
+    .visit {
+      background: var(--cream);
+      position: relative;
+    }
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .visit-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .info-block h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .info-block p, .info-block address {
+      font-style: normal;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--dark-soft);
+    }
+    .info-block a {
+      color: var(--terracotta);
+      transition: color 0.3s;
+    }
+    .info-block a:hover {
+      color: var(--brown);
+    }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid rgba(92,64,51,0.08);
+    }
+    .hours-table td {
+      padding: 0.6rem 0;
+      font-size: 1rem;
+    }
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--brown);
+      width: 45%;
+    }
+    .hours-table td:last-child {
+      color: var(--dark-soft);
+    }
+    .hours-table .closed td:last-child {
+      color: var(--terracotta);
+      opacity: 0.7;
+    }
+    /* CSS Map placeholder */
+    .visit-map {
+      background: var(--linen);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid rgba(92,64,51,0.08);
+    }
+    /* Street grid pattern */
+    .visit-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, transparent 49%, rgba(92,64,51,0.06) 49%, rgba(92,64,51,0.06) 51%, transparent 51%),
+        linear-gradient(90deg, transparent 49%, rgba(92,64,51,0.06) 49%, rgba(92,64,51,0.06) 51%, transparent 51%);
+      background-size: 60px 60px;
+    }
+    .map-pin {
+      position: relative;
+      z-index: 2;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+    }
+    .map-pin::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: var(--terracotta);
+      border-radius: 50% 50% 50% 0;
+      transform: translateX(-50%) rotate(-45deg);
+    }
+    .map-pin::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--cream);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .map-label {
+      position: relative;
+      z-index: 2;
+    }
+    .map-label h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .map-label p {
+      font-size: 0.95rem;
+      color: var(--dark-soft);
+      opacity: 0.7;
+    }
+    .map-label .font-hand {
+      font-size: 1.2rem;
+      color: var(--terracotta);
+      margin-top: 1rem;
+      display: block;
+    }
+    /* Pulsing ring around pin */
+    .map-pin-ring {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--terracotta);
+      border-radius: 50%;
+      opacity: 0;
+      animation: pingRing 2s ease-out infinite;
+    }
+    @keyframes pingRing {
+      0% { transform: translateX(-50%) scale(0.8); opacity: 0.6; }
+      100% { transform: translateX(-50%) scale(2.2); opacity: 0; }
+    }
+
+    .visit-cta-note {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: var(--linen);
+      border-radius: 8px;
+      border: 1px solid rgba(92,64,51,0.08);
+    }
+    .visit-cta-note p {
+      font-size: 1rem;
+      color: var(--dark-soft);
+      margin-bottom: 1rem;
+    }
+    .visit-cta-note .btn {
+      font-size: 0.8rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark);
+      color: rgba(250,246,239,0.6);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand span {
+      color: var(--gold);
+    }
+    .footer-tagline {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+    }
+    .footer-divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(250,246,239,0.15);
+      margin: 0 auto 1.5rem;
+    }
+    .footer p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .footer-social {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: rgba(250,246,239,0.5);
+    }
+    .footer-social a {
+      color: var(--gold);
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .footer-social a:hover {
+      color: var(--cream);
+    }
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(250,246,239,0.08);
+      font-size: 0.8rem;
+      color: rgba(250,246,239,0.3);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+      .collection-grid {
+        gap: 1.25rem;
+      }
+      .vendors-visual {
+        height: 400px;
+      }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0; right: 0;
+        background: var(--dark);
+        padding: 1.5rem 2rem 2rem;
+        gap: 1.25rem;
+        border-top: 1px solid rgba(250,246,239,0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      }
+      .nav-toggle { display: flex; }
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .vendors-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .vendors-visual {
+        height: 350px;
+        order: -1;
+      }
+      .space-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .visit-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-flourish { display: none; }
+      .hero-deco-circle, .hero-deco-dots { display: none; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 0; }
+      .container { padding: 0 1.5rem; }
+      .hero { padding: 100px 1.5rem 60px; }
+      .hero-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+      .hero-sub { font-size: 0.95rem; }
+      .timeline-node:nth-child(odd),
+      .timeline-node:nth-child(even) {
+        padding-left: 2.5rem;
+        padding-right: 0;
+        text-align: left;
+        justify-content: flex-start;
+      }
+      .timeline-line {
+        left: 0;
+      }
+      .timeline-dot {
+        left: -8px;
+      }
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 560px) {
+      .nav { padding: 0 1rem; }
+      .nav-brand { font-size: 1.1rem; }
+      .hero { padding: 90px 1rem 50px; min-height: auto; padding-top: 120px; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 2.6rem); }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .collection-grid { grid-template-columns: 1fr; }
+      .collection-card { padding: 1.75rem 1.5rem; }
+      .vendors-visual { height: 280px; }
+      .vendors-quote { padding: 1.5rem; }
+      .space-big-year { font-size: 6rem; }
+      .visit-map { min-height: 320px; }
+      section { padding: 50px 0; }
+      .container { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-brand">Work<span>Shop</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#collection">Collection</a>
+      <a href="#vendors">Vendors</a>
+      <a href="#space">Our Story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit" class="nav-cta">Visit Us</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero texture-linen" id="hero">
+    <div class="hero-monogram">WS</div>
+    <div class="hero-flourish tl"></div>
+    <div class="hero-flourish tr"></div>
+    <div class="hero-flourish bl"></div>
+    <div class="hero-flourish br"></div>
+    <div class="hero-deco hero-deco-circle"></div>
+    <div class="hero-deco hero-deco-circle2"></div>
+    <div class="hero-deco hero-deco-dots"></div>
+    <div class="hero-deco hero-deco-dots2"></div>
+    <div class="hero-content">
+      <span class="hero-est">Est. 2018 &bull; Uptown Shelby, NC</span>
+      <h1 class="hero-title">
+        <span class="highlight">WorkShop</span><br />Vintage Market
+      </h1>
+      <div class="hero-divider">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+      <p class="hero-tagline">Vintage Finds. Local Makers. One Unforgettable Space.</p>
+      <p class="hero-sub">80+ vendors. 6,000 square feet. Two floors of vintage treasures, handcrafted goods, and local favorites in the heart of Uptown Shelby.</p>
+      <div class="hero-ctas">
+        <a href="#collection" class="btn btn-primary">Explore What's Inside</a>
+        <a href="#visit" class="btn btn-outline">Plan Your Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTION ===== -->
+  <section class="collection texture-paper" id="collection">
+    <div class="container">
+      <div class="collection-header reveal">
+        <span class="section-label">Our Collection</span>
+        <h2 class="section-heading">Every Booth Tells a Story</h2>
+        <p class="section-subtext" style="margin: 0 auto;">From tobacco baskets and antique bottles to locally poured candles and handmade pottery, our 80+ vendors bring something new through the door every single week.</p>
+      </div>
+      <div class="collection-grid">
+        <!-- Card 1 -->
+        <div class="collection-card reveal reveal-delay-1">
+          <div class="card-icon card-icon-furniture">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Vintage Furniture</h3>
+          <p class="card-desc">Farm tables, dressers, sideboards, and chairs with decades of character built right in.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="collection-card reveal reveal-delay-2">
+          <div class="card-icon card-icon-antiques">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Antiques & Collectibles</h3>
+          <p class="card-desc">Bottles, glassware, tobacco baskets, and one-of-a-kind pieces you won't find anywhere else.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="collection-card reveal reveal-delay-3">
+          <div class="card-icon card-icon-handcrafted">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Handcrafted Goods</h3>
+          <p class="card-desc">Candles, soaps, pottery, and jewelry made by local artisans right here in the Foothills.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="collection-card reveal reveal-delay-1">
+          <div class="card-icon card-icon-decor">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Home Decor</h3>
+          <p class="card-desc">Farmhouse signs, wall art, textiles, and accent pieces for every room in the house.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="collection-card reveal reveal-delay-2">
+          <div class="card-icon card-icon-local">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Local Favorites</h3>
+          <p class="card-desc">Shelby Spice hot sauce, greeting cards, and specialty gifts that make perfect souvenirs.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="collection-card reveal reveal-delay-3">
+          <div class="card-icon card-icon-fashion">
+            <div class="icon-shape"></div>
+            <div class="icon-shape"></div>
+          </div>
+          <h3 class="card-title">Fashion & Accessories</h3>
+          <p class="card-desc">Clothing, jewelry, handbags, and accessories with vintage flair. Head upstairs to browse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VENDORS ===== -->
+  <section class="vendors texture-linen" id="vendors">
+    <div class="container">
+      <div class="vendors-inner">
+        <div class="vendors-text">
+          <span class="section-label reveal">The Makers</span>
+          <h2 class="section-heading reveal">80+ Vendors Under One Roof</h2>
+          <p class="section-subtext reveal">WorkShop is a community. Each booth is run by an independent maker, collector, or vintage dealer who brings their own eye, their own taste, and their own passion to the floor. That means the selection is always changing, always growing, and always surprising.</p>
+          <div class="vendors-quote reveal">
+            <p>Our vendors are the heart of this market. They are pickers, artists, crafters, and collectors who pour their creativity into every single booth.</p>
+            <cite>Kellie Ledford & Wren Westbrook, Owners</cite>
+          </div>
+        </div>
+        <div class="vendors-visual reveal">
+          <div class="booth booth-1">
+            <div class="booth-1-inner"></div>
+          </div>
+          <div class="booth booth-2">
+            <div class="booth-2-pattern"></div>
+          </div>
+          <div class="booth booth-3">
+            <div class="booth-3-inner">
+              <div class="booth-3-item"></div>
+              <div class="booth-3-item"></div>
+              <div class="booth-3-item"></div>
+              <div class="booth-3-item"></div>
+            </div>
+          </div>
+          <div class="booth booth-4">
+            <div class="booth-4-shelves">
+              <div class="shelf">
+                <div class="shelf-item shelf-item-1"></div>
+                <div class="shelf-item shelf-item-2"></div>
+                <div class="shelf-item shelf-item-3"></div>
+              </div>
+              <div class="shelf">
+                <div class="shelf-item shelf-item-2"></div>
+                <div class="shelf-item shelf-item-4"></div>
+                <div class="shelf-item shelf-item-1"></div>
+              </div>
+              <div class="shelf">
+                <div class="shelf-item shelf-item-3"></div>
+                <div class="shelf-item shelf-item-1"></div>
+                <div class="shelf-item shelf-item-4"></div>
+              </div>
+              <div class="shelf">
+                <div class="shelf-item shelf-item-4"></div>
+                <div class="shelf-item shelf-item-2"></div>
+                <div class="shelf-item shelf-item-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPACE / HISTORY ===== -->
+  <section class="space" id="space">
+    <span class="space-big-year">1937</span>
+    <div class="container">
+      <div class="space-inner">
+        <div>
+          <span class="section-label reveal">Our History</span>
+          <h2 class="section-heading reveal">Built in 1937. Reborn in 2018.</h2>
+          <p class="section-subtext reveal">This building has been part of Uptown Shelby for nearly a century. It started as Kester-Groome Furniture Co., which called this address home for 63 years. When Kellie and Wren opened WorkShop in 2018, they gave the space a second life. Today, 6,000 square feet and two full floors are packed with vendors, vintage finds, and that feeling you get when you walk into a place that has real history in its walls.</p>
+        </div>
+        <div class="space-timeline reveal">
+          <div class="timeline-line"></div>
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-year">1937</span>
+              <span class="timeline-desc">The building opens as Kester-Groome Furniture Co. on Lafayette Street.</span>
+            </div>
+          </div>
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-year">63 Years</span>
+              <span class="timeline-desc">Kester-Groome serves Shelby families for over six decades.</span>
+            </div>
+          </div>
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-year">2018</span>
+              <span class="timeline-desc">Kellie & Wren open WorkShop Vintage Market, giving the building new life.</span>
+            </div>
+          </div>
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-year">Today</span>
+              <span class="timeline-desc">80+ vendors, 6,000 sq ft, two floors, and a community hub.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="reviews texture-paper" id="reviews">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="section-label">What People Say</span>
+        <h2 class="section-heading">Don't Take Our Word for It</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"All I can say is WOW this place is out of this world, a certain must when in Shelby!"</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"Wonderful shop! Good prices! Will definitely be a regular stop!"</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"Such a fun and exciting place to visit in uptown Shelby! You can always find something unique and they have the best specialty gifts!"</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"Very unique, people are amazing."</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"A phenomenal place that looks rather small from the outside, but as you walk in you realize that it's surprisingly big."</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="review-text">"Fun place to shop with unique furnishings, antiques and decor at reasonable pricing and excellent customer service."</p>
+          <span class="review-author">Google Reviewer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section class="visit texture-linen" id="visit">
+    <div class="container">
+      <span class="section-label reveal">Come See Us</span>
+      <h2 class="section-heading reveal">Find Us in Uptown Shelby</h2>
+      <div class="visit-inner" style="margin-top: 2.5rem;">
+        <div class="visit-info reveal">
+          <div class="info-block">
+            <h4>Address</h4>
+            <address>108 N Lafayette St<br />Shelby, NC 28150</address>
+          </div>
+          <div class="info-block">
+            <h4>Phone</h4>
+            <p><a href="tel:+17044817987">(704) 481-7987</a></p>
+          </div>
+          <div class="info-block">
+            <h4>Hours</h4>
+            <table class="hours-table">
+              <tr><td>Tuesday</td><td>10:30 AM - 5:30 PM</td></tr>
+              <tr><td>Wednesday</td><td>10:30 AM - 5:30 PM</td></tr>
+              <tr><td>Thursday</td><td>10:30 AM - 5:30 PM</td></tr>
+              <tr><td>Friday</td><td>10:30 AM - 5:30 PM</td></tr>
+              <tr class="closed"><td>Saturday</td><td>Closed</td></tr>
+              <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+              <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+            </table>
+          </div>
+          <div class="info-block">
+            <p>In the heart of Uptown Shelby, right on Lafayette Street. Street parking available.</p>
+          </div>
+          <div class="visit-cta-note">
+            <p>Want to book a workshop, birthday party, or girls' night? Give us a call.</p>
+            <a href="tel:+17044817987" class="btn btn-primary">Call (704) 481-7987</a>
+          </div>
+        </div>
+        <div class="visit-map reveal">
+          <div class="map-pin">
+            <div class="map-pin-ring"></div>
+          </div>
+          <div class="map-label">
+            <h4>WorkShop Vintage Market</h4>
+            <p>108 N Lafayette St, Shelby, NC 28150</p>
+            <span class="font-hand">Right in the heart of Uptown!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-brand">Work<span>Shop</span> Vintage Market</div>
+    <div class="footer-tagline">Shelby, NC &bull; Est. 2018</div>
+    <div class="footer-divider"></div>
+    <p>Vintage Finds. Local Makers. One Unforgettable Space.</p>
+    <div class="footer-social">
+      Follow us on <a href="#">Facebook</a> for new arrivals and event announcements.
+    </div>
+    <div class="footer-bottom">
+      Women-Owned &bull; Featured in Our State Magazine &bull; 80+ Vendors
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for CTA buttons (fallback for older browsers)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
