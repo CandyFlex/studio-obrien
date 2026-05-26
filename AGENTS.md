@@ -55,5 +55,39 @@ pipeline/
 1. Profile a business → `pipeline/targets/{slug}/profile.json`
 2. Run Copy Architect → generates `copy.md`
 3. Run SEO Engine → generates metadata + schema
-4. Run Aesthetic Engine → builds HTML mock site
-5. Deploy to `/for/{slug}.html` for portfolio
+4. **Run Image Agent** → sources free-use photos from Pexels/Unsplash/Pixabay, writes `image-candidates.json`
+5. Run Aesthetic Engine → builds HTML mock site with embedded images
+6. Deploy to `/for/{slug}.html` for portfolio
+
+## Image Pipeline
+Free-use images are sourced per archetype via the image-agent skill. Each archetype
+has a manifest at `pipeline/images/{XX}-{name}-manifest.json` defining what images
+are needed (hero, products, interior, etc.).
+
+**To source images for a business:**
+```bash
+bun run pipeline/images/source.mjs {archetype} {slug}
+```
+
+This requires PEXELS_API_KEY and/or PIXABAY_API_KEY in your environment.
+Get free keys at https://pexels.com/api and https://pixabay.com/api/docs/.
+
+**Without API keys:** Use the image-agent skill manually to web-search and
+curate images, writing candidates to `image-candidates.json` by hand.
+
+**Image requirements per archetype** are defined in the manifest files.
+Example structure:
+```json
+{
+  "id": "hero-bg",
+  "role": "Hero background — bakery display case",
+  "searchTerms": ["bakery display case", "cake shop counter"],
+  "orientation": "landscape",
+  "minWidth": 1400,
+  "priority": "critical"
+}
+```
+
+**Attribution:** All mock sites credit image sources in the footer.
+Pexels/Unsplash images are free for commercial use with attribution appreciated.
+Pixabay images are free for commercial use with no attribution required.

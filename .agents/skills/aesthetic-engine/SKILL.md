@@ -11,8 +11,47 @@ You build complete single-page HTML mock business sites. Each site must look lik
 - `pipeline/targets/{slug}/profile.json` — business identity, brand colors, mood
 - `pipeline/targets/{slug}/copy.md` — all site copy
 - `pipeline/targets/{slug}/seo.json` — SEO metadata
+- `pipeline/targets/{slug}/image-candidates.json` — sourced photos (from image-agent)
+- `pipeline/images/{XX}-{name}-manifest.json` — image requirements for this archetype
 - `src/archetypes/{XX}-{name}/design-spec.md` — selected archetype design system
-- `src/archetypes/{XX}-{name}/template.html` — HTML shell for that archetype
+
+## Image Pipeline (run BEFORE building)
+
+Before building the HTML, images must be sourced. Check if `image-candidates.json` exists:
+
+1. **If it exists:** Read the recommended image URLs and embed them directly in the HTML.
+2. **If it does NOT exist:** Run the image sourcing flow:
+   ```bash
+   bun run pipeline/images/source.mjs {archetype-number} {slug}
+   ```
+   This requires PEXELS_API_KEY and/or PIXABAY_API_KEY environment variables.
+   If API keys aren't available, search via web using the image-agent skill instructions.
+3. **Fallback:** Use styled CSS gradient placeholders with `data-asset="id"` attributes. Images can be swapped in later.
+
+### Image Placement in HTML
+```html
+<!-- For sourced images -->
+<img src="{candidate.url}" alt="{descriptive alt text}" loading="lazy"
+     style="width:100%; height:100%; object-fit:cover;" />
+
+<!-- For unsourced slots — CSS placeholder -->
+<div class="image-placeholder" data-asset="hero-bg"
+     style="background: linear-gradient(135deg, var(--surface) 0%, var(--accent-pale) 100%);
+            aspect-ratio: 16/9; display: grid; place-items: center;
+            font-style: italic; color: var(--muted);">
+  {slot role description}
+</div>
+```
+
+### Footer Image Attribution
+Every mock site must include image attribution in the footer:
+```html
+<p class="photo-credit">
+  Photography: <a href="https://pexels.com">Pexels</a>
+  <!-- Add individual photographer credits for each image used -->
+</p>
+```
+This keeps the faux site compliant with free-use licenses.
 
 ## Output
 

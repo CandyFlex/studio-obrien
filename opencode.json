@@ -25,7 +25,12 @@
     "aesthetic-engine": {
       "description": "Builds complete single-page HTML mock sites from archetypes and business profiles",
       "skill": ".agents/skills/aesthetic-engine/SKILL.md",
-      "tools": ["read", "write", "grep", "glob", "bash"]
+      "tools": ["read", "write", "grep", "glob", "bash", "webfetch"]
+    },
+    "image-agent": {
+      "description": "Sources free-use images from Pexels, Unsplash, Pixabay, and Openverse for mock business sites. Handles curation, scoring, and attribution.",
+      "skill": ".agents/skills/image-agent/SKILL.md",
+      "tools": ["read", "write", "grep", "glob", "bash", "webfetch"]
     }
   }
 }

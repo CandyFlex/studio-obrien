@@ -1,0 +1,13 @@
+{
+  "archetype": "03-rustic-smokehouse",
+  "description": "BBQ joint, steakhouse, Southern comfort food",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — smoker or BBQ plate wide", "orientation": "landscape", "searchTerms": ["barbecue smoker", "smoked bbq meat", "bbq restaurant exterior"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "food-bbq", "role": "Menu — pulled pork or brisket", "orientation": "square", "searchTerms": ["pulled pork bbq", "smoked brisket", "bbq platter"], "minWidth": 800, "priority": "high" },
+    { "id": "food-ribs", "role": "Menu — ribs plate", "orientation": "square", "searchTerms": ["bbq ribs", "st louis ribs", "smoked ribs plate"], "minWidth": 800, "priority": "high" },
+    { "id": "food-wings", "role": "Menu — smoked wings", "orientation": "square", "searchTerms": ["smoked chicken wings", "bbq wings", "grilled wings"], "minWidth": 800, "priority": "high" },
+    { "id": "food-sides", "role": "Menu — sides platter", "orientation": "square", "searchTerms": ["mac and cheese bbq", "southern sides", "collard greens cornbread"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Restaurant interior — rustic dining", "orientation": "landscape", "searchTerms": ["rustic restaurant interior", "wooden table restaurant", "bbq joint interior"], "minWidth": 1000, "priority": "high" },
+    { "id": "exterior", "role": "Restaurant exterior or roadside view", "orientation": "landscape", "searchTerms": ["roadside bbq", "country restaurant exterior", "smokehouse building"], "minWidth": 1000, "priority": "medium" }
+  ]
+}

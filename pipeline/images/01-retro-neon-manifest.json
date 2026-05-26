@@ -1,0 +1,12 @@
+{
+  "archetype": "01-retro-neon",
+  "description": "Neon arcade, gaming lounge, entertainment venue",
+  "images": [
+    { "id": "hero-bg", "role": "Hero background — arcade interior wide shot", "orientation": "landscape", "searchTerms": ["arcade interior", "retro arcade games", "neon arcade"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "gallery-1", "role": "Games showcase — pinball machine closeup", "orientation": "landscape", "searchTerms": ["pinball machine", "classic arcade cabinet", "retro gaming"], "minWidth": 800, "priority": "high" },
+    { "id": "gallery-2", "role": "Games showcase — people playing", "orientation": "landscape", "searchTerms": ["people playing arcade", "arcade gamers", "friends arcade"], "minWidth": 800, "priority": "high" },
+    { "id": "gallery-3", "role": "Games showcase — neon sign detail", "orientation": "portrait", "searchTerms": ["neon sign arcade", "arcade neon lights"], "minWidth": 600, "priority": "medium" },
+    { "id": "party", "role": "Birthday party / event space", "orientation": "landscape", "searchTerms": ["arcade birthday party", "kids arcade party"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Wide interior — rows of machines", "orientation": "landscape", "searchTerms": ["arcade wide shot", "arcade machines row", "game arcade interior"], "minWidth": 1000, "priority": "high" }
+  ]
+}

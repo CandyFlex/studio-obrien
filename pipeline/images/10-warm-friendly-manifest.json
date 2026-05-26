@@ -1,0 +1,14 @@
+{
+  "archetype": "10-warm-friendly",
+  "description": "Pet store, groomer, community shop, family business",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — happy pet or shop interior", "orientation": "landscape", "searchTerms": ["dog in pet store", "happy dog closeup", "pet store interior"], "minWidth": 1400, "priority": "critical" },
+    { "id": "product-1", "role": "Shop — pet food or treats display", "orientation": "square", "searchTerms": ["pet food display", "dog treats", "premium pet food"], "minWidth": 800, "priority": "high" },
+    { "id": "product-2", "role": "Shop — toys or accessories", "orientation": "square", "searchTerms": ["dog toys display", "cat toys", "pet accessories shop"], "minWidth": 800, "priority": "high" },
+    { "id": "product-3", "role": "Shop — pet beds or supplies", "orientation": "square", "searchTerms": ["pet beds store", "dog supplies shop", "pet store aisle"], "minWidth": 800, "priority": "high" },
+    { "id": "grooming", "role": "Service — grooming station", "orientation": "landscape", "searchTerms": ["dog grooming", "pet grooming salon", "dog bath grooming"], "minWidth": 800, "priority": "high" },
+    { "id": "adoption", "role": "Adoption — pet with shelter volunteer", "orientation": "landscape", "searchTerms": ["dog adoption event", "rescue dog", "pet adoption shelter"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Interior — warm shop atmosphere", "orientation": "landscape", "searchTerms": ["pet store interior", "pet boutique shop", "independent pet store"], "minWidth": 1000, "priority": "high" },
+    { "id": "staff", "role": "People — staff with pet", "orientation": "landscape", "searchTerms": ["pet store employee", "veterinary technician with dog", "pet shop owner"], "minWidth": 800, "priority": "medium" }
+  ]
+}

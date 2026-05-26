@@ -1,0 +1,14 @@
+{
+  "archetype": "06-sweet-nostalgia",
+  "description": "Bakery, ice cream shop, dessert cafe, cupcakes",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — bakery display case or cake counter", "orientation": "landscape", "searchTerms": ["bakery display case", "cake shop counter", "pastry shop interior"], "minWidth": 1400, "priority": "critical" },
+    { "id": "pastry-1", "role": "Menu — croissants or morning pastries", "orientation": "square", "searchTerms": ["fresh croissant", "butter croissant bakery", "pastry display"], "minWidth": 800, "priority": "high" },
+    { "id": "pastry-2", "role": "Menu — macarons or decorated cookies", "orientation": "square", "searchTerms": ["french macarons", "colorful macarons", "decorated sugar cookies"], "minWidth": 800, "priority": "high" },
+    { "id": "cake", "role": "Menu — custom celebration cake", "orientation": "portrait", "searchTerms": ["custom birthday cake", "decorated celebration cake", "wedding cake detail"], "minWidth": 600, "priority": "high" },
+    { "id": "cupcakes", "role": "Menu — cupcakes or small treats", "orientation": "square", "searchTerms": ["cupcakes display", "frosted cupcakes", "gourmet cupcakes"], "minWidth": 800, "priority": "high" },
+    { "id": "baker", "role": "Story — baker at work or decorating", "orientation": "landscape", "searchTerms": ["baker decorating cake", "pastry chef working", "baker hands dough"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Interior — cozy cafe seating area", "orientation": "landscape", "searchTerms": ["cozy cafe interior", "bakery cafe seating", "coffee shop interior warm"], "minWidth": 1000, "priority": "high" },
+    { "id": "exterior", "role": "Exterior — bakery storefront", "orientation": "landscape", "searchTerms": ["bakery storefront", "cute bakery exterior", "cake shop window"], "minWidth": 1000, "priority": "medium" }
+  ]
+}

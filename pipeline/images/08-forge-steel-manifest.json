@@ -1,0 +1,13 @@
+{
+  "archetype": "08-forge-steel",
+  "description": "Welding, metal fabrication, construction, HVAC, auto shop",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — welding sparks or metalwork wide", "orientation": "landscape", "searchTerms": ["welding sparks", "metal fabrication", "welder at work"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "work-1", "role": "Service — welding closeup", "orientation": "landscape", "searchTerms": ["arc welding", "welding closeup", "metalwork welding"], "minWidth": 1000, "priority": "high" },
+    { "id": "work-2", "role": "Service — custom metalwork result", "orientation": "landscape", "searchTerms": ["ornamental ironwork", "custom metal gate", "wrought iron railing"], "minWidth": 800, "priority": "high" },
+    { "id": "work-3", "role": "Service — fabrication shop", "orientation": "landscape", "searchTerms": ["metal fabrication shop", "welding workshop", "steel workshop"], "minWidth": 1000, "priority": "high" },
+    { "id": "tools", "role": "Detail — tools or equipment", "orientation": "landscape", "searchTerms": ["welding tools", "metalworking tools", "workshop equipment"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Shop interior — wide workshop", "orientation": "landscape", "searchTerms": ["workshop interior", "industrial workshop", "fabrication shop interior"], "minWidth": 1200, "priority": "high" },
+    { "id": "result", "role": "Completed project — installed work", "orientation": "landscape", "searchTerms": ["metal staircase", "custom iron gate", "steel structure"], "minWidth": 1000, "priority": "medium" }
+  ]
+}

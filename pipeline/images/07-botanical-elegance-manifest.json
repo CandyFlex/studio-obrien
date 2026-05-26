@@ -1,0 +1,14 @@
+{
+  "archetype": "07-botanical-elegance",
+  "description": "Florist, day spa, wellness center, yoga studio",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — floral arrangement or spa interior", "orientation": "landscape", "searchTerms": ["floral arrangement closeup", "spa interior natural light", "flower shop display"], "minWidth": 1400, "priority": "critical" },
+    { "id": "flowers-1", "role": "Service — wedding bouquet or arrangement", "orientation": "portrait", "searchTerms": ["wedding bouquet", "bridal flowers", "floral arrangement elegant"], "minWidth": 600, "priority": "high" },
+    { "id": "flowers-2", "role": "Service — seasonal arrangement", "orientation": "square", "searchTerms": ["seasonal flowers", "garden roses bouquet", "wildflower arrangement"], "minWidth": 800, "priority": "high" },
+    { "id": "flowers-3", "role": "Service — sympathy or everyday arrangement", "orientation": "square", "searchTerms": ["sympathy flowers arrangement", "elegant flower arrangement", "fresh cut flowers"], "minWidth": 800, "priority": "high" },
+    { "id": "treatment", "role": "Service — spa treatment or massage setup", "orientation": "landscape", "searchTerms": ["spa treatment room", "massage table setup", "wellness spa"], "minWidth": 1000, "priority": "high" },
+    { "id": "interior", "role": "Interior — shop or spa space", "orientation": "landscape", "searchTerms": ["flower shop interior", "botanical shop interior", "spa reception area"], "minWidth": 1000, "priority": "high" },
+    { "id": "yoga", "role": "Service — yoga or wellness session", "orientation": "landscape", "searchTerms": ["yoga studio natural light", "wellness meditation", "yoga class"], "minWidth": 1000, "priority": "medium" },
+    { "id": "details", "role": "Decorative — botanical details", "orientation": "landscape", "searchTerms": ["botanical leaves closeup", "sage green plants", "dried flowers"], "minWidth": 800, "priority": "medium" }
+  ]
+}

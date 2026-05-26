@@ -1,0 +1,12 @@
+{
+  "archetype": "05-sports-heritage",
+  "description": "Sports cards, memorabilia, collectibles shop",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — card collection or memorabilia display", "orientation": "landscape", "searchTerms": ["sports cards collection", "trading cards display", "sports memorabilia"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "cards-1", "role": "Featured — vintage cards closeup", "orientation": "square", "searchTerms": ["vintage baseball cards", "sports trading cards", "graded card display"], "minWidth": 800, "priority": "high" },
+    { "id": "cards-2", "role": "Featured — modern card break or box", "orientation": "square", "searchTerms": ["card break box", "trading card box opening", "sports card collection display"], "minWidth": 800, "priority": "high" },
+    { "id": "memorabilia", "role": "Memorabilia — jersey or signed item", "orientation": "portrait", "searchTerms": ["sports jersey display", "signed baseball", "sports memorabilia display"], "minWidth": 600, "priority": "high" },
+    { "id": "interior", "role": "Shop interior — card shop feel", "orientation": "landscape", "searchTerms": ["collectible shop interior", "card shop display case", "trading card store"], "minWidth": 1000, "priority": "high" },
+    { "id": "community", "role": "People — collectors browsing or at event", "orientation": "landscape", "searchTerms": ["trading card event", "collector convention", "card shop customers"], "minWidth": 800, "priority": "medium" }
+  ]
+}

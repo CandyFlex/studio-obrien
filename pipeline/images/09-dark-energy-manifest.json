@@ -1,0 +1,13 @@
+{
+  "archetype": "09-dark-energy",
+  "description": "Gym, strength training, CrossFit, personal training",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — gym interior or athlete action shot", "orientation": "landscape", "searchTerms": ["gym interior dark", "strength training gym", "athlete weightlifting"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "equipment-1", "role": "Program — weightlifting area", "orientation": "landscape", "searchTerms": ["weightlifting gym", "power rack gym", "barbell gym"], "minWidth": 1000, "priority": "high" },
+    { "id": "equipment-2", "role": "Program — cardio or functional area", "orientation": "landscape", "searchTerms": ["gym functional training", "kettlebell workout", "sled training"], "minWidth": 1000, "priority": "high" },
+    { "id": "action-1", "role": "Energy — person lifting", "orientation": "landscape", "searchTerms": ["person deadlifting", "weightlifter gym", "strength athlete"], "minWidth": 800, "priority": "high" },
+    { "id": "action-2", "role": "Energy — group or trainer session", "orientation": "landscape", "searchTerms": ["group fitness class", "personal trainer client", "gym training session"], "minWidth": 800, "priority": "high" },
+    { "id": "interior", "role": "Facility — wide gym interior", "orientation": "landscape", "searchTerms": ["gym interior wide", "fitness facility", "training facility interior"], "minWidth": 1200, "priority": "high" },
+    { "id": "community", "role": "Community — group photo or high-five moment", "orientation": "landscape", "searchTerms": ["gym community", "fitness group", "workout partners"], "minWidth": 800, "priority": "medium" }
+  ]
+}

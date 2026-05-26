@@ -1,0 +1,12 @@
+{
+  "archetype": "04-dark-gallery",
+  "description": "Tattoo studio, art gallery, creative space",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — tattoo studio or art gallery wide", "orientation": "landscape", "searchTerms": ["tattoo studio interior", "art gallery dark", "tattoo artist working"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "artist-1", "role": "Artist at work — tattooing", "orientation": "landscape", "searchTerms": ["tattoo artist working", "tattoo machine closeup", "tattoo studio"], "minWidth": 800, "priority": "high" },
+    { "id": "artist-2", "role": "Artist portrait or flash wall", "orientation": "portrait", "searchTerms": ["tattoo flash art", "tattoo design wall", "tattoo artist portrait"], "minWidth": 600, "priority": "high" },
+    { "id": "gallery-1", "role": "Gallery — finished tattoo closeup", "orientation": "square", "searchTerms": ["black and grey tattoo", "color tattoo sleeve", "tattoo artwork closeup"], "minWidth": 800, "priority": "high" },
+    { "id": "gallery-2", "role": "Gallery — studio interior detail", "orientation": "landscape", "searchTerms": ["tattoo studio interior", "tattoo chair station"], "minWidth": 800, "priority": "medium" },
+    { "id": "interior", "role": "Wide interior — gallery/studio feel", "orientation": "landscape", "searchTerms": ["dark art gallery interior", "tattoo shop interior wide"], "minWidth": 1000, "priority": "high" }
+  ]
+}

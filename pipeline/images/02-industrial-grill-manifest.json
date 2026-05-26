@@ -1,0 +1,13 @@
+{
+  "archetype": "02-industrial-grill",
+  "description": "Gastropub, craft burger bar, whiskey bar",
+  "images": [
+    { "id": "hero-bg", "role": "Hero — burger closeup or bar interior", "orientation": "landscape", "searchTerms": ["craft burger", "gourmet burger restaurant", "dark bar interior"], "minWidth": 1400, "priority": "critical", "darkenOverlay": true },
+    { "id": "food-1", "role": "Menu — signature burger", "orientation": "square", "searchTerms": ["gourmet burger", "burger and fries", "juicy burger closeup"], "minWidth": 800, "priority": "high" },
+    { "id": "food-2", "role": "Menu — wings or appetizer", "orientation": "square", "searchTerms": ["chicken wings", "bar food appetizer", "fried chicken"], "minWidth": 800, "priority": "high" },
+    { "id": "food-3", "role": "Menu — craft cocktail", "orientation": "square", "searchTerms": ["craft cocktail", "whiskey cocktail bar", "bartender making drink"], "minWidth": 800, "priority": "high" },
+    { "id": "interior-1", "role": "Bar interior — dining area", "orientation": "landscape", "searchTerms": ["restaurant interior dark", "industrial bar interior", "gastropub interior"], "minWidth": 1000, "priority": "high" },
+    { "id": "interior-2", "role": "Bar — counter or taps", "orientation": "landscape", "searchTerms": ["bar counter", "craft beer taps", "bar wood interior"], "minWidth": 800, "priority": "medium" },
+    { "id": "exterior", "role": "Restaurant exterior or street view", "orientation": "landscape", "searchTerms": ["restaurant exterior brick", "downtown restaurant storefront", "restaurant outdoor seating"], "minWidth": 1000, "priority": "medium" }
+  ]
+}
