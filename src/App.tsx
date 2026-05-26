@@ -32,9 +32,23 @@ const t = {
 
 const portfolio = [
   { name: "Carolina Arcade Museum", url: "/for/carolina-arcade.html", img: "/images/portfolio/carolina-arcade.webp", tag: "Entertainment" },
-  { name: "Wahoo's Sports Bar", url: "/for/wahoos-sports.html", img: "/images/portfolio/wahoos-sports.webp", tag: "Restaurant" },
-  { name: "Hoot Nannie", url: "/for/hoot-nannie.html", img: "/images/portfolio/hoot-nannie.webp", tag: "Boutique" },
+  { name: "Iron Peak Fitness", url: "/for/iron-peak.html", img: "/images/portfolio/iron-peak.webp", tag: "Fitness" },
+  { name: "Morningside Coffee", url: "/for/morningside-coffee.html", img: "/images/portfolio/morningside-coffee.webp", tag: "Food & Drink" },
+  { name: "WorkShop Vintage", url: "/for/workshop-vintage.html", img: "/images/portfolio/workshop-vintage.webp", tag: "Retail" },
+  { name: "Crestview Property", url: "/for/crestview-property.html", img: "/images/portfolio/crestview-property.webp", tag: "Services" },
+  { name: "Quantum Arcade", url: "/for/quantum-arcade.html", img: "/images/portfolio/quantum-arcade.webp", tag: "Entertainment" },
+  { name: "Ember & Oak", url: "/for/ember-oak.html", img: "/images/portfolio/ember-oak.webp", tag: "Food & Drink" },
+  { name: "Black Creek Smokehouse", url: "/for/black-creek-smokehouse.html", img: "/images/portfolio/black-creek-smokehouse.webp", tag: "Food & Drink" },
+  { name: "Ninth Circle Studio", url: "/for/ninth-circle-studio.html", img: "/images/portfolio/ninth-circle-studio.webp", tag: "Entertainment" },
+  { name: "Diamond Cut Collectibles", url: "/for/diamond-cut-collectibles.html", img: "/images/portfolio/diamond-cut-collectibles.webp", tag: "Retail" },
+  { name: "Butter + Bloom Bakery", url: "/for/butter-bloom-bakery.html", img: "/images/portfolio/butter-bloom-bakery.webp", tag: "Food & Drink" },
+  { name: "Wildflower Wellness", url: "/for/wildflower-wellness.html", img: "/images/portfolio/wildflower-wellness.webp", tag: "Services" },
+  { name: "Anvil Ironworks", url: "/for/anvil-ironworks.html", img: "/images/portfolio/anvil-ironworks.webp", tag: "Services" },
+  { name: "Threshold Training", url: "/for/threshold-training.html", img: "/images/portfolio/threshold-training.webp", tag: "Fitness" },
+  { name: "Paws & Whiskers Co.", url: "/for/paws-whiskers-co.html", img: "/images/portfolio/paws-whiskers-co.webp", tag: "Retail" },
 ];
+
+const filterTags = ["All", "Entertainment", "Food & Drink", "Fitness", "Retail", "Services"];
 
 const faqs = [
   { q: "How much does a website cost?", a: "It depends on the scope of the project. We offer three tiers designed for different business needs, from single-page sites to full multi-page builds with ongoing support. We give you a clear quote after our first call.", link: "/pricing/", linkText: "See pricing tiers" },
@@ -210,6 +224,97 @@ function ShowcaseCarousel({ accent, className = "" }: { accent: string; classNam
   );
 }
 
+/* ─── PORTFOLIO GRID ─── */
+function PortfolioGrid() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = activeFilter === "All"
+    ? portfolio
+    : portfolio.filter(p => p.tag === activeFilter);
+
+  return (
+    <div className="max-w-5xl mx-auto">
+      <FadeIn>
+        <div className="mb-8">
+          <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Our Work</p>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-balance" style={{ color: t.portfolio.text }}>
+            This is what we build.
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: `${t.portfolio.text}77` }}>
+            Every site here is custom-designed and fully functional. Ten are showcase pieces — examples of what we can build for your industry. Five are for real local businesses. Click any one and see for yourself.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {filterTags.map(tag => (
+            <button
+              key={tag}
+              onClick={() => setActiveFilter(tag)}
+              className="px-4 py-2 text-xs uppercase tracking-[0.15em] font-semibold rounded-sm transition-all cursor-pointer"
+              style={{
+                background: activeFilter === tag ? t.accent : "transparent",
+                color: activeFilter === tag ? t.baseBg : t.portfolio.text,
+                border: activeFilter === tag ? `1px solid ${t.accent}` : `1px solid ${t.accent}20`,
+                opacity: activeFilter === tag ? 1 : 0.7,
+              }}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      </FadeIn>
+
+      {filtered.length === 0 ? (
+        <FadeIn>
+          <p className="text-center py-16 text-sm" style={{ color: `${t.portfolio.text}55` }}>
+            No projects in this category yet. <button onClick={() => setActiveFilter("All")} className="underline" style={{ color: t.accent }}>Show all</button>
+          </p>
+        </FadeIn>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((p, i) => (
+            <FadeIn key={p.name} delay={i * 0.05}>
+              <a
+                href={p.url}
+                className="group block rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]"
+                style={{ border: `1px solid ${t.accent}12`, background: t.portfolio.cardBg }}
+              >
+                <div className="aspect-[16/10] overflow-hidden relative bg-gradient-to-br from-[#1a1a24] to-[#0d0d12]">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    width={1440}
+                    height={900}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      el.style.display = "none";
+                      const parent = el.parentElement;
+                      if (parent) {
+                        parent.style.display = "flex";
+                        parent.style.alignItems = "center";
+                        parent.style.justifyContent = "center";
+                        parent.innerHTML = `<span style="color:#888;font-size:14px">Preview coming soon</span>`;
+                      }
+                    }}
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="text-xs tracking-[0.15em] uppercase font-medium block mb-1" style={{ color: t.accent }}>{p.tag}</span>
+                  <h3 className="text-base font-semibold mb-2" style={{ color: t.portfolio.text }}>{p.name}</h3>
+                  <span className="text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" style={{ color: t.accent }}>
+                    View Project <ArrowRight size={14} />
+                  </span>
+                </div>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════ *
  *              MAIN APP                       *
  * ═══════════════════════════════════════════ */
@@ -320,55 +425,7 @@ export default function App() {
 
       {/* ═══════ PORTFOLIO ═══════ */}
       <section id="work" className="py-20 md:py-28 px-6" style={{ background: t.portfolio.bg }}>
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 mb-14 items-end">
-              <div>
-                <p className="text-sm tracking-[0.15em] uppercase mb-3 font-medium" style={{ color: t.accent }}>Our Work</p>
-                <h2 className="text-2xl md:text-4xl font-bold text-balance" style={{ color: t.portfolio.text }}>
-                  This is what we build.
-                </h2>
-              </div>
-              <p className="text-sm leading-relaxed md:text-right" style={{ color: `${t.portfolio.text}77` }}>
-                Every site here was built for a real local business. Custom design, real copy, fully functional. Click any one and see for yourself.
-              </p>
-            </div>
-          </FadeIn>
-          <div className="space-y-8">
-            <FadeIn>
-              <a href={portfolio[0].url} className="group block rounded-lg overflow-hidden" style={{ border: `1px solid ${t.accent}12` }}>
-                <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr]">
-                  <div className="aspect-[16/10] md:aspect-auto overflow-hidden relative">
-                    <img src={portfolio[0].img} alt={portfolio[0].name} width={1440} height={900} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  </div>
-                  <div className="p-8 md:p-10 flex flex-col justify-center" style={{ background: t.portfolio.cardBg }}>
-                    <span className="text-[10px] tracking-[0.2em] uppercase font-bold block mb-3" style={{ color: t.accent }}>{portfolio[0].tag}</span>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: t.portfolio.text }}>{portfolio[0].name}</h3>
-                    <span className="text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" style={{ color: t.accent }}>View Project <ArrowRight size={14} /></span>
-                  </div>
-                </div>
-              </a>
-            </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {portfolio.slice(1).map((p, i) => (
-                <FadeIn key={p.name} delay={(i + 1) * 0.08}>
-                  <a href={p.url} className="group block rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]" style={{ border: `1px solid ${t.accent}12`, background: t.portfolio.cardBg }}>
-                    <div className="aspect-[16/9] overflow-hidden">
-                      <img src={p.img} alt={p.name} width={1440} height={900} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                    </div>
-                    <div className="p-5 flex items-center justify-between">
-                      <div>
-                        <span className="text-xs tracking-[0.15em] uppercase font-medium block mb-1" style={{ color: t.accent }}>{p.tag}</span>
-                        <h3 className="text-base font-semibold" style={{ color: t.portfolio.text }}>{p.name}</h3>
-                      </div>
-                      <ArrowRight size={16} color={t.accent} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  </a>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
+        <PortfolioGrid />
       </section>
 
       {/* ═══════ BRIDGE CTA ═══════ */}
