@@ -112,7 +112,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-hei
 .btn-primary svg{width:18px;height:18px}
 .btn-secondary{background:transparent;color:var(--fg);border:1px solid var(--b)}
 .btn-secondary:hover{border-color:var(--g);transform:translateY(-2px)}
-@media(max-width:500px){.btn{width:100%;justify-content:center;font-size:14px;padding:14px 24px}.cta-block{padding:32px 20px;margin:32px 0}}
+@media(max-width:500px){.btn{width:auto;justify-content:center;font-size:14px;padding:14px 24px}.cta-block{padding:32px 20px;margin:32px 0}}
 
 /* RELATED POSTS */
 .related{max-width:720px;margin:0 auto 40px;padding:0 20px}

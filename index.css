@@ -336,7 +336,7 @@ body{background:#111;color:#fff;font-family:'Inter',system-ui,-apple-system,Blin
   .step-visual{order:2}
   .cta-inner{grid-template-columns:1fr;gap:40px;text-align:center}
   .cta-trust{justify-content:center;flex-wrap:wrap}
-  .cta-btn-primary{width:100%;justify-content:center}
+  .cta-btn-primary{width:auto;justify-content:center}
   .video-section{height:60vh}
   .footer-row{flex-flow:column;gap:20px;text-align:center}
   .footer-nav{justify-content:center}
