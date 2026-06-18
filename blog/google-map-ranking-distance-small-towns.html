@@ -88,15 +88,33 @@
   </div>
 </div>
 
+<table class="data-table">
+  <caption>Proximity radius and ranking weight by market type</caption>
+  <thead>
+    <tr><th>Metric</th><th>Value</th><th>Context</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Urban Map Pack max radius</td><td>2-3 miles</td><td>Visibility collapses beyond; 20 blocks can eliminate a business in Charlotte</td></tr>
+    <tr><td>Rural/suburban max radius</td><td>10-15 miles</td><td>Achievable with an optimized GBP in micropolitan markets like Shelby, NC</td></tr>
+    <tr><td>Proximity factor weight</td><td>225 (out of ~230 max)</td><td>Second-most-weighted signal in Google's local algorithm, trailing only primary GBP category (227)</td></tr>
+  </tbody>
+</table>
+
 <blockquote cite="https://localsearchforum.com/threads/proximity-filter-issue-why-is-it-so-hard-to-rank-city-wide.62733/">
 <p>Once a business falls inside the expanded relevance radius of a suburban market, superior optimization factors routinely override physical distance. A business located eight miles away can consistently outrank a competitor situated only one mile away.</p>
 </blockquote>
 
 <h2>How proximity actually works in Google's algorithm</h2>
 
+<h3>Google's two-stage proximity filter</h3>
+
 <p>Think of it as a two-stage process. Stage one is pure geography: Google identifies every GBP entity within a spatial radius of the searcher's location. That's the eligibility gate. If you're outside the radius, you're invisible - no amount of reviews or keyword stuffing saves you. If you're inside the radius, you move to stage two. That's where prominence and relevance determine your position in the three-pack.<a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener"><sup>1</sup></a></p>
 
+<h3>Why urban proximity is rigid (2-3 miles)</h3>
+
 <p>In Charlotte, stage one filters hard. Someone standing in Plaza Midwood searching "plumber near me" at 2 PM on a Tuesday has dozens of eligible GBP entities within a 2-mile radius. Google doesn't need to stretch anything - there are 40 qualified plumbers inside that tight urban circle. The algorithm can afford to be strict with distance because supply is dense. Your <a href="/seo-services">SEO</a> can be flawless, but if you're 3 miles away in a dense market, you won't even enter the candidate pool.</p>
+
+<h3>Why rural proximity stretches (10-15 miles)</h3>
 
 <p>In <a href="/shelby-nc-web-design">Cleveland County</a>, the math flips completely. Someone searching "electrician near me" from Waco, NC - a rural community 9 miles north of Shelby's commercial center - might have zero electricians inside a 2-mile radius. Maybe one or two inside 5 miles. The algorithm cannot return a blank Map Pack. So it stretches. The eligibility gate widens. Businesses from Shelby's downtown, 9 to 12 miles away, enter the candidate pool. And at that point, optimization signals start mattering more than distance.<a href="https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/" target="_blank" rel="noopener"><sup>2</sup></a> This is the same dynamic I explored in our piece on <a href="/blog/service-area-business-google-ranking-hidden-address">service-area businesses and hidden addresses</a> - distance rules change when geography gets sparse.</p>
 
@@ -119,9 +137,15 @@
 
 <h2>Micropolitan areas stretch the radius naturally</h2>
 
+<h3>What grid tracking data reveals about distance elasticity</h3>
+
 <p>Grid tracking software proves this elasticity is real. Whitespark and BrightLocal both simulate searches from thousands of lat/lng grid points across a market, measuring which businesses appear at each point. In markets like <a href="/shelby-nc-web-design">Shelby</a>, they consistently observe businesses ranking from distances that would be impossible in Charlotte. A landscaping company with a fully optimized <a href="/google-business-profile-setup">Google Business Profile</a> - correct primary category, 70+ reviews, weekly photo uploads, active Q&A section - can rank from 8 to 12 miles away for someone in Fallston or Casar. An unoptimized competitor 1 mile from that same searcher won't appear at all.<a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener"><sup>1</sup></a></p>
 
+<h3>When profile quality overrides physical distance</h3>
+
 <p>The algorithm isn't being generous. It's being rational. The searcher in Fallston needs a landscaper. The 1-mile competitor has three reviews from 2019, a wrong category (listed as "Lawn Care Service" instead of "Landscaper"), and hasn't posted an update in 18 months. The 9-mile business in Shelby has 85 reviews, a 4.8 rating, verified hours, weekly Google Posts, and a matching primary category. Google picks the better result. The distance gap stops mattering when the quality gap is wide enough.<a href="https://www.reddit.com/r/localseo/comments/1rbsoxc/at_what_point_does_proximity_actually_stop_being/" target="_blank" rel="noopener"><sup>4</sup></a></p>
+
+<h3>The proximity paradox explained</h3>
 
 <p>Search Engine Land calls this the "proximity paradox": proximity is both the most predictable filter in local search and the most variable one across market types. Two businesses on the same block in Manhattan compete purely on optimization. Two businesses 8 miles apart in a rural county compete on the same terms - because the radius stretched to include both, and the optimization winner takes the slot.<a href="https://searchengineland.com/guide/google-proximity-bias-in-local-search" target="_blank" rel="noopener"><sup>5</sup></a> If your <a href="/small-business-websites">small business website</a> isn't optimized for mobile, though, none of this matters - Google will drop you regardless of distance. I covered the stakes in our piece on <a href="/blog/mobile-optimization-local-search-small-business">mobile optimization and local search</a>.</p>
 
@@ -143,9 +167,30 @@
 
 <p><strong>5. Review velocity, volume, and behavioral engagement.</strong> These aren't a single factor in the Whitespark top-5 list, but they form the collective prominence stack that tips the algorithm when distance is elastic. A business with 85 reviews adding 3 to 4 new reviews per month, getting consistent direction requests and phone calls through the <a href="/google-business-profile-setup">Google Business Profile</a>, and posting weekly updates sends signals that no static profile can match.<a href="https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/" target="_blank" rel="noopener"><sup>2</sup></a></p>
 
+<table class="data-table">
+  <caption>Five ranking signals ranked by Whitespark factor weight score (2026)</caption>
+  <thead>
+    <tr><th>Rank</th><th>Signal</th><th>Whitespark Score</th><th>Role in extending ranking radius</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Primary GBP Category</td><td>227</td><td>Determines candidate pool eligibility; a wrong category eliminates you at any distance</td></tr>
+    <tr><td>2</td><td>Proximity of Address to Search</td><td>225</td><td>Dominates in dense markets; gets overridden by category/reviews in sparse markets</td></tr>
+    <tr><td>3</td><td>Keywords in GBP Title</td><td>223</td><td>Legitimate keyword signal when business name includes service type (not keyword stuffing)</td></tr>
+    <tr><td>4</td><td>Physical Address in City of Search</td><td>213</td><td>A Shelby address captures Shelby searches; rural route addresses lose this signal entirely</td></tr>
+    <tr><td>5</td><td>Review velocity, volume, engagement</td><td>Collective prominence</td><td>85+ reviews, 3-4 new/month, direction requests, weekly posts tip the algorithm at distance</td></tr>
+  </tbody>
+</table>
+
 <p>I've watched this play out with a pest control company in <a href="/kings-mountain-nc-web-design">Kings Mountain</a>. They serve all of <a href="/shelby-nc-web-design">Cleveland County</a> - from Grover to Casar to Boiling Springs. Before GBP optimization, they ranked for searches within 3 miles of their office. Three months after we fixed their primary category, added verified attributes, started weekly photo posts, and built review volume from 12 to 60, they appeared in Map Packs for searches originating 11 miles away in Lawndale. Their address didn't move. Their profile got heavier.</p>
 
 <p>That's the difference between a 2-mile business and a county-wide business. Not ad spend. Not location. Signal density. The <a href="/blog/google-business-profile-ranking-factors-2026">2026 ranking factors</a> spell this out in numbers - proximity is a filter, not a destiny.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq-item"><h3>How far does Google Maps ranking reach in a small town?</h3><p>In micropolitan and rural markets, an optimized Google Business Profile can rank 10 to 15 miles from the business location. This compares to just 2-3 miles in dense urban areas. The radius stretches because Google widens the candidate pool when local competitors are scarce, allowing strong profiles to appear for county-wide searches.</p></div>
+<div class="faq-item"><h3>Why does my business rank in one town but not the next one over?</h3><p>City-boundary signals matter. The "Physical Address in City of Search" factor (Whitespark score: 213) limits visibility to searches that include your address city. A Shelby address won't trigger for "Kings Mountain plumber" unless your profile's prominence is strong enough to overcome the missing city signal. Service-area businesses that serve multiple towns need exceptional optimization to cross municipal boundaries.</p></div>
+<div class="faq-item"><h3>How do I rank in towns I am not physically located in?</h3><p>Optimize your GBP for the highest possible prominence signals: correct primary category, keyword-relevant business name, 70+ reviews with consistent velocity, weekly Google Posts, verified attributes, and an active Q&A section. In sparse markets where the radius stretches to 10-15 miles, a dominant profile from a neighboring town can outrank weak local competitors. Add service-area designations for each target town.</p></div>
+<div class="faq-item"><h3>Does review count matter more than distance in rural areas?</h3><p>Yes, when the quality gap is wide enough. A business 9 miles away with 85 reviews and a 4.8 rating will outrank a 1-mile competitor with three stale reviews and a wrong category. In sparse markets, Google's algorithm prioritizes delivering the best result over the closest result. Review velocity (3-4 new reviews per month) reinforces this advantage continuously.</p></div>
+<div class="faq-item"><h3>What is the single most important ranking factor for small-town businesses?</h3><p>Primary GBP category selection (Whitespark score: 227), the highest-weighted local ranking factor. A wrong category - such as "Construction Company" instead of "General Contractor" - prevents you from entering the candidate pool at any distance. Fix this before investing in reviews, posts, or any other optimization effort. Category matches search intent; if the match fails, nothing else matters.</p></div>
 
 <div class="cta-block">
   <h2>Expand Your Local Reach</h2>
