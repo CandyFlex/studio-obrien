@@ -942,25 +942,16 @@
   if(statsServices) statsObserver.observe(statsServices);
   if(statsSectors) statsObserver.observe(statsSectors);
 
-  /* ===== SEAMLESS MARQUEE ===== */
+  /* ===== SEAMLESS MARQUEE (CSS) ===== */
   function setupMarquee(track, pxPerSec){
     var kids = Array.from(track.children);
+    // Duplicate once for seamless CSS loop at -50%
     kids.forEach(function(k){ track.appendChild(k.cloneNode(true)); });
-    kids.forEach(function(k){ track.appendChild(k.cloneNode(true)); });
-    var setW = track.scrollWidth / 3;
+    var setW = track.scrollWidth / 2;
     if(setW <= 0) return;
-    var pos = 0;
-    var last = 0;
-    function step(ts){
-      if(!last) last = ts;
-      var dt = ts - last;
-      last = ts;
-      pos -= pxPerSec * dt / 1000;
-      while(pos <= -setW) pos += setW;
-      track.style.transform = 'translate3d(' + pos.toFixed(2) + 'px,0,0)';
-      requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+    var dur = setW / pxPerSec;
+    track.style.animation = 'marquee-scroll ' + dur + 's linear infinite';
+    track.style.transform = 'translate3d(0,0,0)';
   }
 
   var greenTrack = document.querySelector('.green-strip .marquee-track');
