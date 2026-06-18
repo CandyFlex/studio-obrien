@@ -281,8 +281,8 @@ body{background:#111;color:#fff;font-family:'Inter',system-ui,-apple-system,Blin
 .footer-logo{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:#fff;text-decoration:none;transition:color .2s}
 .footer-logo:hover{color:#34d399}
 .footer-nav{display:flex;gap:24px}
-.footer-nav a{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#555;text-decoration:none;transition:color .2s}
-.footer-nav a:hover{color:#fff}
+.footer-nav a{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#555;text-decoration:none;padding:6px 14px;border:1px solid rgba(52,211,153,.35);box-shadow:0 0 14px rgba(52,211,153,.25),inset 0 0 6px rgba(52,211,153,.06);text-shadow:0 0 10px rgba(52,211,153,.25);transition:color .2s,border-color .2s,box-shadow .3s}
+.footer-nav a:hover{color:var(--g);border-color:var(--g);box-shadow:0 0 24px rgba(52,211,153,.45),inset 0 0 10px rgba(52,211,153,.1);text-shadow:0 0 16px rgba(52,211,153,.4)}
 .footer-bottom-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0 24px;border-top:1px solid #1a1a1a}
 .footer-bottom-row span{font-family:'Inter',sans-serif;font-weight:400;font-size:12px;color:#444}
 .back-to-top{width:32px;height:32px;border:1px solid #2a2a2a;background:transparent;color:#555;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .3s,color .3s,transform .2s}
