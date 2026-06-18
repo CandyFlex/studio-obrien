@@ -1,3 +1,26 @@
 User-agent: *
 Allow: /
 Sitemap: https://studioobrien.com/sitemap.xml
+Sitemap: https://studioobrien.com/sitemap-images.xml
+
+# AI crawlers — allow for LLM citation (ChatGPT, Perplexity, Claude)
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+# Block AI training scrapers that don't cite
+User-agent: Google-Extended
+Disallow: /
+User-agent: Applebot-Extended
+Disallow: /

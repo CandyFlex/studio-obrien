@@ -1,0 +1,55 @@
+# O'Brien Studio
+> Web development and design studio in Shelby, NC. Custom websites, SEO, branding, and Google Business Profile optimization for small businesses, restaurants, retail, and professional services in Cleveland County and the Charlotte metro area.
+
+## Services
+- Custom website design and development from scratch (no templates, no page builders)
+- SEO: on-page, technical, local search, Google Business Profile optimization, keyword research, content strategy
+- Website redesign and migration for outdated small business sites
+- Restaurant website design (online ordering, QR menus, reservation integration)
+- Google Business Profile setup and optimization
+- Small business websites for local service companies
+
+## Key Pages
+- / : Homepage - portfolio, process, video reel, services overview, testimonials
+- /contact : Contact form with Web3Forms integration
+- /seo-services : SEO services detail page with FAQ
+- /restaurant-website-design : Restaurant web design services
+- /small-business-websites : Small business website services
+- /google-business-profile-setup : GBP setup and optimization services
+- /website-redesign-migration : Website redesign and migration services
+- /shelby-nc-web-design : Location page for Shelby, NC
+- /kings-mountain-nc-web-design : Location page for Kings Mountain, NC
+- /forest-city-nc-web-design : Location page for Forest City, NC
+- /rutherfordton-nc-web-design : Location page for Rutherfordton, NC
+- /blog : Blog listing page covering local SEO, restaurant strategy, web design, and small business topics
+- /website-cost-calculator : Free interactive web development cost estimation tool
+
+## Blog Sections
+### Local SEO (9 articles)
+Google Business Profile ranking factors, map ranking distance in small towns, GBP category optimization, review velocity vs volume, FTC fake review rules, multi-platform review strategy, GBP photos impact, service-area business ranking, AI search and local business discovery.
+
+### Web Design (6 articles)
+Outdated websites costing businesses, signs a site needs redesign, redesign ROI case studies, page speed and revenue, mobile optimization for local search, website migration SEO risks.
+
+### Restaurants (6 articles)
+Restaurant website ROI, Facebook-only digital presence risks, QR code menu revenue, no-show reduction strategies, Google vs Yelp in small towns, email revenue capture for restaurants.
+
+### Digital Strategy (2 articles)
+Core Web Vitals and local SEO ranking, ADA compliance and website lawsuit risks.
+
+## Business Info
+- Location: Shelby, NC (Cleveland County, Western North Carolina)
+- Service area: 50-mile radius covering Charlotte metro, Gastonia, Kings Mountain, Forest City, Rutherfordton, Boiling Springs
+- Contact: hello@studioobrien.com
+- Owner: Jarred Kern
+- Pricing model: flat project rates, no lock-in contracts, client owns all assets
+
+## Crawl Instructions
+- Primary sitemap: https://studioobrien.com/sitemap.xml
+- Image sitemap: https://studioobrien.com/sitemap-images.xml
+- robots.txt: https://studioobrien.com/robots.txt
+- All pages use clean URLs (no .html extensions)
+- All blog posts use BlogPosting + BreadcrumbList JSON-LD schema
+- All service pages use Service + BreadcrumbList JSON-LD schema
+- Homepage uses LocalBusiness + VideoObject JSON-LD schema
+- All images have descriptive alt text

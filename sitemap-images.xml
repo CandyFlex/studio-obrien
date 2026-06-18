@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage images -->
+  <url>
+    <loc>https://studioobrien.com/</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/ember.webp</image:loc><image:caption>Ember and Oak Steakhouse website design by O'Brien Studio</image:caption><image:title>Ember and Oak Steakhouse - Restaurant Web Design</image:title></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/tf-hero.webp</image:loc><image:caption>SEO optimization results dashboard by O'Brien Studio</image:caption><image:title>SEO Ranking Growth</image:title></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/og-image.webp</image:loc><image:caption>O'Brien Studio - Web development and design studio in Shelby, NC</image:caption><image:title>O'Brien Studio Open Graph Image</image:title></image:image>
+  </url>
+
+  <!-- SEO Services page -->
+  <url>
+    <loc>https://studioobrien.com/seo-services</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/tf-hero.webp</image:loc><image:caption>SEO optimization results - search visibility growth</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/gs.webp</image:loc><image:caption>Gameshelf SEO project - 47% bounce rate reduction</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/koji.webp</image:loc><image:caption>Koji Studio SEO and rebrand project</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/avatar-marcus.webp</image:loc><image:caption>Marcus Reed - Owner, Ember and Oak Steakhouse</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/avatar-sarah.webp</image:loc><image:caption>Sarah Lin - Founder, Gameshelf</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/avatar-david.webp</image:loc><image:caption>David Kim - Creative Director, Koji Studio</image:caption></image:image>
+  </url>
+
+  <!-- Restaurant Web Design -->
+  <url>
+    <loc>https://studioobrien.com/restaurant-website-design</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/ember.webp</image:loc><image:caption>Ember and Oak Steakhouse - restaurant website design</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/slims.webp</image:loc><image:caption>Restaurant website design project</image:caption></image:image>
+  </url>
+
+  <!-- Small Business Websites -->
+  <url>
+    <loc>https://studioobrien.com/small-business-websites</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/sol.webp</image:loc><image:caption>Small business website design project</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/bc.webp</image:loc><image:caption>Small business website design project</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/bb.webp</image:loc><image:caption>Small business website design project</image:caption></image:image>
+  </url>
+
+  <!-- Website Redesign -->
+  <url>
+    <loc>https://studioobrien.com/website-redesign-migration</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/darkthoughts.webp</image:loc><image:caption>Website redesign and migration project</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/azura.webp</image:loc><image:caption>Website redesign project</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/arcade.webp</image:loc><image:caption>Website redesign project</image:caption></image:image>
+  </url>
+
+  <!-- GBP Setup -->
+  <url>
+    <loc>https://studioobrien.com/google-business-profile-setup</loc>
+    <image:image><image:loc>https://studioobrien.com/gpb-photos/gbp-dashboard.png</image:loc><image:caption>Google Business Profile optimization dashboard</image:caption></image:image>
+  </url>
+
+  <!-- Portfolio/process images (used across pages) -->
+  <url>
+    <loc>https://studioobrien.com/</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-research.webp</image:loc><image:caption>Website development process - research phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-design.webp</image:loc><image:caption>Website development process - design phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-launch.webp</image:loc><image:caption>Website development process - launch phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-walkthrough.webp</image:loc><image:caption>Website development process - walkthrough phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/tf-full.webp</image:loc><image:caption>Full website design project showcase</image:caption></image:image>
+  </url>
+
+  <!-- Shelby NC location page -->
+  <url>
+    <loc>https://studioobrien.com/shelby-nc-web-design</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/ember.webp</image:loc><image:caption>Web development services in Shelby, NC</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/avatar-marcus.webp</image:loc><image:caption>Client testimonial - Cleveland County business</image:caption></image:image>
+  </url>
+
+  <!-- Kings Mountain NC location page -->
+  <url>
+    <loc>https://studioobrien.com/kings-mountain-nc-web-design</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/darkthoughts.webp</image:loc><image:caption>Web development services in Kings Mountain, NC</image:caption></image:image>
+  </url>
+
+  <!-- Forest City NC location page -->
+  <url>
+    <loc>https://studioobrien.com/forest-city-nc-web-design</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/sol.webp</image:loc><image:caption>Web development services in Forest City, NC</image:caption></image:image>
+  </url>
+
+  <!-- Rutherfordton NC location page -->
+  <url>
+    <loc>https://studioobrien.com/rutherfordton-nc-web-design</loc>
+    <image:image><image:loc>https://studioobrien.com/portfolio/bb.webp</image:loc><image:caption>Web development services in Rutherfordton, NC</image:caption></image:image>
+  </url>
+
+</urlset>

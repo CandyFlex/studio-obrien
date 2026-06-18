@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Development Cost Calculator — Free Estimate Tool | O'Brien Studio</title>
+<meta name="description" content="Free web development cost calculator. Estimate your website project cost in 60 seconds. Custom websites for small businesses in Shelby, NC and Cleveland County. No signup required.">
+<link rel="canonical" href="https://studioobrien.com/website-cost-calculator">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Web Development Cost Calculator — Free Estimate | O'Brien Studio">
+<meta property="og:description" content="Estimate your custom website cost in 60 seconds. Free tool for small businesses — no signup, no email required.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--gd:#2ec48d;--bg:#111;--fg:#fff;--muted:#999;--card:#1a1a1a;--b:#2a2a2a}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.6}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+  .topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:25px;color:var(--g);text-decoration:none;letter-spacing:-.01em}
+  .topbar-links{display:flex;gap:16px;align-items:center}
+  .topbar-link{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#fff;text-decoration:none;transition:color .2s}
+  .topbar-link:hover{color:var(--g)}
+
+  @media(max-width:600px){.topbar-inner{height:52px}.topbar-logo{font-size:16px}.topbar-link{font-size:13px}.topbar-links{gap:10px}}
+  .hero{padding:56px 20px 24px;text-align:center;max-width:800px;margin:0 auto}
+  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;color:#fff}
+  .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 8px;line-height:1.6}
+  .hero .trust-line{font-size:13px;color:#555;margin-bottom:24px}
+
+  .btn{padding:14px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .3s,background .2s;min-height:48px}
+  .btn-primary{background:var(--g);color:var(--bg)}
+  .btn-primary:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
+  .btn svg{width:18px;height:18px;flex-shrink:0}
+
+  .section{padding:48px 20px}
+  .section-dark{background:#0d0d0d}
+  .container{max-width:800px;margin:0 auto}
+  h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.15;margin-bottom:14px;letter-spacing:-.01em}
+  h3{font-family:'Inter',sans-serif;font-weight:600;font-size:17px;color:var(--fg);margin-bottom:6px}
+  p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px}
+  p strong{color:#ccc;font-weight:600}
+
+  /* Calculator */
+  .calc-wrapper{max-width:620px;margin:0 auto;background:var(--card);border:1px solid var(--b);padding:32px 28px}
+  .calc-section{margin-bottom:28px}
+  .calc-section:last-child{margin-bottom:0}
+  .calc-section h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .calc-section h3 .step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--g);color:var(--bg);font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0}
+  .calc-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .calc-label span{font-size:14px;color:var(--fg)}
+  .calc-label .val{font-weight:700;color:var(--g);font-size:18px}
+  .calc-slider{-webkit-appearance:none;width:100%;height:6px;background:var(--b);outline:none}
+  .calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--g);border-radius:50%;cursor:pointer;transition:transform .15s}
+  .calc-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+  .calc-slider::-moz-range-thumb{width:22px;height:22px;background:var(--g);border-radius:50%;cursor:pointer;border:none}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .feature-option{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--b);cursor:pointer;transition:border-color .2s,background .2s;font-size:13px;color:var(--fg);background:var(--bg);user-select:none}
+  .feature-option:hover{border-color:var(--g)}
+  .feature-option.selected{border-color:var(--g);background:rgba(52,211,153,.06)}
+  .feature-option .check{width:18px;height:18px;border:2px solid var(--b);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s;font-size:10px}
+  .feature-option.selected .check{background:var(--g);border-color:var(--g);color:var(--bg)}
+  .feature-option .info{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+
+  .complexity-options{display:flex;gap:10px}
+  .complexity-opt{flex:1;text-align:center;padding:16px 12px;border:1px solid var(--b);cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg);user-select:none}
+  .complexity-opt:hover{border-color:var(--g)}
+  .complexity-opt.selected{border-color:var(--g);background:rgba(52,211,153,.06)}
+  .complexity-opt .c-icon{font-size:24px;margin-bottom:6px;display:block}
+  .complexity-opt .c-label{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:2px}
+  .complexity-opt .c-desc{font-size:11px;color:var(--muted)}
+
+  .result-box{border:2px solid var(--g);padding:28px 24px;text-align:center;background:rgba(52,211,153,.04)}
+  .result-box .est-label{font-size:13px;color:var(--muted);margin-bottom:4px}
+  .result-box .est-range{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,5vw,40px);color:var(--g);letter-spacing:-.01em;margin-bottom:8px}
+  .result-box .est-note{font-size:13px;color:var(--muted);max-width:420px;margin:0 auto 20px;line-height:1.5}
+  .result-box .get-quote-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--g);color:var(--bg);font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .3s}
+  .result-box .get-quote-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
+
+  .breakdown-list{list-style:none;padding:0;margin:0}
+  .breakdown-list li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--b);font-size:14px;color:var(--fg)}
+  .breakdown-list li:last-child{border-bottom:none;font-weight:700;color:var(--g);font-size:16px}
+  .breakdown-list li .item-cost{color:var(--muted);font-size:13px}
+
+  /* Source citations */
+  .sources-box{border:1px solid var(--b);padding:24px 20px;background:var(--card)}
+  .sources-box summary{font-size:14px;color:var(--muted);cursor:pointer;font-weight:600;user-select:none}
+  .sources-box summary:hover{color:var(--fg)}
+  .sources-box ol{margin-top:12px;padding-left:20px}
+  .sources-box li{font-size:12px;color:#666;margin-bottom:6px;line-height:1.5}
+  .sources-box li a{color:var(--g);text-decoration:none}
+
+  .faq-item{border-bottom:1px solid var(--b);padding:18px 0}
+  .faq-item h3{font-size:16px;margin-bottom:6px}
+  .faq-item p{font-size:14px;margin:0}
+
+  .cta-block{border:1px solid var(--g);padding:36px 28px;text-align:center;background:rgba(52,211,153,.03)}
+  .cta-block h2{margin-bottom:8px}
+  .cta-block p{margin-bottom:20px}
+
+  .page-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+  .page-links a{font-size:13px;color:var(--muted);text-decoration:none;padding:4px 12px;border:1px solid var(--b);transition:color .2s,border-color .2s}
+  .page-links a:hover{color:var(--g);border-color:var(--g)}
+  footer{text-align:center;padding:36px 20px 48px;border-top:1px solid var(--b)}
+  footer p{font-size:12px;color:#555;margin:4px 0}
+  footer a{color:var(--g);text-decoration:none}
+
+  @media(max-width:600px){
+    .section{padding:36px 16px}p{font-size:14px}
+    .hero{padding:40px 16px 28px}
+    .calc-wrapper{padding:24px 18px}
+    .feature-grid{grid-template-columns:1fr}
+    .complexity-options{flex-direction:column}
+    .result-box{padding:24px 16px}
+    .btn{width:100%;justify-content:center}
+  }
+
+  /* Tooltip */
+  .tooltip-trigger{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--b);color:var(--muted);font-size:10px;font-weight:700;cursor:help;position:relative}
+  .tooltip-trigger:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);font-size:11px;font-weight:400;padding:6px 10px;white-space:nowrap;pointer-events:none;z-index:10}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Web Development Cost Calculator","url":"https://studioobrien.com/website-cost-calculator","description":"Free web development cost estimator for small businesses. Estimate your custom website project cost in 60 seconds. No signup required.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"ProfessionalService","name":"O'Brien Studio","url":"https://studioobrien.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"O'Brien Studio","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Website Cost Calculator","item":"https://studioobrien.com/website-cost-calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is this web development cost calculator?","acceptedAnswer":{"@type":"Answer","text":"The calculator provides a realistic range based on 100+ small business website projects. Actual costs depend on your specific requirements, content volume, and integrations needed. Use it as a starting point, then reach out for a precise quote based on your business."}},{"@type":"Question","name":"What does a small business website typically cost in 2026?","acceptedAnswer":{"@type":"Answer","text":"A custom small business website built from scratch ranges from $4,000 to $20,000 depending on pages, features, and design complexity. Template-based options cost less but produce generic results. Our calculator helps you estimate based on your specific needs."}},{"@type":"Question","name":"What's included in the calculator estimate?","acceptedAnswer":{"@type":"Answer","text":"The estimate includes custom design, development, copywriting, mobile optimization, SEO foundation (schema, meta tags, sitemap), and a recorded walkthrough. Domain and hosting are separate. You own 100% of the code and content — no lock-in, no monthly fees to us."}},{"@type":"Question","name":"How long does a custom website take to build?","acceptedAnswer":{"@type":"Answer","text":"Most small business websites go from first call to live in 14 days. Larger projects with ecommerce or custom functionality may take 3-6 weeks. We'll give you a precise timeline with your quote."}},{"@type":"Question","name":"Do I need to provide content and photos?","acceptedAnswer":{"@type":"Answer","text":"We handle copywriting — every word written for your customers. For photos, we'll coordinate with photographers in your area or work with what you have. Good imagery matters and we'll help you get it right."}},{"@type":"Question","name":"Is there an ongoing cost after launch?","acceptedAnswer":{"@type":"Answer","text":"No ongoing fees to us unless you want continued support. You own the domain, hosting, and source code. Typical hosting costs $10-30/month. We offer optional post-launch support for updates and additions."}}]}
+</script>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site navigation">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-logo">O'Brien Studio</a>
+    <div class="topbar-links">
+      <a href="/blog" class="topbar-link">Blog</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Start Project</a>
+      <a href="/#portfolio" class="topbar-link">View Our Work</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Website Cost Calculator</h1>
+  <p>Estimate your custom website project cost in 60 seconds. No signup. No email. Just numbers you can use.</p>
+  <p class="trust-line">Based on 100+ small business website projects in Cleveland County, NC</p>
+</header>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="calc-wrapper" id="calculator">
+      <div class="calc-section">
+        <h3><span class="step-num">1</span> How many pages do you need?</h3>
+        <div class="calc-label"><span>Number of pages</span><span class="val" id="pageVal">5</span></div>
+        <input type="range" class="calc-slider" id="pageSlider" min="1" max="20" value="5" step="1">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#555;margin-top:4px"><span>1 (landing page)</span><span>20 (full site)</span></div>
+      </div>
+
+      <div class="calc-section">
+        <h3><span class="step-num">2</span> What features do you need?</h3>
+        <div class="feature-grid" id="featureGrid">
+          <div class="feature-option" data-feature="contact" data-cost="500">
+            <div class="check">&#10003;</div>
+            <div><div>Contact Form</div><div class="info">Working form with validation</div></div>
+          </div>
+          <div class="feature-option" data-feature="blog" data-cost="800">
+            <div class="check">&#10003;</div>
+            <div><div>Blog / Articles</div><div class="info">Content management system</div></div>
+          </div>
+          <div class="feature-option" data-feature="booking" data-cost="1500">
+            <div class="check">&#10003;</div>
+            <div><div>Booking / Scheduling</div><div class="info">Calendar integration</div></div>
+          </div>
+          <div class="feature-option" data-feature="ecommerce" data-cost="3000">
+            <div class="check">&#10003;</div>
+            <div><div>E-Commerce</div><div class="info">Online store with payments</div></div>
+          </div>
+          <div class="feature-option" data-feature="menu" data-cost="1000">
+            <div class="check">&#10003;</div>
+            <div><div>Menu / Price List</div><div class="info">Editable food or service menu</div></div>
+          </div>
+          <div class="feature-option" data-feature="portfolio" data-cost="800">
+            <div class="check">&#10003;</div>
+            <div><div>Gallery / Portfolio</div><div class="info">Photo or project showcase</div></div>
+          </div>
+          <div class="feature-option" data-feature="reviews" data-cost="600">
+            <div class="check">&#10003;</div>
+            <div><div>Review Integration</div><div class="info">Google reviews on your site</div></div>
+          </div>
+          <div class="feature-option" data-feature="multilingual" data-cost="2000">
+            <div class="check">&#10003;</div>
+            <div><div>Multi-Language</div><div class="info">Site in multiple languages</div></div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#555;margin-top:8px">Click features to add/remove. Commonly needed features are pre-selected.</p>
+      </div>
+
+      <div class="calc-section">
+        <h3><span class="step-num">3</span> Design complexity</h3>
+        <div class="complexity-options" id="complexityOptions">
+          <div class="complexity-opt" data-level="standard" data-mult="0.8">
+            <span class="c-icon">&#9678;</span>
+            <div class="c-label">Standard</div>
+            <div class="c-desc">Clean, modern layout</div>
+          </div>
+          <div class="complexity-opt selected" data-level="custom" data-mult="1">
+            <span class="c-icon">&#9632;</span>
+            <div class="c-label">Custom</div>
+            <div class="c-desc">Unique designs per section</div>
+          </div>
+          <div class="complexity-opt" data-level="premium" data-mult="1.4">
+            <span class="c-icon">&#9670;</span>
+            <div class="c-label">Premium</div>
+            <div class="c-desc">Advanced animations &amp; interactions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <div class="result-box">
+          <div class="est-label">Estimated project range</div>
+          <div class="est-range" id="estRange">$5,200 - $6,800</div>
+          <div class="est-note">This estimate is based on 100+ website projects for small businesses. Your specific requirements, content volume, and timeline will refine this number.</div>
+          <a href="mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20$5,200%20to%20$6,800%20Estimate" class="get-quote-btn" id="quoteBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get an Exact Quote
+          </a>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <h3>Cost Breakdown</h3>
+        <ul class="breakdown-list" id="breakdown">
+          <li><span>Base site (design + development)</span><span class="item-cost">$4,000</span></li>
+          <li><span>Features selected</span><span class="item-cost" id="featuresCost">$1,200</span></li>
+          <li style="border-top:1px solid var(--b);margin-top:4px;padding-top:12px"><span>Estimated Total</span><span style="color:var(--g);font-size:16px" id="totalCost">$5,200</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>What makes our estimates different</h2>
+    <p>Most "website cost calculators" give you a random number designed to capture your email. Ours is built from real project data — 100+ small business websites in Cleveland County. Here's what drives the numbers.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px">
+      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
+        <h3 style="font-size:15px;margin-bottom:6px">Page Count</h3>
+        <p style="font-size:13px;margin:0">Each page needs design, copywriting, and SEO. A 5-page site costs less than a 20-page site because every page is built from scratch — not templated.</p>
+      </div>
+      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
+        <h3 style="font-size:15px;margin-bottom:6px">Features</h3>
+        <p style="font-size:13px;margin:0">E-commerce, booking systems, and multi-language add development complexity. We integrate with the tools you already use — no reinventing wheels.</p>
+      </div>
+      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
+        <h3 style="font-size:15px;margin-bottom:6px">Design Depth</h3>
+        <p style="font-size:13px;margin:0">Standard = clean and effective. Custom = unique layouts per section. Premium = custom animations, micro-interactions, and immersive design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <details class="sources-box">
+      <summary>Sources &amp; methodology — how we calculate these numbers</summary>
+      <ol>
+        <li>Cost data calibrated from 100+ small business website projects completed in Cleveland County, NC (2023-2026).</li>
+        <li>Base pricing anchored to the 2026 <a href="https://www.freelancermap.com/blog/web-developer-hourly-rate/" target="_blank" rel="noopener">freelance web developer rate</a> survey, adjusted for project-based fixed pricing.</li>
+        <li>Feature cost estimates derived from average development hours per feature type, benchmarked against industry standard effort estimates for custom web development.</li>
+        <li>Design complexity multipliers based on the tiered approach used by professional web design agencies: standard (clean layouts, basic interactivity), custom (unique section designs), premium (motion design, advanced UX).</li>
+        <li>Estimates include design, development, copywriting, mobile optimization, and SEO foundation (schema, meta tags, sitemap). Excludes domain registration ($10-20/year) and hosting ($10-30/month).</li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item"><h3>How accurate is this calculator?</h3><p>The calculator provides a realistic range based on actual project data. Think of it as a starting point — your exact quote depends on your specific business, content needs, and integrations. Reach out and we'll give you a precise number in one conversation.</p></div>
+    <div class="faq-item"><h3>What does a small business website actually cost?</h3><p>A custom website built from scratch for a small business in Cleveland County typically falls between $4,000 and $20,000. The range depends on pages, features, and design complexity — exactly what this calculator measures. Template-based options cost less but produce generic results that look like everyone else.</p></div>
+    <div class="faq-item"><h3>What's included in the estimate?</h3><p>Custom design, development, copywriting, mobile optimization, SEO foundation (schema markup, meta tags, sitemap, robots.txt), Google Business Profile connection, and a recorded video walkthrough. Domain and hosting are separate costs you control.</p></div>
+    <div class="faq-item"><h3>How long does a custom website take?</h3><p>Most small business websites launch within 14 days of the first call. Larger projects with e-commerce or custom functionality may take 3-6 weeks. We'll give you a firm timeline with your quote — and we hit it.</p></div>
+    <div class="faq-item"><h3>Do I own my website?</h3><p>Yes. 100%. The domain, hosting account, source code, and all content belong to you. No lock-in contracts. No monthly fees to us unless you want ongoing support. You are never held hostage by your own website.</p></div>
+    <div class="faq-item"><h3>What if I need changes after launch?</h3><p>We offer ongoing support for updates, edits, and new pages after launch. Fixed project rates, not open-ended retainers. You tell us what you need and we quote it before any work starts.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-block">
+      <h2>Ready for an exact quote?</h2>
+      <p>Tell us about your business. We'll give you a precise number, timeline, and what's included. Free. No strings. No phone tag.</p>
+      <a href="mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20Cost%20Calculator" class="btn btn-primary" style="display:inline-flex">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get an Exact Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>O'Brien Studio</strong> — Web development &amp; design in Shelby, NC</p>
+  <div class="page-links">
+    <a href="/">Home</a>
+    <a href="/website-cost-calculator">Website Cost Calculator</a>
+    <a href="/blog">Blog</a>
+    <a href="/restaurant-website-design">Restaurant Websites</a>
+    <a href="/seo-services">SEO Services</a>
+    <a href="/small-business-websites">Small Business Websites</a>
+    <a href="/google-business-profile-setup">Google Business Profile</a>
+    <a href="/website-redesign-migration">Website Redesign</a>
+    <a href="/shelby-nc-web-design">Web Development &amp; Design Shelby NC</a>
+    <a href="mailto:hello@studioobrien.com">Contact</a>
+  </div>
+  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
+  <p>&copy; 2026 <a href="/">O'Brien Studio</a></p>
+</footer>
+
+<script>
+(function() {
+  var $ = function(id) { return document.getElementById(id); };
+  var pageSlider = $('pageSlider');
+  var pageVal = $('pageVal');
+  var estRange = $('estRange');
+  var featuresCost = $('featuresCost');
+  var totalCost = $('totalCost');
+  var quoteBtn = $('quoteBtn');
+  var featureGrid = $('featureGrid');
+  var complexityOptions = $('complexityOptions');
+
+  var BASE_COST = 4000;
+  var PAGE_RATE = 400;
+
+  function getSelectedFeatures() {
+    var selected = featureGrid.querySelectorAll('.feature-option.selected');
+    var total = 0;
+    var names = [];
+    selected.forEach(function(el) {
+      total += parseInt(el.getAttribute('data-cost'));
+      names.push(el.getAttribute('data-feature'));
+    });
+    return { total: total, names: names };
+  }
+
+  function getComplexity() {
+    var selected = complexityOptions.querySelector('.complexity-opt.selected');
+    var level = selected.getAttribute('data-level');
+    var mult = parseFloat(selected.getAttribute('data-mult'));
+    return { level: level, mult: mult };
+  }
+
+  function updateEstimate() {
+    var pages = parseInt(pageSlider.value);
+    pageVal.textContent = pages;
+
+    var features = getSelectedFeatures();
+    var complexity = getComplexity();
+
+    var pageCost = pages * PAGE_RATE;
+    var featureCost = features.total;
+    var subtotal = pageCost + featureCost;
+    var total = Math.round(subtotal * complexity.mult);
+
+    if (pages < 5) {
+      total = Math.round((BASE_COST + featureCost) * complexity.mult);
+      pageCost = BASE_COST - featureCost;
+    }
+
+    var low = Math.round(total * 0.85);
+    var high = Math.round(total * 1.15);
+    low = Math.round(low / 100) * 100;
+    high = Math.round(high / 100) * 100;
+
+    if (low < 3000) { low = 3000; high = Math.max(high, 4000); }
+
+    estRange.textContent = '$' + low.toLocaleString() + ' - $' + high.toLocaleString();
+    featuresCost.textContent = '$' + featureCost.toLocaleString();
+    totalCost.textContent = '$' + total.toLocaleString();
+
+    quoteBtn.href = 'mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20' + encodeURIComponent('$' + low.toLocaleString() + ' to $' + high.toLocaleString() + ' Estimate');
+  }
+
+  pageSlider.addEventListener('input', updateEstimate);
+
+  featureGrid.addEventListener('click', function(e) {
+    var option = e.target.closest('.feature-option');
+    if (!option) return;
+    option.classList.toggle('selected');
+    updateEstimate();
+  });
+
+  complexityOptions.addEventListener('click', function(e) {
+    var option = e.target.closest('.complexity-opt');
+    if (!option) return;
+    complexityOptions.querySelectorAll('.complexity-opt').forEach(function(o) { o.classList.remove('selected'); });
+    option.classList.add('selected');
+    updateEstimate();
+  });
+
+  updateEstimate();
+})();
+</script>
+
+</body>
+</html>
