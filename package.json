@@ -3,5 +3,8 @@
   "private": true,
   "scripts": {
     "build": "echo 'Static HTML site — no build step required'"
+  },
+  "dependencies": {
+    "@microsoft/clarity": "^1.0.2"
   }
 }
