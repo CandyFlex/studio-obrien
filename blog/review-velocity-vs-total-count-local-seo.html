@@ -87,13 +87,14 @@
 </div>
 
 <table class="data-table">
-  <caption>Review velocity vs total count: how the two signals compare across ranking dimensions</caption>
-  <tr><th>Dimension</th><th>500 old reviews (static profile)</th><th>150 recent reviews (active profile)</th><th>Winner</th></tr>
+  <thead><tr><th>Dimension</th><th>500 old reviews (static profile)</th><th>150 recent reviews (active profile)</th><th>Winner</th></tr></thead>
+  <tbody>
   <tr class="accent-row"><td>Ranking trajectory</td><td>Declining month over month</td><td>Climbing or holding top-3</td><td>Active profile</td></tr>
   <tr><td>Consumer trust signal</td><td>Historical social proof, low recency weight</td><td>Fresh social proof, high recency weight</td><td>Active profile</td></tr>
   <tr><td>Algorithm freshness score</td><td>Low - profile reads as dormant</td><td>High - profile reads as actively engaged</td><td>Active profile</td></tr>
   <tr><td>Monthly review cadence</td><td>Less than 1 review/month, often zero</td><td>4-8 reviews/month, consistent pacing</td><td>Active profile</td></tr>
   <tr><td>Response engagement</td><td>Unreplied reviews older than 7 days</td><td>Personalized replies within 48 hours</td><td>Active profile</td></tr>
+</tbody>
 </table>
 
 <h2>Google treats reviews as a pulse check</h2>
@@ -134,7 +135,8 @@
     <tr><td>Consumer trust signal</td><td class="lose">Historical social proof, low recency weight</td><td class="win">Fresh social proof, high recency weight</td></tr>
     <tr class="highlight"><td>Algorithm freshness score</td><td class="lose">Low - profile reads as dormant</td><td class="win">High - profile reads as actively engaged</td></tr>
     <tr><td>Monthly review cadence</td><td class="lose">&lt;1 review/month, often zero</td><td class="win">4-8 reviews/month, consistent pacing</td></tr>
-  </table>
+  </tbody>
+</table>
 </div>
 
 <h2>Consumers only care about what's recent</h2>
