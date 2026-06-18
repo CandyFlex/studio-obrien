@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200,height=630,initial-scale=1">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;overflow:hidden;background:#111;font-family:'Inter','Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;position:relative}
+  .bg-pattern{position:absolute;inset:0;background-image:radial-gradient(rgba(52,211,153,.04) 1px,transparent 1px);background-size:32px 32px}
+  .content{position:relative;z-index:2;text-align:center;padding:0 60px}
+  .brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:96px;letter-spacing:-.03em;color:#fff;line-height:1}
+  .stripe{height:6px;background:linear-gradient(90deg,transparent,#34d399 25%,#6ee7b7 50%,#34d399 75%,transparent);margin:28px auto 28px;width:420px}
+  .subtitle{font-family:'Inter',sans-serif;font-weight:600;font-size:28px;color:#34d399;letter-spacing:.04em;text-transform:uppercase}
+  .location{font-family:'Inter',sans-serif;font-weight:400;font-size:20px;color:#666;margin-top:16px}
+  .logo-mark{position:absolute;bottom:40px;right:50px;display:flex;align-items:center;gap:10px}
+  .logo-mark svg{width:48px;height:48px}
+  .logo-mark span{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:#999;letter-spacing:-.01em}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&family=Inter:opsz,wght@14..32,400..750&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg-pattern"></div>
+<div class="content">
+  <div class="brand">O'BRIEN</div>
+  <div class="stripe"></div>
+  <div class="subtitle">Web Design &amp; Development</div>
+  <div class="location">Shelby, NC</div>
+</div>
+<div class="logo-mark">
+  <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#111"/><line x1="4" y1="4" x2="28" y2="28" stroke="#34d399" stroke-width="3.5" stroke-linecap="round"/><text x="16" y="23" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="18" fill="#fff">SO</text></svg>
+  <span>Studio</span>
+</div>
+</body>
+</html>

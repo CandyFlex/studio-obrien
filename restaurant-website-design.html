@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Restaurant Website Design | O'Brien Studio</title>
+<meta name="description" content="Restaurant website design by O'Brien Studio. Custom sites for steakhouses, bakeries, cafes, and bars. Online menus, reservations, mobile-first.">
+<link rel="canonical" href="https://studioobrien.com/restaurant-website-design">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Restaurant Website Design | O'Brien Studio">
+<meta property="og:description" content="Custom restaurant websites — see Ember & Oak, Black Creek Smokehouse. No templates.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/ember.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--gd:#2ec48d;--bg:#111;--fg:#fff;--muted:#999;--card:#1a1a1a;--b:#2a2a2a}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.6}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+  .topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:25px;color:var(--g);text-decoration:none;letter-spacing:-.01em}
+  .topbar-links{display:flex;gap:16px;align-items:center}
+  .topbar-link{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#fff;text-decoration:none;transition:color .2s}
+  .topbar-link:hover{color:var(--g)}
+  
+  @media(max-width:600px){.topbar-inner{height:52px}.topbar-logo{font-size:16px}.topbar-link{font-size:13px}.topbar-links{gap:10px}}
+  .hero{padding:56px 20px 40px;text-align:center;max-width:800px;margin:0 auto}
+  .hero h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;color:#fff}
+  .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 24px;line-height:1.6}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+  .hero-pill{padding:6px 14px;border:1px solid var(--b);font-size:12px;color:#aaa;font-weight:500}
+  .hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:14px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .3s,background .2s;min-height:48px}
+  .btn-primary{background:var(--g);color:var(--bg)}
+  .btn-primary:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
+  .btn-secondary{background:transparent;color:var(--fg);border:1px solid var(--b)}
+  .btn-secondary:hover{border-color:var(--g);transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px;flex-shrink:0}
+  
+  
+  .section{padding:48px 20px}
+  .section-dark{background:#0d0d0d}
+  .container{max-width:800px;margin:0 auto}
+  h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.15;margin-bottom:14px;letter-spacing:-.01em}
+  h3{font-family:'Inter',sans-serif;font-weight:600;font-size:17px;color:var(--fg);margin-bottom:6px}
+  p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px}
+  p strong{color:#ccc;font-weight:600}
+  @media(max-width:600px){.section{padding:36px 16px}p{font-size:14px}.hero{padding:40px 16px 32px}.btn{width:100%;justify-content:center;font-size:14px;padding:12px 24px}.hero-cta-row{flex-direction:column}}
+
+  /* Project showcase */
+  .project-hero{position:relative;width:100%;overflow:hidden;border:1px solid var(--b);margin-bottom:20px}
+  .project-hero img{width:100%;height:auto;display:block;object-fit:cover;max-height:420px;object-position:top}
+  .project-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(17,17,17,.95) 100%)}
+  .project-hero-tag{position:absolute;bottom:20px;left:20px;z-index:2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(18px,3vw,26px);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+  .project-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .project-card{border:1px solid var(--b);overflow:hidden;background:var(--card)}
+  .project-card img{width:100%;height:200px;object-fit:cover;object-position:top;display:block}
+  .project-card-body{padding:18px}
+  .project-card-body h3{font-size:16px;margin-bottom:4px}
+  .project-card-body p{font-size:13px;margin:0;color:var(--muted)}
+  .project-stat{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);font-size:12px;color:var(--g);font-weight:600;margin-bottom:10px}
+  @media(max-width:600px){.project-row{grid-template-columns:1fr}.project-hero img{max-height:260px}}
+
+  .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+  .service-card{border:1px solid var(--b);padding:22px 18px;background:var(--card)}
+  .service-card h3{font-size:16px;margin-bottom:4px}
+  .service-card p{font-size:13px;margin:0}
+  .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .testimonial{border:1px solid var(--b);padding:22px 18px}
+  .testimonial .stars{display:flex;gap:3px;margin-bottom:10px}
+  .testimonial .stars svg{width:16px;height:16px;color:var(--g);fill:var(--g)}
+  .testimonial blockquote{font-family:'Inter',sans-serif;font-size:14px;font-style:italic;color:#ccc;line-height:1.7;margin-bottom:14px;border:0;padding:0}
+  .testimonial .author{display:flex;align-items:center;gap:10px}
+  .testimonial .author img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--b)}
+  .testimonial .author-name{font-weight:600;font-size:13px;color:var(--fg)}
+  .testimonial .author-role{font-size:11px;color:var(--muted)}
+  .process-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .process-step{border:1px solid var(--b);padding:22px 18px;text-align:center}
+  .process-step .num{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:28px;color:var(--g);margin-bottom:8px;line-height:1}
+  .process-step h3{font-size:15px;margin-bottom:4px}
+  .process-step p{font-size:13px;margin:0}
+  .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .diff-item{display:flex;gap:10px;align-items:flex-start;padding:16px;border:1px solid var(--b);background:var(--card)}
+  .diff-item svg{width:20px;height:20px;color:var(--g);flex-shrink:0;margin-top:1px}
+  .diff-item h3{font-size:14px;margin-bottom:2px}
+  .diff-item p{font-size:12px;margin:0}
+  .cta-block{border:1px solid var(--g);padding:36px 28px;text-align:center;background:rgba(52,211,153,.03)}
+  .cta-block h2{margin-bottom:8px}
+  .cta-block p{margin-bottom:20px}
+  @media(max-width:600px){.cta-block{padding:28px 18px}}
+  .faq-item{border-bottom:1px solid var(--b);padding:18px 0}
+  .faq-item h3{font-size:16px;margin-bottom:6px}
+  .faq-item p{font-size:14px;margin:0}
+  .page-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+  .page-links a{font-size:13px;color:var(--muted);text-decoration:none;padding:4px 12px;border:1px solid var(--b);transition:color .2s,border-color .2s}
+  .page-links a:hover{color:var(--g);border-color:var(--g)}
+  footer{text-align:center;padding:36px 20px 48px;border-top:1px solid var(--b)}
+  footer p{font-size:12px;color:#555;margin:4px 0}
+  footer a{color:var(--g);text-decoration:none}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Restaurant Website Design","provider":{"@type":"ProfessionalService","name":"O'Brien Studio","url":"https://studioobrien.com"},"url":"https://studioobrien.com/restaurant-website-design","description":"Custom restaurant website design — menus, reservations, mobile-first. See Ember & Oak Steakhouse, Black Creek Smokehouse."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"O'Brien Studio","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Restaurant Website Design","item":"https://studioobrien.com/restaurant-website-design"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a restaurant website cost?","acceptedAnswer":{"@type":"Answer","text":"Every restaurant is different. A steakhouse needs different features than a bakery. We'll give you a straight quote after hearing about your space, your menu, and what you need the site to do."}},{"@type":"Question","name":"Do you build online ordering and reservation systems?","acceptedAnswer":{"@type":"Answer","text":"Yes. We integrate with Toast, Square, OpenTable, Resy, and most major platforms. If you already use one, we'll connect it. If you don't, we'll recommend the right one for your volume."}},{"@type":"Question","name":"How long does a restaurant website take?","acceptedAnswer":{"@type":"Answer","text":"Most restaurant sites go from first call to live in about 14 days. That includes menu design, reservation integration, mobile optimization, and a recorded walkthrough."}},{"@type":"Question","name":"Will my menu be easy to update?","acceptedAnswer":{"@type":"Answer","text":"Yes. We build with tools that let you update your menu, hours, and specials yourself — no coding, no calling us every time you change a price."}},{"@type":"Question","name":"Do you do photography for restaurants?","acceptedAnswer":{"@type":"Answer","text":"We can coordinate with food photographers in your area, or work with photos you already have. Good food photography is the difference between a site that makes people hungry and one they scroll past."}}]}
+</script>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site navigation">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-logo">O'Brien Studio</a>
+    <div class="topbar-links">
+      <a href="/blog" class="topbar-link">Blog</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Start Project</a>
+      <a href="/#portfolio" class="topbar-link">View Our Work</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1 class="sr-only">Restaurant Website Design — O'Brien Studio</h1>
+  <h2>Restaurant Website Design</h2>
+  <p>Custom-built sites for steakhouses, bakeries, cafes, and bars. Online menus, reservations, and mobile-first design that makes people hungry before they walk in.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">Online Menus</span>
+    <span class="hero-pill">Reservations</span>
+    <span class="hero-pill">Mobile-First</span>
+    <span class="hero-pill">Food Photography</span>
+    <span class="hero-pill">14-Day Delivery</span>
+  </div>
+  <div class="hero-cta-row">
+    <a href="mailto:hello@studioobrien.com" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Start a Project
+    </a>
+    <a href="/#portfolio" class="btn btn-secondary">View Our Work</a>
+  </div>
+</header>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Featured restaurant projects</h2>
+    <div class="project-hero">
+      <img src="portfolio/ember.webp" alt="Ember & Oak Steakhouse — restaurant website design by O'Brien Studio" loading="lazy">
+      <div class="project-hero-overlay"></div>
+      <div class="project-hero-tag">Ember &amp; Oak Steakhouse</div>
+    </div>
+    <div class="project-row">
+      <div class="project-card">
+        <img src="portfolio/bc.webp" alt="Black Creek Smokehouse — BBQ restaurant website by O'Brien Studio" loading="lazy">
+        <div class="project-card-body">
+          <span class="project-stat">55% more reservations</span>
+          <h3>Ember &amp; Oak</h3>
+          <p>Custom steakhouse site with reservations, menus, and event booking. Upscale atmosphere, online.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="portfolio/bb.webp" alt="Butter + Bloom Bakery — storefront website by O'Brien Studio" loading="lazy">
+        <div class="project-card-body">
+          <span class="project-stat">Mobile-first</span>
+          <h3>Butter + Bloom Bakery</h3>
+          <p>Online ordering, seasonal menus, and a site that looks as good as their pastries taste.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>What we build for restaurants</h2>
+    <div class="service-grid">
+      <div class="service-card"><h3>Custom Website Design</h3><p>No templates. Every page designed around your restaurant's atmosphere and brand.</p></div>
+      <div class="service-card"><h3>Online Menu Design</h3><p>Menus that look great on a phone — readable without zooming, easy to update.</p></div>
+      <div class="service-card"><h3>Reservation Integration</h3><p>OpenTable, Resy, Tock, or a simple call button — whatever fits how you book tables.</p></div>
+      <div class="service-card"><h3>Online Ordering</h3><p>Toast, Square, or direct integrations that don't eat your margins with third-party fees.</p></div>
+      <div class="service-card"><h3>Google Business Profile</h3><p>Hours, menu links, photos, and reviews — all connected so customers find everything in one tap.</p></div>
+      <div class="service-card"><h3>Local SEO</h3><p>Show up when someone searches "best steakhouse near me" or "bakery Shelby NC."</p></div>
+      <div class="service-card"><h3>Event &amp; Catering Pages</h3><p>Private dining, catering menus, and event booking — built to generate leads, not just look pretty.</p></div>
+      <div class="service-card"><h3>Photo-Ready Design</h3><p>Layouts built to showcase food photography. We'll coordinate with photographers or work with what you have.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>What our clients say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"The restaurant itself is beautiful, but our old site made it look like a chain. Jarred built something that finally matches the atmosphere inside these walls. Now people book before they even walk in."</blockquote>
+        <div class="author"><img src="portfolio/avatar-marcus.webp" alt="Marcus Reed" loading="lazy" width="36" height="36"><div><div class="author-name">Marcus Reed</div><div class="author-role">Owner, Ember &amp; Oak Steakhouse</div></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"Our users live on their phones and the old site was unusable on mobile. Jarred rebuilt the entire front end — it looks incredible and actually works where our audience is."</blockquote>
+        <div class="author"><img src="portfolio/avatar-sarah.webp" alt="Sarah Lin" loading="lazy" width="36" height="36"><div><div class="author-name">Sarah Lin</div><div class="author-role">Founder, Gameshelf</div></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <blockquote>"The walkthrough video sold me. I could see exactly what I was getting before anything went live. Revisions were painless."</blockquote>
+        <div class="author"><img src="portfolio/avatar-david.webp" alt="David Kim" loading="lazy" width="36" height="36"><div><div class="author-name">David Kim</div><div class="author-role">Creative Director, Koji Studio</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="container">
+    <h2>How we work</h2>
+    <p>Four steps from first call to live site. No meetings, no phone tag, no wasted time.</p>
+    <div class="process-list">
+      <div class="process-step"><div class="num">1</div><h3>Discovery</h3><p>One call. We ask about your menu, your customers, and what's not working with your current online presence.</p></div>
+      <div class="process-step"><div class="num">2</div><h3>Design &amp; Build</h3><p>We write every word, design every page, and build your menu and reservations from scratch.</p></div>
+      <div class="process-step"><div class="num">3</div><h3>Walkthrough</h3><p>Recorded video tour of the full site. Review on your own time. No meetings.</p></div>
+      <div class="process-step"><div class="num">4</div><h3>Launch</h3><p>We go live. You own the domain, hosting, and every line of code. No lock-in.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Why restaurants choose us</h2>
+    <div class="diff-grid">
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>No templates</h3><p>Custom-built around your restaurant. No cookie-cutter layouts.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>Mobile-first</h3><p>Your menu readable on any phone screen without zooming.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>You own everything</h3><p>Domain, hosting, source code — all yours. No lock-in, no monthly fees unless you want ongoing support.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>No meetings</h3><p>Recorded walkthrough. Review on your schedule.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>We speak business, not code</h3><p>Every decision explained in business terms, not jargon.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>14-day delivery</h3><p>From first call to live site. Clear timeline.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>Real copy, real strategy</h3><p>Every word written for your customers. No filler.</p></div></div>
+      <div class="diff-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><h3>Ongoing support</h3><p>Menu updates, specials, seasonal changes after launch.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Questions restaurant owners ask us</h2>
+    <div class="faq-item"><h3>How much does a restaurant website cost?</h3><p>Every restaurant is different. A steakhouse needs different features than a bakery. We'll give you a straight quote after hearing about your space, your menu, and what you need the site to do.</p></div>
+    <div class="faq-item"><h3>How long does it take?</h3><p>Most restaurant sites go from first call to live in about 14 days. That includes menu design, reservation integration, and mobile optimization.</p></div>
+    <div class="faq-item"><h3>Can you integrate with our reservation system?</h3><p>Yes. We work with OpenTable, Resy, Tock, and direct booking forms. If you use something else, we'll make it work.</p></div>
+    <div class="faq-item"><h3>Will my menu be easy to update?</h3><p>Yes. We build with tools that let you change items, prices, and specials yourself — no coding, no calling us every time.</p></div>
+    <div class="faq-item"><h3>Do you handle online ordering?</h3><p>Yes. We integrate with Toast, Square, and direct platforms so you keep more revenue instead of losing it to third-party delivery fees.</p></div>
+    <div class="faq-item"><h3>What if we already have a website?</h3><p>We'll rebuild it without losing your SEO or your Google reviews. Migration is part of the process — no extra charge, no downtime.</p></div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="cta-block">
+      <h2>Ready for a website that fills your tables?</h2>
+      <p>Tell us about your restaurant. We'll tell you exactly what we'd build and how long it'll take. Free. No strings.</p>
+      <a href="mailto:hello@studioobrien.com" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start a Project
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>O'Brien Studio</strong> — Restaurant website design &amp; development</p>
+  <div class="page-links">
+    <a href="/blog">Blog</a>
+    <a href="/restaurant-website-design">Restaurant Website Design</a>
+    <a href="/seo-services">SEO Services</a>
+    <a href="/small-business-websites">Small Business Websites</a>
+    <a href="/google-business-profile-setup">Google Business Profile</a>
+    <a href="/website-redesign-migration">Website Redesign &amp; Migration</a>
+    <a href="/shelby-nc-web-design">Web Development &amp; Design Shelby NC</a>
+  </div>
+  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
+  <p>&copy; 2025 <a href="/">O'Brien Studio</a></p>
+</footer>
+
+</body>
+</html>

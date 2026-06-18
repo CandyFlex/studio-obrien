@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog | O'Brien Studio — Web Development, SEO &amp; Business Tips</title>
+<meta name="description" content="Data-driven articles on web development, Google Business Profile, local SEO, and small business strategy for Shelby NC and Cleveland County.">
+<link rel="canonical" href="https://studioobrien.com/blog">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog - O'Brien Studio | Web Development & Local Business Tips">
+<meta property="og:description" content="Web development and local business tips for Shelby, NC and Cleveland County business owners.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/ember.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="/blog/blog.css">
+<style>
+  .topbar-link.active{color:var(--g)}
+  .hero{padding:56px 20px 40px;text-align:center;max-width:700px;margin:0 auto}
+  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px}
+  .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6}
+  .hero-accent{display:inline-block;padding:4px 14px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);font-size:12px;color:var(--g);font-weight:600;margin-bottom:16px}
+  .blog-grid{max-width:900px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+  .blog-card{border:1px solid var(--b);overflow:hidden;transition:border-color .3s,transform .2s;background:var(--card)}
+  .blog-card:hover{border-color:var(--g);transform:translateY(-3px)}
+  .blog-card-img{position:relative;width:100%;height:180px;overflow:hidden}
+  .blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+  .blog-card:hover .blog-card-img img{transform:scale(1.04)}
+  .blog-card-category{position:absolute;top:12px;left:12px;padding:4px 10px;background:var(--bg);border:1px solid var(--b);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--g)}
+  .blog-card-body{padding:18px 20px 22px}
+  .blog-card-body time{font-size:12px;color:#555;display:block;margin-bottom:8px}
+  .blog-card-body h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;line-height:1.3;margin-bottom:8px;color:var(--fg);letter-spacing:-.01em}
+  .blog-card-body p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+  .blog-card-footer{display:flex;align-items:center;justify-content:space-between;padding:0 20px 18px}
+  .blog-card-read{font-size:12px;color:var(--g);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+  .blog-card:hover .blog-card-read{gap:8px}
+  .blog-card-read svg{width:14px;height:14px}
+  .blog-card-time{font-size:11px;color:#555}
+  .section{padding:48px 20px}.section-dark{background:#0d0d0d}
+  .container{max-width:800px;margin:0 auto;text-align:center}
+  .newsletter-box{border:1px solid var(--b);padding:36px 28px;text-align:center;max-width:600px;margin:0 auto;background:var(--card)}
+  .newsletter-box h2{margin-bottom:8px;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:22px}
+  .newsletter-box p{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .newsletter-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
+  .newsletter-form input{flex:1;padding:12px 16px;background:var(--bg);border:1px solid var(--b);color:var(--fg);font-family:'Inter',sans-serif;font-size:14px;min-width:0}
+  .newsletter-form input:focus{outline:none;border-color:var(--g)}
+  .newsletter-form button{padding:12px 24px;background:var(--g);color:var(--bg);border:none;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background .2s}
+  .newsletter-form button:hover{background:var(--gd)}
+  @media(max-width:600px){.blog-grid{grid-template-columns:1fr;padding:0 16px 40px}.hero{padding:40px 16px 32px}.blog-card-img{height:160px}.blog-card-body h2{font-size:16px}.btn{width:100%;justify-content:center;font-size:14px;padding:12px 24px}}
+  @media(max-width:500px){.newsletter-form{flex-direction:column}.newsletter-form button{width:100%}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"O'Brien Studio Blog","description":"Web design and local business tips for Shelby, NC and Cleveland County business owners. Articles on restaurant websites, Google Business Profile, SEO, website costs, and more.","url":"https://studioobrien.com/blog","provider":{"@type":"ProfessionalService","name":"O'Brien Studio","url":"https://studioobrien.com"},"blogPost":["https://studioobrien.com/blog/restaurant-website-costing-you-money","https://studioobrien.com/blog/facebook-only-trap-small-town-restaurants","https://studioobrien.com/blog/qr-code-menu-revenue-hack","https://studioobrien.com/blog/cut-restaurant-no-shows-68-percent","https://studioobrien.com/blog/google-vs-yelp-small-town-restaurants","https://studioobrien.com/blog/uncaptured-email-revenue-restaurants","https://studioobrien.com/blog/surviving-restaurant-cost-increases-nc","https://studioobrien.com/blog/google-business-profile-ranking-factors-2026","https://studioobrien.com/blog/google-map-ranking-distance-small-towns","https://studioobrien.com/blog/google-business-profile-category-ranking","https://studioobrien.com/blog/review-velocity-vs-total-count-local-seo","https://studioobrien.com/blog/ftc-fake-review-rules-small-business","https://studioobrien.com/blog/google-yelp-facebook-reviews-local-business","https://studioobrien.com/blog/google-business-profile-photos-increase-calls","https://studioobrien.com/blog/service-area-business-google-ranking-hidden-address",      "https://studioobrien.com/blog/ai-search-local-business-discovery-2026","https://studioobrien.com/blog/outdated-small-business-website-costing-you","https://studioobrien.com/blog/signs-your-website-needs-redesign","https://studioobrien.com/blog/website-redesign-roi-small-business","https://studioobrien.com/blog/page-speed-costing-your-business-money","https://studioobrien.com/blog/mobile-optimization-local-search-small-business","https://studioobrien.com/blog/website-migration-seo-traffic-loss","https://studioobrien.com/blog/core-web-vitals-local-seo-ranking","https://studioobrien.com/blog/ada-compliance-website-lawsuits-small-business"]}
+</script>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site navigation">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-logo">O'Brien Studio</a>
+    <div class="topbar-links">
+      <a href="/blog" class="topbar-link active">Blog</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Start Project</a>
+      <a href="/#portfolio" class="topbar-link">View Our Work</a>
+      <a href="mailto:hello@studioobrien.com" class="topbar-link">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-accent">Articles &amp; Insights</span>
+  <h1>The O'Brien Studio Blog</h1>
+  <p>Data-driven articles on web development, Google Business Profile optimization, local SEO ranking factors, review management, and digital strategy for small business owners in Shelby, NC and Cleveland County.</p>
+</header>
+
+<div class="blog-grid">
+
+  <article class="blog-card">
+    <a href="/blog/restaurant-website-costing-you-money" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Shelby_town_hall.jpg/960px-Shelby_town_hall.jpg" alt="Shelby City Hall" loading="lazy">
+        <span class="blog-card-category">Restaurants</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-10">June 10, 2025</time>
+        <h2>Your Restaurant Website Is Costing You Money - Here Are the Numbers</h2>
+        <p>77% of diners check your website before visiting. 70% are turned away by a bad one. And 46% equate no website with no credibility. The data is brutal - but fixable.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/facebook-only-trap-small-town-restaurants" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Kings_Mountain_Downtown.JPG/960px-Kings_Mountain_Downtown.JPG" alt="Downtown Kings Mountain" loading="lazy">
+        <span class="blog-card-category">Digital Strategy</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-08">June 8, 2025</time>
+        <h2>The Facebook-Only Trap: Why 20% of Small-Town Restaurants Are Bleeding Revenue</h2>
+        <p>You built 2,000 followers. Only 40 see your posts. Facebook's organic reach collapsed to 1–6% - and you don't own the platform. Here's the math on what that's costing you.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/qr-code-menu-revenue-hack" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Forest-City-Main-St-block-nc.jpg/960px-Forest-City-Main-St-block-nc.jpg" alt="Main Street Forest City" loading="lazy">
+        <span class="blog-card-category">Revenue</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-05">June 5, 2025</time>
+        <h2>QR Code Menus: The $4-Per-Table Revenue Hack Most NC Restaurants Are Missing</h2>
+        <p>Digital menus add $2–$4 per check, compress table turnover, and capture guest data you can't get from paper. 76% of Gen Z and Millennials want this. Here's how it works.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/cut-restaurant-no-shows-68-percent" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Rutherfordton-Main-St-nc.jpg/960px-Rutherfordton-Main-St-nc.jpg" alt="Main Street Rutherfordton" loading="lazy">
+        <span class="blog-card-category">Operations</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-03">June 3, 2025</time>
+        <h2>No-Shows Are Killing Your Restaurant - Here's How to Cut Them by 68%</h2>
+        <p>The average restaurant loses 1 in 4 reservations to no-shows. Phone-based booking has a 25% ghost rate. Online reservations drop that to under 8% - and boost revenue per table by 18%.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-vs-yelp-small-town-restaurants" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Cleveland_County_Courthouse_%28February_2023%29_4.jpg/960px-Cleveland_County_Courthouse_%28February_2023%29_4.jpg" alt="Cleveland County Courthouse" loading="lazy">
+        <span class="blog-card-category">Discovery</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-05-30">May 30, 2025</time>
+        <h2>Google vs Yelp in Small Towns: Why Your Restaurant Has 262 Reviews on One and 31 on the Other</h2>
+        <p>In towns under 50K, Google dominates 80% of restaurant discovery. Yelp's algorithm actively filters legitimate rural reviews. Here's where you should actually invest your time.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/uncaptured-email-revenue-restaurants" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Cleveland_Springs%2C_Shelby_%2822126464932%29.jpg" alt="Cleveland Springs Shelby" loading="lazy">
+        <span class="blog-card-category">Marketing</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-05-28">May 28, 2025</time>
+        <h2>The $60,000 Email List Sitting in Your Restaurant Right Now</h2>
+        <p>500+ guest emails = $35K–$60K in uncaptured annual revenue. Restaurants with automated email campaigns see 23% more repeat visits. Here's how to start capturing that data tomorrow.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/surviving-restaurant-cost-increases-nc" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Kings_Mountain_National_Park_KIMO0999_%28cropped%29.jpg/960px-Kings_Mountain_National_Park_KIMO0999_%28cropped%29.jpg" alt="Kings Mountain National Military Park" loading="lazy">
+        <span class="blog-card-category">Strategy</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-05-24">May 24, 2025</time>
+        <h2>How Small-Town NC Restaurants Are Surviving a 30% Cost Increase - Without Raising Menu Prices</h2>
+        <p>Food and labor costs are up 30% since 2019. Customer traffic is down 61%. The restaurants surviving aren't cutting quality - they're using digital tools as a counterweight.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-business-profile-ranking-factors-2026" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Earl_Scruggs_Center_2.jpg/960px-Earl_Scruggs_Center_2.jpg" alt="Earl Scruggs Center Shelby" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>The 2026 Local Search Algorithm: Where Your Google Ranking Actually Comes From</h2>
+        <p>GBP signals control 32% of local pack ranking. Reviews drive 20%. On-page holds 33% of organic. Here is exactly what moves the needle in micropolitan markets like Shelby, NC.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-map-ranking-distance-small-towns" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Gone_%28Unsplash%29.jpg/960px-Gone_%28Unsplash%29.jpg" alt="Rural road near Kings Mountain NC" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>How Far Does Your Google Maps Ranking Reach in a Small Town? More Than You Think</h2>
+        <p>Urban rankings collapse beyond 2 miles. In towns like Shelby and Kings Mountain, optimized profiles rank 10-15 miles out. The proximity ceiling is elastic when competitor density is low.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-business-profile-category-ranking" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Uptown_Shelby.jpg/960px-Uptown_Shelby.jpg" alt="Uptown Shelby streetscape" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>The #1 Google Business Profile Ranking Factor Most Small Businesses Get Wrong</h2>
+        <p>Primary GBP category scored 227 as the number one factor. Keywords in your title scored 223. Generalized category selection is destroying visibility across Cleveland County.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/review-velocity-vs-total-count-local-seo" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Rutherford_County_Courthouse%2C_Rutherfordton%2C_North_Carolina_%282019%29.jpg/960px-Rutherford_County_Courthouse%2C_Rutherfordton%2C_North_Carolina_%282019%29.jpg" alt="Rutherford County Courthouse" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>Why 150 New Reviews Are Outranking 500 Old Ones in Local Search</h2>
+        <p>Google measures review velocity, not just total count. A competitor with 150 fresh weekly reviews can outrank your 500 accumulated over years. Here is the pacing that moves the needle.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/ftc-fake-review-rules-small-business" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Forest-City-block-nc.jpg/960px-Forest-City-block-nc.jpg" alt="Businesses on Main Street Forest City" loading="lazy">
+        <span class="blog-card-category">Legal</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>FTC Made Fake Reviews a Federal Offense - What NC Small Businesses Must Know</h2>
+        <p>16 CFR Part 465 bans buying, selling, or incentivizing fake reviews with real financial penalties. 97% of consumers support punishment. Here is what your Shelby business must stop doing today.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-yelp-facebook-reviews-local-business" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Railway_in_Kings_Mountain.jpg/960px-Railway_in_Kings_Mountain.jpg" alt="Railway in Kings Mountain" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>Google vs Yelp vs Facebook Reviews: Which Platform Actually Brings Local Customers?</h2>
+        <p>Google lets you ask for reviews. Yelp bans it entirely. Facebook requires real identities. Each platform has different rules - and getting them wrong costs you visibility in small NC towns.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/google-business-profile-photos-increase-calls" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Broad_River_Greenway%2C_July_2013.jpg/960px-Broad_River_Greenway%2C_July_2013.jpg" alt="Broad River Greenway Cleveland County" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>How 100 Google Business Profile Photos Got One Company 520% More Phone Calls</h2>
+        <p>Profiles with 100+ photos generate 520% more calls. 20+ photos gets 18% more clicks. Every interaction feeds Google's behavioral ranking algorithm. Here is the visual asset playbook.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/service-area-business-google-ranking-hidden-address" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Coca-Cola_Bottling_Co_building%2C_Forest_City%2C_North_Carolina.jpg/960px-Coca-Cola_Bottling_Co_building%2C_Forest_City%2C_North_Carolina.jpg" alt="Coca-Cola Bottling Co building Forest City" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>Why Hiding Your Address Kills Your Google Maps Ranking - And How to Fix It</h2>
+        <p>Plumbers, electricians, and HVAC contractors in Cleveland County must hide home addresses on GBP. But doing so triggers backend proximity bugs. Here is how to compensate and stay visible.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/ai-search-local-business-discovery-2026" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Gardner-Webb-South-Main-entrance-nc.jpg/960px-Gardner-Webb-South-Main-entrance-nc.jpg" alt="Gardner-Webb University Boiling Springs" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-11">June 11, 2025</time>
+        <h2>AI Search Is Rewriting Local Business Discovery - Most NC Businesses Aren't Ready</h2>
+        <p>82% of consumers now use AI review summaries to decide where to spend. AI search weights on-page at 24%, citations at 13%. Here is how Shelby businesses get cited by ChatGPT and Google AI Overviews.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/outdated-small-business-website-costing-you" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Hotel_Charles%2C_Shelby.jpg/960px-Hotel_Charles%2C_Shelby.jpg" alt="Hotel Charles Shelby" loading="lazy">
+        <span class="blog-card-category">Web Design</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>60% of Small Business Websites Are Outdated - Is Yours One of Them?</h2>
+        <p>Average website lifespan is just 2 years 5 months. Food industry: 1 year 2 months. 94% of users don't trust outdated sites. Here is what digital obsolescence costs.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/signs-your-website-needs-redesign" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/South_Dekalb_Street%2C_Shelby_%28February_2023%29.jpg/960px-South_Dekalb_Street%2C_Shelby_%28February_2023%29.jpg" alt="South Dekalb Street Shelby" loading="lazy">
+        <span class="blog-card-category">Web Design</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>The 3 Signs Your Website Is Costing You Customers</h2>
+        <p>Traffic but no leads? Site looks 5 years older than competitors? Can't update it yourself? These are the definitive signs your site needs a redesign.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/website-redesign-roi-small-business" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Masonic_Temple_Building_-_Shelby_NC.jpg/960px-Masonic_Temple_Building_-_Shelby_NC.jpg" alt="Masonic Temple Building Shelby" loading="lazy">
+        <span class="blog-card-category">Web Design</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>What a Website Redesign Actually Returns: The ROI Math</h2>
+        <p>20-50% conversion lift within 6 months. Average payback: 4-14 months. Nonprofit saw 55% more donations. Law firm got 400% homepage conversion boost. Here is the formula.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/page-speed-costing-your-business-money" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/East_Warren_Street%2C_Shelby_%28February_2023%29.jpg/960px-East_Warren_Street%2C_Shelby_%28February_2023%29.jpg" alt="East Warren Street Shelby" loading="lazy">
+        <span class="blog-card-category">Web Design</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>3 Seconds to Lose a Customer: What Page Speed Costs Your Business</h2>
+        <p>53% of mobile visitors abandon sites over 3 seconds. A 5-second load time increases bounce probability 90%. E-commerce loses $4.2B/year to slow pages.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/mobile-optimization-local-search-small-business" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Hand_holding_%28Unsplash%29.jpg/960px-Hand_holding_%28Unsplash%29.jpg" alt="Smartphone in hand" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>Your Customers Are All on Mobile - Is Your Site?</h2>
+        <p>64% of Google searches are mobile. 76% of local searchers visit within 24 hours. 73% reject non-responsive sites. Are you invisible to customers searching right now?</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">6 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/website-migration-seo-traffic-loss" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/First_Broad_River_-_at_Double_Shoals.jpg/960px-First_Broad_River_-_at_Double_Shoals.jpg" alt="First Broad River Cleveland County" loading="lazy">
+        <span class="blog-card-category">Web Design</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>Why Website Migrations Fail and 17% Never Recover</h2>
+        <p>Average recovery: 523 days. Domain changes trigger 20-40% traffic drops. One e-commerce company lost 30% overnight from bad redirects. Here is the pre-launch checklist.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/core-web-vitals-local-seo-ranking" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Charles_F._Harry%2C_III_Cleveland_County_Administrative_Building_%28February_2023%29.jpg/960px-Charles_F._Harry%2C_III_Cleveland_County_Administrative_Building_%28February_2023%29.jpg" alt="Cleveland County Administrative Building" loading="lazy">
+        <span class="blog-card-category">Local SEO</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>Core Web Vitals: The Ranking Tiebreaker Most Local Businesses Ignore</h2>
+        <p>Only 3% of local sites pass all Core Web Vitals. Average LCP is 9.5s - 4x the threshold. When all else is equal, the faster site wins the Map Pack. Are you losing the tiebreaker?</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <a href="/blog/ada-compliance-website-lawsuits-small-business" style="text-decoration:none;color:inherit;display:block">
+      <div class="blog-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Shelby_Cafe.jpg/960px-Shelby_Cafe.jpg" alt="Shelby Cafe" loading="lazy">
+        <span class="blog-card-category">Legal</span>
+      </div>
+      <div class="blog-card-body">
+        <time datetime="2025-06-12">June 12, 2025</time>
+        <h2>ADA Lawsuits Are Targeting Small Business Websites - Here's the Data</h2>
+        <p>3,948 federal ADA website lawsuits in 2025, up 24%. 77% target businesses under $25M. Average settlement: $25K. Overlay widgets don't protect you. What NC businesses must know.</p>
+      </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-read">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <span class="blog-card-time">7 min read</span>
+      </div>
+    </a>
+  </article>
+
+</div>
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="newsletter-box">
+      <h2>Get data-driven restaurant tips in your inbox</h2>
+      <p>No fluff. Just research-backed articles on web development, digital strategy, and revenue growth for NC restaurant owners.</p>
+      <form class="newsletter-form" action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>O'Brien Studio</strong> - Web design &amp; development blog for Shelby, NC</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/restaurant-website-design">Restaurant Websites</a>
+    <a href="/seo-services">SEO Services</a>
+    <a href="/small-business-websites">Small Business Websites</a>
+    <a href="/google-business-profile-setup">Google Business Profile</a>
+    <a href="/website-redesign-migration">Website Redesign</a>
+    <a href="/shelby-nc-web-design">Web Development &amp; Design Shelby NC</a>
+    <a href="mailto:hello@studioobrien.com">Contact</a>
+  </div>
+  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
+  <p>&copy; 2025 <a href="/">O'Brien Studio</a></p>
+</footer>
+
+</body>
+</html>
