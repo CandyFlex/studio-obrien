@@ -32,6 +32,7 @@
 .contact-form-section{padding:0 20px 80px;flex:1;opacity:0;transform:translate3d(0,30px,0);transition:opacity .7s cubic-bezier(.16,1,.3,1) .1s,transform .7s cubic-bezier(.16,1,.3,1) .1s}
 .contact-form-section.visible{opacity:1;transform:translate3d(0,0,0)}
 .contact-form-section .wrap{max-width:960px;display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
+.contact-form-section .wrap.no-sidebar{grid-template-columns:1fr}
 .contact-form{display:flex;flex-flow:column;gap:28px}
 .form-group{display:flex;flex-flow:column;gap:8px}
 .form-group label{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:#aaa;letter-spacing:.02em;text-transform:uppercase}
@@ -183,7 +184,7 @@
 
   <!-- FORM -->
   <section class="contact-form-section" data-animate>
-    <div class="wrap">
+    <div class="wrap" id="form-wrap">
       <!-- SUCCESS STATE -->
       <div class="form-success" id="form-success">
         <div class="form-success-inner">
@@ -543,9 +544,12 @@
 <script>
 (function(){
   var sidebar = document.getElementById('contact-sidebar');
-  if (!sidebar) return;
-  if (!/[\?&]full(?:$|&|=)/.test(window.location.search)) {
+  var wrap = document.getElementById('form-wrap');
+  if (!sidebar || !wrap) return;
+  var showSidebar = /[\?&]full(?:$|&|=)/.test(window.location.search);
+  if (!showSidebar) {
     sidebar.style.display = 'none';
+    wrap.classList.add('no-sidebar');
   }
 })();
 </script>
