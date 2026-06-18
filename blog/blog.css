@@ -130,14 +130,19 @@ body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-hei
 .faq-item h3{font-family:'Inter',sans-serif;font-weight:600;font-size:16px;color:var(--fg);margin-bottom:8px;line-height:1.4}
 .faq-item p{font-size:14px;color:var(--muted);margin:0;line-height:1.7}
 
-/* DATA TABLE — structured data presentation */
-.data-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px;border:1px solid var(--b)}
-.data-table thead th{text-align:left;padding:12px 14px;border-bottom:2px solid var(--g);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:12px;color:var(--fg);background:rgba(52,211,153,.06);letter-spacing:.03em;text-transform:uppercase}
-.data-table tbody td{padding:12px 14px;border-bottom:1px solid var(--b);color:var(--muted);line-height:1.5;font-size:13px}
+/* DATA TABLE — premium dark themed presentation */
+.data-table{width:100%;border-collapse:separate;border-spacing:0;margin:24px 0;font-size:13px;border:1px solid var(--b);border-radius:6px;overflow:hidden}
+.data-table thead th{text-align:left;padding:14px 16px;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:11px;color:var(--g);letter-spacing:.06em;text-transform:uppercase;background:rgba(52,211,153,.06);border-bottom:2px solid var(--g)}
+.data-table thead th:first-child{border-radius:5px 0 0 0}
+.data-table thead th:last-child{border-radius:0 5px 0 0}
+.data-table tbody td{padding:14px 16px;color:var(--muted);line-height:1.5;font-size:13px;background:var(--card);border-bottom:1px solid rgba(42,42,42,.5);vertical-align:middle}
 .data-table tbody tr:last-child td{border-bottom:none}
-.data-table tbody tr:hover{background:rgba(52,211,153,.02)}
+.data-table tbody tr:last-child td:first-child{border-radius:0 0 0 5px}
+.data-table tbody tr:last-child td:last-child{border-radius:0 0 5px 0}
+.data-table tbody tr:hover td{background:rgba(52,211,153,.03)}
 .data-table tbody td:first-child{color:#ccc;font-weight:600}
-.data-table tbody td strong{color:var(--g)}
+.data-table tbody td strong{color:var(--g);font-size:14px}
+.data-table .accent-row td{background:rgba(52,211,153,.02);border-left:3px solid var(--g)}
 
 /* SECTION DIVIDER — visual breathing room between major sections */
 .section-divider{height:1px;background:var(--b);margin:36px 0;border:none}
