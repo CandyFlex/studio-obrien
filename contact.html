@@ -97,7 +97,21 @@
 
 @media(max-width:768px){
   .contact-info-sidebar{position:static}
+  .contact-bottom-grid{grid-template-columns:1fr;gap:36px}
 }
+
+/* Bottom process section */
+.contact-bottom{padding:60px 20px 80px;border-top:1px solid #2a2a2a}
+.contact-bottom .wrap{max-width:960px}
+.contact-bottom h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:22px;color:#fff;margin:0 0 20px;letter-spacing:-.01em}
+.contact-bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.step-row{display:flex;gap:16px;margin-bottom:20px}
+.step-row .step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#34d399;color:#111;font-size:13px;font-weight:700;border-radius:50%;flex-shrink:0}
+.step-row div{font-size:14px;color:#999;line-height:1.6}
+.step-row div strong{color:#ccc}
+.no-list{list-style:none;padding:0}
+.no-list li{font-size:14px;color:#999;line-height:1.7;padding:6px 0;padding-left:20px;position:relative}
+.no-list li::before{content:'—';position:absolute;left:0;color:#555}
 
 /* Service card row */
 .services-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
@@ -331,10 +345,10 @@
       </form>
 
       <!-- CONTACT INFO SIDEBAR -->
-      <aside class="contact-info-sidebar">
+      <aside class="contact-info-sidebar" id="contact-sidebar">
         <div class="contact-info-card">
           <h3>Prefer to reach out directly?</h3>
-          <p class="info-sub">Fill the form or use either option below. Same inbox, same person — Jarred reads everything.</p>
+          <p class="info-sub">Skip the form. Same inbox — every message gets read.</p>
           <div class="contact-info-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <div>
@@ -345,13 +359,36 @@
           <div class="contact-info-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             <div>
-              <div class="info-label">Call or text</div>
+              <div class="info-label">Text</div>
               <div class="info-value"><a href="tel:+17049743372">(704) 974-3372</a></div>
             </div>
           </div>
-          <p class="info-note">Text is fine — send your name, what you need, and the best time to talk. I'll reply within a few hours, usually sooner.</p>
+          <p class="info-note">Send your name and what you need. Replies usually within a few hours.</p>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <!-- PROCESS / FAQ SECTION -->
+  <section class="contact-bottom">
+    <div class="wrap">
+      <div class="contact-bottom-grid">
+        <div>
+          <h2>What happens after you reach out</h2>
+          <div class="step-row"><span class="step-num">1</span><div><strong>You send the form.</strong> Name, what you need, timeline. I read every one.</div></div>
+          <div class="step-row"><span class="step-num">2</span><div><strong>I reply within 24 hours.</strong> Straightforward take on scope, timeline, and cost — no sales call, no pressure.</div></div>
+          <div class="step-row"><span class="step-num">3</span><div><strong>If it fits, we start.</strong> Custom design, copywriting, build. Most small business sites launch in 14 days.</div></div>
+        </div>
+        <div>
+          <h2>What you won't get</h2>
+          <ul class="no-list">
+            <li>An autoresponder. Every reply is from a person.</li>
+            <li>A sales pitch. If I'm not the right fit, I'll tell you.</li>
+            <li>Scope creep. Fixed price, agreed upfront, no surprises.</li>
+            <li>A locked-in contract. You own the code, domain, and hosting.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -501,6 +538,15 @@
     if (history.replaceState) history.replaceState(null, '', window.location.pathname);
   }
 
+})();
+</script>
+<script>
+(function(){
+  var sidebar = document.getElementById('contact-sidebar');
+  if (!sidebar) return;
+  if (!/[\?&]full(?:$|&|=)/.test(window.location.search)) {
+    sidebar.style.display = 'none';
+  }
 })();
 </script>
 </body>
