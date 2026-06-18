@@ -1,0 +1,7 @@
+{
+  "name": "studio-obrien",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static HTML site — no build step required'"
+  }
+}
