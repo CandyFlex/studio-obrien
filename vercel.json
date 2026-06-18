@@ -1,4 +1,7 @@
 {
+  "buildCommand": "",
+  "installCommand": "",
+  "framework": null,
   "rewrites": [
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/blog/:slug.html" },

@@ -6,3 +6,4 @@ node_modules/
 index-test.html
 index-backup.html
 .vscode/
+.vercel/
