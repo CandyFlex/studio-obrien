@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Website Cost Calculator — Quick Start $500 | O'Brien Studio</title>
-<meta name="description" content="Get a website in 72 hours from $500 (Quick Start) or estimate your custom build cost. Free calculator for small businesses in Shelby, NC. No signup required.">
+<title>Web Development Cost Calculator — Free Estimate Tool | O'Brien Studio</title>
+<meta name="description" content="Free web development cost calculator. Estimate your website project cost in 60 seconds. Custom websites for small businesses in Shelby, NC and Cleveland County. No signup required.">
 <link rel="canonical" href="https://studioobrien.com/website-cost-calculator">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Website Cost Calculator — Quick Start $500 + Custom Estimates | O'Brien Studio">
-<meta property="og:description" content="Quick Start websites from $500 (72-hour delivery) or estimate your custom build cost. Free tool — no signup, no email required.">
+<meta property="og:title" content="Web Development Cost Calculator — Free Estimate | O'Brien Studio">
+<meta property="og:description" content="Estimate your custom website cost in 60 seconds. Free tool for small businesses — no signup, no email required.">
 <meta property="og:image" content="https://studioobrien.com/portfolio/og-image.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/fonts.css">
@@ -123,33 +123,6 @@
     .btn{width:100%;justify-content:center}
   }
 
-  /* Product gate */
-  .product-gate{max-width:620px;margin:0 auto 32px}
-  .product-gate-label{text-align:center;font-size:14px;color:var(--muted);margin-bottom:16px}
-  .product-gate-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .product-card{border:2px solid var(--b);padding:24px 20px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--card);user-select:none}
-  .product-card:hover{border-color:var(--g)}
-  .product-card.active{border-color:var(--g);background:rgba(52,211,153,.06)}
-  .product-card .pc-icon{font-size:28px;margin-bottom:10px;display:block}
-  .product-card .pc-label{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:var(--fg);margin-bottom:4px}
-  .product-card .pc-price{font-size:20px;font-weight:700;color:var(--g);margin-bottom:4px}
-  .product-card .pc-sub{font-size:12px;color:var(--muted);margin:0}
-  .product-card .pc-badge{display:inline-block;padding:2px 8px;background:vaR(--g);color:var(--bg);font-size:10px;font-weight:700;margin-top:8px}
-
-  /* Quick Start card */
-  .quick-start-card{max-width:620px;margin:0 auto;background:var(--card);border:2px solid var(--g);padding:32px 28px;display:none}
-  .quick-start-card.visible{display:block}
-  .quick-start-card h3{font-size:18px;margin-bottom:8px;color:var(--g)}
-  .quick-start-card .qs-price{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:36px;color:var(--g);margin-bottom:16px}
-  .quick-start-card .qs-includes{list-style:none;padding:0;margin:0 0 20px}
-  .quick-start-card .qs-includes li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;color:var(--fg)}
-  .quick-start-card .qs-includes li svg{width:18px;height:18px;color:var(--g);flex-shrink:0}
-  .quick-start-card .qs-excludes{list-style:none;padding:0;margin:0 0 20px}
-  .quick-start-card .qs-excludes li{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:13px;color:var(--muted)}
-  .quick-start-card .qs-excludes li svg{width:14px;height:14px;color:#555;flex-shrink:0}
-  .quick-start-card .qs-upsell{font-size:13px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
-  .quick-start-card .qs-upsell strong{color:var(--g)}
-
   /* Tooltip */
   .tooltip-trigger{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--b);color:var(--muted);font-size:10px;font-weight:700;cursor:help;position:relative}
   .tooltip-trigger:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);font-size:11px;font-weight:400;padding:6px 10px;white-space:nowrap;pointer-events:none;z-index:10}
@@ -184,117 +157,9 @@
   <p class="trust-line">Custom-coded, not a WordPress template. Copywriting included. 14-day delivery. You own everything.</p>
 </header>
 
-<section class="section" style="padding-top:0;padding-bottom:0">
+<section class="section" style="padding-top:0">
   <div class="container">
-    <div class="product-gate-label">What kind of website do you need?</div>
-    <div class="product-gate" id="productGate">
-      <div class="product-gate-row">
-        <div class="product-card active" data-product="quickstart" id="qsCard">
-          <span class="pc-icon">&#9889;</span>
-          <div class="pc-label">Quick Start</div>
-          <div class="pc-price">$500-$600</div>
-          <div class="pc-sub">1 page &#183; 72 hours &#183; Fixed price</div>
-          <div class="pc-badge">FASTEST DELIVERY</div>
-        </div>
-        <div class="product-card" data-product="custom" id="customCard">
-          <span class="pc-icon">&#127912;</span>
-          <div class="pc-label">Custom Build</div>
-          <div class="pc-price">Estimate Below</div>
-          <div class="pc-sub">1-30 pages &#183; 14 days &#183; Tailored</div>
-          <div class="pc-badge">FULLY CUSTOM</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quick Start card -->
-    <div class="quick-start-card visible" id="quickStartCard">
-      <h3>Quick Start Website — $500-$600</h3>
-      <div class="qs-price">$500-$600</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px">A clean, professional 1-page website built on a pre-designed layout — your business info and images dropped in. Live in 72 hours. No meetings.</p>
-      <div style="margin-bottom:8px;font-size:14px;font-weight:600;color:var(--fg)">What's included:</div>
-      <ul class="qs-includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1-page custom layout from pre-built design</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Your business info, logo, and images placed</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mobile-responsive on all devices</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Basic contact form with validation</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Placeholder copywriting (I write the draft)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live in 72 hours or less</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You own the domain, hosting, and code — no lock-in</li>
-      </ul>
-      <div style="margin-bottom:8px;font-size:14px;font-weight:600;color:var(--fg)">What's not included:</div>
-      <ul class="qs-excludes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Custom copywriting (you review and finalize the text)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Additional pages (Home, About, Services, etc.)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> E-commerce, booking, or complex integrations</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Full SEO foundation (basic meta tags only)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Google Business Profile setup</li>
-      </ul>
-      <a href="mailto:hello@studioobrien.com?subject=Quick%20Start%20Website%20Request" class="btn btn-primary" style="display:inline-flex;width:auto">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get Your Quick Start Site
-      </a>
-      <div class="qs-upsell"><strong>Need more than one page?</strong> Switch to Custom Build above — and your Quick Start purchase counts as credit toward a full custom site.</div>
-    </div>
-
-    <div id="customCalcSection" style="display:none">
-  </div>
-</section>
-
-<section class="section" style="padding-top:0;padding-bottom:0">
-  <div class="container">
-    <div class="product-gate-label">What kind of website do you need?</div>
-    <div class="product-gate" id="productGate">
-      <div class="product-gate-row">
-        <div class="product-card active" data-product="quickstart" id="qsCard">
-          <span class="pc-icon">&#9889;</span>
-          <div class="pc-label">Quick Start</div>
-          <div class="pc-price">$500-$600</div>
-          <div class="pc-sub">1 page &#183; 72 hours &#183; Fixed price</div>
-          <div class="pc-badge">FASTEST DELIVERY</div>
-        </div>
-        <div class="product-card" data-product="custom" id="customCard">
-          <span class="pc-icon">&#127912;</span>
-          <div class="pc-label">Custom Build</div>
-          <div class="pc-price">Estimate Below</div>
-          <div class="pc-sub">1-30 pages &#183; 14 days &#183; Tailored</div>
-          <div class="pc-badge">FULLY CUSTOM</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quick Start card -->
-    <div class="quick-start-card visible" id="quickStartCard">
-      <h3>Quick Start Website — $500-$600</h3>
-      <div class="qs-price">$500-$600</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px">A clean, professional 1-page website built on a pre-designed layout — your business info and images dropped in. Live in 72 hours. No meetings.</p>
-      <div style="margin-bottom:8px;font-size:14px;font-weight:600;color:var(--fg)">What's included:</div>
-      <ul class="qs-includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1-page custom layout from pre-built design</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Your business info, logo, and images placed</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mobile-responsive on all devices</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Basic contact form with validation</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Placeholder copywriting (I write the draft)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live in 72 hours or less</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You own the domain, hosting, and code — no lock-in</li>
-      </ul>
-      <div style="margin-bottom:8px;font-size:14px;font-weight:600;color:var(--fg)">What's not included:</div>
-      <ul class="qs-excludes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Custom copywriting (you review and finalize the text)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Additional pages (Home, About, Services, etc.)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> E-commerce, booking, or complex integrations</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Full SEO foundation (basic meta tags only)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Google Business Profile setup</li>
-      </ul>
-      <a href="mailto:hello@studioobrien.com?subject=Quick%20Start%20Website%20Request" class="btn btn-primary" style="display:inline-flex;width:auto">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get Your Quick Start Site
-      </a>
-      <div class="qs-upsell"><strong>Need more than one page?</strong> Switch to Custom Build above — and your Quick Start purchase counts as credit toward a full custom site.</div>
-    </div>
-
-    <!-- Custom Build calculator -->
-    <div id="customCalcSection" style="display:none">
-      <div class="calc-wrapper" id="calculator">
+    <div class="calc-wrapper" id="calculator">
       <div class="calc-section">
         <h3><span class="step-num">1</span> How many pages do you need?</h3>
         <div class="calc-label"><span>Number of pages</span><span class="val" id="pageVal">5</span></div>
@@ -479,10 +344,6 @@
   var quoteBtn = $('quoteBtn');
   var featureGrid = $('featureGrid');
   var complexityOptions = $('complexityOptions');
-  var qsCard = $('qsCard');
-  var customCard = $('customCard');
-  var quickStartCard = $('quickStartCard');
-  var customCalcSection = $('customCalcSection');
 
   var SETUP_FEE = 500;
   var PAGE_RATE_TIER1 = 600;
@@ -490,25 +351,6 @@
   var PAGE_RATE_TIER3 = 250;
   var TIER1_CUTOFF = 3;
   var TIER2_CUTOFF = 8;
-
-  /* Product gate toggle */
-  function switchProduct(product) {
-    if (product === 'quickstart') {
-      qsCard.classList.add('active');
-      customCard.classList.remove('active');
-      quickStartCard.classList.add('visible');
-      customCalcSection.style.display = 'none';
-    } else {
-      customCard.classList.add('active');
-      qsCard.classList.remove('active');
-      quickStartCard.classList.remove('visible');
-      customCalcSection.style.display = 'block';
-      updateEstimate();
-    }
-  }
-
-  qsCard.addEventListener('click', function() { switchProduct('quickstart'); });
-  customCard.addEventListener('click', function() { switchProduct('custom'); });
 
   function calcPageCost(pages) {
     if (pages <= TIER1_CUTOFF) return pages * PAGE_RATE_TIER1;
