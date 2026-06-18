@@ -22,10 +22,23 @@ jobs:
             --arg keyloc "https://$HOST/$KEY.txt" \
             --argjson urls "$(echo "$URLS" | jq -R -s -c 'split("\n") | map(select(length > 0))')" \
             '{host: $host, key: $key, keyLocation: $keyloc, urlList: $urls}')
-          curl -s -X POST "https://www.bing.com/IndexNow" \
+          echo "Submitting $(echo $URLS | wc -w) URLs to Bing IndexNow..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://www.bing.com/IndexNow" \
             -H "Content-Type: application/json" \
-            -d "$JSON" -w "%{http_code}"
+            -d "$JSON")
+          echo "Bing response: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "IndexNow submission failed"
+            curl -s -X POST "https://www.bing.com/IndexNow" \
+              -H "Content-Type: application/json" \
+              -d "$JSON"
+            exit 1
+          fi
+          echo "IndexNow success — URLs being indexed by Bing"
 
       - name: Notify Google about sitemap update
         run: |
-          curl -s "https://www.google.com/ping?sitemap=https://studioobrien.com/sitemap.xml" -w "%{http_code}"
+          echo "Pinging Google sitemap..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.google.com/ping?sitemap=https://studioobrien.com/sitemap.xml")
+          echo "Google response: $STATUS"
