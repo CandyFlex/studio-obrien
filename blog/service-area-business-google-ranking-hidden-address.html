@@ -90,6 +90,38 @@
   </div>
 </div>
 
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Local Ranking Factor</th>
+      <th>Weight or Position</th>
+      <th>Relevance for SABs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visible physical address</td>
+      <td>7th most influential factor</td>
+      <td>SABs cannot show their address - lose this ranking signal</td>
+    </tr>
+    <tr class="accent-row">
+      <td>GBP service area polygons</td>
+      <td>Zero ranking benefit</td>
+      <td>Visual only - Sterling Sky confirmed no algorithmic impact</td>
+    </tr>
+    <tr>
+      <td>On-page SEO (local organic)</td>
+      <td>33% of ranking weight</td>
+      <td>Primary compensation lever for hidden-address SABs</td>
+    </tr>
+    <tr>
+      <td>GBP signals (local pack)</td>
+      <td>32% of ranking weight</td>
+      <td>Weakened when address is hidden due to proximity bugs</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>What is a Service-Area Business anyway?</h2>
 
 <p>A Service-Area Business (SAB) is any business that travels to customer locations instead of serving customers at a physical storefront. Plumbers drive to your house. Electricians meet you at the jobsite. HVAC techs arrive in a service van. Google's rules are explicit: if you operate from a residential address that isn't staffed for public walk-in traffic during posted hours, you <strong>must</strong> hide that address on your GBP. Fail to hide it and Google can suspend the profile outright.<a href="https://whitespark.ca/blog/should-service-area-businesses-show-or-hide-their-address-for-local-seo/" target="_blank" rel="noopener"><sup>3</sup></a> If you haven't read <a href="/blog/google-business-profile-category-ranking">how GBP category selection affects ranking</a>, that's another lever you're probably leaving on the table.</p>
@@ -120,8 +152,12 @@
 
 <h2>Two specific bugs make you invisible</h2>
 
+<p>When a service-area business hides its address, Google's backend has trouble anchoring the ranking radius to the correct location. Two distinct bugs consistently appear across case studies and live audits, both of which can cause your business to vanish from Map Pack results in the towns you actually serve.</p>
+
+<h3>Relocation Reversion - your ranking radius snaps back to an old address</h3>
 <p>There are two distinct failure modes. The first, which I call Relocation Reversion, hits businesses that originally verified their GBP at Address A - maybe a previous home in a rural suburb near Polkville - then later moved to Address B closer to the Shelby city center, and then hid Address B. Instead of ranking from Address B, the algorithm reverts the hidden ranking radius to the original verification coordinates of Address A. Your business now ranks from your old house in the county outskirts.<a href="https://getrocketship.com/blog/getting-service-area-business-ranked-locally/" target="_blank" rel="noopener"><sup>5</sup></a> If your <a href="/website-redesign-migration">website is also outdated</a>, the double penalty hurts.</p>
 
+<p><h3>Map Pin Anomaly - your ranking radius attaches to a random point in the city</h3>
 <p>The second failure mode, the Map Pin Anomaly, is more chaotic. If a business has never moved but simply hides its address, the algorithm frequently attaches the ranking radius to a <strong>random centralized map pin</strong> within the city limits rather than the actual business headquarters. Not your neighborhood. Not your street. Some arbitrary point Google's backend selects - occasionally miles from your actual service base.<a href="https://www.jasminedirectory.com/blog/service-area-businesses-how-to-list-without-a-physical-address/" target="_blank" rel="noopener"><sup>6</sup></a></p>
 
 <p>I've traced this exact bug for an HVAC contractor who serves all of <a href="/shelby-nc-web-design">Cleveland County</a>. His hidden address kept pinning his ranking radius to a spot near the courthouse uptown - two miles from his actual shop. Searches originating south of Shelby showed his business. Searches from the northern subdivisions near the high school? Invisible. We handled his <a href="/google-business-profile-setup">Google Business Profile</a> setup from scratch after this.</p>
@@ -189,6 +225,34 @@
 
 <div class="key-point">
   <p><span class="kp-icon">*</span> <strong>Key point:</strong> Four hyper-local service pages with unique content per town outperform anything you can do with GBP service area polygons.</p>
+</div>
+
+<hr class="section-divider">
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <h3>Do I have to hide my address if I run a service-area business from home?</h3>
+  <p>Yes. Google requires service-area businesses operating from a residential address to hide that address from public view. Failure to do so can result in a GBP suspension. However, hiding the address triggers backend proximity bugs that can damage your local ranking radius.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I show my address if I get a PO box or virtual office?</h3>
+  <p>No. Google does not accept PO boxes or virtual office addresses for GBP verification. The address must be a physical location where your business operates. Virtual offices shared by multiple businesses are frequently flagged and suspended for violating Google's duplicate content guidelines.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do hyper-local landing pages help my ranking as a SAB?</h3>
+  <p>Each hyper-local page targets a specific town you serve with unique content, project references, and localized testimonials. Google ranks these pages in Local Organic results even when your GBP proximity radius cannot reach that town. This compensates for the hidden-address ranking handicap.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the difference between Local Pack and Local Organic results?</h3>
+  <p>Local Pack is the map-based three-pack that appears at the top of local searches and is heavily influenced by GBP signals and proximity. Local Organic results appear below the pack and are driven primarily by on-page SEO, backlinks, and content relevance. SABs should target both channels separately.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How fast do hyper-local pages start ranking?</h3>
+  <p>Typically 60 to 90 days for Local Organic visibility in the target town, assuming unique content, proper on-page optimization, and local citations. Results accelerate if the business has existing reviews or completed projects in that town that can be referenced on the page.</p>
 </div>
 
 <div class="cta-block">

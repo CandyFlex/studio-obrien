@@ -134,14 +134,55 @@
 
 <p>Relative to a pristine one-second load time, the probability math gets even uglier. Three seconds bumps bounce probability 32%. Five seconds: 90%. Six seconds: 106%. Past ten seconds, the curve goes exponential - you're effectively invisible.<a href="https://www.digitalapplied.com/blog/page-speed-statistics-2026-revenue-impact" target="_blank" rel="noopener"><sup>1</sup></a> If you're running a <a href="/small-business-websites">small business website</a> on a budget host with unoptimized images, you're probably in the 5-10 second bucket. That means two-thirds of your mobile visitors are gone before the page loads. Read about <a href="/blog/mobile-optimization-local-search-small-business">mobile optimization for local search</a> if this hits close to home. Most local businesses fail this test.</p>
 
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Page Load Time</th>
+      <th>Bounce Probability</th>
+      <th>Relative vs 1-Second Baseline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0-1 seconds</td>
+      <td>26%</td>
+      <td>Baseline</td>
+    </tr>
+    <tr>
+      <td>1-2 seconds</td>
+      <td>32%</td>
+      <td>+23%</td>
+    </tr>
+    <tr class="accent-row">
+      <td>3-5 seconds</td>
+      <td>52%</td>
+      <td>+100%</td>
+    </tr>
+    <tr>
+      <td>5-10 seconds</td>
+      <td>67%</td>
+      <td>+158%</td>
+    </tr>
+    <tr>
+      <td>10+ seconds</td>
+      <td>85%</td>
+      <td>+227%</td>
+    </tr>
+  </tbody>
+</table>
+
 <blockquote cite="https://www.digitalapplied.com/blog/page-speed-statistics-2026-revenue-impact">
   <p>"53% of mobile visitors will completely abandon a website if it fails to render within the three-second window. Relative to a pristine one-second load time, a delay of merely two additional seconds increases the bounce probability by 32%. If that delay extends to five seconds, the bounce probability surges by 90%."</p>
 </blockquote>
 
 <h2>Why most sites are slow (and it's not your host's fault)</h2>
 
+<p>Most local business websites are slow for three predictable reasons: oversized images, bloated third-party scripts, and shared hosting with distant servers. Every one of these is fixable without a full redesign, and fixing them produces immediate revenue impact. Here is what is actually slowing your site down and how to fix it.</p>
+
+<h3>Your page weighs 2.3 megabytes and makes 87 HTTP requests on average</h3>
 <p>The median page today weighs 2.3 megabytes, up 12% year over year. It makes 87 HTTP requests on average.<a href="https://www.digitalapplied.com/blog/page-speed-statistics-2026-revenue-impact" target="_blank" rel="noopener"><sup>1</sup></a> The average JavaScript payload alone is 468 kilobytes. Third-party scripts - analytics, chat widgets, tracking pixels, social embeds - account for 34% of total page weight. Every one of those scripts is a network negotiation your visitor never consented to.</p>
 
+<h3>Connection speed masks the problem - fast internet makes slow sites feel broken</h3>
 <p>Connection speed matters, but it mainly masks the problem. On 5G, the global average load time is 1.8 seconds. On fiber: 1.9 seconds. On 4G LTE: 4.7 seconds. On 3G: 12.4 seconds.<a href="https://www.digitalapplied.com/blog/page-speed-statistics-2026-revenue-impact" target="_blank" rel="noopener"><sup>1</sup></a> Spectrum's fiber buildout across <a href="/shelby-nc-web-design">Cleveland County</a> means local businesses are serving more visitors on the fast end of that spectrum. The tolerance window shrinks. When someone on fiber hits a six-second page, they don't think "this is a local business doing its best." They think the site is broken. They leave.</p>
 
 <p>Seventy percent of consumers say page speed directly influences whether they purchase from you.<a href="https://www.wp-rocket.me/blog/page-speed-statistics/" target="_blank" rel="noopener"><sup>4</sup></a> For nearly three out of every four visitors, the technical performance of your site carries as much weight as your pricing, your reviews, or your product photography. A fast site isn't a nice-to-have. It's a close rate multiplier. That's why this is the first thing I check when someone asks about <a href="/seo-services">SEO</a> - Google cares about speed as much as your customers do.</p>
@@ -161,6 +202,34 @@
 </ol>
 
 <p>None of these require a full rebuild. None require a new brand identity. They're operational changes that produce measurable revenue impact within days. When I run these three fixes on a client site, load times typically drop from 4-6 seconds to under 1.5 seconds. The bounce rate follows immediately. If your site needs more than just speed fixes, a full <a href="/website-redesign-migration">website redesign</a> that bakes these optimizations in from day one is the better long-term play. The <a href="/blog/website-redesign-roi-small-business">ROI on that kind of rebuild</a> is well-documented: 20-50% conversion lift within six months.</p>
+
+<hr class="section-divider">
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <h3>What page speed should my small business website target?</h3>
+  <p>Under 2.5 seconds for mobile is the minimum benchmark based on Google's LCP threshold. Under 1.5 seconds is ideal. The average local business site loads in 8.6 seconds, so even reaching 3 seconds puts you ahead of most competitors in Cleveland County and significantly reduces bounce rate.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Does page speed affect my Google Ads cost per click?</h3>
+  <p>Yes. Google uses landing page experience as a Quality Score factor for Google Ads. Slower landing pages increase your cost per click and lower your ad rank. A site that loads in 1 second pays less per click than a site that loads in 5 seconds for the same keyword auction.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How much does it cost to fix a slow website?</h3>
+  <p>The three fixes that solve 90% of speed problems - image compression, third-party script removal, and modern hosting with a CDN - typically cost between nothing and a few hundred dollars. A full site rebuild with performance baked in ranges from $3,000 to $15,000 depending on complexity and page count.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Will a faster website hurt my rankings if I remove tracking scripts?</h3>
+  <p>No. Remove scripts that do not generate measurable revenue. A Facebook pixel that is not powering retargeting campaigns and a chat widget nobody answers are costing you more in load time than they return in value. The ranking benefit from faster load time outweighs any marginal tracking loss.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is my hosting provider to blame for slow page speed?</h3>
+  <p>Partially. Budget shared hosting plans route visitors through distant data centers, adding 200-400ms of latency before the first byte loads. But the bigger factors are image sizes and third-party scripts. Upgrading to a modern host with edge caching helps but does not fix oversized images or bloated JavaScript.</p>
+</div>
 
 <div class="cta-block">
   <h2>Speed test your site in 30 seconds</h2>

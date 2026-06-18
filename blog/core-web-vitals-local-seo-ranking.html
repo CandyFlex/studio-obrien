@@ -94,11 +94,46 @@
 
 <h2>The three Core Web Vitals that decide rankings</h2>
 
+<p>Core Web Vitals are Google's standardized measure of real-world user experience across three dimensions: loading speed, interactivity, and visual stability. Every page on your site is scored against all three, and those scores directly influence whether you win or lose local ranking tiebreakers against competitors in Cleveland County.</p>
+<h3>LCP: Largest Contentful Paint - when your main content loads determines whether visitors wait or leave</h3>
 <p>Let me break each one down specifically so you know exactly what you're measuring and what the target is. LCP, or Largest Contentful Paint, tracks the time from when the page first starts loading to when the largest visual element becomes visible. On most local business sites, the LCP element is either the hero image, a background image, or a large heading text block. Google wants that element visible in under 2.5 seconds to earn a "Good" rating. Between 2.5 and 4.0 seconds is "Needs Improvement." Over 4.0 seconds is "Poor."<a href="https://web.dev/vitals/" target="_blank" rel="noopener"><sup>3</sup></a> When I run PageSpeed Insights on local business sites around <a href="/shelby-nc-web-design">Cleveland County</a>, I routinely see LCPs between 8 and 15 seconds. That's not a marginal failure. That's an entire category of ranking opportunity being surrendered. And it's almost always one oversized hero image causing the whole thing. One image.</p>
 
+<h3>INP: Interaction to Next Paint - how quickly your site responds when a customer taps or clicks</h3>
 <p>INP, or Interaction to Next Paint, replaced First Input Delay as a Core Web Vital in March 2024. It measures the longest interaction latency a user experiences across the entire page visit -- taps, clicks, and key presses. The threshold for "Good" is under 200 milliseconds. If someone clicks your phone number button and there's a visible delay before anything happens, that delay gets measured and factored into your INP score. Most local business sites I audit in <a href="/shelby-nc-web-design">Shelby</a> fail this metric because of bloated JavaScript -- sliders nobody asked for, third-party chat widgets that load synchronously, and page builder scripts that fire on every interaction before the browser can repaint. The fix is usually removing things. Not adding them.<a href="https://web.dev/inp/" target="_blank" rel="noopener"><sup>4</sup></a></p>
 
+<h3>CLS: Cumulative Layout Shift - why content that jumps around drives visitors away</h3>
 <p>CLS, or Cumulative Layout Shift, is the one metric that infuriates actual users and business owners alike. It measures how much visible content shifts position during loading. Every time you've visited a website on your phone, started reading, and then had the text jump because an image loaded above it -- that's CLS. Google's threshold is 0.1 or less for "Good." The most common cause on <a href="/small-business-websites">small business websites</a>: images without explicit width and height attributes, late-loading web fonts that reflow text, and third-party embedded content like Google Maps iframes that load asynchronously without reserved space. 61% of local business sites pass CLS, which means 39% fail it outright.<a href="https://whitespark.ca" target="_blank" rel="noopener"><sup>1</sup></a> If you've ever rage-closed a site because the button you were about to tap jumped away, you already understand CLS.</p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Core Web Vital</th>
+      <th>What It Measures</th>
+      <th>Good Threshold</th>
+      <th>Local Business Pass Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LCP</td>
+      <td>Time for main content to render</td>
+      <td>&lt; 2.5 seconds</td>
+      <td>17%</td>
+    </tr>
+    <tr class="accent-row">
+      <td>INP</td>
+      <td>Response time to user interactions</td>
+      <td>&lt; 200 milliseconds</td>
+      <td>Low (majority fail)</td>
+    </tr>
+    <tr>
+      <td>CLS</td>
+      <td>Visual stability during page load</td>
+      <td>&lt; 0.1 score</td>
+      <td>61%</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="key-point">
   <p><span class="kp-icon">*</span> <strong>Key point:</strong> 83% of your competitors have a bad LCP. The bar for differentiation is a 2.5-second threshold that almost nobody in your market is clearing. Fix your Core Web Vitals and you're not competing against perfection -- you're competing against 9.5-second load times.</p>
@@ -125,6 +160,34 @@
 <p>I ran an audit last month for a pest control company in Boiling Springs. Their GBP was excellent -- fully optimized categories, strong review velocity, four service-area cities listed. Their website loaded in 11.2 seconds on mobile. Their LCP was a 4.7MB uncompressed hero image. Their INP failed because of an unoptimized chat widget. Their CLS was borderline. They were losing the Map Pack tiebreak to two competitors with weaker profiles but faster sites. The fix was mechanical: compress and resize the hero image to 200KB, lazy-load the chat widget, add explicit dimensions to all images, enable text compression on the server. PageSpeed Insights went from a mobile score of 23 to 81. LCP dropped from 11.2 seconds to 2.8 seconds. Three weeks later, they moved from position four to position two in the local pack. Same GBP. Same reviews. Same backlinks. The only variable that changed was site speed. The tiebreaker flipped in their favor. That's not luck. That's physics.</p>
 
 <p>The practical next step is running PageSpeed Insights on your own site right now. Go to pagespeed.web.dev, enter your URL, and look at the Core Web Vitals Assessment section at the top. If it says "Failed" in red, you know exactly what to fix. LCP failures are almost always image-related on <a href="/small-business-websites">small business websites</a> -- compress your hero image, use modern formats like WebP, preload the LCP element. INP failures are almost always JavaScript-related -- audit your third-party scripts, defer non-critical JS, remove abandoned widgets. CLS failures are almost always missing image dimensions or late-loading font swaps -- add width and height attributes to every image, preload your web fonts, reserve space for embedded content. None of these fixes require a developer. They require an afternoon of attention and the willingness to stop losing tiebreakers you didn't know you were in.<a href="https://web.dev/vitals/" target="_blank" rel="noopener"><sup>3</sup></a></p>
+
+<hr class="section-divider">
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <h3>Do Core Web Vitals directly affect my Google Maps ranking?</h3>
+  <p>Not as a standalone penalty but as a tiebreaker. When two businesses in Cleveland County have similar reviews, backlinks, and GBP optimization, Google ranks the faster site higher. In small markets where competitors cluster on primary signals, CWV often decides Map Pack position between otherwise equal businesses.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the easiest Core Web Vital for a small business to fix?</h3>
+  <p>LCP. Almost every local business site fails LCP because of a single oversized hero image. Compressing that image to under 200KB and serving it in WebP format typically drops load time from 9.5 seconds to under 3 seconds. No developer needed and no redesign required.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do I check my Core Web Vitals for free?</h3>
+  <p>Go to pagespeed.web.dev, enter your URL, and look at the Core Web Vitals Assessment section. The tool shows whether your site passes LCP, INP, and CLS on mobile and desktop. A red "Failed" status means you are losing the ranking tiebreaker to faster competitors in your market.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can a slow website still rank well locally?</h3>
+  <p>Yes, if your reviews, backlinks, and GBP profile significantly outperform competitors. But as broadband expansion raises speed expectations across Cleveland County, the competitive gap widens. The March 2026 update tied landing page speed more directly to GBP ranking calculations than previous updates.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Does INP matter for a simple small business website?</h3>
+  <p>Yes. Even a basic site fails INP if it loads bloated third-party scripts like chat widgets, analytics, or slider plugins that block the main thread. INP measures every tap and click. A 400ms delay when someone taps your phone number counts as failure against the 200ms threshold.</p>
+</div>
 
 <div class="cta-block">
   <h2>Audit Your Core Web Vitals</h2>

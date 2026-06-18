@@ -86,6 +86,38 @@
   </div>
 </div>
 
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Migration Statistic</th>
+      <th>Value</th>
+      <th>What It Means for Your Business</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Average traffic recovery time</td>
+      <td>523 days</td>
+      <td>Nearly 18 months of lost leads and revenue after a botched migration</td>
+    </tr>
+    <tr class="accent-row">
+      <td>Sites that never recover</td>
+      <td>17%</td>
+      <td>One in six migrations permanently destroys pre-migration traffic</td>
+    </tr>
+    <tr>
+      <td>Domain change traffic drop</td>
+      <td>20-40%</td>
+      <td>Changing your domain name is the highest-risk migration variable</td>
+    </tr>
+    <tr>
+      <td>E-commerce traffic loss from bad redirects</td>
+      <td>30%</td>
+      <td>Mapped case study - bad 301s severed years of accumulated link equity</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Migration risk levels: from theme change to domain swap</h2>
 
 <p>When I plan a migration for a client, I categorize the risk by what's actually changing. The more variables you change simultaneously, the harder it becomes to diagnose any single problem when traffic drops. The research from Krawl Digital and WebyKing maps out the expected impact at each level, and the numbers align with everything I've seen across projects in this part of North Carolina.<a href="https://www.krawldigital.com/seo-migration-checklist/" target="_blank" rel="noopener"><sup>2</sup></a><a href="https://webyking.com/blog/seo-migration-guide/" target="_blank" rel="noopener"><sup>3</sup></a> Here's a question I ask every client: how many of these risk levels are you stacking in a single launch?</p>
@@ -126,8 +158,12 @@
 
 <h2>Bad 301 redirects cause the most catastrophic failures</h2>
 
+<p>Redirect maps are the single most common root cause of catastrophic migration failures. When old URLs do not correctly forward link equity to their new equivalents, years of accumulated backlink authority evaporate overnight. Google treats broken redirects as soft 404s, and the ranking signals that took years to build disappear.</p>
+
+<h3>Pointing every old URL to the homepage is the most common and most damaging mistake</h3>
 <p>Search Engine Journal documented a case where an e-commerce company lost 30% of its traffic instantly after a migration, and the root cause traced directly to their redirect map. Old product URLs that should've been permanently redirected to their new equivalents were instead pointing nowhere, serving hard 404s to both users and Googlebot.<a href="https://seopowerplays.com/seo-migration-strategy/" target="_blank" rel="noopener"><sup>1</sup></a> Every backlink those old URLs had accumulated over years of operation was effectively severed. The link equity didn't pass forward. It evaporated.</p>
 
+<p><h3>The noindex tag left on staging is a silent killer that can wipe your entire index</h3>
 <p>I audit redirect maps before every migration I handle, and the mistakes I find are remarkably consistent. The most damaging pattern I see is pointing every old URL to the homepage. Google calls this a soft 404: the old page returns a 200 status code, but the content doesn't match the original intent, so Google treats it the same as a dead page anyway. Doing this across dozens or hundreds of old URLs degrades your entire site's trust signals. A redirect should send users to the closest equivalent page, not the front door.</p>
 
 <p>Another failure mode I catch during pre-launch audits: the noindex tag that was placed on the staging site to prevent duplicate content issues gets carried over to the live site. Nobody checks. Nobody removes it. Within a week, Google has crawled the noindex directive on every page and removed the entire site from the index. I've seen this happen to companies with six-figure monthly search traffic. The fix takes thirty seconds once you identify it, but the recovery from re-indexing takes months. This is exactly the kind of silent killer that separates a <a href="/website-redesign-migration">website redesign</a> that pays for itself from one that destroys your <a href="/blog/website-redesign-roi-small-business">website redesign ROI</a> before you've even had a chance to measure it.</p>
@@ -157,6 +193,34 @@
 </blockquote>
 
 <p>If you're considering a website migration, redesign, or domain change anywhere in the <a href="/shelby-nc-web-design">Shelby, Kings Mountain, or Cleveland County</a> area, the difference between a three-month recovery and a 523-day catastrophe isn't luck. It's the redirect map, the canonical audit, the noindex check, the crawl report, and the staging-to-live review that happen before anyone sees the new site. A <a href="/website-redesign-migration">website redesign</a> shouldn't cost you your rankings. It shouldn't cost you a year and a half of traffic. And if you're still not sure whether your site even needs the migration you're planning, start with the <a href="/blog/signs-your-website-needs-redesign">signs your website needs a redesign</a> -- it might save you from a migration you didn't need in the first place.</p>
+
+<hr class="section-divider">
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <h3>How long does a website migration take to recover from SEO-wise?</h3>
+  <p>The average recovery time is 523 days for organic traffic to return to pre-migration levels. Well-executed migrations with proper redirect mapping and pre-launch audits can recover in 90 days. The difference depends entirely on how thoroughly the technical checklist is followed before go-live.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the single most important thing to get right in a migration?</h3>
+  <p>The 301 redirect map. Every old URL must be mapped to its closest equivalent new URL. Pointing everything to the homepage is the most common catastrophic mistake. A complete redirect map preserves backlink equity and prevents Google from treating your new site as a fresh domain with zero authority.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Should I change my domain name at the same time as redesigning my site?</h3>
+  <p>No. Never combine a domain change with a redesign and a content rewrite in a single launch. Stacking these variables makes it impossible to diagnose what caused any traffic drop. Stagger each change by at least 30 days and let rankings stabilize between each step.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I migrate my site during my busiest season?</h3>
+  <p>No. Even a clean migration causes ranking volatility for two to four weeks. If you launch during your peak revenue period, that volatility translates directly into lost sales that you cannot recover. Schedule migrations during off-peak months and keep your old hosting active for at least 90 days afterward.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What benchmarks should I track after a migration?</h3>
+  <p>At 30 days: at least 80% indexation of new URLs, 90% traffic recovery, and fewer than 5% crawl errors. At 90 days: 95-105% of pre-migration traffic and zero remaining 404s. If any benchmark is missed, investigate immediately. Delaying diagnosis extends the recovery timeline.</p>
+</div>
 
 <div class="cta-block">
   <h2>Planning a website migration or redesign in Cleveland County?</h2>

@@ -88,11 +88,35 @@
   </div>
 </div>
 
+<table class="data-table">
+  <thead>
+    <tr><th>Metric</th><th>Value</th><th>Implication</th></tr>
+  </thead>
+  <tbody>
+    <tr class="accent-row"><td>Federal ADA website lawsuits (2025)</td><td><strong>3,948</strong></td><td>Up 24% year over year</td></tr>
+    <tr><td>Small business defendants</td><td><strong>77%</strong></td><td>Revenue under $25M</td></tr>
+    <tr><td>Average settlement cost</td><td><strong>$25K-$30K</strong></td><td>Plus legal fees</td></tr>
+    <tr class="accent-row"><td>Restaurant share of lawsuits</td><td><strong>35%</strong></td><td>Most-sued industry</td></tr>
+    <tr><td>Top websites failing WCAG</td><td><strong>95.9%</strong></td><td>51 errors per page average</td></tr>
+    <tr><td>Lawsuits targeting overlay-widget sites</td><td><strong>456</strong></td><td>Widgets do not protect you</td></tr>
+  </tbody>
+</table>
+
 <blockquote>
 <p>In 2025 alone, plaintiffs filed 3,948 federal ADA website accessibility lawsuits, representing a 23.84% year-over-year increase. Crucially, approximately 77% of all defendants in these federal cases are small businesses with annual revenues under $25 million. Most of these entities lack dedicated in-house legal teams and are entirely blindsided when served with a federal complaint.</p>
 </blockquote>
 
 <h2>ADA Title III now applies to your website</h2>
+
+<p>Yes - federal courts have ruled that websites are places of public accommodation under the Americans with Disabilities Act. The same law that requires a wheelchair ramp at your front door now applies to your URL. If a screen reader cannot navigate your site or a keyboard-only user cannot complete a form, you are legally exposed regardless of your business size or location. The technical standard courts use is WCAG 2.1 AA, and the DOJ's April 2026 rule has formally codified that standard into federal regulation.</p>
+
+<h3>What WCAG 2.1 AA compliance requires</h3>
+
+<p>The Web Content Accessibility Guidelines 2.1 at the AA level covers a broad range of technical requirements: sufficient color contrast between text and backgrounds at a minimum ratio of 4.5:1, alternative text for every image, proper heading hierarchies that screen readers can navigate, labels on all form fields, keyboard-accessible navigation and interactive elements, captions on videos, and meaningful link text that describes the destination. These are the specific technical criteria that plaintiffs' attorneys scan for using automated tools. They are also the same violations I find on website redesign projects around Cleveland County every week. The most common failures - low contrast text, missing alt text, unlabeled forms, and empty links - account for the majority of WCAG failures on the web and appear on 95.9% of the top million homepages.</p>
+
+<h3>Why geography no longer protects small-town businesses</h3>
+
+<p>New York leads with 637 cases filed in the first half of 2025 alone. Florida had 487. California had 380. But the real story is Illinois, which saw a 746% year-over-year increase jumping from 28 cases to 237. This is no longer a coastal problem. Right here in North Carolina, the EEOC sued Butterball in Mount Olive over ADA violations, demonstrating that federal ADA enforcement is active and aggressive in our state. The idea that nobody enforces ADA requirements in small towns is false. Federal agencies and private plaintiffs' attorneys are paying attention to North Carolina businesses, and the lawsuits follow the money wherever a non-compliant website exists. Your location does not protect you. Only your website's code does, and with 3,948 lawsuits filed last year, ignoring accessibility is a bet that gets harder to win every quarter.</p>
 
 <p>The Americans with Disabilities Act was passed in 1990, long before anyone was thinking about websites. Title III of the ADA requires places of public accommodation to be accessible to people with disabilities. For decades, that meant physical spaces: wheelchair ramps, accessible restrooms, Braille signage. But federal courts have increasingly ruled that websites are places of public accommodation under Title III. If your website isn't accessible to someone using a screen reader, navigating by keyboard only, or using voice navigation software, you are -- in the eyes of federal courts -- operating an inaccessible place of public accommodation.<sup>1</sup> Think about that. The same law that requires a ramp at your front door now applies to your URL.</p>
 
@@ -110,6 +134,12 @@
 
 <h2>Accessibility overlay widgets don't protect you from lawsuits</h2>
 
+<p>No - overlay widgets do not protect you from ADA lawsuits, and the data proves it. In the first half of 2025 alone, 456 lawsuits successfully targeted websites that already had accessibility overlay widgets installed. That is 23% of all cases filed during that period. Plaintiffs' attorneys are not deterred by the presence of an overlay widget. If anything, the data suggests they may be targeting sites with overlays precisely because the overlays create a false sense of security while leaving the underlying code just as non-compliant.</p>
+
+<h3>Why overlays fail to fix the underlying code</h3>
+
+<p>Over the last few years, a cottage industry has grown up around accessibility overlay widgets. The little blue accessibility icon floating in the corner of a website promises to make the site ADA compliant with a single line of JavaScript. Companies like accessiBe, AudioEye, UserWay, and EqualWeb market these products aggressively to small business owners who are rightly concerned about compliance but lack the budget for a full audit. The problem is technical: an overlay widget sits on top of your existing code and tries to patch issues at runtime, but it cannot fix the underlying Document Object Model structure. It cannot repair broken ARIA hierarchies that screen readers rely on to navigate your site. It cannot add proper heading structures, fix missing form labels, add alt text to images that lack them, or ensure keyboard focus order makes logical sense. These are foundational issues in your HTML, CSS, and JavaScript that no runtime patch can resolve.</p>
+
 <p>This is the single most important section of this article. If you read nothing else, read this.</p>
 
 <p>Over the last few years, a cottage industry has grown up around accessibility overlay widgets. You've probably seen them -- the little blue accessibility icon that floats in the corner of a website, promising to make the site "ADA compliant" with a single line of JavaScript. Companies like accessiBe, AudioEye, UserWay, and EqualWeb market these products aggressively to small business owners who are rightly concerned about compliance but don't have the budget for a full accessibility audit and remediation. Sounds like a quick fix, right? That's the pitch.</p>
@@ -126,6 +156,8 @@
 
 <h2>Restaurants: 35% of all ADA website lawsuits in 2025</h2>
 
+<p>Yes - restaurants are the single most-targeted industry for ADA website lawsuits, accounting for 34.65% of all 3,948 federal cases filed in 2025. That is 1,368 lawsuits aimed at restaurants alone. If your restaurant has an online menu, a reservation form, or an ordering system on your website, you are operating in the most-litigated category. Fashion and apparel came second at 25.96%, followed by beauty and personal care at 8.03%.</p>
+
 <p>The industry breakdown tells a clear story about who's being targeted. Restaurants are far and away the most-sued category at 34.65% of all cases -- 1,368 lawsuits in 2025. The fashion and apparel industry came second at 25.96%. Beauty and personal care was third at 8.03%. Home goods and furniture at 7.67%. Health and wellness at 7.17%. These five categories alone account for over 83% of all ADA website lawsuits.<sup>1</sup> If you're running a <a href="/restaurant-website-design">restaurant in Shelby</a> and your menu, reservation form, or ordering system lives on your website, you're in the crosshairs of the single most-litigated category. Does your online menu have alt text on the photos? Can a keyboard-only user place an order? If you don't know, now's the time to find out.</p>
 
 <p>The reason for this concentration isn't random. Restaurants and retail businesses share several characteristics that make them attractive targets for plaintiffs' attorneys. They typically have small legal budgets. They operate websites with interactive elements like menus, ordering systems, reservation forms, and e-commerce functionality -- each of which introduces potential accessibility barriers. And they're numerous. There are hundreds of thousands of small restaurant and retail websites nationwide, which means the pool of potential defendants is enormous.<a href="https://www.accessibility.com" target="_blank" rel="noopener"><sup>2</sup></a> It's a numbers game, and your <a href="/restaurant-website-design">restaurant website</a> is a number in the pool.</p>
@@ -135,6 +167,8 @@
 <p>An additional data point that should concern any business owner: 1,427 of the 2025 lawsuits targeted companies that had been previously sued. Serial litigation is a documented feature of this legal environment. If a plaintiff's attorney finds your website non-compliant and sues you, the odds are high that they'll return in subsequent years to check whether you actually fixed the problems. Paying a settlement without remediating the underlying accessibility issues doesn't close the door. It opens it wider for round two. And round three.<sup>1</sup></p>
 
 <h2>95.9% of top websites fail WCAG - here are the four biggest violations</h2>
+
+<p>Yes - 95.9% of the top one million homepages have at least one detectable WCAG 2.1 failure, with an average of 51.4 errors per page. These are not exotic, hard-to-fix issues. They are fundamental problems in HTML and CSS that any competent developer can fix. The four most common violations - low contrast text, missing alt text, unlabeled form fields, and empty links - account for the majority of all WCAG failures and are the same issues plaintiffs' attorneys scan for with automated tools.</p>
 
 <p>The WebAIM Million report, which runs automated scans across the homepages of the top one million websites, found that 95.9% of those homepages had at least one detectable WCAG 2.1 failure. The average number of detectable errors per homepage was 51.4. These aren't exotic, hard-to-fix issues. These are fundamental problems in the HTML and CSS that any competent developer can address.<a href="https://www.boia.org" target="_blank" rel="noopener"><sup>3</sup></a> 51 errors per page. On average. How many do you think your site has?</p>
 
@@ -154,6 +188,8 @@
 
 <h2>The DOJ's April 2026 rule makes WCAG 2.1 AA the legal standard</h2>
 
+<p>On April 24, 2026, the DOJ formally codified WCAG 2.1 AA as the legal standard for digital accessibility under the ADA. While the rule directly applies to state and local governments, its impact on private businesses is immediate: plaintiffs' attorneys now have a federal regulation to cite in Title III lawsuits against private companies. The argument went from persuasive guidance to codified law, and that shift makes defending non-compliant websites significantly harder.</p>
+
 <p>On April 24, 2026, the DOJ published a final rule under Title II of the ADA requiring all state and local government websites and mobile applications to conform to WCAG 2.1 AA. The compliance deadlines vary by entity size -- some have two years, some have three -- but the standard itself is now formally codified in federal regulation.<a href="https://www.eeoc.gov" target="_blank" rel="noopener"><sup>4</sup></a> This is the line in the sand. No more ambiguity about which standard applies.</p>
 
 <p>This rule matters for private businesses even though it doesn't directly apply to them. Here's why: when a federal court adjudicates a Title III ADA website lawsuit against a private business, the judge needs a standard to measure accessibility against. Before the DOJ rule, there was no formal federal regulation defining that standard. Courts referenced WCAG 2.1 AA as persuasive guidance, but it wasn't codified. Now, the DOJ has formally stated that WCAG 2.1 AA is what digital accessibility means under federal law. That gives plaintiffs' attorneys a much stronger argument in Title III cases: "The federal government has already determined that WCAG 2.1 AA is the accessibility standard for digital services. This private business website fails that standard." The argument just got a lot harder to fight in court.</p>
@@ -161,6 +197,8 @@
 <p>When I explain this to business owners in <a href="/shelby-nc-web-design">Shelby</a>, I put it this way: the DOJ just drew a bright line in the sand. On one side of that line is WCAG 2.1 AA compliance. On the other side is legal exposure. If your website is on the wrong side of that line, you're betting that no one will notice. The 3,948 plaintiffs who filed suit in 2025 suggest that's not a safe bet. And if the <a href="/blog/ftc-fake-review-rules-small-business">FTC fake review rules</a> taught us anything, it's that federal regulators are done with warnings. They're enforcing.</p>
 
 <h2>What Cleveland County small businesses should do right now</h2>
+
+<p>Start with a free automated accessibility scan using tools like WAVE or axe DevTools. They take five minutes and catch roughly 30% of WCAG issues including the four most common violations. If your site flags on low contrast text, missing alt text, unlabeled forms, or empty links, you have detectable and fixable problems that make you a lawsuit target. Remove any overlay widget and redirect that subscription cost into fixing your actual code. Then get a manual audit from a developer who understands WCAG 2.1 AA for keyboard navigation, focus order, and screen reader testing.</p>
 
 <p>I want to be clear about something: I'm a web designer and developer, not an attorney. Nothing in this article is legal advice. What I can tell you is what the data says and what I do for my own clients in <a href="/shelby-nc-web-design">Shelby and across Cleveland County</a>.</p>
 
@@ -175,6 +213,34 @@
 <p>The average ADA website lawsuit settlement ranges from $25,000 to $30,000. That doesn't include your attorney fees, the cost of the remediation work you'll need to do anyway, or the ongoing monitoring costs that are typically part of settlement agreements. For most small businesses in <a href="/shelby-nc-web-design">Cleveland County</a>, a $25,000 unplanned expense is catastrophic. The cost of proactive remediation -- fixing the issues before you get sued -- is a fraction of that amount.<sup>1</sup> $25,000 buys a lot of proactive development work. Or it buys one settlement check and a website that's still broken. Your choice.</p>
 
 <p>I think about it this way. A Shelby restaurant owner will spend $15,000 on kitchen equipment without hesitation because broken equipment stops the business. A website with accessibility barriers is broken equipment. The difference is you can't see it until the lawsuit arrives. But by then, the repair bill includes legal fees, settlement costs, and still the same code fixes you could've done for a fraction of the price six months earlier. If you haven't checked your <a href="/blog/signs-your-website-needs-redesign">signs your website needs a redesign</a>, start there. Accessibility compliance might be the push you've been waiting for to build the site your business actually deserves.</p>
+
+<hr class="section-divider">
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <h3>Do I need to make my entire website WCAG compliant or just the homepage?</h3>
+  <p>Plaintiffs' attorneys typically scan the homepage first because it is the most accessible page and serves as the primary entry point. However, if a lawsuit is filed, the plaintiff will test all pages they interacted with, including contact forms, menus, and checkout flows. Fixing your highest-traffic pages first reduces risk while you work toward full compliance across the entire site.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I get sued for ADA violations if I am a very small business?</h3>
+  <p>Yes - 77% of ADA website lawsuits in 2025 targeted businesses with under $25 million in annual revenue. There is no small business exemption under Title III of the ADA. The only exception is if compliance would pose an undue burden, but that defense is difficult and expensive to prove in court and offers no protection against being sued in the first place.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How much does it cost to make a small business website ADA compliant?</h3>
+  <p>The cost varies widely based on the current state of your site. A basic audit of core pages runs $500 to $1,500. Remediation of common issues like contrast, alt text, and form labels typically costs $1,500 to $4,000 for a standard small business website. This is a fraction of the $25,000 to $30,000 average settlement cost of defending a lawsuit.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Do accessibility overlays really not protect me from lawsuits?</h3>
+  <p>456 lawsuits in the first half of 2025 targeted websites that already had overlay widgets installed. Overlays cannot fix broken HTML structure, missing ARIA labels, or keyboard navigation problems because they run after the page loads and can only modify what is already broken. Remove the widget and invest the subscription cost into fixing the underlying code.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Does the DOJ rule from April 2026 apply to my private business?</h3>
+  <p>The DOJ rule directly applies to state and local government entities under Title II of the ADA. However, it establishes WCAG 2.1 AA as the federal standard for digital accessibility, which plaintiffs' attorneys now cite in Title III cases against private businesses. The rule eliminates the ambiguity about which standard applies and strengthens arguments against non-compliant sites.</p>
+</div>
 
 <div class="cta-block">
   <h2>Check Your Site's Compliance</h2>
