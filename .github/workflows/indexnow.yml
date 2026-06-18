@@ -1,0 +1,31 @@
+name: IndexNow — Auto-Submit to Bing + Google
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Submit to Bing IndexNow
+        run: |
+          KEY="53bb553e5cb97f89e5864d6645be836b"
+          HOST="studioobrien.com"
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' sitemap.xml)
+          JSON=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyloc "https://$HOST/$KEY.txt" \
+            --argjson urls "$(echo "$URLS" | jq -R -s -c 'split("\n") | map(select(length > 0))')" \
+            '{host: $host, key: $key, keyLocation: $keyloc, urlList: $urls}')
+          curl -s -X POST "https://www.bing.com/IndexNow" \
+            -H "Content-Type: application/json" \
+            -d "$JSON" -w "%{http_code}"
+
+      - name: Notify Google about sitemap update
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://studioobrien.com/sitemap.xml" -w "%{http_code}"
