@@ -3,16 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Website Cost Calculator — Free Estimate Tool | O'Brien Studio</title>
-<meta name="description" content="Free web development cost calculator. Estimate your website project cost in 60 seconds. Custom websites for small businesses in Shelby, NC and Cleveland County. No signup required.">
+<title>Website Cost Calculator: Compare Website Prices in 2026</title>
+<meta name="description" content="Compare realistic website cost ranges across DIY builders, freelancers, independent studios, and agencies. Free planning tool with no email required.">
 <link rel="canonical" href="https://studioobrien.com/website-cost-calculator">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Web Development Cost Calculator — Free Estimate | O'Brien Studio">
-<meta property="og:description" content="Estimate your custom website cost in 60 seconds. Free tool for small businesses — no signup, no email required.">
+<meta property="og:url" content="https://studioobrien.com/website-cost-calculator">
+<meta property="og:site_name" content="Studio O&#39;Brien">
+<meta property="og:title" content="Website Cost Calculator: Compare Website Prices in 2026">
+<meta property="og:description" content="See what websites commonly cost through DIY builders, freelancers, independent studios, and agencies.">
 <meta property="og:image" content="https://studioobrien.com/portfolio/og-image.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/fonts.css">
@@ -34,7 +36,7 @@
   .hero{padding:56px 20px 24px;text-align:center;max-width:800px;margin:0 auto}
   .hero h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;color:#fff}
   .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 8px;line-height:1.6}
-  .hero .trust-line{font-size:13px;color:#555;margin-bottom:24px}
+  .hero .trust-line{font-size:13px;color:#888;margin-bottom:24px}
 
   .btn{padding:14px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .3s,background .2s;min-height:48px}
   .btn-primary{background:var(--g);color:var(--bg)}
@@ -66,8 +68,9 @@
   .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   .feature-option{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--b);cursor:pointer;transition:border-color .2s,background .2s;font-size:13px;color:var(--fg);background:var(--bg);user-select:none}
   .feature-option:hover{border-color:var(--g)}
+  .feature-option:focus-visible,.complexity-opt:focus-visible,.btn:focus-visible,.get-quote-btn:focus-visible,.topbar-link:focus-visible{outline:3px solid var(--g);outline-offset:3px}
   .feature-option.selected{border-color:var(--g);background:rgba(52,211,153,.06)}
-  .feature-option .check{width:18px;height:18px;border:2px solid var(--b);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s;font-size:10px}
+  .feature-option .check{width:18px;height:18px;border:2px solid var(--b);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s,color .2s;font-size:10px;color:transparent}
   .feature-option.selected .check{background:var(--g);border-color:var(--g);color:var(--bg)}
   .feature-option .info{font-size:11px;color:var(--muted);display:block;margin-top:2px}
 
@@ -90,6 +93,16 @@
   .breakdown-list li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--b);font-size:14px;color:var(--fg)}
   .breakdown-list li:last-child{border-bottom:none;font-weight:700;color:var(--g);font-size:16px}
   .breakdown-list li .item-cost{color:var(--muted);font-size:13px}
+  .route-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+  .route-card{display:grid;grid-template-columns:minmax(140px,.8fr) minmax(140px,.7fr) 1.4fr;gap:16px;align-items:center;padding:16px;border:1px solid var(--b);background:var(--bg)}
+  .route-card.recommended{border-color:var(--g);background:rgba(52,211,153,.04)}
+  .route-name{font-size:14px;font-weight:700;color:var(--fg)}
+  .route-range{font-family:'Inter Tight',sans-serif;font-size:18px;font-weight:700;color:var(--g)}
+  .route-note{font-size:12px;color:var(--muted);line-height:1.5}
+  .route-badge{display:inline-block;margin-left:7px;padding:3px 6px;background:var(--g);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+  .recommendation{margin-top:16px;padding:16px;border-left:3px solid var(--g);background:rgba(52,211,153,.04);font-size:13px;color:#ccc;line-height:1.6}
+  .driver-list{list-style:none;display:grid;gap:8px}
+  .driver-list li{padding:10px 12px;border:1px solid var(--b);background:var(--bg);font-size:13px;color:#ccc}
 
   /* Source citations */
   .sources-box{border:1px solid var(--b);padding:24px 20px;background:var(--card)}
@@ -109,15 +122,17 @@
 
 
   footer{text-align:center;padding:36px 20px 48px;border-top:1px solid var(--b)}
-  footer p{font-size:12px;color:#555;margin:4px 0}
+  footer p{font-size:12px;color:#777;margin:4px 0}
   footer a{color:var(--g);text-decoration:none}
 
   @media(max-width:600px){
+    .topbar-optional{display:none}
     .section{padding:36px 16px}p{font-size:14px}
     .hero{padding:40px 16px 28px}
     .calc-wrapper{padding:24px 18px}
     .feature-grid{grid-template-columns:1fr}
     .complexity-options{flex-direction:column}
+    .route-card{grid-template-columns:1fr;gap:4px}
     .result-box{padding:24px 16px}
     .btn{width:auto;justify-content:center}
   }
@@ -127,77 +142,83 @@
   .tooltip-trigger:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);font-size:11px;font-weight:400;padding:6px 10px;white-space:nowrap;pointer-events:none;z-index:10}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Web Development Cost Calculator","url":"https://studioobrien.com/website-cost-calculator","description":"Free web development cost estimator for small businesses. Estimate your custom website project cost in 60 seconds. No signup required.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"ProfessionalService","name":"O'Brien Studio","url":"https://studioobrien.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Website Market Cost Calculator","url":"https://studioobrien.com/website-cost-calculator","description":"Free planning tool that compares website cost ranges across DIY builders, freelancers, independent studios, and agencies.","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Requires HTML5.","image":"https://studioobrien.com/portfolio/og-image.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"O'Brien Studio","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Website Cost Calculator","item":"https://studioobrien.com/website-cost-calculator"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Website Cost Calculator","item":"https://studioobrien.com/website-cost-calculator"}]}
 </script>
 
 
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x8v48co1gg");
+</script>
 </head>
 <body>
 
 <nav class="topbar" aria-label="Site navigation">
   <div class="topbar-inner">
-    <a href="/" class="topbar-logo">O'Brien Studio</a>
+    <a href="/" class="topbar-logo">Studio O'Brien</a>
     <div class="topbar-links">
-      <a href="/blog" class="topbar-link">Blog</a>
-      <a href="/contact.html" class="topbar-link">Start Project</a>
-      <a href="/#portfolio" class="topbar-link">View Our Work</a>
-      <a href="/contact.html?full" class="topbar-link">Contact Me</a>
+      <a href="/contact" class="topbar-link">Start a Website</a>
+      <a href="/#portfolio" class="topbar-link">View Work</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>Website Cost Calculator</h1>
-  <p>Estimate your custom website project cost in 60 seconds. Built from real 2026 pricing data — not random numbers. No signup. No email.</p>
-  <p class="trust-line">Custom-coded, not a WordPress template. Copywriting included. 14-day delivery. You own everything.</p>
+  <h1>What Should Your Website Cost?</h1>
+  <p>Compare realistic market ranges across DIY builders, freelancers, independent studios, and agencies. Adjust the scope to see what changes the price.</p>
+  <p class="trust-line">Free planning tool. No signup. No email. Not an automatic Studio O'Brien quote.</p>
 </header>
 
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="calc-wrapper" id="calculator">
+      <h2 class="sr-only">Cost Estimator</h2>
       <div class="calc-section">
         <h3><span class="step-num">1</span> How many pages do you need?</h3>
         <div class="calc-label"><span>Number of pages</span><span class="val" id="pageVal">5</span></div>
-        <input type="range" class="calc-slider" id="pageSlider" min="1" max="30" value="5" step="1">
+        <input type="range" class="calc-slider" id="pageSlider" min="1" max="30" value="5" step="1" aria-label="Number of website pages">
         <div style="display:flex;justify-content:space-between;font-size:11px;color:#555;margin-top:4px"><span>1 (landing page)</span><span>30 (large site)</span></div>
       </div>
 
       <div class="calc-section">
         <h3><span class="step-num">2</span> What features do you need?</h3>
         <div class="feature-grid" id="featureGrid">
-          <div class="feature-option selected" data-feature="contact" data-cost="300">
-            <div class="check">&#10003;</div>
+          <div class="feature-option selected" data-feature="contact form" data-hours="4" role="checkbox" aria-checked="true" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Contact Form</div><div class="info">Working form with validation</div></div>
           </div>
-          <div class="feature-option selected" data-feature="blog" data-cost="600">
-            <div class="check">&#10003;</div>
+          <div class="feature-option selected" data-feature="content management" data-hours="12" role="checkbox" aria-checked="true" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Blog / Articles</div><div class="info">Content management system</div></div>
           </div>
-          <div class="feature-option" data-feature="booking" data-cost="1200">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="booking system" data-hours="18" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Booking / Scheduling</div><div class="info">Calendar integration</div></div>
           </div>
-          <div class="feature-option" data-feature="ecommerce" data-cost="2500">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="e-commerce" data-hours="42" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>E-Commerce</div><div class="info">Online store with payments</div></div>
           </div>
-          <div class="feature-option" data-feature="menu" data-cost="500">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="editable menu" data-hours="7" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Menu / Price List</div><div class="info">Editable food or service menu</div></div>
           </div>
-          <div class="feature-option" data-feature="portfolio" data-cost="500">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="portfolio or gallery" data-hours="10" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Gallery / Portfolio</div><div class="info">Photo or project showcase</div></div>
           </div>
-          <div class="feature-option" data-feature="reviews" data-cost="400">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="review integration" data-hours="5" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Review Integration</div><div class="info">Google reviews on your site</div></div>
           </div>
-          <div class="feature-option" data-feature="multilingual" data-cost="1800">
-            <div class="check">&#10003;</div>
+          <div class="feature-option" data-feature="multilingual content" data-hours="32" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="check" aria-hidden="true">&#10003;</div>
             <div><div>Multi-Language</div><div class="info">Site in multiple languages</div></div>
           </div>
         </div>
@@ -207,18 +228,18 @@
       <div class="calc-section">
         <h3><span class="step-num">3</span> Design complexity</h3>
         <div class="complexity-options" id="complexityOptions">
-          <div class="complexity-opt" data-level="standard" data-mult="0.8">
-            <span class="c-icon">&#9678;</span>
+          <div class="complexity-opt" data-level="template-led design" data-mult="0.8" role="radio" aria-label="Standard: Clean, modern layout" aria-checked="false" tabindex="0">
+            <span class="c-icon" aria-hidden="true">&#9678;</span>
             <div class="c-label">Standard</div>
             <div class="c-desc">Clean, modern layout</div>
           </div>
-          <div class="complexity-opt selected" data-level="custom" data-mult="1">
-            <span class="c-icon">&#9632;</span>
+          <div class="complexity-opt selected" data-level="custom design" data-mult="1" role="radio" aria-label="Custom: Unique designs per section" aria-checked="true" tabindex="0">
+            <span class="c-icon" aria-hidden="true">&#9632;</span>
             <div class="c-label">Custom</div>
             <div class="c-desc">Unique designs per section</div>
           </div>
-          <div class="complexity-opt" data-level="premium" data-mult="1.4">
-            <span class="c-icon">&#9670;</span>
+          <div class="complexity-opt" data-level="highly art-directed design" data-mult="1.4" role="radio" aria-label="Premium: Advanced animations and interactions" aria-checked="false" tabindex="0">
+            <span class="c-icon" aria-hidden="true">&#9670;</span>
             <div class="c-label">Premium</div>
             <div class="c-desc">Advanced animations &amp; interactions</div>
           </div>
@@ -227,24 +248,51 @@
 
       <div class="calc-section">
         <div class="result-box">
-          <div class="est-label">Estimated project range</div>
-          <div class="est-range" id="estRange">$3,400 - $4,600</div>
-          <div class="est-note">This estimate is based on 2026 national pricing benchmarks and 100+ small business website projects. Your specific content volume and integrations will refine this number. Custom code, not a template — you own everything.</div>
-          <a href="mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20$3,400%20to%20$4,600%20Estimate" class="get-quote-btn" id="quoteBtn">
+          <div class="est-label">Professional market range for this scope</div>
+          <div class="est-range" id="estRange">$3,500 - $18,000</div>
+          <div class="est-note">This is an educational market estimate, not a Studio O'Brien quote. The comparison below shows how provider type, process, and overhead can change the investment.</div>
+          <a href="mailto:hello@studioobrien.com?subject=Website%20Project%20Recommendation" class="get-quote-btn" id="quoteBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Get an Exact Quote
+            Get a Project Recommendation
           </a>
         </div>
       </div>
 
       <div class="calc-section">
-        <h3>Cost Breakdown</h3>
-        <ul class="breakdown-list" id="breakdown">
-          <li><span>Page design &amp; development</span><span class="item-cost" id="pageBreakdown">$2,600</span></li>
-          <li><span>Features selected</span><span class="item-cost" id="featuresCost">$900</span></li>
-          <li><span>Setup, copywriting &amp; SEO foundation</span><span class="item-cost">$500</span></li>
-          <li style="border-top:1px solid var(--b);margin-top:4px;padding-top:12px"><span>Estimated Total</span><span style="color:var(--g);font-size:16px" id="totalCost">$4,000</span></li>
-        </ul>
+        <h3>Compare delivery routes</h3>
+        <div class="route-grid" id="routeGrid">
+          <div class="route-card">
+            <div class="route-name">DIY builder</div>
+            <div class="route-range" id="diyRange">$300 - $1,500</div>
+            <div class="route-note">Lowest cash cost. You handle planning, writing, design, setup, and ongoing decisions.</div>
+          </div>
+          <div class="route-card">
+            <div class="route-name">Template provider</div>
+            <div class="route-range" id="templateRange">$1,500 - $4,000</div>
+            <div class="route-note">A faster brochure-site route with less original strategy, art direction, and flexibility.</div>
+          </div>
+          <div class="route-card" id="freelancerCard">
+            <div class="route-name">Freelancer</div>
+            <div class="route-range" id="freelancerRange">$3,500 - $7,500</div>
+            <div class="route-note">Best when the scope is well defined and one primary discipline can lead the work.</div>
+          </div>
+          <div class="route-card" id="studioCard">
+            <div class="route-name">Independent custom studio</div>
+            <div class="route-range" id="studioRange">$6,000 - $12,000</div>
+            <div class="route-note">Connected strategy, writing, design, and development with direct collaboration.</div>
+          </div>
+          <div class="route-card" id="agencyCard">
+            <div class="route-name">Traditional agency</div>
+            <div class="route-range" id="agencyRange">$10,000 - $22,000</div>
+            <div class="route-note">Useful for larger teams, complex stakeholder groups, and broad specialist capacity.</div>
+          </div>
+        </div>
+        <div class="recommendation" id="routeRecommendation"></div>
+      </div>
+
+      <div class="calc-section">
+        <h3>What is driving this estimate?</h3>
+        <ul class="driver-list" id="driverList"></ul>
       </div>
     </div>
   </div>
@@ -252,21 +300,21 @@
 
 <section class="section section-dark">
   <div class="container">
-    <h2>What makes our estimates different</h2>
-    <p>Most website cost calculators give you a random number designed to capture your email. Ours is built from 2026 national pricing data and 100+ real projects. More importantly — local competitors charge <strong>$3,000-$5,000 for WordPress templates</strong>. We deliver <strong>custom code</strong> at the same price, with copywriting and SEO built in. Here's what drives the numbers.</p>
+    <h2>Why website prices vary so widely</h2>
+    <p>A website can mean a modified template, a focused freelance build, a connected studio process, or a large agency engagement. This tool compares those routes using the same selected scope so you can see what you are actually paying for.</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px">
       <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Page Count (Tiered)</h3>
-        <p style="font-size:13px;margin:0">First 3 pages: $600 each (layout foundation). Pages 4-8: $400 each (content expansion). Pages 9+: $250 each (established architecture). Every page gets custom design, copywriting, and SEO — never templated.</p>
+        <h3 style="font-size:15px;margin-bottom:6px">Scope and content</h3>
+        <p style="font-size:13px;margin:0">Page count matters, but page types, writing needs, content migration, and information architecture determine far more of the real workload.</p>
       </div>
       <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Features</h3>
-        <p style="font-size:13px;margin:0">E-commerce ($2,500), booking systems ($1,200), and multi-language ($1,800) add real development complexity. We build integrations from scratch — no bloated plugins that slow your site down.</p>
+        <h3 style="font-size:15px;margin-bottom:6px">Functionality</h3>
+        <p style="font-size:13px;margin:0">Booking, commerce, multilingual content, owner editing, and integrations add planning, configuration, testing, and support requirements.</p>
       </div>
       <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Design Depth</h3>
-        <p style="font-size:13px;margin:0">Standard = clean, effective, mobile-responsive. Custom = unique section layouts, brand-specific design. Premium = micro-interactions, scroll animations, immersive UX patterns.</p>
+        <h3 style="font-size:15px;margin-bottom:6px">Creative depth</h3>
+        <p style="font-size:13px;margin:0">Adapting a proven structure costs less than developing original art direction, writing, responsive behavior, and interaction patterns around one business.</p>
       </div>
     </div>
   </div>
@@ -275,13 +323,13 @@
 <section class="section">
   <div class="container">
     <details class="sources-box">
-      <summary>Sources &amp; methodology — how we calculate these numbers</summary>
+      <summary>Sources and methodology: how the comparison is calculated</summary>
       <ol>
-        <li>National pricing benchmarks from 2026 industry surveys: freelance custom-coded 5-page sites average <strong>$2,500-$5,000</strong>; small agencies charge <strong>$5,000-$15,000</strong> for the same scope (source: <a href="https://allusivedigital.com/blog/web-design-cost-2026/" target="_blank" rel="noopener">Allusive Digital</a>, <a href="https://www.jigsawkraft.com/post/website-development-cost-in-usa-2026-real-price-breakdown-by-project-type" target="_blank" rel="noopener">JigsawKraft</a>).</li>
-        <li>Page pricing uses tiered rates reflecting real-world development effort: pages 1-3 at $600 each (foundational layout work), pages 4-8 at $400 each (content expansion), pages 9+ at $250 each (established architecture).</li>
-        <li>Feature costs benchmarked against <a href="https://codevix.com/web-design/web-design-cost" target="_blank" rel="noopener">CodeVix 2026 pricing data</a> and adjusted for custom-coded implementation (no plugin shortcuts). E-commerce and booking integrations reflect API configuration complexity, not just checkout buttons.</li>
-        <li>Design complexity follows the tiered model used by professional agencies: <strong>Standard</strong> (clean layouts, mobile-responsive, cross-browser compatible), <strong>Custom</strong> (unique section designs, brand-specific layouts), <strong>Premium</strong> (micro-interactions, scroll animations, advanced UX patterns).</li>
-        <li>All estimates include: custom design and development (no templates, no page builders), professional copywriting for every page, mobile optimization across all devices, SEO foundation (schema markup, meta tags, sitemap.xml, robots.txt), Google Business Profile integration, and a recorded video walkthrough. Domain ($10-20/yr) and hosting ($10-30/mo) are separate costs you control.</li>
+        <li>Labor context uses the <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> wage data for web developers and digital interface designers.</li>
+        <li>Freelance rate context references publicly visible marketplace bands from <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork</a>. Marketplace rates vary greatly by experience, specialty, and geography.</li>
+        <li>Agency context references <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch's web design pricing guide</a>, including its published hourly-rate bands and scope factors.</li>
+        <li>The calculator estimates production effort from page types, selected functionality, and design depth, then applies broad provider-rate bands and overhead assumptions.</li>
+        <li>Results are rounded planning ranges, not quotes. Content readiness, integrations, accessibility, timeline, decision-making, and support can materially change a real proposal.</li>
       </ol>
     </details>
   </div>
@@ -290,30 +338,29 @@
 <section class="section section-dark">
   <div class="container">
     <h2>Frequently asked questions</h2>
-    <div class="faq-item"><h3>How accurate is this calculator?</h3><p>The calculator provides a realistic range based on actual project data. Think of it as a starting point — your exact quote depends on your specific business, content needs, and integrations. Reach out and we'll give you a precise number in one conversation.</p></div>
-    <div class="faq-item"><h3>What does a small business website actually cost in 2026?</h3><p>A custom-coded website from a freelance developer ranges from $2,500 to $5,000 nationally. Template-based WordPress or Wix sites run $500 to $1,500 — but you get what you pay for: generic design, no original copywriting, and zero SEO foundation. Our pricing sits in the premium mid-range: custom code at a fraction of agency rates ($5,000-$15,000), with copywriting and SEO built in.</p></div>
-    <div class="faq-item"><h3>What's included in the estimate?</h3><p>Custom design, development, copywriting, mobile optimization, SEO foundation (schema markup, meta tags, sitemap, robots.txt), Google Business Profile connection, and a recorded video walkthrough. Domain and hosting are separate costs you control.</p></div>
-    <div class="faq-item"><h3>How long does a custom website take?</h3><p>Most small business websites launch within 14 days of the first call. Larger projects with e-commerce or custom functionality may take 3-6 weeks. We'll give you a firm timeline with your quote — and we hit it.</p></div>
-    <div class="faq-item"><h3>Do I own my website?</h3><p>Yes. 100%. The domain, hosting account, source code, and all content belong to you. No lock-in contracts. No monthly fees to us unless you want ongoing support. You are never held hostage by your own website.</p></div>
-    <div class="faq-item"><h3>What if I need changes after launch?</h3><p>We offer ongoing support for updates, edits, and new pages after launch. Fixed project rates, not open-ended retainers. You tell us what you need and we quote it before any work starts.</p></div>
+    <div class="faq-item"><h3>Is this a Studio O'Brien quote?</h3><p>No. It is a market-planning estimate showing what similar scope can cost through different provider types. Studio O'Brien recommends scope and pricing after learning what the business needs.</p></div>
+    <div class="faq-item"><h3>Why are the ranges so broad?</h3><p>Provider experience, creative depth, content readiness, technical requirements, geography, process, and overhead all affect cost. A narrow instant number would create false precision.</p></div>
+    <div class="faq-item"><h3>Is a template always the wrong choice?</h3><p>No. A template can be sensible for a simple need, a limited budget, and an owner willing to handle more of the work. Custom work becomes valuable when distinction, writing, functionality, and a connected customer experience matter.</p></div>
+    <div class="faq-item"><h3>What costs are often forgotten?</h3><p>Copywriting, photography, content migration, accessibility, integrations, analytics, training, hosting, maintenance, and internal review time are commonly left out of early estimates.</p></div>
+    <div class="faq-item"><h3>How should I compare proposals?</h3><p>Compare the actual scope, who is doing the work, what content and revisions are included, ownership terms, launch support, recurring costs, and what happens when requirements change.</p></div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="cta-block">
-      <h2>Ready for an exact quote?</h2>
-      <p>Tell us about your business. We'll give you a precise number, timeline, and what's included. Free. No strings. No phone tag.</p>
-      <a href="mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20Cost%20Calculator" class="btn btn-primary" style="display:inline-flex">
+      <h2>Want a recommendation for your business?</h2>
+      <p>Send Studio O'Brien your calculator scope and a short description of what the website needs to accomplish. The next reply will recommend an appropriate scope and next step.</p>
+      <a href="mailto:hello@studioobrien.com?subject=Website%20Project%20Recommendation" class="btn btn-primary" style="display:inline-flex">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get an Exact Quote
+        Get a Project Recommendation
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p><strong>O'Brien Studio</strong> — Web development &amp; design in Shelby, NC</p>
+  <p><strong>Studio O'Brien</strong> &mdash; Web development &amp; design in Shelby, NC</p>
   <div class="page-links">
     <a href="/">Home</a>
     <a href="/website-cost-calculator">Website Cost Calculator</a>
@@ -327,7 +374,7 @@
     <a href="mailto:hello@studioobrien.com">Contact</a>
   </div>
   <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
-  <p>&copy; 2026 <a href="/">O'Brien Studio</a></p>
+  <p>&copy; 2026 <a href="/">Studio O'Brien</a></p>
 </footer>
 
 <script>
@@ -336,35 +383,32 @@
   var pageSlider = $('pageSlider');
   var pageVal = $('pageVal');
   var estRange = $('estRange');
-  var pageBreakdown = $('pageBreakdown');
-  var featuresCost = $('featuresCost');
-  var totalCost = $('totalCost');
   var quoteBtn = $('quoteBtn');
   var featureGrid = $('featureGrid');
   var complexityOptions = $('complexityOptions');
+  var driverList = $('driverList');
+  var routeRecommendation = $('routeRecommendation');
+  var routeCards = {
+    freelancer: $('freelancerCard'),
+    studio: $('studioCard'),
+    agency: $('agencyCard')
+  };
 
-  var SETUP_FEE = 500;
-  var PAGE_RATE_TIER1 = 600;
-  var PAGE_RATE_TIER2 = 400;
-  var PAGE_RATE_TIER3 = 250;
-  var TIER1_CUTOFF = 3;
-  var TIER2_CUTOFF = 8;
-
-  function calcPageCost(pages) {
-    if (pages <= TIER1_CUTOFF) return pages * PAGE_RATE_TIER1;
-    if (pages <= TIER2_CUTOFF) return TIER1_CUTOFF * PAGE_RATE_TIER1 + (pages - TIER1_CUTOFF) * PAGE_RATE_TIER2;
-    return TIER1_CUTOFF * PAGE_RATE_TIER1 + (TIER2_CUTOFF - TIER1_CUTOFF) * PAGE_RATE_TIER2 + (pages - TIER2_CUTOFF) * PAGE_RATE_TIER3;
+  function calcPageHours(pages) {
+    if (pages <= 3) return 14 + pages * 5;
+    if (pages <= 8) return 29 + (pages - 3) * 3.5;
+    return 46.5 + (pages - 8) * 2.25;
   }
 
   function getSelectedFeatures() {
     var selected = featureGrid.querySelectorAll('.feature-option.selected');
-    var total = 0;
+    var hours = 0;
     var names = [];
     selected.forEach(function(el) {
-      total += parseInt(el.getAttribute('data-cost'));
+      hours += parseInt(el.getAttribute('data-hours'));
       names.push(el.getAttribute('data-feature'));
     });
-    return { total: total, names: names };
+    return { hours: hours, names: names };
   }
 
   function getComplexity() {
@@ -374,29 +418,93 @@
     return { level: level, mult: mult };
   }
 
+  function money(value, step) {
+    return Math.max(step, Math.round(value / step) * step);
+  }
+
+  function rangeText(low, high, step) {
+    return '$' + money(low, step).toLocaleString() + ' - $' + money(high, step).toLocaleString();
+  }
+
+  function setRecommended(route) {
+    Object.keys(routeCards).forEach(function(key) {
+      routeCards[key].classList.toggle('recommended', key === route);
+      var name = routeCards[key].querySelector('.route-name');
+      var badge = name.querySelector('.route-badge');
+      if (badge) badge.remove();
+      if (key === route) {
+        var marker = document.createElement('span');
+        marker.className = 'route-badge';
+        marker.textContent = 'Closest fit';
+        name.appendChild(marker);
+      }
+    });
+  }
+
   function updateEstimate() {
     var pages = parseInt(pageSlider.value);
     pageVal.textContent = pages;
 
     var features = getSelectedFeatures();
     var complexity = getComplexity();
+    var hours = Math.round((calcPageHours(pages) + features.hours) * complexity.mult);
 
-    var pageCost = calcPageCost(pages);
-    var featureCost = features.total;
-    var subtotal = pageCost + featureCost + SETUP_FEE;
-    var total = Math.round(subtotal * complexity.mult);
+    var diyLow = 200 + features.names.length * 75;
+    var diyHigh = 700 + features.names.length * 180 + (features.names.indexOf('e-commerce') > -1 ? 1200 : 0);
+    var templateLow = hours * 30;
+    var templateHigh = hours * 55;
+    var freelancerLow = hours * 50;
+    var freelancerHigh = hours * 100;
+    var studioLow = hours * 90;
+    var studioHigh = hours * 165;
+    var agencyLow = hours * 150 * 1.1;
+    var agencyHigh = hours * 250 * 1.25;
 
-    var low = Math.round(total * 0.85);
-    var high = Math.round(total * 1.15);
-    low = Math.round(low / 100) * 100;
-    high = Math.round(high / 100) * 100;
+    $('diyRange').textContent = rangeText(diyLow, diyHigh, 100);
+    $('templateRange').textContent = rangeText(templateLow, templateHigh, 250);
+    $('freelancerRange').textContent = rangeText(freelancerLow, freelancerHigh, 500);
+    $('studioRange').textContent = rangeText(studioLow, studioHigh, 500);
+    $('agencyRange').textContent = rangeText(agencyLow, agencyHigh, 1000);
+    estRange.textContent = rangeText(freelancerLow, agencyHigh, 500);
 
-    estRange.textContent = '$' + low.toLocaleString() + ' - $' + high.toLocaleString();
-    pageBreakdown.textContent = '$' + pageCost.toLocaleString();
-    featuresCost.textContent = '$' + featureCost.toLocaleString();
-    totalCost.textContent = '$' + total.toLocaleString();
+    var recommended = hours < 45 ? 'freelancer' : (hours < 135 ? 'studio' : 'agency');
+    setRecommended(recommended);
 
-    quoteBtn.href = 'mailto:hello@studioobrien.com?subject=Website%20Quote%20Request%20-%20' + encodeURIComponent('$' + low.toLocaleString() + ' to $' + high.toLocaleString() + ' Estimate');
+    var recommendationCopy = {
+      freelancer: 'This is a relatively focused scope. An experienced freelancer may be the closest fit if the goals and content are already well defined.',
+      studio: 'This scope benefits from connected strategy, writing, design, and development without the overhead of a large agency. An independent custom studio is the closest fit.',
+      agency: 'This is a broad or technically demanding scope. A larger agency may be the closest fit when specialist capacity and multiple project leads are necessary.'
+    };
+    routeRecommendation.textContent = recommendationCopy[recommended];
+
+    var drivers = [];
+    drivers.push(pages + (pages === 1 ? ' page' : ' pages') + ' across the website');
+    drivers.push(complexity.level);
+    if (features.names.length) {
+      drivers.push(features.names.length + ' selected features: ' + features.names.join(', '));
+    } else {
+      drivers.push('No advanced functionality selected');
+    }
+    drivers.push('Approximately ' + Math.max(20, Math.round(hours * .8)) + ' to ' + Math.round(hours * 1.25) + ' production hours before provider overhead');
+    driverList.innerHTML = '';
+    drivers.forEach(function(text) {
+      var item = document.createElement('li');
+      item.textContent = text;
+      driverList.appendChild(item);
+    });
+
+    var subject = 'Website Project Recommendation';
+    var body = [
+      "I used the Studio O'Brien website cost calculator and would like a project recommendation.",
+      '',
+      'Pages: ' + pages,
+      'Design depth: ' + complexity.level,
+      'Features: ' + (features.names.join(', ') || 'None selected'),
+      'Market range shown: ' + estRange.textContent,
+      '',
+      'What the website needs to accomplish:'
+    ].join('\\n');
+    quoteBtn.href = 'mailto:hello@studioobrien.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   }
 
   pageSlider.addEventListener('input', updateEstimate);
@@ -405,15 +513,36 @@
     var option = e.target.closest('.feature-option');
     if (!option) return;
     option.classList.toggle('selected');
+    option.setAttribute('aria-checked', option.classList.contains('selected') ? 'true' : 'false');
     updateEstimate();
+  });
+
+  featureGrid.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var option = e.target.closest('.feature-option');
+    if (!option) return;
+    e.preventDefault();
+    option.click();
   });
 
   complexityOptions.addEventListener('click', function(e) {
     var option = e.target.closest('.complexity-opt');
     if (!option) return;
-    complexityOptions.querySelectorAll('.complexity-opt').forEach(function(o) { o.classList.remove('selected'); });
+    complexityOptions.querySelectorAll('.complexity-opt').forEach(function(o) {
+      o.classList.remove('selected');
+      o.setAttribute('aria-checked', 'false');
+    });
     option.classList.add('selected');
+    option.setAttribute('aria-checked', 'true');
     updateEstimate();
+  });
+
+  complexityOptions.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var option = e.target.closest('.complexity-opt');
+    if (!option) return;
+    e.preventDefault();
+    option.click();
   });
 
   updateEstimate();
