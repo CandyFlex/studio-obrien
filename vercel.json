@@ -11,7 +11,9 @@
   "redirects": [
     { "source": "/:path*", "has": [{ "type": "host", "value": "www.studioobrien.com" }], "destination": "https://studioobrien.com/:path*", "permanent": true },
     { "source": "/mock-sites/:path*", "destination": "/", "permanent": true },
-    { "source": "/for/:path*", "destination": "/#portfolio", "permanent": true }
+    { "source": "/for/:path*", "destination": "/#portfolio", "permanent": true },
+    { "source": "/pricing", "destination": "/blog/website-redesign-roi-small-business", "permanent": true },
+    { "source": "/pricing/:path*", "destination": "/blog/website-redesign-roi-small-business", "permanent": true }
   ],
   "headers": [
     {
