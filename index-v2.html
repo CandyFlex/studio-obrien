@@ -369,6 +369,13 @@ body.is-menu-open{overflow:hidden}
 /* one continuous backdrop wraps BOTH the showcase and the services section;
    the laptop and the services card sit in front, the work shows in the gutters */
 .show-zone{position:relative;background:#0a0a0b;overflow:clip}
+/* Seamless portfolio → showcase handoff: the show-zone top edge sits 500px
+   above the portfolio-wrap border-box bottom (margin-bottom:-500px in
+   index.css), and the laptop + its shadow cut the bright cards in a hard
+   horizontal line there. Dissolve the cards into the page black just above
+   that line so the sections blend. Disabled ≤860px where the overlap is off. */
+.portfolio-wrap::after{content:'';position:absolute;left:0;right:0;bottom:500px;height:240px;background:linear-gradient(to bottom,rgba(10,10,11,0) 0%,rgba(10,10,11,.5) 50%,rgba(10,10,11,.9) 82%,#0a0a0b 100%);pointer-events:none;z-index:2}
+@media(max-width:860px){.portfolio-wrap::after{display:none}}
 .show-zone > section{position:relative;z-index:1;background:transparent}
 .wt-section.show{overflow:visible;padding-top:0;background:transparent}
 .svc2{background:transparent}
