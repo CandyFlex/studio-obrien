@@ -375,7 +375,14 @@ body.is-menu-open{overflow:hidden}
    horizontal line there. Dissolve the cards into the page black just above
    that line so the sections blend. Disabled ≤860px where the overlap is off. */
 .portfolio-wrap::after{content:'';position:absolute;left:0;right:0;bottom:500px;height:240px;background:linear-gradient(to bottom,rgba(10,10,11,0) 0%,rgba(10,10,11,.5) 50%,rgba(10,10,11,.9) 82%,#0a0a0b 100%);pointer-events:none;z-index:2}
-@media(max-width:860px){.portfolio-wrap::after{display:none}}
+/* The zone's own edges: the dimmed backdrop pieces must EMERGE from black at
+   the top (else they start in a hard line level with the laptop's top edge)
+   and SINK back into black at the bottom before the Process section. Both
+   overlays sit above the backdrop (z0) and below the laptop/services (z1+),
+   so only the laptop and its mint glow cross the boundary. */
+.show-zone::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(180px,26vh,340px);background:linear-gradient(to bottom,#0a0a0b 0%,rgba(10,10,11,.88) 40%,rgba(10,10,11,0) 100%);z-index:1;pointer-events:none}
+.show-zone::after{content:'';position:absolute;bottom:0;left:0;right:0;height:clamp(180px,26vh,340px);background:linear-gradient(to top,#0a0a0b 0%,rgba(10,10,11,.88) 40%,rgba(10,10,11,0) 100%);z-index:0;pointer-events:none}
+@media(max-width:860px){.portfolio-wrap::after{display:none}.show-zone::before,.show-zone::after{display:none}}
 .show-zone > section{position:relative;z-index:1;background:transparent}
 .wt-section.show{overflow:visible;padding-top:0;background:transparent}
 .svc2{background:transparent}
