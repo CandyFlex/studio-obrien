@@ -46,7 +46,7 @@ body{padding-top:60px}
 .nav-grid-overlay{position:fixed;inset:0 0 auto 0;height:100vh;background-image:linear-gradient(to right,rgba(52,211,153,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(52,211,153,.05) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);pointer-events:none;z-index:49}
 .topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:transparent;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),background .3s ease}
 .topbar.scrolled{background:rgba(17,17,17,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-.nav-brand{font-size:15px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-family:'Inter',sans-serif;font-variation-settings:'opsz' 32,'wght' 720}
+.nav-brand{font-size:18px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-family:'Inter',sans-serif;font-variation-settings:'opsz' 32,'wght' 720}
 .nav-brand::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#34d399;transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
 .nav-brand:hover::after{transform:scaleX(1) rotate(-1.5deg)}
 .nav-links{display:flex;gap:26px;align-items:center}
@@ -54,18 +54,82 @@ body{padding-top:60px}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:#34d399;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
 .nav-links a:hover{color:#fff}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{background:#fff;color:#111;font-size:13px;font-weight:600;padding:10px 18px 10px 20px;border-radius:999px;text-decoration:none;display:flex;align-items:center;gap:5px;position:relative;overflow:hidden;transition:color .3s;font-family:'Inter',sans-serif}
+.nav-cta{background:#fff;color:#111;font-size:10.5px;font-weight:600;padding:8px 14px 8px 16px;border-radius:999px;text-decoration:none;display:flex;align-items:center;gap:5px;position:relative;overflow:hidden;transition:color .3s;font-family:'Inter',sans-serif}
 .nav-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .nav-cta span,.nav-cta svg{position:relative;z-index:1}
 .nav-cta:hover::before{transform:translateY(0)}
 .nav-cta svg{transition:transform .2s}
 .nav-cta:hover svg{transform:translateX(3px)}
-@media(max-width:999.98px){.topbar{padding:0 16px}.nav-links{display:none}.nav-brand{font-size:14px}}
+@media(max-width:999.98px){.topbar{padding:0 16px}.nav-links{display:none}.nav-brand{font-size:17px}}
 
 /* ── Intro A1: Wide Statement ───────────────────────────── */
 .intro{padding:20px 0 80px;text-align:center;align-items:center}
 .intro h1{font-family:'Inter',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,46px);letter-spacing:-.025em;line-height:1.18;color:#fff;max-width:38ch;text-wrap:balance;margin:0;padding:0 20px}
 .intro h1 em{font-style:italic;color:#34d399;font-weight:600}
+
+/* ── Walkthrough V5 (Laptop + Phone, autoplay reel) ───────────────────── */
+/* Laptop sits at the natural seam below the portfolio. Screen is 19:10 (about 22%
+   taller than 21:9). Everything in this section — laptop bezel, screen, chrome,
+   keyboard, phone, copy and section padding — scales fluidly via clamp/var. */
+.wt-section{position:relative;padding:0 0 clamp(70px,7vw,130px);isolation:isolate;background:#0f0f10;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
+
+/* Copy sits under the laptop+phone cluster */
+.wt-copy{max-width:760px;margin:clamp(48px,5vw,90px) auto 0;padding:0 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.4vw,20px)}
+.wt-label{display:none}
+.wt-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(28px,4.4vw,60px);letter-spacing:-.04em;line-height:1.05;color:#fff;text-wrap:balance;margin:0;font-variation-settings:'opsz' 32,'wght' 720}
+.wt-heading em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.wt-sub{font-family:'Inter',sans-serif;font-size:clamp(14px,1.3vw,17px);font-weight:400;line-height:1.55;letter-spacing:-.005em;color:#a8a8a8;text-wrap:balance;margin:0;max-width:48ch}
+@media(max-width:639.98px){
+  .wt-copy{padding:0 18px;gap:10px}
+  .wt-heading{font-size:clamp(24px,7vw,32px);line-height:1.1}
+  .wt-sub{font-size:14px}
+}
+
+/* --phone-w drives every phone dimension (size, padding, radius, notch, peek depth)
+   so the phone stays internally consistent and scales with the viewport.
+   align-self:center belt-and-suspenders the centering inside the flex section. */
+.v5-stage{position:relative;max-width:1700px;width:calc(100% - 16px);margin:0 auto;align-self:center;--phone-w:clamp(76px,11vw,200px)}
+/* Laptop has its full top bezel back. Phone sits in the foreground (z:3) above the laptop. */
+.v5-laptop{position:relative;z-index:1;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) 4px 4px;padding:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) clamp(7px,1vw,14px);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 80px 140px -50px rgba(0,0,0,.9),0 -40px 200px -20px rgba(52,211,153,.28),0 40px 200px -20px rgba(52,211,153,.22),0 0 180px -20px rgba(52,211,153,.22)}
+.v5-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(56px,6.5vw,96px);height:clamp(8px,1vw,14px);background:#0d0d0e;border-radius:0 0 10px 10px;z-index:5}
+.v5-screen{position:relative;aspect-ratio:19/10;border-radius:clamp(4px,.42vw,6px);overflow:hidden;background:#000}
+.v5-screen .v-poster{position:absolute;inset:0;width:100%;height:100%;display:block;background:radial-gradient(ellipse at 50% 40%,rgba(52,211,153,.16),transparent 60%),linear-gradient(135deg,#0e1f17 0%,#0a0a0b 100%);z-index:0}
+
+.scroll-bg{position:absolute;inset:0;z-index:1;background-image:url('portfolio/darkthoughts.png');background-size:100% auto;background-repeat:repeat-y;background-position:50% 0;will-change:background-position;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0)}
+.scroll-bg--desktop{animation:wt-scroll 48s linear infinite}
+.scroll-bg--mobile{animation:wt-scroll 20s linear infinite}
+@keyframes wt-scroll{
+  from{background-position:50% -100%}
+  to  {background-position:50% 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .scroll-bg--desktop,.scroll-bg--mobile{animation:none}
+}
+.v5-chrome{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:clamp(5px,.6vw,8px);padding:clamp(8px,.9vw,12px) clamp(12px,1.4vw,20px);background:linear-gradient(to bottom,rgba(10,10,11,.65),transparent);pointer-events:none}
+.v5-chrome .dot{width:clamp(6px,.65vw,9px);height:clamp(6px,.65vw,9px);border-radius:50%}
+.v5-chrome .dot:nth-child(1){background:#ff5f56}
+.v5-chrome .dot:nth-child(2){background:#ffbd2e}
+.v5-chrome .dot:nth-child(3){background:#27c93f}
+/* Keyboard "wings" extend 1.6% of the stage width on each side — always
+   proportional to the laptop, never wider than the viewport. */
+.v5-keyboard{height:clamp(8px,1vw,14px);margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c 0%,#0e0e10 100%);border-radius:0 0 clamp(14px,1.6vw,22px) clamp(14px,1.6vw,22px);position:relative;z-index:1}
+.v5-keyboard::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(80px,9.5vw,140px);height:clamp(3px,.36vw,5px);background:#0d0d0e;border-radius:0 0 6px 6px}
+.v5-stage::after{content:'';position:absolute;left:8%;right:8%;bottom:-30px;height:42px;background:radial-gradient(ellipse at center,rgba(0,0,0,.65) 0%,transparent 70%);filter:blur(12px);z-index:-1;pointer-events:none}
+/* Phone foreground (z:3). Right edge aligns with the laptop screen's right edge
+   (matches the laptop's side bezel padding). Every dimension derives from --phone-w
+   so the phone scales internally consistent with the laptop. */
+.v5-phone{position:absolute;right:clamp(8px,1.1vw,16px);bottom:calc(var(--phone-w) * -.35);width:var(--phone-w);aspect-ratio:9/19.5;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:calc(var(--phone-w) * .14);padding:calc(var(--phone-w) * .04);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 50px 90px -20px rgba(0,0,0,.85);z-index:3}
+.v5-phone-screen{position:relative;width:100%;height:100%;border-radius:calc(var(--phone-w) * .1);overflow:hidden;background:#000}
+.v5-phone-screen .v-poster{position:absolute;inset:0;width:100%;height:100%;display:block;background:linear-gradient(180deg,#0e1f17,#050505);z-index:0}
+.v5-phone-notch{position:absolute;top:calc(var(--phone-w) * .05);left:50%;transform:translateX(-50%);width:calc(var(--phone-w) * .32);height:calc(var(--phone-w) * .07);background:#0d0d0e;border-radius:calc(var(--phone-w) * .04);z-index:5}
+/* Tighten stage gutters as the viewport gets small (laptop almost edge-to-edge on phones). */
+@media (max-width:760px){
+  .v5-stage{width:calc(100% - 20px)}
+  .wt-copy{padding:0 20px}
+}
+@media (max-width:420px){
+  .v5-stage{width:calc(100% - 12px)}
+}
 </style>
 
 <script type="application/ld+json">
@@ -371,17 +435,33 @@ body{padding-top:60px}
   </div>
 </noscript>
 
-<!-- FULL-VIEWPORT VIDEO SECTION -->
-<section class="video-section" data-video-section>
-  <div class="video-placeholder" aria-hidden="true"></div>
-  <video class="video-full" muted loop playsinline preload="none" data-video-autoplay>
-    <source src="reel.mp4" type="video/mp4">
-  </video>
-  <div class="video-overlay" aria-hidden="true"></div>
-  <div class="video-content">
-    <div class="video-label">See our web development in action</div>
-    <h2 class="video-heading">Review the website through a recorded walkthrough.</h2>
-    <p class="video-sub">See the work clearly before it goes live.</p>
+<!-- WALKTHROUGH V5 — LAPTOP + PHONE, AUTOPLAY REEL -->
+<section class="wt-section">
+  <div class="v5-stage">
+    <div class="v5-laptop">
+      <span class="v5-notch"></span>
+      <div class="v5-screen">
+        <div class="v-poster" aria-hidden="true"></div>
+        <div class="scroll-bg scroll-bg--desktop" aria-hidden="true"></div>
+        <div class="v5-chrome" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <div class="v5-keyboard"></div>
+    <div class="v5-phone">
+      <span class="v5-phone-notch"></span>
+      <div class="v5-phone-screen">
+        <div class="v-poster" aria-hidden="true"></div>
+        <div class="scroll-bg scroll-bg--mobile" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wt-copy">
+    <div class="wt-label" aria-hidden="true">End to end review</div>
+    <h2 class="wt-heading">See your site on every screen, in one <em>walkthrough</em>.</h2>
+    <p class="wt-sub">Desktop and mobile, side by side. Every breakpoint reviewed before launch.</p>
   </div>
 </section>
 
@@ -900,49 +980,6 @@ body{padding-top:60px}
     });
   },{threshold:0.15});
   steps.forEach(function(el){ stepObs.observe(el); });
-
-  /* ===== VIDEO AUTOPLAY + SCROLL-DRIVEN PARALLAX ===== */
-  var videoSection = document.querySelector('[data-video-section]');
-  var videoEl = document.querySelector('[data-video-autoplay]');
-  var videoPlaceholder = document.querySelector('.video-placeholder');
-  var videoPlaying = false;
-
-  if(videoSection && videoEl){
-    var videoObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          var hasSrc = videoEl.src || (videoEl.querySelector('source') && videoEl.querySelector('source').getAttribute('src'));
-          if(!videoPlaying && hasSrc){
-            var playPromise = videoEl.play();
-            if(playPromise && playPromise.then){
-              playPromise.then(function(){ videoPlaying = true; if(videoPlaceholder) videoPlaceholder.style.opacity = '0'; });
-            }
-          }
-        } else {
-          if(!videoEl.paused){ videoEl.pause(); videoPlaying = false; if(videoPlaceholder) videoPlaceholder.style.opacity = '1'; }
-        }
-      });
-    },{threshold:0.3});
-    videoObs.observe(videoSection);
-
-    // Parallax on video
-    var videoTicking = false;
-    window.addEventListener('scroll', function(){
-      if(!videoTicking){
-        requestAnimationFrame(function(){
-          var rect = videoSection.getBoundingClientRect();
-          var vh = window.innerHeight;
-          if(rect.top < vh && rect.bottom > 0){
-            var progress = (vh - rect.top) / (vh + rect.height);
-            var yShift = (progress - 0.5) * 60;
-            videoEl.style.transform = 'scale(1.15) translateY(' + yShift + 'px)';
-          }
-          videoTicking = false;
-        });
-        videoTicking = true;
-      }
-    }, {passive:true});
-  }
 
   /* ===== STATS - COUNT-UP + STAGGER ===== */
   var statsObserver = new IntersectionObserver(function(entries){

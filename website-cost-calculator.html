@@ -7,554 +7,804 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-DD0V4CRPND');
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Website Cost Calculator: Compare Website Prices in 2026</title>
-<meta name="description" content="Compare realistic website cost ranges across DIY builders, freelancers, independent studios, and agencies. Free planning tool with no email required.">
+<title>Website Cost Calculator: Compare Cost, Time &amp; Effort in 2026</title>
+<meta name="description" content="Plan your website by cost, timeline, and your own time. Compare DIY builders, freelancers, independent studios, and agencies side by side. Free, no email required.">
 <link rel="canonical" href="https://studioobrien.com/website-cost-calculator">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studioobrien.com/website-cost-calculator">
 <meta property="og:site_name" content="Studio O&#39;Brien">
-<meta property="og:title" content="Website Cost Calculator: Compare Website Prices in 2026">
-<meta property="og:description" content="See what websites commonly cost through DIY builders, freelancers, independent studios, and agencies.">
-<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.webp">
+<meta property="og:title" content="Website Cost Calculator: Compare Cost, Time &amp; Effort">
+<meta property="og:description" content="See what a website costs in money, calendar time, and your own hours across DIY, freelancer, studio, and agency routes.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.png">
+<meta property="og:image:width" content="1264">
+<meta property="og:image:height" content="569">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Cost Calculator: Compare Cost, Time &amp; Effort">
+<meta name="twitter:description" content="See what a website costs in money, calendar time, and your own hours across DIY, freelancer, studio, and agency routes.">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/og-image.png">
 <link rel="stylesheet" href="/fonts.css">
-<link rel="stylesheet" href="/blog/blog.css">
 <style>
-  :root{--g:#34d399;--gd:#2ec48d;--bg:#111;--fg:#fff;--muted:#999;--card:#1a1a1a;--b:#2a2a2a}
+  :root{
+    --bg:#0a0a0b; --bg-2:#0f0f10; --surface:#151516; --surface-2:#1c1c1d;
+    --ink:#ffffff; --ink-2:#d4d4d4; --ink-3:#a8a8a8; --muted:#888888; --faint:#666666;
+    --border:#2a2a2b; --border-faint:#1f1f20;
+    --g:#34d399; --gd:#2ec48d; --g-soft:rgba(52,211,153,.10); --g-line:rgba(52,211,153,.30);
+    --warn:#f4a259;
+    --r:14px; --r-sm:10px;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{background:var(--bg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.6}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;min-height:100vh;line-height:1.6;overflow-x:hidden}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
-  .topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
-  .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:25px;color:var(--g);text-decoration:none;letter-spacing:-.01em}
-  .topbar-links{display:flex;gap:16px;align-items:center}
-  .topbar-link{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#fff;text-decoration:none;transition:color .2s}
-  .topbar-link:hover{color:var(--g)}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Inter Tight','Inter',sans-serif;letter-spacing:-.02em}
 
-  @media(max-width:600px){.topbar-inner{height:52px}.topbar-logo{font-size:16px}.topbar-link{font-size:13px}.topbar-links{gap:10px}}
-  .hero{padding:56px 20px 24px;text-align:center;max-width:800px;margin:0 auto}
-  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;color:#fff}
-  .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 8px;line-height:1.6}
-  .hero .trust-line{font-size:13px;color:#888;margin-bottom:24px}
+  /* ── Topbar ─────────────────────────────── */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,11,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-faint)}
+  .topbar-inner{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
+  .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.03em}
+  .topbar-logo span{color:var(--g)}
+  .topbar-links{display:flex;gap:20px;align-items:center}
+  .topbar-link{font-weight:500;font-size:13.5px;color:var(--ink-3);text-decoration:none;transition:color .2s}
+  .topbar-link:hover{color:var(--ink)}
+  .topbar-cta{background:var(--ink);color:var(--bg);font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;transition:background .2s,color .2s}
+  .topbar-cta:hover{background:var(--g)}
 
-  .btn{padding:14px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .3s,background .2s;min-height:48px}
-  .btn-primary{background:var(--g);color:var(--bg)}
-  .btn-primary:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
-  .btn svg{width:18px;height:18px;flex-shrink:0}
+  /* ── Hero ───────────────────────────────── */
+  .hero{padding:56px 20px 26px;text-align:center;max-width:760px;margin:0 auto}
+  .hero .kick{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--ink-3);border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:20px}
+  .hero .kick .dot{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 3px var(--g-soft)}
+  .hero h1{font-weight:720;font-size:clamp(30px,6.2vw,52px);line-height:1.04;letter-spacing:-.035em;margin-bottom:16px;color:#fff}
+  .hero h1 em{font-style:italic;color:var(--g);font-weight:600}
+  .hero p{font-size:clamp(15px,2.4vw,18px);color:var(--ink-3);max-width:560px;margin:0 auto 10px;line-height:1.6}
+  .hero .trust{font-size:12.5px;color:var(--faint);margin-top:14px}
 
-  .section{padding:48px 20px}
-  .section-dark{background:#0d0d0d}
-  .container{max-width:800px;margin:0 auto}
-  h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.15;margin-bottom:14px;letter-spacing:-.01em}
-  h3{font-family:'Inter',sans-serif;font-weight:600;font-size:17px;color:var(--fg);margin-bottom:6px}
-  p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px}
-  p strong{color:#ccc;font-weight:600}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .section{padding:44px 0}
+  .section-head{max-width:640px;margin:0 auto 26px;text-align:center}
+  .section-head h2{font-weight:720;font-size:clamp(22px,4vw,32px);line-height:1.12;margin-bottom:10px}
+  .section-head h2 em{font-style:italic;color:var(--g);font-weight:600}
+  .section-head p{color:var(--ink-3);font-size:15px}
 
-  /* Calculator */
-  .calc-wrapper{max-width:620px;margin:0 auto;background:var(--card);border:1px solid var(--b);padding:32px 28px}
-  .calc-section{margin-bottom:28px}
-  .calc-section:last-child{margin-bottom:0}
-  .calc-section h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-  .calc-section h3 .step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--g);color:var(--bg);font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0}
-  .calc-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-  .calc-label span{font-size:14px;color:var(--fg)}
-  .calc-label .val{font-weight:700;color:var(--g);font-size:18px}
-  .calc-slider{-webkit-appearance:none;width:100%;height:6px;background:var(--b);outline:none}
-  .calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--g);border-radius:50%;cursor:pointer;transition:transform .15s}
-  .calc-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
-  .calc-slider::-moz-range-thumb{width:22px;height:22px;background:var(--g);border-radius:50%;cursor:pointer;border:none}
+  /* ── Preset builders ────────────────────── */
+  .presets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .preset{position:relative;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:var(--r);padding:18px 18px 16px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s var(--ease);font-family:inherit;color:inherit;display:flex;flex-direction:column;gap:10px}
+  .preset:hover{border-color:var(--g-line);background:var(--surface-2);transform:translateY(-2px)}
+  .preset:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+  .preset.active{border-color:var(--g);background:var(--g-soft)}
+  .preset-ico{width:36px;height:36px;border-radius:9px;background:var(--bg-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--g)}
+  .preset-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .preset-name{font-weight:650;font-size:15px;color:var(--ink);font-family:'Inter Tight',sans-serif;letter-spacing:-.01em}
+  .preset-desc{font-size:12.5px;color:var(--ink-3);line-height:1.45}
+  .preset-stats{display:flex;gap:12px;margin-top:auto;padding-top:10px;border-top:1px solid var(--border-faint)}
+  .preset-stat{font-size:11px;color:var(--muted)}
+  .preset-stat b{display:block;font-size:13px;color:var(--ink-2);font-weight:650;font-family:'Inter Tight',sans-serif}
+  .preset .pick{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--g);opacity:0;transition:opacity .2s}
+  .preset.active .pick{opacity:1}
 
-  .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  .feature-option{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--b);cursor:pointer;transition:border-color .2s,background .2s;font-size:13px;color:var(--fg);background:var(--bg);user-select:none}
-  .feature-option:hover{border-color:var(--g)}
-  .feature-option:focus-visible,.complexity-opt:focus-visible,.btn:focus-visible,.get-quote-btn:focus-visible,.topbar-link:focus-visible{outline:3px solid var(--g);outline-offset:3px}
-  .feature-option.selected{border-color:var(--g);background:rgba(52,211,153,.06)}
-  .feature-option .check{width:18px;height:18px;border:2px solid var(--b);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s,color .2s;font-size:10px;color:transparent}
-  .feature-option.selected .check{background:var(--g);border-color:var(--g);color:var(--bg)}
-  .feature-option .info{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+  /* ── App shell: config + live panel ─────── */
+  .app{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}
+  .config{padding:8px 22px 22px}
+  .cfg{padding:22px 0;border-bottom:1px solid var(--border-faint)}
+  .cfg:last-child{border-bottom:none}
+  .cfg-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .cfg-num{width:22px;height:22px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border);color:var(--g);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Inter Tight',sans-serif}
+  .cfg-head h3{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em;font-family:'Inter',sans-serif}
+  .cfg-head .cfg-val{margin-left:auto;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;color:var(--g)}
 
-  .complexity-options{display:flex;gap:10px}
-  .complexity-opt{flex:1;text-align:center;padding:16px 12px;border:1px solid var(--b);cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg);user-select:none}
-  .complexity-opt:hover{border-color:var(--g)}
-  .complexity-opt.selected{border-color:var(--g);background:rgba(52,211,153,.06)}
-  .complexity-opt .c-icon{font-size:24px;margin-bottom:6px;display:block}
-  .complexity-opt .c-label{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:2px}
-  .complexity-opt .c-desc{font-size:11px;color:var(--muted)}
+  /* slider */
+  .slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:var(--border);outline:none;margin:6px 0 6px}
+  .slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--g);cursor:pointer;transition:transform .15s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .slider::-webkit-slider-thumb:hover{transform:scale(1.12)}
+  .slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--g);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .slider-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--faint);margin-top:2px}
 
-  .result-box{border:2px solid var(--g);padding:28px 24px;text-align:center;background:rgba(52,211,153,.04)}
-  .result-box .est-label{font-size:13px;color:var(--muted);margin-bottom:4px}
-  .result-box .est-range{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,5vw,40px);color:var(--g);letter-spacing:-.01em;margin-bottom:8px}
-  .result-box .est-note{font-size:13px;color:var(--muted);max-width:420px;margin:0 auto 20px;line-height:1.5}
-  .result-box .get-quote-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--g);color:var(--bg);font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .3s}
-  .result-box .get-quote-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
+  /* feature chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);cursor:pointer;transition:border-color .18s,background .18s,color .18s;font-size:13px;color:var(--ink-2);user-select:none;font-family:inherit}
+  .chip:hover{border-color:var(--g-line)}
+  .chip .tick{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:transparent;transition:all .18s;flex-shrink:0}
+  .chip.on{border-color:var(--g);background:var(--g-soft);color:var(--ink)}
+  .chip.on .tick{background:var(--g);border-color:var(--g);color:var(--bg)}
+  .chip:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+  .cfg-hint{font-size:11.5px;color:var(--faint);margin-top:10px}
 
-  .breakdown-list{list-style:none;padding:0;margin:0}
-  .breakdown-list li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--b);font-size:14px;color:var(--fg)}
-  .breakdown-list li:last-child{border-bottom:none;font-weight:700;color:var(--g);font-size:16px}
-  .breakdown-list li .item-cost{color:var(--muted);font-size:13px}
-  .route-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
-  .route-card{display:grid;grid-template-columns:minmax(140px,.8fr) minmax(140px,.7fr) 1.4fr;gap:16px;align-items:center;padding:16px;border:1px solid var(--b);background:var(--bg)}
-  .route-card.recommended{border-color:var(--g);background:rgba(52,211,153,.04)}
-  .route-name{font-size:14px;font-weight:700;color:var(--fg)}
-  .route-range{font-family:'Inter Tight',sans-serif;font-size:18px;font-weight:700;color:var(--g)}
-  .route-note{font-size:12px;color:var(--muted);line-height:1.5}
-  .route-badge{display:inline-block;margin-left:7px;padding:3px 6px;background:var(--g);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
-  .recommendation{margin-top:16px;padding:16px;border-left:3px solid var(--g);background:rgba(52,211,153,.04);font-size:13px;color:#ccc;line-height:1.6}
-  .driver-list{list-style:none;display:grid;gap:8px}
-  .driver-list li{padding:10px 12px;border:1px solid var(--b);background:var(--bg);font-size:13px;color:#ccc}
+  /* segmented control */
+  .seg{display:flex;gap:6px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:5px}
+  .seg-opt{flex:1;text-align:center;padding:10px 6px;border-radius:8px;cursor:pointer;transition:background .18s,color .18s;font-size:13px;color:var(--ink-3);user-select:none;font-family:inherit;border:none;background:transparent}
+  .seg-opt .s-lab{display:block;font-weight:600;color:inherit}
+  .seg-opt .s-sub{display:block;font-size:10.5px;color:var(--faint);margin-top:1px}
+  .seg-opt:hover{color:var(--ink-2)}
+  .seg-opt.on{background:var(--surface-2);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .seg-opt.on .s-sub{color:var(--ink-3)}
+  .seg-opt:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 
-  /* Source citations */
-  .sources-box{border:1px solid var(--b);padding:24px 20px;background:var(--card)}
-  .sources-box summary{font-size:14px;color:var(--muted);cursor:pointer;font-weight:600;user-select:none}
-  .sources-box summary:hover{color:var(--fg)}
-  .sources-box ol{margin-top:12px;padding-left:20px}
-  .sources-box li{font-size:12px;color:#666;margin-bottom:6px;line-height:1.5}
-  .sources-box li a{color:var(--g);text-decoration:none}
+  /* rate input */
+  .rate-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .rate-input{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:10px;background:var(--bg-2);overflow:hidden}
+  .rate-input span{padding:0 4px 0 12px;color:var(--muted);font-size:15px}
+  .rate-input input{width:74px;border:none;background:transparent;color:var(--ink);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;padding:9px 12px 9px 2px;outline:none}
+  .rate-input input:focus{color:var(--g)}
+  .rate-note{font-size:12px;color:var(--ink-3);flex:1;min-width:180px}
 
-  .faq-item{border-bottom:1px solid var(--b);padding:18px 0}
-  .faq-item h3{font-size:16px;margin-bottom:6px}
-  .faq-item p{font-size:14px;margin:0}
+  /* ── Live result panel ──────────────────── */
+  .live{position:sticky;top:74px;padding:22px;overflow:hidden}
+  .live::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,var(--g-soft),transparent 65%);pointer-events:none}
+  .live-top{position:relative;text-align:center;padding-bottom:18px;border-bottom:1px solid var(--border-faint)}
+  .live-label{font-size:12px;color:var(--ink-3);margin-bottom:6px}
+  .live-range{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(26px,4.4vw,34px);color:#fff;letter-spacing:-.02em;line-height:1}
+  .live-sub{font-size:12px;color:var(--muted);margin-top:7px}
+  .live-metrics{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-faint);border-radius:10px;overflow:hidden;margin-top:18px}
+  .lm{background:var(--surface);padding:14px 12px;text-align:center}
+  .lm .lm-k{font-size:11px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:5px}
+  .lm .lm-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em}
+  .lm .lm-v em{font-style:normal;color:var(--g)}
+  .live-rec{position:relative;margin-top:16px;padding:14px;border:1px solid var(--g-line);background:var(--g-soft);border-radius:10px;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+  .live-rec b{color:var(--g);font-weight:650}
+  .live-cta{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:13px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:14px;text-decoration:none;transition:background .2s,color .2s}
+  .live-cta:hover{background:var(--g)}
+  .live-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
 
-  .cta-block{border:2px solid var(--g);padding:32px 28px;text-align:center;background:rgba(52,211,153,.04);margin:40px auto;max-width:640px}
-  .cta-block h2{margin-bottom:8px}
-  .cta-block p{margin-bottom:20px}
+  /* ── Route comparison ───────────────────── */
+  .routes{display:flex;flex-direction:column;gap:10px}
+  .route{border:1px solid var(--border);background:var(--surface);border-radius:var(--r);padding:16px 18px;transition:border-color .2s,background .2s}
+  .route.rec{border-color:var(--g);background:var(--g-soft)}
+  .route-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .route-nm{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
+  .route-badge{font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--bg);background:var(--g);padding:3px 7px;border-radius:5px}
+  .route-cash{margin-left:auto;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .route.rec .route-cash{color:var(--g)}
+  .route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .rc{min-width:0}
+  .rc-k{font-size:10.5px;color:var(--muted);margin-bottom:5px;white-space:nowrap}
+  .rc-v{font-size:13px;color:var(--ink-2);font-weight:600}
+  .rc-v.true{color:var(--ink)}
+  .rc-v .warnv{color:var(--warn)}
+  .meter{display:flex;gap:3px;margin-top:3px}
+  .meter i{width:100%;height:5px;border-radius:2px;background:var(--border)}
+  .meter i.f{background:var(--g)}
+  .meter.hi i.f{background:var(--warn)}
+  .route-note{font-size:12px;color:var(--ink-3);line-height:1.5;margin-top:13px;padding-top:12px;border-top:1px solid var(--border-faint)}
+  .true-callout{margin-top:16px;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-2);padding:18px 20px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .true-callout b{color:var(--g);font-weight:650}
 
+  /* drivers */
+  .drivers{display:grid;gap:8px;margin-top:16px}
+  .drivers li{list-style:none;display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border-faint);border-radius:var(--r-sm);background:var(--surface);font-size:13px;color:var(--ink-2)}
+  .drivers li svg{width:15px;height:15px;color:var(--g);flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2}
 
-  footer{text-align:center;padding:36px 20px 48px;border-top:1px solid var(--b)}
-  footer p{font-size:12px;color:#777;margin:4px 0}
-  footer a{color:var(--g);text-decoration:none}
+  /* generic content cards */
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:24px}
+  .info-card{border:1px solid var(--border);border-radius:var(--r);padding:20px 18px;background:var(--surface)}
+  .info-card h3{font-size:15px;font-weight:650;margin-bottom:7px;font-family:'Inter',sans-serif;letter-spacing:-.01em}
+  .info-card p{font-size:13px;color:var(--ink-3);margin:0;line-height:1.6}
+  .section-dark{background:var(--bg-2);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)}
 
-  @media(max-width:600px){
-    .topbar-optional{display:none}
-    .section{padding:36px 16px}p{font-size:14px}
-    .hero{padding:40px 16px 28px}
-    .calc-wrapper{padding:24px 18px}
-    .feature-grid{grid-template-columns:1fr}
-    .complexity-options{flex-direction:column}
-    .route-card{grid-template-columns:1fr;gap:4px}
-    .result-box{padding:24px 16px}
-    .btn{width:auto;justify-content:center}
+  details.disc{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);padding:0}
+  details.disc summary{font-size:14px;color:var(--ink-2);cursor:pointer;font-weight:600;user-select:none;padding:18px 20px;list-style:none;display:flex;align-items:center;gap:10px}
+  details.disc summary::-webkit-details-marker{display:none}
+  details.disc summary::before{content:'+';color:var(--g);font-size:18px;line-height:1;width:16px}
+  details.disc[open] summary::before{content:'\2212'}
+  details.disc summary:hover{color:var(--ink)}
+  .disc-body{padding:0 20px 20px;font-size:13px;color:var(--ink-3);line-height:1.65}
+  .disc-body ol{padding-left:18px;margin-top:6px}
+  .disc-body li{margin-bottom:8px}
+  .disc-body a{color:var(--g);text-decoration:none}
+  .disc-body a:hover{text-decoration:underline}
+  .eq{font-family:'Inter Tight',sans-serif;background:var(--bg-2);border:1px solid var(--border-faint);border-radius:8px;padding:12px 14px;color:var(--ink-2);font-size:13px;margin:10px 0;display:block}
+  .eq b{color:var(--g)}
+
+  .faq-item{border-bottom:1px solid var(--border-faint);padding:18px 0}
+  .faq-item:last-child{border-bottom:none}
+  .faq-item h3{font-size:15.5px;margin-bottom:6px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em}
+  .faq-item p{font-size:13.5px;color:var(--ink-3);margin:0;line-height:1.65}
+
+  .cta-block{border:1px solid var(--g-line);border-radius:var(--r);padding:34px 28px;text-align:center;background:var(--g-soft);max-width:660px;margin:0 auto}
+  .cta-block h2{margin-bottom:10px;font-size:clamp(22px,4vw,30px);font-weight:720}
+  .cta-block h2 em{font-style:italic;color:var(--g);font-weight:600}
+  .cta-block p{color:var(--ink-3);font-size:14.5px;margin-bottom:22px;max-width:460px;margin-left:auto;margin-right:auto}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:15px;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+  .btn-primary:hover{background:var(--g);transform:translateY(-2px)}
+  .btn-primary svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+  footer{text-align:center;padding:40px 20px 54px;border-top:1px solid var(--border-faint)}
+  footer .fnm{font-size:13px;color:var(--ink-3);margin-bottom:14px}
+  footer .fnm b{color:var(--ink)}
+  .page-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;max-width:720px;margin:0 auto 14px}
+  .page-links a{font-size:12.5px;color:var(--muted);text-decoration:none;transition:color .2s}
+  .page-links a:hover{color:var(--g)}
+  footer .cr{font-size:12px;color:var(--faint)}
+  footer .cr a{color:var(--faint);text-decoration:none}
+
+  /* ── Mobile sticky bar ──────────────────── */
+  .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;background:rgba(15,15,16,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;gap:14px}
+  .mobile-bar .mb-metrics{display:flex;gap:16px;flex:1;min-width:0}
+  .mobile-bar .mb-m .mb-k{font-size:10px;color:var(--muted)}
+  .mobile-bar .mb-m .mb-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap}
+  .mobile-bar .mb-m .mb-v em{font-style:normal;color:var(--g)}
+  .mobile-bar .mb-cta{background:var(--ink);color:var(--bg);font-weight:650;font-size:13px;padding:11px 16px;border-radius:999px;text-decoration:none;white-space:nowrap}
+
+  /* ── Responsive ─────────────────────────── */
+  @media(max-width:880px){
+    .app{grid-template-columns:1fr}
+    .live{position:static;order:-1}
+    .presets{grid-template-columns:repeat(2,1fr)}
+    .route-grid{grid-template-columns:1fr 1fr;gap:14px 16px}
   }
-
-  /* Tooltip */
-  .tooltip-trigger{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--b);color:var(--muted);font-size:10px;font-weight:700;cursor:help;position:relative}
-  .tooltip-trigger:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);font-size:11px;font-weight:400;padding:6px 10px;white-space:nowrap;pointer-events:none;z-index:10}
+  @media(max-width:600px){
+    .topbar-links .topbar-link{display:none}
+    .hero{padding:38px 18px 20px}
+    .section{padding:34px 0}
+    .wrap{padding:0 16px}
+    .presets{grid-template-columns:1fr}
+    .config{padding:6px 16px 16px}
+    .live{padding:18px}
+    .seg{flex-direction:column}
+    .route-cash{margin-left:0;width:100%;margin-top:2px}
+    .route-top{flex-wrap:wrap}
+    .mobile-bar{display:flex}
+    body{padding-bottom:74px}
+    .live-cta{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Website Market Cost Calculator","url":"https://studioobrien.com/website-cost-calculator","description":"Free planning tool that compares website cost ranges across DIY builders, freelancers, independent studios, and agencies.","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Requires HTML5.","image":"https://studioobrien.com/portfolio/og-image.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Website Cost, Time & Effort Calculator","url":"https://studioobrien.com/website-cost-calculator","description":"Free planning tool that compares website cost, calendar timeline, and the owner's own time commitment across DIY builders, freelancers, independent studios, and agencies.","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Requires HTML5.","image":"https://studioobrien.com/portfolio/og-image.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Website Cost Calculator","item":"https://studioobrien.com/website-cost-calculator"}]}
 </script>
-
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "x8v48co1gg");
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is this a Studio O'Brien quote?","acceptedAnswer":{"@type":"Answer","text":"No. It's a market-planning estimate showing what similar scope can cost through different provider types. Studio O'Brien recommends scope and pricing after learning what the business needs."}},
+{"@type":"Question","name":"What are your hours and why do they matter?","acceptedAnswer":{"@type":"Answer","text":"Every website takes real human time. Your hours is the slice of that work you personally carry: decisions, writing, gathering photos, revisions, and, on the DIY route, the building itself. A low cash price with 80 of your own hours attached isn't actually cheap."}},
+{"@type":"Question","name":"Why is DIY's true cost sometimes higher than a studio?","acceptedAnswer":{"@type":"Answer","text":"Because your time isn't free. When you price your own hours honestly, the $300 website often costs more in evenings and weekends than hiring someone would, and takes far longer to launch."}},
+{"@type":"Question","name":"Why are the ranges so broad?","acceptedAnswer":{"@type":"Answer","text":"Provider experience, creative depth, content readiness, technical requirements, geography, process, and overhead all affect cost. A single instant number would create false precision."}},
+{"@type":"Question","name":"What costs are often forgotten?","acceptedAnswer":{"@type":"Answer","text":"Copywriting, photography, content migration, accessibility, integrations, analytics, training, hosting, maintenance, and internal review time are commonly left out of early estimates."}}
+]}
+</script>
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "x8v48co1gg");
 </script>
 </head>
 <body>
 
 <nav class="topbar" aria-label="Site navigation">
   <div class="topbar-inner">
-    <a href="/" class="topbar-logo">Studio O'Brien</a>
+    <a href="/" class="topbar-logo">Studio <span>O&#39;Brien</span></a>
     <div class="topbar-links">
-      <a href="/contact" class="topbar-link">Start a Website</a>
-      <a href="/#portfolio" class="topbar-link">View Work</a>
+      <a href="/#portfolio" class="topbar-link">Work</a>
+      <a href="/blog" class="topbar-link">Blog</a>
+      <a href="/contact" class="topbar-cta">Start a Website</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>What Should Your Website Cost?</h1>
-  <p>Compare realistic market ranges across DIY builders, freelancers, independent studios, and agencies. Adjust the scope to see what changes the price.</p>
-  <p class="trust-line">Free planning tool. No signup. No email. Not an automatic Studio O'Brien quote.</p>
+  <span class="kick"><span class="dot"></span> Free planning tool &middot; no email</span>
+  <h1>What a website really costs you &mdash; in <em>money, time &amp; effort</em>.</h1>
+  <p>Most calculators only show a price. This one also shows how long it takes to launch and how many hours land on <em>you</em> &mdash; so you can compare routes honestly.</p>
+  <p class="trust">Educational market ranges, not an automatic Studio O&#39;Brien quote.</p>
 </header>
 
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="calc-wrapper" id="calculator">
-      <h2 class="sr-only">Cost Estimator</h2>
-      <div class="calc-section">
-        <h3><span class="step-num">1</span> How many pages do you need?</h3>
-        <div class="calc-label"><span>Number of pages</span><span class="val" id="pageVal">5</span></div>
-        <input type="range" class="calc-slider" id="pageSlider" min="1" max="30" value="5" step="1" aria-label="Number of website pages">
-        <div style="display:flex;justify-content:space-between;font-size:11px;color:#555;margin-top:4px"><span>1 (landing page)</span><span>30 (large site)</span></div>
-      </div>
-
-      <div class="calc-section">
-        <h3><span class="step-num">2</span> What features do you need?</h3>
-        <div class="feature-grid" id="featureGrid">
-          <div class="feature-option selected" data-feature="contact form" data-hours="4" role="checkbox" aria-checked="true" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Contact Form</div><div class="info">Working form with validation</div></div>
-          </div>
-          <div class="feature-option selected" data-feature="content management" data-hours="12" role="checkbox" aria-checked="true" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Blog / Articles</div><div class="info">Content management system</div></div>
-          </div>
-          <div class="feature-option" data-feature="booking system" data-hours="18" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Booking / Scheduling</div><div class="info">Calendar integration</div></div>
-          </div>
-          <div class="feature-option" data-feature="e-commerce" data-hours="42" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>E-Commerce</div><div class="info">Online store with payments</div></div>
-          </div>
-          <div class="feature-option" data-feature="editable menu" data-hours="7" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Menu / Price List</div><div class="info">Editable food or service menu</div></div>
-          </div>
-          <div class="feature-option" data-feature="portfolio or gallery" data-hours="10" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Gallery / Portfolio</div><div class="info">Photo or project showcase</div></div>
-          </div>
-          <div class="feature-option" data-feature="review integration" data-hours="5" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Review Integration</div><div class="info">Google reviews on your site</div></div>
-          </div>
-          <div class="feature-option" data-feature="multilingual content" data-hours="32" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="check" aria-hidden="true">&#10003;</div>
-            <div><div>Multi-Language</div><div class="info">Site in multiple languages</div></div>
-          </div>
-        </div>
-        <p style="font-size:12px;color:#555;margin-top:8px">Click features to add/remove. Commonly needed features are pre-selected.</p>
-      </div>
-
-      <div class="calc-section">
-        <h3><span class="step-num">3</span> Design complexity</h3>
-        <div class="complexity-options" id="complexityOptions">
-          <div class="complexity-opt" data-level="template-led design" data-mult="0.8" role="radio" aria-label="Standard: Clean, modern layout" aria-checked="false" tabindex="0">
-            <span class="c-icon" aria-hidden="true">&#9678;</span>
-            <div class="c-label">Standard</div>
-            <div class="c-desc">Clean, modern layout</div>
-          </div>
-          <div class="complexity-opt selected" data-level="custom design" data-mult="1" role="radio" aria-label="Custom: Unique designs per section" aria-checked="true" tabindex="0">
-            <span class="c-icon" aria-hidden="true">&#9632;</span>
-            <div class="c-label">Custom</div>
-            <div class="c-desc">Unique designs per section</div>
-          </div>
-          <div class="complexity-opt" data-level="highly art-directed design" data-mult="1.4" role="radio" aria-label="Premium: Advanced animations and interactions" aria-checked="false" tabindex="0">
-            <span class="c-icon" aria-hidden="true">&#9670;</span>
-            <div class="c-label">Premium</div>
-            <div class="c-desc">Advanced animations &amp; interactions</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="calc-section">
-        <div class="result-box">
-          <div class="est-label">Professional market range for this scope</div>
-          <div class="est-range" id="estRange">$3,500 - $18,000</div>
-          <div class="est-note">This is an educational market estimate, not a Studio O'Brien quote. The comparison below shows how provider type, process, and overhead can change the investment.</div>
-          <a href="mailto:hello@studioobrien.com?subject=Website%20Project%20Recommendation" class="get-quote-btn" id="quoteBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Get a Project Recommendation
-          </a>
-        </div>
-      </div>
-
-      <div class="calc-section">
-        <h3>Compare delivery routes</h3>
-        <div class="route-grid" id="routeGrid">
-          <div class="route-card">
-            <div class="route-name">DIY builder</div>
-            <div class="route-range" id="diyRange">$300 - $1,500</div>
-            <div class="route-note">Lowest cash cost. You handle planning, writing, design, setup, and ongoing decisions.</div>
-          </div>
-          <div class="route-card">
-            <div class="route-name">Template provider</div>
-            <div class="route-range" id="templateRange">$1,500 - $4,000</div>
-            <div class="route-note">A faster brochure-site route with less original strategy, art direction, and flexibility.</div>
-          </div>
-          <div class="route-card" id="freelancerCard">
-            <div class="route-name">Freelancer</div>
-            <div class="route-range" id="freelancerRange">$3,500 - $7,500</div>
-            <div class="route-note">Best when the scope is well defined and one primary discipline can lead the work.</div>
-          </div>
-          <div class="route-card" id="studioCard">
-            <div class="route-name">Independent custom studio</div>
-            <div class="route-range" id="studioRange">$6,000 - $12,000</div>
-            <div class="route-note">Connected strategy, writing, design, and development with direct collaboration.</div>
-          </div>
-          <div class="route-card" id="agencyCard">
-            <div class="route-name">Traditional agency</div>
-            <div class="route-range" id="agencyRange">$10,000 - $22,000</div>
-            <div class="route-note">Useful for larger teams, complex stakeholder groups, and broad specialist capacity.</div>
-          </div>
-        </div>
-        <div class="recommendation" id="routeRecommendation"></div>
-      </div>
-
-      <div class="calc-section">
-        <h3>What is driving this estimate?</h3>
-        <ul class="driver-list" id="driverList"></ul>
-      </div>
+<!-- PRESETS -->
+<section class="section" style="padding-top:8px">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Start from a <em>template</em></h2>
+      <p>Pick the closest project to load a starting scope, then fine-tune it below.</p>
+    </div>
+    <div class="presets" id="presets">
+      <button class="preset" type="button" data-preset="landing">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
+        <span class="preset-name">Landing Page</span>
+        <span class="preset-desc">One focused page to launch an offer or capture leads.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">1</b>page</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
+      <button class="preset" type="button" data-preset="local">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
+        <span class="preset-name">Local Business</span>
+        <span class="preset-desc">The Main Street standard: services, contact, and reviews.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">5</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
+      <button class="preset" type="button" data-preset="restaurant">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M4 3v7a3 3 0 0 0 6 0V3"/><path d="M7 3v18"/><path d="M17 3c-1.5 0-3 1.5-3 4v6h3"/><path d="M17 3v18"/></svg></span>
+        <span class="preset-name">Restaurant</span>
+        <span class="preset-desc">Menu, reservations, and a gallery that makes people hungry.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">6</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
+      <button class="preset" type="button" data-preset="portfolio">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span>
+        <span class="preset-name">Portfolio</span>
+        <span class="preset-desc">Show the work with a premium, art-directed gallery.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">5</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
+      <button class="preset" type="button" data-preset="store">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M2 3h3l2.5 14h11l2-9H6"/></svg></span>
+        <span class="preset-name">Online Store</span>
+        <span class="preset-desc">Sell products with a real cart, checkout, and payments.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">8</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
+      <button class="preset" type="button" data-preset="content">
+        <span class="pick">Loaded</span>
+        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></span>
+        <span class="preset-name">Content / Blog</span>
+        <span class="preset-desc">Publish regularly to rank on Google and build an audience.</span>
+        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">10</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      </button>
     </div>
   </div>
 </section>
 
+<!-- APP -->
+<section class="section" style="padding-top:0" id="calculator">
+  <div class="wrap">
+    <div class="app">
+
+      <!-- CONFIG -->
+      <div class="panel config">
+        <h2 class="sr-only">Configure your website scope</h2>
+
+        <div class="cfg">
+          <div class="cfg-head"><span class="cfg-num">1</span><h3>How many pages?</h3><span class="cfg-val" id="pageVal">5</span></div>
+          <input type="range" class="slider" id="pageSlider" min="1" max="30" value="5" step="1" aria-label="Number of website pages">
+          <div class="slider-ends"><span>1 &middot; landing page</span><span>30 &middot; large site</span></div>
+        </div>
+
+        <div class="cfg">
+          <div class="cfg-head"><span class="cfg-num">2</span><h3>What does it need to do?</h3></div>
+          <div class="chips" id="featureChips">
+            <button class="chip on" type="button" data-feature="a contact form" data-hours="4" aria-pressed="true"><span class="tick">&#10003;</span>Contact form</button>
+            <button class="chip" type="button" data-feature="reviews on the site" data-hours="5" aria-pressed="false"><span class="tick">&#10003;</span>Google reviews</button>
+            <button class="chip" type="button" data-feature="a menu or price list" data-hours="7" aria-pressed="false"><span class="tick">&#10003;</span>Menu / price list</button>
+            <button class="chip" type="button" data-feature="a gallery or portfolio" data-hours="10" aria-pressed="false"><span class="tick">&#10003;</span>Gallery</button>
+            <button class="chip" type="button" data-feature="a blog or article system" data-hours="12" aria-pressed="false"><span class="tick">&#10003;</span>Blog / CMS</button>
+            <button class="chip" type="button" data-feature="online booking" data-hours="18" aria-pressed="false"><span class="tick">&#10003;</span>Booking</button>
+            <button class="chip" type="button" data-feature="an online store" data-hours="42" aria-pressed="false"><span class="tick">&#10003;</span>E-commerce</button>
+            <button class="chip" type="button" data-feature="multiple languages" data-hours="32" aria-pressed="false"><span class="tick">&#10003;</span>Multi-language</button>
+          </div>
+          <p class="cfg-hint">Tap to add or remove. Common picks are pre-selected.</p>
+        </div>
+
+        <div class="cfg">
+          <div class="cfg-head"><span class="cfg-num">3</span><h3>Design depth</h3></div>
+          <div class="seg" id="designSeg" role="radiogroup" aria-label="Design depth">
+            <button class="seg-opt" type="button" data-level="a template-led design" data-mult="0.8" role="radio" aria-checked="false"><span class="s-lab">Standard</span><span class="s-sub">Clean &amp; modern</span></button>
+            <button class="seg-opt on" type="button" data-level="a custom design" data-mult="1" role="radio" aria-checked="true"><span class="s-lab">Custom</span><span class="s-sub">Unique per section</span></button>
+            <button class="seg-opt" type="button" data-level="a highly art-directed design" data-mult="1.4" role="radio" aria-checked="false"><span class="s-lab">Premium</span><span class="s-sub">Animated &amp; bespoke</span></button>
+          </div>
+        </div>
+
+        <div class="cfg">
+          <div class="cfg-head"><span class="cfg-num">4</span><h3>Is your content ready?</h3></div>
+          <div class="seg" id="contentSeg" role="radiogroup" aria-label="Content readiness">
+            <button class="seg-opt" type="button" data-content="ready" role="radio" aria-checked="false"><span class="s-lab">Ready</span><span class="s-sub">Copy &amp; photos done</span></button>
+            <button class="seg-opt on" type="button" data-content="some" role="radio" aria-checked="true"><span class="s-lab">Some of it</span><span class="s-sub">Partly there</span></button>
+            <button class="seg-opt" type="button" data-content="scratch" role="radio" aria-checked="false"><span class="s-lab">From scratch</span><span class="s-sub">Need help with both</span></button>
+          </div>
+          <p class="cfg-hint">Content readiness is the biggest hidden driver of timeline and your own workload.</p>
+        </div>
+
+        <div class="cfg">
+          <div class="cfg-head"><span class="cfg-num">5</span><h3>What&#39;s an hour of your time worth?</h3></div>
+          <div class="rate-row">
+            <label class="rate-input"><span>$</span><input type="number" id="rateInput" value="50" min="0" max="1000" step="5" aria-label="Your hourly value in dollars"></label>
+            <span class="rate-note">Used to turn the hours <em>you</em> spend into a real dollar figure &mdash; the true cost of each route.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE PANEL -->
+      <aside class="panel live" aria-live="polite">
+        <div class="live-top">
+          <div class="live-label">Typical investment for this scope</div>
+          <div class="live-range" id="liveRange">$6,000 &ndash; $12,000</div>
+          <div class="live-sub" id="liveSub">Independent studio route</div>
+        </div>
+        <div class="live-metrics">
+          <div class="lm"><div class="lm-k">Time to launch</div><div class="lm-v" id="liveWeeks">4&ndash;6 wks</div></div>
+          <div class="lm"><div class="lm-k">Your hours</div><div class="lm-v" id="liveEffort"><em>~6&ndash;9</em></div></div>
+        </div>
+        <div class="live-rec" id="liveRec"></div>
+        <a class="live-cta" id="liveCta" href="/contact">
+          <span>Get a project recommendation</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE COMPARISON -->
 <section class="section section-dark">
-  <div class="container">
-    <h2>Why website prices vary so widely</h2>
-    <p>A website can mean a modified template, a focused freelance build, a connected studio process, or a large agency engagement. This tool compares those routes using the same selected scope so you can see what you are actually paying for.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px">
-      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Scope and content</h3>
-        <p style="font-size:13px;margin:0">Page count matters, but page types, writing needs, content migration, and information architecture determine far more of the real workload.</p>
-      </div>
-      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Functionality</h3>
-        <p style="font-size:13px;margin:0">Booking, commerce, multilingual content, owner editing, and integrations add planning, configuration, testing, and support requirements.</p>
-      </div>
-      <div style="border:1px solid var(--b);padding:22px 18px;background:var(--card)">
-        <h3 style="font-size:15px;margin-bottom:6px">Creative depth</h3>
-        <p style="font-size:13px;margin:0">Adapting a proven structure costs less than developing original art direction, writing, responsive behavior, and interaction patterns around one business.</p>
-      </div>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Same scope, <em>five ways</em> to build it</h2>
+      <p>Cash is only half the story. Here&#39;s what each route asks of your calendar and your own hands &mdash; and the true cost once your time counts.</p>
     </div>
+    <div class="routes" id="routes"></div>
+    <div class="true-callout" id="trueCallout"></div>
+    <ul class="drivers" id="drivers"></ul>
   </div>
 </section>
 
+<!-- HOW TIME IS ESTIMATED -->
 <section class="section">
-  <div class="container">
-    <details class="sources-box">
-      <summary>Sources and methodology: how the comparison is calculated</summary>
-      <ol>
-        <li>Labor context uses the <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> wage data for web developers and digital interface designers.</li>
-        <li>Freelance rate context references publicly visible marketplace bands from <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork</a>. Marketplace rates vary greatly by experience, specialty, and geography.</li>
-        <li>Agency context references <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch's web design pricing guide</a>, including its published hourly-rate bands and scope factors.</li>
-        <li>The calculator estimates production effort from page types, selected functionality, and design depth, then applies broad provider-rate bands and overhead assumptions.</li>
-        <li>Results are rounded planning ranges, not quotes. Content readiness, integrations, accessibility, timeline, decision-making, and support can materially change a real proposal.</li>
-      </ol>
+  <div class="wrap" style="max-width:760px">
+    <details class="disc">
+      <summary>How the time &amp; effort numbers are calculated</summary>
+      <div class="disc-body">
+        <p>Every estimate starts from <b style="color:var(--g)">production hours</b> &mdash; the real work of planning, writing, designing, building, and testing your scope:</p>
+        <span class="eq">production hours = ( <b>page work</b> + <b>feature work</b> ) &times; <b>design depth</b></span>
+        <p><b style="color:var(--g)">Calendar time</b> is not the same as production hours. No one works 40 focused hours a week on a single site &mdash; there are review cycles, feedback waits, and other projects. Each route has its own realistic weekly throughput, plus a buffer when content isn&#39;t ready:</p>
+        <span class="eq">weeks &asymp; production hours &divide; <b>weekly throughput</b> + <b>content buffer</b></span>
+        <p><b style="color:var(--g)">Your hours</b> is the share of the work that lands on you personally &mdash; decisions, content gathering, revisions, and (for DIY) the actual building. It drops sharply the more of the work a professional carries:</p>
+        <span class="eq">true cost = <b>cash price</b> + ( <b>your hours</b> &times; <b>your hourly value</b> )</span>
+        <p>These are planning ranges built from public market data, not quotes. A real proposal depends on content readiness, integrations, accessibility, timeline, and support.</p>
+      </div>
     </details>
   </div>
 </section>
 
+<!-- WHY PRICES VARY -->
 <section class="section section-dark">
-  <div class="container">
-    <h2>Frequently asked questions</h2>
-    <div class="faq-item"><h3>Is this a Studio O'Brien quote?</h3><p>No. It is a market-planning estimate showing what similar scope can cost through different provider types. Studio O'Brien recommends scope and pricing after learning what the business needs.</p></div>
-    <div class="faq-item"><h3>Why are the ranges so broad?</h3><p>Provider experience, creative depth, content readiness, technical requirements, geography, process, and overhead all affect cost. A narrow instant number would create false precision.</p></div>
-    <div class="faq-item"><h3>Is a template always the wrong choice?</h3><p>No. A template can be sensible for a simple need, a limited budget, and an owner willing to handle more of the work. Custom work becomes valuable when distinction, writing, functionality, and a connected customer experience matter.</p></div>
-    <div class="faq-item"><h3>What costs are often forgotten?</h3><p>Copywriting, photography, content migration, accessibility, integrations, analytics, training, hosting, maintenance, and internal review time are commonly left out of early estimates.</p></div>
-    <div class="faq-item"><h3>How should I compare proposals?</h3><p>Compare the actual scope, who is doing the work, what content and revisions are included, ownership terms, launch support, recurring costs, and what happens when requirements change.</p></div>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why website prices vary so <em>widely</em></h2>
+      <p>A website can mean a modified template, a focused freelance build, a connected studio process, or a large agency engagement. Same words, very different work.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><h3>Scope &amp; content</h3><p>Page count matters, but page types, writing needs, content migration, and information architecture determine far more of the real workload.</p></div>
+      <div class="info-card"><h3>Functionality</h3><p>Booking, commerce, multilingual content, owner editing, and integrations add planning, configuration, testing, and support requirements.</p></div>
+      <div class="info-card"><h3>Creative depth</h3><p>Adapting a proven structure costs less than developing original art direction, writing, responsive behavior, and interaction around one business.</p></div>
+      <div class="info-card"><h3>Who carries the load</h3><p>The cheaper the cash price, the more planning, writing, and problem-solving usually falls on you. That time is real cost, just paid in hours.</p></div>
+    </div>
   </div>
 </section>
 
+<!-- SOURCES -->
 <section class="section">
-  <div class="container">
+  <div class="wrap" style="max-width:760px">
+    <details class="disc">
+      <summary>Sources &amp; methodology</summary>
+      <div class="disc-body">
+        <ol>
+          <li>Labor context uses <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> wage data for web developers and digital interface designers.</li>
+          <li>Freelance rate context references publicly visible marketplace bands from <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork</a>. Rates vary greatly by experience, specialty, and geography.</li>
+          <li>Agency context references <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch&#39;s web design pricing guide</a>, including its published hourly-rate bands and scope factors.</li>
+          <li>The calculator estimates production effort from page types, selected functionality, and design depth, then applies broad provider-rate bands, weekly-throughput assumptions, and owner-involvement ratios.</li>
+          <li>Results are rounded planning ranges, not quotes. Content readiness, integrations, accessibility, timeline, decision-making, and support can materially change a real proposal.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-dark">
+  <div class="wrap" style="max-width:760px">
+    <div class="section-head"><h2>Frequently asked <em>questions</em></h2></div>
+    <div class="faq-item"><h3>Is this a Studio O&#39;Brien quote?</h3><p>No. It&#39;s a market-planning estimate showing what similar scope can cost through different provider types. Studio O&#39;Brien recommends scope and pricing after learning what the business needs.</p></div>
+    <div class="faq-item"><h3>What are &ldquo;your hours&rdquo; and why do they matter?</h3><p>Every website takes real human time. &ldquo;Your hours&rdquo; is the slice of that work you personally carry &mdash; decisions, writing, gathering photos, revisions, and, on the DIY route, the building itself. A low cash price with 80 of your own hours attached isn&#39;t actually cheap.</p></div>
+    <div class="faq-item"><h3>Why is DIY&#39;s true cost sometimes higher than a studio?</h3><p>Because your time isn&#39;t free. When you price your own hours honestly, the &ldquo;$300 website&rdquo; often costs more in evenings and weekends than hiring someone would &mdash; and takes far longer to launch.</p></div>
+    <div class="faq-item"><h3>Why are the ranges so broad?</h3><p>Provider experience, creative depth, content readiness, technical requirements, geography, process, and overhead all affect cost. A single instant number would create false precision.</p></div>
+    <div class="faq-item"><h3>What costs are often forgotten?</h3><p>Copywriting, photography, content migration, accessibility, integrations, analytics, training, hosting, maintenance, and internal review time are commonly left out of early estimates.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="wrap">
     <div class="cta-block">
-      <h2>Want a recommendation for your business?</h2>
-      <p>Send Studio O'Brien your calculator scope and a short description of what the website needs to accomplish. The next reply will recommend an appropriate scope and next step.</p>
-      <a href="mailto:hello@studioobrien.com?subject=Website%20Project%20Recommendation" class="btn btn-primary" style="display:inline-flex">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get a Project Recommendation
+      <h2>Want a recommendation for <em>your</em> business?</h2>
+      <p>Send your calculator scope and a short note on what the site needs to accomplish. You&#39;ll get a specific recommendation back &mdash; not a sales pitch.</p>
+      <a href="/contact" class="btn-primary" id="ctaBtn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get a project recommendation
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p><strong>Studio O'Brien</strong> &mdash; Web development &amp; design in Shelby, NC</p>
+  <p class="fnm"><b>Studio O&#39;Brien</b> &mdash; custom web design in Shelby &amp; Western North Carolina</p>
   <div class="page-links">
     <a href="/">Home</a>
-    <a href="/website-cost-calculator">Website Cost Calculator</a>
+    <a href="/website-cost-calculator">Cost Calculator</a>
     <a href="/blog">Blog</a>
-    <a href="/restaurant-website-design">Restaurant Websites</a>
-    <a href="/seo-services">SEO Services</a>
+    <a href="/service-area">Service Area</a>
     <a href="/small-business-websites">Small Business Websites</a>
-    <a href="/google-business-profile-setup">Google Business Profile</a>
-    <a href="/website-redesign-migration">Website Redesign</a>
-    <a href="/shelby-nc-web-design">Web Development &amp; Design Shelby NC</a>
-    <a href="mailto:hello@studioobrien.com">Contact</a>
+    <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+    <a href="/contact">Contact</a>
   </div>
-  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
-  <p>&copy; 2026 <a href="/">Studio O'Brien</a></p>
+  <p class="cr">&copy; 2026 <a href="/">Studio O&#39;Brien</a></p>
 </footer>
 
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-bar" id="mobileBar" aria-hidden="true">
+  <div class="mb-metrics">
+    <div class="mb-m"><div class="mb-k">Studio range</div><div class="mb-v" id="mbRange">$6k&ndash;$12k</div></div>
+    <div class="mb-m"><div class="mb-k">Launch</div><div class="mb-v" id="mbWeeks">4&ndash;6 wks</div></div>
+    <div class="mb-m"><div class="mb-k">Your hrs</div><div class="mb-v" id="mbEffort"><em>~6&ndash;9</em></div></div>
+  </div>
+  <a href="/contact" class="mb-cta" id="mbCta">Get a rec</a>
+</div>
+
 <script>
-(function() {
-  var $ = function(id) { return document.getElementById(id); };
-  var pageSlider = $('pageSlider');
-  var pageVal = $('pageVal');
-  var estRange = $('estRange');
-  var quoteBtn = $('quoteBtn');
-  var featureGrid = $('featureGrid');
-  var complexityOptions = $('complexityOptions');
-  var driverList = $('driverList');
-  var routeRecommendation = $('routeRecommendation');
-  var routeCards = {
-    freelancer: $('freelancerCard'),
-    studio: $('studioCard'),
-    agency: $('agencyCard')
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ── Elements ── */
+  var pageSlider = $('pageSlider'), pageVal = $('pageVal');
+  var featureChips = $('featureChips'), designSeg = $('designSeg'), contentSeg = $('contentSeg');
+  var rateInput = $('rateInput'), presets = $('presets');
+
+  /* ── Model constants ── */
+  var COMPLEXITY_DEFAULT = 1;
+  var CONTENT = {
+    ready:   { costMult:1.00, weekBuffer:0.0, selfContent:2,  label:'ready content' },
+    some:    { costMult:1.12, weekBuffer:1.0, selfContent:9,  label:'partial content' },
+    scratch: { costMult:1.30, weekBuffer:2.5, selfContent:22, label:'content from scratch' }
   };
 
-  function calcPageHours(pages) {
-    if (pages <= 3) return 14 + pages * 5;
-    if (pages <= 8) return 29 + (pages - 3) * 3.5;
-    return 46.5 + (pages - 8) * 2.25;
-  }
+  // Each route: cash band, your-hours band, calendar-weeks band, exhaustion 1-5, note
+  var ROUTES = [
+    { key:'diy', name:'DIY builder',
+      cash:function(H,nf,ec){ return [200 + nf*75, 700 + nf*180 + (ec?1200:0)]; },
+      self:function(H,c){ return [H*0.90 + c.selfContent, H*1.15 + c.selfContent*1.4]; },
+      weeks:function(H,c){ return [H/12 + c.weekBuffer, H/6 + c.weekBuffer*1.5]; },
+      exhaust:5,
+      note:'Lowest cash cost. You handle planning, writing, design, setup, and every decision &mdash; on your own time.' },
+    { key:'template', name:'Template provider',
+      cash:function(H,nf,ec,c){ return [H*30*c.costMult, H*55*c.costMult]; },
+      self:function(H,c){ return [H*0.40 + c.selfContent*0.7, H*0.55 + c.selfContent]; },
+      weeks:function(H,c){ return [H/16 + c.weekBuffer, H/10 + c.weekBuffer]; },
+      exhaust:4,
+      note:'A faster brochure-site route with less original strategy, art direction, and flexibility.' },
+    { key:'freelancer', name:'Freelancer',
+      cash:function(H,nf,ec,c){ return [H*50*c.costMult, H*100*c.costMult]; },
+      self:function(H,c){ return [H*0.15 + c.selfContent*0.4, H*0.22 + c.selfContent*0.6]; },
+      weeks:function(H,c){ return [H/18 + c.weekBuffer, H/11 + c.weekBuffer*1.2]; },
+      exhaust:2.5,
+      note:'Best when the scope is well defined and one primary discipline can lead the work.' },
+    { key:'studio', name:'Independent studio',
+      cash:function(H,nf,ec,c){ return [H*90*c.costMult, H*165*c.costMult]; },
+      self:function(H,c){ return [H*0.05 + c.selfContent*0.15, H*0.09 + c.selfContent*0.25]; },
+      weeks:function(H,c){ return [H/22 + c.weekBuffer*0.6, H/16 + c.weekBuffer]; },
+      exhaust:1.5,
+      note:'Connected strategy, writing, design, and development with one person carrying the load for you.' },
+    { key:'agency', name:'Traditional agency',
+      cash:function(H,nf,ec,c){ return [H*150*1.1*c.costMult, H*250*1.25*c.costMult]; },
+      self:function(H,c){ return [H*0.08 + c.selfContent*0.2, H*0.13 + c.selfContent*0.3]; },
+      weeks:function(H,c){ return [H/16 + c.weekBuffer, H/9 + c.weekBuffer*1.3]; },
+      exhaust:2.5,
+      note:'Useful for larger teams and complex stakeholder groups &mdash; more meetings and coordination for you.' }
+  ];
 
-  function getSelectedFeatures() {
-    var selected = featureGrid.querySelectorAll('.feature-option.selected');
-    var hours = 0;
-    var names = [];
-    selected.forEach(function(el) {
-      hours += parseInt(el.getAttribute('data-hours'));
-      names.push(el.getAttribute('data-feature'));
-    });
-    return { hours: hours, names: names };
-  }
+  /* ── Presets ── */
+  var PRESETS = {
+    landing:    { pages:1,  feats:['a contact form'], design:'0.8', content:'ready' },
+    local:      { pages:5,  feats:['a contact form','reviews on the site','a menu or price list'], design:'1', content:'some' },
+    restaurant: { pages:6,  feats:['a menu or price list','online booking','a gallery or portfolio','reviews on the site'], design:'1', content:'some' },
+    portfolio:  { pages:5,  feats:['a gallery or portfolio'], design:'1.4', content:'some' },
+    store:      { pages:8,  feats:['an online store','a contact form'], design:'1', content:'some' },
+    content:    { pages:10, feats:['a blog or article system','a contact form'], design:'1', content:'some' }
+  };
 
-  function getComplexity() {
-    var selected = complexityOptions.querySelector('.complexity-opt.selected');
-    var level = selected.getAttribute('data-level');
-    var mult = parseFloat(selected.getAttribute('data-mult'));
-    return { level: level, mult: mult };
-  }
+  /* ── Helpers ── */
+  function pageHours(p){ if(p<=3) return 14 + p*5; if(p<=8) return 29 + (p-3)*3.5; return 46.5 + (p-8)*2.25; }
+  function roundTo(v,step){ return Math.max(step, Math.round(v/step)*step); }
+  function money(v){ return '$' + Math.round(v).toLocaleString(); }
+  function moneyRange(lo,hi,step){ return money(roundTo(lo,step)) + ' – ' + money(roundTo(hi,step)); }
+  function moneyShort(v){ v=Math.round(v); if(v>=1000){ var k=v/1000; return '$'+(k>=10?Math.round(k):k.toFixed(1).replace(/\.0$/,''))+'k'; } return '$'+v; }
+  function hrsRange(lo,hi){ lo=Math.max(1,Math.round(lo)); hi=Math.max(lo+1,Math.round(hi)); return '~'+lo+'–'+hi; }
+  function weeksRange(lo,hi){ var l=Math.max(1,Math.round(lo)), h=Math.max(l,Math.round(hi)); return (l===h? l : l+'–'+h)+' wk'+(h>1?'s':''); }
 
-  function money(value, step) {
-    return Math.max(step, Math.round(value / step) * step);
+  function getFeatures(){
+    var on = featureChips.querySelectorAll('.chip.on'), hours=0, names=[], ec=false;
+    on.forEach(function(el){ hours += parseInt(el.getAttribute('data-hours'),10); names.push(el.getAttribute('data-feature')); if(el.getAttribute('data-feature')==='an online store') ec=true; });
+    return { hours:hours, names:names, count:on.length, ecommerce:ec };
   }
+  function getDesign(){ var s=designSeg.querySelector('.seg-opt.on'); return { level:s.getAttribute('data-level'), mult:parseFloat(s.getAttribute('data-mult')) }; }
+  function getContent(){ var s=contentSeg.querySelector('.seg-opt.on'); return CONTENT[s.getAttribute('data-content')]; }
+  function getRate(){ var r=parseFloat(rateInput.value); if(isNaN(r)||r<0) r=0; return r; }
 
-  function rangeText(low, high, step) {
-    return '$' + money(low, step).toLocaleString() + ' - $' + money(high, step).toLocaleString();
-  }
-
-  function setRecommended(route) {
-    Object.keys(routeCards).forEach(function(key) {
-      routeCards[key].classList.toggle('recommended', key === route);
-      var name = routeCards[key].querySelector('.route-name');
-      var badge = name.querySelector('.route-badge');
-      if (badge) badge.remove();
-      if (key === route) {
-        var marker = document.createElement('span');
-        marker.className = 'route-badge';
-        marker.textContent = 'Closest fit';
-        name.appendChild(marker);
-      }
-    });
-  }
-
-  function updateEstimate() {
-    var pages = parseInt(pageSlider.value);
+  /* ── Render ── */
+  function render(){
+    var pages = parseInt(pageSlider.value,10);
     pageVal.textContent = pages;
+    var f = getFeatures(), d = getDesign(), c = getContent(), rate = getRate();
+    var H = Math.round((pageHours(pages) + f.hours) * d.mult);
 
-    var features = getSelectedFeatures();
-    var complexity = getComplexity();
-    var hours = Math.round((calcPageHours(pages) + features.hours) * complexity.mult);
+    // recommended route by effort size
+    var recKey = H < 45 ? 'freelancer' : (H < 135 ? 'studio' : 'agency');
 
-    var diyLow = 200 + features.names.length * 75;
-    var diyHigh = 700 + features.names.length * 180 + (features.names.indexOf('e-commerce') > -1 ? 1200 : 0);
-    var templateLow = hours * 30;
-    var templateHigh = hours * 55;
-    var freelancerLow = hours * 50;
-    var freelancerHigh = hours * 100;
-    var studioLow = hours * 90;
-    var studioHigh = hours * 165;
-    var agencyLow = hours * 150 * 1.1;
-    var agencyHigh = hours * 250 * 1.25;
-
-    $('diyRange').textContent = rangeText(diyLow, diyHigh, 100);
-    $('templateRange').textContent = rangeText(templateLow, templateHigh, 250);
-    $('freelancerRange').textContent = rangeText(freelancerLow, freelancerHigh, 500);
-    $('studioRange').textContent = rangeText(studioLow, studioHigh, 500);
-    $('agencyRange').textContent = rangeText(agencyLow, agencyHigh, 1000);
-    estRange.textContent = rangeText(freelancerLow, agencyHigh, 500);
-
-    var recommended = hours < 45 ? 'freelancer' : (hours < 135 ? 'studio' : 'agency');
-    setRecommended(recommended);
-
-    var recommendationCopy = {
-      freelancer: 'This is a relatively focused scope. An experienced freelancer may be the closest fit if the goals and content are already well defined.',
-      studio: 'This scope benefits from connected strategy, writing, design, and development without the overhead of a large agency. An independent custom studio is the closest fit.',
-      agency: 'This is a broad or technically demanding scope. A larger agency may be the closest fit when specialist capacity and multiple project leads are necessary.'
-    };
-    routeRecommendation.textContent = recommendationCopy[recommended];
-
-    var drivers = [];
-    drivers.push(pages + (pages === 1 ? ' page' : ' pages') + ' across the website');
-    drivers.push(complexity.level);
-    if (features.names.length) {
-      drivers.push(features.names.length + ' selected features: ' + features.names.join(', '));
-    } else {
-      drivers.push('No advanced functionality selected');
-    }
-    drivers.push('Approximately ' + Math.max(20, Math.round(hours * .8)) + ' to ' + Math.round(hours * 1.25) + ' production hours before provider overhead');
-    driverList.innerHTML = '';
-    drivers.forEach(function(text) {
-      var item = document.createElement('li');
-      item.textContent = text;
-      driverList.appendChild(item);
+    var routeData = ROUTES.map(function(r){
+      var cash = r.cash(H, f.count, f.ecommerce, c);
+      var self = r.self(H, c);
+      var wk = r.weeks(H, c);
+      var trueLo = cash[0] + self[0]*rate;
+      var trueHi = cash[1] + self[1]*rate;
+      return { r:r, cash:cash, self:self, wk:wk, trueLo:trueLo, trueHi:trueHi };
     });
 
-    var subject = 'Website Project Recommendation';
-    var body = [
-      "I used the Studio O'Brien website cost calculator and would like a project recommendation.",
-      '',
-      'Pages: ' + pages,
-      'Design depth: ' + complexity.level,
-      'Features: ' + (features.names.join(', ') || 'None selected'),
-      'Market range shown: ' + estRange.textContent,
-      '',
-      'What the website needs to accomplish:'
-    ].join('\\n');
-    quoteBtn.href = 'mailto:hello@studioobrien.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    // ---- Live panel (studio-centric headline) ----
+    var studio = routeData.filter(function(x){return x.r.key==='studio';})[0];
+    $('liveRange').innerHTML = moneyRange(studio.cash[0], studio.cash[1], 500);
+    $('liveSub').textContent = 'Independent studio route · ' + c.label;
+    $('liveWeeks').textContent = weeksRange(studio.wk[0], studio.wk[1]);
+    $('liveEffort').innerHTML = '<em>' + hrsRange(studio.self[0], studio.self[1]) + '</em>';
+
+    var recData = routeData.filter(function(x){return x.r.key===recKey;})[0];
+    var recCopy = {
+      freelancer:'This is a focused scope. An experienced <b>freelancer</b> can be the closest fit if goals and content are already well defined.',
+      studio:'This scope rewards connected strategy, writing, design, and development without agency overhead. An <b>independent studio</b> is the closest fit.',
+      agency:'This is a broad or technically demanding scope where an <b>agency</b>&#39;s specialist capacity and multiple leads may be justified.'
+    };
+    $('liveRec').innerHTML = 'Closest fit: ' + recCopy[recKey];
+
+    // mobile bar
+    $('mbRange').innerHTML = moneyShort(studio.cash[0])+'–'+moneyShort(studio.cash[1]);
+    $('mbWeeks').textContent = weeksRange(studio.wk[0], studio.wk[1]);
+    $('mbEffort').innerHTML = '<em>'+hrsRange(studio.self[0], studio.self[1])+'</em>';
+
+    // ---- Route cards ----
+    var steps = { diy:100, template:250, freelancer:500, studio:500, agency:1000 };
+    var html = '';
+    routeData.forEach(function(x){
+      var r = x.r, isRec = r.key===recKey;
+      var exFilled = Math.round(r.exhaust);
+      var meterHi = r.exhaust >= 4;
+      var meter = '';
+      for(var i=1;i<=5;i++){ meter += '<i class="'+(i<=exFilled?'f':'')+'"></i>'; }
+      var trueClass = (r.key==='diy' && r.exhaust>=4) ? ' warnv' : '';
+      html += ''+
+      '<div class="route'+(isRec?' rec':'')+'">'+
+        '<div class="route-top">'+
+          '<span class="route-nm">'+r.name+'</span>'+
+          (isRec?'<span class="route-badge">Closest fit</span>':'')+
+          '<span class="route-cash">'+moneyRange(x.cash[0],x.cash[1],steps[r.key])+'</span>'+
+        '</div>'+
+        '<div class="route-grid">'+
+          '<div class="rc"><div class="rc-k">Your time</div><div class="rc-v">'+hrsRange(x.self[0],x.self[1])+' hrs</div></div>'+
+          '<div class="rc"><div class="rc-k">To launch</div><div class="rc-v">'+weeksRange(x.wk[0],x.wk[1])+'</div></div>'+
+          '<div class="rc"><div class="rc-k">Effort on you</div><div class="meter'+(meterHi?' hi':'')+'">'+meter+'</div></div>'+
+          '<div class="rc"><div class="rc-k">True cost <span title="cash + your hours × your rate">&#9432;</span></div><div class="rc-v true"><span class="'+trueClass.trim()+'">'+moneyRange(x.trueLo,x.trueHi,500)+'</span></div></div>'+
+        '</div>'+
+        '<div class="route-note">'+r.note+'</div>'+
+      '</div>';
+    });
+    $('routes').innerHTML = html;
+
+    // ---- True-cost callout (DIY vs studio) ----
+    var diy = routeData.filter(function(x){return x.r.key==='diy';})[0];
+    var rate0 = rate === 0;
+    var diyTrueMid = (diy.trueLo + diy.trueHi)/2;
+    var studioTrueMid = (studio.trueLo + studio.trueHi)/2;
+    var callout;
+    if(rate0){
+      callout = 'Set an hourly value above to see the <b>true cost</b> of each route &mdash; cash plus the price of your own time. It changes the comparison completely.';
+    } else if(diyTrueMid >= studioTrueMid){
+      callout = 'At <b>'+money(rate)+'/hr</b> for your time, the DIY route&#39;s true cost (&asymp;'+money(roundTo(diyTrueMid,500))+') meets or beats the studio route (&asymp;'+money(roundTo(studioTrueMid,500))+') &mdash; and takes far longer with far more on you. &ldquo;Cheap&rdquo; isn&#39;t cheap once your hours count.';
+    } else {
+      callout = 'At <b>'+money(rate)+'/hr</b>, DIY still costs less in total &mdash; but you personally carry '+hrsRange(diy.self[0],diy.self[1])+' hours and the longest timeline. The studio route trades money for your time and a faster, hands-off launch.';
+    }
+    $('trueCallout').innerHTML = callout;
+
+    // ---- Drivers ----
+    var chk = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+    var drivers = [];
+    drivers.push(pages + (pages===1?' page':' pages') + ' of content');
+    drivers.push(d.level.replace(/^a /,'').replace(/^an /,'') + ' &mdash; design depth');
+    drivers.push(f.count ? (f.count + ' feature'+(f.count>1?'s':'')+': ' + f.names.map(function(n){return n.replace(/^an? /,'');}).join(', ')) : 'No advanced functionality');
+    drivers.push('Content: ' + c.label + (c.weekBuffer? ' (+'+ (c.weekBuffer<1? 'small':Math.round(c.weekBuffer)) +' wk buffer)':''));
+    drivers.push('About ' + Math.max(15,Math.round(H*0.85)) + '–' + Math.round(H*1.2) + ' production hours before provider overhead');
+    $('drivers').innerHTML = drivers.map(function(t){ return '<li>'+chk+'<span>'+t+'</span></li>'; }).join('');
+
+    // ---- Contact links carry the scope ----
+    var summary = 'Pages: '+pages+' | Design: '+d.level+' | Features: '+(f.names.join(', ')||'none')+' | Content: '+c.label+' | Studio range shown: '+moneyRange(studio.cash[0],studio.cash[1],500);
+    var href = '/contact?ref=calculator&scope=' + encodeURIComponent(summary);
+    $('liveCta').href = href; $('ctaBtn').href = href; $('mbCta').href = href;
+
+    // ---- Preset stat previews ----
+    updatePresetStats(rate);
   }
 
-  pageSlider.addEventListener('input', updateEstimate);
-
-  featureGrid.addEventListener('click', function(e) {
-    var option = e.target.closest('.feature-option');
-    if (!option) return;
-    option.classList.toggle('selected');
-    option.setAttribute('aria-checked', option.classList.contains('selected') ? 'true' : 'false');
-    updateEstimate();
-  });
-
-  featureGrid.addEventListener('keydown', function(e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var option = e.target.closest('.feature-option');
-    if (!option) return;
-    e.preventDefault();
-    option.click();
-  });
-
-  complexityOptions.addEventListener('click', function(e) {
-    var option = e.target.closest('.complexity-opt');
-    if (!option) return;
-    complexityOptions.querySelectorAll('.complexity-opt').forEach(function(o) {
-      o.classList.remove('selected');
-      o.setAttribute('aria-checked', 'false');
+  // Fill the little cost/weeks stats on each preset card using the studio route
+  function updatePresetStats(rate){
+    presets.querySelectorAll('.preset').forEach(function(card){
+      var p = PRESETS[card.getAttribute('data-preset')];
+      var fh=0, ec=false;
+      p.feats.forEach(function(name){
+        var chip = featureChips.querySelector('.chip[data-feature="'+name+'"]');
+        if(chip){ fh += parseInt(chip.getAttribute('data-hours'),10); if(name==='an online store') ec=true; }
+      });
+      var c = CONTENT[p.content];
+      var H = Math.round((pageHours(p.pages) + fh) * parseFloat(p.design));
+      var studio = ROUTES.filter(function(r){return r.key==='studio';})[0];
+      var cash = studio.cash(H, p.feats.length, ec, c);
+      var wk = studio.weeks(H, c);
+      card.querySelector('[data-stat="pages"]').textContent = p.pages;
+      card.querySelector('[data-stat="cost"]').innerHTML = moneyShort(cash[0])+'–'+moneyShort(cash[1]);
+      card.querySelector('[data-stat="weeks"]').textContent = weeksRange(wk[0],wk[1]);
     });
-    option.classList.add('selected');
-    option.setAttribute('aria-checked', 'true');
-    updateEstimate();
+  }
+
+  /* ── Interactions ── */
+  pageSlider.addEventListener('input', function(){ clearPreset(); render(); });
+  rateInput.addEventListener('input', render);
+
+  featureChips.addEventListener('click', function(e){
+    var chip = e.target.closest('.chip'); if(!chip) return;
+    var on = chip.classList.toggle('on');
+    chip.setAttribute('aria-pressed', on?'true':'false');
+    clearPreset(); render();
   });
 
-  complexityOptions.addEventListener('keydown', function(e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var option = e.target.closest('.complexity-opt');
-    if (!option) return;
-    e.preventDefault();
-    option.click();
+  function bindSeg(seg){
+    seg.addEventListener('click', function(e){
+      var opt = e.target.closest('.seg-opt'); if(!opt) return;
+      seg.querySelectorAll('.seg-opt').forEach(function(o){ o.classList.remove('on'); o.setAttribute('aria-checked','false'); });
+      opt.classList.add('on'); opt.setAttribute('aria-checked','true');
+      clearPreset(); render();
+    });
+  }
+  bindSeg(designSeg); bindSeg(contentSeg);
+
+  function clearPreset(){ presets.querySelectorAll('.preset.active').forEach(function(p){ p.classList.remove('active'); }); }
+
+  presets.addEventListener('click', function(e){
+    var card = e.target.closest('.preset'); if(!card) return;
+    var p = PRESETS[card.getAttribute('data-preset')];
+    // pages
+    pageSlider.value = p.pages;
+    // features
+    featureChips.querySelectorAll('.chip').forEach(function(chip){
+      var want = p.feats.indexOf(chip.getAttribute('data-feature')) > -1;
+      chip.classList.toggle('on', want);
+      chip.setAttribute('aria-pressed', want?'true':'false');
+    });
+    // design
+    designSeg.querySelectorAll('.seg-opt').forEach(function(o){
+      var want = o.getAttribute('data-mult')===p.design;
+      o.classList.toggle('on', want); o.setAttribute('aria-checked', want?'true':'false');
+    });
+    // content
+    contentSeg.querySelectorAll('.seg-opt').forEach(function(o){
+      var want = o.getAttribute('data-content')===p.content;
+      o.classList.toggle('on', want); o.setAttribute('aria-checked', want?'true':'false');
+    });
+    clearPreset();
+    card.classList.add('active');
+    render();
+    // gentle scroll to config on mobile
+    if(window.innerWidth <= 880){ $('calculator').scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 
-  updateEstimate();
+  render();
 })();
 </script>
 

@@ -491,6 +491,23 @@
 
   if (!contactForm) return;
 
+  /* ===== PREFILL FROM HOMEPAGE CTA (?q=) / STOREFRONT REF ===== */
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var q = (params.get('q') || '').trim().slice(0, 500);
+    var msgField = document.getElementById('message');
+    if (q && msgField && !msgField.value) {
+      msgField.value = q;
+    }
+    if (params.get('ref') === 'storefront-project') {
+      var subjField = contactForm.querySelector('input[name="subject"]');
+      if (subjField) subjField.value = 'Storefront Project Nomination - Studio O\'Brien';
+      if (msgField && !msgField.value) {
+        msgField.placeholder = 'Which business are you nominating, and where are they? What do they do well that deserves a better site?';
+      }
+    }
+  } catch (e) {}
+
   // Clear error on input
   var inputs = contactForm.querySelectorAll('input, select, textarea');
   inputs.forEach(function(input) {
