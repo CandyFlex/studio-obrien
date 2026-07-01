@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.clarity.ms">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD0V4CRPND"></script>
 <script>
@@ -12,16 +14,17 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Studio O'Brien | Web Design &amp; Development in Shelby, NC</title>
-<meta name="description" content="Studio O'Brien designs, writes, and develops distinctive custom websites for independent businesses in Shelby, Western North Carolina, and beyond.">
+<title>Custom Web Design in Shelby &amp; Western North Carolina | Studio O'Brien</title>
+<meta name="description" content="Custom web design, development and local SEO for independent businesses across Western North Carolina, based in Shelby. Original sites built to get found on Google and turn visitors into customers.">
 <link rel="canonical" href="https://studioobrien.com/">
 <meta name="robots" content="index, follow">
-<meta name="google-site-verification" content="ADD_YOUR_VERIFICATION_CODE">
+<!-- TODO before launch: paste real code from Google Search Console → Settings → Ownership verification → HTML tag
+<meta name="google-site-verification" content="ADD_YOUR_VERIFICATION_CODE"> -->
 <meta name="geo.region" content="US-NC">
 <meta name="geo.placename" content="Shelby">
 <meta name="geo.position" content="35.2923;-81.5356">
 <meta name="ICBM" content="35.2923, -81.5356">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#0a0a0b">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,19 +34,35 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studioobrien.com/">
 <meta property="og:site_name" content="Studio O&#39;Brien">
-<meta property="og:title" content="Studio O'Brien | Web Design &amp; Development">
-<meta property="og:description" content="Distinctive custom websites for independent businesses ready to move beyond generic templates.">
-<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.webp">
+<meta property="og:title" content="Custom Web Design in Shelby &amp; Western North Carolina | Studio O'Brien">
+<meta property="og:description" content="Custom web design, development and local SEO for independent businesses across Western North Carolina, based in Shelby. Original sites built to get found on Google and turn visitors into customers.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.png">
+<meta property="og:image:width" content="1264">
+<meta property="og:image:height" content="569">
+<meta property="og:image:alt" content="Studio O'Brien — custom web design in Shelby & Western North Carolina">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Studio O'Brien | Web Design &amp; Development">
-<meta name="twitter:description" content="Distinctive custom websites for independent businesses ready to move beyond generic templates.">
-<meta name="twitter:image" content="https://studioobrien.com/portfolio/og-image.webp">
-<link rel="stylesheet" href="/fonts.css">
-<link rel="stylesheet" href="/index.css?v=20260620-3">
+<meta name="twitter:title" content="Custom Web Design in Shelby &amp; Western North Carolina | Studio O'Brien">
+<meta name="twitter:description" content="Custom web design, development and local SEO for independent businesses across Western North Carolina, based in Shelby.">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/og-image.png">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-tight-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/index.css?v=20260701-1">
 <style>
+/* ── Self-hosted fonts (inlined from fonts.css to cut a render-blocking hop) ── */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-tight-700.woff2') format('woff2')}
+/* Lightbox stacking guard: must beat every fixed/composited layer on the page
+   (topbar 400, sticky CTA 300, menu overlay 399) even if index.css is stale. */
+.lightbox{position:fixed;inset:0;z-index:9999}
+
 /* ── Nav V1 Whisper overrides ─────────────────────── */
-body{padding-top:60px}
-.nav-grid-overlay{position:fixed;inset:0 0 auto 0;height:100vh;background-image:linear-gradient(to right,rgba(52,211,153,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(52,211,153,.05) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);pointer-events:none;z-index:49}
+/* Reserve scrollbar gutter only on the side the scrollbar lives, so the
+   empty space on each side of centered content is equal. */
+html{scrollbar-gutter:stable;overflow-x:clip;background:#0a0a0b}
+body{padding-top:60px;margin:0;width:100%;overflow-x:clip;background:#0a0a0b}
+.nav-grid-overlay{position:fixed;inset:0 0 auto 0;height:100vh;background-image:linear-gradient(to right,rgba(52,211,153,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(52,211,153,.05) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);pointer-events:none;z-index:0}
 .topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:transparent;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),background .3s ease}
 .topbar.scrolled{background:rgba(17,17,17,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .nav-brand{font-size:18px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-family:'Inter',sans-serif;font-variation-settings:'opsz' 32,'wght' 720}
@@ -60,22 +79,62 @@ body{padding-top:60px}
 .nav-cta:hover::before{transform:translateY(0)}
 .nav-cta svg{transition:transform .2s}
 .nav-cta:hover svg{transform:translateX(3px)}
-@media(max-width:999.98px){.topbar{padding:0 16px}.nav-links{display:none}.nav-brand{font-size:17px}}
+/* Mobile hamburger toggle */
+.nav-menu-toggle{display:none;background:transparent;border:0;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center;color:#fff;padding:0;position:relative;z-index:401;margin-right:-6px}
+.nav-menu-toggle-icon,.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{display:block;width:22px;height:2px;background:currentColor;transition:transform .35s cubic-bezier(.16,1,.3,1),top .25s ease,background .25s ease;position:relative}
+.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{content:'';position:absolute;left:0;right:0}
+.nav-menu-toggle-icon::before{top:-7px}
+.nav-menu-toggle-icon::after{top:7px}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon{background:transparent;transition:background .15s ease}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::before{top:0;transform:rotate(45deg)}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::after{top:0;transform:rotate(-45deg)}
 
-/* ── Intro A1: Wide Statement ───────────────────────────── */
-.intro{padding:20px 0 80px;text-align:center;align-items:center}
-.intro h1{font-family:'Inter',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,46px);letter-spacing:-.025em;line-height:1.18;color:#fff;max-width:38ch;text-wrap:balance;margin:0;padding:0 20px}
-.intro h1 em{font-style:italic;color:#34d399;font-weight:600}
+/* Mobile overlay menu */
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(10,10,11,.97);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);z-index:399;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;overflow-y:auto}
+.nav-menu-overlay.is-open{opacity:1;visibility:visible}
+.nav-menu-overlay-list{display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.8vw,32px);width:100%;max-width:480px}
+.nav-menu-overlay-list a{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(34px,9vw,56px);letter-spacing:-.04em;color:#fff;text-decoration:none;line-height:1;text-align:center;font-variation-settings:'opsz' 32,'wght' 720;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),color .2s ease,font-style .2s ease}
+.nav-menu-overlay-list a:hover,.nav-menu-overlay-list a:focus-visible{color:#34d399;font-style:italic;font-weight:500;outline:none}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a{opacity:1;transform:translateY(0)}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(1){transition-delay:.08s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(2){transition-delay:.14s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(3){transition-delay:.2s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(4){transition-delay:.26s}
+.nav-menu-overlay-cta{margin-top:clamp(32px,5vw,56px);background:#fff;color:#0a0a0b;padding:16px 28px 16px 32px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.005em;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .4s ease .32s,transform .4s cubic-bezier(.16,1,.3,1) .32s,color .3s ease}
+.nav-menu-overlay-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.nav-menu-overlay-cta:hover::before{transform:translateY(0)}
+.nav-menu-overlay-cta span,.nav-menu-overlay-cta svg{position:relative;z-index:1}
+.nav-menu-overlay-cta svg{transition:transform .25s ease}
+.nav-menu-overlay-cta:hover svg{transform:translateX(4px)}
+.nav-menu-overlay.is-open .nav-menu-overlay-cta{opacity:1;transform:translateY(0)}
+.nav-menu-overlay-tag{position:absolute;bottom:clamp(20px,3vw,32px);left:50%;transform:translateX(-50%);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;opacity:0;transition:opacity .4s ease .45s}
+.nav-menu-overlay-tag::before,.nav-menu-overlay-tag::after{content:'';display:inline-block;width:18px;height:1px;background:#34d399}
+.nav-menu-overlay.is-open .nav-menu-overlay-tag{opacity:1}
+
+body.is-menu-open{overflow:hidden}
+
+@media(prefers-reduced-motion:reduce){
+  .nav-menu-overlay-list a,.nav-menu-overlay-cta{transition:opacity .15s ease,color .2s ease}
+  .nav-menu-overlay.is-open .nav-menu-overlay-list a{transform:none;transition-delay:0s}
+  .nav-menu-overlay.is-open .nav-menu-overlay-cta{transform:none;transition-delay:0s}
+}
+
+@media(max-width:999.98px){
+  .topbar{padding:0 16px;z-index:400}
+  .nav-links{display:none}
+  .nav-brand{font-size:15px}
+  .nav-cta{display:none}
+  .nav-menu-toggle{display:inline-flex}
+}
 
 /* ── Walkthrough V5 (Laptop + Phone, autoplay reel) ───────────────────── */
 /* Laptop sits at the natural seam below the portfolio. Screen is 19:10 (about 22%
    taller than 21:9). Everything in this section — laptop bezel, screen, chrome,
    keyboard, phone, copy and section padding — scales fluidly via clamp/var. */
-.wt-section{position:relative;padding:0 0 clamp(70px,7vw,130px);isolation:isolate;background:#0f0f10;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
+.wt-section{position:relative;padding:0 0 clamp(70px,7vw,130px);isolation:isolate;background:#0a0a0b;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
 
 /* Copy sits under the laptop+phone cluster */
 .wt-copy{max-width:760px;margin:clamp(48px,5vw,90px) auto 0;padding:0 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.4vw,20px)}
-.wt-label{display:none}
 .wt-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(28px,4.4vw,60px);letter-spacing:-.04em;line-height:1.05;color:#fff;text-wrap:balance;margin:0;font-variation-settings:'opsz' 32,'wght' 720}
 .wt-heading em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
 .wt-sub{font-family:'Inter',sans-serif;font-size:clamp(14px,1.3vw,17px);font-weight:400;line-height:1.55;letter-spacing:-.005em;color:#a8a8a8;text-wrap:balance;margin:0;max-width:48ch}
@@ -95,21 +154,29 @@ body{padding-top:60px}
 .v5-screen{position:relative;aspect-ratio:19/10;border-radius:clamp(4px,.42vw,6px);overflow:hidden;background:#000}
 .v5-screen .v-poster{position:absolute;inset:0;width:100%;height:100%;display:block;background:radial-gradient(ellipse at 50% 40%,rgba(52,211,153,.16),transparent 60%),linear-gradient(135deg,#0e1f17 0%,#0a0a0b 100%);z-index:0}
 
-.scroll-bg{position:absolute;inset:0;z-index:1;background-image:url('portfolio/darkthoughts.png');background-size:100% auto;background-repeat:repeat-y;background-position:50% 0;will-change:background-position;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0)}
-.scroll-bg--desktop{animation:wt-scroll 48s linear infinite}
-.scroll-bg--mobile{animation:wt-scroll 20s linear infinite}
+/* Reel scrolls via transform (GPU-composited, no per-frame repaint).
+   Two stacked copies of the image; -50% → 0 loops seamlessly and matches
+   the old background-position direction (content drifts downward). */
+/* contain:paint + clip-path force a compositor-level clip: the animated track
+   is a promoted layer and plain overflow:hidden is not enough to clip its
+   paint/hit-testing in Chromium — without this the reel escapes the screen. */
+.scroll-bg{position:absolute;inset:0;z-index:1;overflow:hidden;contain:paint;clip-path:inset(0)}
+.scroll-track{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:wt-scroll 48s linear infinite}
+.scroll-bg--mobile .scroll-track{animation-duration:20s}
+.scroll-track img{width:100%;height:auto;display:block}
 @keyframes wt-scroll{
-  from{background-position:50% -100%}
-  to  {background-position:50% 0}
+  from{transform:translate3d(0,-50%,0)}
+  to  {transform:translate3d(0,0,0)}
 }
 @media (prefers-reduced-motion:reduce){
-  .scroll-bg--desktop,.scroll-bg--mobile{animation:none}
+  .scroll-track{animation:none;transform:none}
 }
 .v5-chrome{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:clamp(5px,.6vw,8px);padding:clamp(8px,.9vw,12px) clamp(12px,1.4vw,20px);background:linear-gradient(to bottom,rgba(10,10,11,.65),transparent);pointer-events:none}
 .v5-chrome .dot{width:clamp(6px,.65vw,9px);height:clamp(6px,.65vw,9px);border-radius:50%}
 .v5-chrome .dot:nth-child(1){background:#ff5f56}
 .v5-chrome .dot:nth-child(2){background:#ffbd2e}
 .v5-chrome .dot:nth-child(3){background:#27c93f}
+.v5-chrome .url{margin-left:clamp(6px,.7vw,10px);height:clamp(15px,1.6vw,22px);border-radius:5px;background:rgba(20,20,22,.85);display:flex;align-items:center;padding:0 clamp(7px,.85vw,12px);font-size:clamp(8.5px,.78vw,10.5px);color:#9a9a9c;letter-spacing:.02em;font-weight:500;max-width:280px;flex:0 1 auto;font-family:'Inter',sans-serif}
 /* Keyboard "wings" extend 1.6% of the stage width on each side — always
    proportional to the laptop, never wider than the viewport. */
 .v5-keyboard{height:clamp(8px,1vw,14px);margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c 0%,#0e0e10 100%);border-radius:0 0 clamp(14px,1.6vw,22px) clamp(14px,1.6vw,22px);position:relative;z-index:1}
@@ -126,10 +193,406 @@ body{padding-top:60px}
 @media (max-width:760px){
   .v5-stage{width:calc(100% - 20px)}
   .wt-copy{padding:0 20px}
+  .v5-chrome .url{max-width:46%}
 }
 @media (max-width:420px){
   .v5-stage{width:calc(100% - 12px)}
 }
+
+/* ── Portfolio count reduction at medium/small sizes ───────────────────
+   Keeps the total scroll length proportional to viewport size, the same
+   way the live site already does at the smallest sizes. At the widest
+   breakpoint all 20 cards show; each step down hides the tail of each
+   column / extra columns. */
+@media (max-width:1399.98px){
+  .column .card:nth-child(n+5){display:none}   /* 4 per col × 4 cols = 16 cards */
+}
+@media (max-width:1199.98px){
+  .column .card:nth-child(n+4){display:none}   /* 3 per col × 4 cols = 12 cards */
+}
+@media (max-width:999.98px){
+  .column .card:nth-child(n+3){display:none}   /* 2 per col, then ↓ */
+  .column-4{display:none}                       /* 2 × 3 cols = 6 cards, all
+                                                   the way down to the smallest */
+}
+/* Mobile: scale portfolio cards down ~20% so they read smaller / skinnier */
+@media (max-width:768px){
+  .column{justify-content:center}
+  .column .card{flex:0 1 80%;max-width:80%}
+}
+
+/* ── Page padding fix ──────────────────────────────────────────────────
+   The live site collapses `.wrap` to 390px at viewports under 1000px,
+   which leaves huge empty side margins on intro, portfolio, and any
+   section that doesn't have its own 1200px override. Use the full viewport
+   with consistent symmetric padding instead. */
+@media (max-width:999.98px){
+  .wrap{max-width:none;padding:0 24px}
+}
+@media (max-width:768px){
+  .wrap{padding:0 20px}
+}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   CTA V2 — Second hero, inline first-step form
+   ═════════════════════════════════════════════════════════════════ */
+.cta-v2{position:relative;background:#0a0a0b;padding:clamp(72px,9vw,140px) 0 clamp(72px,9vw,128px);z-index:2;overflow:hidden}
+.cta-v2::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(52,211,153,.08),transparent 55%),radial-gradient(circle at 75% 80%,rgba(52,211,153,.05),transparent 55%);pointer-events:none}
+.cta-v2-wrap{max-width:1000px;margin:0 auto;padding:0 clamp(20px,3vw,40px);position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+.cta-v2-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(40px,7vw,96px);line-height:1.02;letter-spacing:-.045em;color:#fff;font-variation-settings:'opsz' 32,'wght' 720;text-wrap:balance;margin:0 0 clamp(20px,2.2vw,32px)}
+.cta-v2-heading em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.cta-v2-detail{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(15px,1.5vw,18px);color:#a8a8a8;line-height:1.55;letter-spacing:-.005em;max-width:48ch;margin:0 auto clamp(32px,4vw,48px);text-wrap:pretty}
+.cta-v2-form{display:flex;align-items:stretch;gap:0;background:#1c1c1d;border:1px solid #2a2a2b;padding:0;width:100%;max-width:560px;transition:border-color .3s ease}
+.cta-v2-form:focus-within{border-color:#34d399}
+.cta-v2-input{flex:1;background:transparent;border:0;color:#fff;font-family:'Inter',sans-serif;font-weight:500;font-size:15px;letter-spacing:-.005em;padding:18px 22px;outline:none;min-width:0}
+.cta-v2-input::placeholder{color:#888;font-weight:400}
+.cta-v2-submit{background:#fff;color:#0a0a0b;border:0;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.005em;padding:0 28px;display:flex;align-items:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;text-decoration:none;transition:color .3s;white-space:nowrap}
+.cta-v2-submit::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.cta-v2-submit:hover::before{transform:translateY(0)}
+.cta-v2-submit span,.cta-v2-submit svg{position:relative;z-index:1}
+.cta-v2-submit svg{transition:transform .25s ease}
+.cta-v2-submit:hover svg{transform:translateX(4px)}
+.cta-v2-promise{margin-top:clamp(22px,2.5vw,30px);font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#a8a8a8;letter-spacing:-.005em;display:inline-flex;align-items:center;gap:12px;justify-content:center}
+.cta-v2-promise::before,.cta-v2-promise::after{content:'';width:24px;height:1px;background:#34d399;display:inline-block}
+
+@media(max-width:899.98px){
+  .cta-v2{padding:clamp(48px,7vw,72px) 0 clamp(48px,7vw,68px)}
+  .cta-v2-heading{font-size:clamp(30px,6vw,46px);line-height:1.05;margin-bottom:clamp(14px,2vw,24px)}
+  .cta-v2-detail{font-size:14px;max-width:42ch;margin-bottom:clamp(22px,3vw,32px);line-height:1.5}
+}
+@media(max-width:639.98px){
+  .cta-v2{padding:40px 0 36px}
+  .cta-v2-heading{font-size:clamp(26px,7.2vw,34px);margin-bottom:14px;line-height:1.08;padding:0 8px}
+  .cta-v2-detail{font-size:13.5px;max-width:36ch;margin-bottom:22px;line-height:1.5;padding:0 6px}
+  .cta-v2-form{flex-direction:column;max-width:none;width:100%}
+  .cta-v2-input{padding:13px 16px;font-size:14px;text-align:center;border-bottom:1px solid #2a2a2b}
+  .cta-v2-submit{padding:14px 18px;justify-content:center;width:100%;font-size:13px}
+  .cta-v2-promise{font-size:11.5px;gap:10px;margin-top:16px}
+  .cta-v2-promise::before,.cta-v2-promise::after{width:16px}
+}
+@media(max-width:380px){
+  .cta-v2{padding:32px 0 32px}
+  .cta-v2-heading{font-size:24px;line-height:1.1}
+  .cta-v2-detail{font-size:13px;max-width:32ch}
+  .cta-v2-promise{font-size:11px;letter-spacing:-.003em}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   FOOTER V2 — Anchored brand, geo voice, pulsing back-to-top
+   ═════════════════════════════════════════════════════════════════ */
+.footer-v2{position:relative;background:#0a0a0b;border-top:1px solid #1f1f20;padding:clamp(32px,4vw,44px) 0 clamp(18px,2vw,22px);z-index:2}
+.footer-v2-wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px)}
+.footer-v2-main{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:24px 32px}
+.footer-v2-brand-col{display:flex;flex-direction:column;gap:7px;max-width:320px}
+.footer-v2-links-col{display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+.footer-v2-brand{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(18px,1.8vw,21px);color:#fff;letter-spacing:-.03em;text-decoration:none;font-variation-settings:'opsz' 32,'wght' 720;line-height:1;transition:color .25s ease}
+.footer-v2-brand:hover{color:#34d399}
+.footer-v2-tag{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:400;color:#a8a8a8;letter-spacing:-.005em;line-height:1.5;margin:0;text-wrap:pretty}
+.footer-v2-tag em{font-style:italic;color:#34d399;font-weight:500}
+.footer-v2-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:0;row-gap:6px}
+.footer-v2-nav a{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#d4d4d4;letter-spacing:-.005em;text-decoration:none;padding:2px 0;transition:color .25s ease}
+.footer-v2-nav a:hover{color:#34d399}
+.footer-v2-nav a + a::before{content:'\2726';margin:0 12px;color:#34d39966;font-weight:400;font-size:.75em;display:inline-block;vertical-align:middle}
+.footer-v2-contact{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:0;row-gap:4px}
+.footer-v2-contact a{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;color:#888;letter-spacing:-.005em;text-decoration:none;padding:2px 0;transition:color .25s ease}
+.footer-v2-contact a:hover{color:#34d399}
+.footer-v2-contact a + a::before{content:'\2726';margin:0 10px;color:#34d39966;font-weight:400;font-size:.8em;display:inline-block;vertical-align:middle}
+.footer-v2-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding-top:clamp(14px,1.6vw,18px);border-top:1px solid #1f1f20}
+.footer-v2-cr{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:400;color:#666;letter-spacing:-.005em;line-height:1.5;white-space:nowrap}
+.footer-v2-cr a{color:inherit;text-decoration:none;transition:color .25s ease}
+.footer-v2-cr a:hover{color:#34d399}
+.footer-v2-back{background:transparent;border:1px solid #2a2a2b;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#a8a8a8;cursor:pointer;transition:border-color .25s,color .25s,background .25s;flex-shrink:0}
+.footer-v2-back:hover{border-color:#34d399;color:#34d399;background:#0f0f10}
+.footer-v2-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+
+@media(max-width:639.98px){
+  .footer-v2{padding:24px 0 16px}
+  .footer-v2-wrap{gap:16px;padding:0 18px}
+  .footer-v2-main{flex-direction:column;gap:16px}
+  .footer-v2-brand-col{max-width:none}
+  .footer-v2-brand{font-size:19px}
+  .footer-v2-tag{font-size:12px;line-height:1.45}
+  .footer-v2-links-col{align-items:flex-start;width:100%;gap:8px}
+  .footer-v2-nav{justify-content:flex-start;max-width:none}
+  .footer-v2-nav a{font-size:12px;padding:2px 0}
+  .footer-v2-nav a + a::before{margin:0 8px;font-size:.65em}
+  .footer-v2-contact{justify-content:flex-start}
+  .footer-v2-contact a{font-size:12px;padding:2px 0}
+  .footer-v2-contact a + a::before{margin:0 8px;font-size:.7em}
+  .footer-v2-bottom{gap:14px;padding-top:14px}
+  .footer-v2-cr{font-size:11px;white-space:normal}
+  .footer-v2-back{width:34px;height:34px}
+  .footer-v2-back svg{width:14px;height:14px}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   HERO LEAD — value prop + CTA under the wordmark (conversion + SEO)
+   ═════════════════════════════════════════════════════════════════ */
+.header{padding-top:clamp(10px,1.6vw,28px)}
+.hero-lead{max-width:840px;margin:clamp(12px,1.8vw,24px) auto clamp(60px,6.5vw,104px);padding:0 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.3vw,18px)}
+.hero-lead h1{font-family:'Inter',sans-serif;font-weight:600;font-size:clamp(24px,3.2vw,42px);letter-spacing:-.025em;line-height:1.16;color:#fff;max-width:24ch;text-wrap:balance;margin:0;font-variation-settings:'opsz' 32,'wght' 600}
+.hero-lead h1 em{font-style:italic;color:#34d399;font-weight:600}
+.hero-lead p{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(15px,1.4vw,18px);color:#a8a8a8;line-height:1.55;letter-spacing:-.005em;max-width:76ch;text-wrap:balance;margin:0}
+.hero-lead-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(12px,1.4vw,18px);margin-top:clamp(4px,1vw,10px)}
+.hero-cta-primary{background:#fff;color:#0a0a0b;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.005em;padding:15px 26px 15px 30px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;position:relative;overflow:hidden;transition:color .3s}
+.hero-cta-primary::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.hero-cta-primary:hover::before{transform:translateY(0)}
+.hero-cta-primary span,.hero-cta-primary svg{position:relative;z-index:1}
+.hero-cta-primary svg{transition:transform .25s ease}
+.hero-cta-primary:hover svg{transform:translateX(4px)}
+.hero-cta-secondary{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#d4d4d4;letter-spacing:-.005em;text-decoration:none;display:inline-flex;align-items:center;gap:7px;padding:8px 4px;transition:color .25s ease,gap .25s ease}
+.hero-cta-secondary:hover{color:#34d399;gap:11px}
+.hero-cta-secondary::after{content:'\2192'}
+/* Eyebrow — instant "what + where" (locality trust, no fabricated metrics) */
+.hero-eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#8f8f8f;margin:0 0 -6px}
+/* Risk-reducer under the CTA */
+.hero-cta-note{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;letter-spacing:.005em;color:#8a8a8a;margin:-4px 0 0}
+@media(max-width:639.98px){
+  .hero-lead{gap:14px;padding:0 20px}
+  .hero-lead h1{font-size:clamp(22px,6vw,30px)}
+  .hero-lead p{font-size:14px;max-width:42ch}
+  .hero-lead-actions{width:100%;flex-wrap:nowrap;gap:12px}
+  .hero-cta-primary{width:auto;padding:13px 20px 13px 22px;font-size:14px}
+  .hero-cta-secondary{font-size:13px;padding:8px 2px}
+  .hero-eyebrow{font-size:11px;letter-spacing:.1em;margin:0 0 -6px}
+  .hero-cta-note{font-size:12px}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   SHOWCASE backdrop — portfolio pieces sit fixed behind the laptop and
+   are cut off by the section's top line (continues the portfolio above).
+   No parallax: the laptop/window does not move; the work just sits behind.
+   ═════════════════════════════════════════════════════════════════ */
+/* one continuous backdrop wraps BOTH the showcase and the services section;
+   the laptop and the services card sit in front, the work shows in the gutters */
+.show-zone{position:relative;background:#0a0a0b;overflow:clip}
+.show-zone > section{position:relative;z-index:1;background:transparent}
+.wt-section.show{overflow:visible;padding-top:0;background:transparent}
+.svc2{background:transparent}
+/* screen edge sits flush at the top line — kill the upward mint glow that made a green "cap" */
+.wt-section.show .v5-laptop{box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 80px 140px -50px rgba(0,0,0,.9),0 40px 200px -20px rgba(52,211,153,.2),0 0 180px -20px rgba(52,211,153,.16)}
+.wt-section.show .v5-stage{position:relative;z-index:2}
+.wt-section.show .wt-copy{position:relative;z-index:2}
+/* backdrop columns sized to echo the portfolio grid above (~320px cards) */
+.show-fall{position:absolute;inset:0;z-index:0;display:flex;gap:clamp(16px,1.6vw,26px);justify-content:center;align-items:flex-start;padding:0 clamp(12px,2.4vw,40px);pointer-events:none}
+.show-col{flex:1 1 0;min-width:0;max-width:330px;display:flex;flex-direction:column;gap:clamp(16px,1.6vw,26px)}
+.show-col--b{margin-top:9vh}
+.show-col--c{margin-top:-3vh}
+.show-col--d{margin-top:6vh}
+.show-col img{width:100%;height:auto;border-radius:0;border:1px solid #1d1d1f;box-shadow:0 24px 60px -34px rgba(0,0,0,.85);opacity:.4;filter:saturate(.85)}
+.show-fall::after{content:'';position:absolute;inset:0;background:radial-gradient(150% 100% at 50% 28%,rgba(10,10,11,.42) 0%,rgba(10,10,11,.8) 58%,#0a0a0b 100%);pointer-events:none}
+@media(max-width:1200px){.show-col--d{display:none}}
+/* ≤860px the falling-cards backdrop is gone, so the desktop overlap trick
+   (portfolio-wrap margin-bottom:-500px in index.css) has nothing to blend
+   into — without this reset the laptop lands ON TOP of the last portfolio
+   cards and their images/titles bleed through around the showcase. */
+@media(max-width:860px){.show-fall{display:none}.wt-section.show{padding-top:clamp(40px,7vw,70px)}.portfolio-wrap{margin-bottom:0}}
+/* medium+ : overlay the copy CENTERED on the laptop screen (over the scrolling reel)
+   with a soft darkened halo (no box, no outline) so the text reads against the movement.
+   Mobile keeps the plain stacked text below the laptop. */
+@media(min-width:768px){
+  .wt-section.show{display:grid;grid-template-areas:'stack';align-items:center;justify-items:center}
+  .wt-section.show > .v5-stage{grid-area:stack}
+  .wt-section.show > .wt-copy{
+    grid-area:stack;z-index:5;margin:0;position:relative;
+    max-width:none;width:min(760px,80%);
+    padding:clamp(30px,4vw,64px);
+    background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  /* soft radial bloom behind the text: blurred + fades to transparent before its
+     own edges, so there is no rectangle — just a dark glow that pops the text */
+  .wt-section.show > .wt-copy::before{
+    content:'';position:absolute;z-index:-1;pointer-events:none;
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    width:132%;height:205%;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,1) 0%,rgba(0,0,0,.98) 34%,rgba(0,0,0,.82) 56%,rgba(0,0,0,.4) 74%,rgba(0,0,0,0) 88%);
+    filter:blur(28px);
+  }
+  .wt-section.show > .wt-copy .wt-heading{font-size:clamp(36px,5.3vw,76px)}
+  .wt-section.show > .wt-copy .wt-sub{font-size:clamp(15px,1.5vw,19px);max-width:48ch}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   SERVICES — "what I build" inside a browser-window card (static section)
+   ═════════════════════════════════════════════════════════════════ */
+.svc2{position:relative;background:#0a0a0b;z-index:2;padding:clamp(60px,8vw,118px) clamp(16px,5vw,40px)}
+.svc2-screen{width:100%;max-width:980px;margin:0 auto;background:linear-gradient(180deg,#101012 0%,#0c0c0e 100%);border:1px solid #2a2a2c;border-radius:clamp(14px,1.4vw,20px);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 60px 140px -50px rgba(0,0,0,.9),0 0 200px -40px rgba(52,211,153,.16);overflow:hidden}
+.svc2-chrome{height:46px;display:flex;align-items:center;gap:8px;padding:0 18px;background:#161618;border-bottom:1px solid #232325}
+.svc2-dot{width:11px;height:11px;border-radius:50%;background:#2f2f33}
+.svc2-dot:nth-child(1){background:#ff5f56}
+.svc2-dot:nth-child(2){background:#ffbd2e}
+.svc2-dot:nth-child(3){background:#27c93f}
+.svc2-url{margin-left:14px;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;color:#7a7a80;letter-spacing:-.005em;background:#0e0e10;border:1px solid #242427;border-radius:7px;padding:5px 14px}
+.svc2-body{padding:clamp(28px,3.4vw,52px) clamp(24px,3.4vw,56px);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)}
+.svc2-head{display:flex;flex-direction:column;gap:clamp(12px,1.5vw,18px);padding-bottom:clamp(26px,3vw,42px);border-bottom:1px solid #232327}
+.svc2-eyebrow{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#34d399}
+.svc2-heading{font-family:'Inter',sans-serif;font-weight:730;font-size:clamp(27px,3.9vw,52px);line-height:1.04;letter-spacing:-.038em;color:#fff;font-variation-settings:'opsz' 40,'wght' 730;text-wrap:balance;margin:0;max-width:none}
+.svc2-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.svc2-item{display:flex;align-items:center;gap:clamp(14px,1.6vw,22px);padding:clamp(14px,1.5vw,20px) 0;border-top:1px solid #1f1f22}
+.svc2-item:first-child{border-top:0}
+.svc2-ico{width:46px;height:46px;flex-shrink:0;border-radius:12px;background:#10231a;border:1px solid #20402f;display:flex;align-items:center;justify-content:center;color:#34d399;transition:background .35s ease,color .35s ease}
+.svc2-item:hover .svc2-ico{background:#34d399;color:#08301e}
+.svc2-ic{width:24px;height:24px;display:block;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.svc2-text{flex:1;min-width:0}
+.svc2-name{font-family:'Inter',sans-serif;font-weight:680;font-size:clamp(16px,1.4vw,19px);line-height:1.25;letter-spacing:-.02em;color:#fff;font-variation-settings:'opsz' 32,'wght' 680;margin:0 0 3px}
+.svc2-desc{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(13px,1.05vw,14.5px);line-height:1.5;letter-spacing:-.003em;color:#9a9aa0;margin:0;max-width:64ch}
+.svc2-more{flex-shrink:0;width:40px;height:40px;border-radius:999px;border:1px solid #2f2f31;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.svc2-more svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}
+.svc2-more:hover{background:#34d399;color:#08301e;border-color:#34d399}
+.svc2-more:hover svg{transform:translateX(3px)}
+@media(prefers-reduced-motion:reduce){.svc2-ico,.svc2-more,.svc2-more svg{transition:none}}
+@media(max-width:520px){.svc2-item{align-items:flex-start}.svc2-more{display:none}}
+
+/* ═════════════════════════════════════════════════════════════════
+   PROCESS — staggered image cards, art dominant, label/title/copy
+   overlaid ON each card over a bottom scrim. 4 across on desktop,
+   2 up on tablet, 1 up on mobile.
+   ═════════════════════════════════════════════════════════════════ */
+.prc{position:relative;background:#0a0a0b;padding:clamp(72px,9vw,140px) 0;z-index:2;overflow:clip}
+.prc-wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,3vw,48px)}
+.prc-head{text-align:center;max-width:900px;margin:0 auto clamp(48px,5.5vw,88px);display:flex;flex-direction:column;align-items:center}
+.prc-title{font-family:'Inter',sans-serif;font-weight:730;font-size:clamp(34px,5.4vw,66px);line-height:1.02;letter-spacing:-.04em;color:#fff;font-variation-settings:'opsz' 40,'wght' 730;text-wrap:balance;margin:0}
+.prc-title em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 40,'wght' 500}
+.prc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,1.8vw,32px);align-items:start}
+.prc-card{position:relative;display:block;overflow:hidden;border-radius:clamp(14px,1.1vw,20px);aspect-ratio:5/7;background:#0c1411;border:1px solid #1c2a23;isolation:isolate}
+.prc-card:nth-child(even){margin-top:clamp(30px,5.5vw,88px)}
+.prc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.prc-card:hover .prc-img{transform:scale(1.05)}
+.prc-card::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(5,7,6,.97) 0%,rgba(5,7,6,.82) 24%,rgba(5,7,6,.28) 50%,rgba(5,7,6,0) 74%)}
+.prc-num{position:absolute;top:clamp(2px,.3vw,8px);left:clamp(14px,1.4vw,26px);z-index:2;font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(66px,7.4vw,132px);line-height:1;letter-spacing:-.05em;color:#34d399;font-variant-numeric:tabular-nums;font-variation-settings:'opsz' 40,'wght' 800;text-shadow:4px 6px 0 rgba(52,211,153,.20),0 6px 34px rgba(0,0,0,.4)}
+.prc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(20px,1.7vw,30px);display:flex;flex-direction:column;gap:clamp(7px,.7vw,10px)}
+.prc-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(17px,1.45vw,23px);line-height:1.14;letter-spacing:-.028em;color:#fff;margin:0;white-space:nowrap}
+.prc-desc{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(13px,1vw,16px);line-height:1.5;letter-spacing:-.004em;color:#cbccd0;margin:0}
+@media(prefers-reduced-motion:reduce){.prc-img{transition:none}}
+@media(max-width:900px){
+  .prc-grid{grid-template-columns:repeat(2,1fr);gap:clamp(14px,2.4vw,22px)}
+  .prc-card{aspect-ratio:3/4}
+  .prc-card:nth-child(even){margin-top:clamp(28px,7vw,54px)}
+  .prc-num{font-size:clamp(56px,10vw,96px)}
+}
+@media(max-width:560px){
+  .prc-grid{grid-template-columns:1fr;gap:24px}
+  .prc-card,.prc-card:nth-child(even){margin:0 auto;width:74%;aspect-ratio:5/7}
+  .prc-card{transform:translateX(-8%)}
+  .prc-card:nth-child(even){transform:translateX(8%)}
+  .prc-body{padding:16px 18px;gap:6px}
+  .prc-num{font-size:clamp(48px,15vw,64px)}
+  .prc-name{font-size:clamp(14px,4.4vw,18px)}
+  .prc-desc{font-size:clamp(12.5px,3.4vw,14px)}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   OUTREACH — "The Storefront Project" local community program
+   Signature section: mint-drenched, breaks the dark rhythm on purpose.
+   ═════════════════════════════════════════════════════════════════ */
+.outreach{position:relative;background:#34d399;padding:clamp(38px,4.4vw,66px) 0;z-index:2;overflow:hidden}
+.outreach-wrap{max-width:940px;margin:0 auto;padding:0 clamp(20px,3vw,40px);position:relative;z-index:1}
+.outreach-head{max-width:100%;display:flex;flex-direction:column}
+.outreach-kicker{align-self:flex-start;font-family:'Inter',sans-serif;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.11em;color:#34d399;background:#0a1f15;display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;margin-bottom:clamp(14px,1.6vw,20px)}
+.outreach-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(23px,2.9vw,38px);line-height:1.08;letter-spacing:-.035em;color:#0a1f15;font-variation-settings:'opsz' 32,'wght' 720;text-wrap:balance;margin:0 0 clamp(10px,1.2vw,15px);max-width:32ch}
+.outreach-heading em{font-style:italic;color:#0a3a22;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.outreach-lede{font-family:'Inter',sans-serif;font-weight:450;font-size:clamp(13.5px,1.1vw,15.5px);color:#0a2c1c;line-height:1.5;letter-spacing:-.005em;max-width:80ch;margin:0 0 clamp(20px,2.4vw,30px);text-wrap:pretty}
+.outreach-lede strong{font-weight:700;color:#0a1f15}
+.outreach-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,12px);margin-bottom:clamp(20px,2.6vw,32px)}
+.outreach-slot{position:relative;display:flex;flex-direction:column;background:#0a0a0b;border:1px solid #0a1f1530;overflow:hidden}
+.outreach-slot-img{aspect-ratio:4/5;overflow:hidden;background:#0f1512;position:relative}
+.outreach-slot-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.outreach-slot:hover .outreach-slot-img img{transform:scale(1.05)}
+.outreach-slot-tag{position:absolute;top:10px;left:10px;background:rgba(10,10,11,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(52,211,153,.45);padding:5px 9px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:600;color:#34d399;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+.outreach-slot-body{padding:10px 11px 12px;display:flex;flex-direction:column;gap:3px}
+.outreach-slot-name{font-family:'Inter',sans-serif;font-weight:700;font-size:12px;color:#fff;letter-spacing:-.02em;line-height:1.15;margin:0}
+.outreach-slot-meta{font-family:'Inter',sans-serif;font-weight:400;font-size:10px;color:#888;letter-spacing:-.003em;margin:0}
+.outreach-slot--open .outreach-slot-img{background:repeating-linear-gradient(45deg,#0d1512,#0d1512 10px,#0f1714 10px,#0f1714 20px);display:flex;align-items:center;justify-content:center}
+.outreach-slot--open .outreach-slot-plus{font-family:'Inter',sans-serif;font-weight:300;font-size:32px;color:#34d399;line-height:1}
+.outreach-foot{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.2vw,28px)}
+.outreach-btn{background:#0a0a0b;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:-.005em;padding:12px 22px 12px 25px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;position:relative;overflow:hidden;transition:transform .25s ease}
+.outreach-btn svg{transition:transform .25s ease}
+.outreach-btn:hover{transform:translateY(-2px)}
+.outreach-btn:hover svg{transform:translateX(4px)}
+.outreach-note{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#0a2c1c;letter-spacing:-.005em;max-width:34ch;line-height:1.45}
+@media(max-width:899.98px){
+  .outreach{padding:clamp(34px,6vw,54px) 0}
+  .outreach-heading{font-size:clamp(21px,4.4vw,30px)}
+  .outreach-grid{grid-template-columns:repeat(3,1fr)}
+  .outreach-slot:nth-child(n+4){display:none}
+}
+@media(max-width:639.98px){
+  .outreach-grid{grid-template-columns:repeat(2,1fr)}
+  .outreach-slot:nth-child(n+3){display:none}
+  .outreach-btn{width:100%;justify-content:center}
+  .outreach-note{max-width:none}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   ABOUT — the human behind the one direct line (trust)
+   ═════════════════════════════════════════════════════════════════ */
+.about{position:relative;background:#0a0a0b;padding:clamp(72px,8vw,128px) 0;z-index:2}
+.about-wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,3vw,40px);display:grid;grid-template-columns:0.7fr 1.3fr;gap:clamp(36px,4.5vw,72px);align-items:center}
+.about-portrait{position:relative;aspect-ratio:4/5;background:linear-gradient(150deg,#1c1c1d,#0d2418);border:1px solid #2a2a2b;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.about-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.about-portrait-mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(64px,9vw,120px);color:#34d39926;letter-spacing:-.04em;font-variation-settings:'opsz' 32,'wght' 720}
+.about-portrait-cap{position:relative;z-index:1;width:100%;padding:14px 16px;background:linear-gradient(to top,rgba(10,10,11,.92),transparent);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#d4d4d4;letter-spacing:-.005em;text-align:left}
+.about-body{display:flex;flex-direction:column;gap:clamp(16px,1.8vw,24px)}
+.about-anchor{width:32px;height:2px;background:#34d399;display:block}
+.about-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(28px,3.6vw,48px);line-height:1.06;letter-spacing:-.04em;color:#fff;font-variation-settings:'opsz' 32,'wght' 720;text-wrap:balance;margin:0}
+.about-heading em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.about-text{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(14px,1.3vw,16.5px);color:#a8a8a8;line-height:1.65;letter-spacing:-.005em;max-width:58ch;text-wrap:pretty;margin:0}
+.about-text strong{color:#d4d4d4;font-weight:600}
+.about-sign{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:#fff;letter-spacing:-.01em;margin-top:4px;display:flex;flex-direction:column;gap:2px}
+.about-sign span{font-weight:400;font-size:13px;color:#888}
+@media(max-width:759.98px){
+  .about{padding:clamp(52px,8vw,80px) 0}
+  .about-wrap{grid-template-columns:1fr;gap:clamp(28px,5vw,40px)}
+  .about-portrait{max-width:230px;width:100%;margin:0 auto}
+  .about-heading{font-size:clamp(26px,6vw,38px)}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   FAQ — objection handling + FAQPage schema surface (SEO)
+   Native <details> accordion.
+   ═════════════════════════════════════════════════════════════════ */
+.faq{position:relative;background:#0a0a0b;padding:clamp(72px,8vw,128px) 0;z-index:2}
+.faq-wrap{max-width:920px;margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+.faq-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.4vw,18px);margin-bottom:clamp(40px,4.5vw,64px)}
+.faq-heading{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(30px,4.4vw,60px);line-height:1.04;letter-spacing:-.04em;color:#fff;font-variation-settings:'opsz' 32,'wght' 720;text-wrap:balance;margin:0}
+.faq-heading em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.faq-sub{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(14px,1.3vw,16px);color:#a8a8a8;letter-spacing:-.005em;margin:0;max-width:48ch;text-wrap:pretty}
+.faq-list{border-top:1px solid #2a2a2b}
+.faq-item{border-bottom:1px solid #2a2a2b}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(20px,2.2vw,28px) 0;font-family:'Inter',sans-serif;font-weight:650;font-size:clamp(16px,1.6vw,20px);color:#fff;letter-spacing:-.02em;line-height:1.3;transition:color .2s ease}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:#34d399}
+.faq-icon{flex-shrink:0;width:22px;height:22px;position:relative;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:#34d399;border-radius:1px}
+.faq-icon::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.faq-icon::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq-item[open] .faq-icon::after{transform:translateX(-50%) scaleY(0)}
+.faq-answer{padding:0 0 clamp(22px,2.4vw,28px);max-width:64ch}
+.faq-answer p{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(14px,1.25vw,16px);color:#a8a8a8;line-height:1.65;letter-spacing:-.005em;margin:0;text-wrap:pretty}
+.faq-answer p + p{margin-top:12px}
+.faq-answer a{color:#34d399;text-decoration:none;border-bottom:1px solid #34d39955;transition:border-color .2s}
+.faq-answer a:hover{border-color:#34d399}
+@media(prefers-reduced-motion:reduce){.faq-icon,.faq-icon::after{transition:none}}
+@media(max-width:639.98px){
+  .faq{padding:clamp(52px,8vw,80px) 0}
+  .faq-item summary{font-size:16px;padding:18px 0}
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   STICKY MOBILE CTA — thumb-zone primary action (mobile only)
+   ═════════════════════════════════════════════════════════════════ */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:300;display:none;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(10,10,11,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid #2a2a2b;gap:10px;transform:translateY(110%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.sticky-cta.is-visible{transform:translateY(0)}
+.sticky-cta-call{flex-shrink:0;width:52px;display:flex;align-items:center;justify-content:center;border:1px solid #2a2a2b;border-radius:999px;color:#34d399;text-decoration:none;transition:border-color .2s,background .2s}
+.sticky-cta-call:hover{border-color:#34d399;background:#0f0f10}
+.sticky-cta-call svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+.sticky-cta-btn{flex:1;background:#fff;color:#0a0a0b;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.005em;border-radius:999px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px}
+.sticky-cta-btn svg{width:15px;height:15px}
+@media(max-width:999.98px){.sticky-cta{display:flex}}
+@media(prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
 </style>
 
 <script type="application/ld+json">
@@ -138,7 +601,8 @@ body{padding-top:60px}
   "@type": "LocalBusiness",
   "name": "Studio O'Brien",
   "url": "https://studioobrien.com",
-  "image": "https://studioobrien.com/portfolio/ember.webp",
+  "image": "https://studioobrien.com/portfolio/og-image.png",
+  "logo": "https://studioobrien.com/favicon-256x256.png",
   "description": "Independent web design and development studio creating distinctive custom websites for businesses in Shelby, Western North Carolina, and beyond.",
   "email": "hello@studioobrien.com",
   "telephone": "+1-704-974-3372",
@@ -148,15 +612,19 @@ body{padding-top:60px}
     "addressRegion": "NC",
     "addressCountry": "US"
   },
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 35.2923,
-      "longitude": -81.5356
-    },
-    "geoRadius": "50000"
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.2923,
+    "longitude": -81.5356
   },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Western North Carolina" },
+    { "@type": "City", "name": "Shelby" },
+    { "@type": "City", "name": "Gastonia" },
+    { "@type": "City", "name": "Hickory" },
+    { "@type": "City", "name": "Asheville" },
+    { "@type": "State", "name": "North Carolina" }
+  ],
   "priceRange": "$$",
   "sameAs": [
     "https://github.com/CandyFlex",
@@ -193,17 +661,59 @@ body{padding-top:60px}
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"}]}
-</script>
-<script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "Studio O'Brien \u2014 Web Development Walkthrough",
-  "description": "A recorded walkthrough of a custom website built by Studio O'Brien, showing the full web development process from design to launch.",
-  "contentUrl": "https://studioobrien.com/reel.mp4",
-  "uploadDate": "2026-06-15T00:00:00-04:00",
-  "thumbnailUrl": "https://studioobrien.com/portfolio/og-image.webp"
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a custom website cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project is scoped to what the site actually needs to do, so there's no fixed package price. Most custom sites start in the low four figures and scale with page count, copywriting, and functionality. Want a number now? Get an instant, no-email ballpark with the website cost calculator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a website take to build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most sites go from kickoff to launch in about three to six weeks. The biggest variable is how ready your content is \u2014 copy and photos. I help with both, so a slow start doesn't stall the build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you only work with businesses in Shelby?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. I'm based in Shelby and know Cleveland, Gaston, Lincoln, Rutherford, and Catawba counties well, but I work with independent businesses anywhere in the Carolinas and beyond. The work travels; the local roots are a bonus, not a limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the website when it's finished?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do \u2014 completely. Full source code and ownership transfer to you at launch. No proprietary builder lock-in, no platform you have to keep renting to stay online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you help with Google and getting found locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. On-page SEO and Google Business Profile setup are built into the work, especially for local businesses. Showing up when someone in your town searches for what you do is the whole point of the site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't have a website or any content yet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's common, and it's fine. I help with structure, copywriting, and photo direction from scratch. Businesses with nothing online yet are exactly who the Storefront Project community program is built for."
+      }
+    }
+  ]
 }
 </script>
 
@@ -236,7 +746,25 @@ body{padding-top:60px}
     <span>Start a Website</span>
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
+  <button class="nav-menu-toggle" id="nav-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-overlay">
+    <span class="nav-menu-toggle-icon" aria-hidden="true"></span>
+  </button>
 </nav>
+
+<!-- MOBILE OVERLAY MENU -->
+<div class="nav-menu-overlay" id="nav-menu-overlay" aria-hidden="true">
+  <div class="nav-menu-overlay-list">
+    <a href="#portfolio">Work</a>
+    <a href="#process-section">Process</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
+  </div>
+  <a class="nav-menu-overlay-cta" href="/contact">
+    <span>Start a Website</span>
+    <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="nav-menu-overlay-tag" aria-hidden="true">Studio O&rsquo;Brien &middot; Shelby, NC</div>
+</div>
 
 <!-- HEADER -->
 <main>
@@ -256,10 +784,19 @@ body{padding-top:60px}
   </div>
 </div>
 
-<!-- INTRO -->
+<!-- HERO LEAD — value prop + CTA -->
 <div class="wrap">
-  <div class="intro" data-animate>
+  <div class="hero-lead" data-animate>
+    <div class="hero-eyebrow">Web Design &amp; Development &middot; Shelby, NC</div>
     <h1>Your business shouldn&rsquo;t look <em>interchangeable.</em></h1>
+    <p>Custom websites for Western North Carolina businesses, built to get found on Google and turn visitors into paying customers.</p>
+    <div class="hero-lead-actions">
+      <a class="hero-cta-primary" href="/contact">
+        <span>Start a Website</span>
+        <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <p class="hero-cta-note">Free Consultation &middot; No Obligation</p>
   </div>
 </div>
 
@@ -268,35 +805,35 @@ body{padding-top:60px}
   <div class="portfolio" id="portfolio">
     <div class="portfolio-row">
       <div class="column column-1" id="col1">
-        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Hero &mdash; Creative Work","color":"#6366F1","img":"portfolio/koji.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Hero &mdash; Creative Work","color":"#6366F1","img":"portfolio/koji.webp","full":"portfolio/koji-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#6366F1,#363885);aspect-ratio:800/415">
-            <img src="portfolio/koji.webp" alt="Web development for Koji" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/koji.webp" alt="Web development for Koji" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Koji</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Full Site &mdash; Steakhouse","color":"#F59E0B","img":"portfolio/ember.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Full Site &mdash; Steakhouse","color":"#F59E0B","img":"portfolio/ember.webp","full":"portfolio/ember-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F59E0B,#875706);aspect-ratio:800/1100">
-            <img src="portfolio/ember.webp" alt="Ember & Oak" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/ember.webp" alt="Web development for Ember & Oak" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Ember & Oak</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Hero &mdash; Storefront","color":"#EC4899","img":"portfolio/bb.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Hero &mdash; Storefront","color":"#EC4899","img":"portfolio/bb.webp","full":"portfolio/bb-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#EC4899,#822854);aspect-ratio:800/415">
             <img src="portfolio/bb.webp" alt="Web development for Butter + Bloom Bakery" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Butter + Bloom Bakery</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Full Site &mdash; Dark Book","color":"#F97316","img":"portfolio/darkthoughts.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Full Site &mdash; Dark Book","color":"#F97316","img":"portfolio/darkthoughts.webp","full":"portfolio/darkthoughts-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/1100">
             <img src="portfolio/darkthoughts.webp" alt="Web development for Dark Thoughts" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Dark Thoughts</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Hero &mdash; Coastal","color":"#0EA5E9","img":"portfolio/azura.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Hero &mdash; Coastal","color":"#0EA5E9","img":"portfolio/azura.webp","full":"portfolio/azura-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#0EA5E9,#085B80);aspect-ratio:800/415">
             <img src="portfolio/azura.webp" alt="Web development for Azura Coast" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
@@ -305,21 +842,21 @@ body{padding-top:60px}
         </div>
       </div>
       <div class="column column-2" id="col2">
-        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim's Bar & Grill","role":"Hero &mdash; Burgers","color":"#DC2626","img":"portfolio/slims.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim&rsquo;s Bar & Grill","role":"Hero &mdash; Burgers","color":"#DC2626","img":"portfolio/slims.webp","full":"portfolio/slims-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#DC2626,#791515);aspect-ratio:800/415">
-            <img src="portfolio/slims.webp" alt="Slim's Bar & Grill" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/slims.webp" alt="Web development for Slim's Bar & Grill" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Slim's Bar & Grill</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Full Site &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Full Site &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp","full":"portfolio/sol-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/1100">
             <img src="portfolio/sol.webp" alt="Web development for Sol Y Sombra" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Sol Y Sombra</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Full Site &mdash; Arcade","color":"#E8342E","img":"portfolio/arcade.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Full Site &mdash; Arcade","color":"#E8342E","img":"portfolio/arcade.webp","full":"portfolio/arcade-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#E8342E,#801D19);aspect-ratio:800/1100">
             <img src="portfolio/arcade.webp" alt="Web development for Carolina Arcade" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
@@ -333,7 +870,7 @@ body{padding-top:60px}
           </div>
           <div class="card-details"><div class="card-text"><h3>Gameshelf</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Full Site &mdash; Portfolio","color":"#6366F1","img":"portfolio/koji.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Full Site &mdash; Portfolio","color":"#6366F1","img":"portfolio/koji.webp","full":"portfolio/koji-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#6366F1,#363885);aspect-ratio:800/1100">
             <img src="portfolio/koji.webp" alt="Web development for Koji" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
@@ -344,35 +881,35 @@ body{padding-top:60px}
     </div>
     <div class="portfolio-row">
       <div class="column column-3" id="col3">
-        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Hero &mdash; Design Book","color":"#F97316","img":"portfolio/darkthoughts.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Hero &mdash; Design Book","color":"#F97316","img":"portfolio/darkthoughts.webp","full":"portfolio/darkthoughts-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/415">
-            <img src="portfolio/darkthoughts.webp" alt="Web development for Dark Thoughts" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/darkthoughts.webp" alt="Web development for Dark Thoughts" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Dark Thoughts</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Full Site &mdash; Cakes","color":"#EC4899","img":"portfolio/bb.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Full Site &mdash; Cakes","color":"#EC4899","img":"portfolio/bb.webp","full":"portfolio/bb-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#EC4899,#822854);aspect-ratio:800/1100">
             <img src="portfolio/bb.webp" alt="Web development for Butter + Bloom Bakery" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Butter + Bloom Bakery</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Full Site &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Full Site &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp","full":"portfolio/bc-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#C2410C,#6B2407);aspect-ratio:800/1100">
             <img src="portfolio/bc.webp" alt="Web development for Black Creek Smokehouse" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Black Creek Smokehouse</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Hero &mdash; Neon Cabinets","color":"#E8342E","img":"portfolio/arcade.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Hero &mdash; Neon Cabinets","color":"#E8342E","img":"portfolio/arcade.webp","full":"portfolio/arcade-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#E8342E,#801D19);aspect-ratio:800/415">
             <img src="portfolio/arcade.webp" alt="Web development for Carolina Arcade" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Carolina Arcade</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Full Site &mdash; Beachfront","color":"#0EA5E9","img":"portfolio/azura.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Full Site &mdash; Beachfront","color":"#0EA5E9","img":"portfolio/azura.webp","full":"portfolio/azura-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#0EA5E9,#085B80);aspect-ratio:800/1100">
             <img src="portfolio/azura.webp" alt="Web development for Azura Coast" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
@@ -381,9 +918,9 @@ body{padding-top:60px}
         </div>
       </div>
       <div class="column column-4" id="col4">
-        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Hero &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Hero &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp","full":"portfolio/bc-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#C2410C,#6B2407);aspect-ratio:800/415">
-            <img src="portfolio/bc.webp" alt="Web development for Black Creek Smokehouse" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/bc.webp" alt="Web development for Black Creek Smokehouse" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Black Creek Smokehouse</h3></div></div>
@@ -395,23 +932,23 @@ body{padding-top:60px}
           </div>
           <div class="card-details"><div class="card-text"><h3>Gameshelf</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Hero &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Hero &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp","full":"portfolio/sol-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/415">
             <img src="portfolio/sol.webp" alt="Web development for Sol Y Sombra" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Sol Y Sombra</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim's Bar & Grill","role":"Full Site &mdash; Diner","color":"#DC2626","img":"portfolio/slims.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim&rsquo;s Bar & Grill","role":"Full Site &mdash; Diner","color":"#DC2626","img":"portfolio/slims.webp","full":"portfolio/slims-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#DC2626,#791515);aspect-ratio:800/1100">
             <img src="portfolio/slims.webp" alt="Slim's Bar & Grill" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Slim's Bar & Grill</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Hero &mdash; Restaurant","color":"#F59E0B","img":"portfolio/ember.webp"}'>
+        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Hero &mdash; Restaurant","color":"#F59E0B","img":"portfolio/ember.webp","full":"portfolio/ember-full.webp"}'>
           <div class="card-banner" style="background:linear-gradient(135deg,#F59E0B,#875706);aspect-ratio:800/415">
-            <img src="portfolio/ember.webp" alt="Ember & Oak" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+            <img src="portfolio/ember.webp" alt="Web development for Ember & Oak" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
           <div class="card-details"><div class="card-text"><h3>Ember & Oak</h3></div></div>
@@ -435,14 +972,55 @@ body{padding-top:60px}
   </div>
 </noscript>
 
-<!-- WALKTHROUGH V5 — LAPTOP + PHONE, AUTOPLAY REEL -->
-<section class="wt-section">
+<!-- SHOWCASE + SERVICES — one continuous portfolio backdrop behind both -->
+<div class="show-zone">
+  <div class="show-fall" aria-hidden="true">
+    <div class="show-col show-col--a">
+      <img src="portfolio/koji.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/slims.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/gs.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/bb.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/azura.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/koji.webp" alt="" loading="lazy" width="800" height="415">
+    </div>
+    <div class="show-col show-col--b">
+      <img src="portfolio/ember.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/darkthoughts.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/sol.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/bc.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/ember.webp" alt="" loading="lazy" width="800" height="1100">
+    </div>
+    <div class="show-col show-col--c">
+      <img src="portfolio/arcade.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/azura.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/sol.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/slims.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/arcade.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/gs.webp" alt="" loading="lazy" width="800" height="415">
+    </div>
+    <div class="show-col show-col--d">
+      <img src="portfolio/bc.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/koji.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/darkthoughts.webp" alt="" loading="lazy" width="800" height="1100">
+      <img src="portfolio/gs.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/bb.webp" alt="" loading="lazy" width="800" height="415">
+      <img src="portfolio/sol.webp" alt="" loading="lazy" width="800" height="1100">
+    </div>
+  </div>
+
+  <!-- SHOWCASE — laptop fixed in front, portfolio falls behind -->
+  <section class="wt-section show" aria-label="Studio O'Brien work on screen">
   <div class="v5-stage">
     <div class="v5-laptop">
       <span class="v5-notch"></span>
       <div class="v5-screen">
         <div class="v-poster" aria-hidden="true"></div>
-        <div class="scroll-bg scroll-bg--desktop" aria-hidden="true"></div>
+        <div class="scroll-bg scroll-bg--desktop" aria-hidden="true">
+          <div class="scroll-track">
+            <img src="portfolio/darkthoughts-reel.webp" alt="" width="1440" height="5794" loading="lazy" decoding="async">
+            <img src="portfolio/darkthoughts-reel.webp" alt="" width="1440" height="5794" loading="lazy" decoding="async">
+          </div>
+        </div>
         <div class="v5-chrome" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
@@ -453,19 +1031,280 @@ body{padding-top:60px}
       <span class="v5-phone-notch"></span>
       <div class="v5-phone-screen">
         <div class="v-poster" aria-hidden="true"></div>
-        <div class="scroll-bg scroll-bg--mobile" aria-hidden="true"></div>
+        <div class="scroll-bg scroll-bg--mobile" aria-hidden="true">
+          <div class="scroll-track">
+            <img src="portfolio/darkthoughts-reel.webp" alt="" width="1440" height="5794" loading="lazy" decoding="async">
+            <img src="portfolio/darkthoughts-reel.webp" alt="" width="1440" height="5794" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="wt-copy">
-    <div class="wt-label" aria-hidden="true">End to end review</div>
     <h2 class="wt-heading">See your site on every screen, in one <em>walkthrough</em>.</h2>
-    <p class="wt-sub">Desktop and mobile, side by side. Every breakpoint reviewed before launch.</p>
+    <p class="wt-sub">Desktop and mobile, side by side. Every breakpoint reviewed and signed off before launch, no surprises on launch day.</p>
   </div>
 </section>
 
-<!-- LIGHTBOX -->
+<!-- SERVICES — what I build (plain section, under the showcase) -->
+<section class="svc2" id="services" aria-label="Services">
+  <div class="svc2-screen">
+    <div class="svc2-chrome" aria-hidden="true">
+      <span class="svc2-dot"></span><span class="svc2-dot"></span><span class="svc2-dot"></span>
+      <span class="svc2-url">studioobrien.com/services</span>
+    </div>
+    <div class="svc2-body">
+      <div class="svc2-head">
+        <span class="svc2-eyebrow">What I build</span>
+        <h2 class="svc2-heading">Everything your site needs, from one studio.</h2>
+      </div>
+      <ul class="svc2-list">
+        <li class="svc2-item">
+          <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-design.png')" aria-hidden="true"></i></span>
+          <div class="svc2-text">
+            <h3 class="svc2-name">Custom Website Design &amp; Development</h3>
+            <p class="svc2-desc">Original sites built from scratch. No templates, no page builders. Design and clean hand-coded development as one piece of work.</p>
+          </div>
+          <a class="svc2-more" href="/contact" aria-label="Custom website design and development"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </li>
+        <li class="svc2-item">
+          <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-seo.png')" aria-hidden="true"></i></span>
+          <div class="svc2-text">
+            <h3 class="svc2-name">Local SEO &amp; Google Business Profile</h3>
+            <p class="svc2-desc">On-page and technical SEO plus Google Business Profile setup, so people in your area actually find you on Google.</p>
+          </div>
+          <a class="svc2-more" href="/contact" aria-label="Local SEO and Google Business Profile"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </li>
+        <li class="svc2-item">
+          <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-copy.png')" aria-hidden="true"></i></span>
+          <div class="svc2-text">
+            <h3 class="svc2-name">Copywriting &amp; Brand Voice</h3>
+            <p class="svc2-desc">Words that sound like you and move people to act, written around what makes the business specific.</p>
+          </div>
+          <a class="svc2-more" href="/contact" aria-label="Copywriting and brand voice"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </li>
+        <li class="svc2-item">
+          <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-leadgen.png')" aria-hidden="true"></i></span>
+          <div class="svc2-text">
+            <h3 class="svc2-name">Lead Generation &amp; Conversion</h3>
+            <p class="svc2-desc">Clear paths from visitor to enquiry. Forms and calls to action designed to turn traffic into real conversations.</p>
+          </div>
+          <a class="svc2-more" href="/contact" aria-label="Lead generation and conversion"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </li>
+        <li class="svc2-item">
+          <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-migration.png')" aria-hidden="true"></i></span>
+          <div class="svc2-text">
+            <h3 class="svc2-name">Website Migration &amp; Redesign</h3>
+            <p class="svc2-desc">Outgrown a template or stuck on a platform you don&rsquo;t own? I rebuild and migrate cleanly, keeping your rankings intact.</p>
+          </div>
+          <a class="svc2-more" href="/contact" aria-label="Website migration and redesign"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROCESS — visual-hero cards (drop final art/animation into each .prc-vis) -->
+<section class="prc" id="process-section" data-animate aria-label="Process">
+  <div class="prc-wrap">
+    <div class="prc-head">
+      <h2 class="prc-title">How I design and <em>build</em> your website.</h2>
+    </div>
+    <div class="prc-grid">
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-discovery.webp" alt="Studio O'Brien discovery: mapping goals, audience, and the pages a business needs to rank and convert" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">1</span>
+        <div class="prc-body">
+          <h3 class="prc-name">Strategy &amp; Planning</h3>
+          <p class="prc-desc">We map your goals, audience, and the pages your site needs to rank and convert.</p>
+        </div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-design.webp" alt="Custom web design and on-brand copywriting for a Western North Carolina business" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">2</span>
+        <div class="prc-body">
+          <h3 class="prc-name">Design &amp; Copywriting</h3>
+          <p class="prc-desc">Custom design and on-brand copy, built around what makes your business specific.</p>
+        </div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-development.webp" alt="Hand-coded, responsive website development with on-page SEO baked in" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">3</span>
+        <div class="prc-body">
+          <h3 class="prc-name">Development &amp; SEO</h3>
+          <p class="prc-desc">Clean, hand-coded, responsive build with on-page SEO baked in from day one.</p>
+        </div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-launch.webp" alt="Website launch and local SEO with Google Business Profile so locals find your business" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">4</span>
+        <div class="prc-body">
+          <h3 class="prc-name">Launch &amp; Local SEO</h3>
+          <p class="prc-desc">Your site goes live, you own it, and locals find you on Google.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH — The Storefront Project (community program, signature) -->
+<section class="outreach" id="storefront-project" data-animate aria-label="The Storefront Project community program">
+  <div class="outreach-wrap">
+    <div class="outreach-head">
+      <div class="outreach-kicker">The Storefront Project</div>
+      <h2 class="outreach-heading">Showing local businesses <em>what&rsquo;s possible</em> online.</h2>
+      <p class="outreach-lede">I design concept websites for local businesses to show what a real one could do for them. A starting place, already built. The business it&rsquo;s made for can <strong>step in at a reduced rate and take it further</strong>, and anyone can nominate a spot. A simple way to see how the studio works.</p>
+    </div>
+    <div class="outreach-grid">
+      <div class="outreach-slot">
+        <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/arcade.webp" alt="Concept website built for a local arcade as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Carolina Arcade</p><p class="outreach-slot-meta">Concept &middot; Entertainment</p></div>
+      </div>
+      <div class="outreach-slot">
+        <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/slims.webp" alt="Concept website built for a local bar and grill as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Slim&rsquo;s Bar &amp; Grill</p><p class="outreach-slot-meta">Concept &middot; Restaurant</p></div>
+      </div>
+      <div class="outreach-slot">
+        <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/bc.webp" alt="Concept website built for a local BBQ smokehouse as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Black Creek Smokehouse</p><p class="outreach-slot-meta">Concept &middot; BBQ</p></div>
+      </div>
+      <div class="outreach-slot outreach-slot--open">
+        <div class="outreach-slot-img"><span class="outreach-slot-plus" aria-hidden="true">+</span></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Open spot</p><p class="outreach-slot-meta">Nominate a business</p></div>
+      </div>
+      <div class="outreach-slot outreach-slot--open">
+        <div class="outreach-slot-img"><span class="outreach-slot-plus" aria-hidden="true">+</span></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Open spot</p><p class="outreach-slot-meta">Nominate a business</p></div>
+      </div>
+    </div>
+    <div class="outreach-foot">
+      <a class="outreach-btn" href="/contact?ref=storefront-project">
+        <span>Nominate a business</span>
+        <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="outreach-note">Know a shop, kitchen, or trade that deserves a standout site? Put them forward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT — the human behind the one direct line -->
+<section class="about" id="about" data-animate aria-label="About Studio O'Brien">
+  <div class="about-wrap">
+    <div class="about-portrait">
+      <img src="portfolio/jarred.webp" alt="Jarred Kern, founder of Studio O'Brien, Shelby NC" width="800" height="1000" loading="lazy">
+    </div>
+    <div class="about-body">
+      <span class="about-anchor" aria-hidden="true"></span>
+      <h2 class="about-heading">You work with <em>me</em>, start to finish.</h2>
+      <p class="about-text">I&rsquo;m Jarred. Studio O&rsquo;Brien is a one-person practice, on purpose. When you hire me, the person who plans your site is the person who writes it, designs it, builds it, and picks up the phone. <strong>No account managers, no offshore handoff, no agency layer marking up someone else&rsquo;s work.</strong></p>
+      <p class="about-text">I&rsquo;ve been building custom sites since 2014, working with restaurants, shops, studios, and trades across Cleveland County and the wider Carolinas. The promise is simple: original work, clear communication, and a site you fully own when it&rsquo;s done.</p>
+      <div class="about-sign">Jarred Kern<span>Designer &amp; developer &middot; Shelby, North Carolina</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ — objection handling + FAQPage schema surface -->
+<section class="faq" id="faq" data-animate aria-label="Frequently asked questions">
+  <div class="faq-wrap">
+    <div class="faq-head">
+      <h2 class="faq-heading">Questions, <em>answered</em> straight.</h2>
+      <p class="faq-sub">The things people ask before they reach out. No fine print.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How much does a custom website cost?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Every project is scoped to what the site actually needs to do, so there&rsquo;s no fixed package price. Most custom sites start in the low four figures and scale with page count, copywriting, and functionality.</p>
+          <p>Want a number now? Get an instant, no-email ballpark with the <a href="/website-cost-calculator">website cost calculator</a>.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How long does a website take to build?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Most sites go from kickoff to launch in about three to six weeks. The biggest variable is how ready your content is: copy and photos. I help with both, so a slow start doesn&rsquo;t stall the build.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you only work with businesses in Shelby?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>No. I&rsquo;m based in Shelby and know Cleveland, Gaston, Lincoln, Rutherford, and Catawba counties well, but I work with independent businesses anywhere in the Carolinas and beyond. The work travels; the local roots are a bonus, not a limit.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Who owns the website when it&rsquo;s finished?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>You do, completely. Full source code and ownership transfer to you at launch. No proprietary builder lock-in, no platform you have to keep renting to stay online.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you help with Google and getting found locally?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Yes. On-page SEO and Google Business Profile setup are built into the work, especially for local businesses. Showing up when someone in your town searches for what you do is the whole point of the site.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What if I don&rsquo;t have a website or any content yet?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>That&rsquo;s common, and it&rsquo;s fine. I help with structure, copywriting, and photo direction from scratch. Businesses with nothing online yet are exactly who <a href="#storefront-project">the Storefront Project</a> is built for.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA V2 — Second hero, inline first-step form -->
+<section class="cta-v2" data-animate aria-label="Start a project">
+  <div class="cta-v2-wrap">
+    <h2 class="cta-v2-heading">Build a website<br>people <em>remember</em>.</h2>
+    <p class="cta-v2-detail">Tell me what your business does and what the next site needs to do. You&rsquo;ll get a direct, specific recommendation back, not a sales pitch.</p>
+    <form class="cta-v2-form" action="/contact" method="get">
+      <input class="cta-v2-input" type="text" name="q" placeholder="My business does &hellip;" aria-label="What does your business do?" autocomplete="off" required>
+      <button class="cta-v2-submit" type="submit">
+        <span>Start</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="cta-v2-promise">Takes 30 seconds &middot; I reply within one business day</div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER V2 — Anchored, geo-voiced -->
+<footer class="footer-v2">
+  <div class="footer-v2-wrap">
+    <div class="footer-v2-main">
+      <div class="footer-v2-brand-col">
+        <a href="/" class="footer-v2-brand">Studio O&rsquo;Brien</a>
+        <p class="footer-v2-tag">Custom websites that don&rsquo;t look like templates. <em>Made</em> in Shelby, NC.</p>
+      </div>
+      <div class="footer-v2-links-col">
+        <nav class="footer-v2-nav" aria-label="Footer">
+          <a href="#portfolio">Work</a>
+          <a href="#process-section">Process</a>
+          <a href="/blog">Blog</a>
+          <a href="/website-cost-calculator">Calculator</a>
+          <a href="/service-area">Service Area</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="footer-v2-contact">
+          <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>
+          <a href="tel:+17049743372">(704) 974-3372</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-v2-bottom">
+      <span class="footer-v2-cr">&copy; 2026 Studio O&rsquo;Brien. Serving <a href="/shelby-nc-web-design">Shelby</a>, <a href="/kings-mountain-nc-web-design">Kings Mountain</a>, <a href="/gastonia-nc-web-design">Gastonia</a>, <a href="/lincolnton-nc-web-design">Lincolnton</a>, <a href="/forest-city-nc-web-design">Forest City</a>, &amp; Western NC Area.</span>
+      <button class="footer-v2-back" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX — direct child of body so no section stacking context can trap it -->
 <div class="lightbox" id="lightbox" aria-hidden="true" inert>
   <button class="lightbox-close" aria-label="Close">&#x2715;</button>
   <div class="lightbox-inner">
@@ -479,393 +1318,12 @@ body{padding-top:60px}
   </div>
 </div>
 
-<!-- VIDEO DIVIDER -->
-<div class="video-divider"></div>
-
-<!-- SECTION BRIDGE -->
-<div class="section-bridge" aria-hidden="true"></div>
-
-<!-- STATS SECTION -->
-<section class="stats-section">
-  <div class="wrap">
-    <h2 class="stats-header-title reveal-item">
-      <span class="color-dark">Built with intent. </span>
-      <span class="color-medium">Finished</span>
-      <span class="color-light"> with craft.</span>
-    </h2>
-
-    <div class="stats-grid-row reveal-item">
-      <div class="stat-card">
-        <div class="stat-number-box">
-          <span class="stat-number" data-target="40">40</span><span class="stat-suffix">+</span>
-        </div>
-        <div class="stat-label-text">Websites created</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number-box">
-          <span class="stat-number" data-target="10">10</span><span class="stat-suffix">+</span>
-        </div>
-        <div class="stat-label-text">Years building for the web</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number-box">
-          <span class="stat-number" data-target="1">1</span>
-        </div>
-        <div class="stat-label-text">Direct point of contact</div>
-      </div>
-    </div>
-
-    <div class="stats-footer-row">
-      <div class="services-list-container">
-        <div class="service-row-item">Web Development</div>
-        <div class="service-row-item">Responsive Design</div>
-        <div class="service-row-item">SEO &amp; Local Search</div>
-        <div class="service-row-item">Website Migration</div>
-        <div class="service-row-item">Google Business Profile</div>
-        <div class="service-row-item">User Interface &amp; UX</div>
-        <div class="service-row-item">Content &amp; Copy Structure</div>
-      </div>
-      <div class="sectors-card-box reveal-item">
-        <div class="sectors-card-header">
-          <h3 class="sectors-card-title">Sectors</h3>
-          <svg class="sectors-asterisk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <line x1="7" y1="7" x2="17" y2="17"></line>
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-          </svg>
-        </div>
-        <div class="sectors-list-grid">
-          <div class="sector-item">Hospitality</div>
-          <div class="sector-item">Restaurants</div>
-          <div class="sector-item">Retail</div>
-          <div class="sector-item">Professional Services</div>
-          <div class="sector-item">Nonprofits</div>
-          <div class="sector-item">Creative Businesses</div>
-          <div class="sector-item">Real Estate</div>
-          <div class="sector-item">Local Businesses</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SELECTED WORK DETAILS -->
-<section class="cases-section">
-  <div class="wrap">
-    <div class="cases-header" data-animate>
-      <div class="cases-header-left">
-          <h2 class="cases-title">
-            <span class="color-dark">Websites with </span>
-            <span class="color-medium">a point</span>
-            <span class="color-light"> of view</span>
-          </h2>
-      </div>
-    </div>
-
-    <!-- Case 1 - Full width hero card -->
-    <div class="case-hero" data-animate>
-      <div class="case-hero-visual">
-        <img src="portfolio/ember.webp" alt="Ember & Oak website project" width="800" height="450" loading="lazy">
-        <div class="case-hero-overlay"></div>
-      </div>
-      <div class="case-hero-content">
-        <div class="case-hero-pills">
-          <span class="case-pill case-pill--green">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            Hospitality
-          </span>
-          <span class="case-pill">Strategy, copy, design, development</span>
-        </div>
-        <p class="case-hero-quote">Ember &amp; Oak translates the atmosphere of an independent steakhouse into a focused digital experience, pairing cinematic art direction with clear reservation paths and an editorial menu presentation.</p>
-        <div class="case-hero-author">
-          <div class="case-author-info">
-            <span class="case-author-name">Ember &amp; Oak</span>
-            <span class="case-author-role">Restaurant website and brand experience</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case divider -->
-    <div class="cases-divider" aria-hidden="true">
-      <span class="cases-divider-line"></span>
-      <span class="cases-divider-dot"></span>
-      <span class="cases-divider-line"></span>
-    </div>
-
-    <!-- Case Row - Two side by side -->
-    <div class="case-row">
-      <div class="case-card" data-animate>
-        <div class="case-card-visual">
-          <img src="portfolio/gs.webp" alt="Gameshelf website project" width="800" height="450" loading="lazy">
-          <div class="case-card-overlay"></div>
-        </div>
-        <div class="case-card-body">
-          <div class="case-card-pills">
-            <span class="case-pill case-pill--green">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-              Product UX
-            </span>
-            <span class="case-pill">Mobile-first interface</span>
-          </div>
-          <p class="case-card-quote">Gameshelf turns a personal game queue into a fast, readable mobile product with clear hierarchy, compact interactions, and an interface designed around everyday use.</p>
-          <div class="case-card-author">
-            <div class="case-author-info">
-              <span class="case-author-name">Gameshelf</span>
-              <span class="case-author-role">Responsive product and dashboard design</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card" data-animate>
-        <div class="case-card-visual">
-          <img src="portfolio/koji.webp" alt="Koji website project" width="800" height="450" loading="lazy">
-          <div class="case-card-overlay"></div>
-        </div>
-        <div class="case-card-body">
-          <div class="case-card-pills">
-            <span class="case-pill case-pill--green">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Creative portfolio
-            </span>
-            <span class="case-pill">Identity and interaction</span>
-          </div>
-          <p class="case-card-quote">Koji uses expressive typography, deliberate pacing, and immersive project presentation to create a portfolio that feels authored rather than assembled.</p>
-          <div class="case-card-author">
-            <div class="case-author-info">
-              <span class="case-author-name">Koji</span>
-              <span class="case-author-role">Portfolio website and digital identity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS SECTION - IMMERSIVE -->
-<section class="process-section" id="process-section">
-  <div class="wrap">
-    <div class="process-header" data-animate>
-      <h2 class="process-title">
-        <span class="color-dark">Your </span>
-        <span class="color-medium">site</span>
-        <span class="color-light"> in four steps</span>
-      </h2>
-    </div>
-
-    <!-- Step 1 -->
-    <div class="step" data-animate>
-      <div class="step-info">
-        <span class="step-label">Understand</span>
-        <h3 class="step-heading">Define what the website needs to do</h3>
-        <p class="step-desc">We clarify the audience, business goals, content, functionality, and the reason the website needs to exist before deciding what it should look like.</p>
-        <div class="step-chips">
-          <span class="step-chip">Market research</span>
-          <span class="step-chip">Competitor audit</span>
-          <span class="step-chip">Sitemap</span>
-          <span class="step-chip">Content strategy</span>
-        </div>
-      </div>
-      <div class="step-visual">
-        <div class="step-visual-inner">
-          <div class="step-mockup step-mockup--discovery">
-            <div class="mock-browser">
-              <div class="mock-dots"><span></span><span></span><span></span></div>
-              <div class="mock-url">studioobrien.com/intake</div>
-            </div>
-            <div class="mock-body mock-body--img">
-              <img src="portfolio/process-research.webp" alt="Audience research dashboard" width="800" height="280" loading="lazy">
-            </div>
-          </div>
-          <div class="step-float step-float--1">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            Research
-          </div>
-          <div class="step-float step-float--2">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            Audience
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="step step--reverse" data-animate>
-      <div class="step-info">
-        <span class="step-label">Shape</span>
-        <h3 class="step-heading">Connect the writing and creative direction</h3>
-        <p class="step-desc">The structure, language, imagery, typography, and interactions are developed as one system built around the character of your business.</p>
-        <div class="step-chips">
-          <span class="step-chip">Copywriting</span>
-          <span class="step-chip">Figma mockups</span>
-          <span class="step-chip">Responsive layout</span>
-          <span class="step-chip">Micro-interactions</span>
-        </div>
-      </div>
-      <div class="step-visual">
-        <div class="step-visual-inner">
-          <div class="step-mockup step-mockup--design">
-            <div class="mock-browser">
-              <div class="mock-dots"><span></span><span></span><span></span></div>
-              <div class="mock-url">figma.com/obrien-draft</div>
-            </div>
-            <div class="mock-body mock-body--img">
-              <img src="portfolio/process-design.webp" alt="Website being built - scaffolding" width="800" height="280" loading="lazy">
-            </div>
-          </div>
-          <div class="step-float step-float--3">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            Design
-          </div>
-          <div class="step-float step-float--4">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
-            Copy
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step" data-animate>
-      <div class="step-info">
-        <span class="step-label">Build</span>
-        <h3 class="step-heading">Review a working website</h3>
-        <p class="step-desc">The creative direction becomes a responsive, functioning website. A recorded walkthrough gives you a clear way to review the work and leave focused feedback.</p>
-        <div class="step-chips">
-          <span class="step-chip">Loom recording</span>
-          <span class="step-chip">Async review</span>
-          <span class="step-chip">Timestamped notes</span>
-          <span class="step-chip">Revision round</span>
-        </div>
-      </div>
-      <div class="step-visual">
-        <div class="step-visual-inner">
-          <div class="step-mockup step-mockup--review">
-            <div class="mock-browser">
-              <div class="mock-dots"><span></span><span></span><span></span></div>
-              <div class="mock-url">loom.com/walkthrough</div>
-            </div>
-            <div class="mock-body mock-body--scroll">
-              <img src="portfolio/process-walkthrough.webp" alt="Video walkthrough of finished site" width="800" height="600" loading="lazy" class="mock-scroll-img">
-            </div>
-          </div>
-          <div class="step-float step-float--5">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><path d="m22 8-6 4 6 4V8z"/><rect x="2" y="6" width="14" height="12" rx="2" ry="2"/></svg>
-            Video
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="step step--reverse" data-animate>
-      <div class="step-info">
-        <span class="step-label">Refine and launch</span>
-        <h3 class="step-heading">Finish the work and make it yours</h3>
-        <p class="step-desc">Revisions are resolved, the site is prepared for launch, and ownership stays clear. Ongoing support is available when it is useful, not required by default.</p>
-        <div class="step-chips">
-          <span class="step-chip">Domain setup</span>
-          <span class="step-chip">Hosting</span>
-          <span class="step-chip">Full source code</span>
-          <span class="step-chip">Ownership transfer</span>
-        </div>
-      </div>
-      <div class="step-visual">
-        <div class="step-visual-inner">
-          <div class="step-mockup step-mockup--launch">
-            <div class="mock-browser">
-              <div class="mock-dots"><span></span><span></span><span></span></div>
-              <div class="mock-url mock-url--live">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="#34d399" stroke="none"><circle cx="12" cy="12" r="6"/></svg>
-                yourbrand.com Live
-              </div>
-            </div>
-            <div class="mock-body mock-body--img mock-body--launched">
-              <img src="portfolio/process-walkthrough.webp" alt="Finished website - launched and live" width="800" height="600" loading="lazy">
-              <div class="mock-check-overlay">
-                <svg class="mock-check-icon" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11.5 14.5 16 9.5"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-float step-float--6">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Shipped
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section class="cta-section" data-animate>
-  <div class="wrap">
-    <div class="cta-inner">
-      <div class="cta-left">
-        <span class="cta-eyebrow">Ready to build?</span>
-        <h2 class="cta-heading">Build a website<br>people <em>remember.</em></h2>
-      </div>
-      <div class="cta-right">
-        <p class="cta-desc">Tell Studio O&rsquo;Brien what your business does, what is not working now, and what the next website needs to accomplish. You will receive a direct recommendation for the right scope and next step.</p>
-        <a href="/contact" class="cta-btn-primary">
-          Start a Website
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <div class="cta-trust">
-          <div class="cta-trust-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Tailored scope
-          </div>
-          <div class="cta-trust-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Clear ownership
-          </div>
-          <div class="cta-trust-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Direct collaboration
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-line"></div>
-  <div class="wrap">
-    <div class="footer-row">
-      <a href="/" class="footer-logo">Studio O'Brien</a>
-      <nav class="footer-nav">
-        <a href="/website-cost-calculator">Cost Calculator</a>
-        <a href="/service-area">Service Area</a>
-        <a href="/blog">Blog</a>
-        <a href="#portfolio">Work</a>
-        <a href="#process-section">Process</a>
-        <a href="/contact">Contact</a>
-      </nav>
-    </div>
-    <div class="footer-bottom-row">
-      <span>&copy; 2026 Studio O'Brien</span>
-      <span class="footer-geo">Studio O'Brien &mdash; Web Development &amp; Design Shelby, NC | Cleveland County, NC</span>
-      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
-      </button>
-    </div>
-  </div>
-</footer>
-
-
 <script>
 (function(){
   // Trigger above-fold elements immediately
   document.querySelectorAll('.topbar[data-animate], .header[data-animate]').forEach(function(el){ el.classList.add('visible'); });
   setTimeout(function(){
-    var els = document.querySelectorAll('.intro[data-animate], .portfolio-wrap[data-animate], .green-strip[data-animate]');
+    var els = document.querySelectorAll('.hero-lead[data-animate], .portfolio-wrap[data-animate], .green-strip[data-animate]');
     els.forEach(function(el){ el.classList.add('visible'); });
   },100);
 
@@ -874,6 +1332,29 @@ body{padding-top:60px}
   window.addEventListener('scroll', function(){
     if(navEl){ if(window.scrollY > 10) navEl.classList.add('scrolled'); else navEl.classList.remove('scrolled'); }
   },{passive:true});
+
+  /* ===== MOBILE MENU TOGGLE ===== */
+  var menuToggle  = document.getElementById('nav-menu-toggle');
+  var menuOverlay = document.getElementById('nav-menu-overlay');
+  if(menuToggle && menuOverlay){
+    function setMenu(open){
+      menuToggle.classList.toggle('is-open', open);
+      menuOverlay.classList.toggle('is-open', open);
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.body.classList.toggle('is-menu-open', open);
+    }
+    menuToggle.addEventListener('click', function(){
+      setMenu(!menuToggle.classList.contains('is-open'));
+    });
+    menuOverlay.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && menuToggle.classList.contains('is-open')) setMenu(false);
+    });
+  }
 
   /* ===== SCROLL PROGRESS BAR ===== */
   var scrollBar = document.getElementById('scroll-progress');
@@ -888,13 +1369,14 @@ body{padding-top:60px}
     if(!ticking){ requestAnimationFrame(updateScrollProgress); ticking = true; }
   }, {passive:true});
 
-  /* ===== SMOOTH SCROLL FOR ANCHORS ===== */
+  /* ===== SMOOTH SCROLL FOR ANCHORS (respects reduced motion) ===== */
+  var scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click', function(e){
       var target = document.querySelector(this.getAttribute('href'));
       if(target){
         e.preventDefault();
-        target.scrollIntoView({behavior:'smooth',block:'start'});
+        target.scrollIntoView({behavior:scrollBehavior,block:'start'});
       }
     });
   });
@@ -903,13 +1385,13 @@ body{padding-top:60px}
   var backBtn = document.getElementById('back-to-top');
   if(backBtn){
     backBtn.addEventListener('click', function(){
-      window.scrollTo({top:0,behavior:'smooth'});
+      window.scrollTo({top:0,behavior:scrollBehavior});
     });
   }
 
   /* ===== ATTACH HANDLERS TO PRE-RENDERED CARDS ===== */
-  try {
   document.querySelectorAll('.card').forEach(function(card){
+    try {
     var project = JSON.parse(card.getAttribute('data-project'));
     card.addEventListener('click', function(){ openLightbox(project); });
     card.addEventListener('keydown', function(e){
@@ -933,8 +1415,8 @@ body{padding-top:60px}
         hoverIcon.style.opacity = '';
       });
     }
+    } catch(e) {}
   });
-  } catch(e) {}
 
   /* ===== MOBILE - LIMIT PORTFOLIO CARDS ===== */
   function trimCardsForMobile(){
@@ -957,86 +1439,6 @@ body{padding-top:60px}
 
   document.querySelectorAll('[data-animate]').forEach(function(el){ observer.observe(el); });
 
-  /* ===== CASE STUDY CARDS - STAGGER ===== */
-  var caseCards = document.querySelectorAll('.case-hero[data-animate], .case-card[data-animate]');
-  var caseObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        caseObs.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.12});
-  caseCards.forEach(function(el){ caseObs.observe(el); });
-
-  /* ===== PROCESS STEPS - STAGGER ===== */
-  var steps = document.querySelectorAll('.step[data-animate]');
-  var stepObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        stepObs.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.15});
-  steps.forEach(function(el){ stepObs.observe(el); });
-
-  /* ===== STATS - COUNT-UP + STAGGER ===== */
-  var statsObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      var el = entry.target;
-      el.classList.add('visible');
-      if(el.classList.contains('stats-grid-row')){
-        var nums = el.querySelectorAll('.stat-number');
-        nums.forEach(function(num){
-          if(num.classList.contains('animated')) return;
-          num.classList.add('animated');
-          countUp(num, parseInt(num.getAttribute('data-target'),10), 2000);
-        });
-        // Add counted class to stat-cards after animation
-        var statCards = el.querySelectorAll('.stat-card');
-        statCards.forEach(function(card, i){
-          setTimeout(function(){ card.classList.add('counted'); }, 2000 + i * 100);
-        });
-      }
-      if(el.classList.contains('services-list-container')){
-        var items = el.querySelectorAll('.service-row-item');
-        items.forEach(function(item,i){
-          setTimeout(function(){ item.classList.add('visible'); }, i * 120);
-        });
-      }
-      if(el.classList.contains('sectors-card-box')){
-        var items = el.querySelectorAll('.sector-item');
-        items.forEach(function(item,i){
-          setTimeout(function(){ item.classList.add('visible'); }, i * 80);
-        });
-      }
-    });
-  },{threshold:0.15});
-
-  function countUp(el, target, duration){
-    var startTime = null;
-    function easeOutExpo(t){ return t===1?1:1-Math.pow(2,-10*t); }
-    function step(ts){
-      if(!startTime) startTime = ts;
-      var progress = Math.min((ts - startTime) / duration, 1);
-      el.textContent = Math.floor(easeOutExpo(progress) * target);
-      if(progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  var statsHeader = document.querySelector('.stats-header-title');
-  var statsGrid = document.querySelector('.stats-grid-row');
-  var statsServices = document.querySelector('.services-list-container');
-  var statsSectors = document.querySelector('.sectors-card-box');
-  if(statsHeader) statsObserver.observe(statsHeader);
-  if(statsGrid) statsObserver.observe(statsGrid);
-  if(statsServices) statsObserver.observe(statsServices);
-  if(statsSectors) statsObserver.observe(statsSectors);
-
   /* ===== SEAMLESS MARQUEE (CSS) ===== */
   function setupMarquee(track, pxPerSec){
     var kids = Array.from(track.children);
@@ -1052,9 +1454,6 @@ body{padding-top:60px}
   var greenTrack = document.querySelector('.green-strip .marquee-track');
   if(greenTrack) setupMarquee(greenTrack, 30);
 
-  var clientTrack = document.querySelector('.client-track');
-  if(clientTrack) setupMarquee(clientTrack, 12);
-
   /* ===== LIGHTBOX ===== */
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = lightbox.querySelector('.lightbox-img');
@@ -1064,7 +1463,7 @@ body{padding-top:60px}
   var bodyEl = document.body;
 
   function openLightbox(project){
-    lightboxImg.src = project.img || '';
+    lightboxImg.src = project.full || project.img || '';
     lightboxImg.alt = project.name;
     lightboxTitle.textContent = project.name;
     lightboxRole.textContent = project.role;
@@ -1088,22 +1487,36 @@ body{padding-top:60px}
     if(e.target === lightbox) closeLightbox();
   });
   document.addEventListener('keydown',function(e){
-    if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    // Focus trap: the close button is the only focusable control in the lightbox
+    if(e.key === 'Tab'){ e.preventDefault(); lightboxClose.focus(); }
   });
 
-  /* ===== MAGNETIC BUTTONS ===== */
-  document.querySelectorAll('.cta-btn-primary').forEach(function(btn){
-    btn.addEventListener('mousemove', function(e){
-      var rect = btn.getBoundingClientRect();
-      var x = e.clientX - rect.left - rect.width / 2;
-      var y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = 'translateY(-2px) translate(' + (x * 0.15) + 'px,' + (y * 0.15) + 'px)';
-    });
-    btn.addEventListener('mouseleave', function(){
-      btn.style.transform = '';
-    });
-  });
+})();
+</script>
 
+<!-- STICKY MOBILE CTA — thumb-zone primary action -->
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="sticky-cta-call" href="tel:+17049743372" aria-label="Call Studio O'Brien">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <a class="sticky-cta-btn" href="/contact">
+    <span>Start a Website</span>
+    <svg viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('sticky-cta');
+  if(!bar) return;
+  function onScroll(){
+    var show = window.scrollY > 600;
+    bar.classList.toggle('is-visible', show);
+    bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
 </body>
