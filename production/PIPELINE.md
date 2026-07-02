@@ -31,7 +31,7 @@ niches for local lead-gen that are MISSING, in build order:
 
 | Priority | Archetype | Why first | Status |
 |----------|-----------|-----------|--------|
-| 1 | **Trades / contractor** (roofing or HVAC) | Highest-value local clients; nothing in portfolio proves we speak their language; pairs with future /contractor-trades-website-design page | **SHIPPED 2026-07-02** as Ridgeline Roofing Co. (preview/ridgeline-roofing.html, wired into grid) |
+| 1 | **Trades / contractor** (roofing or HVAC) | Highest-value local clients; nothing in portfolio proves we speak their language; pairs with future /contractor-trades-website-design page | concept approved 2026-07-02 (preview/ridgeline-roofing.html); HOLD grid wiring + deploy until built out as a complete project, per Jarred |
 | 2 | **Auto repair / detail shop** | Every town has three; heavy phone-call intent; strong visual material (cars, shop) | queued |
 | 3 | **Salon / barbershop / spa** | Booking-driven; underserved locally; broadens audience beyond male-coded trades | queued |
 | 4 | **Landscaping / lawn care** | Seasonal quote-driven; before/after imagery sells itself | queued |
@@ -73,9 +73,9 @@ post outlines (Track C). Raw is fine; structure is the studio's job.
 ---
 
 ## Immediate next actions
-1. **[J]** Name the Track A businesses (even just first names of towns/types)
-2. **[C]** Build archetype #2 (auto repair / detail shop) — needs no input, starts on request
+1. **[C]** Build Ridgeline out as a complete project (scope set by Jarred), then he pushes examples himself
+2. **[J]** Name the Track A businesses (even just first names of towns/types)
 3. **[C→D]** Draft blog posts #1 + #3 in one DeepSeek batch once outlines approved
 4. **[J]** First intake filled = first real spec site built
 
-*Last updated: 2026-07-02 (archetype #1 Ridgeline Roofing shipped)*
+*Last updated: 2026-07-02 (archetype #1 concept approved, complete-project build pending)*
