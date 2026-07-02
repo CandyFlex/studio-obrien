@@ -5,184 +5,248 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ridgeline Roofing Co. | Roofing Contractor in Shelby, NC</title>
 <meta name="robots" content="noindex">
+<!--
+  Concept project by Studio O'Brien. Fictional business.
+  Photography: Pexels free license (photos 33404248, 33501308 by Ryan Stephens; 18098285).
+  Downloaded to ridgeline-assets/, no attribution required.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="ridgeline-assets/hero.webp" fetchpriority="high">
 <style>
 :root{
   --bone:#F1EFE7;
-  --bone-2:#E9E6DB;
+  --bone-2:#E8E4D8;
+  --card:#F6F4ED;
   --forest:#1C3A2D;
-  --forest-deep:#132A20;
+  --forest-deep:#12271D;
   --ink:#1A241E;
-  --ink-2:#43524A;
+  --ink-2:#4A5850;
   --amber:#DFA53A;
   --amber-deep:#B9832A;
-  --hairline:rgba(28,58,45,.18);
-  --hairline-light:rgba(241,239,231,.22);
+  --error:#A03B2E;
+  --line:rgba(28,58,45,.16);
+  --line-soft:rgba(28,58,45,.09);
+  --line-light:rgba(241,239,231,.2);
+  --ease:cubic-bezier(.32,.72,0,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth}
 body{
   font-family:'Barlow',system-ui,sans-serif;
-  background:var(--bone);
-  color:var(--ink);
-  font-size:17px;
-  line-height:1.55;
+  background:var(--bone);color:var(--ink);
+  font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+/* film grain, fixed and pointer-safe */
+body::after{
+  content:"";position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 img,svg{display:block}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
-h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:.94;letter-spacing:.005em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,52px)}
+h1,h2{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:.94;letter-spacing:.005em}
+h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.02}
+section{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
 
-/* ===== TOPBAR ===== */
-.topbar{border-bottom:1px solid var(--hairline)}
-.topbar-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
-.brand{display:flex;align-items:center;gap:11px}
-.brand-mark{width:30px;height:22px;flex:none}
-.brand-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-.brand-name span{color:var(--ink-2);font-weight:600}
-.topnav{display:flex;gap:32px;font-weight:500;font-size:15.5px;color:var(--ink-2)}
-.topnav a:hover{color:var(--ink)}
-.top-actions{display:flex;align-items:center;gap:22px}
-.top-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.03em;white-space:nowrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+/* ===== scroll reveal ===== */
+.rv{opacity:0;transform:translateY(26px);filter:blur(5px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  *{transition-duration:.01ms!important;animation:none!important}
+}
+
+/* ===== double-bezel shells ===== */
+.shell{background:rgba(28,58,45,.06);border:1px solid var(--line-soft);border-radius:22px;padding:7px}
+.shell>.core{border-radius:15px;overflow:hidden;position:relative}
+.shell-dark{background:rgba(241,239,231,.07);border-color:var(--line-light)}
+.shell-dark>.core{box-shadow:inset 0 1px 0 rgba(241,239,231,.12)}
+
+/* ===== pill buttons ===== */
+.pill{
+  display:inline-flex;align-items:center;gap:12px;
   font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;
-  letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;
+  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
   background:var(--amber);color:var(--forest-deep);
-  padding:13px 26px;border:none;cursor:pointer;
-  transition:background .15s ease,transform .1s ease;
+  border:none;cursor:pointer;border-radius:999px;
+  padding:10px 10px 10px 26px;
+  transition:background .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease);
+  box-shadow:0 10px 30px -14px rgba(28,58,45,.45);
 }
-.btn:hover{background:var(--amber-deep);color:var(--bone)}
-.btn:active{transform:translateY(1px)}
+.pill .pico{
+  width:34px;height:34px;border-radius:999px;background:rgba(18,39,29,.14);
+  display:flex;align-items:center;justify-content:center;flex:none;
+  transition:transform .5s var(--ease),background .5s var(--ease);
+}
+.pill .pico svg{width:14px;height:14px;stroke:var(--forest-deep);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pill:hover{background:var(--amber-deep);color:var(--bone)}
+.pill:hover .pico{transform:translate(2px,-1px) scale(1.06);background:rgba(241,239,231,.22)}
+.pill:hover .pico svg{stroke:var(--bone)}
+.pill:active{transform:scale(.98)}
 
-/* ===== HERO ===== */
-.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);min-height:620px;border-bottom:1px solid var(--hairline)}
-.hero-copy{
-  padding:clamp(40px,5.5vw,72px) clamp(28px,4.5vw,72px) clamp(44px,5vw,72px) clamp(20px,calc((100vw - 1280px)/2 + 56px),9999px);
-  display:flex;flex-direction:column;justify-content:center;
+/* ===== floating nav ===== */
+.nav{position:fixed;top:18px;left:0;right:0;z-index:90;display:flex;justify-content:center;pointer-events:none}
+.nav-pill{
+  pointer-events:auto;display:flex;align-items:center;gap:26px;
+  background:rgba(241,239,231,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:999px;
+  padding:9px 10px 9px 20px;
+  box-shadow:0 18px 50px -22px rgba(18,39,29,.5), inset 0 1px 0 rgba(255,255,255,.5);
 }
-.hero-eyebrow{
-  font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-2);margin-bottom:26px;
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:26px;height:19px;flex:none}
+.brand-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.brand-name span{color:var(--ink-2);font-weight:600}
+.nav-links{display:flex;gap:22px;font-weight:500;font-size:15px;color:var(--ink-2)}
+.nav-links a{transition:color .4s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:.03em;white-space:nowrap}
+.nav .pill{font-size:16px;padding:7px 7px 7px 18px;box-shadow:none}
+.nav .pill .pico{width:28px;height:28px}
+
+/* ===== hero ===== */
+.hero{padding:clamp(120px,14vh,150px) 0 clamp(56px,7vw,88px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,4.5vw,64px);align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
+  background:rgba(255,255,255,.4);
 }
-.hero-eyebrow b{color:var(--forest);font-weight:600}
-.hero h1{
-  font-weight:700;font-size:clamp(46px,5.4vw,77px);
-  max-width:7.9em;color:var(--forest-deep);
-}
-.hero-sub{
-  margin-top:26px;font-size:clamp(16px,1.35vw,19px);color:var(--ink-2);
-  max-width:44ch;font-weight:400;
-}
-.hero-cta{margin-top:38px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.hero-call{font-size:16px;color:var(--ink-2)}
-.hero-call a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:.03em;color:var(--forest-deep);border-bottom:2px solid var(--amber);padding-bottom:1px;margin-left:7px}
+.hero h1{font-weight:700;font-size:clamp(44px,4.6vw,66px);max-width:7.9em;color:var(--forest-deep);margin-top:22px}
+.hero-sub{margin-top:22px;font-size:clamp(16px,1.3vw,19px);color:var(--ink-2);max-width:42ch}
+.hero-cta{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero-call{font-size:15.5px;color:var(--ink-2)}
+.hero-call a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.03em;color:var(--forest-deep);border-bottom:2px solid var(--amber);padding-bottom:1px;margin-left:6px;transition:color .4s var(--ease)}
 .hero-call a:hover{color:var(--amber-deep)}
+.hero-photo .core{aspect-ratio:4/3}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
 
-/* hero graphic panel */
-.hero-panel{
-  position:relative;overflow:hidden;background:var(--forest);
-  background-image:repeating-linear-gradient(0deg,transparent 0 54px,rgba(241,239,231,.07) 54px 56px);
-  min-height:360px;
-}
-.hero-panel svg{position:absolute;inset:0;width:100%;height:100%}
-
-/* ===== TRUST BAR ===== */
-.trust{background:var(--forest-deep);color:var(--bone)}
+/* ===== trust strip ===== */
+.trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .trust-in{display:grid;grid-template-columns:1fr 1fr 1fr}
-.trust-item{
-  padding:22px 28px;font-weight:500;font-size:15.5px;letter-spacing:.01em;
-  border-left:1px solid var(--hairline-light);color:rgba(241,239,231,.92);
-}
+.trust-item{padding:20px 26px;font-weight:500;font-size:15.5px;border-left:1px solid var(--line-soft);color:var(--ink-2)}
 .trust-item:first-child{border-left:none;padding-left:0}
-.trust-item b{color:var(--amber);font-weight:600}
+.trust-item b{color:var(--forest);font-weight:600}
 
-/* ===== SERVICES ===== */
-.services{padding:clamp(64px,8vw,110px) 0 clamp(72px,9vw,120px)}
-.services h2{font-weight:700;font-size:clamp(40px,4.6vw,64px);color:var(--forest-deep);max-width:14ch}
-.services-lead{margin-top:18px;color:var(--ink-2);max-width:52ch;font-size:17.5px}
-.svc-grid{
-  margin-top:52px;display:grid;gap:14px;
-  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
-  grid-template-rows:repeat(3,minmax(150px,auto));
+/* ===== services bento ===== */
+.services{padding:clamp(88px,11vw,150px) 0}
+.services h2{font-weight:700;font-size:clamp(38px,4.4vw,60px);color:var(--forest-deep)}
+.services-lead{margin-top:16px;color:var(--ink-2);max-width:52ch}
+.svc-grid{margin-top:48px;display:grid;gap:16px;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:repeat(3,minmax(140px,auto))}
+.svc-feature{grid-row:1 / span 3}
+.svc-feature .core{height:100%;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end}
+.svc-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-feature .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,39,29,.92) 0%,rgba(18,39,29,.45) 45%,rgba(18,39,29,.06) 75%)}
+.svc-feature .svc-body{position:relative;padding:30px 32px}
+.svc-tag{
+  position:absolute;top:22px;left:22px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--forest-deep);
+  background:var(--amber);padding:6px 14px;border-radius:999px;
 }
-.svc{
-  border:1px solid var(--hairline);padding:30px 32px;
-  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;
-  background:var(--bone);
-}
-.svc h3{font-weight:700;font-size:29px;color:var(--forest-deep);letter-spacing:.02em}
+.svc-feature h3{color:var(--bone);font-size:clamp(30px,2.6vw,40px)}
+.svc-feature p{color:rgba(241,239,231,.82);font-size:15.5px;max-width:44ch;margin-top:8px}
+.svc .core{background:var(--card);padding:26px 28px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+.svc-line{width:40px;height:3px;background:var(--amber);border-radius:2px;margin-bottom:6px}
+.svc h3{font-weight:700;font-size:26px;color:var(--forest-deep)}
 .svc p{color:var(--ink-2);font-size:15.5px;max-width:46ch}
-.svc-feature{
-  grid-row:1 / span 3;justify-content:space-between;
-  background:var(--forest);border-color:var(--forest);
-  background-image:repeating-linear-gradient(-45deg,transparent 0 34px,rgba(241,239,231,.05) 34px 35px);
-  padding:36px 38px;
-}
-.svc-feature h3{color:var(--bone);font-size:clamp(34px,3vw,44px)}
-.svc-feature p{color:rgba(241,239,231,.78);max-width:38ch}
-.svc-feature .svc-tag{
-  align-self:flex-start;font-family:'Barlow Condensed',sans-serif;font-weight:700;
-  font-size:16px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--forest-deep);background:var(--amber);padding:7px 14px;
-}
-.svc-line{width:44px;height:3px;background:var(--amber);margin-bottom:4px}
 
-/* ===== LAYERS (blueprint) ===== */
-.layers{background:var(--forest-deep);color:var(--bone);padding:clamp(70px,9vw,120px) 0}
-.layers-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,90px);align-items:center}
-.layers h2{font-weight:700;font-size:clamp(38px,4.4vw,60px);color:var(--bone)}
-.layers-body{margin-top:22px;color:rgba(241,239,231,.75);max-width:42ch;font-size:17px}
-.layers-note{
-  margin-top:34px;padding:18px 22px;border:1px solid var(--hairline-light);
-  font-size:15.5px;color:rgba(241,239,231,.88);max-width:40ch;
-}
-.layers-note b{color:var(--amber);font-weight:600}
+/* ===== standard (layers) ===== */
+.standard{background:var(--forest-deep);color:var(--bone);padding:clamp(88px,11vw,150px) 0}
+.standard-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,84px);align-items:center}
+.standard h2{font-weight:700;font-size:clamp(36px,4.2vw,56px);color:var(--bone)}
+.standard-body{margin-top:20px;color:rgba(241,239,231,.75);max-width:42ch}
+.standard-note{margin-top:30px}
+.standard-note .core{background:rgba(241,239,231,.05);padding:18px 22px;font-size:15.5px;color:rgba(241,239,231,.88);max-width:42ch}
+.standard-note b{color:var(--amber);font-weight:600}
 .diagram{width:100%;height:auto}
 .diagram text{font-family:'Barlow',sans-serif;font-size:15px;font-weight:500;fill:rgba(241,239,231,.92)}
 .diagram .dnum{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;fill:var(--amber)}
-.layer-legend{display:none;margin-top:8px}
-.layer-legend li{
-  list-style:none;display:flex;gap:14px;align-items:baseline;
-  padding:10px 0;border-top:1px solid var(--hairline-light);
-  font-size:15.5px;color:rgba(241,239,231,.9);
-}
+.layer-legend{display:none;margin-top:6px}
+.layer-legend li{list-style:none;display:flex;gap:14px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line-light);font-size:15.5px;color:rgba(241,239,231,.9)}
 .layer-legend li:first-child{border-top:none}
 .layer-legend b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--amber)}
 
-/* ===== CTA BAND ===== */
-.cta{background:var(--forest);border-top:1px solid var(--hairline-light);padding:clamp(64px,8vw,104px) 0}
-.cta-in{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:40px}
-.cta h2{font-weight:700;font-size:clamp(44px,5.4vw,76px);color:var(--bone);max-width:6.5em}
-.cta-sub{margin-top:18px;color:rgba(241,239,231,.75);max-width:40ch;font-size:17px}
-.cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:6px}
-.cta-right .btn{font-size:21px;padding:17px 34px}
-.cta-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,2.6vw,38px);letter-spacing:.03em;color:var(--bone)}
-.cta-phone span{display:block;font-family:'Barlow',sans-serif;font-weight:500;font-size:14.5px;letter-spacing:.01em;color:rgba(241,239,231,.65);text-transform:none;margin-bottom:2px}
+/* ===== photo cta band ===== */
+.band{position:relative;overflow:hidden;padding:clamp(96px,13vw,170px) 0}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band .scrim{position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,39,29,.94) 0%,rgba(18,39,29,.78) 45%,rgba(18,39,29,.35) 100%)}
+.band .wrap{position:relative}
+.band h2{font-weight:700;font-size:clamp(42px,5vw,70px);color:var(--bone);max-width:6.5em}
+.band-sub{margin-top:16px;color:rgba(241,239,231,.8);max-width:40ch}
+.band-cta{margin-top:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.band-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,2.2vw,30px);letter-spacing:.03em;color:var(--bone)}
+.band-phone:hover{color:var(--amber)}
 
-/* ===== FOOTER ===== */
-.footer{background:var(--forest-deep);color:rgba(241,239,231,.72);padding:34px 0 40px}
+/* ===== estimate form ===== */
+.estimate{padding:clamp(88px,11vw,150px) 0}
+.est-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,84px);align-items:start}
+.estimate h2{font-weight:700;font-size:clamp(38px,4.4vw,60px);color:var(--forest-deep)}
+.est-lead{margin-top:16px;color:var(--ink-2);max-width:42ch}
+.est-steps{margin-top:34px}
+.est-steps li{list-style:none;display:flex;gap:16px;align-items:baseline;padding:15px 0;border-top:1px solid var(--line-soft);font-size:16px;color:var(--ink-2)}
+.est-steps li:first-child{border-top:none}
+.est-steps b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;color:var(--amber);flex:none}
+.est-call{margin-top:26px;font-size:15.5px;color:var(--ink-2)}
+.est-call a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.03em;color:var(--forest-deep);border-bottom:2px solid var(--amber);padding-bottom:1px;margin-left:6px}
+.form-card .core{background:var(--card);padding:clamp(26px,2.6vw,38px)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;font-size:14.5px;letter-spacing:.02em;color:var(--forest-deep);margin-bottom:7px}
+.field label small{font-weight:500;color:var(--ink-2)}
+.field input,.field select,.field textarea{
+  width:100%;font-family:'Barlow',sans-serif;font-size:16px;color:var(--ink);
+  background:var(--bone);border:1px solid var(--line);border-radius:12px;
+  padding:12px 15px;transition:border-color .4s var(--ease),box-shadow .4s var(--ease);
+  appearance:none;-webkit-appearance:none;
+}
+.field textarea{min-height:96px;resize:vertical}
+.field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%234A5850' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(223,165,58,.35);
+}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--error)}
+.field .err{display:none;margin-top:6px;font-size:14px;font-weight:500;color:var(--error)}
+.field.invalid .err{display:block}
+.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:8px}
+.form-note{font-size:13.5px;color:var(--ink-2);max-width:30ch}
+.success{display:none;text-align:left;padding:14px 4px}
+.success.show{display:block}
+.success svg{width:44px;height:33px;margin-bottom:18px}
+.success h3{font-size:32px;color:var(--forest-deep)}
+.success p{margin-top:12px;color:var(--ink-2);max-width:38ch}
+.success a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:.03em;color:var(--forest-deep);border-bottom:2px solid var(--amber);padding-bottom:1px}
+
+/* ===== footer ===== */
+.footer{background:var(--forest-deep);color:rgba(241,239,231,.72);padding:36px 0 42px}
 .footer-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
 .footer .brand-name{color:var(--bone);font-size:18px}
 .towns{display:flex;flex-wrap:wrap;font-size:14.5px;font-weight:500}
-.towns li{list-style:none;padding:0 14px;border-left:1px solid var(--hairline-light)}
+.towns li{list-style:none;padding:0 14px;border-left:1px solid var(--line-light)}
 .towns li:first-child{border-left:none;padding-left:0}
 .footer-legal{font-size:13.5px;color:rgba(241,239,231,.5);width:100%;margin-top:10px}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width:1080px){
-  .topnav{display:none}
-  .hero{grid-template-columns:1fr}
-  .hero-copy{padding:clamp(40px,7vw,64px) clamp(20px,4vw,56px)}
+/* ===== responsive ===== */
+@media (max-width:1060px){
+  .nav-links{display:none}
+  .hero-grid,.standard-grid,.est-grid{grid-template-columns:1fr}
+  .hero{padding-top:110px}
   .hero h1{max-width:12ch}
-  .hero-panel{min-height:300px}
   .svc-grid{grid-template-columns:1fr;grid-template-rows:none}
-  .svc-feature{grid-row:auto;min-height:320px}
-  .layers-grid{grid-template-columns:1fr}
+  .svc-feature{grid-row:auto}
+  .svc-feature .core{min-height:420px}
   .trust-in{grid-template-columns:1fr}
-  .trust-item{border-left:none;border-top:1px solid var(--hairline-light);padding:16px 0}
+  .trust-item{border-left:none;border-top:1px solid var(--line-soft);padding:14px 0}
   .trust-item:first-child{border-top:none}
 }
 @media (max-width:700px){
@@ -190,170 +254,246 @@ h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line
   .layer-legend{display:block}
 }
 @media (max-width:560px){
-  .top-phone{display:none}
+  .nav{top:12px}
+  .nav-pill{gap:14px;padding-left:16px}
+  .nav-phone{display:none}
   .brand-name span{display:none}
-  .topbar .btn{font-size:16px;padding:11px 18px}
-  .hero h1{font-size:clamp(46px,13.5vw,58px)}
-  .hero-cta{gap:16px}
-  .svc,.svc-feature{padding:26px 22px}
-  .cta-in{align-items:flex-start;flex-direction:column}
+  .nav .pill{font-size:15px;padding:6px 6px 6px 14px}
+  .hero{padding-top:96px}
+  .hero h1{font-size:clamp(42px,12.5vw,54px)}
+  .svc-feature .core{min-height:340px}
+  .band h2{max-width:none}
 }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="wrap topbar-in">
-    <a class="brand" href="#">
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-pill">
+    <a class="brand" href="#top" aria-label="Ridgeline Roofing Co. home">
       <svg class="brand-mark" viewBox="0 0 30 22" fill="none" aria-hidden="true">
         <path d="M1 21 L15 2 L29 21" stroke="#1C3A2D" stroke-width="3" stroke-linecap="square"/>
         <path d="M9 21 L15 13 L21 21" stroke="#DFA53A" stroke-width="3" stroke-linecap="square"/>
       </svg>
       <span class="brand-name">Ridgeline <span>Roofing Co.</span></span>
     </a>
-    <nav class="topnav">
+    <nav class="nav-links" aria-label="Site">
       <a href="#services">Services</a>
-      <a href="#layers">How We Build</a>
-      <a href="#contact">Service Area</a>
+      <a href="#standard">Our Standard</a>
     </nav>
-    <div class="top-actions">
-      <span class="top-phone">(704) 555-0417</span>
-      <a class="btn" href="#contact">Get a Free Inspection</a>
-    </div>
+    <a class="nav-phone" href="tel:+17045550417">(704) 555-0417</a>
+    <a class="pill" href="#estimate">Get a Free Inspection
+      <span class="pico"><svg viewBox="0 0 14 14"><path d="M2 12 L12 2 M5 2h7v7"/></svg></span>
+    </a>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-copy">
-    <p class="hero-eyebrow"><b>Roofing Contractor</b> &middot; Shelby, North Carolina</p>
-    <h1>The last roof your house will need.</h1>
-    <p class="hero-sub">New roofs, repairs, and storm work across Cleveland County. Straight quotes, clean job sites, and a warranty we honor.</p>
-    <div class="hero-cta">
-      <a class="btn" href="#contact">Get a Free Inspection</a>
-      <p class="hero-call">or call <a href="tel:+17045550417">(704) 555-0417</a></p>
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow rv">Roofing Contractor &middot; Shelby, NC</p>
+      <h1 class="rv d1">The last roof your house will need.</h1>
+      <p class="hero-sub rv d2">New roofs, repairs, and storm work across Cleveland County. Straight quotes, clean job sites, and a warranty we honor.</p>
+      <div class="hero-cta rv d3">
+        <a class="pill" href="#estimate">Get a Free Inspection
+          <span class="pico"><svg viewBox="0 0 14 14"><path d="M2 12 L12 2 M5 2h7v7"/></svg></span>
+        </a>
+        <p class="hero-call">or call <a href="tel:+17045550417">(704) 555-0417</a></p>
+      </div>
     </div>
-  </div>
-  <div class="hero-panel" aria-hidden="true">
-    <svg viewBox="0 0 620 620" preserveAspectRatio="xMidYMax slice" fill="none">
-      <path d="M-40 560 L240 220 L520 560" stroke="rgba(241,239,231,.34)" stroke-width="2"/>
-      <path d="M60 560 L240 342 L420 560" stroke="rgba(241,239,231,.2)" stroke-width="2"/>
-      <path d="M150 620 L400 320 L660 620" stroke="#F1EFE7" stroke-width="3"/>
-      <path d="M400 320 L660 620" stroke="#DFA53A" stroke-width="6"/>
-      <path d="M244 620 L400 434 L558 620" stroke="rgba(241,239,231,.5)" stroke-width="2"/>
-      <circle cx="400" cy="320" r="7" fill="#DFA53A"/>
-    </svg>
+    <div class="shell hero-photo rv d2">
+      <div class="core">
+        <img src="ridgeline-assets/hero.webp" alt="Roofer laying architectural shingles over fresh underlayment with a nail gun" width="1600" height="1067" fetchpriority="high">
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- TRUST STRIP -->
 <section class="trust">
   <div class="wrap trust-in">
-    <p class="trust-item"><b>Licensed and insured</b> in North Carolina</p>
-    <p class="trust-item"><b>Free inspections</b> with a photo report you keep</p>
-    <p class="trust-item"><b>Workmanship warranty</b> on every job we take</p>
+    <p class="trust-item rv"><b>Licensed and insured</b> in North Carolina</p>
+    <p class="trust-item rv d1"><b>Free inspections</b> with a photo report you keep</p>
+    <p class="trust-item rv d2"><b>Workmanship warranty</b> on every job we take</p>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="wrap">
-    <h2>What we do</h2>
-    <p class="services-lead">One crew, four jobs. If your problem is not on this list, we will tell you who to call instead.</p>
+    <h2 class="rv">What we do</h2>
+    <p class="services-lead rv d1">One crew, four jobs. If your problem is not on this list, we will tell you who to call instead.</p>
     <div class="svc-grid">
-      <div class="svc svc-feature">
-        <span class="svc-tag">Most Requested</span>
-        <div>
-          <h3>Roof Replacement</h3>
-          <p>Full tear-off and re-deck when repair money would be wasted. Architectural shingle or standing-seam metal, installed to manufacturer spec so the material warranty actually holds.</p>
+      <div class="shell svc-feature rv">
+        <div class="core">
+          <img src="ridgeline-assets/jobsite.webp" alt="Ridgeline crew mid-replacement on a historic home, decking exposed and underlayment going down" width="1400" height="933" loading="lazy">
+          <div class="scrim"></div>
+          <span class="svc-tag">Most Requested</span>
+          <div class="svc-body">
+            <h3>Roof Replacement</h3>
+            <p>Full tear-off and re-deck when repair money would be wasted. Architectural shingle or standing-seam metal, installed to manufacturer spec so the material warranty actually holds.</p>
+          </div>
         </div>
       </div>
-      <div class="svc">
-        <div class="svc-line"></div>
-        <h3>Roof Repair</h3>
-        <p>Leaks, flashing, missing shingles. Small problems fixed before they become ceiling stains.</p>
+      <div class="shell svc rv d1">
+        <div class="core">
+          <div class="svc-line"></div>
+          <h3>Roof Repair</h3>
+          <p>Leaks, flashing, missing shingles. Small problems fixed before they become ceiling stains.</p>
+        </div>
       </div>
-      <div class="svc">
-        <div class="svc-line"></div>
-        <h3>Storm &amp; Insurance Work</h3>
-        <p>Wind and hail documentation, emergency tarping, and a straight answer on whether a claim is worth filing.</p>
+      <div class="shell svc rv d2">
+        <div class="core">
+          <div class="svc-line"></div>
+          <h3>Storm &amp; Insurance Work</h3>
+          <p>Wind and hail documentation, emergency tarping, and a straight answer on whether a claim is worth filing.</p>
+        </div>
       </div>
-      <div class="svc">
-        <div class="svc-line"></div>
-        <h3>Gutters &amp; Exteriors</h3>
-        <p>Seamless gutters, guards, fascia, and soffit. The edges that keep water away from your foundation.</p>
+      <div class="shell svc rv d3">
+        <div class="core">
+          <div class="svc-line"></div>
+          <h3>Gutters &amp; Exteriors</h3>
+          <p>Seamless gutters, guards, fascia, and soffit. The edges that keep water away from your foundation.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LAYERS -->
-<section class="layers" id="layers">
-  <div class="wrap layers-grid">
+<!-- OUR STANDARD -->
+<section class="standard" id="standard">
+  <div class="wrap standard-grid">
     <div>
-      <h2>What goes on your roof, in order</h2>
-      <p class="layers-body">A roof is a system, not a stack of shingles. Skip a layer and the warranty becomes a piece of paper. We build all five, every time.</p>
-      <p class="layers-note"><b>You see each stage.</b> Our crew photographs the deck, the barriers, and the finished ridge, and the album is yours before the invoice is.</p>
+      <h2 class="rv">What goes on your roof, in order</h2>
+      <p class="standard-body rv d1">A roof is a system, not a stack of shingles. Skip a layer and the warranty becomes a piece of paper. We build all five, every time.</p>
+      <div class="shell shell-dark standard-note rv d2">
+        <p class="core"><b>You see each stage.</b> Our crew photographs the deck, the barriers, and the finished ridge, and the album is yours before the invoice is.</p>
+      </div>
     </div>
-    <svg class="diagram" viewBox="0 0 710 480" fill="none" role="img" aria-label="Exploded diagram of the five layers of a roof system">
-      <!-- five uniform plates, exploded stack, shingle layer highlighted -->
-      <!-- 5: ridge vent -->
-      <g>
-        <polygon points="110,78 300,14 430,58 240,122" stroke="rgba(241,239,231,.85)" stroke-width="1.8" fill="rgba(241,239,231,.06)"/>
-        <line x1="430" y1="58" x2="480" y2="58" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-        <text x="492" y="55" class="dnum">5</text>
-        <text x="508" y="63">Ridge vent</text>
-      </g>
-      <!-- 4: shingles -->
-      <g>
-        <polygon points="110,160 300,96 430,140 240,204" stroke="#DFA53A" stroke-width="2.5" fill="rgba(223,165,58,.14)"/>
-        <line x1="430" y1="140" x2="480" y2="140" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-        <text x="492" y="137" class="dnum">4</text>
-        <text x="508" y="145">Architectural shingles</text>
-      </g>
-      <!-- 3: underlayment -->
-      <g>
-        <polygon points="110,242 300,178 430,222 240,286" stroke="rgba(241,239,231,.7)" stroke-width="1.6" fill="rgba(241,239,231,.05)"/>
-        <line x1="430" y1="222" x2="480" y2="222" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-        <text x="492" y="219" class="dnum">3</text>
-        <text x="508" y="227">Synthetic underlayment</text>
-      </g>
-      <!-- 2: ice & water -->
-      <g>
-        <polygon points="110,324 300,260 430,304 240,368" stroke="rgba(241,239,231,.6)" stroke-width="1.6" fill="rgba(241,239,231,.04)"/>
-        <line x1="430" y1="304" x2="480" y2="304" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-        <text x="492" y="301" class="dnum">2</text>
-        <text x="508" y="309">Ice and water shield</text>
-      </g>
-      <!-- 1: decking -->
-      <g>
-        <polygon points="110,406 300,342 430,386 240,450" stroke="rgba(241,239,231,.5)" stroke-width="1.6" fill="rgba(241,239,231,.03)"/>
-        <line x1="430" y1="386" x2="480" y2="386" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-        <text x="492" y="383" class="dnum">1</text>
-        <text x="508" y="391">Decking, checked for rot</text>
-      </g>
-    </svg>
-    <ol class="layer-legend">
-      <li><b>5</b>Ridge vent</li>
-      <li><b>4</b>Architectural shingles</li>
-      <li><b>3</b>Synthetic underlayment</li>
-      <li><b>2</b>Ice and water shield</li>
-      <li><b>1</b>Decking, checked for rot</li>
-    </ol>
+    <div>
+      <svg class="diagram" viewBox="0 0 710 480" fill="none" role="img" aria-label="Exploded diagram of the five layers of a roof system">
+        <g class="rv d5">
+          <polygon points="110,78 300,14 430,58 240,122" stroke="rgba(241,239,231,.85)" stroke-width="1.8" fill="rgba(241,239,231,.06)"/>
+          <line x1="430" y1="58" x2="480" y2="58" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
+          <text x="492" y="55" class="dnum">5</text>
+          <text x="508" y="63">Ridge vent</text>
+        </g>
+        <g class="rv d4">
+          <polygon points="110,160 300,96 430,140 240,204" stroke="#DFA53A" stroke-width="2.5" fill="rgba(223,165,58,.14)"/>
+          <line x1="430" y1="140" x2="480" y2="140" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
+          <text x="492" y="137" class="dnum">4</text>
+          <text x="508" y="145">Architectural shingles</text>
+        </g>
+        <g class="rv d3">
+          <polygon points="110,242 300,178 430,222 240,286" stroke="rgba(241,239,231,.7)" stroke-width="1.6" fill="rgba(241,239,231,.05)"/>
+          <line x1="430" y1="222" x2="480" y2="222" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
+          <text x="492" y="219" class="dnum">3</text>
+          <text x="508" y="227">Synthetic underlayment</text>
+        </g>
+        <g class="rv d2">
+          <polygon points="110,324 300,260 430,304 240,368" stroke="rgba(241,239,231,.6)" stroke-width="1.6" fill="rgba(241,239,231,.04)"/>
+          <line x1="430" y1="304" x2="480" y2="304" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
+          <text x="492" y="301" class="dnum">2</text>
+          <text x="508" y="309">Ice and water shield</text>
+        </g>
+        <g class="rv d1">
+          <polygon points="110,406 300,342 430,386 240,450" stroke="rgba(241,239,231,.5)" stroke-width="1.6" fill="rgba(241,239,231,.03)"/>
+          <line x1="430" y1="386" x2="480" y2="386" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
+          <text x="492" y="383" class="dnum">1</text>
+          <text x="508" y="391">Decking, checked for rot</text>
+        </g>
+      </svg>
+      <ol class="layer-legend">
+        <li><b>5</b>Ridge vent</li>
+        <li><b>4</b>Architectural shingles</li>
+        <li><b>3</b>Synthetic underlayment</li>
+        <li><b>2</b>Ice and water shield</li>
+        <li><b>1</b>Decking, checked for rot</li>
+      </ol>
+    </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section class="cta" id="contact">
-  <div class="wrap cta-in">
-    <div>
-      <h2>Storm season does not wait.</h2>
-      <p class="cta-sub">Free inspections year-round. If your roof is fine, we tell you it is fine and leave it alone.</p>
+<!-- PHOTO CTA BAND -->
+<section class="band">
+  <img src="ridgeline-assets/home.webp" alt="" width="1400" height="1400" loading="lazy">
+  <div class="scrim"></div>
+  <div class="wrap">
+    <h2 class="rv">Storm season does not wait.</h2>
+    <p class="band-sub rv d1">Free inspections year-round. If your roof is fine, we tell you it is fine and leave it alone.</p>
+    <div class="band-cta rv d2">
+      <a class="pill" href="#estimate">Get a Free Inspection
+        <span class="pico"><svg viewBox="0 0 14 14"><path d="M2 12 L12 2 M5 2h7v7"/></svg></span>
+      </a>
+      <a class="band-phone" href="tel:+17045550417">(704) 555-0417</a>
     </div>
-    <div class="cta-right">
-      <a class="btn" href="tel:+17045550417">Get a Free Inspection</a>
-      <p class="cta-phone"><span>Talk to a roofer, not a call center</span>(704) 555-0417</p>
+  </div>
+</section>
+
+<!-- ESTIMATE FORM -->
+<section class="estimate" id="estimate">
+  <div class="wrap est-grid">
+    <div>
+      <h2 class="rv">Book your free inspection</h2>
+      <p class="est-lead rv d1">Tell us where the roof is and what it is doing. We call back within one business day.</p>
+      <ol class="est-steps rv d2">
+        <li><b>1</b>We walk the roof and the attic, and photograph everything</li>
+        <li><b>2</b>You get the photo report and a fixed quote, in writing</li>
+        <li><b>3</b>If the roof is fine, we say so and leave it alone</li>
+      </ol>
+      <p class="est-call rv d3">Rather talk to a person? <a href="tel:+17045550417">(704) 555-0417</a></p>
+    </div>
+    <div class="shell form-card rv d2">
+      <div class="core">
+        <form id="inspect-form" novalidate>
+          <div class="field" data-check="name">
+            <label for="f-name">Full name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <p class="err" id="f-name-err">Please give us a name to ask for.</p>
+          </div>
+          <div class="field" data-check="phone">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+            <p class="err" id="f-phone-err">We need a 10-digit phone number to call you back.</p>
+          </div>
+          <div class="field" data-check="address">
+            <label for="f-address">Property address</label>
+            <input id="f-address" name="address" type="text" autocomplete="street-address" required>
+            <p class="err" id="f-address-err">We need the address so we can look at the right roof.</p>
+          </div>
+          <div class="field">
+            <label for="f-service">What do you need?</label>
+            <select id="f-service" name="service">
+              <option>Not sure yet</option>
+              <option>Roof replacement</option>
+              <option>Roof repair</option>
+              <option>Storm or insurance help</option>
+              <option>Gutters or exteriors</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-notes">Anything else? <small>(optional)</small></label>
+            <textarea id="f-notes" name="notes" placeholder=""></textarea>
+          </div>
+          <div class="form-foot">
+            <button class="pill" type="submit">Get a Free Inspection
+              <span class="pico"><svg viewBox="0 0 14 14"><path d="M2 12 L12 2 M5 2h7v7"/></svg></span>
+            </button>
+            <p class="form-note">No pressure and no spam. Your info goes to Ridgeline and nowhere else.</p>
+          </div>
+        </form>
+        <div class="success" id="form-success" tabindex="-1" role="status">
+          <svg viewBox="0 0 30 22" fill="none" aria-hidden="true">
+            <path d="M1 21 L15 2 L29 21" stroke="#1C3A2D" stroke-width="3" stroke-linecap="square"/>
+            <path d="M9 21 L15 13 L21 21" stroke="#DFA53A" stroke-width="3" stroke-linecap="square"/>
+          </svg>
+          <h3>Request received.</h3>
+          <p id="success-msg">We will call you within one business day to set a time. If water is coming in right now, call us instead:</p>
+          <a href="tel:+17045550417">(704) 555-0417</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -370,9 +510,69 @@ h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line
       <li>Fallston</li>
       <li>Cleveland County</li>
     </ul>
-    <p class="footer-legal">Licensed and insured in North Carolina. Concept site by Studio O'Brien.</p>
+    <p class="footer-legal">Licensed and insured in North Carolina. Concept site by Studio O'Brien. Photography via Pexels.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  /* scroll reveal */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  }
+
+  /* inspection form */
+  var form = document.getElementById('inspect-form');
+  var success = document.getElementById('form-success');
+  var tried = false;
+
+  function fieldOf(name){ return form.querySelector('[data-check="'+name+'"]'); }
+  function digits(v){ return v.replace(/\D/g,''); }
+
+  var checks = {
+    name: function(){ return form.name.value.trim().length >= 2; },
+    phone: function(){ var d = digits(form.phone.value); return d.length === 10 || d.length === 11; },
+    address: function(){ return form.address.value.trim().length >= 6; }
+  };
+
+  function validate(focusFirst){
+    var firstBad = null;
+    Object.keys(checks).forEach(function(k){
+      var ok = checks[k]();
+      var f = fieldOf(k);
+      f.classList.toggle('invalid', !ok);
+      f.querySelector('input').setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if(!ok && !firstBad) firstBad = f;
+    });
+    if(firstBad && focusFirst) firstBad.querySelector('input').focus();
+    return !firstBad;
+  }
+
+  form.addEventListener('input', function(){ if(tried) validate(false); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    tried = true;
+    if(!validate(true)) return;
+    var first = form.name.value.trim().split(/\s+/)[0];
+    document.getElementById('success-msg').textContent =
+      'Thanks, ' + first + '. We will call ' + form.phone.value.trim() +
+      ' within one business day to set a time. If water is coming in right now, call us instead:';
+    form.style.display = 'none';
+    success.classList.add('show');
+    success.focus();
+  });
+})();
+</script>
 
 </body>
 </html>
