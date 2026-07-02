@@ -382,7 +382,7 @@ body.is-menu-open{overflow:hidden}
    so only the laptop and its mint glow cross the boundary. */
 .show-zone::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(180px,26vh,340px);background:linear-gradient(to bottom,#0a0a0b 0%,rgba(10,10,11,.88) 40%,rgba(10,10,11,0) 100%);z-index:1;pointer-events:none}
 .show-zone::after{content:'';position:absolute;bottom:0;left:0;right:0;height:clamp(180px,26vh,340px);background:linear-gradient(to top,#0a0a0b 0%,rgba(10,10,11,.88) 40%,rgba(10,10,11,0) 100%);z-index:0;pointer-events:none}
-@media(max-width:860px){.portfolio-wrap::after{display:none}.show-zone::before,.show-zone::after{display:none}}
+@media(max-width:860px){.show-zone::before,.show-zone::after{display:none}}
 .show-zone > section{position:relative;z-index:1;background:transparent}
 .wt-section.show{overflow:visible;padding-top:0;background:transparent}
 .svc2{background:transparent}
@@ -399,11 +399,21 @@ body.is-menu-open{overflow:hidden}
 .show-col img{width:100%;height:auto;border-radius:0;border:1px solid #1d1d1f;box-shadow:0 24px 60px -34px rgba(0,0,0,.85);opacity:.4;filter:saturate(.85)}
 .show-fall::after{content:'';position:absolute;inset:0;background:radial-gradient(150% 100% at 50% 28%,rgba(10,10,11,.42) 0%,rgba(10,10,11,.8) 58%,#0a0a0b 100%);pointer-events:none}
 @media(max-width:1200px){.show-col--d{display:none}}
-/* ≤860px the falling-cards backdrop is gone, so the desktop overlap trick
-   (portfolio-wrap margin-bottom:-500px in index.css) has nothing to blend
-   into — without this reset the laptop lands ON TOP of the last portfolio
-   cards and their images/titles bleed through around the showcase. */
-@media(max-width:860px){.show-fall{display:none}.wt-section.show{padding-top:clamp(40px,7vw,70px)}.portfolio-wrap{margin-bottom:0}}
+/* ≤860px: keep the pass-behind feel but tame it. The desktop -500px overlap
+   buried the last cards under the laptop (titles bled through the copy), so
+   use a smaller -220px overlap and run the dissolve fade ACROSS the seam:
+   transparent above, fully black just before the zone top line, and solid
+   black over the covered card tails inside the zone. overflow:visible lets
+   the laptop's mint glow flow up through the transition instead of being
+   clipped in a hard line at the zone edge (backdrop is hidden here, so
+   nothing else needs the clip). */
+@media(max-width:860px){
+  .show-fall{display:none}
+  .wt-section.show{padding-top:clamp(40px,7vw,70px)}
+  .show-zone{overflow:visible}
+  .portfolio-wrap{margin-bottom:-220px}
+  .portfolio-wrap::after{bottom:0;height:400px;background:linear-gradient(to bottom,rgba(10,10,11,0) 0%,rgba(10,10,11,.6) 28%,#0a0a0b 45%,#0a0a0b 100%)}
+}
 /* medium+ : overlay the copy CENTERED on the laptop screen (over the scrolling reel)
    with a soft darkened halo (no box, no outline) so the text reads against the movement.
    Mobile keeps the plain stacked text below the laptop. */
