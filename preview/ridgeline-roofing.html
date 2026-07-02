@@ -158,6 +158,14 @@ section{scroll-margin-top:110px}
 .svc-line{width:40px;height:3px;background:var(--amber);border-radius:2px;margin-bottom:6px}
 .svc h3{font-weight:700;font-size:26px;color:var(--forest-deep)}
 .svc p{color:var(--ink-2);font-size:15.5px;max-width:46ch}
+.svc-foot{margin-top:28px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.svc-foot p{color:var(--ink-2);font-size:16px}
+.alink{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--forest-deep);
+  border-bottom:2px solid var(--amber);padding-bottom:1px;transition:color .4s var(--ease);
+}
+.alink:hover{color:var(--amber-deep)}
 
 /* ===== standard (layers) ===== */
 .standard{background:var(--forest-deep);color:var(--bone);padding:clamp(88px,11vw,150px) 0}
@@ -168,12 +176,17 @@ section{scroll-margin-top:110px}
 .standard-note .core{background:rgba(241,239,231,.05);padding:18px 22px;font-size:15.5px;color:rgba(241,239,231,.88);max-width:42ch}
 .standard-note b{color:var(--amber);font-weight:600}
 .diagram{width:100%;height:auto}
-.diagram text{font-family:'Barlow',sans-serif;font-size:15px;font-weight:500;fill:rgba(241,239,231,.92)}
-.diagram .dnum{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;fill:var(--amber)}
-.layer-legend{display:none;margin-top:6px}
-.layer-legend li{list-style:none;display:flex;gap:14px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line-light);font-size:15.5px;color:rgba(241,239,231,.9)}
-.layer-legend li:first-child{border-top:none}
-.layer-legend b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--amber)}
+.diagram polygon{transition:stroke .4s var(--ease),fill .4s var(--ease)}
+.diagram g.hot polygon{stroke:var(--amber);fill:rgba(223,165,58,.16)}
+.lay-list{margin-top:26px}
+.lay-list li{
+  list-style:none;display:flex;gap:14px;align-items:baseline;
+  padding:12px 0;border-top:1px solid var(--line-light);font-size:15.5px;
+}
+.lay-list li:first-child{border-top:none}
+.lay-list b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--amber);flex:none;width:16px}
+.lay-list .lt{color:rgba(241,239,231,.66)}
+.lay-list .lt strong{color:var(--bone);font-weight:600}
 
 /* ===== photo cta band ===== */
 .band{position:relative;overflow:hidden;padding:clamp(96px,13vw,170px) 0}
@@ -185,6 +198,28 @@ section{scroll-margin-top:110px}
 .band-cta{margin-top:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .band-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,2.2vw,30px);letter-spacing:.03em;color:var(--bone)}
 .band-phone:hover{color:var(--amber)}
+
+/* ===== faq ===== */
+.faq{padding:clamp(88px,11vw,150px) 0 0}
+.faq h2{font-weight:700;font-size:clamp(34px,3.8vw,52px);color:var(--forest-deep)}
+.faq-list{margin-top:26px;max-width:780px}
+.faq details{border-top:1px solid var(--line-soft)}
+.faq details:last-child{border-bottom:1px solid var(--line-soft)}
+.faq summary{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  cursor:pointer;padding:17px 2px;list-style:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;
+  letter-spacing:.02em;text-transform:uppercase;color:var(--forest-deep);
+}
+.faq summary::-webkit-details-marker{display:none}
+.fx{
+  width:26px;height:26px;border-radius:999px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex:none;
+  transition:transform .5s var(--ease),background .5s var(--ease),border-color .5s var(--ease);
+}
+.fx svg{width:11px;height:11px;stroke:var(--forest);stroke-width:2;fill:none;stroke-linecap:round}
+.faq details[open] .fx{transform:rotate(45deg);background:var(--amber);border-color:var(--amber)}
+.faq details p{padding:0 2px 20px;color:var(--ink-2);max-width:62ch}
 
 /* ===== estimate form ===== */
 .estimate{padding:clamp(88px,11vw,150px) 0}
@@ -250,8 +285,7 @@ section{scroll-margin-top:110px}
   .trust-item:first-child{border-top:none}
 }
 @media (max-width:700px){
-  .diagram text{display:none}
-  .layer-legend{display:block}
+  .diagram{max-width:420px;margin:6px auto 0}
 }
 @media (max-width:560px){
   .nav{top:12px}
@@ -359,6 +393,10 @@ section{scroll-margin-top:110px}
         </div>
       </div>
     </div>
+    <div class="svc-foot rv">
+      <p>Not sure which one you need? That is what the free inspection is for.</p>
+      <a class="alink" href="#estimate">Book it free</a>
+    </div>
   </div>
 </section>
 
@@ -367,51 +405,36 @@ section{scroll-margin-top:110px}
   <div class="wrap standard-grid">
     <div>
       <h2 class="rv">What goes on your roof, in order</h2>
-      <p class="standard-body rv d1">A roof is a system, not a stack of shingles. Skip a layer and the warranty becomes a piece of paper. We build all five, every time.</p>
-      <div class="shell shell-dark standard-note rv d2">
+      <p class="standard-body rv d1">A roof is a system, not a stack of shingles. Skip a layer and the warranty becomes a piece of paper.</p>
+      <ol class="lay-list rv d2">
+        <li data-layer="1"><b>1</b><span class="lt"><strong>Decking.</strong> Checked for rot and replaced where soft, never covered up.</span></li>
+        <li data-layer="2"><b>2</b><span class="lt"><strong>Ice and water shield.</strong> Sealed at eaves and valleys, where roofs actually leak.</span></li>
+        <li data-layer="3"><b>3</b><span class="lt"><strong>Synthetic underlayment.</strong> The backup barrier for wind-driven rain.</span></li>
+        <li data-layer="4"><b>4</b><span class="lt"><strong>Architectural shingles.</strong> Fifty-year rated, nailed to manufacturer spec.</span></li>
+        <li data-layer="5"><b>5</b><span class="lt"><strong>Ridge vent.</strong> Lets the attic breathe so the shingles do not cook.</span></li>
+      </ol>
+      <div class="shell shell-dark standard-note rv d3">
         <p class="core"><b>You see each stage.</b> Our crew photographs the deck, the barriers, and the finished ridge, and the album is yours before the invoice is.</p>
       </div>
     </div>
     <div>
-      <svg class="diagram" viewBox="0 0 710 480" fill="none" role="img" aria-label="Exploded diagram of the five layers of a roof system">
-        <g class="rv d5">
+      <svg class="diagram" viewBox="90 0 360 464" fill="none" role="img" aria-label="Exploded diagram of the five layers of a roof system">
+        <g class="rv d5" data-layer="5">
           <polygon points="110,78 300,14 430,58 240,122" stroke="rgba(241,239,231,.85)" stroke-width="1.8" fill="rgba(241,239,231,.06)"/>
-          <line x1="430" y1="58" x2="480" y2="58" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-          <text x="492" y="55" class="dnum">5</text>
-          <text x="508" y="63">Ridge vent</text>
         </g>
-        <g class="rv d4">
+        <g class="rv d4" data-layer="4">
           <polygon points="110,160 300,96 430,140 240,204" stroke="#DFA53A" stroke-width="2.5" fill="rgba(223,165,58,.14)"/>
-          <line x1="430" y1="140" x2="480" y2="140" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-          <text x="492" y="137" class="dnum">4</text>
-          <text x="508" y="145">Architectural shingles</text>
         </g>
-        <g class="rv d3">
+        <g class="rv d3" data-layer="3">
           <polygon points="110,242 300,178 430,222 240,286" stroke="rgba(241,239,231,.7)" stroke-width="1.6" fill="rgba(241,239,231,.05)"/>
-          <line x1="430" y1="222" x2="480" y2="222" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-          <text x="492" y="219" class="dnum">3</text>
-          <text x="508" y="227">Synthetic underlayment</text>
         </g>
-        <g class="rv d2">
+        <g class="rv d2" data-layer="2">
           <polygon points="110,324 300,260 430,304 240,368" stroke="rgba(241,239,231,.6)" stroke-width="1.6" fill="rgba(241,239,231,.04)"/>
-          <line x1="430" y1="304" x2="480" y2="304" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-          <text x="492" y="301" class="dnum">2</text>
-          <text x="508" y="309">Ice and water shield</text>
         </g>
-        <g class="rv d1">
+        <g class="rv d1" data-layer="1">
           <polygon points="110,406 300,342 430,386 240,450" stroke="rgba(241,239,231,.5)" stroke-width="1.6" fill="rgba(241,239,231,.03)"/>
-          <line x1="430" y1="386" x2="480" y2="386" stroke="rgba(241,239,231,.4)" stroke-width="1.2"/>
-          <text x="492" y="383" class="dnum">1</text>
-          <text x="508" y="391">Decking, checked for rot</text>
         </g>
       </svg>
-      <ol class="layer-legend">
-        <li><b>5</b>Ridge vent</li>
-        <li><b>4</b>Architectural shingles</li>
-        <li><b>3</b>Synthetic underlayment</li>
-        <li><b>2</b>Ice and water shield</li>
-        <li><b>1</b>Decking, checked for rot</li>
-      </ol>
     </div>
   </div>
 </section>
@@ -422,12 +445,37 @@ section{scroll-margin-top:110px}
   <div class="scrim"></div>
   <div class="wrap">
     <h2 class="rv">Storm season does not wait.</h2>
-    <p class="band-sub rv d1">Free inspections year-round. If your roof is fine, we tell you it is fine and leave it alone.</p>
+    <p class="band-sub rv d1">Wind and hail claims have filing deadlines. A free inspection tells you where you stand.</p>
     <div class="band-cta rv d2">
       <a class="pill" href="#estimate">Get a Free Inspection
         <span class="pico"><svg viewBox="0 0 14 14"><path d="M2 12 L12 2 M5 2h7v7"/></svg></span>
       </a>
       <a class="band-phone" href="tel:+17045550417">(704) 555-0417</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2 class="rv">Straight answers</h2>
+    <div class="faq-list rv d1">
+      <details>
+        <summary>Do you work with insurance claims?<span class="fx"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+        <p>Yes. We document the damage, meet the adjuster on your roof, and tell you honestly if the claim is not worth filing.</p>
+      </details>
+      <details>
+        <summary>What does the inspection cost?<span class="fx"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+        <p>Nothing. You keep the photo report and the written quote either way, even if you never call us again.</p>
+      </details>
+      <details>
+        <summary>How long does a replacement take?<span class="fx"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+        <p>Most houses take one to two days, including cleanup and the magnet sweep for nails in your yard.</p>
+      </details>
+      <details>
+        <summary>Do you use subcontractors?<span class="fx"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+        <p>No. The crew that quotes your roof is the crew that stands on it.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -529,6 +577,14 @@ section{scroll-margin-top:110px}
     },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){ io.observe(el); });
   }
+
+  /* layer list <-> diagram sync */
+  document.querySelectorAll('.lay-list li').forEach(function(row){
+    var g = document.querySelector('.diagram g[data-layer="'+row.getAttribute('data-layer')+'"]');
+    if(!g) return;
+    row.addEventListener('mouseenter', function(){ g.classList.add('hot'); });
+    row.addEventListener('mouseleave', function(){ g.classList.remove('hot'); });
+  });
 
   /* inspection form */
   var form = document.getElementById('inspect-form');
