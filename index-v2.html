@@ -36,14 +36,14 @@
 <meta property="og:site_name" content="Studio O&#39;Brien">
 <meta property="og:title" content="Custom Web Design in Shelby &amp; Western North Carolina | Studio O'Brien">
 <meta property="og:description" content="Custom web design, development and local SEO for independent businesses across Western North Carolina, based in Shelby. Original sites built to get found on Google and turn visitors into customers.">
-<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.png">
-<meta property="og:image:width" content="1264">
-<meta property="og:image:height" content="569">
+<meta property="og:image" content="https://studioobrien.com/portfolio/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Studio O'Brien — custom web design in Shelby & Western North Carolina">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Custom Web Design in Shelby &amp; Western North Carolina | Studio O'Brien">
 <meta name="twitter:description" content="Custom web design, development and local SEO for independent businesses across Western North Carolina, based in Shelby.">
-<meta name="twitter:image" content="https://studioobrien.com/portfolio/og-image.png">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/og-image.png?v=2">
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-tight-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -214,6 +214,19 @@ body.is-menu-open{overflow:hidden}
   .column .card:nth-child(n+3){display:none}   /* 2 per col, then ↓ */
   .column-4{display:none}                       /* 2 × 3 cols = 6 cards, all
                                                    the way down to the smallest */
+}
+/* index.css collapses the masonry into wrapping 2-up rows at ≤1199.98px,
+   which makes the cards huge in the 1000–1199 window where this page still
+   wants the 4-column grid (card counts are already trimmed above). Restore
+   the desktop masonry for that window. */
+@media (min-width:1000px) and (max-width:1199.98px){
+  .portfolio{flex-flow:row;gap:20px}
+  .portfolio-row{display:contents}
+  .column{flex-flow:column;flex-wrap:nowrap;gap:20px}
+  .column .card{flex:0 1 auto;min-width:0}
+  .column-1{padding-top:15px}
+  .column-3{padding-top:30px}
+  .column-4{padding-top:8px}
 }
 /* Mobile: scale portfolio cards down ~20% so they read smaller / skinnier */
 @media (max-width:768px){
@@ -625,7 +638,7 @@ body.is-menu-open{overflow:hidden}
   "@type": "LocalBusiness",
   "name": "Studio O'Brien",
   "url": "https://studioobrien.com",
-  "image": "https://studioobrien.com/portfolio/og-image.png",
+  "image": "https://studioobrien.com/portfolio/og-image.png?v=2",
   "logo": "https://studioobrien.com/favicon-256x256.png",
   "description": "Independent web design and development studio creating distinctive custom websites for businesses in Shelby, Western North Carolina, and beyond.",
   "email": "hello@studioobrien.com",
