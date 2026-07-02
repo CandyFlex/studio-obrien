@@ -754,6 +754,18 @@
   }
 
   /* ── Interactions ── */
+  /* GA4: fire once on the first real interaction with any calculator control */
+  var calcEngaged = false;
+  ['input','click'].forEach(function(t){
+    document.addEventListener(t, function(e){
+      if (calcEngaged || !e.target.closest) return;
+      if (e.target.closest('#pageSlider, #featureChips, #designSeg, #contentSeg, #rateInput, #presets')) {
+        calcEngaged = true;
+        try { if (typeof gtag === 'function') gtag('event', 'calculator_engage', {}); } catch (err) {}
+      }
+    }, {passive:true, capture:true});
+  });
+
   pageSlider.addEventListener('input', function(){ clearPreset(); render(); });
   rateInput.addEventListener('input', render);
 

@@ -577,6 +577,13 @@
     if (form) form.style.display = 'none';
     if (hero) hero.style.display = 'none';
     if (success) success.classList.add('show');
+    /* GA4 key event: one lead per browser session (guard against refresh double-count) */
+    try {
+      if (typeof gtag === 'function' && !sessionStorage.getItem('ob_lead_tracked')) {
+        gtag('event', 'generate_lead', { method: 'contact_form' });
+        sessionStorage.setItem('ob_lead_tracked', '1');
+      }
+    } catch (e) {}
     if (section) { section.style.opacity = '1'; section.style.transform = 'none'; }
     if (history.replaceState) history.replaceState(null, '', window.location.pathname);
   }

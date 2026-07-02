@@ -1530,6 +1530,32 @@ body.is-menu-open{overflow:hidden}
     if(e.key === 'Tab'){ e.preventDefault(); lightboxClose.focus(); }
   });
 
+  /* ===== GA4 CONVERSION EVENTS ===== */
+  document.addEventListener('click', function(e){
+    if (typeof gtag !== 'function' || !e.target.closest) return;
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) {
+      gtag('event', 'phone_call_click', { link_location: a.classList.contains('sticky-cta-call') ? 'sticky_mobile' : 'footer' });
+    } else if (href.indexOf('mailto:') === 0) {
+      gtag('event', 'email_click', {});
+    } else if (a.classList.contains('outreach-btn')) {
+      gtag('event', 'storefront_nomination_click', {});
+    } else if (href.indexOf('/contact') === 0) {
+      var loc = a.classList.contains('nav-cta') ? 'nav'
+        : a.classList.contains('hero-cta-primary') ? 'hero'
+        : a.classList.contains('sticky-cta-btn') ? 'sticky_mobile'
+        : a.classList.contains('nav-menu-overlay-cta') ? 'mobile_menu'
+        : a.classList.contains('svc2-more') ? 'services' : 'other';
+      gtag('event', 'cta_click', { cta_location: loc });
+    }
+  }, {passive:true});
+  var qualForm = document.querySelector('.cta-v2-form');
+  if (qualForm) qualForm.addEventListener('submit', function(){
+    if (typeof gtag === 'function') gtag('event', 'homepage_qualifier_submit', {});
+  });
+
 })();
 </script>
 
