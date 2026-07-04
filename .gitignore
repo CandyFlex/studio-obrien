@@ -7,3 +7,18 @@ index-test.html
 index-backup.html
 .vscode/
 .vercel/
+
+# Tooling / skill installs (not site content)
+.agents/
+.impeccable/
+.codex/
+.github/skills/
+.github/hooks/
+
+# Scratch experiments / design comps (not shipped)
+*-test.html
+*-compare.html
+build_*_test.py
+services-c-refined.html
+services-dark-rework.html
+index-v2-preview-animation.html

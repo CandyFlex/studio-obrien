@@ -1,0 +1,73 @@
+# Page Manifest
+
+*Generated 2026-07-03 · 67 shipping pages · source of truth for the rewrite (do not re-read pages; read this)*
+
+| Page | Type | Title len | Meta len | H1 | In-links | Issues |
+|---|---|---|---|---|---|---|
+| /about | service | 60 | 149 | y | 31 | 0 |
+| /belmont-nc-web-design | location | 52 | 131 | y | 6 | 0 |
+| /bessemer-city-nc-web-design | location | 50 | 137 | y | 4 | 0 |
+| /blog/ada-compliance-website-lawsuits-small-business | blog-article | 56 | 150 | y | 4 | 0 |
+| /blog/ai-search-local-business-discovery-2026 | blog-article | 53 | 149 | y | 4 | 0 |
+| /blog/clusters | blog-pillar | 45 | 135 | y | 1 | 2 |
+| /blog/core-web-vitals-local-seo-ranking | blog-article | 60 | 153 | y | 8 | 0 |
+| /blog/cut-restaurant-no-shows-68-percent | blog-article | 50 | 154 | y | 4 | 2 |
+| /blog/editorial-standards | blog-article | 56 | 149 | y | 3 | 0 |
+| /blog/facebook-only-trap-small-town-restaurants | blog-article | 56 | 150 | y | 5 | 1 |
+| /blog/ftc-fake-review-rules-small-business | blog-article | 54 | 153 | y | 7 | 0 |
+| /blog/google-business-profile-category-ranking | blog-article | 56 | 144 | y | 6 | 0 |
+| /blog/google-business-profile-photos-increase-calls | blog-article | 49 | 136 | y | 4 | 0 |
+| /blog/google-business-profile-ranking-factors-2026 | blog-article | 44 | 151 | y | 12 | 0 |
+| /blog/google-map-ranking-distance-small-towns | blog-article | 57 | 142 | y | 8 | 0 |
+| /blog/google-vs-yelp-small-town-restaurants | blog-article | 57 | 145 | y | 8 | 0 |
+| /blog/google-yelp-facebook-reviews-local-business | blog-article | 51 | 155 | y | 7 | 0 |
+| /blog/index | blog-article | 57 | 183 | y | 0 | 1 |
+| /blog/local-seo-guide | blog-pillar | 56 | 150 | y | 36 | 0 |
+| /blog/mobile-optimization-local-search-small-business | blog-article | 53 | 152 | y | 10 | 0 |
+| /blog/outdated-small-business-website-costing-you | blog-article | 57 | 154 | y | 5 | 0 |
+| /blog/page-speed-costing-your-business-money | blog-article | 60 | 154 | y | 11 | 0 |
+| /blog/qr-code-menu-revenue-hack | blog-article | 51 | 140 | y | 7 | 0 |
+| /blog/restaurant-website-costing-you-money | blog-article | 53 | 151 | y | 10 | 0 |
+| /blog/restaurant-website-guide | blog-pillar | 50 | 143 | y | 7 | 0 |
+| /blog/review-velocity-vs-total-count-local-seo | blog-article | 53 | 150 | y | 9 | 0 |
+| /blog/service-area-business-google-ranking-hidden-address | blog-article | 53 | 148 | y | 6 | 0 |
+| /blog/signs-your-website-needs-redesign | blog-article | 58 | 149 | y | 10 | 1 |
+| /blog/surviving-restaurant-cost-increases-nc | blog-article | 59 | 137 | y | 4 | 0 |
+| /blog/technical-seo-compliance-guide | blog-pillar | 57 | 148 | y | 5 | 0 |
+| /blog/uncaptured-email-revenue-restaurants | blog-article | 55 | 151 | y | 8 | 0 |
+| /blog/web-design-redesign-guide | blog-pillar | 59 | 152 | y | 31 | 0 |
+| /blog/website-migration-seo-traffic-loss | blog-article | 60 | 143 | y | 6 | 1 |
+| /blog/website-redesign-roi-small-business | blog-article | 55 | 144 | y | 7 | 1 |
+| /boiling-springs-nc-web-design | location | 52 | 142 | y | 3 | 0 |
+| /charlotte-nc-web-design | location | 40 | 154 | y | 2 | 1 |
+| /cherryville-nc-web-design | location | 56 | 135 | y | 4 | 0 |
+| /conover-nc-web-design | location | 38 | 152 | y | 3 | 0 |
+| /contact | service | 49 | 141 | y | 66 | 1 |
+| /cramerton-nc-web-design | location | 54 | 139 | y | 5 | 0 |
+| /crouse-nc-web-design | location | 51 | 155 | y | 2 | 1 |
+| /dallas-nc-web-design | location | 51 | 139 | y | 3 | 0 |
+| /denver-nc-web-design | location | 51 | 148 | y | 4 | 0 |
+| /forest-city-nc-web-design | location | 46 | 150 | y | 13 | 0 |
+| /gastonia-nc-web-design | location | 53 | 132 | y | 7 | 0 |
+| /google-business-profile-setup | service | 46 | 145 | y | 61 | 0 |
+| /hickory-nc-web-design | location | 52 | 152 | y | 5 | 0 |
+| / | home | 51 | 152 | y | 66 | 0 |
+| /iron-station-nc-web-design | location | 49 | 144 | y | 3 | 0 |
+| /kings-mountain-nc-web-design | location | 49 | 154 | y | 24 | 0 |
+| /lincolnton-nc-web-design | location | 55 | 149 | y | 9 | 0 |
+| /maiden-nc-web-design | location | 51 | 134 | y | 7 | 0 |
+| /mcadenville-nc-web-design | location | 56 | 149 | y | 3 | 0 |
+| /morganton-nc-web-design | location | 40 | 153 | y | 1 | 2 |
+| /mount-holly-nc-web-design | location | 56 | 149 | y | 6 | 0 |
+| /newton-nc-web-design | location | 37 | 156 | y | 4 | 0 |
+| /restaurant-website-design | service | 56 | 142 | y | 61 | 0 |
+| /rutherfordton-nc-web-design | location | 48 | 146 | y | 7 | 0 |
+| /seo-services | service | 55 | 153 | y | 62 | 0 |
+| /service-area | service | 45 | 152 | y | 28 | 0 |
+| /shelby-nc-web-design | location | 55 | 147 | y | 49 | 0 |
+| /small-business-websites | service | 54 | 146 | y | 62 | 0 |
+| /stanley-nc-web-design | location | 38 | 126 | y | 1 | 2 |
+| /vale-nc-web-design | location | 49 | 151 | y | 2 | 1 |
+| /waco-nc-web-design | location | 49 | 134 | y | 2 | 1 |
+| /website-cost-calculator | service | 60 | 144 | y | 65 | 0 |
+| /website-redesign-migration | service | 55 | 136 | y | 60 | 0 |

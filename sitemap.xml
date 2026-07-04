@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://studioobrien.com/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://studioobrien.com/</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://studioobrien.com/about</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studioobrien.com/blog/editorial-standards</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://studioobrien.com/contact</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://studioobrien.com/website-cost-calculator</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://studioobrien.com/service-area</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -41,6 +43,12 @@
   <url><loc>https://studioobrien.com/blog/restaurant-website-guide</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://studioobrien.com/blog/technical-seo-compliance-guide</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://studioobrien.com/blog/web-design-redesign-guide</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studioobrien.com/blog/how-to-choose-web-design-company</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studioobrien.com/blog/who-owns-your-website-domain-source-code</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studioobrien.com/blog/website-builder-vs-custom-cost</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studioobrien.com/blog/wix-squarespace-seo-limits</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studioobrien.com/blog/small-business-website-cost-2026</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studioobrien.com/blog/why-cheap-websites-cost-more</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://studioobrien.com/blog/restaurant-website-costing-you-money</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://studioobrien.com/blog/facebook-only-trap-small-town-restaurants</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://studioobrien.com/blog/qr-code-menu-revenue-hack</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

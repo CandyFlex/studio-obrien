@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  CANONICAL ARTICLE TEMPLATE — The Field Guide / Studio O'Brien
+  Copy this file to blog/{{SLUG}}.html and fill every {{TOKEN}}.
+  Rules for filling it live in production/ARTICLE-SPEC.md — READ THAT FIRST.
+  Delete component blocks you don't use (TLDR / stat cards / infographic / table /
+  callout / key-point / FAQ are optional; byline, sources, related, CTA are not).
+  Do NOT change blog.css class names — the whole blog depends on them.
+-->
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) — leave verbatim -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD0V4CRPND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DD0V4CRPND');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- TITLE: <60 chars incl "| Studio O'Brien". Front-load the primary keyword. -->
+<title>{{TITLE_SHORT}} | Studio O'Brien</title>
+<!-- META DESC: 140-160 chars, lead with the hook stat + primary keyword. No em dash. -->
+<meta name="description" content="{{META_DESC}}">
+<link rel="canonical" href="https://studioobrien.com/blog/{{SLUG}}">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://studioobrien.com/blog/{{SLUG}}">
+<meta property="og:site_name" content="Studio O&#39;Brien">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{META_DESC}}">
+<meta property="og:image" content="https://studioobrien.com/blog/img/{{HERO_IMG}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/blog/blog.css?v=20260703">
+
+<!-- BlogPosting schema. author.url MUST be /about. Keep dates real (ISO 8601). -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"{{HEADLINE}}","description":"{{META_DESC}}","image":"https://studioobrien.com/blog/img/{{HERO_IMG}}","datePublished":"{{DATE_ISO}}","dateModified":"{{DATE_ISO}}","author":{"@type":"Person","name":"Jarred O'Brien","url":"https://studioobrien.com/about"},"publisher":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://studioobrien.com/blog/{{SLUG}}"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"The Field Guide","item":"https://studioobrien.com/blog"},{"@type":"ListItem","position":3,"name":"{{HEADLINE}}","item":"https://studioobrien.com/blog/{{SLUG}}"}]}
+</script>
+<!-- Microsoft Clarity — leave verbatim -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "x8v48co1gg");
+</script>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site navigation">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-logo">Studio O'Brien</a>
+    <div class="topbar-links">
+      <a href="/blog" class="topbar-link">Blog</a>
+      <a href="/#portfolio" class="topbar-link">View Work</a>
+      <a href="/contact" class="topbar-link">Start a Website</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <span class="article-category">{{CATEGORY}}</span>
+  <!-- H1: the human-facing headline. May differ slightly from <title>. One H1 only. -->
+  <h1>{{H1}}</h1>
+  <!-- BYLINE — required (E-E-A-T). Do not remove. -->
+  <div class="article-byline">
+    <img src="/portfolio/jarred.webp" width="40" height="40" alt="Jarred O'Brien" loading="eager">
+    <div class="article-byline-txt"><a href="/about">Jarred O'Brien</a><span>Designer &amp; developer &middot; Shelby, NC</span></div>
+  </div>
+  <div class="article-meta">
+    <time datetime="{{DATE_ISO}}">{{DATE_HUMAN}}</time>
+    <span class="read-time">{{READ_TIME}} min read</span>
+  </div>
+  <p class="article-subtitle">{{SUBTITLE}}</p>
+</header>
+
+<!-- HERO IMAGE — self-hosted local photo under /blog/img/. Alt describes the PLACE. -->
+<div class="article-featured">
+  <figure>
+    <img src="/blog/img/{{HERO_IMG}}" width="800" height="450" alt="{{HERO_ALT}}" loading="eager">
+    <figcaption>{{HERO_CAPTION}} <a href="{{HERO_SOURCE_URL}}" target="_blank" rel="noopener">Source</a></figcaption>
+  </figure>
+</div>
+
+<div class="article-body">
+
+  <!-- OPENING: 1-2 paragraphs. Answer the reader's question fast. Link the cluster
+       pillar in the first 1-2 paras with keyword-rich anchor text. -->
+  <p>{{OPENING_PARA}} For the full strategy see our <a href="/blog/{{PILLAR_SLUG}}">{{PILLAR_ANCHOR}}</a>.</p>
+
+  <!-- OPTIONAL: 30-second summary -->
+  <div class="tldr">
+    <div class="tldr-title">In 30 seconds</div>
+    <ul>
+      <li><strong>{{TLDR_1_STAT}}</strong> {{TLDR_1_TEXT}}</li>
+      <li><strong>{{TLDR_2_STAT}}</strong> {{TLDR_2_TEXT}}</li>
+      <li><strong>{{TLDR_3_STAT}}</strong> {{TLDR_3_TEXT}}</li>
+    </ul>
+  </div>
+
+  <!-- OPTIONAL: stat cards. Every stat carries an inline source link. -->
+  <div class="stat-card-row">
+    <div class="stat-card"><div class="stat-num">{{STAT_1}}</div><div class="stat-label">{{STAT_1_LABEL}}<a href="{{SOURCE_1_URL}}" target="_blank" rel="noopener"><sup>1</sup></a></div></div>
+    <div class="stat-card"><div class="stat-num">{{STAT_2}}</div><div class="stat-label">{{STAT_2_LABEL}}<a href="{{SOURCE_1_URL}}" target="_blank" rel="noopener"><sup>1</sup></a></div></div>
+    <div class="stat-card"><div class="stat-num">{{STAT_3}}</div><div class="stat-label">{{STAT_3_LABEL}}<a href="{{SOURCE_2_URL}}" target="_blank" rel="noopener"><sup>2</sup></a></div></div>
+  </div>
+
+  <h2>{{SECTION_1_HEADING}}</h2>
+  <p>{{SECTION_1_BODY}}</p>
+
+  <!-- OPTIONAL: key takeaway callout -->
+  <div class="key-point"><p><span class="kp-icon">*</span> <strong>Key point:</strong> {{KEY_POINT}}</p></div>
+
+  <!-- OPTIONAL: horizontal-bar infographic. Widths are % of the max value. -->
+  <div class="infographic">
+    <div class="info-title">{{INFOGRAPHIC_TITLE}}</div>
+    <div class="bar-row"><div class="bar-label">{{BAR_1_LABEL}}</div><div class="bar-track"><div class="bar-fill" style="width:100%">{{BAR_1_VAL}}</div></div></div>
+    <div class="bar-row"><div class="bar-label">{{BAR_2_LABEL}}</div><div class="bar-track"><div class="bar-fill blue" style="width:{{BAR_2_PCT}}">{{BAR_2_VAL}}</div></div></div>
+    <div class="bar-row"><div class="bar-label">{{BAR_3_LABEL}}</div><div class="bar-track"><div class="bar-fill amber" style="width:{{BAR_3_PCT}}">{{BAR_3_VAL}}</div></div></div>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>{{SECTION_2_HEADING}}</h2>
+  <p>{{SECTION_2_BODY}}</p>
+
+  <!-- OPTIONAL: data table -->
+  <table class="data-table">
+    <thead><tr><th>{{COL_1}}</th><th>{{COL_2}}</th><th>{{COL_3}}</th></tr></thead>
+    <tbody>
+      <tr class="accent-row"><td>{{R1C1}}</td><td><strong>{{R1C2}}</strong></td><td>{{R1C3}}</td></tr>
+      <tr><td>{{R2C1}}</td><td>{{R2C2}}</td><td>{{R2C3}}</td></tr>
+    </tbody>
+  </table>
+
+  <!-- OPTIONAL: pull-quote / emphasis -->
+  <div class="callout"><p><strong>{{CALLOUT_LEAD}}</strong> {{CALLOUT_BODY}}</p></div>
+
+  <hr class="section-divider">
+
+  <h2>Frequently asked questions about {{FAQ_TOPIC}}</h2>
+  <div class="faq-item"><h3>{{FAQ_1_Q}}</h3><p>{{FAQ_1_A}}</p></div>
+  <div class="faq-item"><h3>{{FAQ_2_Q}}</h3><p>{{FAQ_2_A}}</p></div>
+  <div class="faq-item"><h3>{{FAQ_3_Q}}</h3><p>{{FAQ_3_A}}</p></div>
+
+  <!-- CTA — required. Point to the most relevant service page. -->
+  <div class="cta-block">
+    <h2>{{CTA_HEADING}}</h2>
+    <p>{{CTA_BODY}}</p>
+    <div class="btn-row">
+      <a href="/{{CTA_TARGET}}" class="btn btn-primary">{{CTA_LABEL}}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- SOURCES — required. List every cited source with a real, resolving URL. -->
+  <div class="callout">
+    <p><strong>Sources:</strong> <a href="{{SOURCE_1_URL}}">1. {{SOURCE_1_NAME}}</a> <a href="{{SOURCE_2_URL}}">2. {{SOURCE_2_NAME}}</a></p>
+  </div>
+
+</div>
+
+<!-- RELATED — 3 siblings in the same cluster. Internal-link flow. -->
+<section class="related">
+  <h2>Continue reading</h2>
+  <div class="related-grid">
+    <a href="/blog/{{REL_1_SLUG}}" class="related-card"><span>{{REL_1_CAT}}</span><h3>{{REL_1_TITLE}}</h3><p>{{REL_1_DEK}}</p></a>
+    <a href="/blog/{{REL_2_SLUG}}" class="related-card"><span>{{REL_2_CAT}}</span><h3>{{REL_2_TITLE}}</h3><p>{{REL_2_DEK}}</p></a>
+    <a href="/blog/{{REL_3_SLUG}}" class="related-card"><span>{{REL_3_CAT}}</span><h3>{{REL_3_TITLE}}</h3><p>{{REL_3_DEK}}</p></a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Studio O'Brien</strong> &middot; Web design &amp; development for Shelby, NC</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/about">About Jarred</a>
+    <a href="/blog">Blog</a>
+    <a href="/blog/editorial-standards">Editorial Standards</a>
+    <a href="/website-cost-calculator">Cost Calculator</a>
+    <a href="/seo-services">SEO Services</a>
+    <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+  </div>
+  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
+  <p>&copy; 2026 <a href="/">Studio O'Brien</a></p>
+</footer>
+
+</body>
+</html>

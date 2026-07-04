@@ -233,6 +233,23 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "x8v48co1gg");
 </script>
+<style>
+/* unified nav + grid overlay (location batch) */
+body{position:relative;z-index:0}
+.topbar{background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.topbar-inner{max-width:1100px;padding:0 clamp(16px,3vw,32px);height:60px}
+.topbar-logo{font-family:'Inter',sans-serif;font-weight:720;font-size:18px;color:#fff;letter-spacing:-.03em;position:relative}
+.topbar-logo::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--g);transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
+.topbar-logo:hover::after{transform:scaleX(1) rotate(-1.5deg)}
+.topbar-links{gap:clamp(16px,2.4vw,26px)}
+.topbar-link{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#a8a8a8;position:relative;transition:color .2s}
+.topbar-link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.topbar-link:hover{color:#fff}
+.topbar-link:hover::after{transform:scaleX(1)}
+.topbar-link[href="/contact"]{background:#fff;color:#0a0a0b;font-weight:600;font-size:11px;padding:8px 14px;border-radius:999px;overflow:hidden;transition:background .3s,color .3s}
+.topbar-link[href="/contact"]::after{display:none}
+.topbar-link[href="/contact"]:hover{color:#0a0a0b;background:var(--g)}
+</style>
 </head>
 <body>
 
@@ -242,9 +259,8 @@
     <a href="/" class="topbar-logo">Studio O'Brien</a>
     <div class="topbar-links">
       <a href="/blog" class="topbar-link">Blog</a>
-      <a href="/contact" class="topbar-link">Start Project</a>
-      <a href="/#portfolio" class="topbar-link">View Our Work</a>
-      <a href="/contact?full" class="topbar-link">Contact Me</a>
+      <a href="/#portfolio" class="topbar-link">View Work</a>
+      <a href="/contact" class="topbar-link">Start a Website</a>
     </div>
   </div>
 </nav>
