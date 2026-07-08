@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -12,8 +12,8 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Web Development &amp; Design Cherryville NC | Studio O'Brien</title>
-<meta name="description" content="Web development and design in Cherryville, NC. Custom websites, SEO, and branding for small businesses and nonprofits in Gaston County.">
+<title>Web Design &amp; Development in Cherryville, NC | Studio O'Brien</title>
+<meta name="description" content="Custom web design and SEO for Cherryville and Gaston County businesses: trades, shops, restaurants, and manufacturers. Sites you own outright, no templates.">
 <link rel="canonical" href="https://studioobrien.com/cherryville-nc-web-design">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -25,131 +25,205 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studioobrien.com/cherryville-nc-web-design">
 <meta property="og:site_name" content="Studio O&#39;Brien">
-<meta property="og:title" content="Web Development &amp; Design Cherryville NC | Studio O'Brien">
-<meta property="og:description" content="Custom websites for Cherryville, NC businesses. No templates. No lock-in. Serving Gaston County and the Charlotte metro area.">
+<meta property="og:title" content="Web Design &amp; Development in Cherryville, NC | Studio O'Brien">
+<meta property="og:description" content="Custom web design and development for Cherryville and Gaston County. Websites, SEO, and branding you own outright. No templates.">
 <meta property="og:image" content="https://studioobrien.com/portfolio/ember.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Web Development &amp; Design Cherryville NC | Studio O'Brien">
-<meta name="twitter:description" content="Custom websites for Cherryville, NC businesses. No templates. No lock-in.">
+<meta name="twitter:title" content="Web Design &amp; Development in Cherryville, NC | Studio O'Brien">
+<meta name="twitter:description" content="Custom web design and development in Cherryville, NC. Websites, SEO, and branding for trades, small businesses, restaurants, and manufacturers in Gaston County.">
 <meta name="twitter:image" content="https://studioobrien.com/portfolio/ember.webp">
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/blog/blog.css">
+<script>document.documentElement.className+=' js';</script>
 <style>
-  :root{--g:#34d399;--gd:#2ec48d;--bg:#111;--fg:#fff;--muted:#999;--card:#1a1a1a;--b:#2a2a2a}
+  :root{
+    --g:#34d399;--g-lite:#6ee7b7;--gd:#2ec48d;
+    --bg:#0a0a0b;--bg-2:#0e0f11;--surface:#141518;--surface-2:#1a1c20;
+    --b:#25272d;--b-2:#33363d;
+    --fg:#f4f5f6;--muted:#a4aab2;--dim:#767b83;
+    --maxw:1240px;--prose:720px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --z-nav:100;
+  }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{background:var(--bg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.6}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip{position:absolute;left:-999px;top:0;background:var(--g);color:#06231a;padding:10px 16px;font-weight:700;z-index:200}
+  .skip:focus{left:12px;top:12px}
+  a{color:inherit}
+  ::selection{background:rgba(52,211,153,.28);color:#fff}
 
-  /* STICKY HEADER */
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(17,17,17,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
-  .topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
-  .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:25px;color:var(--g);text-decoration:none;letter-spacing:-.01em}
-  .topbar-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--g);color:var(--bg);font-family:'Inter',sans-serif;font-weight:700;font-size:14px;text-decoration:none;transition:background .2s,transform .2s}
-  .topbar-cta:hover{background:var(--gd);transform:translateY(-1px)}
-  .topbar-cta svg{width:16px;height:16px}
-  .topbar-links{display:flex;gap:16px;align-items:center}
-  .topbar-link{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#fff;text-decoration:none;transition:color .2s}
-  .topbar-link:hover{color:var(--g)}
-  @media(min-width:601px){.topbar-cta-desktop{display:inline-flex}.topbar-cta-mobile{display:none}}
-  @media(max-width:600px){.topbar-cta-desktop{display:none}.topbar-cta-mobile{display:inline-flex}.topbar-inner{height:52px}.topbar-logo{font-size:16px}.topbar-cta{font-size:13px;padding:8px 14px}}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:var(--z-nav);background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:19px;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;white-space:nowrap}
+  .nav-logo span{color:inherit}
+  .nav-logo::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:var(--g);transform:scaleX(.32);transform-origin:left;transition:transform .32s var(--ease)}
+  .nav-logo:hover::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:clamp(14px,2.2vw,26px)}
+  .nav-links{display:flex;gap:clamp(14px,2.2vw,26px)}
+  .nav-links a{font-size:13.5px;font-weight:500;color:#aeb3ba;text-decoration:none;position:relative;transition:color .2s}
+  .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:1.5px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+  .nav-links a:hover{color:#fff}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--g);color:#06231a;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;transition:transform .2s var(--ease),box-shadow .3s,background .2s;white-space:nowrap}
+  .nav-cta:hover{background:var(--g-lite);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.25)}
+  .nav-cta svg{width:14px;height:14px}
+  @media(max-width:720px){.nav-links{display:none}.nav-in{height:58px}}
 
   /* HERO */
-  .hero{padding:56px 20px 40px;text-align:center;max-width:800px;margin:0 auto}
-  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px}
-  .hero p{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 24px;line-height:1.6}
-  .hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
-  .hero-pill{padding:6px 14px;border:1px solid var(--b);font-size:12px;color:#aaa;font-weight:500}
-  .hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{padding:14px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .3s,background .2s;min-height:48px}
-  .btn-primary{background:var(--g);color:var(--bg)}
-  .btn-primary:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.3)}
-  .btn-secondary{background:transparent;color:var(--fg);border:1px solid var(--b)}
-  .btn-secondary:hover{border-color:var(--g);transform:translateY(-2px)}
+  .hero{position:relative;overflow:hidden;padding:clamp(66px,11vw,136px) 0 clamp(52px,7vw,92px);text-align:center}
+  .hero::before{content:'';position:absolute;top:-24%;left:50%;transform:translateX(-50%);width:min(1000px,120%);height:120%;background:radial-gradient(50% 45% at 50% 40%,rgba(52,211,153,.13),transparent 70%);pointer-events:none;z-index:0}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--g);margin-bottom:26px}
+  .hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+  .hero .display{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(40px,6.4vw,76px);line-height:1.03;letter-spacing:-.034em;max-width:20ch;margin:0 auto 24px;text-wrap:balance}
+  .hero .display em{font-style:normal;color:var(--g)}
+  .hero-sub{font-size:clamp(16px,1.9vw,20px);color:var(--muted);max-width:60ch;line-height:1.62;margin:0 auto 36px;text-wrap:pretty}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:clamp(40px,5vw,56px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:6px;min-height:52px;border:1px solid transparent;transition:transform .2s var(--ease),box-shadow .3s,background .2s,border-color .2s,color .2s}
   .btn svg{width:18px;height:18px;flex-shrink:0}
-  @media(max-width:600px){.hero{padding:40px 16px 32px}.btn{width:auto;justify-content:center;font-size:14px;padding:12px 24px}.hero-cta-row{flex-direction:column}}
+  .btn-primary{background:var(--g);color:#06231a}
+  .btn-primary:hover{background:var(--g-lite);transform:translateY(-2px);box-shadow:0 12px 34px rgba(52,211,153,.28)}
+  .btn-ghost{background:transparent;color:var(--fg);border-color:var(--b-2)}
+  .btn-ghost:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
+  .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.4vw,20px);max-width:1000px;margin:0 auto}
+  .proof-item{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--surface-2);border:1px solid var(--b-2);border-radius:18px;padding:clamp(22px,2.2vw,30px) 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+  .proof-item:hover{transform:translateY(-5px);border-color:rgba(52,211,153,.45);box-shadow:0 24px 54px -26px rgba(52,211,153,.5),inset 0 1px 0 rgba(255,255,255,.06)}
+  .proof-ic{width:52px;height:52px;border-radius:15px;margin:0 auto 16px;background:radial-gradient(circle at 50% 28%,rgba(52,211,153,.3),rgba(52,211,153,.06));box-shadow:0 8px 22px -8px rgba(52,211,153,.55),inset 0 0 0 1px rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center}
+  .proof-ic svg{width:23px;height:23px;color:var(--g-lite)}
+  .proof-n{font-family:'Inter Tight',sans-serif;font-weight:680;font-size:15.5px;letter-spacing:-.012em;color:#fff;line-height:1.2;text-wrap:balance}
+  .proof-l{font-size:12.5px;color:var(--dim);margin-top:6px;line-height:1.42}
+  @media(max-width:600px){.proof{grid-template-columns:repeat(2,1fr);gap:16px}.hero-cta-row .btn{flex:1 1 100%}}
 
-  /* SECTIONS */
-  .section{padding:48px 20px}
-  .section-dark{background:#0d0d0d}
-  .container{max-width:800px;margin:0 auto}
-  h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.15;margin-bottom:14px;letter-spacing:-.01em}
-  h3{font-family:'Inter',sans-serif;font-weight:600;font-size:17px;color:var(--fg);margin-bottom:6px}
-  p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px}
-  p strong{color:#ccc;font-weight:600}
-  @media(max-width:600px){.section{padding:36px 16px}h2{font-size:20px}p{font-size:14px}}
+  /* SECTION FRAMEWORK */
+  section{padding:clamp(52px,7vw,92px) 0;position:relative}
+  .band{background:var(--bg-2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+  .sec-head{max-width:760px;margin:0 auto clamp(36px,5vw,60px);text-align:center;display:flex;flex-direction:column;align-items:center}
+  h2.sec-title{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(29px,4.6vw,50px);line-height:1.05;letter-spacing:-.03em;text-wrap:balance}
+  h2.sec-title em{font-style:normal;color:var(--g)}
+  .sec-head p{font-size:clamp(15px,1.7vw,18px);color:var(--muted);margin-top:16px;line-height:1.6;text-wrap:pretty;max-width:56ch}
 
-  /* NAP + MAP */
-  .nap-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-  .nap-info{display:flex;flex-direction:column;gap:10px}
-  .nap-line{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#ccc;line-height:1.5}
-  .nap-line svg{width:18px;height:18px;color:var(--g);flex-shrink:0;margin-top:2px}
-  .nap-line a{color:var(--g);text-decoration:none;font-weight:600}
-  .nap-line a:hover{text-decoration:underline}
-  .map-wrap{position:relative;width:100%;aspect-ratio:4/3;border:1px solid var(--b);overflow:hidden;background:var(--card)}
-  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  @media(max-width:600px){.nap-grid{grid-template-columns:1fr;gap:20px}}
+  /* LOCAL INTRO (prose, not cards) */
+  .local .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
+  .local-copy p{font-size:clamp(15px,1.7vw,17px);color:var(--muted);line-height:1.75;margin-bottom:16px;max-width:60ch}
+  .local-copy p strong{color:#e6e8ea;font-weight:600}
+  .local-copy p:last-child{margin-bottom:0}
+  .map-card{border:1px solid var(--b);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .map-card iframe{display:block;width:100%;aspect-ratio:4/3;border:0;filter:grayscale(.3) contrast(1.05)}
+  .map-meta{display:flex;flex-direction:column;gap:9px;padding:18px 20px;border-top:1px solid var(--b)}
+  .map-meta div{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#cfd3d8;line-height:1.45}
+  .map-meta svg{width:17px;height:17px;color:var(--g);flex-shrink:0;margin-top:1px}
+  .map-meta a{color:var(--g);text-decoration:none;font-weight:600}
+  .map-meta a:hover{text-decoration:underline}
+  @media(max-width:800px){.local .wrap{grid-template-columns:1fr;gap:32px}}
 
-  /* SERVICE GRID */
-  .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
-  .service-card{border:1px solid var(--b);padding:22px 18px;background:var(--card)}
-  .service-card h3{font-size:16px;margin-bottom:4px}
-  .service-card p{font-size:13px;margin:0}
+  /* SERVICES (glow cards, 2-col, icon-left) */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .svc{display:flex;gap:20px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--b-2);border-radius:18px;padding:clamp(24px,2.4vw,30px);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+  .svc:hover{transform:translateY(-5px);border-color:rgba(52,211,153,.45);box-shadow:0 24px 54px -26px rgba(52,211,153,.5),inset 0 1px 0 rgba(255,255,255,.06)}
+  .svc-ic{flex-shrink:0;width:52px;height:52px;border-radius:14px;background:radial-gradient(circle at 50% 28%,rgba(52,211,153,.3),rgba(52,211,153,.06));box-shadow:0 8px 22px -8px rgba(52,211,153,.55),inset 0 0 0 1px rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center}
+  .svc-ic svg{width:23px;height:23px;color:var(--g-lite)}
+  .svc h3{font-family:'Inter Tight',sans-serif;font-size:18.5px;font-weight:660;letter-spacing:-.015em;color:#fff;margin:0 0 9px}
+  .svc p{font-size:14px;color:var(--muted);line-height:1.6;margin:0}
+  .svc p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  .svc p a:hover{border-bottom-color:var(--g)}
+  @media(max-width:720px){.svc-grid{grid-template-columns:1fr}}
 
-  /* CITY GRID */
-  .city-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .city-card{border:1px solid var(--b);padding:20px 18px;background:var(--card)}
-  .city-card h3{font-size:16px;color:var(--g);margin-bottom:4px}
-  .city-card p{font-size:13px;margin:0}
-  .city-card.active{border-color:var(--g);background:rgba(52,211,153,.05)}
-  @media(max-width:500px){.diff-grid{grid-template-columns:1fr}.city-grid{grid-template-columns:1fr}}
+
+  /* PROCESS (image-led cards, matching homepage) */
+  .prc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.8vw,28px);align-items:start}
+  .prc-card{position:relative;display:block;overflow:hidden;border-radius:clamp(14px,1.1vw,20px);aspect-ratio:5/7;background:#0c1411;border:1px solid #1c2a23;isolation:isolate}
+  .prc-card:nth-child(even){margin-top:clamp(28px,5vw,72px)}
+  .prc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:transform .8s var(--ease)}
+  .prc-card:hover .prc-img{transform:scale(1.05)}
+  .prc-card::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(5,7,6,.97) 0%,rgba(5,7,6,.82) 24%,rgba(5,7,6,.28) 50%,rgba(5,7,6,0) 74%)}
+  .prc-num{position:absolute;top:clamp(2px,.3vw,8px);left:clamp(14px,1.4vw,26px);z-index:2;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(58px,6.4vw,116px);line-height:1;letter-spacing:-.05em;color:var(--g);font-variant-numeric:tabular-nums;text-shadow:4px 6px 0 rgba(52,211,153,.20),0 6px 34px rgba(0,0,0,.4)}
+  .prc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,1.6vw,28px);display:flex;flex-direction:column;gap:8px}
+  .prc-name{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(16px,1.4vw,22px);line-height:1.14;letter-spacing:-.028em;color:#fff;margin:0}
+  .prc-desc{font-size:clamp(13px,1vw,15px);line-height:1.5;color:#cbccd0;margin:0}
+  @media(prefers-reduced-motion:reduce){.prc-img{transition:none}}
+  @media(max-width:860px){.prc-grid{grid-template-columns:repeat(2,1fr)}.prc-card{aspect-ratio:3/4}.prc-num{font-size:clamp(52px,10vw,88px)}}
+  @media(max-width:520px){.prc-grid{grid-template-columns:1fr}.prc-card,.prc-card:nth-child(even){margin:0 auto;width:84%;aspect-ratio:5/7}}
+
+  /* CITIES (linked nav cards) */
+  .city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .city{display:block;border:1px solid var(--b);border-radius:10px;padding:22px 20px;background:var(--surface);text-decoration:none;transition:border-color .2s,transform .2s var(--ease),background .2s}
+  a.city:hover{border-color:var(--g);transform:translateY(-3px);background:var(--surface-2)}
+  .city.here{border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.05)}
+  .city h3{font-family:'Inter Tight',sans-serif;font-size:17px;font-weight:640;color:var(--g);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .city p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .city .arr{margin-left:auto;color:var(--dim);transition:transform .2s,color .2s}
+  a.city:hover .arr{color:var(--g);transform:translateX(3px)}
 
   /* TESTIMONIALS */
-  .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-  .testimonial{border:1px solid var(--b);padding:22px 18px}
-  .testimonial .stars{display:flex;gap:3px;margin-bottom:10px}
-  .testimonial .stars svg{width:16px;height:16px;color:var(--g);fill:var(--g)}
-  .testimonial blockquote{font-family:'Inter',sans-serif;font-size:14px;font-style:italic;color:#ccc;line-height:1.7;margin-bottom:14px;border:0;padding:0}
-  .testimonial .author{display:flex;align-items:center;gap:10px}
-  .testimonial .author img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--b)}
-  .testimonial .author-name{font-weight:600;font-size:13px;color:var(--fg)}
-  .testimonial .author-role{font-size:11px;color:var(--muted)}
+  .tst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .tst{border:1px solid var(--b);border-radius:12px;padding:24px 22px;background:var(--surface)}
+  .tst .stars{display:flex;gap:3px;margin-bottom:14px}
+  .tst .stars svg{width:16px;height:16px;color:var(--g);fill:var(--g)}
+  .tst blockquote{font-size:14.5px;color:#d7dade;line-height:1.7;margin-bottom:16px;border:0;padding:0}
+  .tst .author{display:flex;align-items:center;gap:11px}
+  .tst .author img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--b-2)}
+  .tst .author-name{font-weight:650;font-size:13.5px;color:#fff}
+  .tst .author-role{font-size:11.5px;color:var(--dim)}
 
-  /* PROCESS */
-  .process-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
-  .process-step{border:1px solid var(--b);padding:22px 18px;text-align:center}
-  .process-step .num{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:28px;color:var(--g);margin-bottom:8px;line-height:1}
-  .process-step h3{font-size:15px;margin-bottom:4px}
-  .process-step p{font-size:13px;margin:0}
+  /* FAQ (centered panel accordion) */
+  .faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq details{border:1px solid var(--b);border-radius:14px;background:var(--surface);padding:0 clamp(18px,2vw,24px);transition:border-color .25s,background .25s}
+  .faq details[open]{border-color:rgba(52,211,153,.32);background:var(--surface-2)}
+  .faq summary{list-style:none;cursor:pointer;padding:19px 0;font-family:'Inter Tight',sans-serif;font-size:16.5px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:color .2s}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:hover{color:var(--g-lite)}
+  .faq summary .pm{flex-shrink:0;width:22px;height:22px;position:relative;transition:transform .25s var(--ease)}
+  .faq summary .pm::before,.faq summary .pm::after{content:'';position:absolute;background:var(--g);border-radius:2px}
+  .faq summary .pm::before{top:10px;left:3px;right:3px;height:2px}
+  .faq summary .pm::after{left:10px;top:3px;bottom:3px;width:2px;transition:transform .25s var(--ease)}
+  .faq details[open] summary .pm::after{transform:scaleY(0)}
+  .faq details[open] summary .pm{transform:rotate(180deg)}
+  .faq p{font-size:14.5px;color:var(--muted);line-height:1.7;padding:0 0 22px;margin:0}
+  .faq p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
 
-  /* FAQ */
-  .faq-item{border-bottom:1px solid var(--b);padding:18px 0}
-  .faq-item h3{font-size:16px;cursor:default;margin-bottom:6px}
-  .faq-item p{font-size:14px;margin:0}
+  /* CTA BAND */
+  .cta{position:relative;overflow:hidden;border:1px solid var(--b-2);border-radius:22px;padding:clamp(48px,6vw,84px) clamp(28px,5vw,72px);background:linear-gradient(160deg,var(--surface-2),var(--surface));text-align:center}
+  .cta h2{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(26px,3.7vw,42px);line-height:1.08;letter-spacing:-.028em;margin-bottom:16px;text-wrap:balance;color:#fff}
+  .cta h2 em{font-style:normal;color:var(--g)}
+  .cta > p{font-size:clamp(15px,1.7vw,17px);color:var(--muted);max-width:52ch;margin:0 auto 30px;line-height:1.6}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .cta-actions .btn{margin:0}
+  .cta .cta-note{font-size:13px;color:var(--dim);margin:40px 0 0;max-width:none}
+  @media(max-width:520px){.cta-actions .btn{flex:1 1 100%}}
 
-  /* DIFFERENTIATORS */
-  .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .diff-item{display:flex;gap:10px;align-items:flex-start;padding:16px;border:1px solid var(--b);background:var(--card)}
-  .diff-item svg{width:20px;height:20px;color:var(--g);flex-shrink:0;margin-top:1px}
-  .diff-item h3{font-size:14px;margin-bottom:2px}
-  .diff-item p{font-size:12px;margin:0}
+  /* FOOTER (utility strip) */
+  .foot{border-top:1px solid var(--b);padding:clamp(28px,3.5vw,40px) 0 26px;background:var(--bg-2)}
+  .foot-strip{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--b)}
+  .foot-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:19px;letter-spacing:-.03em;color:#fff;text-decoration:none}
+  .foot-logo span{color:var(--g)}
+  .foot-nav{display:flex;flex-wrap:wrap;gap:10px 20px}
+  .foot-nav a{font-size:13.5px;color:#b7bcc3;text-decoration:none;transition:color .2s}
+  .foot-nav a:hover{color:var(--g)}
+  .foot-contact{display:flex;flex-wrap:wrap;gap:8px 18px}
+  .foot-contact a{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+  .foot-contact a:hover{color:var(--g)}
+  .foot-contact svg{width:15px;height:15px;color:var(--g);flex-shrink:0}
+  .foot-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;margin-top:16px}
+  .foot-bottom p{font-size:12.5px;color:var(--dim);margin:0}
+  .foot-nearby{display:flex;flex-wrap:wrap;gap:6px 12px}
+  .foot-nearby a{font-size:12px;color:var(--dim);text-decoration:none}
+  .foot-nearby a:hover{color:var(--muted)}
+  @media(max-width:640px){.foot-strip{gap:16px}}
 
-  /* CTA SECTION */
-  .cta-block{border:2px solid var(--g);padding:32px 28px;text-align:center;background:rgba(52,211,153,.04);margin:40px auto;max-width:640px}
-  .cta-block h2{margin-bottom:8px}
-  .cta-block p{margin-bottom:20px}
-  @media(max-width:600px){.cta-block{padding:28px 18px}}
-
-  /* FOOTER */
-  footer{text-align:center;padding:36px 20px 48px;border-top:1px solid var(--b)}
-  footer p{font-size:12px;color:#555;margin:4px 0}
-  footer a{color:var(--g);text-decoration:none}
-  
-  
-  
-  footer a:hover{text-decoration:underline}
-  
-  
+  /* MOTION */
+  .reveal{opacity:1}
+  html.js .reveal{opacity:0;transform:translateY(18px)}
+  html.js .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  @media(prefers-reduced-motion:reduce){
+    html.js .reveal{opacity:1!important;transform:none!important}
+    html{scroll-behavior:auto}
+    *{animation:none!important}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -158,8 +232,9 @@
   "name": "Studio O'Brien",
   "url": "https://studioobrien.com/cherryville-nc-web-design",
   "image": "https://studioobrien.com/portfolio/ember.webp",
-  "description": "Web development and design in Cherryville, NC. Custom websites, SEO, and branding for restaurants, small businesses, and nonprofits in Gaston County, Bessemer City, Waco, and Crouse.",
+  "description": "Web development and design in Cherryville, NC. Custom websites, SEO, and branding for trades, restaurants, small businesses, and manufacturers in Gaston County, Bessemer City, Kings Mountain, and Lincolnton.",
   "email": "hello@studioobrien.com",
+  "telephone": "+1-704-974-3372",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Cherryville",
@@ -169,42 +244,15 @@
   "areaServed": [
     {"@type": "City", "name": "Cherryville"},
     {"@type": "City", "name": "Bessemer City"},
-    {"@type": "City", "name": "Waco"},
-    {"@type": "City", "name": "Crouse"},
-    {"@type": "City", "name": "Shelby"},
+    {"@type": "City", "name": "Kings Mountain"},
     {"@type": "City", "name": "Lincolnton"},
+    {"@type": "City", "name": "Dallas"},
+    {"@type": "City", "name": "Shelby"},
     {"@type": "City", "name": "Gastonia"},
-    {"@type": "City", "name": "Charlotte"},
     {"@type": "State", "name": "North Carolina"}
   ],
   "priceRange": "$$",
   "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "3",
-    "bestRating": "5"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Marcus Reed"},
-      "reviewBody": "Jarred built something that finally matches the atmosphere inside these walls. Now people book before they even walk in.",
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Sarah Lin"},
-      "reviewBody": "Jarred rebuilt the entire front end — it looks incredible and actually works where our audience is.",
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "David Kim"},
-      "reviewBody": "The walkthrough video sold me. I could see exactly what I was getting before anything went live. Revisions were painless.",
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-    }
-  ],
   "sameAs": [
     "https://github.com/CandyFlex",
     "https://linkedin.com/in/jarred-kern"
@@ -229,6 +277,20 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How much does a website cost in Cherryville?", "acceptedAnswer": {"@type": "Answer", "text": "Every project is custom-quoted based on scope. We build from scratch, with no templates, so pricing reflects what your business actually needs. Reach out for a straight number, not a sales pitch. You can also get an instant no-email estimate from our website cost calculator."}},
+    {"@type": "Question", "name": "How long does a website take to build?", "acceptedAnswer": {"@type": "Answer", "text": "Most projects go from first call to live site in about 14 days. Complex builds may take longer, but you get a clear timeline upfront."}},
+    {"@type": "Question", "name": "Do I own my website?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You own your domain, hosting, source code, and every asset. No monthly fees unless you want ongoing support."}},
+    {"@type": "Question", "name": "Do you work with businesses outside Cherryville?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We serve Gaston County, Bessemer City, Kings Mountain, Lincolnton, Dallas, Shelby, and throughout North Carolina, all done remotely with recorded walkthroughs."}},
+    {"@type": "Question", "name": "What kind of businesses do you build for?", "acceptedAnswer": {"@type": "Answer", "text": "Main Street shops and restaurants, trades and contractors, small manufacturers, professional practices, and nonprofits across Gaston County."}},
+    {"@type": "Question", "name": "What if I already have a website?", "acceptedAnswer": {"@type": "Answer", "text": "We handle migrations from Wix, Squarespace, WordPress, or any platform, preserving your SEO and moving your content so nothing breaks in the transition."}}
+  ]
+}
+</script>
 
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -237,133 +299,131 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "x8v48co1gg");
 </script>
-<style>
-/* unified nav + grid overlay (location batch) */
-body{position:relative;z-index:0}
-.topbar{background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-.topbar-inner{max-width:1100px;padding:0 clamp(16px,3vw,32px);height:60px}
-.topbar-logo{font-family:'Inter',sans-serif;font-weight:720;font-size:18px;color:#fff;letter-spacing:-.03em;position:relative}
-.topbar-logo::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--g);transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
-.topbar-logo:hover::after{transform:scaleX(1) rotate(-1.5deg)}
-.topbar-links{gap:clamp(16px,2.4vw,26px)}
-.topbar-link{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#a8a8a8;position:relative;transition:color .2s}
-.topbar-link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-.topbar-link:hover{color:#fff}
-.topbar-link:hover::after{transform:scaleX(1)}
-.topbar-link[href="/contact"]{background:#fff;color:#0a0a0b;font-weight:600;font-size:11px;padding:8px 14px;border-radius:999px;overflow:hidden;transition:background .3s,color .3s}
-.topbar-link[href="/contact"]::after{display:none}
-.topbar-link[href="/contact"]:hover{color:#0a0a0b;background:var(--g)}
-</style>
 </head>
 <body>
+<a href="#main" class="skip">Skip to content</a>
 
-<!-- STICKY TOPBAR -->
-<nav class="topbar" aria-label="Site navigation">
-  <div class="topbar-inner">
-    <a href="/" class="topbar-logo">Studio O'Brien</a>
-    <div class="topbar-links">
-      <a href="/blog" class="topbar-link">Blog</a>
-      <a href="/#portfolio" class="topbar-link">View Work</a>
-      <a href="/contact" class="topbar-link">Start a Website</a>
+<!-- NAV -->
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">Studio O<span>'</span>Brien</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/blog">Blog</a>
+        <a href="/#portfolio">View Work</a>
+        <a href="/about">About</a>
+      </div>
+      <a href="/contact" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Start a Website
+      </a>
     </div>
   </div>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
 <header class="hero">
   <h1 class="sr-only">Web Design &amp; Development in Cherryville, NC</h1>
-  <h2 style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,6vw,48px);line-height:1.08;margin-bottom:14px;letter-spacing:-.02em;color:#fff">Web Development &amp; Design in Cherryville, NC</h2>
-  <p>Custom-built websites for restaurants, small businesses, and nonprofits in Gaston County — a tight-knit rural community between Shelby and Lincolnton. No templates. No lock-in. You own everything.</p>
-  <div class="hero-pills">
-    <span class="hero-pill">Custom Design</span>
-    <span class="hero-pill">SEO</span>
-    <span class="hero-pill">Branding</span>
-    <span class="hero-pill">Google Business Profile</span>
-    <span class="hero-pill">14-Day Delivery</span>
-  </div>
-  <div class="hero-cta-row">
-    <a href="/contact" class="btn btn-primary">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Start a Project
-    </a>
-    <a href="/#portfolio" class="btn btn-secondary">View Our Work</a>
+  <div class="wrap">
+    <span class="hero-tag reveal">Cherryville &middot; Gaston County, North Carolina</span>
+    <p class="display reveal">Web design in Cherryville, built to bring in <em>real work</em>.</p>
+    <p class="hero-sub reveal">Custom websites, SEO, and branding for the trades, shops, restaurants, and manufacturers of Cherryville and northwestern Gaston County. No templates, no lock-in, and you own every line of it.</p>
+    <div class="hero-cta-row reveal">
+      <a href="/contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start a project
+      </a>
+      <a href="/website-cost-calculator" class="btn btn-ghost">Get a free estimate</a>
+    </div>
+    <div class="proof reveal" role="list" aria-label="What you get">
+      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="proof-n">You own everything</div><div class="proof-l">Code, domain, and hosting</div></div>
+      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="proof-n">You launch fast</div><div class="proof-l">Live in fourteen days</div></div>
+      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="proof-n">You rank locally</div><div class="proof-l">Local SEO from launch</div></div>
+      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/></svg></div><div class="proof-n">You skip templates</div><div class="proof-l">Coded to your brand</div></div>
+    </div>
   </div>
 </header>
 
-<!-- NAP + MAP -->
-<section class="section">
-  <div class="container nap-grid">
-    <div class="nap-info">
-      <h2>Serving Cherryville &amp; Gaston County</h2>
-      <div class="nap-line">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Based in <strong>Cherryville, NC</strong> — a rural Gaston County community serving Bessemer City, Waco, Crouse, Shelby, Lincolnton &amp; the Charlotte metro area</span>
-      </div>
-      <div class="nap-line">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></span>
-      </div>
-      <div class="nap-line">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>Mon-Fri, 9am-6pm EST</span>
-      </div>
+<!-- LOCAL INTRO -->
+<section class="local band">
+  <div class="wrap">
+    <div class="local-copy reveal">
+      <h2 class="sec-title" style="margin-bottom:18px">Built for <em>Cherryville</em> and northwestern Gaston County.</h2>
+      <p>Cherryville sits in the northwest corner of Gaston County, a working town built on trucking and trade. This is where Carl Grier Beam started <strong>Carolina Freight</strong> in 1932, and the <strong>C. Grier Beam Truck Museum</strong> on Mountain Street still tells that story. It made its name moving freight, and the businesses here run on the same practical, get-it-done spirit.</p>
+      <p>We build for the people who keep this town going: the contractor and the machine shop, the restaurant on Main Street, the home-service crew covering the county line toward Bessemer City and Shelby. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.</p>
     </div>
-    <div class="map-wrap">
+    <div class="map-card reveal">
       <iframe title="Cherryville, NC service area map" src="https://www.google.com/maps?q=Cherryville,NC&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Serving <strong>Cherryville</strong>, Bessemer City, Kings Mountain, Lincolnton, Dallas &amp; the Charlotte metro</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+17049743372">(704) 974-3372</a></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section section-dark">
-  <div class="container">
-    <h2>What we do for Cherryville businesses</h2>
-    <p>Every site is designed and coded from scratch — your brand, your customers, your goals.</p>
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>Custom Web Design</h3>
-        <p>No templates. Every pixel, every word, every interaction built around your brand.</p>
-      </div>
-      <div class="service-card">
-        <h3>SEO Optimization</h3>
-        <p>On-page SEO, technical SEO, and local search strategy to get you found in Gaston County. For a complete breakdown, see our <a href="/blog/local-seo-guide">Local SEO guide</a>.</p>
-      </div>
-      <div class="service-card">
-        <h3>Google Business Profile</h3>
-        <p>Setup and optimization so you show up when people search for what you do in Cherryville.</p>
-      </div>
-      <div class="service-card">
-        <h3>UI/UX Design</h3>
-        <p>Clean, intuitive interfaces that guide visitors toward booking, buying, or contacting you.</p>
-      </div>
-      <div class="service-card">
-        <h3>Website Migration</h3>
-        <p>Moving from Wix, Squarespace, or an old site? We handle the transfer without losing your SEO. Our <a href="/blog/web-design-redesign-guide">Web Design & Redesign Guide</a> covers everything from spotting an outdated site to calculating ROI.</p>
-      </div>
-      <div class="service-card">
-        <h3>Ongoing Support</h3>
-        <p>Need updates, edits, or someone to keep things running? We're here after launch too.</p>
-      </div>
-      <div class="service-card">
-        <h3>Branding &amp; Identity</h3>
-        <p>Logos, color systems, typography, and visual identity that make your business look as professional as it is.</p>
-      </div>
-      <div class="service-card">
-        <h3>Copywriting</h3>
-        <p>Every word on your site written to convert visitors into customers. No lorem ipsum, no filler.</p>
-      </div>
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">What we do for Cherryville businesses</h2>
+      <p>One studio for the whole build, the way an agency would cover it, without the agency overhead. Every service below is done in-house and built to bring you work.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/></svg></span><div><h3>Custom website design</h3><p>A custom website, hand-coded from scratch for your Cherryville business. No Wix or Squarespace template. Every page and word is built around how you actually sell and who you serve.</p></div></div>
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><div><h3>Local SEO</h3><p>On-page and technical SEO plus a local strategy built to rank you across Gaston County. We target the keywords your customers really search, so you land in Google's local results. See our <a href="/blog/local-seo-guide">Local SEO guide</a>.</p></div></div>
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><h3>Google Business Profile</h3><p>Full Google Business Profile setup and optimization so you appear in the Map Pack when nearby customers search. Categories, photos, posts, and a review strategy, all handled for you.</p></div></div>
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Brand &amp; identity</h3><p>A logo, color palette, and typography that make you look as established online as you are on Main Street. One consistent identity across your website, signage, and social.</p></div></div>
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-3-3M20 16H8l3 3"/></svg></span><div><h3>Website migration</h3><p>Moving off Wix, Squarespace, or an aging WordPress site? We migrate your content and preserve your rankings, so you upgrade the design without losing the traffic you earned. See the <a href="/blog/web-design-redesign-guide">redesign guide</a>.</p></div></div>
+      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3z"/><path d="M13.5 6.5l3 3"/></svg></span><div><h3>Copywriting that converts</h3><p>Every headline and button written to turn visitors into phone calls and booked jobs. Clear, specific copy for your Cherryville customers. No lorem ipsum, no filler, no jargon.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">How we work</h2>
+      <p>Four steps from first call to live site. No standing meetings, no phone tag.</p>
+    </div>
+    <div class="prc-grid reveal">
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-discovery.webp" alt="Mapping a Cherryville business's goals, audience, and the pages the site needs to rank and convert" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">1</span>
+        <div class="prc-body"><h3 class="prc-name">Strategy &amp; planning</h3><p class="prc-desc">We map your goals, your customers, and the pages your site needs to rank and convert.</p></div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-design.webp?v=2" alt="Custom web design and on-brand copywriting for a Gaston County business" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">2</span>
+        <div class="prc-body"><h3 class="prc-name">Design &amp; copywriting</h3><p class="prc-desc">Custom design and on-brand copy, built around what makes your business specific.</p></div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-development.webp" alt="Hand-coded, responsive website development with on-page SEO baked in" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">3</span>
+        <div class="prc-body"><h3 class="prc-name">Development &amp; SEO</h3><p class="prc-desc">A clean, hand-coded, responsive build with on-page SEO from day one.</p></div>
+      </article>
+      <article class="prc-card">
+        <img class="prc-img" src="portfolio/process-launch.webp?v=2" alt="Website launch and local SEO with Google Business Profile so Cherryville locals find your business" loading="lazy" width="1080" height="1935">
+        <span class="prc-num" aria-hidden="true">4</span>
+        <div class="prc-body"><h3 class="prc-name">Launch &amp; local SEO</h3><p class="prc-desc">Your site goes live, you own it, and locals find you on Google.</p></div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section">
-  <div class="container">
-    <h2>What our clients say</h2>
-    <p>Real projects, real results, real people.</p>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        <div class="stars">
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">What clients say</h2>
+    </div>
+    <div class="tst-grid reveal">
+      <div class="tst">
+        <div class="stars" aria-label="5 out of 5 stars">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -372,26 +432,26 @@ body{position:relative;z-index:0}
         </div>
         <blockquote>"The restaurant itself is beautiful, but our old site made it look like a chain. Jarred built something that finally matches the atmosphere inside these walls. Now people book before they even walk in."</blockquote>
         <div class="author">
-          <img src="portfolio/avatar-marcus.webp" alt="Marcus Reed" loading="lazy" width="36" height="36">
+          <img src="portfolio/avatar-marcus.webp" alt="Marcus Reed" loading="lazy" width="38" height="38">
           <div><div class="author-name">Marcus Reed</div><div class="author-role">Owner, Ember &amp; Oak Steakhouse</div></div>
         </div>
       </div>
-      <div class="testimonial">
-        <div class="stars">
+      <div class="tst">
+        <div class="stars" aria-label="5 out of 5 stars">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <blockquote>"Our users live on their phones and the old site was unusable on mobile. Jarred rebuilt the entire front end — it looks incredible and actually works where our audience is."</blockquote>
+        <blockquote>"Our users live on their phones and the old site was unusable on mobile. Jarred rebuilt the entire front end, it looks incredible and actually works where our audience is."</blockquote>
         <div class="author">
-          <img src="portfolio/avatar-sarah.webp" alt="Sarah Lin" loading="lazy" width="36" height="36">
+          <img src="portfolio/avatar-sarah.webp" alt="Sarah Lin" loading="lazy" width="38" height="38">
           <div><div class="author-name">Sarah Lin</div><div class="author-role">Founder, Gameshelf</div></div>
         </div>
       </div>
-      <div class="testimonial">
-        <div class="stars">
+      <div class="tst">
+        <div class="stars" aria-label="5 out of 5 stars">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -400,7 +460,7 @@ body{position:relative;z-index:0}
         </div>
         <blockquote>"The walkthrough video sold me. I could see exactly what I was getting before anything went live. Revisions were painless."</blockquote>
         <div class="author">
-          <img src="portfolio/avatar-david.webp" alt="David Kim" loading="lazy" width="36" height="36">
+          <img src="portfolio/avatar-david.webp" alt="David Kim" loading="lazy" width="38" height="38">
           <div><div class="author-name">David Kim</div><div class="author-role">Creative Director, Koji Studio</div></div>
         </div>
       </div>
@@ -409,175 +469,105 @@ body{position:relative;z-index:0}
 </section>
 
 <!-- CITIES -->
-<section class="section section-dark">
-  <div class="container">
-    <h2>Serving Gaston County &amp; beyond</h2>
-    <p>Small businesses across the region trust us. Click any city to learn more:</p>
-    <div class="city-grid">
-      <div class="city-card active">
-        <h3>Cherryville, NC</h3>
-        <p>Rural Gaston County community with deep agricultural roots — we help small-town businesses reach customers far beyond the city limits.</p>
-      </div>
-      <a href="/bessemer-city-nc-web-design" class="city-card" style="text-decoration:none">
-        <h3>Bessemer City, NC</h3>
-        <p>Gaston County town with a revitalizing downtown and local businesses that need a digital presence to match their momentum.</p>
-      </a>
-      <a href="/waco-nc-web-design" class="city-card" style="text-decoration:none">
-        <h3>Waco, NC</h3>
-        <p>Small Cleveland County community just south of Cherryville — farm stands, home services, and family-owned operations.</p>
-      </a>
-      <a href="/shelby-nc-web-design" class="city-card" style="text-decoration:none">
-        <h3>Shelby, NC</h3>
-        <p>Cleveland County seat with uptown shops, restaurants, and professional services — just 18 miles away.</p>
-      </a>
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Serving Gaston County &amp; beyond</h2>
+      <p>Rooted in Cherryville, working across the region. Explore a nearby town:</p>
     </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="section" id="process">
-  <div class="container">
-    <h2>How we work</h2>
-    <p>Four steps from first call to live site. No meetings, no phone tag, no wasted time.</p>
-    <div class="process-list">
-      <div class="process-step">
-        <div class="num">1</div>
-        <h3>Discovery</h3>
-        <p>One call. We ask the right questions about your business, your customers, and what's not working.</p>
-      </div>
-      <div class="process-step">
-        <div class="num">2</div>
-        <h3>Design &amp; Build</h3>
-        <p>We write every word, design every pixel, and code every interaction from scratch.</p>
-      </div>
-      <div class="process-step">
-        <div class="num">3</div>
-        <h3>Walkthrough</h3>
-        <p>You get a recorded video tour of the full site. Review on your own time. No meetings.</p>
-      </div>
-      <div class="process-step">
-        <div class="num">4</div>
-        <h3>Launch</h3>
-        <p>We go live. You own the domain, hosting, and every line of code. No lock-in.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="section section-dark">
-  <div class="container">
-    <h2>Why Cherryville businesses choose us</h2>
-    <div class="diff-grid">
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>No templates</h3><p>Custom-built around your brand. No cookie-cutter layouts.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>You own everything</h3><p>Domain, hosting, source code — all yours. No lock-in, no surprises.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>Small town, big reach</h3><p>We help Cherryville businesses punch above their weight online — competing with big-city brands from right here in Gaston County.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>Rural business focus</h3><p>Farm stands, agritourism, produce markets, and rural enterprises — we know how to position them so they show up where customers are searching.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>Between Shelby &amp; Lincolnton</h3><p>We know the corridor. Your site captures traffic from both directions — commuters, visitors, and locals alike.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>14-day delivery</h3><p>From first call to live site. Clear timeline.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>Real copy, real strategy</h3><p>Every word written for your customers. No filler.</p></div>
-      </div>
-      <div class="diff-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div><h3>Local, not outsourced</h3><p>You talk to the person building your site.</p></div>
-      </div>
+    <div class="city-grid reveal">
+      <div class="city here"><h3>Cherryville, NC</h3><p>Trades, manufacturers, and Main Street shops in northwestern Gaston County. Sites that bring customers through the door.</p></div>
+      <a href="/bessemer-city-nc-web-design" class="city"><h3>Bessemer City, NC <span class="arr">&rarr;</span></h3><p>A revitalizing Gaston County downtown and local businesses that need a digital presence to match.</p></a>
+      <a href="/kings-mountain-nc-web-design" class="city"><h3>Kings Mountain, NC <span class="arr">&rarr;</span></h3><p>Tourism near the battleground and state park, retail, and food spots that need mobile-first design.</p></a>
+      <a href="/lincolnton-nc-web-design" class="city"><h3>Lincolnton, NC <span class="arr">&rarr;</span></h3><p>A historic Lincoln County seat where local businesses tell their story with clean, modern design.</p></a>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="container">
-    <h2>Questions we hear from Cherryville business owners</h2>
-    <div class="faq-item">
-      <h3>How much does a website cost?</h3>
-      <p>Every project is custom-quoted based on scope. We build from scratch — no templates — so pricing reflects what your business actually needs. Reach out and we'll give you a straight number, not a sales pitch.</p>
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Questions we hear from Cherryville owners</h2>
     </div>
-    <div class="faq-item">
-      <h3>How long does it take?</h3>
-      <p>Most projects go from first call to live site in about 14 days. Complex builds may take longer, but we'll give you a clear timeline upfront.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Do I own my website?</h3>
-      <p>Yes. You own your domain, hosting, source code, and every asset. No monthly fees unless you want ongoing support. It's your business, it should be your website.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Do you work with businesses outside Cherryville?</h3>
-      <p>Absolutely. We serve Gaston County, Bessemer City, Waco, Crouse, Shelby, Lincolnton, and throughout North Carolina. Everything is done remotely with recorded walkthroughs.</p>
-    </div>
-    <div class="faq-item">
-      <h3>What kind of businesses do you work with?</h3>
-      <p>Restaurants, retail shops, professional services, nonprofits, and startups. We've built sites for steakhouses, bakeries, arcades, game platforms, SaaS companies, and more.</p>
-    </div>
-    <div class="faq-item">
-      <h3>What if I already have a website?</h3>
-      <p>We handle migrations from Wix, Squarespace, WordPress, or any platform. We'll preserve your SEO, move your content, and make sure nothing breaks in the transition.</p>
+    <div class="faq reveal">
+      <details open><summary>How much does a website cost? <span class="pm"></span></summary><p>Every project is custom-quoted based on scope. We build from scratch, with no templates, so pricing reflects what your business actually needs. Reach out for a straight number, or get an instant <a href="/website-cost-calculator">no-email estimate</a> first.</p></details>
+      <details><summary>How long does it take? <span class="pm"></span></summary><p>Most projects go from first call to live site in about 14 days. Complex builds take longer, but you get a clear timeline upfront.</p></details>
+      <details><summary>Do I own my website? <span class="pm"></span></summary><p>Yes. You own your domain, hosting, source code, and every asset. No monthly fees unless you want ongoing support. It is your business, it should be your website.</p></details>
+      <details><summary>Do you work with businesses outside Cherryville? <span class="pm"></span></summary><p>Yes. We serve Gaston County, Bessemer City, Kings Mountain, Lincolnton, Dallas, Shelby, and throughout North Carolina, all done remotely with recorded walkthroughs.</p></details>
+      <details><summary>What kind of businesses do you build for? <span class="pm"></span></summary><p>Main Street shops and restaurants, trades and contractors, small manufacturers, professional practices, and nonprofits across Gaston County.</p></details>
+      <details><summary>What if I already have a website? <span class="pm"></span></summary><p>We handle migrations from Wix, Squarespace, WordPress, or any platform, preserving your SEO and moving your content so nothing breaks in the transition.</p></details>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="section section-dark">
-  <div class="container">
-    <div class="cta-block">
-      <h2>Ready for a website that actually works for your business?</h2>
-      <p>Tell us about your business. We'll tell you exactly what we'd build and how long it'll take. Free. No strings.</p>
-      <a href="/contact" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Start a Project
-      </a>
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2>Losing customers to a website that <em>doesn't sell</em>?</h2>
+      <p>Let's fix that. I build custom websites for Cherryville businesses that turn visitors into phone calls and booked jobs. Tell me what you're working with, and I'll show you what's possible.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Start a project
+        </a>
+        <a href="tel:+17049743372" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (704) 974-3372
+        </a>
+      </div>
+      <p class="cta-note">Free quote. Most builds launch in about 14 days.</p>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
-<footer>
-  <p><strong>Studio O'Brien</strong> — Web development &amp; design in <strong>Cherryville, NC</strong></p>
-  <div class="page-links">
-    <a href="/">Home</a>
-    <a href="/website-cost-calculator">Website Cost Calculator</a>
-    <a href="/blog">Blog</a>
-    <a href="/restaurant-website-design">Restaurant Websites</a>
-    <a href="/seo-services">SEO Services</a>
-    <a href="/small-business-websites">Small Business Websites</a>
-    <a href="/google-business-profile-setup">Google Business Profile</a>
-    <a href="/website-redesign-migration">Website Redesign</a>
-    <a href="mailto:hello@studioobrien.com">Contact</a>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-strip">
+      <a href="/" class="foot-logo">Studio O<span>'</span>Brien</a>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="/small-business-websites">Services</a>
+        <a href="/seo-services">SEO</a>
+        <a href="/#portfolio">Our Work</a>
+        <a href="/service-area">Service Area</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div class="foot-contact">
+        <a href="tel:+17049743372"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(704) 974-3372</a>
+        <a href="mailto:hello@studioobrien.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@studioobrien.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 Studio O'Brien &middot; Web design &amp; development in Cherryville, NC</p>
+      <div class="foot-nearby" aria-label="Nearby areas served">
+        <a href="/bessemer-city-nc-web-design">Bessemer City</a>
+        <a href="/kings-mountain-nc-web-design">Kings Mountain</a>
+        <a href="/lincolnton-nc-web-design">Lincolnton</a>
+        <a href="/dallas-nc-web-design">Dallas</a>
+        <a href="/shelby-nc-web-design">Shelby</a>
+        <a href="/gastonia-nc-web-design">Gastonia</a>
+      </div>
+    </div>
   </div>
-  <div class="nearby-links">
-    <a href="/website-cost-calculator">Website Cost Calculator</a>
-    <a href="/blog">Blog</a>
-    <a href="/service-area">Service Area</a>
-    <a href="/cherryville-nc-web-design">Web Development &amp; Design Cherryville NC</a>
-    <a href="/bessemer-city-nc-web-design">Web Development &amp; Design Bessemer City NC</a>
-    <a href="/waco-nc-web-design">Web Development &amp; Design Waco NC</a>
-    <a href="/crouse-nc-web-design">Web Development &amp; Design Crouse NC</a>
-    <a href="/shelby-nc-web-design">Web Development &amp; Design Shelby NC</a>
-    <a href="/lincolnton-nc-web-design">Web Development &amp; Design Lincolnton NC</a>
-  </div>
-  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
-  <p>&copy; 2025 <a href="/">Studio O'Brien</a></p>
 </footer>
+
+<script>
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
 
 </body>
 </html>

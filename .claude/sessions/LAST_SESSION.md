@@ -1,68 +1,102 @@
-# Session Handoff — 2026-07-04
+# Session Handoff — 2026-07-05
 
-## What changed (ALL LIVE on studioobrien.com via `vercel deploy --prod`, multiple deploys)
+## ✅ GEOBUILD ROLLOUT COMPLETE (2026-07-05)
+All 26 `*-nc-web-design.html` location pages are LIVE on the Shelby template, with real cited
+local facts, 0 dashes, valid schema. `service-area.html` hub links all 26. See
+`production/geo-rollout/PROGRESS.md` (full log) and memory `obrien_location_template.md`.
 
-**6 new research-driven articles** (Web Design & Performance cluster), from 3 of the
-6 Gemini research prompts (dumps archived in `production/research/`):
-- how-to-choose-web-design-company, who-owns-your-website-domain-source-code,
-  website-builder-vs-custom-cost, wix-squarespace-seo-limits,
-  small-business-website-cost-2026, why-cheap-websites-cost-more
-- Each: template-built, sourced stats, /humanizer voice (0 em dashes), byline+schema,
-  self-hosted local NC hero image, wired into `/blog` cards + `/blog/clusters` + sitemap.
+Pipeline built + proven: `production/geo-rollout/build-geo.mjs` + `towns/<slug>.json` (template
+source = the shelby page; asserts anchors, validates dashes/schema/meta). Authoring was done by
+parallel background `general-purpose` agents at model=haiku reading `AGENT_BRIEF.md` +
+cherryville.json; Opus verified facts + built + deployed per tier. To edit any page, change its
+`towns/*.json` and run `node production/geo-rollout/build-geo.mjs <slug>`, then `vercel deploy --prod`.
 
-**Content registry infrastructure (the dedup + interlink system):**
-- `production/build-registry.mjs` → `CONTENT-REGISTRY.json` (+ `.md` usage doc). Run
-  before/after every article. `production/RANKING-OPERATING-MODEL.md` = the full
-  reliable/unique/token-efficient playbook.
-- Fixed: 3 of 4 cluster pillars were unlinked from `blog/clusters.html` (now linked).
-- `web-design-redesign-guide` pillar now links down to all 11 cluster articles (was 5).
+Possible next work (NOT started): request GSC indexing for the 26 URLs (user-manual in GSC UI);
+revisit the fake visible testimonials (still on all location pages per prior guardrail).
 
-**Images:** self-host pipeline works via `ffmpeg` (no cwebp/magick/sharp). 6 verified
-local NC covers in `blog/img/` (PD/CC0 + CC BY-SA 4.0 w/ attribution). GOTCHA: Wikimedia
-1600px thumb 404s — use <=1280px, fall back 960px.
+## Mission
+Roll the new **Shelby template** out to the other 25 location pages, each with
+**real local research** and identical formatting, so every geo page has the same
+premium visual version + a strong internal-link geo cluster. Reference file =
+`shelby-nc-web-design.html` (fully done, SEO-audited, live). Also standardize the nav logo
+sitewide (see task 3). Interlink gaps to fix: `service-area.html` links only 21/26 towns;
+template footer needs the `/service-area` hub link.
 
-**Google Search Console connected (headless):** `node production/gsc-report.mjs` and
-`production/gsc-index-audit.mjs`. Service account `gsc-reporter@studioobrien-seo-51528
-.iam.gserviceaccount.com`, key at `~/.config/studioobrien/gsc-sa-key.json` (OUTSIDE repo).
-Property `sc-domain:studioobrien.com`. See memory [[obrien_gsc_reporting]].
+## What changed this session (all LIVE via `vercel deploy --prod`)
+- **`shelby-nc-web-design.html` = THE TEMPLATE.** Full redesign + real localization.
+  Dark+mint identity kept, craft elevated. Locked section decisions:
+  - Hero: centered, container 1240px, big display headline, `.hero-tag` location line.
+  - **Benefit strip**: style "E" glow icon cards (`.proof`/`.proof-item` w/ radial-glow
+    icon), copy = "You own everything / You launch fast / You rank locally / You skip
+    templates" (symmetric word counts). NO "5 years / $100k" metrics (user cut them).
+  - **Local section**: split card (`.local`), prose left + map card right, tap-to-call
+    **(704) 974-3372** + email in the map meta (hours removed).
+  - **Services**: `.svc` glow cards, 2-col icon-left, richer keyword copy (custom website
+    design, Cleveland County, Map Pack, Google Business Profile, preserve rankings).
+  - **Process**: homepage-style image cards (`.prc-*`, reuses portfolio/process-*.webp).
+  - "Why us" section REMOVED (redundant with benefit strip).
+  - Testimonials KEPT as-is (see Do-NOT), Cities linked cards.
+  - **FAQ**: centered panel accordion (`.faq details`), `<details>`/`<summary>` + FAQPage schema.
+  - **CTA**: problem/solution, "Losing customers to a website that *doesn't sell*?",
+    two actions (Start a project + Call), full section width, `.cta .cta-note` 40px gap
+    (specificity fix: `.cta > p` was zeroing its margin-top).
+  - **Footer**: utility strip (`.foot-strip`): logo + nav links + phone/email, then
+    copyright + 6 nearby-town links. Small + balanced.
+  - **Nav logo**: white "Studio O'Brien" + animated green underline (`.nav-logo::after`
+    scaleX .32 -> 1 on hover). THIS is the sitewide standard now.
+- **`cherryville-nc-web-design.html`**: content localized (Carolina Freight / trades /
+  manufacturing, real neighbors) but STILL OLD DESIGN. Needs the template applied
+  (content is a head start). Good first rollout page to validate the process.
+- Phone **(704) 974-3372** added to Shelby (tel: links + `telephone` in schema).
+- Removed the fake `aggregateRating`/`review` schema from Shelby (kept visible testimonials).
 
-**SEO fixes from Ahrefs audit (`Desktop/Errors/*.csv`):**
-- 5 broken 404 citations fixed (2 mine=yurin.dev removed/reattributed to Vizantir;
-  3 existing → rudys.ai, digitalapplied, vwo — all verified live). Removed an unverified
-  "15-40% price hike" stat from who-owns.
-- 2 links-to-redirect fixed (www.slang.ai, www.mydoceo). NOTE: broken URLs appeared BOTH
-  inline AND in sources callouts — used replace_all to catch all occurrences.
-- Added `.html` -> clean URL 308 redirect in `vercel.json` (dedupes URLs; verified).
-- Trimmed 5 meta descriptions to <=155. Recompressed 3 heroes (231-266kB -> 143-185kB).
-- Footer redesigned to centered/compact (index.html + index-v2.html); nav is one-line
-  scaling via container-query cqi.
+## SEO audit of the template (Shelby) — PASSED
+title 51ch ✓ · meta 143ch ✓ · 1 keyword H1 (sr-only) + 7 H2/14 H3 ✓ · 7 imgs all alt ✓ ·
+22 internal links ✓ · ProfessionalService + BreadcrumbList + FAQPage all valid ✓ · ~1044
+unique local words ✓. Template is SEO-clean; clone with confidence.
 
-## Verification (done live)
-- All page types 200; .html->clean redirect works; all 7 fixed articles clean of broken
-  domains (grep'd live HTML); sitemap 0 errors; robots fine (51/73 already indexed).
-- GSC index audit: 51 indexed, 22 not — ALL "lastCrawl=never" (crawl-priority, NOT quality
-  or technical rejection). No canonical/robots/noindex problems anywhere.
+## Per-page rollout process (repeat for each town)
+1. **Research** the town: `WebSearch "<town> NC history economy major employers landmarks <county> County"`.
+   Use Wikipedia + city site. Note: county, county-seat?, real industries/employers,
+   landmarks, neighboring towns, notable identity.
+2. **Copy Shelby template**, swap real local content into: hero-tag + display headline,
+   local-intro 2 paragraphs (real facts), map embed `src` + NAP neighbor list, services
+   local refs, cities/nearby cards (real adjacent towns), FAQ town name, CTA, footer towns.
+3. **Update ALL SEO**: `<title>` (≤60), meta description (≤160), canonical, og/twitter,
+   ProfessionalService schema (addressLocality, areaServed, description), BreadcrumbList,
+   FAQPage. Keep the phone + tel links.
+4. **Verify** before deploy: `grep -c '—\|–'` = 0; JSON-LD parses (node one-liner in prior
+   commits); after deploy `curl -s -o /dev/null -w '%{http_code}'` = 200.
+5. `vercel deploy --prod`.
 
-## Next action (most valuable)
-- **Titles/H1 pass (P2 territory):** Ahrefs flags 28 page titles >60 chars + 15 H1s >70,
-  mostly LOCATION/service pages. Needs the specific URL list (not in the CSVs read; pull
-  from a fresh crawl or scan the location pages). Ties into keyword optimization.
-- **USER manual in GSC:** Request Indexing for the 6 new articles + /about +
-  restaurant-website-guide pillar (API can't do this). Submit sitemap if not already.
-- **Remaining research:** 3 pending prompts (#4 redesign ROI, #5 local SEO, #6 AI) -> ~9
-  more articles. Or write expanded 8-12 prompt pack toward a 30-40 article library.
+## Priority order (traction + real identity first; hamlets last & honest)
+- **A (do first):** cherryville (design only), gastonia, charlotte, hickory, kings-mountain,
+  lincolnton, morganton, belmont, mount-holly, newton, conover.
+- **B:** forest-city, rutherfordton, bessemer-city, dallas, cramerton, stanley,
+  boiling-springs, denver (Lake Norman), maiden (Apple/Google data centers — real hook).
+- **C (tiny hamlets — honest LIGHT treatment, do NOT invent local color):** waco, vale,
+  crouse, iron-station, mcadenville.
+
+## Task 3 — nav logo sitewide
+Make every page's menu logo identical: white "Studio O'Brien" + the green underline
+accent (`.nav-logo::after`, scaleX .32 rest / 1 hover). Non-location pages differ today:
+homepage `index.html` + `index-v2.html` use `.nav-brand` "O'BRIEN"; blog + service pages
+use `.topbar-logo`. Bring them all to the Shelby standard.
 
 ## Do NOT
-- Do NOT dump 30+ articles at once (scaled-content-abuse signal on young site) — cadence 2-4/wk.
-- Do NOT use em dashes; run /humanizer. Do NOT invent stats (every stat needs a live source URL).
-- Do NOT add alt text to the homepage marquee/reel or blog avatar images — empty alt is
-  CORRECT there (decorative duplicates + avatars with adjacent name); meaningful images
-  already have descriptive alt. Ahrefs "missing alt" on these = false positive.
-- Homepage edits go to BOTH index.html and index-v2.html.
-- `vercel deploy --prod` ships the WHOLE working tree (incl. pre-existing uncommitted edits).
+- **No em dashes** (— or --). Grep every page; the location template had them and they
+  were all removed. Run /humanizer principles on any new prose.
+- **Do NOT invent local facts.** Research real ones. Hamlets get honest generic copy, not
+  fabricated "agritourism"-style filler (that mistake was fixed on Cherryville).
+- **Do NOT re-add fake review schema** (`aggregateRating`/`review`) — FTC/Google risk.
+  User chose to LEAVE the visible testimonials "for now" (31 pages, fake names Marcus Reed
+  / Sarah Lin / David Kim). Visible only; never in structured data. See [[obrien_jarred_bio_positioning]].
+- Homepage edits go to BOTH `index.html` and `index-v2.html`.
+- `vercel deploy --prod` is the ONLY thing that ships; git push does NOT. It deploys the
+  whole working tree (`.vercelignore` covers harborlight/, remotion/, preview/, .claude/).
+- Deploys are cache-busted for the user via Ctrl+Shift+R; tell them to hard-refresh.
 
 ## Blockers / carried items
-- Work is LIVE but UNCOMMITTED to git (working tree has many pre-existing M files from prior
-  sessions mixed with this session's work). Commit carefully if desired.
-- New articles "Discovered - not indexed" = normal crawl timing; needs Request Indexing + time.
-- Deploy is manual (`vercel deploy --prod`); git push does NOT deploy.
+- Testimonials cleanup deferred (needs real Upwork or local quotes from user).
+- Request Indexing in GSC UI for changed pages = user-manual (API can't).
+- Template's visible hero headline is a `<p>` + sr-only keyword H1 — intentional, keep.
