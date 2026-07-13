@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Queen City — Logo Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Alfa+Slab+One&family=Oswald:wght@500;600&family=Archivo:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#14545a; --teal-deep:#0e3f44; --teal-ink:#0b2f33;
+    --gold:#c8942c; --gold-soft:#d3a24a; --cream:#f6f0e2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#dfe6e7;color:#1c2b2d}
+  .label-bar{position:sticky;top:0;z-index:20;background:var(--teal-ink);color:#fff;
+    display:flex;align-items:center;gap:14px;padding:12px 24px;font-size:13px;letter-spacing:.04em}
+  .label-bar b{background:var(--gold);color:var(--teal-ink);border-radius:6px;padding:3px 9px;font-weight:800;letter-spacing:.08em}
+  .label-bar span{opacity:.85}
+
+  /* each design shown on a mock header strip + mock footer strip */
+  .demo{padding:0}
+  .strip{display:flex;align-items:center;gap:60px;padding:34px 48px;flex-wrap:wrap}
+  .strip.light{background:#fff}
+  .strip.cream{background:var(--cream)}
+  .strip.dark{background:linear-gradient(160deg,#0d3134,#081c1f)}
+  .note{font-size:12px;color:#5b6f71;letter-spacing:.03em;margin-left:auto;max-width:340px;line-height:1.5}
+  .strip.dark .note{color:#9fc3c6}
+
+  .lg{transform:scale(1.35);transform-origin:left center}
+
+  /* sparkle */
+  .spark{display:inline-block;width:.55em;height:.55em;vertical-align:super;
+    background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 1.5c.8 5.8 2.7 7.7 8.5 8.5-5.8.8-7.7 2.7-8.5 8.5-.8-5.8-2.7-7.7-8.5-8.5 5.8-.8 7.7-2.7 8.5-8.5Z' fill='%23c8942c'/></svg>") center/contain no-repeat}
+
+  /* ---------- V1: Refined stack (site fonts, no new deps) ---------- */
+  .v1{display:inline-flex;flex-direction:column;line-height:1}
+  .v1 .name{font-weight:900;font-size:30px;letter-spacing:-.02em;color:var(--teal);white-space:nowrap}
+  .v1 .name .spark{margin-left:4px}
+  .v1 .sub{display:flex;align-items:center;gap:10px;margin-top:7px}
+  .v1 .sub i{flex:1;height:1.5px;background:var(--gold);opacity:.85}
+  .v1 .sub b{font-weight:700;font-size:10.5px;letter-spacing:.32em;color:var(--gold);white-space:nowrap}
+  .dark .v1 .name{color:#fff}
+
+  /* ---------- V2: Retro script ---------- */
+  .v2{display:inline-flex;flex-direction:column;line-height:1}
+  .v2 .name{font-family:'Yellowtail',cursive;font-weight:400;font-size:44px;color:var(--teal);
+    white-space:nowrap;transform:rotate(-2deg)}
+  .v2 .sub{font-weight:700;font-size:10px;letter-spacing:.34em;color:var(--gold);
+    text-transform:uppercase;margin:2px 0 0 auto;padding-right:6px}
+  .dark .v2 .name{color:#fff}
+
+  /* ---------- V3: Slab + gold plate ---------- */
+  .v3{display:inline-flex;flex-direction:column;line-height:1}
+  .v3 .name{font-family:'Alfa Slab One',serif;font-weight:400;font-size:27px;letter-spacing:.01em;
+    color:var(--teal);white-space:nowrap}
+  .v3 .plate{align-self:stretch;margin-top:6px;background:var(--gold);color:#0e3f44;
+    font-weight:800;font-size:10px;letter-spacing:.3em;text-align:center;padding:4px 0 3px;
+    border-radius:3px}
+  .dark .v3 .name{color:#fff}
+
+  /* ---------- V4: Condensed flag ---------- */
+  .v4{display:inline-flex;align-items:stretch;gap:12px;line-height:1}
+  .v4 .bar{width:5px;border-radius:3px;background:linear-gradient(var(--gold),var(--gold-soft))}
+  .v4 .stack{display:flex;flex-direction:column;justify-content:center}
+  .v4 .name{font-family:'Oswald',Arial,sans-serif;font-weight:600;font-size:31px;letter-spacing:.02em;
+    text-transform:uppercase;color:var(--teal);white-space:nowrap}
+  .v4 .sub{font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:12px;letter-spacing:.42em;
+    color:var(--gold);text-transform:uppercase;margin-top:4px}
+  .dark .v4 .name{color:#fff}
+
+  /* ---------- V5: Arched text badge (no circle, no crown) ---------- */
+  .v5 svg{display:block}
+  .v5 .arc-name{font-family:'Archivo',Arial,sans-serif;font-weight:900;font-size:30px;letter-spacing:1px;fill:var(--teal)}
+  .v5 .arc-sub{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-size:11px;letter-spacing:5px;fill:var(--gold)}
+  .dark .v5 .arc-name{fill:#fff}
+</style>
+</head>
+<body>
+
+<div class="label-bar"><b>LOGO 01</b> <span>Refined stack — current fonts sharpened: heavier name, sparkle, ruled subline. Zero new dependencies.</span></div>
+<section class="demo">
+  <div class="strip cream"><span class="lg"><span class="v1"><span class="name">Queen City<span class="spark"></span></span><span class="sub"><i></i><b>COMFORT CO.</b><i></i></span></span></span>
+    <p class="note">Closest to what's there now, but with real hierarchy: heavier weight, tighter tracking, gold rules boxing the subline, sparkle accent.</p></div>
+  <div class="strip dark"><span class="v1"><span class="name">Queen City<span class="spark"></span></span><span class="sub"><i></i><b>COMFORT CO.</b><i></i></span></span></div>
+</section>
+
+<div class="label-bar"><b>LOGO 02</b> <span>Retro script — 1950s hand-lettered feel, nearest to the Stan's original.</span></div>
+<section class="demo">
+  <div class="strip cream"><span class="lg"><span class="v2"><span class="name">Queen City</span><span class="sub">Comfort Co.</span></span></span>
+    <p class="note">Script tilted 2° like a sign-painter's stroke; small gold "COMFORT CO." tucked under the tail. The most era-correct option.</p></div>
+  <div class="strip dark"><span class="v2"><span class="name">Queen City</span><span class="sub">Comfort Co.</span></span></div>
+</section>
+
+<div class="label-bar"><b>LOGO 03</b> <span>Slab + gold plate — sturdy vintage service-company badge.</span></div>
+<section class="demo">
+  <div class="strip cream"><span class="lg"><span class="v3"><span class="name">QUEEN CITY</span><span class="plate">COMFORT CO.</span></span></span>
+    <p class="note">Heavy slab serif reads like a 1940s truck door; the solid gold plate underneath doubles as a brand color block.</p></div>
+  <div class="strip dark"><span class="v3"><span class="name">QUEEN CITY</span><span class="plate">COMFORT CO.</span></span></div>
+</section>
+
+<div class="label-bar"><b>LOGO 04</b> <span>Condensed flag — modern-retro, tall letters with a gold flag bar.</span></div>
+<section class="demo">
+  <div class="strip cream"><span class="lg"><span class="v4"><span class="bar"></span><span class="stack"><span class="name">Queen City</span><span class="sub">Comfort Co.</span></span></span></span>
+    <p class="note">Tall condensed caps with a vertical gold bar on the left — clean at small sizes, works great in the sticky mobile header.</p></div>
+  <div class="strip dark"><span class="v4"><span class="bar"></span><span class="stack"><span class="name">Queen City</span><span class="sub">Comfort Co.</span></span></span></div>
+</section>
+
+<div class="label-bar"><b>LOGO 05</b> <span>Arched wordmark — badge energy without any circle or crown.</span></div>
+<section class="demo">
+  <div class="strip cream"><span class="lg"><span class="v5">
+    <svg width="260" height="86" viewBox="0 0 260 86">
+      <defs><path id="arc" d="M10 62 Q130 18 250 62"/></defs>
+      <path d="M118 8c.6 4.4 2 5.8 6.4 6.4-4.4.6-5.8 2-6.4 6.4-.6-4.4-2-5.8-6.4-6.4 4.4-.6 5.8-2 6.4-6.4Z" fill="#c8942c" transform="translate(12,-4)"/>
+      <text class="arc-name"><textPath href="#arc" startOffset="50%" text-anchor="middle">QUEEN CITY</textPath></text>
+      <text class="arc-sub" x="130" y="80" text-anchor="middle">COMFORT CO.</text>
+    </svg>
+  </span></span>
+    <p class="note">The name rides a gentle arc — classic badge layout — with the sparkle floating above. No enclosing circle, no crown.</p></div>
+  <div class="strip dark"><span class="v5">
+    <svg width="260" height="86" viewBox="0 0 260 86">
+      <defs><path id="arc2" d="M10 62 Q130 18 250 62"/></defs>
+      <path d="M118 8c.6 4.4 2 5.8 6.4 6.4-4.4.6-5.8 2-6.4 6.4-.6-4.4-2-5.8-6.4-6.4 4.4-.6 5.8-2 6.4-6.4Z" fill="#c8942c" transform="translate(12,-4)"/>
+      <text class="arc-name"><textPath href="#arc2" startOffset="50%" text-anchor="middle">QUEEN CITY</textPath></text>
+      <text class="arc-sub" x="130" y="80" text-anchor="middle">COMFORT CO.</text>
+    </svg>
+  </span></div>
+</section>
+
+</body>
+</html>

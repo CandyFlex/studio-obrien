@@ -1,0 +1,270 @@
+.ryno-service-areas,
+.ryno-service-areas *,
+.ryno-service-areas *:before,
+.ryno-service-areas *:after {
+  box-sizing: border-box; }
+
+.ryno-service-areas .rsa-pipe-template,
+.ryno-service-areas .rsa-abc-template,
+.ryno-service-areas .rsa-drop-template,
+.ryno-service-areas .rsa-grid-template {
+  padding: 40px 0; }
+  .ryno-service-areas .rsa-pipe-template__icon,
+  .ryno-service-areas .rsa-abc-template__icon,
+  .ryno-service-areas .rsa-drop-template__icon,
+  .ryno-service-areas .rsa-grid-template__icon {
+    display: inline;
+    color: tomato; }
+  .ryno-service-areas .rsa-pipe-template__heading, .ryno-service-areas .rsa-pipe-template__region-heading,
+  .ryno-service-areas .rsa-abc-template__heading,
+  .ryno-service-areas .rsa-abc-template__region-heading,
+  .ryno-service-areas .rsa-drop-template__heading,
+  .ryno-service-areas .rsa-drop-template__region-heading,
+  .ryno-service-areas .rsa-grid-template__heading,
+  .ryno-service-areas .rsa-grid-template__region-heading {
+    text-align: center;
+    margin: 0 0 30px 0; }
+  .ryno-service-areas .rsa-pipe-template__heading,
+  .ryno-service-areas .rsa-abc-template__heading,
+  .ryno-service-areas .rsa-drop-template__heading,
+  .ryno-service-areas .rsa-grid-template__heading {
+    font-size: 36px; }
+  .ryno-service-areas .rsa-pipe-template__region-heading,
+  .ryno-service-areas .rsa-abc-template__region-heading,
+  .ryno-service-areas .rsa-drop-template__region-heading,
+  .ryno-service-areas .rsa-grid-template__region-heading {
+    font-size: 24px; }
+  .ryno-service-areas .rsa-pipe-template__row,
+  .ryno-service-areas .rsa-abc-template__row,
+  .ryno-service-areas .rsa-drop-template__row,
+  .ryno-service-areas .rsa-grid-template__row {
+    max-width: 1000px; }
+  .ryno-service-areas .rsa-pipe-template__region,
+  .ryno-service-areas .rsa-abc-template__region,
+  .ryno-service-areas .rsa-drop-template__region,
+  .ryno-service-areas .rsa-grid-template__region {
+    margin-bottom: 30px; }
+  .ryno-service-areas .rsa-pipe-template__city,
+  .ryno-service-areas .rsa-abc-template__city,
+  .ryno-service-areas .rsa-drop-template__city,
+  .ryno-service-areas .rsa-grid-template__city {
+    white-space: nowrap;
+    font-size: 16px; }
+  .ryno-service-areas .rsa-pipe-template__link,
+  .ryno-service-areas .rsa-abc-template__link,
+  .ryno-service-areas .rsa-drop-template__link,
+  .ryno-service-areas .rsa-grid-template__link {
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: initial; }
+    .ryno-service-areas .rsa-pipe-template__link:hover,
+    .ryno-service-areas .rsa-abc-template__link:hover,
+    .ryno-service-areas .rsa-drop-template__link:hover,
+    .ryno-service-areas .rsa-grid-template__link:hover {
+      text-decoration: none; }
+
+.ryno-service-areas .rsa-pipe-template__row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  max-width: 1000px; }
+
+.ryno-service-areas .rsa-pipe-template__region {
+  width: 100%;
+  margin: 0 auto; }
+  @media only screen and (max-width: 992px) {
+    .ryno-service-areas .rsa-pipe-template__region {
+      width: 50%; }
+      .ryno-service-areas .rsa-pipe-template__region--fullwidth {
+        width: 100%; } }
+
+.ryno-service-areas .rsa-pipe-template__region-cities-wrapper {
+  overflow: hidden; }
+
+.ryno-service-areas .rsa-pipe-template__region-cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -1px;
+  padding: 0; }
+
+.ryno-service-areas .rsa-pipe-template__city {
+  flex-grow: 1;
+  flex-basis: auto;
+  margin: 5px 0;
+  padding: 0 10px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  width: initial; }
+
+.ryno-service-areas .rsa-abc-template,
+.ryno-service-areas .rsa-drop-template {
+  padding: 40px 0; }
+  .ryno-service-areas .rsa-abc-template__city,
+  .ryno-service-areas .rsa-drop-template__city {
+    padding: 8px 0; }
+
+.ryno-service-areas .rsa-abc-template__row {
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  column-count: 1; }
+  @media only screen and (min-width: 576px) {
+    .ryno-service-areas .rsa-abc-template__row {
+      column-count: 2; } }
+  @media only screen and (min-width: 768px) {
+    .ryno-service-areas .rsa-abc-template__row {
+      column-count: 3; } }
+
+.ryno-service-areas .rsa-abc-template__city-wrapper {
+  width: 100%;
+  display: inline-block; }
+
+.ryno-service-areas .rsa-abc-template__city {
+  margin-left: 33%; }
+
+.ryno-service-areas .rsa-raw-template__heading, .ryno-service-areas .rsa-raw-template__region-heading {
+  margin: 0 0 10px 0;
+  color: #383838; }
+
+.ryno-service-areas .rsa-raw-template__heading {
+  font-size: 36px; }
+
+.ryno-service-areas .rsa-raw-template__region-heading {
+  font-size: 24px; }
+
+.ryno-service-areas .rsa-raw-template__locations--hide-bullets {
+  list-style: none;
+  margin-left: 0; }
+
+.ryno-service-areas .rsa-raw-template__link {
+  color: tomato;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: initial; }
+  .ryno-service-areas .rsa-raw-template__link:hover {
+    text-decoration: none;
+    color: tomato; }
+
+.ryno-service-areas .rsa-grid-template__city-wrapper {
+  display: grid;
+  grid-gap: 0 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 1040px;
+  margin: 0 auto; }
+
+.ryno-service-areas .rsa-grid-template__city {
+  padding-left: 30%;
+  margin: 8px 0;
+  position: relative; }
+
+.rsa-drop-template__row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  max-width: 1000px; }
+
+.rsa-drop-template__city-wrapper {
+  width: 100%;
+  display: flex; }
+  @media only screen and (min-width: 576px) {
+    .rsa-drop-template__city-wrapper {
+      width: 50%; } }
+  @media only screen and (min-width: 768px) {
+    .rsa-drop-template__city-wrapper {
+      width: 33%; } }
+  @media only screen and (min-width: 992px) {
+    .rsa-drop-template__city-wrapper {
+      width: 25%; } }
+
+.rsa-drop-template__accordion {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+  max-width: 1000px;
+  margin: auto; }
+
+.rsa-drop-template__accordion-tab {
+  color: #ffffff;
+  overflow: hidden; }
+
+.rsa-drop-template__accordion-radio, .rsa-drop-template__accordion-radio-close {
+  position: absolute;
+  opacity: 0;
+  z-index: -1; }
+
+.rsa-drop-template__accordion-tab-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background: tomato;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  margin: 0; }
+
+.rsa-drop-template__accordion-tab-heading {
+  font-size: 22px;
+  margin: 0;
+  color: #ffffff; }
+
+.rsa-drop-template__accordion-tab-content {
+  max-height: 0px;
+  padding: 0 15px;
+  color: #2c3e50;
+  background: white;
+  transition: all 0.35s; }
+
+.rsa-drop-template__accordion-tab-label-close {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer; }
+
+.rsa-drop-template__accordion-tab-label:hover {
+  background: #4c4c4c; }
+
+.rsa-drop-template__accordion-radio:checked + .rsa-drop-template__accordion-tab-label {
+  background: #383838; }
+
+.rsa-drop-template__accordion-radio:checked ~ .rsa-drop-template__accordion-tab-content {
+  max-height: 10000px;
+  padding: 15px; }
+
+.rsa-drop-template__accordion-radio:checked + .rsa-drop-template__accordion-tab-label .rsa-drop-template__accordion-tab-label-close {
+  z-index: 1; }
+
+.rsa-drop-template__accordion-icon-container {
+  width: 18px;
+  height: 18px;
+  position: relative; }
+
+.rsa-drop-template__accordion-icon-plus, .rsa-drop-template__accordion-icon-minus {
+  position: absolute;
+  transition: 0.3s;
+  background: #ffffff; }
+
+.rsa-drop-template__accordion-icon-plus {
+  top: 0%;
+  bottom: 0%;
+  width: 20%;
+  left: 40%; }
+
+.rsa-drop-template__accordion-icon-minus {
+  left: 0%;
+  right: 0%;
+  height: 22%;
+  top: 40%; }
+
+.rsa-drop-template__accordion-radio:checked + .rsa-drop-template__accordion-tab-label .rsa-drop-template__accordion-icon-plus,
+.rsa-drop-template__accordion-radio:checked + .rsa-drop-template__accordion-tab-label .rsa-drop-template__accordion-icon-minus {
+  transform: rotate(90deg); }
+
+.rsa-drop-template__accordion-radio:checked + .rsa-drop-template__accordion-tab-label .rsa-drop-template__accordion-icon-minus {
+  left: 50%;
+  right: 50%; }

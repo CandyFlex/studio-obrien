@@ -1,0 +1,47 @@
+@media print {
+    .ryno-coupon__background {
+        border: 3px dashed #000000;
+        height: 100%;
+        padding: 0 10px;
+        position: relative;
+    }
+
+    .ryno-coupon__text {
+        box-sizing: border-box;
+        padding: 30px;
+        text-align: center; 
+        font-weight: bold;
+    }
+
+    .ryno-coupon__background {
+        border-width: 3px;
+        border-style: dashed;
+    }
+
+    .ryno-coupon__text h3 {
+        line-height: 1.6;
+        text-transform: uppercase;
+        text-align: center;
+        color: #22488E; 
+    }
+    
+    .ryno-coupon__logo img {
+        max-width: 50%;
+    }
+    
+    .ryno-coupon button {
+        display: none;
+    }
+    
+    .ryno-coupon__disclaimer {
+        font-style: italic;
+        line-height: 1.0;
+        font-size: .75em;
+    }
+    
+    .ryno-coupon__phone a {
+        color: #F97A1E; 
+        font-weight: bold;
+    }
+
+}
