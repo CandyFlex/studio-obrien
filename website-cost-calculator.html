@@ -61,33 +61,42 @@
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 
-  /* ── Hero: the ideology, poster lockup ──── */
-  .hero{padding:clamp(48px,8vw,92px) 20px 0;max-width:1080px;margin:0 auto;container-type:inline-size}
-  .hero h1{font-weight:720;line-height:.98;letter-spacing:-.035em;color:#fff;text-wrap:initial}
+  /* ── Hero: two-line poster + live rate demo ── */
+  .hero{padding:clamp(40px,6vw,72px) 20px 0;max-width:1080px;margin:0 auto;container-type:inline-size}
+  .hero h1{font-weight:720;line-height:1;letter-spacing:-.035em;color:#fff;text-wrap:initial}
   .hero h1 span{display:block;white-space:nowrap}
-  .hero h1 .pl1{font-size:clamp(30px,13.2vw,144px);font-size:clamp(30px,13.7cqw,144px)}
-  .hero h1 .pl2{font-size:clamp(29px,11.2vw,122px);font-size:clamp(29px,11.6cqw,122px)}
-  .hero h1 .pl3{font-size:clamp(28px,11.1vw,121px);font-size:clamp(28px,11.5cqw,121px)}
+  .hero h1 .pl1{font-size:clamp(25px,9vw,97px);font-size:clamp(25px,9.3cqw,97px)}
+  .hero h1 .pl2{font-size:clamp(20px,7.1vw,77px);font-size:clamp(20px,7.35cqw,77px)}
   .hero h1 em{font-style:italic;color:var(--g);font-weight:650}
-  .hero .lede{margin-top:22px;max-width:56ch;font-size:clamp(16px,2vw,19px);color:var(--ink-2);line-height:1.65;text-wrap:pretty}
-  .hero .lede b{color:var(--ink);font-weight:600}
-  .hero .hero-foot{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:13px;color:var(--muted)}
+  .hero .lede{margin-top:18px;max-width:64ch;font-size:clamp(15.5px,1.9vw,18px);color:var(--ink-2);line-height:1.6;text-wrap:pretty}
+  .hero .hero-foot{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px;font-size:12.5px;color:var(--muted)}
   .hero .hero-foot span::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--g);margin-right:8px;vertical-align:2px}
 
-  /* anatomy bar: teaches the page's grammar in one glance */
-  .anatomy{margin:clamp(36px,6vw,64px) auto 0;max-width:1080px;padding:0 20px}
-  .anatomy-track{position:relative;display:flex;gap:3px;height:clamp(56px,8vw,84px)}
-  .anatomy-seg{position:relative;border-radius:4px;display:flex;align-items:center;padding:0 clamp(10px,2vw,22px);min-width:0;transition:flex-grow .6s var(--ease)}
-  .anatomy-seg.cash{flex-grow:5;background:var(--bar-cash)}
-  .anatomy-seg.you{flex-grow:3;background:var(--bar-you)}
-  .anatomy-seg .a-k{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(15px,2.4vw,24px);letter-spacing:-.02em;color:#06120d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .anatomy-seg.you .a-k{color:#160b02}
-  .anatomy-cap{display:flex;justify-content:space-between;gap:16px;margin-top:12px;font-size:clamp(12.5px,1.5vw,14px);color:var(--ink-3);line-height:1.5}
-  .anatomy-cap .cap{max-width:34ch}
-  .anatomy-cap .cap b{color:var(--ink);font-weight:600}
-  .anatomy-cap .cap:last-child{text-align:right}
-  .anatomy-eq{margin-top:22px;font-family:'Inter Tight',sans-serif;font-weight:650;font-size:clamp(15px,2vw,19px);color:var(--ink-2);letter-spacing:-.01em}
-  .anatomy-eq b{color:var(--g)}
+  /* live rate demo: the page's first control */
+  .hero-calc{margin:clamp(28px,4vw,44px) auto 0;max-width:1080px;padding:clamp(18px,3vw,28px) 20px clamp(20px,3vw,30px);background:var(--bg-2);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)}
+  .hc-inner{max-width:1040px;margin:0 auto}
+  .hc-rate{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .hc-rate label{font-family:'Inter Tight',sans-serif;font-weight:650;font-size:clamp(17px,2.4vw,24px);letter-spacing:-.02em;color:var(--ink)}
+  .hc-input{display:inline-flex;align-items:center;border:1px solid var(--g-line);border-radius:12px;background:var(--surface);overflow:hidden}
+  .hc-input:focus-within{border-color:var(--g)}
+  .hc-input span{padding:0 2px 0 14px;color:var(--g);font-size:clamp(18px,2.4vw,24px);font-weight:700;font-family:'Inter Tight',sans-serif}
+  .hc-input input{width:92px;border:none;background:transparent;color:var(--g);font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(20px,2.6vw,27px);padding:10px 14px 10px 2px;outline:none;font-variant-numeric:tabular-nums}
+  .hc-rate .hc-hint{font-size:12.5px;color:var(--muted);flex-basis:100%;margin-top:-2px}
+  .hc-bars{display:grid;gap:12px;margin-top:18px}
+  .hb{display:grid;grid-template-columns:132px minmax(0,1fr) 132px;gap:14px;align-items:center}
+  .hb-nm{font-family:'Inter Tight',sans-serif;font-weight:650;font-size:13.5px;color:var(--ink-2);letter-spacing:-.01em}
+  .hb-bar{display:flex;gap:2px;height:32px;min-width:0}
+  .hb-bar .cseg{border-radius:2px}
+  .hb-bar .cseg:first-child{border-radius:4px 2px 2px 4px}
+  .hb-bar .cseg:last-child{border-radius:2px 4px 4px 2px}
+  .hb-true{text-align:right;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .hb-true small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:10.5px;color:var(--muted);letter-spacing:0}
+  .hc-eq{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:16px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(13px,1.7vw,15.5px);color:var(--ink-3);letter-spacing:-.005em}
+  .hc-eq b{color:var(--g)}
+  .hc-eq .lg{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-weight:500;font-size:12px;color:var(--ink-3)}
+  .hc-eq .sw{width:12px;height:12px;border-radius:3px}
+  .hc-eq .sw.cash{background:var(--bar-cash)}
+  .hc-eq .sw.you{background:var(--bar-you)}
 
   .section{padding:clamp(44px,7vw,88px) 0}
   .section-tight{padding-top:clamp(28px,4vw,44px)}
@@ -256,11 +265,6 @@
   .mobile-bar .mb-m .mb-v em{font-style:normal;color:var(--you)}
   .mobile-bar .mb-cta{background:var(--ink);color:var(--bg);font-weight:650;font-size:13px;padding:11px 16px;border-radius:999px;text-decoration:none;white-space:nowrap}
 
-  /* entrance motion (JS adds .in; default state is fully visible) */
-  .js-reveal.in .anatomy-seg{animation:seg-grow .8s var(--ease) both}
-  .js-reveal.in .anatomy-seg.you{animation-delay:.15s}
-  @keyframes seg-grow{from{flex-grow:.001}}
-
   /* ── Responsive ─────────────────────────── */
   @media(max-width:920px){
     .app{grid-template-columns:1fr}
@@ -284,6 +288,11 @@
     .projects{grid-template-columns:1fr 1fr}
     .crow{grid-template-columns:1fr;gap:8px;padding:12px 10px}
     .rn{grid-template-columns:1fr;gap:2px}
+    .hb{grid-template-columns:minmax(0,1fr) auto;gap:7px 12px}
+    .hb-nm{grid-area:1/1}
+    .hb-true{grid-area:1/2}
+    .hb-bar{grid-area:2/1/3/3}
+    .hb-true small{display:inline;margin-left:5px}
     .mobile-bar{display:flex}
     body{padding-bottom:74px}
     .answer-cta{display:none}
@@ -349,8 +358,8 @@ body{position:relative;z-index:0}
 
 <!-- HERO: the ideology -->
 <header class="hero">
-  <h1><span class="pl1">A website costs</span><span class="pl2">money, weekends,</span><span class="pl3">and <em>your evenings</em>.</span></h1>
-  <p class="lede">Anyone can quote you a price, and now AI will build you a page in an afternoon. Neither is the whole bill. Every route to a website charges you <b>three ways</b>: cash, calendar time, and your own hours. This tool prices all three, from AI builders to agencies, so you can see what the market really has to offer.</p>
+  <h1><span class="pl1">A website costs money,</span><span class="pl2">weekends, and <em>your evenings</em>.</span></h1>
+  <p class="lede">AI can build you a page in an afternoon. It can&#39;t sit through your evenings. Put a price on your time and see what every route really costs.</p>
   <div class="hero-foot">
     <span>Free</span>
     <span>No email required</span>
@@ -358,17 +367,17 @@ body{position:relative;z-index:0}
   </div>
 </header>
 
-<!-- ANATOMY: the one idea, drawn -->
-<div class="anatomy js-reveal" id="anatomy" aria-label="How true cost is composed">
-  <div class="anatomy-track">
-    <div class="anatomy-seg cash"><span class="a-k">The price you're quoted</span></div>
-    <div class="anatomy-seg you"><span class="a-k">Your hours, priced</span></div>
+<!-- LIVE RATE DEMO: value your time, watch the market reprice -->
+<div class="hero-calc" aria-label="Value your time and compare true costs">
+  <div class="hc-inner">
+    <div class="hc-rate">
+      <label for="heroRate">An hour of your time is worth</label>
+      <span class="hc-input"><span>$</span><input type="number" id="heroRate" value="50" min="0" max="1000" step="5" aria-label="Your hourly value in dollars"></span>
+      <span class="hc-hint">Type your number. The bars below, and the whole page, reprice instantly.</span>
+    </div>
+    <div class="hc-bars" id="heroBars"></div>
+    <p class="hc-eq"><span>cash&nbsp;+&nbsp;your hours &times; your rate&nbsp;=&nbsp;<b>true cost</b></span><span class="lg"><span class="sw cash"></span>Cash</span><span class="lg"><span class="sw you"></span>Your hours, priced</span></p>
   </div>
-  <div class="anatomy-cap">
-    <p class="cap"><b>Cash</b> is the invoice. It's the only number most calculators show you.</p>
-    <p class="cap"><b>Your time</b> is the part nobody invoices, and the part AI doesn't make disappear: decisions, writing, photos, revisions. On cheap routes, it's the bigger bar.</p>
-  </div>
-  <p class="anatomy-eq">cash&nbsp;+&nbsp;your hours &times; what they&#39;re worth&nbsp;=&nbsp;<b>true cost</b></p>
 </div>
 
 <!-- STEP 1: what are you building -->
@@ -698,6 +707,22 @@ body{position:relative;z-index:0}
                cashMid:(cash[0]+cash[1])/2, youMid:((self[0]+self[1])/2)*rate };
     });
 
+    /* Hero live demo: DIY/AI vs studio at the visitor's rate */
+    var hbDiy = routeData.filter(function(x){return x.r.key==='diy';})[0];
+    var hbStu = routeData.filter(function(x){return x.r.key==='studio';})[0];
+    var hbMax = Math.max(hbDiy.cashMid+hbDiy.youMid, hbStu.cashMid+hbStu.youMid) || 1;
+    $('heroBars').innerHTML = [hbDiy, hbStu].map(function(x){
+      var cashPct=(x.cashMid/hbMax)*100, youPct=(x.youMid/hbMax)*100;
+      return '<div class="hb">'+
+        '<div class="hb-nm">'+x.r.name+'</div>'+
+        '<div class="hb-bar" role="img" aria-label="'+x.r.name+' true cost '+moneyRange(x.trueLo,x.trueHi,500)+'">'+
+          '<div class="cseg cash" style="width:'+cashPct+'%" title="'+x.r.name+' cash: '+moneyRange(x.cash[0],x.cash[1],100)+'"></div>'+
+          (x.youMid>0?'<div class="cseg you" style="width:'+youPct+'%" title="'+x.r.name+' your hours priced: about '+money(Math.round(x.youMid))+'"></div>':'')+
+        '</div>'+
+        '<div class="hb-true">'+moneyRange(x.trueLo,x.trueHi,500)+'<small>true cost</small></div>'+
+      '</div>';
+    }).join('');
+
     /* Answer rail (studio-centric headline) */
     var studio = routeData.filter(function(x){return x.r.key==='studio';})[0];
     $('liveRange').innerHTML = moneyRange(studio.cash[0], studio.cash[1], 500);
@@ -775,7 +800,7 @@ body{position:relative;z-index:0}
   ['input','click'].forEach(function(t){
     document.addEventListener(t, function(e){
       if (calcEngaged || !e.target.closest) return;
-      if (e.target.closest('#pageSlider, #featureChips, #designSeg, #contentSeg, #rateInput, #presets')) {
+      if (e.target.closest('#pageSlider, #featureChips, #designSeg, #contentSeg, #rateInput, #heroRate, #presets')) {
         calcEngaged = true;
         try { if (typeof gtag === 'function') gtag('event', 'calculator_engage', {}); } catch (err) {}
       }
@@ -783,7 +808,9 @@ body{position:relative;z-index:0}
   });
 
   pageSlider.addEventListener('input', function(){ clearPreset(); render(); });
-  rateInput.addEventListener('input', render);
+  var heroRate = $('heroRate');
+  rateInput.addEventListener('input', function(){ heroRate.value = rateInput.value; render(); });
+  heroRate.addEventListener('input', function(){ rateInput.value = heroRate.value; render(); });
 
   featureChips.addEventListener('click', function(e){
     var chip = e.target.closest('.chip'); if(!chip) return;
@@ -826,13 +853,6 @@ body{position:relative;z-index:0}
     render();
     if(window.innerWidth <= 920){ $('calculator').scrollIntoView({behavior:'smooth', block:'start'}); }
   });
-
-  /* hero anatomy entrance (default state is visible; JS only re-plays the growth) */
-  try {
-    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      requestAnimationFrame(function(){ $('anatomy').classList.add('in'); });
-    }
-  } catch(e){}
 
   render();
 })();
