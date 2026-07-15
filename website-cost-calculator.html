@@ -35,94 +35,103 @@
 <style>
   :root{
     --bg:#0a0a0b; --bg-2:#0f0f10; --surface:#151516; --surface-2:#1c1c1d;
-    --ink:#ffffff; --ink-2:#d4d4d4; --ink-3:#a8a8a8; --muted:#888888; --faint:#666666;
+    --ink:#ffffff; --ink-2:#d4d4d4; --ink-3:#a8a8a8; --muted:#8f8f8f; --faint:#6a6a6a;
     --border:#2a2a2b; --border-faint:#1f1f20;
     --g:#34d399; --gd:#2ec48d; --g-soft:rgba(52,211,153,.10); --g-line:rgba(52,211,153,.30);
-    --warn:#f4a259;
+    --bar-cash:#24a577; --bar-you:#cd7327; --you:#e8a266;
     --r:14px; --r-sm:10px;
     --ease:cubic-bezier(.2,.8,.2,1);
+    --z-sticky:80; --z-bar:90; --z-nav:100;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{background:var(--bg);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;min-height:100vh;line-height:1.6;overflow-x:hidden}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   a{color:inherit}
-  h1,h2,h3{font-family:'Inter Tight','Inter',sans-serif;letter-spacing:-.02em}
+  h1,h2,h3{font-family:'Inter Tight','Inter',sans-serif;letter-spacing:-.02em;text-wrap:balance}
 
   /* ── Topbar ─────────────────────────────── */
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,11,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-faint)}
+  .topbar{position:sticky;top:0;z-index:var(--z-nav);background:rgba(10,10,11,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-faint)}
   .topbar-inner{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
   .topbar-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.03em}
   .topbar-logo span{color:var(--g)}
   .topbar-links{display:flex;gap:20px;align-items:center}
   .topbar-link{font-weight:500;font-size:13.5px;color:var(--ink-3);text-decoration:none;transition:color .2s}
   .topbar-link:hover{color:var(--ink)}
-  .topbar-cta{background:var(--ink);color:var(--bg);font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;transition:background .2s,color .2s}
-  .topbar-cta:hover{background:var(--g)}
-
-  /* ── Hero ───────────────────────────────── */
-  .hero{padding:56px 20px 26px;text-align:center;max-width:760px;margin:0 auto}
-  .hero .kick{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--ink-3);border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:20px}
-  .hero .kick .dot{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 3px var(--g-soft)}
-  .hero h1{font-weight:720;font-size:clamp(30px,6.2vw,52px);line-height:1.04;letter-spacing:-.035em;margin-bottom:16px;color:#fff}
-  .hero h1 em{font-style:italic;color:var(--g);font-weight:600}
-  .hero p{font-size:clamp(15px,2.4vw,18px);color:var(--ink-3);max-width:560px;margin:0 auto 10px;line-height:1.6}
-  .hero .trust{font-size:12.5px;color:var(--faint);margin-top:14px}
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-  .section{padding:44px 0}
-  .section-head{max-width:640px;margin:0 auto 26px;text-align:center}
-  .section-head h2{font-weight:720;font-size:clamp(22px,4vw,32px);line-height:1.12;margin-bottom:10px}
-  .section-head h2 em{font-style:italic;color:var(--g);font-weight:600}
-  .section-head p{color:var(--ink-3);font-size:15px}
 
-  /* ── Preset builders ────────────────────── */
-  .presets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .preset{position:relative;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:var(--r);padding:18px 18px 16px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s var(--ease);font-family:inherit;color:inherit;display:flex;flex-direction:column;gap:10px}
-  .preset:hover{border-color:var(--g-line);background:var(--surface-2);transform:translateY(-2px)}
-  .preset:focus-visible{outline:2px solid var(--g);outline-offset:3px}
-  .preset.active{border-color:var(--g);background:var(--g-soft)}
-  .preset-ico{width:36px;height:36px;border-radius:9px;background:var(--bg-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--g)}
-  .preset-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  .preset-name{font-weight:650;font-size:15px;color:var(--ink);font-family:'Inter Tight',sans-serif;letter-spacing:-.01em}
-  .preset-desc{font-size:12.5px;color:var(--ink-3);line-height:1.45}
-  .preset-stats{display:flex;gap:12px;margin-top:auto;padding-top:10px;border-top:1px solid var(--border-faint)}
-  .preset-stat{font-size:11px;color:var(--muted)}
-  .preset-stat b{display:block;font-size:13px;color:var(--ink-2);font-weight:650;font-family:'Inter Tight',sans-serif}
-  .preset .pick{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--g);opacity:0;transition:opacity .2s}
-  .preset.active .pick{opacity:1}
+  /* ── Hero: the ideology ─────────────────── */
+  .hero{padding:clamp(56px,9vw,104px) 20px 0;max-width:1080px;margin:0 auto}
+  .hero h1{font-weight:720;font-size:clamp(38px,6.6vw,76px);line-height:1.02;letter-spacing:-.035em;color:#fff;max-width:16ch}
+  .hero h1 em{font-style:italic;color:var(--g);font-weight:650}
+  .hero .lede{margin-top:22px;max-width:56ch;font-size:clamp(16px,2vw,19px);color:var(--ink-2);line-height:1.65;text-wrap:pretty}
+  .hero .lede b{color:var(--ink);font-weight:600}
+  .hero .hero-foot{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:13px;color:var(--muted)}
+  .hero .hero-foot span::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--g);margin-right:8px;vertical-align:2px}
 
-  /* ── App shell: config + live panel ─────── */
-  .app{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
-  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}
-  .config{padding:8px 22px 22px}
-  .cfg{padding:22px 0;border-bottom:1px solid var(--border-faint)}
-  .cfg:last-child{border-bottom:none}
-  .cfg-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .cfg-num{width:22px;height:22px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border);color:var(--g);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Inter Tight',sans-serif}
-  .cfg-head h3{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em;font-family:'Inter',sans-serif}
-  .cfg-head .cfg-val{margin-left:auto;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;color:var(--g)}
+  /* anatomy bar: teaches the page's grammar in one glance */
+  .anatomy{margin:clamp(36px,6vw,64px) auto 0;max-width:1080px;padding:0 20px}
+  .anatomy-track{position:relative;display:flex;gap:3px;height:clamp(56px,8vw,84px)}
+  .anatomy-seg{position:relative;border-radius:4px;display:flex;align-items:center;padding:0 clamp(10px,2vw,22px);min-width:0;transition:flex-grow .6s var(--ease)}
+  .anatomy-seg.cash{flex-grow:5;background:var(--bar-cash)}
+  .anatomy-seg.you{flex-grow:3;background:var(--bar-you)}
+  .anatomy-seg .a-k{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(15px,2.4vw,24px);letter-spacing:-.02em;color:#06120d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .anatomy-seg.you .a-k{color:#160b02}
+  .anatomy-cap{display:flex;justify-content:space-between;gap:16px;margin-top:12px;font-size:clamp(12.5px,1.5vw,14px);color:var(--ink-3);line-height:1.5}
+  .anatomy-cap .cap{max-width:34ch}
+  .anatomy-cap .cap b{color:var(--ink);font-weight:600}
+  .anatomy-cap .cap:last-child{text-align:right}
+  .anatomy-eq{margin-top:22px;font-family:'Inter Tight',sans-serif;font-weight:650;font-size:clamp(15px,2vw,19px);color:var(--ink-2);letter-spacing:-.01em}
+  .anatomy-eq b{color:var(--g)}
 
-  /* slider */
-  .slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:var(--border);outline:none;margin:6px 0 6px}
-  .slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--g);cursor:pointer;transition:transform .15s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
-  .slider::-webkit-slider-thumb:hover{transform:scale(1.12)}
-  .slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--g);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,.4)}
-  .slider-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--faint);margin-top:2px}
+  .section{padding:clamp(44px,7vw,88px) 0}
+  .section-tight{padding-top:clamp(28px,4vw,44px)}
+  .section-head{max-width:640px;margin-bottom:clamp(22px,3.5vw,34px)}
+  .section-head h2{font-weight:720;font-size:clamp(26px,4.4vw,40px);line-height:1.08;margin-bottom:10px;letter-spacing:-.03em}
+  .section-head h2 em{font-style:italic;color:var(--g);font-weight:620}
+  .section-head p{color:var(--ink-3);font-size:15.5px;max-width:58ch;text-wrap:pretty}
 
-  /* feature chips */
+  /* ── Step 1: what are you building ──────── */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+  .project{position:relative;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:var(--r-sm);padding:14px 15px;cursor:pointer;transition:border-color .2s,background .2s;font-family:inherit;color:inherit}
+  .project:hover{border-color:var(--g-line);background:var(--surface-2)}
+  .project:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+  .project.active{border-color:var(--g);background:var(--g-soft)}
+  .project .p-nm{display:block;font-weight:650;font-size:14.5px;color:var(--ink);font-family:'Inter Tight',sans-serif;letter-spacing:-.01em}
+  .project .p-ds{display:block;font-size:12px;color:var(--muted);line-height:1.45;margin-top:4px}
+  .project.active .p-ds{color:var(--ink-3)}
+  .project .p-tick{position:absolute;top:10px;right:12px;width:16px;height:16px;border-radius:50%;background:var(--g);color:var(--bg);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s var(--ease)}
+  .project.active .p-tick{opacity:1;transform:scale(1)}
+
+  /* ── App: controls + answer rail ────────── */
+  .app{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:clamp(20px,3vw,36px);align-items:start;margin-top:clamp(24px,4vw,40px)}
+  .controls{min-width:0}
+  .cfg{padding:clamp(20px,3vw,28px) 0;border-top:1px solid var(--border-faint)}
+  .cfg:first-child{border-top:none;padding-top:0}
+  .cfg-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .cfg-head h3{font-size:16.5px;font-weight:650;color:var(--ink);letter-spacing:-.015em;font-family:'Inter Tight',sans-serif}
+  .cfg-head .cfg-val{margin-left:auto;font-family:'Inter Tight',sans-serif;font-weight:720;font-size:22px;color:var(--g);font-variant-numeric:tabular-nums}
+  .cfg-why{font-size:12.5px;color:var(--muted);margin-top:12px;max-width:52ch;line-height:1.55}
+  .cfg-why b{color:var(--ink-3);font-weight:600}
+
+  .slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:var(--border);outline:none;margin:6px 0}
+  .slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--g);cursor:pointer;transition:transform .15s;box-shadow:0 2px 8px rgba(0,0,0,.4);border:3px solid var(--bg)}
+  .slider::-webkit-slider-thumb:hover{transform:scale(1.1)}
+  .slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--g);cursor:pointer;border:3px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .slider:focus-visible{outline:2px solid var(--g);outline-offset:4px}
+  .slider-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:4px}
+
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);cursor:pointer;transition:border-color .18s,background .18s,color .18s;font-size:13px;color:var(--ink-2);user-select:none;font-family:inherit}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);cursor:pointer;transition:border-color .18s,background .18s,color .18s;font-size:13.5px;color:var(--ink-2);user-select:none;font-family:inherit;min-height:40px}
   .chip:hover{border-color:var(--g-line)}
   .chip .tick{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:transparent;transition:all .18s;flex-shrink:0}
   .chip.on{border-color:var(--g);background:var(--g-soft);color:var(--ink)}
   .chip.on .tick{background:var(--g);border-color:var(--g);color:var(--bg)}
   .chip:focus-visible{outline:2px solid var(--g);outline-offset:2px}
-  .cfg-hint{font-size:11.5px;color:var(--faint);margin-top:10px}
 
-  /* segmented control */
   .seg{display:flex;gap:6px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:5px}
-  .seg-opt{flex:1;text-align:center;padding:10px 6px;border-radius:8px;cursor:pointer;transition:background .18s,color .18s;font-size:13px;color:var(--ink-3);user-select:none;font-family:inherit;border:none;background:transparent}
+  .seg-opt{flex:1;text-align:center;padding:11px 6px;border-radius:8px;cursor:pointer;transition:background .18s,color .18s;font-size:13.5px;color:var(--ink-3);user-select:none;font-family:inherit;border:none;background:transparent;min-height:44px}
   .seg-opt .s-lab{display:block;font-weight:600;color:inherit}
   .seg-opt .s-sub{display:block;font-size:10.5px;color:var(--faint);margin-top:1px}
   .seg-opt:hover{color:var(--ink-2)}
@@ -130,91 +139,99 @@
   .seg-opt.on .s-sub{color:var(--ink-3)}
   .seg-opt:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 
-  /* rate input */
-  .rate-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .rate-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .rate-input{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:10px;background:var(--bg-2);overflow:hidden}
+  .rate-input:focus-within{border-color:var(--g)}
   .rate-input span{padding:0 4px 0 12px;color:var(--muted);font-size:15px}
-  .rate-input input{width:74px;border:none;background:transparent;color:var(--ink);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;padding:9px 12px 9px 2px;outline:none}
-  .rate-input input:focus{color:var(--g)}
-  .rate-note{font-size:12px;color:var(--ink-3);flex:1;min-width:180px}
+  .rate-input input{width:78px;border:none;background:transparent;color:var(--ink);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;padding:10px 12px 10px 2px;outline:none;font-variant-numeric:tabular-nums}
+  .rate-note{font-size:12.5px;color:var(--ink-3);flex:1;min-width:180px;line-height:1.55}
+  .rate-note em{font-style:normal;color:var(--ink)}
 
-  /* ── Live result panel ──────────────────── */
-  .live{position:sticky;top:74px;padding:22px;overflow:hidden}
-  .live::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,var(--g-soft),transparent 65%);pointer-events:none}
-  .live-top{position:relative;text-align:center;padding-bottom:18px;border-bottom:1px solid var(--border-faint)}
-  .live-label{font-size:12px;color:var(--ink-3);margin-bottom:6px}
-  .live-range{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(26px,4.4vw,34px);color:#fff;letter-spacing:-.02em;line-height:1}
-  .live-sub{font-size:12px;color:var(--muted);margin-top:7px}
-  .live-metrics{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-faint);border-radius:10px;overflow:hidden;margin-top:18px}
-  .lm{background:var(--surface);padding:14px 12px;text-align:center}
-  .lm .lm-k{font-size:11px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:5px}
-  .lm .lm-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em}
-  .lm .lm-v em{font-style:normal;color:var(--g)}
-  .live-rec{position:relative;margin-top:16px;padding:14px;border:1px solid var(--g-line);background:var(--g-soft);border-radius:10px;font-size:12.5px;color:var(--ink-2);line-height:1.55}
-  .live-rec b{color:var(--g);font-weight:650}
-  .live-cta{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:13px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:14px;text-decoration:none;transition:background .2s,color .2s}
-  .live-cta:hover{background:var(--g)}
-  .live-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+  /* ── Answer rail ────────────────────────── */
+  .rail{position:sticky;top:78px;z-index:var(--z-sticky);display:flex;flex-direction:column;gap:12px}
+  .answer{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden}
+  .answer::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,var(--g-soft),transparent 60%);pointer-events:none}
+  .answer-label{position:relative;font-size:12.5px;color:var(--ink-3);margin-bottom:8px}
+  .answer-range{position:relative;font-family:'Inter Tight',sans-serif;font-weight:720;font-size:clamp(30px,4.6vw,40px);color:#fff;letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums}
+  .answer-sub{position:relative;font-size:12.5px;color:var(--muted);margin-top:9px}
+  .answer-metrics{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-faint);border-radius:10px;overflow:hidden;margin-top:18px}
+  .am{background:var(--surface-2);padding:14px 12px;text-align:center}
+  .am .am-k{font-size:11.5px;color:var(--muted);margin-bottom:4px}
+  .am .am-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .am .am-v em{font-style:normal;color:var(--you)}
+  .answer-rec{position:relative;margin-top:14px;padding:13px 14px;border:1px solid var(--g-line);background:var(--g-soft);border-radius:10px;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+  .answer-rec b{color:var(--g);font-weight:650}
+  .answer-cta{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:14px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:14px;text-decoration:none;transition:background .2s,color .2s}
+  .answer-cta:hover{background:var(--g)}
+  .answer-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
 
-  /* ── Route comparison ───────────────────── */
-  .routes{display:flex;flex-direction:column;gap:10px}
-  .route{border:1px solid var(--border);background:var(--surface);border-radius:var(--r);padding:16px 18px;transition:border-color .2s,background .2s}
-  .route.rec{border-color:var(--g);background:var(--g-soft)}
-  .route-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .route-nm{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
-  .route-badge{font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--bg);background:var(--g);padding:3px 7px;border-radius:5px}
-  .route-cash{margin-left:auto;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
-  .route.rec .route-cash{color:var(--g)}
-  .route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .rc{min-width:0}
-  .rc-k{font-size:10.5px;color:var(--muted);margin-bottom:5px;white-space:nowrap}
-  .rc-v{font-size:13px;color:var(--ink-2);font-weight:600}
-  .rc-v.true{color:var(--ink)}
-  .rc-v .warnv{color:var(--warn)}
-  .meter{display:flex;gap:3px;margin-top:3px}
-  .meter i{width:100%;height:5px;border-radius:2px;background:var(--border)}
-  .meter i.f{background:var(--g)}
-  .meter.hi i.f{background:var(--warn)}
-  .route-note{font-size:12px;color:var(--ink-3);line-height:1.5;margin-top:13px;padding-top:12px;border-top:1px solid var(--border-faint)}
-  .true-callout{margin-top:16px;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-2);padding:18px 20px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  /* side notes: the understanding rail */
+  .note{border:1px solid var(--border-faint);border-radius:var(--r-sm);background:var(--bg-2);padding:16px 18px}
+  .note h3{font-size:13px;font-weight:650;color:var(--ink-2);margin-bottom:7px;font-family:'Inter',sans-serif;letter-spacing:0}
+  .note p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+  .note p+p{margin-top:8px}
+  .note a{color:var(--g);text-decoration:none}
+  .note a:hover{text-decoration:underline}
+  .note .src{display:block;margin-top:2px}
+
+  /* ── True-cost chart ────────────────────── */
+  .chart-legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px;font-size:13px;color:var(--ink-2)}
+  .chart-legend .lg{display:inline-flex;align-items:center;gap:8px}
+  .chart-legend .sw{width:14px;height:14px;border-radius:4px}
+  .chart-legend .sw.cash{background:var(--bar-cash)}
+  .chart-legend .sw.you{background:var(--bar-you)}
+  .chart{display:flex;flex-direction:column;gap:14px}
+  .crow{display:grid;grid-template-columns:150px minmax(0,1fr) 118px;gap:14px;align-items:center;padding:13px 14px;border-radius:var(--r-sm);border:1px solid transparent;transition:background .2s,border-color .2s}
+  .crow.rec{border-color:var(--g-line);background:var(--g-soft)}
+  .crow-id{min-width:0}
+  .crow-nm{font-family:'Inter Tight',sans-serif;font-weight:650;font-size:14.5px;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .crow-badge{font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--bg);background:var(--g);padding:3px 7px;border-radius:5px}
+  .crow-meta{font-size:11.5px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+  .crow-bar{display:flex;gap:2px;height:26px;min-width:0}
+  .cseg{border-radius:2px;min-width:3px;transition:width .55s var(--ease);position:relative}
+  .cseg:last-child{border-radius:2px 4px 4px 2px}
+  .cseg:first-child{border-radius:4px 2px 2px 4px}
+  .cseg.cash{background:var(--bar-cash)}
+  .cseg.you{background:var(--bar-you)}
+  .cseg:hover{filter:brightness(1.15)}
+  .crow-true{text-align:right}
+  .crow-true .ct-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .crow-true .ct-k{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .chart-foot{margin-top:14px;font-size:12px;color:var(--muted);max-width:70ch}
+  .true-callout{margin-top:clamp(22px,3vw,30px);border:1px solid var(--border);border-radius:var(--r);background:var(--surface);padding:20px 22px;font-size:14px;color:var(--ink-2);line-height:1.65;max-width:76ch}
   .true-callout b{color:var(--g);font-weight:650}
+  .true-callout .warn-b{color:var(--you)}
 
-  /* drivers */
-  .drivers{display:grid;gap:8px;margin-top:16px}
-  .drivers li{list-style:none;display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border-faint);border-radius:var(--r-sm);background:var(--surface);font-size:13px;color:var(--ink-2)}
-  .drivers li svg{width:15px;height:15px;color:var(--g);flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2}
+  /* route notes: one line each, no card grid */
+  .route-notes{margin-top:clamp(24px,3.5vw,36px);display:grid;gap:0;border-top:1px solid var(--border-faint)}
+  .rn{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--border-faint);font-size:13px}
+  .rn b{color:var(--ink-2);font-weight:600;font-family:'Inter Tight',sans-serif}
+  .rn span{color:var(--muted);line-height:1.55}
 
-  /* generic content cards */
-  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:24px}
-  .info-card{border:1px solid var(--border);border-radius:var(--r);padding:20px 18px;background:var(--surface)}
-  .info-card h3{font-size:15px;font-weight:650;margin-bottom:7px;font-family:'Inter',sans-serif;letter-spacing:-.01em}
-  .info-card p{font-size:13px;color:var(--ink-3);margin:0;line-height:1.6}
   .section-dark{background:var(--bg-2);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)}
 
-  details.disc{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);padding:0}
-  details.disc summary{font-size:14px;color:var(--ink-2);cursor:pointer;font-weight:600;user-select:none;padding:18px 20px;list-style:none;display:flex;align-items:center;gap:10px}
-  details.disc summary::-webkit-details-marker{display:none}
-  details.disc summary::before{content:'+';color:var(--g);font-size:18px;line-height:1;width:16px}
-  details.disc[open] summary::before{content:'\2212'}
-  details.disc summary:hover{color:var(--ink)}
-  .disc-body{padding:0 20px 20px;font-size:13px;color:var(--ink-3);line-height:1.65}
-  .disc-body ol{padding-left:18px;margin-top:6px}
-  .disc-body li{margin-bottom:8px}
-  .disc-body a{color:var(--g);text-decoration:none}
-  .disc-body a:hover{text-decoration:underline}
-  .eq{font-family:'Inter Tight',sans-serif;background:var(--bg-2);border:1px solid var(--border-faint);border-radius:8px;padding:12px 14px;color:var(--ink-2);font-size:13px;margin:10px 0;display:block}
+  /* ── Where the numbers come from ────────── */
+  .method{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:clamp(24px,4vw,48px);align-items:start}
+  .method-eqs{display:grid;gap:14px}
+  .eq{font-family:'Inter Tight',sans-serif;background:var(--surface);border:1px solid var(--border-faint);border-radius:10px;padding:15px 17px;color:var(--ink-2);font-size:14px;display:block;letter-spacing:0}
   .eq b{color:var(--g)}
+  .eq .eq-note{display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.55;letter-spacing:0}
+  .sources{display:grid;gap:10px}
+  .src-item{border:1px solid var(--border-faint);border-radius:var(--r-sm);background:var(--surface);padding:14px 16px}
+  .src-item a{font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none}
+  .src-item a:hover{color:var(--g)}
+  .src-item p{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
 
-  .faq-item{border-bottom:1px solid var(--border-faint);padding:18px 0}
+  .faq-item{border-bottom:1px solid var(--border-faint);padding:20px 0}
   .faq-item:last-child{border-bottom:none}
-  .faq-item h3{font-size:15.5px;margin-bottom:6px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em}
-  .faq-item p{font-size:13.5px;color:var(--ink-3);margin:0;line-height:1.65}
+  .faq-item h3{font-size:16px;margin-bottom:7px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em}
+  .faq-item p{font-size:14px;color:var(--ink-3);margin:0;line-height:1.65;max-width:72ch}
 
-  .cta-block{border:1px solid var(--g-line);border-radius:var(--r);padding:34px 28px;text-align:center;background:var(--g-soft);max-width:660px;margin:0 auto}
-  .cta-block h2{margin-bottom:10px;font-size:clamp(22px,4vw,30px);font-weight:720}
-  .cta-block h2 em{font-style:italic;color:var(--g);font-weight:600}
-  .cta-block p{color:var(--ink-3);font-size:14.5px;margin-bottom:22px;max-width:460px;margin-left:auto;margin-right:auto}
-  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:15px;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+  .cta-block{border:1px solid var(--g-line);border-radius:var(--r);padding:clamp(30px,5vw,44px) 28px;text-align:center;background:var(--g-soft);max-width:660px;margin:0 auto}
+  .cta-block h2{margin-bottom:10px;font-size:clamp(24px,4vw,32px);font-weight:720;letter-spacing:-.03em}
+  .cta-block h2 em{font-style:italic;color:var(--g);font-weight:620}
+  .cta-block p{color:var(--ink-3);font-size:14.5px;margin-bottom:24px;max-width:46ch;margin-left:auto;margin-right:auto;text-wrap:pretty}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;background:var(--ink);color:var(--bg);border-radius:999px;font-weight:650;font-size:15px;text-decoration:none;transition:background .2s,color .2s,transform .2s}
   .btn-primary:hover{background:var(--g);transform:translateY(-2px)}
   .btn-primary svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
 
@@ -228,34 +245,44 @@
   footer .cr a{color:var(--faint);text-decoration:none}
 
   /* ── Mobile sticky bar ──────────────────── */
-  .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;background:rgba(15,15,16,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;gap:14px}
+  .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:var(--z-bar);display:none;background:rgba(15,15,16,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;gap:14px}
   .mobile-bar .mb-metrics{display:flex;gap:16px;flex:1;min-width:0}
   .mobile-bar .mb-m .mb-k{font-size:10px;color:var(--muted)}
-  .mobile-bar .mb-m .mb-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap}
-  .mobile-bar .mb-m .mb-v em{font-style:normal;color:var(--g)}
+  .mobile-bar .mb-m .mb-v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .mobile-bar .mb-m .mb-v em{font-style:normal;color:var(--you)}
   .mobile-bar .mb-cta{background:var(--ink);color:var(--bg);font-weight:650;font-size:13px;padding:11px 16px;border-radius:999px;text-decoration:none;white-space:nowrap}
 
+  /* entrance motion (JS adds .in; default state is fully visible) */
+  .js-reveal.in .anatomy-seg{animation:seg-grow .8s var(--ease) both}
+  .js-reveal.in .anatomy-seg.you{animation-delay:.15s}
+  @keyframes seg-grow{from{flex-grow:.001}}
+
   /* ── Responsive ─────────────────────────── */
-  @media(max-width:880px){
+  @media(max-width:920px){
     .app{grid-template-columns:1fr}
-    .live{position:static;order:-1}
-    .presets{grid-template-columns:repeat(2,1fr)}
-    .route-grid{grid-template-columns:1fr 1fr;gap:14px 16px}
+    .rail{position:static;order:-1}
+    .rail .note{display:none} /* notes render inline via .note-inline on mobile */
+    .note-inline{display:block;margin-top:14px}
+    .method{grid-template-columns:1fr}
+    .crow{grid-template-columns:110px minmax(0,1fr)}
+    .crow-true{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:baseline;text-align:left;margin-top:2px}
+    .rn{grid-template-columns:110px 1fr}
   }
+  @media(min-width:921px){ .note-inline{display:none} }
   @media(max-width:600px){
     .topbar-links .topbar-link{display:none}
-    .hero{padding:38px 18px 20px}
-    .section{padding:34px 0}
+    .section{padding:40px 0}
     .wrap{padding:0 16px}
-    .presets{grid-template-columns:1fr}
-    .config{padding:6px 16px 16px}
-    .live{padding:18px}
+    .hero{padding-left:16px;padding-right:16px}
+    .anatomy{padding:0 16px}
+    .anatomy-cap .cap{max-width:none}
     .seg{flex-direction:column}
-    .route-cash{margin-left:0;width:100%;margin-top:2px}
-    .route-top{flex-wrap:wrap}
+    .projects{grid-template-columns:1fr 1fr}
+    .crow{grid-template-columns:1fr;gap:8px;padding:12px 10px}
+    .rn{grid-template-columns:1fr;gap:2px}
     .mobile-bar{display:flex}
     body{padding-bottom:74px}
-    .live-cta{display:none}
+    .answer-cta{display:none}
   }
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
@@ -315,84 +342,83 @@ body{position:relative;z-index:0}
   </div>
 </nav>
 
+<!-- HERO: the ideology -->
 <header class="hero">
-  <span class="kick"><span class="dot"></span> Free planning tool &middot; no email</span>
-  <h1>What a website really costs you &mdash; in <em>money, time &amp; effort</em>.</h1>
-  <p>Most calculators only show a price. This one also shows how long it takes to launch and how many hours land on <em>you</em> &mdash; so you can compare routes honestly.</p>
-  <p class="trust">Educational market ranges, not an automatic Studio O&#39;Brien quote.</p>
+  <h1>A website costs money, weeks, and <em>your evenings</em>.</h1>
+  <p class="lede">Anyone can quote you a price. Price is one of <b>three bills</b> a website sends you; the other two arrive as calendar time and your own hours. This tool prices all three, on every route from DIY to agency, so you can compare them honestly.</p>
+  <div class="hero-foot">
+    <span>Free</span>
+    <span>No email required</span>
+    <span>Market ranges, not a Studio O&#39;Brien quote</span>
+  </div>
 </header>
 
-<!-- PRESETS -->
-<section class="section" style="padding-top:8px">
+<!-- ANATOMY: the one idea, drawn -->
+<div class="anatomy js-reveal" id="anatomy" aria-label="How true cost is composed">
+  <div class="anatomy-track">
+    <div class="anatomy-seg cash"><span class="a-k">The price you're quoted</span></div>
+    <div class="anatomy-seg you"><span class="a-k">Your hours, priced</span></div>
+  </div>
+  <div class="anatomy-cap">
+    <p class="cap"><b>Cash</b> is the invoice. It's the only number most calculators show you.</p>
+    <p class="cap"><b>Your time</b> is the part nobody invoices: decisions, writing, photos, revisions. On cheap routes, it's the bigger bar.</p>
+  </div>
+  <p class="anatomy-eq">cash&nbsp;+&nbsp;your hours &times; what they&#39;re worth&nbsp;=&nbsp;<b>true cost</b></p>
+</div>
+
+<!-- STEP 1: what are you building -->
+<section class="section" id="start">
   <div class="wrap">
     <div class="section-head">
-      <h2>Start from a <em>template</em></h2>
-      <p>Pick the closest project to load a starting scope, then fine-tune it below.</p>
+      <h2>Start with <em>your project</em>, not a spreadsheet.</h2>
+      <p>Tap the closest match and the whole page recalculates around it. Fine-tune below if the fit isn&#39;t exact.</p>
     </div>
-    <div class="presets" id="presets">
-      <button class="preset" type="button" data-preset="landing">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
-        <span class="preset-name">Landing Page</span>
-        <span class="preset-desc">One focused page to launch an offer or capture leads.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">1</b>page</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+    <div class="projects" id="presets">
+      <button class="project" type="button" data-preset="landing">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Landing page</span>
+        <span class="p-ds">One focused page to launch an offer or capture leads.</span>
       </button>
-      <button class="preset" type="button" data-preset="local">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
-        <span class="preset-name">Local Business</span>
-        <span class="preset-desc">The Main Street standard: services, contact, and reviews.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">5</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      <button class="project" type="button" data-preset="local">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Local business</span>
+        <span class="p-ds">The Main Street standard: services, contact, reviews.</span>
       </button>
-      <button class="preset" type="button" data-preset="restaurant">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M4 3v7a3 3 0 0 0 6 0V3"/><path d="M7 3v18"/><path d="M17 3c-1.5 0-3 1.5-3 4v6h3"/><path d="M17 3v18"/></svg></span>
-        <span class="preset-name">Restaurant</span>
-        <span class="preset-desc">Menu, reservations, and a gallery that makes people hungry.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">6</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      <button class="project" type="button" data-preset="restaurant">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Restaurant</span>
+        <span class="p-ds">Menu, reservations, and photos that make people hungry.</span>
       </button>
-      <button class="preset" type="button" data-preset="portfolio">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span>
-        <span class="preset-name">Portfolio</span>
-        <span class="preset-desc">Show the work with a premium, art-directed gallery.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">5</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      <button class="project" type="button" data-preset="portfolio">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Portfolio</span>
+        <span class="p-ds">Show the work with a premium, art-directed gallery.</span>
       </button>
-      <button class="preset" type="button" data-preset="store">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M2 3h3l2.5 14h11l2-9H6"/></svg></span>
-        <span class="preset-name">Online Store</span>
-        <span class="preset-desc">Sell products with a real cart, checkout, and payments.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">8</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      <button class="project" type="button" data-preset="store">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Online store</span>
+        <span class="p-ds">Sell products with a real cart, checkout, and payments.</span>
       </button>
-      <button class="preset" type="button" data-preset="content">
-        <span class="pick">Loaded</span>
-        <span class="preset-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></span>
-        <span class="preset-name">Content / Blog</span>
-        <span class="preset-desc">Publish regularly to rank on Google and build an audience.</span>
-        <span class="preset-stats"><span class="preset-stat"><b data-stat="pages">10</b>pages</span><span class="preset-stat"><b data-stat="cost">&mdash;</b>studio</span><span class="preset-stat"><b data-stat="weeks">&mdash;</b>to launch</span></span>
+      <button class="project" type="button" data-preset="content">
+        <span class="p-tick">&#10003;</span>
+        <span class="p-nm">Content &amp; blog</span>
+        <span class="p-ds">Publish regularly to rank on Google and build an audience.</span>
       </button>
     </div>
-  </div>
-</section>
 
-<!-- APP -->
-<section class="section" style="padding-top:0" id="calculator">
-  <div class="wrap">
-    <div class="app">
-
-      <!-- CONFIG -->
-      <div class="panel config">
-        <h2 class="sr-only">Configure your website scope</h2>
+    <!-- APP: controls + answer rail -->
+    <div class="app" id="calculator">
+      <div class="controls">
+        <h2 class="sr-only">Fine-tune your website scope</h2>
 
         <div class="cfg">
-          <div class="cfg-head"><span class="cfg-num">1</span><h3>How many pages?</h3><span class="cfg-val" id="pageVal">5</span></div>
+          <div class="cfg-head"><h3>How many pages?</h3><span class="cfg-val" id="pageVal">5</span></div>
           <input type="range" class="slider" id="pageSlider" min="1" max="30" value="5" step="1" aria-label="Number of website pages">
           <div class="slider-ends"><span>1 &middot; landing page</span><span>30 &middot; large site</span></div>
         </div>
 
         <div class="cfg">
-          <div class="cfg-head"><span class="cfg-num">2</span><h3>What does it need to do?</h3></div>
+          <div class="cfg-head"><h3>What does it need to do?</h3></div>
           <div class="chips" id="featureChips">
             <button class="chip on" type="button" data-feature="a contact form" data-hours="4" aria-pressed="true"><span class="tick">&#10003;</span>Contact form</button>
             <button class="chip" type="button" data-feature="reviews on the site" data-hours="5" aria-pressed="false"><span class="tick">&#10003;</span>Google reviews</button>
@@ -403,128 +429,133 @@ body{position:relative;z-index:0}
             <button class="chip" type="button" data-feature="an online store" data-hours="42" aria-pressed="false"><span class="tick">&#10003;</span>E-commerce</button>
             <button class="chip" type="button" data-feature="multiple languages" data-hours="32" aria-pressed="false"><span class="tick">&#10003;</span>Multi-language</button>
           </div>
-          <p class="cfg-hint">Tap to add or remove. Common picks are pre-selected.</p>
+          <p class="cfg-why">Tap to add or remove. Each feature adds real production hours, not a flat fee.</p>
         </div>
 
         <div class="cfg">
-          <div class="cfg-head"><span class="cfg-num">3</span><h3>Design depth</h3></div>
+          <div class="cfg-head"><h3>Design depth</h3></div>
           <div class="seg" id="designSeg" role="radiogroup" aria-label="Design depth">
             <button class="seg-opt" type="button" data-level="a template-led design" data-mult="0.8" role="radio" aria-checked="false"><span class="s-lab">Standard</span><span class="s-sub">Clean &amp; modern</span></button>
             <button class="seg-opt on" type="button" data-level="a custom design" data-mult="1" role="radio" aria-checked="true"><span class="s-lab">Custom</span><span class="s-sub">Unique per section</span></button>
             <button class="seg-opt" type="button" data-level="a highly art-directed design" data-mult="1.4" role="radio" aria-checked="false"><span class="s-lab">Premium</span><span class="s-sub">Animated &amp; bespoke</span></button>
           </div>
+          <p class="cfg-why"><b>Adapting a proven structure costs less</b> than original art direction built around one business. Neither is wrong; they're different amounts of work.</p>
         </div>
 
         <div class="cfg">
-          <div class="cfg-head"><span class="cfg-num">4</span><h3>Is your content ready?</h3></div>
+          <div class="cfg-head"><h3>Is your content ready?</h3></div>
           <div class="seg" id="contentSeg" role="radiogroup" aria-label="Content readiness">
             <button class="seg-opt" type="button" data-content="ready" role="radio" aria-checked="false"><span class="s-lab">Ready</span><span class="s-sub">Copy &amp; photos done</span></button>
             <button class="seg-opt on" type="button" data-content="some" role="radio" aria-checked="true"><span class="s-lab">Some of it</span><span class="s-sub">Partly there</span></button>
             <button class="seg-opt" type="button" data-content="scratch" role="radio" aria-checked="false"><span class="s-lab">From scratch</span><span class="s-sub">Need help with both</span></button>
           </div>
-          <p class="cfg-hint">Content readiness is the biggest hidden driver of timeline and your own workload.</p>
+          <p class="cfg-why"><b>The biggest hidden driver.</b> Waiting on words and photos delays more launches than any technical problem. Watch the launch estimate move when you change this.</p>
         </div>
 
         <div class="cfg">
-          <div class="cfg-head"><span class="cfg-num">5</span><h3>What&#39;s an hour of your time worth?</h3></div>
+          <div class="cfg-head"><h3>What&#39;s an hour of your time worth?</h3></div>
           <div class="rate-row">
             <label class="rate-input"><span>$</span><input type="number" id="rateInput" value="50" min="0" max="1000" step="5" aria-label="Your hourly value in dollars"></label>
-            <span class="rate-note">Used to turn the hours <em>you</em> spend into a real dollar figure &mdash; the true cost of each route.</span>
+            <span class="rate-note">This turns the hours <em>you</em> spend into dollars, which is what makes the true-cost comparison below honest. Use what an hour of running your business is worth.</span>
           </div>
         </div>
       </div>
 
-      <!-- LIVE PANEL -->
-      <aside class="panel live" aria-live="polite">
-        <div class="live-top">
-          <div class="live-label">Typical investment for this scope</div>
-          <div class="live-range" id="liveRange">$6,000 &ndash; $12,000</div>
-          <div class="live-sub" id="liveSub">Independent studio route</div>
+      <!-- ANSWER RAIL -->
+      <aside class="rail">
+        <div class="answer" aria-live="polite">
+          <div class="answer-label">Typical investment for this scope</div>
+          <div class="answer-range" id="liveRange">$6,000 &ndash; $12,000</div>
+          <div class="answer-sub" id="liveSub">Independent studio route</div>
+          <div class="answer-metrics">
+            <div class="am"><div class="am-k">Time to launch</div><div class="am-v" id="liveWeeks">4&ndash;6 wks</div></div>
+            <div class="am"><div class="am-k">Hours on you</div><div class="am-v" id="liveEffort"><em>~6&ndash;9</em></div></div>
+          </div>
+          <div class="answer-rec" id="liveRec"></div>
+          <a class="answer-cta" id="liveCta" href="/contact">
+            <span>Get a project recommendation</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="live-metrics">
-          <div class="lm"><div class="lm-k">Time to launch</div><div class="lm-v" id="liveWeeks">4&ndash;6 wks</div></div>
-          <div class="lm"><div class="lm-k">Your hours</div><div class="lm-v" id="liveEffort"><em>~6&ndash;9</em></div></div>
+        <div class="note">
+          <h3>Where these numbers come from</h3>
+          <p>Ranges are built from public market data, not made up: <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">BLS wage data</a> for web developers, <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork&#39;s published rate bands</a>, and <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch&#39;s agency pricing guide</a>.</p>
         </div>
-        <div class="live-rec" id="liveRec"></div>
-        <a class="live-cta" id="liveCta" href="/contact">
-          <span>Get a project recommendation</span>
-          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+        <div class="note">
+          <h3>What &ldquo;hours on you&rdquo; means</h3>
+          <p>The share of the work you personally carry: decisions, writing, gathering photos, revisions. On the DIY route, it includes the building itself. It drops sharply the more a professional carries for you.</p>
+        </div>
       </aside>
-
     </div>
   </div>
 </section>
 
-<!-- ROUTE COMPARISON -->
-<section class="section section-dark">
+<!-- TRUE-COST CHART -->
+<section class="section section-dark" id="compare">
   <div class="wrap">
     <div class="section-head">
-      <h2>Same scope, <em>five ways</em> to build it</h2>
-      <p>Cash is only half the story. Here&#39;s what each route asks of your calendar and your own hands &mdash; and the true cost once your time counts.</p>
+      <h2>Same scope, five routes. Watch what happens when <em>your time counts</em>.</h2>
+      <p>Each bar is a route&#39;s true cost: the invoice plus your own hours priced at your rate. Raise your hourly value above and watch the &ldquo;cheap&rdquo; routes grow.</p>
     </div>
-    <div class="routes" id="routes"></div>
+    <div class="chart-legend" aria-hidden="true">
+      <span class="lg"><span class="sw cash"></span>Cash price</span>
+      <span class="lg"><span class="sw you"></span>Your hours, priced</span>
+    </div>
+    <div class="chart" id="chart"></div>
+    <p class="chart-foot">Bars plot the midpoint of each route&#39;s range; the printed figures show the full range. Hover any segment for the exact numbers.</p>
     <div class="true-callout" id="trueCallout"></div>
-    <ul class="drivers" id="drivers"></ul>
+    <div class="route-notes" id="routeNotes"></div>
+    <div class="sr-only">
+      <table id="chartTable">
+        <caption>True cost comparison by route</caption>
+        <thead><tr><th scope="col">Route</th><th scope="col">Cash price</th><th scope="col">Your hours</th><th scope="col">Time to launch</th><th scope="col">True cost</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-<!-- HOW TIME IS ESTIMATED -->
-<section class="section">
-  <div class="wrap" style="max-width:760px">
-    <details class="disc">
-      <summary>How the time &amp; effort numbers are calculated</summary>
-      <div class="disc-body">
-        <p>Every estimate starts from <b style="color:var(--g)">production hours</b> &mdash; the real work of planning, writing, designing, building, and testing your scope:</p>
-        <span class="eq">production hours = ( <b>page work</b> + <b>feature work</b> ) &times; <b>design depth</b></span>
-        <p><b style="color:var(--g)">Calendar time</b> is not the same as production hours. No one works 40 focused hours a week on a single site &mdash; there are review cycles, feedback waits, and other projects. Each route has its own realistic weekly throughput, plus a buffer when content isn&#39;t ready:</p>
-        <span class="eq">weeks &asymp; production hours &divide; <b>weekly throughput</b> + <b>content buffer</b></span>
-        <p><b style="color:var(--g)">Your hours</b> is the share of the work that lands on you personally &mdash; decisions, content gathering, revisions, and (for DIY) the actual building. It drops sharply the more of the work a professional carries:</p>
-        <span class="eq">true cost = <b>cash price</b> + ( <b>your hours</b> &times; <b>your hourly value</b> )</span>
-        <p>These are planning ranges built from public market data, not quotes. A real proposal depends on content readiness, integrations, accessibility, timeline, and support.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- WHY PRICES VARY -->
-<section class="section section-dark">
+<!-- METHOD + SOURCES, visible -->
+<section class="section" id="method">
   <div class="wrap">
     <div class="section-head">
-      <h2>Why website prices vary so <em>widely</em></h2>
-      <p>A website can mean a modified template, a focused freelance build, a connected studio process, or a large agency engagement. Same words, very different work.</p>
+      <h2>The math is <em>simple on purpose</em>.</h2>
+      <p>Three equations, no black box. If a number surprises you, you can see exactly which input moved it.</p>
     </div>
-    <div class="info-grid">
-      <div class="info-card"><h3>Scope &amp; content</h3><p>Page count matters, but page types, writing needs, content migration, and information architecture determine far more of the real workload.</p></div>
-      <div class="info-card"><h3>Functionality</h3><p>Booking, commerce, multilingual content, owner editing, and integrations add planning, configuration, testing, and support requirements.</p></div>
-      <div class="info-card"><h3>Creative depth</h3><p>Adapting a proven structure costs less than developing original art direction, writing, responsive behavior, and interaction around one business.</p></div>
-      <div class="info-card"><h3>Who carries the load</h3><p>The cheaper the cash price, the more planning, writing, and problem-solving usually falls on you. That time is real cost, just paid in hours.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SOURCES -->
-<section class="section">
-  <div class="wrap" style="max-width:760px">
-    <details class="disc">
-      <summary>Sources &amp; methodology</summary>
-      <div class="disc-body">
-        <ol>
-          <li>Labor context uses <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> wage data for web developers and digital interface designers.</li>
-          <li>Freelance rate context references publicly visible marketplace bands from <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork</a>. Rates vary greatly by experience, specialty, and geography.</li>
-          <li>Agency context references <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch&#39;s web design pricing guide</a>, including its published hourly-rate bands and scope factors.</li>
-          <li>The calculator estimates production effort from page types, selected functionality, and design depth, then applies broad provider-rate bands, weekly-throughput assumptions, and owner-involvement ratios.</li>
-          <li>Results are rounded planning ranges, not quotes. Content readiness, integrations, accessibility, timeline, decision-making, and support can materially change a real proposal.</li>
-        </ol>
+    <div class="method">
+      <div class="method-eqs">
+        <span class="eq">( <b>page work</b> + <b>feature work</b> ) &times; <b>design depth</b> = production hours
+          <span class="eq-note">The real work of planning, writing, designing, building, and testing your scope.</span>
+        </span>
+        <span class="eq">production hours &divide; <b>weekly throughput</b> + <b>content buffer</b> &asymp; weeks to launch
+          <span class="eq-note">Nobody works 40 focused hours a week on one site. Each route has a realistic pace, plus a buffer when content isn&#39;t ready.</span>
+        </span>
+        <span class="eq"><b>cash price</b> + ( <b>your hours</b> &times; <b>your hourly value</b> ) = true cost
+          <span class="eq-note">The comparison most calculators skip, and the one that actually decides whether &ldquo;cheap&rdquo; was cheap.</span>
+        </span>
       </div>
-    </details>
+      <div class="sources" aria-label="Sources">
+        <div class="src-item">
+          <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a>
+          <p>Wage data for web developers and digital interface designers anchors the labor math.</p>
+        </div>
+        <div class="src-item">
+          <a href="https://www.upwork.com/hire/web-developers/cost/" target="_blank" rel="noopener">Upwork rate bands</a>
+          <p>Publicly visible freelance marketplace rates. Rates vary widely by experience and specialty.</p>
+        </div>
+        <div class="src-item">
+          <a href="https://clutch.co/web-designers/pricing" target="_blank" rel="noopener">Clutch pricing guide</a>
+          <p>Published agency hourly-rate bands and the scope factors that move them.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="section section-dark">
-  <div class="wrap" style="max-width:760px">
-    <div class="section-head"><h2>Frequently asked <em>questions</em></h2></div>
+  <div class="wrap" style="max-width:800px">
+    <div class="section-head"><h2>Fair <em>questions</em>.</h2></div>
     <div class="faq-item"><h3>Is this a Studio O&#39;Brien quote?</h3><p>No. It&#39;s a market-planning estimate showing what similar scope can cost through different provider types. Studio O&#39;Brien recommends scope and pricing after learning what the business needs.</p></div>
     <div class="faq-item"><h3>What are &ldquo;your hours&rdquo; and why do they matter?</h3><p>Every website takes real human time. &ldquo;Your hours&rdquo; is the slice of that work you personally carry &mdash; decisions, writing, gathering photos, revisions, and, on the DIY route, the building itself. A low cash price with 80 of your own hours attached isn&#39;t actually cheap.</p></div>
     <div class="faq-item"><h3>Why is DIY&#39;s true cost sometimes higher than a studio?</h3><p>Because your time isn&#39;t free. When you price your own hours honestly, the &ldquo;$300 website&rdquo; often costs more in evenings and weekends than hiring someone would &mdash; and takes far longer to launch.</p></div>
@@ -538,9 +569,9 @@ body{position:relative;z-index:0}
   <div class="wrap">
     <div class="cta-block">
       <h2>Want a recommendation for <em>your</em> business?</h2>
-      <p>Send your calculator scope and a short note on what the site needs to accomplish. You&#39;ll get a specific recommendation back &mdash; not a sales pitch.</p>
+      <p>Send your calculator scope and a short note on what the site needs to accomplish. You&#39;ll get a specific recommendation back, not a sales pitch.</p>
       <a href="/contact" class="btn-primary" id="ctaBtn">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Get a project recommendation
       </a>
     </div>
@@ -580,49 +611,41 @@ body{position:relative;z-index:0}
   var featureChips = $('featureChips'), designSeg = $('designSeg'), contentSeg = $('contentSeg');
   var rateInput = $('rateInput'), presets = $('presets');
 
-  /* ── Model constants ── */
-  var COMPLEXITY_DEFAULT = 1;
+  /* ── Model (unchanged engine) ── */
   var CONTENT = {
     ready:   { costMult:1.00, weekBuffer:0.0, selfContent:2,  label:'ready content' },
     some:    { costMult:1.12, weekBuffer:1.0, selfContent:9,  label:'partial content' },
     scratch: { costMult:1.30, weekBuffer:2.5, selfContent:22, label:'content from scratch' }
   };
 
-  // Each route: cash band, your-hours band, calendar-weeks band, exhaustion 1-5, note
   var ROUTES = [
     { key:'diy', name:'DIY builder',
       cash:function(H,nf,ec){ return [200 + nf*75, 700 + nf*180 + (ec?1200:0)]; },
       self:function(H,c){ return [H*0.90 + c.selfContent, H*1.15 + c.selfContent*1.4]; },
       weeks:function(H,c){ return [H/12 + c.weekBuffer, H/6 + c.weekBuffer*1.5]; },
-      exhaust:5,
-      note:'Lowest cash cost. You handle planning, writing, design, setup, and every decision &mdash; on your own time.' },
+      note:'Lowest cash cost. You handle planning, writing, design, setup, and every decision on your own time.' },
     { key:'template', name:'Template provider',
       cash:function(H,nf,ec,c){ return [H*30*c.costMult, H*55*c.costMult]; },
       self:function(H,c){ return [H*0.40 + c.selfContent*0.7, H*0.55 + c.selfContent]; },
       weeks:function(H,c){ return [H/16 + c.weekBuffer, H/10 + c.weekBuffer]; },
-      exhaust:4,
       note:'A faster brochure-site route with less original strategy, art direction, and flexibility.' },
     { key:'freelancer', name:'Freelancer',
       cash:function(H,nf,ec,c){ return [H*50*c.costMult, H*100*c.costMult]; },
       self:function(H,c){ return [H*0.15 + c.selfContent*0.4, H*0.22 + c.selfContent*0.6]; },
       weeks:function(H,c){ return [H/18 + c.weekBuffer, H/11 + c.weekBuffer*1.2]; },
-      exhaust:2.5,
       note:'Best when the scope is well defined and one primary discipline can lead the work.' },
     { key:'studio', name:'Independent studio',
       cash:function(H,nf,ec,c){ return [H*90*c.costMult, H*165*c.costMult]; },
       self:function(H,c){ return [H*0.05 + c.selfContent*0.15, H*0.09 + c.selfContent*0.25]; },
       weeks:function(H,c){ return [H/22 + c.weekBuffer*0.6, H/16 + c.weekBuffer]; },
-      exhaust:1.5,
       note:'Connected strategy, writing, design, and development with one person carrying the load for you.' },
     { key:'agency', name:'Traditional agency',
       cash:function(H,nf,ec,c){ return [H*150*1.1*c.costMult, H*250*1.25*c.costMult]; },
       self:function(H,c){ return [H*0.08 + c.selfContent*0.2, H*0.13 + c.selfContent*0.3]; },
       weeks:function(H,c){ return [H/16 + c.weekBuffer, H/9 + c.weekBuffer*1.3]; },
-      exhaust:2.5,
-      note:'Useful for larger teams and complex stakeholder groups &mdash; more meetings and coordination for you.' }
+      note:'Useful for larger teams and complex stakeholder groups; more meetings and coordination for you.' }
   ];
 
-  /* ── Presets ── */
   var PRESETS = {
     landing:    { pages:1,  feats:['a contact form'], design:'0.8', content:'ready' },
     local:      { pages:5,  feats:['a contact form','reviews on the site','a menu or price list'], design:'1', content:'some' },
@@ -657,7 +680,6 @@ body{position:relative;z-index:0}
     var f = getFeatures(), d = getDesign(), c = getContent(), rate = getRate();
     var H = Math.round((pageHours(pages) + f.hours) * d.mult);
 
-    // recommended route by effort size
     var recKey = H < 45 ? 'freelancer' : (H < 135 ? 'studio' : 'agency');
 
     var routeData = ROUTES.map(function(r){
@@ -666,17 +688,17 @@ body{position:relative;z-index:0}
       var wk = r.weeks(H, c);
       var trueLo = cash[0] + self[0]*rate;
       var trueHi = cash[1] + self[1]*rate;
-      return { r:r, cash:cash, self:self, wk:wk, trueLo:trueLo, trueHi:trueHi };
+      return { r:r, cash:cash, self:self, wk:wk, trueLo:trueLo, trueHi:trueHi,
+               cashMid:(cash[0]+cash[1])/2, youMid:((self[0]+self[1])/2)*rate };
     });
 
-    // ---- Live panel (studio-centric headline) ----
+    /* Answer rail (studio-centric headline) */
     var studio = routeData.filter(function(x){return x.r.key==='studio';})[0];
     $('liveRange').innerHTML = moneyRange(studio.cash[0], studio.cash[1], 500);
     $('liveSub').textContent = 'Independent studio route · ' + c.label;
     $('liveWeeks').textContent = weeksRange(studio.wk[0], studio.wk[1]);
     $('liveEffort').innerHTML = '<em>' + hrsRange(studio.self[0], studio.self[1]) + '</em>';
 
-    var recData = routeData.filter(function(x){return x.r.key===recKey;})[0];
     var recCopy = {
       freelancer:'This is a focused scope. An experienced <b>freelancer</b> can be the closest fit if goals and content are already well defined.',
       studio:'This scope rewards connected strategy, writing, design, and development without agency overhead. An <b>independent studio</b> is the closest fit.',
@@ -684,95 +706,65 @@ body{position:relative;z-index:0}
     };
     $('liveRec').innerHTML = 'Closest fit: ' + recCopy[recKey];
 
-    // mobile bar
+    /* Mobile bar */
     $('mbRange').innerHTML = moneyShort(studio.cash[0])+'–'+moneyShort(studio.cash[1]);
     $('mbWeeks').textContent = weeksRange(studio.wk[0], studio.wk[1]);
     $('mbEffort').innerHTML = '<em>'+hrsRange(studio.self[0], studio.self[1])+'</em>';
 
-    // ---- Route cards ----
+    /* ── True-cost chart ── */
+    var maxTotal = 0;
+    routeData.forEach(function(x){ maxTotal = Math.max(maxTotal, x.cashMid + x.youMid); });
     var steps = { diy:100, template:250, freelancer:500, studio:500, agency:1000 };
-    var html = '';
+    var chartHtml = '', tableHtml = '';
     routeData.forEach(function(x){
       var r = x.r, isRec = r.key===recKey;
-      var exFilled = Math.round(r.exhaust);
-      var meterHi = r.exhaust >= 4;
-      var meter = '';
-      for(var i=1;i<=5;i++){ meter += '<i class="'+(i<=exFilled?'f':'')+'"></i>'; }
-      var trueClass = (r.key==='diy' && r.exhaust>=4) ? ' warnv' : '';
-      html += ''+
-      '<div class="route'+(isRec?' rec':'')+'">'+
-        '<div class="route-top">'+
-          '<span class="route-nm">'+r.name+'</span>'+
-          (isRec?'<span class="route-badge">Closest fit</span>':'')+
-          '<span class="route-cash">'+moneyRange(x.cash[0],x.cash[1],steps[r.key])+'</span>'+
+      var cashPct = maxTotal ? (x.cashMid/maxTotal)*100 : 0;
+      var youPct  = maxTotal ? (x.youMid /maxTotal)*100 : 0;
+      var cashTip = r.name+' cash price: '+moneyRange(x.cash[0],x.cash[1],steps[r.key]);
+      var youTip  = r.name+' your hours priced: about '+money(Math.round(x.youMid))+' ('+hrsRange(x.self[0],x.self[1])+' hrs at your rate)';
+      chartHtml += ''+
+      '<div class="crow'+(isRec?' rec':'')+'">'+
+        '<div class="crow-id">'+
+          '<div class="crow-nm">'+r.name+(isRec?'<span class="crow-badge">Closest fit</span>':'')+'</div>'+
+          '<div class="crow-meta">'+moneyRange(x.cash[0],x.cash[1],steps[r.key])+' cash · '+weeksRange(x.wk[0],x.wk[1])+' to launch</div>'+
         '</div>'+
-        '<div class="route-grid">'+
-          '<div class="rc"><div class="rc-k">Your time</div><div class="rc-v">'+hrsRange(x.self[0],x.self[1])+' hrs</div></div>'+
-          '<div class="rc"><div class="rc-k">To launch</div><div class="rc-v">'+weeksRange(x.wk[0],x.wk[1])+'</div></div>'+
-          '<div class="rc"><div class="rc-k">Effort on you</div><div class="meter'+(meterHi?' hi':'')+'">'+meter+'</div></div>'+
-          '<div class="rc"><div class="rc-k">True cost <span title="cash + your hours × your rate">&#9432;</span></div><div class="rc-v true"><span class="'+trueClass.trim()+'">'+moneyRange(x.trueLo,x.trueHi,500)+'</span></div></div>'+
+        '<div class="crow-bar" role="img" aria-label="'+r.name+' true cost '+moneyRange(x.trueLo,x.trueHi,500)+'">'+
+          '<div class="cseg cash" style="width:'+cashPct+'%" title="'+cashTip+'"></div>'+
+          (x.youMid>0 ? '<div class="cseg you" style="width:'+youPct+'%" title="'+youTip+'"></div>' : '')+
         '</div>'+
-        '<div class="route-note">'+r.note+'</div>'+
+        '<div class="crow-true"><div class="ct-v">'+moneyRange(x.trueLo,x.trueHi,500)+'</div><div class="ct-k">true cost</div></div>'+
       '</div>';
+      tableHtml += '<tr><th scope="row">'+r.name+'</th><td>'+moneyRange(x.cash[0],x.cash[1],steps[r.key])+'</td><td>'+hrsRange(x.self[0],x.self[1])+' hrs</td><td>'+weeksRange(x.wk[0],x.wk[1])+'</td><td>'+moneyRange(x.trueLo,x.trueHi,500)+'</td></tr>';
     });
-    $('routes').innerHTML = html;
+    $('chart').innerHTML = chartHtml;
+    $('chartTable').querySelector('tbody').innerHTML = tableHtml;
 
-    // ---- True-cost callout (DIY vs studio) ----
+    /* Route one-liners */
+    $('routeNotes').innerHTML = ROUTES.map(function(r){
+      return '<div class="rn"><b>'+r.name+'</b><span>'+r.note+'</span></div>';
+    }).join('');
+
+    /* True-cost callout */
     var diy = routeData.filter(function(x){return x.r.key==='diy';})[0];
-    var rate0 = rate === 0;
     var diyTrueMid = (diy.trueLo + diy.trueHi)/2;
     var studioTrueMid = (studio.trueLo + studio.trueHi)/2;
     var callout;
-    if(rate0){
-      callout = 'Set an hourly value above to see the <b>true cost</b> of each route &mdash; cash plus the price of your own time. It changes the comparison completely.';
+    if(rate === 0){
+      callout = 'Set an hourly value above to see the <b>true cost</b> of each route: cash plus the price of your own time. It changes the comparison completely.';
     } else if(diyTrueMid >= studioTrueMid){
-      callout = 'At <b>'+money(rate)+'/hr</b> for your time, the DIY route&#39;s true cost (&asymp;'+money(roundTo(diyTrueMid,500))+') meets or beats the studio route (&asymp;'+money(roundTo(studioTrueMid,500))+') &mdash; and takes far longer with far more on you. &ldquo;Cheap&rdquo; isn&#39;t cheap once your hours count.';
+      callout = 'At <b>'+money(rate)+'/hr</b> for your time, the DIY route&#39;s true cost (<span class="warn-b">&asymp;'+money(roundTo(diyTrueMid,500))+'</span>) meets or beats the studio route (&asymp;'+money(roundTo(studioTrueMid,500))+'), takes far longer, and puts far more on you. &ldquo;Cheap&rdquo; isn&#39;t cheap once your hours count.';
     } else {
-      callout = 'At <b>'+money(rate)+'/hr</b>, DIY still costs less in total &mdash; but you personally carry '+hrsRange(diy.self[0],diy.self[1])+' hours and the longest timeline. The studio route trades money for your time and a faster, hands-off launch.';
+      callout = 'At <b>'+money(rate)+'/hr</b>, DIY still costs less in total. But you personally carry '+hrsRange(diy.self[0],diy.self[1])+' hours and the longest timeline. The studio route trades money for your time and a faster, hands-off launch.';
     }
     $('trueCallout').innerHTML = callout;
 
-    // ---- Drivers ----
-    var chk = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
-    var drivers = [];
-    drivers.push(pages + (pages===1?' page':' pages') + ' of content');
-    drivers.push(d.level.replace(/^a /,'').replace(/^an /,'') + ' &mdash; design depth');
-    drivers.push(f.count ? (f.count + ' feature'+(f.count>1?'s':'')+': ' + f.names.map(function(n){return n.replace(/^an? /,'');}).join(', ')) : 'No advanced functionality');
-    drivers.push('Content: ' + c.label + (c.weekBuffer? ' (+'+ (c.weekBuffer<1? 'small':Math.round(c.weekBuffer)) +' wk buffer)':''));
-    drivers.push('About ' + Math.max(15,Math.round(H*0.85)) + '–' + Math.round(H*1.2) + ' production hours before provider overhead');
-    $('drivers').innerHTML = drivers.map(function(t){ return '<li>'+chk+'<span>'+t+'</span></li>'; }).join('');
-
-    // ---- Contact links carry the scope ----
+    /* Contact links carry the scope */
     var summary = 'Pages: '+pages+' | Design: '+d.level+' | Features: '+(f.names.join(', ')||'none')+' | Content: '+c.label+' | Studio range shown: '+moneyRange(studio.cash[0],studio.cash[1],500);
     var href = '/contact?ref=calculator&scope=' + encodeURIComponent(summary);
     $('liveCta').href = href; $('ctaBtn').href = href; $('mbCta').href = href;
-
-    // ---- Preset stat previews ----
-    updatePresetStats(rate);
-  }
-
-  // Fill the little cost/weeks stats on each preset card using the studio route
-  function updatePresetStats(rate){
-    presets.querySelectorAll('.preset').forEach(function(card){
-      var p = PRESETS[card.getAttribute('data-preset')];
-      var fh=0, ec=false;
-      p.feats.forEach(function(name){
-        var chip = featureChips.querySelector('.chip[data-feature="'+name+'"]');
-        if(chip){ fh += parseInt(chip.getAttribute('data-hours'),10); if(name==='an online store') ec=true; }
-      });
-      var c = CONTENT[p.content];
-      var H = Math.round((pageHours(p.pages) + fh) * parseFloat(p.design));
-      var studio = ROUTES.filter(function(r){return r.key==='studio';})[0];
-      var cash = studio.cash(H, p.feats.length, ec, c);
-      var wk = studio.weeks(H, c);
-      card.querySelector('[data-stat="pages"]').textContent = p.pages;
-      card.querySelector('[data-stat="cost"]').innerHTML = moneyShort(cash[0])+'–'+moneyShort(cash[1]);
-      card.querySelector('[data-stat="weeks"]').textContent = weeksRange(wk[0],wk[1]);
-    });
   }
 
   /* ── Interactions ── */
-  /* GA4: fire once on the first real interaction with any calculator control */
   var calcEngaged = false;
   ['input','click'].forEach(function(t){
     document.addEventListener(t, function(e){
@@ -804,25 +796,21 @@ body{position:relative;z-index:0}
   }
   bindSeg(designSeg); bindSeg(contentSeg);
 
-  function clearPreset(){ presets.querySelectorAll('.preset.active').forEach(function(p){ p.classList.remove('active'); }); }
+  function clearPreset(){ presets.querySelectorAll('.project.active').forEach(function(p){ p.classList.remove('active'); }); }
 
   presets.addEventListener('click', function(e){
-    var card = e.target.closest('.preset'); if(!card) return;
+    var card = e.target.closest('.project'); if(!card) return;
     var p = PRESETS[card.getAttribute('data-preset')];
-    // pages
     pageSlider.value = p.pages;
-    // features
     featureChips.querySelectorAll('.chip').forEach(function(chip){
       var want = p.feats.indexOf(chip.getAttribute('data-feature')) > -1;
       chip.classList.toggle('on', want);
       chip.setAttribute('aria-pressed', want?'true':'false');
     });
-    // design
     designSeg.querySelectorAll('.seg-opt').forEach(function(o){
       var want = o.getAttribute('data-mult')===p.design;
       o.classList.toggle('on', want); o.setAttribute('aria-checked', want?'true':'false');
     });
-    // content
     contentSeg.querySelectorAll('.seg-opt').forEach(function(o){
       var want = o.getAttribute('data-content')===p.content;
       o.classList.toggle('on', want); o.setAttribute('aria-checked', want?'true':'false');
@@ -830,9 +818,15 @@ body{position:relative;z-index:0}
     clearPreset();
     card.classList.add('active');
     render();
-    // gentle scroll to config on mobile
-    if(window.innerWidth <= 880){ $('calculator').scrollIntoView({behavior:'smooth', block:'start'}); }
+    if(window.innerWidth <= 920){ $('calculator').scrollIntoView({behavior:'smooth', block:'start'}); }
   });
+
+  /* hero anatomy entrance (default state is visible; JS only re-plays the growth) */
+  try {
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      requestAnimationFrame(function(){ $('anatomy').classList.add('in'); });
+    }
+  } catch(e){}
 
   render();
 })();
