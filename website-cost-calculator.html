@@ -99,12 +99,14 @@
   .section-head p{color:var(--ink-3);font-size:clamp(15px,1.8vw,17px);max-width:64ch;text-wrap:pretty}
 
   /* ── Step 1: what are you building ──────── */
-  .ptabs{display:flex;flex-wrap:wrap;gap:8px}
+  .section-head.center{text-align:center}
+  .section-head.center p{margin-left:auto;margin-right:auto}
+  .ptabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
   .ptab{padding:12px 20px;border:1px solid var(--border);border-radius:999px;background:transparent;cursor:pointer;transition:border-color .18s,background .18s,color .18s;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--ink-3);min-height:44px}
   .ptab:hover{border-color:var(--g-line);color:var(--ink)}
   .ptab:focus-visible{outline:2px solid var(--g);outline-offset:3px}
   .ptab.active{border-color:var(--g);background:var(--g-soft);color:var(--ink)}
-  .ptab-desc{margin-top:22px;font-size:16px;color:var(--ink-2);min-height:1.6em;font-weight:500}
+  .ptab-desc{margin-top:22px;font-size:16px;color:var(--ink-2);min-height:1.6em;font-weight:500;text-align:center}
   .ptab-desc b{color:var(--ink);font-weight:600}
 
   /* ── App: controls + answer rail ────────── */
@@ -375,7 +377,7 @@ body{position:relative;z-index:0}
 <!-- STEP 1: what are you building -->
 <section class="section" id="start">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head center">
       <h2>What are you <em>building</em>?</h2>
     </div>
     <div class="ptabs" id="presets" role="group" aria-label="Project type">
