@@ -61,9 +61,13 @@
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 
-  /* ── Hero: the ideology ─────────────────── */
-  .hero{padding:clamp(56px,9vw,104px) 20px 0;max-width:1080px;margin:0 auto}
-  .hero h1{font-weight:720;font-size:clamp(38px,6.6vw,76px);line-height:1.02;letter-spacing:-.035em;color:#fff;max-width:16ch}
+  /* ── Hero: the ideology, poster lockup ──── */
+  .hero{padding:clamp(48px,8vw,92px) 20px 0;max-width:1080px;margin:0 auto;container-type:inline-size}
+  .hero h1{font-weight:720;line-height:.98;letter-spacing:-.035em;color:#fff;text-wrap:initial}
+  .hero h1 span{display:block;white-space:nowrap}
+  .hero h1 .pl1{font-size:clamp(30px,13.2vw,144px);font-size:clamp(30px,13.7cqw,144px)}
+  .hero h1 .pl2{font-size:clamp(29px,11.2vw,122px);font-size:clamp(29px,11.6cqw,122px)}
+  .hero h1 .pl3{font-size:clamp(28px,11.1vw,121px);font-size:clamp(28px,11.5cqw,121px)}
   .hero h1 em{font-style:italic;color:var(--g);font-weight:650}
   .hero .lede{margin-top:22px;max-width:56ch;font-size:clamp(16px,2vw,19px);color:var(--ink-2);line-height:1.65;text-wrap:pretty}
   .hero .lede b{color:var(--ink);font-weight:600}
@@ -296,6 +300,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can't AI just build my website now?","acceptedAnswer":{"@type":"Answer","text":"AI tools genuinely lower the cash price of getting a page online, and they're part of the market this calculator prices. What they don't remove is your side of the work: deciding what the site says, writing it, gathering photos, revising, and living with the result. The build was never the expensive part. The hours are."}},
 {"@type":"Question","name":"Is this a Studio O'Brien quote?","acceptedAnswer":{"@type":"Answer","text":"No. It's a market-planning estimate showing what similar scope can cost through different provider types. Studio O'Brien recommends scope and pricing after learning what the business needs."}},
 {"@type":"Question","name":"What are your hours and why do they matter?","acceptedAnswer":{"@type":"Answer","text":"Every website takes real human time. Your hours is the slice of that work you personally carry: decisions, writing, gathering photos, revisions, and, on the DIY route, the building itself. A low cash price with 80 of your own hours attached isn't actually cheap."}},
 {"@type":"Question","name":"Why is DIY's true cost sometimes higher than a studio?","acceptedAnswer":{"@type":"Answer","text":"Because your time isn't free. When you price your own hours honestly, the $300 website often costs more in evenings and weekends than hiring someone would, and takes far longer to launch."}},
@@ -344,12 +349,12 @@ body{position:relative;z-index:0}
 
 <!-- HERO: the ideology -->
 <header class="hero">
-  <h1>A website costs money, weeks, and <em>your evenings</em>.</h1>
-  <p class="lede">Anyone can quote you a price. Price is one of <b>three bills</b> a website sends you; the other two arrive as calendar time and your own hours. This tool prices all three, on every route from DIY to agency, so you can compare them honestly.</p>
+  <h1><span class="pl1">A website costs</span><span class="pl2">money, weekends,</span><span class="pl3">and <em>your evenings</em>.</span></h1>
+  <p class="lede">Anyone can quote you a price, and now AI will build you a page in an afternoon. Neither is the whole bill. Every route to a website charges you <b>three ways</b>: cash, calendar time, and your own hours. This tool prices all three, from AI builders to agencies, so you can see what the market really has to offer.</p>
   <div class="hero-foot">
     <span>Free</span>
     <span>No email required</span>
-    <span>Market ranges, not a Studio O&#39;Brien quote</span>
+    <span>Priced from what the market actually charges</span>
   </div>
 </header>
 
@@ -361,7 +366,7 @@ body{position:relative;z-index:0}
   </div>
   <div class="anatomy-cap">
     <p class="cap"><b>Cash</b> is the invoice. It's the only number most calculators show you.</p>
-    <p class="cap"><b>Your time</b> is the part nobody invoices: decisions, writing, photos, revisions. On cheap routes, it's the bigger bar.</p>
+    <p class="cap"><b>Your time</b> is the part nobody invoices, and the part AI doesn't make disappear: decisions, writing, photos, revisions. On cheap routes, it's the bigger bar.</p>
   </div>
   <p class="anatomy-eq">cash&nbsp;+&nbsp;your hours &times; what they&#39;re worth&nbsp;=&nbsp;<b>true cost</b></p>
 </div>
@@ -556,6 +561,7 @@ body{position:relative;z-index:0}
 <section class="section section-dark">
   <div class="wrap" style="max-width:800px">
     <div class="section-head"><h2>Fair <em>questions</em>.</h2></div>
+    <div class="faq-item"><h3>Can&#39;t AI just build my website now?</h3><p>AI tools genuinely lower the cash price of getting a page online, and they&#39;re part of the market this calculator prices. What they don&#39;t remove is your side of the work: deciding what the site says, writing it, gathering photos, revising, and living with the result. The build was never the expensive part. The hours are.</p></div>
     <div class="faq-item"><h3>Is this a Studio O&#39;Brien quote?</h3><p>No. It&#39;s a market-planning estimate showing what similar scope can cost through different provider types. Studio O&#39;Brien recommends scope and pricing after learning what the business needs.</p></div>
     <div class="faq-item"><h3>What are &ldquo;your hours&rdquo; and why do they matter?</h3><p>Every website takes real human time. &ldquo;Your hours&rdquo; is the slice of that work you personally carry &mdash; decisions, writing, gathering photos, revisions, and, on the DIY route, the building itself. A low cash price with 80 of your own hours attached isn&#39;t actually cheap.</p></div>
     <div class="faq-item"><h3>Why is DIY&#39;s true cost sometimes higher than a studio?</h3><p>Because your time isn&#39;t free. When you price your own hours honestly, the &ldquo;$300 website&rdquo; often costs more in evenings and weekends than hiring someone would &mdash; and takes far longer to launch.</p></div>
@@ -619,11 +625,11 @@ body{position:relative;z-index:0}
   };
 
   var ROUTES = [
-    { key:'diy', name:'DIY builder',
-      cash:function(H,nf,ec){ return [200 + nf*75, 700 + nf*180 + (ec?1200:0)]; },
-      self:function(H,c){ return [H*0.90 + c.selfContent, H*1.15 + c.selfContent*1.4]; },
+    { key:'diy', name:'DIY / AI builder',
+      cash:function(H,nf,ec){ return [60 + nf*30, 300 + nf*100 + (ec?900:0)]; },
+      self:function(H,c){ return [H*0.70 + c.selfContent, H*1.05 + c.selfContent*1.4]; },
       weeks:function(H,c){ return [H/12 + c.weekBuffer, H/6 + c.weekBuffer*1.5]; },
-      note:'Lowest cash cost. You handle planning, writing, design, setup, and every decision on your own time.' },
+      note:'Lowest cash cost, and AI tools genuinely make the building faster than it used to be. What they don\'t remove: planning, writing, photos, revisions, and every decision. That work is still yours, on your own time.' },
     { key:'template', name:'Template provider',
       cash:function(H,nf,ec,c){ return [H*30*c.costMult, H*55*c.costMult]; },
       self:function(H,c){ return [H*0.40 + c.selfContent*0.7, H*0.55 + c.selfContent]; },
@@ -752,9 +758,9 @@ body{position:relative;z-index:0}
     if(rate === 0){
       callout = 'Set an hourly value above to see the <b>true cost</b> of each route: cash plus the price of your own time. It changes the comparison completely.';
     } else if(diyTrueMid >= studioTrueMid){
-      callout = 'At <b>'+money(rate)+'/hr</b> for your time, the DIY route&#39;s true cost (<span class="warn-b">&asymp;'+money(roundTo(diyTrueMid,500))+'</span>) meets or beats the studio route (&asymp;'+money(roundTo(studioTrueMid,500))+'), takes far longer, and puts far more on you. &ldquo;Cheap&rdquo; isn&#39;t cheap once your hours count.';
+      callout = 'At <b>'+money(rate)+'/hr</b> for your time, the DIY/AI route&#39;s true cost (<span class="warn-b">&asymp;'+money(roundTo(diyTrueMid,500))+'</span>) meets or beats the studio route (&asymp;'+money(roundTo(studioTrueMid,500))+'), takes far longer, and puts far more on you. &ldquo;Cheap&rdquo; isn&#39;t cheap once your hours count.';
     } else {
-      callout = 'At <b>'+money(rate)+'/hr</b>, DIY still costs less in total. But you personally carry '+hrsRange(diy.self[0],diy.self[1])+' hours and the longest timeline. The studio route trades money for your time and a faster, hands-off launch.';
+      callout = 'At <b>'+money(rate)+'/hr</b>, the DIY/AI route still costs less in total. But you personally carry '+hrsRange(diy.self[0],diy.self[1])+' hours and the longest timeline. The studio route trades money for your time and a faster, hands-off launch.';
     }
     $('trueCallout').innerHTML = callout;
 
