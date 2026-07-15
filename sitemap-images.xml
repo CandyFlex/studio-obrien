@@ -8,6 +8,11 @@
     <image:image><image:loc>https://studioobrien.com/portfolio/ember.webp</image:loc><image:caption>Ember and Oak Steakhouse website design by O'Brien Studio</image:caption><image:title>Ember and Oak Steakhouse - Restaurant Web Design</image:title></image:image>
     <image:image><image:loc>https://studioobrien.com/portfolio/tf-hero.webp</image:loc><image:caption>SEO optimization results dashboard by O'Brien Studio</image:caption><image:title>SEO Ranking Growth</image:title></image:image>
     <image:image><image:loc>https://studioobrien.com/portfolio/og-image.webp</image:loc><image:caption>O'Brien Studio - Web development and design studio in Shelby, NC</image:caption><image:title>O'Brien Studio Open Graph Image</image:title></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-research.webp</image:loc><image:caption>Website development process - research phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-design.webp</image:loc><image:caption>Website development process - design phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-launch.webp</image:loc><image:caption>Website development process - launch phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/process-walkthrough.webp</image:loc><image:caption>Website development process - walkthrough phase</image:caption></image:image>
+    <image:image><image:loc>https://studioobrien.com/portfolio/tf-full.webp</image:loc><image:caption>Full website design project showcase</image:caption></image:image>
   </url>
 
   <!-- SEO Services page -->
@@ -49,16 +54,6 @@
     <loc>https://studioobrien.com/google-business-profile-setup</loc>
     <image:image><image:loc>https://studioobrien.com/portfolio/ember.webp</image:loc><image:caption>Google Business Profile optimization for local businesses</image:caption></image:image>
     <image:image><image:loc>https://studioobrien.com/portfolio/avatar-marcus.webp</image:loc><image:caption>Client testimonial - Google Business Profile setup</image:caption></image:image>
-  </url>
-
-  <!-- Portfolio/process images (used across pages) -->
-  <url>
-    <loc>https://studioobrien.com/</loc>
-    <image:image><image:loc>https://studioobrien.com/portfolio/process-research.webp</image:loc><image:caption>Website development process - research phase</image:caption></image:image>
-    <image:image><image:loc>https://studioobrien.com/portfolio/process-design.webp</image:loc><image:caption>Website development process - design phase</image:caption></image:image>
-    <image:image><image:loc>https://studioobrien.com/portfolio/process-launch.webp</image:loc><image:caption>Website development process - launch phase</image:caption></image:image>
-    <image:image><image:loc>https://studioobrien.com/portfolio/process-walkthrough.webp</image:loc><image:caption>Website development process - walkthrough phase</image:caption></image:image>
-    <image:image><image:loc>https://studioobrien.com/portfolio/tf-full.webp</image:loc><image:caption>Full website design project showcase</image:caption></image:image>
   </url>
 
   <!-- Shelby NC location page -->

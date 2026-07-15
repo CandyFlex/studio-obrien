@@ -7,6 +7,8 @@ remotion/
 preview/
 harborlight/
 *-test.html
+og-template.html
+blog/article-template.html
 index-v2-preview-animation.html
 process-compare.html
 services-compare.html
