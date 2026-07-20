@@ -132,6 +132,54 @@ else {
   if (last && !/system improvement/i.test(txt.slice(txt.lastIndexOf("## Cycle")))) actions.push("last cycle entry has no 'System improvement' line: every cycle must improve the system");
 }
 
+// --- 7. Improvement matrix (auto-scored dimensions; paste row into OPS-LOG) ---
+// Score 0-5 per dimension. Auto where possible; judgment dims marked "?".
+{
+  const snapAge = snaps.length ? days(fs.statSync(path.join(snapDir, snaps.at(-1))).mtimeMs) : 99;
+  const dataScore = Math.max(0, 5 - Math.floor(Math.max(snapAge, newestGsc ? days(newestGsc) : 14) / 2));
+  let chainScore = 0;
+  if (fs.existsSync(resDir)) {
+    let recent = 0;
+    for (const t of fs.readdirSync(resDir)) {
+      const dir = path.join(resDir, t);
+      if (!fs.statSync(dir).isDirectory()) continue;
+      for (const f of fs.readdirSync(dir)) if (days(fs.statSync(path.join(dir, f)).mtimeMs) <= 7) recent++;
+    }
+    chainScore = Math.min(5, recent); // stage artifacts touched this week
+  }
+  let qualScore = "?";
+  const sweepPath = path.join(HERE, "eval-sweep-latest.json");
+  if (fs.existsSync(sweepPath)) {
+    const rows = JSON.parse(fs.readFileSync(sweepPath, "utf8"));
+    const failing = rows.filter((r) => r.fails > 0).length;
+    qualScore = Math.max(0, 5 - failing);
+  }
+  let outcomeScore = "?";
+  if (snaps.length >= 2) {
+    // count improved ranks vs previous snapshot
+    const cur = JSON.parse(fs.readFileSync(path.join(snapDir, snaps.at(-1)), "utf8"));
+    const prv = JSON.parse(fs.readFileSync(path.join(snapDir, snaps.at(-2)), "utf8"));
+    const pm = new Map((prv.report || []).map((e) => [e.term, e.ourRank]));
+    let up = 0, down = 0;
+    for (const e of cur.report || []) {
+      const was = pm.get(e.term);
+      if (e.ourRank && (!was || e.ourRank < was)) up++;
+      else if (was && (!e.ourRank || e.ourRank > was)) down++;
+    }
+    outcomeScore = Math.max(0, Math.min(5, 2 + up - down));
+  }
+  let improveScore = 0;
+  if (fs.existsSync(opsLog)) {
+    const txt = fs.readFileSync(opsLog, "utf8");
+    const lastEntry = txt.slice(txt.lastIndexOf("## Cycle"));
+    if (/system improvement:(?!\s*\(?\s*none)/i.test(lastEntry)) improveScore = 4;
+  }
+  log(`\n[MATRIX] cycle row (paste into OPS-LOG, adjust judgment dims marked ?):`);
+  log(`| ${new Date().toISOString().slice(0, 10)} | data ${dataScore} | chain ${chainScore} | quality ${qualScore} | signals ? | outcomes ${outcomeScore} | improvement ${improveScore} |`);
+  log(`  (data=freshness, chain=stage artifacts advanced this week, quality=5-articles-failing,`);
+  log(`   signals=judgment: links+distribution done for shipped pieces, outcomes=rank movement, improvement=system upgraded)`);
+}
+
 // --- verdict ---
 log(`\n=========== NEXT ACTIONS (${actions.length}) ===========`);
 actions.forEach((a, i) => log(`${i + 1}. ${a}`));

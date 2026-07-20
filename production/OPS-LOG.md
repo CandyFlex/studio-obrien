@@ -7,14 +7,40 @@ must leave the machine better than it found it, or say honestly why not.
 
 Entry template:
 ```
-## Cycle YYYY-MM-DD
+## Cycle YYYY-MM-DD [on-demand|scheduled]
 - Data pulled: (serp-track / gsc-report / other)
 - Deltas vs last cycle: (ranks, clicks, impressions — facts only)
 - Chain state: (targets advanced/killed/shipped this cycle)
 - Decisions: (what changed and why, incl. checkpoint calls)
 - System improvement: (the one thing fixed/upgraded in the system itself)
+- Matrix: | date | data N | chain N | quality N | signals N | outcomes N | improvement N |
 - Next cycle opens with: (the first action)
 ```
+
+## The improvement matrix
+
+Six dimensions, 0-5, one row per cycle (the diag auto-scores four of them
+and prints the row; adjust the judgment dims before pasting):
+- **data** — freshness of SERP + GSC pulls
+- **chain** — stage artifacts advanced this week (serial throughput)
+- **quality** — 5 minus articles with hard FAILs in the last eval sweep
+- **signals** — judgment: were links-in + distribution actually executed
+  for everything shipped?
+- **outcomes** — rank/click movement vs last cycle (the only score that
+  ultimately matters; the others exist to explain it)
+- **improvement** — did the cycle upgrade the system itself?
+
+Reading the matrix: a falling column across 2-3 cycles = that subsystem is
+the next System improvement target. Outcomes flat while everything else is
+5 = the strategy (not the execution) needs the change — escalate to the
+checkpoint ladder early. This is the self-improvement instrument: the
+matrix tells us WHERE to improve; the ops-log line proves we DID.
+
+**Triggers:** on-demand = Jarred says **RUNCYCLE** (or asks for a cycle) in
+any session → full diag-led cycle with him in the loop. Scheduled = the
+automated routine runs the same loop autonomously and logs `[scheduled]`;
+it never ships articles or deploys, it pulls data, scores the matrix,
+advances chain research artifacts, and leaves decisions queued for Jarred.
 
 ---
 
