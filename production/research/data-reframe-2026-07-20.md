@@ -77,6 +77,23 @@ kd 19; "average website design cost" 320/mo kd 6-13; "website design cost
 calculator" 260/mo kd 11 (we own the calculator). One pricing page/cluster can
 target ~3,000+/mo aggregate at kd 6-25 — evidence-backed, assets already owned.
 
+## GBP STATUS (found 2026-07-20 via DataForSEO Maps brand search)
+The Studio O'Brien Google Business Profile EXISTS and is a strong-but-under-
+optimized starting point — we are NOT at zero:
+- Name "Studio Obrien" (no apostrophe), category **"Website designer"** (correct
+  primary), phone 704-974-3372, domain studioobrien.com.
+- **claimed: true**, **rating 5.0 with 6 reviews** — already HALF the Shelby
+  pack ceiling (12), and better-rated than most of the pack.
+- place_id: ChIJ7QCcNJL5PEMRMbvPN6vEImI.
+- BUT: **address null, no service area visible, no hours, no description** — and
+  it does NOT appear in any of the 8 near-me packs. Diagnosis: the profile is
+  incomplete, so Google lacks the proximity/relevance signal to rank it for
+  category ("near me") searches — it only surfaces on exact brand lookup.
+**Implication:** the highest-leverage, lowest-effort move in the whole strategy
+is COMPLETING this profile (service area, hours, description, services, photos),
+not building content. We have category + 6 five-star reviews already; the gap is
+profile completeness, which is a settings fix, not a months-long grind.
+
 ## THE REFRAME (evidence-backed)
 1. **Organic search is not the near-term channel.** ~0 volume on our geo
    terms, 2 clicks/90d, blog buried page 8-9. Not a ranking bug — a demand/
