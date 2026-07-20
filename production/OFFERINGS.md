@@ -77,3 +77,7 @@ calculator-first? Current default: calculator-first.]
 
 ---
 *Created 2026-07-19. Companion protocol: CLIENT-INTAKE.md. Yardstick: POSITIONING.md.*
+*The offerings here are packaged into tiers + a full customer journey in
+SALES-ONBOARDING-SYSTEM.md (2026-07-20): approach → audit → tier → proposal →
+onboard → flywheel. Price anchors there are grounded in the calculator's studio
+route and await Jarred's confirm (same open pricing-display question as above).*
