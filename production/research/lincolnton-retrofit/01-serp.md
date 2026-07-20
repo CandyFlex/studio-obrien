@@ -17,6 +17,18 @@ re-index requested 7/8). Google has the page in consideration but hasn't
 settled it. This is precisely the state internal links + real entry points are
 supposed to stabilize.
 
+**CONFIRMED by controlled 3-sample consensus (DataForSEO, 2026-07-20 08:55,
+`serp-snapshots/serp-2026-07-20-08-55.json`):** samples = [16, null, null]
+→ consensus rank = **null** (majority rule: appears in only 1 of 3 readings
+minutes apart, so the system correctly refuses to call it a rank). Kings
+Mountain identical: [17, null, null]. These were NOT degraded/failed samples
+(Lincolnton succeeded in all 3 calls) — the absences are real "not in top 30"
+results. So the honest state is: **intermittently visible around #16-17, not
+held.** A single-reading tracker would have mis-reported "#16"; the consensus
+tool is what turned the volatility from an accident into a measurement. The
+retrofit's job is now explicitly to STABILIZE presence, not climb from a rank
+we don't actually hold.
+
 ## SERP composition (run 3, top 10)
 
 1. maidenwebdesign.com/lincolnton-nc — solo freelancer (Maiden NC), thin proximity town page

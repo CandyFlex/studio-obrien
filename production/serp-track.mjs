@@ -3,9 +3,9 @@
   serp-track.mjs — weekly local SERP snapshot for studioobrien.com.
 
   v3 (2026-07-20): triple provider. Auto-pick order: dataforseo > serper > apify.
-  - dataforseo (PREFERRED): DataForSEO SERP Live Advanced. Live mode ~$0.002
-    per keyword (12 kw ≈ $0.024/reading); Standard queue is cheaper still.
-    $1 free trial credit ≈ 500 live readings. Basic auth (login:password).
+  - dataforseo (PREFERRED): DataForSEO SERP Live Advanced. Live mode $0.004
+    per keyword (12 kw ≈ $0.048/reading; verified 2026-07-20); Standard queue
+    is cheaper. $1 free trial ≈ 200 live readings. Basic auth (login:password).
     One keyword per Live call, so we fan out 12 calls per sample (parallel;
     the API allows 2000 calls/min). Rich SERP feature data (PAA, related).
     Creds: $DATAFORSEO_LOGIN + $DATAFORSEO_PASSWORD, OR one line "login:password"
@@ -136,17 +136,49 @@ async function pullDataForSEO() {
   // location_name keeps parity with explicit-geo queries; depth 30 so a page-2
   // rank (we've seen #13-25) is still captured.
   const auth = 'Basic ' + Buffer.from(dfsCreds).toString('base64');
+  // Trial/fresh accounts return intermittent 40104 ("verify account") and the
+  // odd slow call even when verified (observed 2026-07-20: same instant, some
+  // calls 20000 Ok + billed, some 40104). Retry the transient failures and
+  // time out hung calls so one flaky response can't sink a 36-call snapshot.
+  // Retry everything except truly permanent errors (auth, not-found, bad
+  // request/field). Our queries are fixed, so almost any failure is a
+  // transient server/verification hiccup worth another attempt.
+  const PERMANENT = new Set([40100, 40400, 40401, 40501, 40502, 40503]);
+  const callOnce = async (keyword) => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 30000);
+    try {
+      const res = await fetch('https://api.dataforseo.com/v3/serp/google/organic/live/advanced', {
+        method: 'POST', signal: ctrl.signal,
+        headers: { authorization: auth, 'content-type': 'application/json' },
+        body: JSON.stringify([{ keyword, location_name: LOCATION || 'United States', language_code: 'en', device: 'desktop', depth: 30 }]),
+      });
+      const j = await res.json();
+      const task = (j.tasks || [])[0];
+      const code = task ? task.status_code : (j.status_code || res.status);
+      if (code !== 20000) { const e = new Error(`${code} ${(task ? task.status_message : j.status_message) || res.status}`); e.code = code; throw e; }
+      return task;
+    } finally { clearTimeout(timer); }
+  };
+  const failed = [];
   const one = async (keyword) => {
-    const res = await fetch('https://api.dataforseo.com/v3/serp/google/organic/live/advanced', {
-      method: 'POST',
-      headers: { authorization: auth, 'content-type': 'application/json' },
-      body: JSON.stringify([{ keyword, location_name: 'United States', language_code: 'en', device: 'desktop', depth: 30, ...(LOCATION ? { location_name: LOCATION } : {}) }]),
-    });
-    if (!res.ok) throw new Error(`DataForSEO ${res.status}: ${(await res.text()).slice(0, 200)}`);
-    const j = await res.json();
-    const task = (j.tasks || [])[0];
-    if (!task || task.status_code !== 20000) throw new Error(`DataForSEO task error: ${task ? task.status_code + ' ' + task.status_message : 'no task'}`);
-    const items = ((task.result || [])[0] || {}).items || [];
+    let lastErr;
+    for (let attempt = 1; attempt <= 5; attempt++) {
+      try { const task = await callOnce(keyword);
+        const items = ((task.result || [])[0] || {}).items || [];
+        return [keyword, mapItems(items)];
+      } catch (e) {
+        lastErr = e;
+        const retryable = e.name === 'AbortError' || !PERMANENT.has(e.code);
+        if (!retryable || attempt === 5) break;
+        await new Promise((r) => setTimeout(r, 800 * attempt));
+      }
+    }
+    // Degrade to an empty reading (a null sample) rather than sinking the run.
+    failed.push(`${keyword} (${lastErr && lastErr.message})`);
+    return [keyword, { organic: [], paa: [], related: [], ai: false }];
+  };
+  const mapItems = (items) => {
     const g = { organic: [], paa: [], related: [], ai: false };
     for (const it of items) {
       if (it.type === 'organic') g.organic.push({ url: it.url, position: it.rank_absolute });
@@ -155,9 +187,10 @@ async function pullDataForSEO() {
       else if (it.type === 'ai_overview' || it.type === 'answer_box' || it.type === 'featured_snippet') g.ai = true;
     }
     g.organic.sort((a, b) => (a.position || 999) - (b.position || 999));
-    return [keyword, g];
+    return g;
   };
   const entries = await Promise.all(KEYWORDS.map(one));
+  if (failed.length) console.log(`  WARN: ${failed.length}/${KEYWORDS.length} keyword(s) failed after retries this sample: ${failed.join('; ')}`);
   return new Map(entries);
 }
 
@@ -187,7 +220,7 @@ const rankIn = (organic) => {
 
 (async () => {
   const costNote = provider === 'dataforseo'
-    ? `~$${(KEYWORDS.length * 0.002 * opts.samples).toFixed(3)} (live advanced, ${KEYWORDS.length * opts.samples} calls)`
+    ? `~$${(KEYWORDS.length * 0.004 * opts.samples).toFixed(3)} (live advanced $0.004/call, ${KEYWORDS.length * opts.samples} calls)`
     : provider === 'serper'
       ? `~${KEYWORDS.length * 2 * opts.samples} credits (~$${(KEYWORDS.length * 2 * opts.samples / 1000).toFixed(2)})`
       : '~$0.50 (actor minimum)';
