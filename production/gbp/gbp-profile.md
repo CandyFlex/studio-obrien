@@ -37,6 +37,25 @@ about what your business really needs.
 - Google Business Profile Setup
 - Website Maintenance   ← only if you actually offer it; delete if not
 
+## Service descriptions (OPTIONAL — paste if you want; leave PRICE blank on all)
+Descriptions and prices are optional; the service name alone is what counts.
+Prices stay blank (no published pricing). Descriptions below are in-voice:
+- Custom Web Design — A website built around your business instead of a template: fast, clean, works on every phone, and made to turn visitors into phone calls.
+- SEO Optimization (consider renaming "Local SEO") — Getting your business found on Google when local customers search, so the right people reach you first.
+- Google Business Profile Setup — Setting up and dialing in your Google profile so you show up in the map and local search results near you.
+- UI / UX Design — Laying your site out so visitors instantly find what they need and know what to do next: the difference between a site that looks nice and one that actually works.
+- Website Migration — Moving your site to a new platform or host without losing your rankings or your content.
+- Branding & Identity — A look that's yours: logo, colors, and style that make your business recognizable and easy to trust.
+- Copywriting — Clear, plain-spoken words for your site that explain what you do and get people to reach out.
+- Restaurant Website Design — Websites for local restaurants with menus, hours, and directions front and center, built to bring diners in.
+- Small Business Websites — Straightforward websites for local small businesses that need to get found on Google and get the call.
+
+Live services as configured (2026-07-20): Custom Web Design, SEO Optimization,
+Google Business Profile Setup, UI/UX Design, Website Migration, Branding &
+Identity, Copywriting, Restaurant Website Design, Small Business Websites.
+Categories: Website designer (primary) + Graphic designer + Internet marketing
+service.
+
 ## Categories
 Rule: each category is a door Google can send searchers through. Add every one
 that's genuinely true; skip every stretch. Primary carries the most ranking
