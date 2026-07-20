@@ -11,10 +11,11 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Editorial Standards | How We Fact-Check | Studio O'Brien</title>
-<meta name="description" content="How Studio O'Brien researches, sources, writes, and fact-checks every article. Our standards for citations, accuracy, AI assistance, and corrections.">
+<title>Editorial Standards | How The Field Guide Gets Written | Studio O'Brien</title>
+<meta name="description" content="How every article on The Field Guide gets researched, sourced, written, and checked: real questions, cited numbers, opinion labeled as opinion, and a human on every byline.">
 <link rel="canonical" href="https://studioobrien.com/blog/editorial-standards">
 <meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
@@ -22,27 +23,64 @@
 <meta property="og:url" content="https://studioobrien.com/blog/editorial-standards">
 <meta property="og:site_name" content="Studio O&#39;Brien">
 <meta property="og:title" content="Editorial Standards | Studio O'Brien">
-<meta property="og:description" content="How we research, source, write, and fact-check every article on The Field Guide.">
+<meta property="og:description" content="How every article on The Field Guide gets researched, sourced, written, and checked.">
 <meta property="og:image" content="https://studioobrien.com/portfolio/ember.webp">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="stylesheet" href="/fonts.css">
-<link rel="stylesheet" href="/blog/blog.css?v=20260703">
 <style>
-  .std-principles{max-width:720px;margin:0 auto;padding:8px 20px 0;display:grid;gap:1px;background:var(--b);border:1px solid var(--b)}
-  .std-principle{background:var(--card);padding:22px 22px;display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start}
-  .std-principle .num{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:20px;color:var(--g);line-height:1.2}
-  .std-principle h3{font-family:'Inter',sans-serif;font-weight:600;font-size:16px;color:#fff;margin:0 0 5px}
-  .std-principle p{font-size:14px;color:var(--muted);line-height:1.65;margin:0}
-  .std-signed{max-width:720px;margin:0 auto;padding:28px 20px 0}
-  .std-signed-box{border:1px solid var(--b);background:var(--card);padding:22px 22px;display:flex;align-items:center;gap:16px}
-  .std-signed-box img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid var(--b);flex:none}
-  .std-signed-box .t{font-size:14px;color:var(--muted);line-height:1.55}
-  .std-signed-box .t strong{color:#fff;font-weight:600;display:block;font-size:15px}
-  .std-signed-box a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  :root{--g:#34d399;--bg:#0a0a0b;--b:#26262a;--fg:#f4f5f6;--muted:#a8adb4}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.7}
+  a{color:inherit}
+  ::selection{background:rgba(52,211,153,.28);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-in{max-width:1100px;margin:0 auto;height:60px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:18px;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;white-space:nowrap}
+  .nav-logo::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:var(--g);transform:scaleX(.32);transform-origin:left;transition:transform .32s ease}
+  .nav-logo:hover::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:clamp(14px,2.2vw,24px)}
+  .nav-right a{font-size:13.5px;font-weight:500;color:#aeb3ba;text-decoration:none;transition:color .2s}
+  .nav-right a:hover{color:#fff}
+  .nav-cta{background:var(--g);color:#06231a!important;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px}
+  .nav-cta:hover{filter:brightness(1.08)}
+  @media(max-width:640px){.nav-right a:not(.nav-cta){display:none}}
+
+  main{max-width:640px;margin:0 auto;padding:clamp(52px,8vw,96px) 24px clamp(56px,8vw,96px)}
+  .bar{width:44px;height:2px;background:var(--g);margin-bottom:22px}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(32px,5vw,48px);letter-spacing:-.035em;line-height:1;margin-bottom:12px;text-wrap:balance}
+  h1 em{font-style:italic;font-weight:520;color:var(--g)}
+  .meta{font-size:13.5px;color:var(--muted);margin-bottom:28px}
+  .meta a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  p.body{font-size:15.5px;color:#c9cdd2;margin-bottom:16px;max-width:60ch;text-wrap:pretty}
+  p.body strong{color:#fff;font-weight:600}
+  p.body a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  p.body a:hover{border-bottom-color:var(--g)}
+
+  .rules{margin:30px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .rule{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .rule .n{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:17px;color:var(--g);line-height:1.45}
+  .rule h2{font-family:'Inter',sans-serif;font-weight:650;font-size:15.5px;color:#fff;margin-bottom:4px;line-height:1.45}
+  .rule p{font-size:14.5px;color:var(--muted);line-height:1.65;max-width:56ch}
+  .rule p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+
+  .signed{display:flex;align-items:center;gap:14px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}
+  .signed img{width:52px;height:52px;object-fit:cover;object-position:center top;border:1px solid var(--b)}
+  .signed .t{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .signed .t b{display:block;color:#fff;font-weight:650;font-size:14.5px}
+  .signed .t a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+
+  .foot{border-top:1px solid rgba(255,255,255,.05)}
+  .foot-in{max-width:640px;margin:0 auto;padding:26px 24px;font-size:13px;color:var(--muted)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+  .foot-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .foot-links a:hover{color:var(--g)}
+  .foot-in p a{color:var(--muted);text-decoration:none}
+  .foot-in p a:hover{color:var(--g)}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"AboutPage","name":"Editorial Standards","url":"https://studioobrien.com/blog/editorial-standards","description":"How Studio O'Brien researches, sources, writes, and fact-checks every article.","publisher":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}},"author":{"@type":"Person","name":"Jarred O'Brien","url":"https://studioobrien.com/about"}}
+{"@context":"https://schema.org","@type":"AboutPage","name":"Editorial Standards","url":"https://studioobrien.com/blog/editorial-standards","description":"How Studio O'Brien researches, sources, writes, and fact-checks every article on The Field Guide.","publisher":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com","logo":{"@type":"ImageObject","url":"https://studioobrien.com/favicon.png","width":512,"height":512}},"author":{"@type":"Person","name":"Jarred O'Brien","url":"https://studioobrien.com/about"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://studioobrien.com/blog"},{"@type":"ListItem","position":3,"name":"Editorial Standards","item":"https://studioobrien.com/blog/editorial-standards"}]}
@@ -50,87 +88,53 @@
 </head>
 <body>
 
-<nav class="topbar" aria-label="Site navigation">
-  <div class="topbar-inner">
-    <a href="/" class="topbar-logo">Studio O'Brien</a>
-    <div class="topbar-links">
-      <a href="/blog" class="topbar-link">Blog</a>
-      <a href="/#portfolio" class="topbar-link">View Work</a>
-      <a href="/about" class="topbar-link">About</a>
-      <a href="/contact" class="topbar-link">Start a Website</a>
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">Studio O'Brien</a>
+    <div class="nav-right">
+      <a href="/blog">Blog</a>
+      <a href="/#portfolio">View Work</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="nav-cta">Start a Website</a>
     </div>
   </div>
 </nav>
 
-<header class="article-hero">
-  <span class="article-category">Editorial</span>
-  <h1>Editorial standards</h1>
-  <div class="article-meta">
-    <span>By <a href="/about" style="color:var(--g);text-decoration:none">Jarred O'Brien</a></span>
-    <span class="read-time">Last reviewed July 2026</span>
+<main>
+  <div class="bar"></div>
+  <h1>Why you can trust <em>what you read here.</em></h1>
+  <p class="meta">By <a href="/about">Jarred O'Brien</a> &middot; Last reviewed July 2026</p>
+
+  <p class="body">I started <a href="/blog">The Field Guide</a> because owners around here kept asking me the same good questions and finding bad answers online: advice written to rank on Google instead of to actually help. So everything I publish has to pass what I think of as the neighbor test. If you stopped me at the grocery store and asked about it, would I stand behind every word? Here's what that means in practice.</p>
+
+  <div class="rules">
+    <div class="rule"><span class="n">1</span><div><h2>It's really me writing to you.</h2><p>No content mill, no ghostwriters. When I've done the thing myself, I'll tell you about it first-hand. When I learned it from research, I'll show you exactly where it came from.</p></div></div>
+    <div class="rule"><span class="n">2</span><div><h2>I never ask you to just trust a number.</h2><p>Every statistic links to the folks who actually measured it: Whitespark, BrightLocal, the FTC, Google's own documentation. If I can't back a figure up, I won't state it as a fact. Simple as that.</p></div></div>
+    <div class="rule"><span class="n">3</span><div><h2>You'll know when it's just my two cents.</h2><p>Sometimes the honest answer is "here's what I see working around Cleveland County." That kind of judgment is valuable, but it's not a study, so when it's my read, I'll say so plainly.</p></div></div>
+    <div class="rule"><span class="n">4</span><div><h2>AI helps me draft. You still get me.</h2><p>Like most publishers these days, I use AI tools to organize research and rough out drafts. But nothing reaches you until I've read every line, checked every claim, and rewritten anything that isn't how it really works out here. My name is on it, so I stand behind it.</p></div></div>
+    <div class="rule"><span class="n">5</span><div><h2>If I get something wrong, I'll fix it.</h2><p>Google changes the rules all the time, and I'm human. When something shifts, or you catch a mistake, the article gets corrected and noted. <a href="mailto:hello@studioobrien.com">Email me</a> if you spot one. I'd genuinely rather fix it than look right.</p></div></div>
   </div>
-  <p class="article-subtitle">How every article on The Field Guide gets researched, sourced, written, and checked, with a human always in the loop.</p>
-</header>
 
-<div class="article-body">
+  <p class="body">Here's the heart of it: people around here make real decisions with this information. Whether to redesign, what to pay, whether those ADA lawsuit emails are real. If you're going to act on my word, you deserve to know whose word it is, where the numbers came from, and who checked them. And if anything on this site ever misses that bar, tell me. My inbox is open, and I mean that.</p>
 
-<p>A lot of small-business web advice online is written to rank on Google, not to be right. We take the opposite stance: an article is only worth publishing if a real business owner could act on it and not get burned. This page lays out exactly how that gets enforced, so you can judge the work for yourself.</p>
-
-<h2>Who writes this</h2>
-<p>Every article is written by <a href="/about">Jarred O'Brien</a>, the designer and developer who runs Studio O'Brien. There is no anonymous content team and no ghost-written filler. When a piece reflects hands-on experience, what actually happened when we optimized a profile or rebuilt a slow site, it's Jarred's own, and it's written in the first person on purpose. When it's a claim from outside research, it's cited.</p>
-
-</div>
-
-<div class="std-principles">
-  <div class="std-principle"><div class="num">1</div><div><h3>Every number has a source</h3><p>Statistics and specific claims link to a primary or reputable secondary source: Whitespark, BrightLocal, the FTC, Google's own documentation, government data. If a figure can't be sourced, it doesn't run as a fact.</p></div></div>
-  <div class="std-principle"><div class="num">2</div><div><h3>Opinion is labeled as opinion</h3><p>Where we give our own read instead of citing a study (say, "here's what I see in Cleveland County every day"), we say so plainly. You always know whether you're reading research or a practitioner's judgment.</p></div></div>
-  <div class="std-principle"><div class="num">3</div><div><h3>A human edits and fact-checks every piece</h3><p>We use AI tools to help draft and organize research, the same way most publishers now do. But nothing publishes without Jarred reading it end to end, checking every claim against its source, and rewriting anything that's vague, wrong, or not how it actually works in the field.</p></div></div>
-  <div class="std-principle"><div class="num">4</div><div><h3>Written for the person, not the algorithm</h3><p>Articles answer a real question a business owner asked. We don't pad word counts, stuff keywords, or bury the answer to keep you scrolling. If the answer is one paragraph, it's one paragraph.</p></div></div>
-  <div class="std-principle"><div class="num">5</div><div><h3>We keep it current, and correct it</h3><p>Search and compliance rules change. When a factor shifts or we get something wrong, we update the article and note it. Found an error? <a href="mailto:hello@studioobrien.com" style="color:var(--g);text-decoration:none">Email it to us</a> and we'll fix it.</p></div></div>
-</div>
-
-<div class="article-body">
-
-<h2>On our use of AI</h2>
-<p>We'll be straight with you, because Google's own guidelines ask publishers to be: AI assists with drafting and research organization here. What it never does is publish unsupervised. Google's position, and ours, is that AI-assisted content is fine when it's <strong>edited, fact-checked, and grounded in genuine expertise by a human</strong>. That human is Jarred, and his name is on every byline because he stands behind the result. Content that's mass-produced without that oversight is exactly what we refuse to ship.</p>
-
-<h2>Why this matters to you</h2>
-<p>If you're going to make a decision about your website or your Google Business Profile based on something you read here, you deserve to know who wrote it, where the numbers came from, and who checked them. That's the whole point of putting this in writing. If anything on the site doesn't meet the bar above, tell us.</p>
-
-<div class="cta-block">
-  <h2>Questions about something we published?</h2>
-  <p>Corrections, sources, or a topic you wish we'd cover: send it over. A real person reads every message.</p>
-  <div class="btn-row">
-    <a href="mailto:hello@studioobrien.com" class="btn btn-primary">
-      Email the studio
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <a href="/about" class="btn btn-secondary">About Jarred</a>
-  </div>
-</div>
-
-</div>
-
-<div class="std-signed">
-  <div class="std-signed-box">
+  <div class="signed">
     <img src="/portfolio/jarred.webp" width="52" height="52" alt="Jarred O'Brien">
-    <div class="t"><strong>Jarred O'Brien</strong>Designer, developer &amp; author &middot; Studio O'Brien &middot; <a href="/about">Read the full bio</a></div>
+    <p class="t"><b>Jarred O'Brien</b>Designer, developer &amp; author &middot; Studio O'Brien &middot; <a href="/about">Read the full bio</a></p>
   </div>
-</div>
+</main>
 
-<footer>
-  <p><strong>Studio O'Brien</strong> — Web design &amp; development for Shelby, NC</p>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/about">About Jarred</a>
-    <a href="/blog">Blog</a>
-    <a href="/blog/editorial-standards">Editorial Standards</a>
-    <a href="/contact">Start a Website</a>
-    <a href="/website-cost-calculator">Cost Calculator</a>
-    <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/about">About Jarred</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Start a Website</a>
+      <a href="/website-cost-calculator">Cost Calculator</a>
+      <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+    </div>
+    <p>&copy; 2026 Studio O'Brien &middot; Web design &amp; development for Shelby, NC &middot; <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
   </div>
-  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
-  <p>&copy; 2026 <a href="/">Studio O'Brien</a></p>
 </footer>
 
 </body>

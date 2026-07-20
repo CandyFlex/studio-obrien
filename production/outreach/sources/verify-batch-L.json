@@ -1,0 +1,402 @@
+[
+  {
+    "id": "pattersons-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NULL - second pass, still no verifiable Patterson's auto business in Earl NC. Nearest Patterson-named auto shops are in Raleigh and out of state; no Earl NC listing on YP/Yelp/BBB. Likely OSM mislabel or defunct."
+  },
+  {
+    "id": "precision-automotive-specialists-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NULL - second pass, no verifiable 'Precision Automotive Specialists' in Kings Mountain NC. Other KM auto shops exist (Butler's, Keller's, Aaron's) but not this exact name. Likely OSM mislabel or defunct."
+  },
+  {
+    "id": "bessemer-city-abc-store-bessemer-city",
+    "exists": true,
+    "realWebsite": "https://bessemercityabc.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - NC ABC Board (municipal liquor retailer, Bessemer City ABC Board). Hard disqualifier. Has a site (bessemercityabc.com). 208 W Alabama Ave. STOP."
+  },
+  {
+    "id": "bb-variety-bessemer-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Salvage/discount grocery + variety, family-owned est 2004. Convenience/variety - LOW capacity non-target. Directory/Manta only, no website. 215 W Pennsylvania Ave, phone 704-629-9399."
+  },
+  {
+    "id": "aj-country-store-vale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience/fuel + Hunt Bros Pizza + beer/tobacco. LOW capacity non-target. FB (AJsCntryStore) + IG (ajcountrystore), no real site. 4259 Reepsville Rd, Vale."
+  },
+  {
+    "id": "ole-dallas-brewery-llc-kings-mountain",
+    "exists": true,
+    "realWebsite": "http://oledallasbrewery.com.s3-website-us-east-1.amazonaws.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "TOWN CORRECTION: located in Dallas NC (136 Durkee Ln), NOT Kings Mountain. PERMANENTLY CLOSED - Yelp shows 'CLOSED' (updated Jun 2026), Untappd + Charlotte On The Cheap confirm out of business. Est 2014 microbrewery. Had an S3-hosted site + FB (odb1863)/IG. DISQUALIFY - closed."
+  },
+  {
+    "id": "ldp-farms-general-store-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Old-fashioned general/feed store - groceries, meats, antiques, animal feed, farm eggs. LOW capacity non-target (rural general store). Directory/FB only, no site. 6031 Fallston Rd, Lawndale, phone 704-538-8333."
+  },
+  {
+    "id": "cheepers-drive-through-store-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 66, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Drive-thru convenience store, 2 locations (Lawndale + Ellenboro). Convenience - LOW capacity non-target. FB (CheepersDriveThru) only, no site. 303 E Main St, Lawndale, phone 704-538-9200."
+  },
+  {
+    "id": "elliott-supply-inc-polkville",
+    "exists": true,
+    "realWebsite": "http://elliottsupplyinc.com/",
+    "liveSiteGrade": "D+",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Outdoor power equipment dealer (STIHL/Scag/Husqvarna/Echo), 40+ yrs family-owned. Real but dated site on legacy CMS ('Web Presence By Netphoria'), poor mobile - REDESIGN CANDIDATE. Also runs a STIHL dealer microsite. 2301 W Stagecoach Trail, Polkville, phone 704-538-8661. Capacity signals: 40+yr longevity, brand dealerships."
+  },
+  {
+    "id": "save-mart-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience store + gas/ATM/ice. LOW capacity non-target. No real site (savemart.com = unrelated CA supermarket chain). 4328 Polkville Rd, Shelby, phone 704-538-4195."
+  },
+  {
+    "id": "cane-creek-grocery-union-mills",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Grocery/grill/convenience + gas + tire/oil service (aka Cane Creek Mart). Convenience - LOW capacity non-target. FB only, no site. 4982 US Hwy 64, Union Mills, phone 828-287-3283."
+  },
+  {
+    "id": "carolina-bridal-alterations-shelby",
+    "exists": true,
+    "realWebsite": "https://www.camerontoddbridal.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Cheryl (founder) + daughter Sasha" },
+    "gbpClosed": false,
+    "notes": "P8-adjacent bridal/alterations, Shelby (TIER 1). Founder Cheryl opened first store 1990 in uptown Shelby's historic Charles Hotel; daughter Sasha joined 2016; 30+ yrs. Dated Wix site (camerontoddbridal.com), image-placeholder heavy - REDESIGN CANDIDATE. Booking/appointment-driven. 1732 E Dixon Blvd, phone 980-404-0592. Capacity: 30+yr longevity + uptown roots. STRONG TARGET."
+  },
+  {
+    "id": "s-r-auto-sales-shelby",
+    "exists": true,
+    "realWebsite": "https://www.srautosales.com/",
+    "liveSiteGrade": "C-",
+    "reviews": null,
+    "owner": { "name": "Richie Canipe" },
+    "gbpClosed": false,
+    "notes": "Independent used-car lot, Shelby (TIER 1), locally owned since 1992, 2 locations. Owner Richie Canipe (Shelby native, named on site). Dated site on Dealer Car Search DMS, broken/placeholder vehicle imagery - REDESIGN CANDIDATE. 417 South Post Rd, phone 704-487-0570. P3 auto. STRONG TARGET w/ named owner + longevity."
+  },
+  {
+    "id": "pro-nails-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: located in Spindale (1639 College Ave Ste 170), not Forest City. Nail salon, directory-only, no site - classic P5 B2 (booking-by-DM likely). Note a separate Pro Nails exists in Pisgah Forest - don't conflate."
+  },
+  {
+    "id": "crm-insurance-forest-city",
+    "exists": true,
+    "realWebsite": "http://www.crm-ins.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Christina" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: located in Spindale (1639 College Ave Ste 143), not Forest City. Independent insurance agency (Progressive/Safeco appointed). Contact Christina (christina.crminsurance@gmail.com). Real site crm-ins.com but http-only and would not load for fetch (ECONNRESET) - http-only strongly suggests a dated/insecure site. P8 target."
+  },
+  {
+    "id": "4u-salon-forest-city",
+    "exists": true,
+    "realWebsite": "https://4usalon.com/",
+    "liveSiteGrade": "D+",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "4 U Spa & Salon, Forest City (412 Oak St Extension), est 2011, ~534 FB likes. Real site on a GoGoBook ASP.NET booking template (has online booking) but visually dated/generic - REDESIGN CANDIDATE. Email ms4usalon@gmail.com, phone 828-288-4848. P5 target with a real (templated) site + booking flow."
+  },
+  {
+    "id": "le-nails-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 49, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "'Le nails - Forest City 2015', Forest City (135 Plaza Dr). FB-only (lenailspa2015), no real site - classic P5 B2. FB shows 49 reviews / 78% recommend, price range $$. Email lenailspa2015@gmail.com, phone 828-288-0351."
+  },
+  {
+    "id": "the-hair-company-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Salon, Forest City (136 Allendale Dr), est 2007, ~2 staff. Directory-only (YP/Yelp/Manta), no site - P5 B2. Stylists Stella Tallon & Morgan named in reviews. Phone 828-245-9005."
+  },
+  {
+    "id": "greene-real-estate-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.rgrealestate.net/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Robert Greene" },
+    "gbpClosed": false,
+    "notes": "Robert Greene Real Estate Inc, Forest City (132 Allendale Dr). Principal Robert Greene (in real estate since 2003). Real site rgrealestate.net but fetch returned 403 - not directly graded; it is a vendor IDX real-estate platform (dated pattern). P8 target w/ named principal, phone 828-245-2345."
+  },
+  {
+    "id": "alliance-insurance-group-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.agonc.com/",
+    "liveSiteGrade": "C-",
+    "reviews": null,
+    "owner": { "name": "Odel Stephen" },
+    "gbpClosed": false,
+    "notes": "Multi-location INDEPENDENT agency (5 NC offices: Forest City/Marion/Hendersonville/Swannanoa), est 2007 - NOT a national-brand office, so a valid P8 target. Owner name surfaced: Odel Stephen (Nextdoor listing). Dated site on InsuranceSplash platform, cluttered 50+ link nav - REDESIGN CANDIDATE. 130 Allendale Dr, phone 828-247-6000."
+  },
+  {
+    "id": "sammys-barber-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 65, "rating": 4.9 },
+    "owner": { "name": "Sammy" },
+    "gbpClosed": false,
+    "notes": "Sammy's Barber & Style, Forest City (247 Oak St Ste 145), long-standing (30-yr customers). STRONG reviews 4.9/65. Domain sammysbarber.com is DEAD (does not resolve) = clear gap. Owner 'Sammy'. Phone 828-288-5662. P5 barber - high-review + dead-site = priority combo."
+  },
+  {
+    "id": "shear-pleasure-salon-spa-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Shear Pleasure Salon & Spa, Forest City (322 Hudlow Rd), est 2003, full-service (hair/nails/massage/wax), certified stylists 15+ yrs. Had domain shearpleasuresalonspa.com but it is DEAD (does not resolve, tried www + apex) = dead-domain gap. FB page present. Phone 828-247-1941. P5 target - dead-site redesign angle."
+  },
+  {
+    "id": "touch-of-health-massage-therapy-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY a 'Touch of Health Massage Therapy' in Forest City / Rutherford County across 2 searches (same-name matches are in West Hartford CT and Shelbyville IN). Likely OSM mislabel, closed, or unlisted home-based practice. Other FC massage options: Soothe Massage Studio, Carolina Chiropractic Plus. NULL - needs manual GBP check."
+  },
+  {
+    "id": "reflections-hair-salon-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 13, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Reflections Hair Styling Salon, Forest City (600/606 Broadway St). Directory/Nextdoor only, no site - P5 B2. Reviews 4.0/13. Stylist Mandy Smith named. Phone 828-248-1905."
+  },
+  {
+    "id": "ticomex-insurance-tax-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.ticomexinsuranceagency.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TicoMex Insurance Agency LLC - bilingual (Latino-market) insurance + individual tax prep, family-operated, Forest City (420 S Broadway St Ste 110). Real site on Thryv builder - dated, repetitive blocks - REDESIGN CANDIDATE. Interesting niche (bilingual angle). Email luymi69@yahoo.com, phone 828-245-3520. P8 target."
+  },
+  {
+    "id": "bostic-family-hair-care-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Bostic Family Hair Care, Bostic (131 Depot St). African-American hair/beauty + nails/threading. Directory-only, no site - classic P5 B2. Phone 828-245-1556."
+  },
+  {
+    "id": "jenn-gill-motors-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Jenn Gill (per business name)" },
+    "gbpClosed": false,
+    "notes": "Independent used-car lot, Rutherfordton. Directory-only (Manta/D&B), no site, thin online presence. Owner likely Jenn Gill (name in the business). P3 auto - small independent lot; 1-2 searches per triage, no site found."
+  },
+  {
+    "id": "icc-cosmotology-lab-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.isothermal.edu/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT/EDU - Isothermal Community College Cosmetology Laboratory (public community college training salon). TOWN CORRECTION: 286 ICC Loop Rd, Spindale (not Forest City). Hard disqualifier. Phone 828-286-2319. STOP."
+  },
+  {
+    "id": "headlines-unlimited-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY 'Headlines Unlimited' in Earl NC. Several unrelated 'Headlines' salons elsewhere (Kings Mountain 'Headlines Family Salon' est 1980, Morganton, Rockingham) but none named 'Headlines Unlimited' in Earl. Likely OSM mislabel or defunct. NULL."
+  },
+  {
+    "id": "michaels-barber-shop-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 11, "rating": 4.6 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Michael's Barber Shop, Forest City (159 E Main St). Directory-only, no site - P5 B2. Reviews 4.6/11. Phone 828-245-7005. (Other Michael's Barber shops exist in Apex/Henderson NC - don't conflate.)"
+  },
+  {
+    "id": "smoov-kutz-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 111, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Smoov' Kutz Barber Shop, Spindale (317 E Main St). STRONG reviews 4.9/111. No standalone site but uses Fresha + StyleSeat online booking + FB/IG - booking-page angle fits perfectly. P5 - high-review priority combo, big B2/B1 candidate."
+  },
+  {
+    "id": "encore-cuts-styles-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 56, "rating": 4.7 },
+    "owner": { "name": "Brian Huskey" },
+    "gbpClosed": false,
+    "notes": "Encore Cuts & Styles, Shelby (TIER 1, 213 N Lafayette St). Owner/operator Brian Huskey. Reviews 4.7/56. No real site (only an edan.io auto-generated page); uses Booksy + Fresha booking + IG (@encorecuts). Phone 704-482-2122. P5 Tier-1 target w/ named owner + booking angle. Accepts Bitcoin (novel signal)."
+  },
+  {
+    "id": "salon-74-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Salon 74, Forest City. Thin online footprint - no site, appears only in aggregator lists (Yelp/BestProsInTown). Stylist Temica Crume named. P5 B2. Low confidence on address/phone - needs manual confirm."
+  },
+  {
+    "id": "the-styling-deck-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: The Styling Deck is in Rutherfordton (117 N Washington St), not Forest City. Hair/nail salon. Directory-only (Yelp/Nextdoor), no site - P5 B2. Phone 828-287-7839."
+  },
+  {
+    "id": "arledge-law-firm-forest-city",
+    "exists": true,
+    "realWebsite": "https://arledgelawfirm.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Arledge Law Firm is in Rutherfordton (120 E Court St), not Forest City (appears in FC legal directories only). Small firm - real estate, wills, estate planning. Attorneys Jarald N. Willis & Kent Baldwin. Two domains: arledgelawfirm.com + arledgelegalnc.com (latter behind Cloudflare). Site appears dated but fetch was truncated so not confidently graded. Phone 828-287-3338. P8 target."
+  },
+  {
+    "id": "reigonal-finance-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://regionalfinance.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "CHAIN - 'Reigonal' = Regional Finance, a NATIONAL consumer-loan chain (350+ branches, 20 states, corporate-controlled web). P12 hard disqualifier. The OSM 'Boiling Springs NC' row most likely conflates with the Boiling Springs SC branch (which search shows as permanently closed). STOP - corporate-controlled, zero close-ability."
+  },
+  {
+    "id": "kut-kurl-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY 'Kut & Kurl' in Forest City NC. Same-name salons exist elsewhere in NC (Tarboro, Franklin, Waynesville) but none in Forest City. Likely OSM mislabel or closed. NULL."
+  },
+  {
+    "id": "impressions-salon-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Impressions Salon is in Spindale (191 W Main St), not Forest City. Full-service salon (hairstylist + nail tech). No real site - only a Square booking page ('topknottorri'). P5 B2. Phone 828-287-3178."
+  },
+  {
+    "id": "washburn-real-estate-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.washburnrealestate.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Brent & Sherri Washburn" },
+    "gbpClosed": false,
+    "notes": "Washburn Real Estate Inc - brokerage HQ is in Rutherfordton (233 Charlotte Rd) but heavily serves/lists Forest City. Principals Brent & Sherri Washburn (broker), plus Beth Washburn & Megan Brandle. ~61 area listings. Real site washburnrealestate.com but fetch rate-limited (429) - not directly graded; a vendor IDX real-estate platform. Phone 828-429-4546. P8 target w/ named principals."
+  },
+  {
+    "id": "matheny-real-estate-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.mathenyre.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "David Matheny" },
+    "gbpClosed": false,
+    "notes": "Matheny Real Estate, Forest City (621 S Broadway St). Owner David Matheny. Real site mathenyre.com on a real-estate CMS - mid-2010s template feel, dated typography/carousel - REDESIGN CANDIDATE. Phone 828-245-5030. P8 target w/ named owner."
+  }
+]

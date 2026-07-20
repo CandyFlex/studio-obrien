@@ -1,0 +1,43 @@
+{
+  "_sources": [
+    "https://en.wikipedia.org/wiki/Vale,_Lincoln_County,_North_Carolina",
+    "https://northcarolina.hometownlocator.com/nc/lincoln/vale.cfm"
+  ],
+
+  "town": "Vale",
+  "slug": "vale",
+  "county": "Lincoln County",
+  "brandPlace": "across the rural community",
+  "mapQuery": "Vale,NC",
+
+  "metaDesc": "Custom web design and SEO for Vale and Lincoln County businesses: farmers, family operations, and rural shops. Sites you own, no templates.",
+  "ogDesc": "Custom web design and development for Vale and Lincoln County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Vale, NC. Websites, SEO, and branding for farmers, family operations, and rural small businesses in Lincoln County.",
+  "schemaDesc": "Web development and design in Vale, NC. Custom websites, SEO, and branding for farmers, family operations, rural businesses, and service providers in Lincoln County, Catawba County, and the surrounding tri-county area.",
+
+  "heroSub": "Custom websites, SEO, and branding for the farmers, family operations, and rural businesses of Vale and Lincoln County. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Vale</em> and Lincoln County.",
+  "localP1": "Vale is a rural unincorporated community in Lincoln County, with parts extending into Catawba County. Farming is the lifeblood here, with family operations and agricultural businesses anchoring the community at the junction where three counties meet. This is working rural land, where the same practical know-how that built the county has kept it going for generations.",
+  "localP2": "We build for the people who run this region: the farmer managing land and livestock, the family shop serving the county roads, the contractor and service crew working across the tri-county area. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Vale</strong>, Lincolnton, Cherryville, Maiden &amp; the region",
+
+  "areaServed": ["Vale", "Lincolnton", "Cherryville", "Maiden"],
+
+  "citiesIntro": "Rooted in Vale, working across the region. Explore a nearby town:",
+  "hereCard": "Farmers, family operations, and rural service providers in Lincoln County. Sites that bring business through the door.",
+  "neighborCards": [
+    {"slug": "lincolnton", "name": "Lincolnton", "desc": "The county seat where Lincoln County businesses find their digital voice."},
+    {"slug": "cherryville", "name": "Cherryville", "desc": "A working town built on trades and trucking, where practical business runs the community."},
+    {"slug": "maiden", "name": "Maiden", "desc": "A small Catawba County town where family businesses and local services thrive."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Lincoln County, Lincolnton, Cherryville, Maiden, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Farmers, family agricultural operations, rural shops and service providers, contractors, and local businesses across Lincoln County.",
+
+  "footerNearby": [
+    {"slug": "lincolnton", "name": "Lincolnton"},
+    {"slug": "cherryville", "name": "Cherryville"},
+    {"slug": "maiden", "name": "Maiden"}
+  ]
+}

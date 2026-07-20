@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geo Cities C: The Marquee Junction</title>
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--g-lite:#6ee7b7;--bg:#0a0a0b;--bg-2:#0e0f11;--surface:#141518;--surface-2:#1a1c20;--b:#25272d;--b-2:#33363d;--fg:#f4f5f6;--muted:#a4aab2;--dim:#767b83;--maxw:1240px;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .stub{padding:40px 0;color:var(--dim);font-size:14px}
+
+  section.cities{position:relative;padding:clamp(64px,8.5vw,120px) 0;overflow:hidden}
+
+  .cty-eyebrow{font-family:'Inter Tight',sans-serif;font-weight:640;font-size:clamp(15px,1.6vw,18px);color:var(--muted);letter-spacing:-.01em;margin-bottom:clamp(20px,2.6vw,34px)}
+  .cty-eyebrow b{color:var(--g);font-weight:640}
+
+  .marquee{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(34px,6vw,84px);line-height:1.04;letter-spacing:-.035em;text-wrap:balance}
+  .marquee .sep{color:var(--g);margin:0 .22em;font-weight:800;-webkit-text-stroke:0}
+  .marquee a{color:#fff;text-decoration:none;-webkit-text-stroke:1.5px transparent;
+    transition:color .3s var(--ease),-webkit-text-stroke-color .3s var(--ease)}
+  .marquee a:hover{color:transparent;-webkit-text-stroke-color:rgba(244,245,246,.55)}
+  .marquee .home{color:var(--g);font-style:italic;font-weight:640}
+
+  .cty-foot{margin-top:clamp(30px,4vw,52px)}
+  .cty-foot .hair{height:1px;background:var(--b-2);margin-bottom:clamp(16px,2vw,22px)}
+  .cty-foot p{font-size:clamp(14px,1.5vw,16.5px);color:var(--muted);line-height:1.6;max-width:60ch;text-wrap:pretty}
+
+  @media(max-width:700px){
+    .marquee{font-size:clamp(32px,10vw,52px)}
+    .marquee .sep{margin:0 .16em}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .marquee a{transition:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap stub">[ mosaic above ]</div>
+
+<section class="cities">
+  <div class="wrap">
+    <p class="cty-eyebrow">Serving Cleveland County <b>&amp; beyond</b>. Rooted in Shelby, working across the region.</p>
+    <div class="marquee">
+      <span class="home">Shelby</span><span class="sep">&bull;</span><a href="/kings-mountain-nc-web-design">Kings Mountain</a><span class="sep">&bull;</span><a href="/forest-city-nc-web-design">Forest City</a><span class="sep">&bull;</span><a href="/rutherfordton-nc-web-design">Rutherfordton</a>
+    </div>
+    <div class="cty-foot">
+      <div class="hair"></div>
+      <p>Every town gets the same build: custom code, local SEO, and a site you own.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap stub">[ FAQ below ]</div>
+</body>
+</html>

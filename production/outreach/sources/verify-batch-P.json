@@ -1,0 +1,362 @@
+[
+  {
+    "id": "lincoln-county-board-of-education-cherryville",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - Lincoln County school board (district admin in Lincolnton, not Cherryville). Runs on official K-12 district site. DROP - not an outreach target."
+  },
+  {
+    "id": "lincoln-county-register-of-deeds-cherryville",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county office (seat is Lincolnton, not Cherryville). DROP."
+  },
+  {
+    "id": "lincolnton-lincoln-county-chamber-of-commerce-cherryville",
+    "exists": true,
+    "realWebsite": "lincolntonchamber.org (approx)",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "ORG - chamber (based Lincolnton). DROP as target, but useful INTEL FEED: member directory is a source of independent-business leads."
+  },
+  {
+    "id": "james-w-warren-citzens-center-cherryville",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT/senior-community center operated by City of Cherryville. DROP."
+  },
+  {
+    "id": "wash-queen-laundromat-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "LOW non-target - laundromat. DROP."
+  },
+  {
+    "id": "exel-cherryville",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CORPORATE - Exel = DHL Supply Chain logistics/3PL (Exel North American Logistics). Not a local independent. DROP."
+  },
+  {
+    "id": "employment-security-commission-cherryville",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - NC Employment Security / NCWorks state agency. DROP."
+  },
+  {
+    "id": "boyds-furniture-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED - no active independent 'Boyd's Furniture' confirmed in Kings Mountain. Search collides with Boyd's Fine Furnishings (Charlotte) and a defunct boydsfurniture.webs.com. Possible closed/mislabeled. Needs manual confirm before outreach."
+  },
+  {
+    "id": "stagecoach-inn-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED/likely defunct - no 'Stagecoach Inn' found in Forest City or Rutherfordton lodging listings. Not in town lodging directory. Probably closed or mislabeled. Do not target without confirmation."
+  },
+  {
+    "id": "rutherfordton-town-hall-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - town hall (town confirmed Rutherfordton). DROP."
+  },
+  {
+    "id": "firehouse-inn-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.thefirehouseinn.com/",
+    "liveSiteGrade": null,
+    "reviews": "TripAdvisor-listed B&B, well-reviewed regionally (exact count not pulled)",
+    "owner": "Independent innkeeper (not identified by name in sources)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent 6-room B&B in restored 1925 firehouse. TOWN CORRECTION: Rutherfordton (134 W 1st St), not Forest City. Has own site (not graded live); booking-driven independent lodging. Warm lead."
+  },
+  {
+    "id": "carrier-houses-bed-breakfast-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.carrierhouses.com/",
+    "liveSiteGrade": "B+",
+    "reviews": "Strong (TripAdvisor/Booking/Expedia listed, upscale 3.5-star)",
+    "owner": "Innkeepers Jim Masek & Russell Knight",
+    "gbpClosed": false,
+    "notes": "REAL but WELL-SERVED - independent Victorian B&B, 8 rooms. TOWN CORRECTION: Rutherfordton (255 N Main St), not Forest City. Professionally built site by 'Small Town Soul' w/ ResNexus booking. Low opportunity - already has a good modern site."
+  },
+  {
+    "id": "choice-care-playschool-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.choicecare.me/",
+    "liveSiteGrade": null,
+    "reviews": "4-star licensed center (NC rating)",
+    "owner": "Independent LLC",
+    "gbpClosed": false,
+    "notes": "Childcare (enrollment-driven, marginal target). TOWN CORRECTION: Playschool location is Rutherfordton (123 Park Lane Dr); the Forest City sibling is 'Choice Care Quest' (1288 W Main St). Already has a website. Low-moderate."
+  },
+  {
+    "id": "shelby-plaza-shopping-center-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "PROPERTY - shopping center, not an operating single business. DROP."
+  },
+  {
+    "id": "cmc-immediate-care-center-earl",
+    "exists": null,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "HEALTH SYSTEM - CMC (Carolinas Medical Center) now Atrium Health. No standalone 'Immediate Care' facility confirmed in Earl (label suspect; urgent care presence is Kings Mountain/Atrium). SYSTEM/CHAIN - DROP."
+  },
+  {
+    "id": "petro-plus-earl",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "LOW non-target - gas/convenience. DROP."
+  },
+  {
+    "id": "abc-earl",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - NC ABC (state-controlled liquor) store. DROP."
+  },
+  {
+    "id": "precision-gymnastics-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Active Facebook presence; no aggregated star count pulled",
+    "owner": "Independent (name not confirmed in sources)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent gymnastics school, ~26 yrs, Boiling Springs confirmed (804 McBrayer Homestead Rd, Cleveland County). Enrollment/class-registration driven. Relies on Facebook + directory listings; no dedicated real site found. Good lead."
+  },
+  {
+    "id": "mountain-wash-laundry-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "LOW non-target - laundromat. DROP."
+  },
+  {
+    "id": "nextcare-urgent-care-shelby",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NATIONAL CHAIN - NextCare Urgent Care (corporate site nextcare.com). DROP."
+  },
+  {
+    "id": "kylie-s-skating-rink-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Yelp/BBB/Apple Maps listed; active Instagram; no consolidated star count",
+    "owner": "Independent (name not confirmed)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent family skating rink, Shelby confirmed (1318 S Lafayette St, downtown). Birthday-party/events + concessions driven. Runs on Instagram only, NO website. Strong local-activity lead."
+  },
+  {
+    "id": "foothills-regional-commission-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - regional council of governments. DROP."
+  },
+  {
+    "id": "rutherford-county-building-inspections-forest-city",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county department. DROP."
+  },
+  {
+    "id": "spindale-florist-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Facebook + directory listings; no consolidated star count pulled",
+    "owner": "Independent (name not confirmed)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent full-service florist. TOWN CORRECTION: Spindale (257 W Main St), not Forest City. Only wire-service microsites (Avas/James Cress) + Facebook; NO owned website. Good florist lead."
+  },
+  {
+    "id": "spindale-drug-forest-city",
+    "exists": true,
+    "realWebsite": "spindaledrug.com (Good Neighbor Pharmacy / mygnp template)",
+    "liveSiteGrade": "C",
+    "reviews": "Facebook + pharmacy directories; no consolidated star count",
+    "owner": "Pharmacists Bill Koonce & Lesley Koonce (locally owned)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent pharmacy since 1925, historic. TOWN CORRECTION: Spindale (109 W Main St), not Forest City. Current web is a generic chain-provided mygnp microsite = weak/templated, real upgrade opportunity. Strong lead."
+  },
+  {
+    "id": "vassey-hemphill-jewelers-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Positive (Jewelers of America member; custom design/repair/appraisal praise); no consolidated count",
+    "owner": "Family-owned since 1946 (owner name not confirmed)",
+    "gbpClosed": false,
+    "notes": "STRONG REAL TARGET - independent family jeweler since 1946. TOWN uncertain within Rutherford Co (listings split: Forest City 117 W Main / Rutherfordton 110 Main / Spindale). Only auto-generated directory microsites (edan.io, shopinde) - NO real owned website. Established, gift/custom-driven, prime outreach."
+  },
+  {
+    "id": "b-sharp-music-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Facebook + BBB listed; no consolidated star count",
+    "owner": "Independent (name not confirmed)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent music/instrument store, new & used, in-house repair + lessons. TOWN CORRECTION: Spindale (129 W Main St), not Forest City. Facebook only, NO website. Good niche lead."
+  },
+  {
+    "id": "american-dairy-goat-association-forest-city",
+    "exists": true,
+    "realWebsite": "adga.org",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NATIONAL ORG HQ (fun fact: national registry headquartered in Spindale). Not a local SMB target. DROP."
+  },
+  {
+    "id": "grumpys-bike-shop-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Active Facebook/Instagram; on Locally/chamber; no consolidated star count",
+    "owner": "Tyler & Lindsey Bostic (husband-wife, opened Sept 2023)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent bike/skate shop on Thermal Belt Rail Trail. TOWN CORRECTION: Spindale (193 W Main St), not Forest City. Newer business (2023), social-only, NO website. Growth-minded owners = warm lead."
+  },
+  {
+    "id": "nc-works-career-center-forest-city",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - state workforce/career center. DROP."
+  },
+  {
+    "id": "crowes-mortuary-chapel-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.crowemortuary.com/ (FrontRunner funeral-industry template)",
+    "liveSiteGrade": "C",
+    "reviews": "Facebook + Legacy.com; no consolidated star count",
+    "owner": "Locally owned (owner name not confirmed)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - locally owned funeral home/crematory. TOWN CORRECTION: Rutherfordton (118 College Ave), not Forest City. Site is a stock FrontRunner funeral template = templated/generic, moderate upgrade angle. Real but has a functional site."
+  },
+  {
+    "id": "rutherford-county-social-services-forest-city",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county DSS. DROP."
+  },
+  {
+    "id": "rutherford-county-veteran-services-forest-city",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county veteran services office. DROP."
+  },
+  {
+    "id": "hinkles-pet-hospital-forest-city",
+    "exists": true,
+    "realWebsite": "https://hinklespethospital.com/",
+    "liveSiteGrade": "C+",
+    "reviews": "~4.3 Google (displayed on site); positive",
+    "owner": "Dr. Paul Hinkle (founded 2006)",
+    "gbpClosed": false,
+    "notes": "REAL TARGET - independent vet hospital since 2006. TOWN CORRECTION: Spindale (467 West St), not Forest City. Has a professional but slightly dated vet-CMS site (dated carousel/styling) = credible refresh opportunity. Solid lead."
+  },
+  {
+    "id": "gardos-motel-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "TripAdvisor 4/5 (ranked #2 of 3 in Forest City)",
+    "owner": "Independent (name not confirmed)",
+    "gbpClosed": false,
+    "notes": "Budget independent motel since 1965, Forest City confirmed (1266 W Main St). Facebook only + booking aggregators (gohotelo), NO owned site. Low-margin budget lodging - marginal target."
+  },
+  {
+    "id": "yokefellow-service-center-forest-city",
+    "exists": true,
+    "realWebsite": "NONE-INDEPENDENT",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NONPROFIT - community assistance/charity service center. DROP."
+  }
+]

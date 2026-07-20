@@ -1,0 +1,48 @@
+{
+  "_sources": [
+    "https://gastonlibrary.libguides.com/gaston-history-cities-towns/belmont",
+    "https://en.wikipedia.org/wiki/Belmont,_North_Carolina",
+    "https://www.onlyinyourstate.com/nature/north-carolina/wondrous-hidden-gem-nc",
+    "https://downtownbelmont.org/downtown-districts/",
+    "https://www.gastonoutside.com/post/walk-down-main-street-belmont-s-beautiful-downtown-makes-for-a-perfect-day-out"
+  ],
+
+  "town": "Belmont",
+  "slug": "belmont",
+  "county": "Gaston County",
+  "brandPlace": "on Main Street",
+  "mapQuery": "Belmont,NC",
+
+  "metaDesc": "Custom web design and SEO for Belmont and Gaston County businesses: shops, restaurants, services, and manufacturers. Sites you own outright, no templates.",
+  "ogDesc": "Custom web design and development for Belmont and Gaston County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Belmont, NC. Websites, SEO, and branding for shops, restaurants, and small businesses in Gaston County.",
+  "schemaDesc": "Web development and design in Belmont, NC. Custom websites, SEO, and branding for shops, restaurants, small businesses, and services in Gaston County, Mount Holly, Cramerton, McAdenville, and Gastonia.",
+
+  "heroSub": "Custom websites, SEO, and branding for the shops, restaurants, and small businesses of Belmont and the Charlotte metro. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Belmont</em> and the Charlotte metro.",
+  "localP1": "Belmont sits on the south bank of the Catawba River, directly across from Charlotte. The <strong>Benedictine Order</strong> founded <strong>Belmont Abbey College</strong> here in 1876, and the Abbey Basilica of Mary Help of Christians still stands as a landmark, named a minor Basilica by the Vatican in 1998. But Belmont is also known for the <strong>Daniel Stowe Botanical Garden</strong>, a 380-acre estate with formal gardens and trails that made it onto HGTV's list of the nation's best gardens. What holds it together is Main Street, revitalized with local shops, restaurants, and cafes anchoring the historic downtown.",
+  "localP2": "We build for the people who keep Main Street going: the cafe owner, the antique dealer, the boutique, the shop on the corner. We serve the contractors, small manufacturers, and home-service crews across Gaston County and into the Charlotte commute shed. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Belmont</strong>, Mount Holly, Cramerton, McAdenville, Gastonia &amp; the Charlotte metro",
+
+  "areaServed": ["Belmont", "Mount Holly", "Cramerton", "McAdenville", "Gastonia", "Charlotte"],
+
+  "citiesIntro": "Rooted in Belmont, working across the region. Explore a nearby town:",
+  "hereCard": "Main Street shops, restaurants, and small businesses on the Catawba River. Sites that bring customers through the door.",
+  "neighborCards": [
+    {"slug": "mount-holly", "name": "Mount Holly", "desc": "A Gaston County town with Main Street retail and service businesses that need clean, mobile-first design."},
+    {"slug": "cramerton", "name": "Cramerton", "desc": "A small mill town with local businesses and community organizations building their web presence."},
+    {"slug": "mcadenville", "name": "McAdenville", "desc": "A historic village with small shops and services looking for professional, modern websites."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Gaston County, Mount Holly, Cramerton, McAdenville, Gastonia, Charlotte, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Main Street shops and restaurants, small manufacturers, home services and contractors, professional practices, and nonprofits across Gaston County.",
+
+  "footerNearby": [
+    {"slug": "mount-holly", "name": "Mount Holly"},
+    {"slug": "cramerton", "name": "Cramerton"},
+    {"slug": "mcadenville", "name": "McAdenville"},
+    {"slug": "gastonia", "name": "Gastonia"},
+    {"slug": "charlotte", "name": "Charlotte"}
+  ]
+}

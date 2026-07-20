@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero 4 — Split Focus</title>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-tight-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/index.css?v=20260701-1">
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-tight-700.woff2') format('woff2')}
+
+html,body{background:#0f0f10;height:100%}
+body{margin:0;overflow:hidden;font-family:'Inter',sans-serif}
+.nav-grid-overlay{position:fixed;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0;mask-image:radial-gradient(120% 90% at 50% 32%,#000 30%,transparent 78%)}
+
+.topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:transparent;z-index:100}
+.nav-brand{font-size:18px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-variation-settings:'opsz' 32,'wght' 720}
+.nav-brand::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#34d399;transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
+.nav-brand:hover::after{transform:scaleX(1) rotate(-1.5deg)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:#a8a8a8;font-size:13px;font-weight:500;letter-spacing:-.005em;text-decoration:none;position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:#34d399;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:#fff;color:#111;font-size:10.5px;font-weight:600;padding:8px 14px 8px 16px;border-radius:999px;text-decoration:none;display:flex;align-items:center;gap:5px;position:relative;overflow:hidden;transition:color .3s}
+.nav-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.nav-cta span,.nav-cta svg{position:relative;z-index:1}
+.nav-cta:hover::before{transform:translateY(0)}
+.topbar,.header,.green-strip{opacity:1}
+/* one-screen stage: nav-cleared, vertically centers the wordmark + lower block */
+.stage{height:100dvh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding:clamp(64px,8vh,88px) 18px clamp(18px,3vh,34px);gap:clamp(4px,1.4vh,20px);position:relative;z-index:1}
+.header{min-height:0!important;padding:0!important;transform:none!important;width:100%;display:flex;justify-content:center}
+.hero-text{line-height:.82}
+.marquee-track{animation:marquee-scroll 22s linear infinite}
+.green-strip{transform:translateY(-50%) rotate(-3deg)!important}
+.hero-x{margin:0 auto;max-width:1120px;padding:0 6px;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;width:100%}
+.hx-cta{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:9px;background:#fff;color:#0a0a0b;font-weight:600;font-size:15px;letter-spacing:-.01em;padding:15px 25px 15px 29px;border-radius:999px;text-decoration:none}
+.hx-cta::before{content:"";position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:-1}
+.hx-cta:hover::before{transform:translateY(0)}
+.hx-cta svg{transition:transform .25s ease}.hx-cta:hover svg{transform:translateX(4px)}
+.hx-alt{font-weight:500;font-size:14px;color:#34d399;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid #34d39959;padding-bottom:2px;transition:gap .25s,border-color .25s}
+.hx-alt::after{content:'\2192'}.hx-alt:hover{gap:10px;border-color:#34d399}
+.concept-tag{position:fixed;left:14px;bottom:14px;z-index:200;font-size:12px;font-weight:600;color:#0a0a0b;background:#34d399;padding:6px 13px;border-radius:999px;letter-spacing:-.01em;text-decoration:none}
+.concept-tag b{font-weight:700}
+@keyframes hxRise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hxMask{from{opacity:0;transform:translateY(112%)}to{opacity:1;transform:translateY(0)}}
+@keyframes hxFade{from{opacity:0}to{opacity:1}}
+@keyframes hxBarX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes hxSweep{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes hxBlur{from{opacity:0;filter:blur(12px);transform:translateY(12px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;filter:none!important;transform:none!important;opacity:1!important;clip-path:none!important}.green-strip{transform:translateY(-50%) rotate(-3deg)!important}.header{transform:none!important}}
+
+
+.c4-h{margin:0;display:flex;flex-direction:column;align-items:center;font-variation-settings:'opsz' 32,'wght' 750}
+.c4-big{font-weight:750;font-size:clamp(40px,min(7.4vw,9.5vh),108px);line-height:.9;letter-spacing:-.05em;color:#fff;animation:hxRise .9s cubic-bezier(.16,1,.3,1) .12s both}
+.c4-mark{position:relative;white-space:nowrap}
+.c4-mark::after{content:"";position:absolute;left:-.03em;right:-.03em;bottom:.07em;height:.1em;background:#34d399;z-index:-1;clip-path:inset(0 100% 0 0);animation:hxSweep .7s cubic-bezier(.16,1,.3,1) .62s forwards}
+.c4-rest{font-weight:650;font-size:clamp(20px,min(3vw,3.9vh),42px);line-height:1;letter-spacing:-.03em;color:#9a9a9a;margin-top:clamp(6px,1vh,14px);animation:hxRise .8s cubic-bezier(.16,1,.3,1) .32s both}
+.c4-rest em{font-style:italic;color:#34d399}
+.c4-sub{font-weight:400;font-size:clamp(14px,min(1.45vw,2vh),17px);line-height:1.55;color:#a8a8a8;max-width:54ch;margin:clamp(16px,2.4vh,32px) auto 0;text-wrap:balance;animation:hxRise .8s cubic-bezier(.16,1,.3,1) .5s both}
+.c4-actions{margin-top:clamp(16px,2.2vh,30px);animation:hxRise .8s cubic-bezier(.16,1,.3,1) .62s both}
+.c4-note{margin:clamp(10px,1.4vh,16px) 0 0;font-size:12.5px;color:#6a6a6a;animation:hxFade .9s ease .82s both}
+</style></head>
+<body>
+<div class="nav-grid-overlay" aria-hidden="true"></div>
+<nav class="topbar" aria-label="Site navigation">
+  <a class="nav-brand" href="/">O'BRIEN</a>
+  <div class="nav-links">
+    <a href="#portfolio">Work</a>
+    <a href="#process-section">Process</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
+  </div>
+  <a class="nav-cta" href="/contact"><span>Start a Website</span><svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</nav>
+<main><section class="stage">
+<div class="header">
+  <div class="hero-container">
+    <span class="hero-text">O'BRIEN</span>
+    <div class="green-strip"><div class="marquee-track"><span>Branding <em>&amp;</em> Identity</span><span>Web Development</span><span>Web Design</span><span>UI <em>&amp;</em> UX</span><span>SEO <em>&amp;</em> Local Search</span><span>Responsive Design</span><span>Branding <em>&amp;</em> Identity</span><span>Web Development</span><span>Web Design</span><span>UI <em>&amp;</em> UX</span><span>SEO <em>&amp;</em> Local Search</span><span>Responsive Design</span></div></div>
+  </div>
+</div>
+<div class="hero-x c4">
+  <h1 class="c4-h">
+    <span class="c4-big">Get <span class="c4-mark">found.</span></span>
+    <span class="c4-rest">Get called. <em>Grow.</em></span>
+  </h1>
+  <p class="c4-sub">I build websites that put Western North Carolina small businesses in front of the people already searching for them, and turn that search into a customer through the door. Clear, fast, and built to bring in work.</p>
+  <div class="c4-actions"><a class="hx-cta" href="/contact"><span>Start a Website</span><svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <p class="c4-note">Shelby, NC &middot; Western North Carolina</p>
+</div>
+</section></main>
+<a class="concept-tag" href="./"><b>4. Split Focus</b> &nbsp;&middot;&nbsp; all 5</a>
+</body></html>

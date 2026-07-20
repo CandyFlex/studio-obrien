@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- CONCEPT A — "Annotated Teardown"
+     Numbered markers pinned on capture crops, matching side notes explaining
+     each choice. Alternating sides, mono annotation labels, mint markers. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept A: Annotated Teardown | Crownline Case Study</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#0a0a0b;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:clip}
+body{background:#0a0a0b;color:#fff;font-family:'Inter',system-ui,sans-serif;padding-top:56px;overflow-x:clip}
+.mono{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
+
+/* top bar */
+.bar{position:fixed;top:0;left:0;right:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(10,10,11,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #1f1f20;z-index:100}
+.bar-brand{font-weight:700;font-size:16px;letter-spacing:-.03em;color:#fff;text-decoration:none}
+.bar-brand em{font-style:normal;color:#34d399}
+.bar-tag{font-size:11px;color:#888;letter-spacing:.08em;text-transform:uppercase}
+.bar-cta{background:#34d399;color:#06130d;font-weight:700;font-size:12.5px;padding:9px 18px;border-radius:999px;text-decoration:none;transition:background .2s}
+.bar-cta:hover{background:#2ec48d}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,9fr) minmax(0,11fr);gap:clamp(28px,4vw,70px);align-items:center;max-width:1400px;margin:clamp(28px,4vw,64px) auto clamp(70px,8vw,120px);padding:0 clamp(20px,3vw,44px)}
+.kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#34d399;margin-bottom:16px}
+.hero h1{font-weight:700;font-size:clamp(34px,4.2vw,60px);line-height:1.02;letter-spacing:-.035em;margin-bottom:18px}
+.hero h1 span{color:#34d399}
+.hero p{font-size:clamp(14.5px,1.25vw,17px);line-height:1.65;color:#a8a8a8;max-width:52ch}
+.hero-stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hstat b{display:block;font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.hstat span{font-size:11.5px;color:#888}
+@media(max-width:919.98px){.hero{grid-template-columns:1fr;margin-top:16px}}
+
+/* laptop */
+.stage{position:relative;min-width:0;--pw:clamp(60px,8.5vw,150px);padding-bottom:calc(var(--pw) * .38)}
+.lap{position:relative;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:clamp(8px,1vw,14px) clamp(8px,1vw,14px) 4px 4px;padding:clamp(8px,1vw,14px);box-shadow:0 60px 120px -40px rgba(0,0,0,.9),0 0 160px -30px rgba(52,211,153,.25)}
+.scr{position:relative;aspect-ratio:19/10;border-radius:4px;overflow:hidden;background:#000}
+.reel{position:absolute;inset:0;overflow:hidden;contain:paint;clip-path:inset(0)}
+.reel-t{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:reel 110s linear infinite}
+.reel-t img{width:100%;height:auto;display:block}
+@keyframes reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-50%,0)}}
+@media(prefers-reduced-motion:reduce){.reel-t{animation:none}}
+.kb{height:clamp(8px,.9vw,12px);margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c,#0e0e10);border-radius:0 0 16px 16px}
+.ph{position:absolute;right:10px;bottom:calc(var(--pw) * -.3);width:var(--pw);aspect-ratio:9/19.5;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:calc(var(--pw) * .14);padding:calc(var(--pw) * .04);box-shadow:0 40px 80px -20px rgba(0,0,0,.85);z-index:3}
+.ph-s{position:relative;width:100%;height:100%;border-radius:calc(var(--pw) * .1);overflow:hidden;background:#000}
+
+/* teardown rows */
+.td{max-width:1280px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+.td-head{max-width:720px;margin-bottom:clamp(36px,4.5vw,64px)}
+.td-head h2{font-weight:700;font-size:clamp(26px,3vw,42px);letter-spacing:-.03em;line-height:1.08;margin-bottom:12px}
+.td-head p{color:#a8a8a8;font-size:clamp(14px,1.25vw,16.5px);line-height:1.6;max-width:58ch}
+.row{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,7fr);gap:clamp(24px,3.5vw,56px);align-items:center;margin-bottom:clamp(64px,8vw,112px)}
+.row.flip{grid-template-columns:minmax(0,7fr) minmax(0,13fr)}
+.row.flip .shot-wrap{order:2}
+.row.flip .notes{order:1}
+.shot-wrap{min-width:0}
+.shot-frame{background:#141415;border:1px solid #2a2a2b;border-radius:10px;padding:10px;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.shot-chrome{display:flex;gap:6px;padding:2px 4px 10px}
+.shot-chrome i{width:8px;height:8px;border-radius:50%;background:#333;display:block}
+.shot{position:relative;overflow:hidden;border-radius:5px;background:#111}
+.shot img{display:block;width:100%;height:auto}
+.mk{position:absolute;width:26px;height:26px;border-radius:50%;background:#34d399;color:#06130d;font-weight:700;font-size:13px;line-height:26px;text-align:center;box-shadow:0 0 0 5px rgba(52,211,153,.22),0 4px 12px rgba(0,0,0,.5);transform:translate(-50%,-50%)}
+.shot-cap{padding:10px 6px 2px;font-size:11px;color:#666;letter-spacing:.1em;text-transform:uppercase}
+.shot-cap b{color:#a8a8a8;font-weight:400}
+.notes{min-width:0}
+.notes-tag{display:inline-block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#34d399;border:1px solid rgba(52,211,153,.3);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+.notes h3{font-weight:700;font-size:clamp(21px,2.1vw,29px);letter-spacing:-.025em;line-height:1.15;margin-bottom:20px}
+.note{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:14px 0;border-top:1px solid #1f1f20}
+.note:last-child{border-bottom:1px solid #1f1f20}
+.note i{width:26px;height:26px;border-radius:50%;background:transparent;border:1.5px solid #34d399;color:#34d399;font-style:normal;font-weight:700;font-size:12.5px;line-height:24px;text-align:center}
+.note b{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+.note p{font-size:13.5px;line-height:1.55;color:#a8a8a8}
+@media(max-width:859.98px){
+  .row,.row.flip{grid-template-columns:1fr;gap:22px;margin-bottom:64px}
+  .row.flip .shot-wrap{order:1}
+  .row.flip .notes{order:2}
+}
+
+/* mid + final CTA */
+.midcta{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1280px;margin:0 auto clamp(64px,8vw,112px);padding:clamp(22px,2.6vw,34px) clamp(22px,3vw,40px);border:1px solid #2a2a2b;border-radius:14px;background:linear-gradient(120deg,rgba(52,211,153,.08),transparent 60%)}
+.midcta p{font-size:clamp(14.5px,1.3vw,17px);color:#d4d4d4;max-width:52ch}
+.midcta p b{color:#fff}
+.btn{background:#34d399;color:#06130d;font-weight:700;font-size:14px;padding:14px 26px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s}
+.btn:hover{background:#2ec48d;transform:translateY(-1px)}
+@media(max-width:659.98px){.midcta{flex-direction:column;align-items:flex-start}}
+.final{position:relative;border-top:1px solid #1f1f20;padding:clamp(64px,8vw,110px) 24px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(52,211,153,.1),transparent 55%)}
+.final h2{font-weight:700;font-size:clamp(30px,4.4vw,58px);letter-spacing:-.035em;line-height:1.04;margin-bottom:14px}
+.final h2 span{color:#34d399}
+.final>p{color:#a8a8a8;font-size:clamp(14.5px,1.3vw,17px);max-width:54ch;margin:0 auto 28px;line-height:1.6}
+.final small{display:block;margin-top:18px;color:#888;font-size:12.5px}
+.final .call{color:#34d399;text-decoration:none;font-weight:700;margin-left:14px;font-size:14px}
+footer{border-top:1px solid #1f1f20;padding:26px 24px;text-align:center;color:#666;font-size:12px}
+footer a{color:#a8a8a8;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a class="bar-brand" href="/">STUDIO O<em>'</em>BRIEN</a>
+  <span class="bar-tag mono">Case Study 001 / Electrical</span>
+  <a class="bar-cta" href="/contact">Claim This Build</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <span class="kicker">Concept build &middot; Available to claim</span>
+    <h1>Crownline Electric, <span>taken apart</span> so you can see why it works.</h1>
+    <p>A finished website for an electrical contractor, built in the studio before any client asked. Below, we pin numbers on the actual screens and explain every conversion choice.</p>
+    <div class="hero-stats">
+      <div class="hstat"><b>Full site</b><span>design + build</span></div>
+      <div class="hstat"><b>Hand-coded</b><span>no theme, no builder</span></div>
+      <div class="hstat"><b>~1 week</b><span>adapted to your business</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="lap">
+      <div class="scr">
+        <div class="reel" aria-hidden="true"><div class="reel-t">
+          <img src="/portfolio/crownline-reel.webp" alt="" width="1440" height="8373">
+          <img src="/portfolio/crownline-reel.webp" alt="" width="1440" height="8373">
+        </div></div>
+      </div>
+    </div>
+    <div class="kb"></div>
+    <div class="ph"><div class="ph-s">
+      <div class="reel" aria-hidden="true"><div class="reel-t" style="animation-duration:210s">
+        <img src="/portfolio/crownline-reel-mobile.webp" alt="" width="470" height="15879">
+        <img src="/portfolio/crownline-reel-mobile.webp" alt="" width="470" height="15879">
+      </div></div>
+    </div></div>
+  </div>
+</header>
+
+<!-- TEARDOWN -->
+<section class="td">
+  <div class="td-head">
+    <h2>The teardown.</h2>
+    <p>Four screens from the working site. Every marker is a deliberate decision, and every decision has one job: turn a visitor into a phone call.</p>
+  </div>
+
+  <!-- 01 first screen -->
+  <div class="row">
+    <div class="shot-wrap">
+      <div class="shot-frame">
+        <div class="shot-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="shot" style="aspect-ratio:1440/900">
+          <img src="/portfolio/crownline-reel.webp" alt="Crownline hero screen" style="margin-top:-4.17%" loading="lazy">
+          <span class="mk" style="left:14%;top:14%">1</span>
+          <span class="mk" style="left:16%;top:33%">2</span>
+          <span class="mk" style="left:13%;top:60%">3</span>
+          <span class="mk" style="left:20%;top:83%">4</span>
+        </div>
+        <div class="shot-cap mono">Fig. 01 &mdash; <b>the first screen</b></div>
+      </div>
+    </div>
+    <div class="notes">
+      <span class="notes-tag">First 5 seconds</span>
+      <h3>Everything a caller needs, before one scroll.</h3>
+      <div class="note"><i>1</i><div><b>Licensed &amp; insured, stated first</b><p>The number-one homeowner worry, answered in a badge before the headline.</p></div></div>
+      <div class="note"><i>2</i><div><b>The offer in five words</b><p>&ldquo;Power problems fixed fast.&rdquo; No slogan-speak, just the reason to stay.</p></div></div>
+      <div class="note"><i>3</i><div><b>Call and book, side by side</b><p>Emergency callers dial; planners schedule. Both paths, one screen.</p></div></div>
+      <div class="note"><i>4</i><div><b>Google proof, not self-praise</b><p>A real 4.9-star review card carries the trust a paragraph never could.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 02 services -->
+  <div class="row flip">
+    <div class="shot-wrap">
+      <div class="shot-frame">
+        <div class="shot-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="shot" style="aspect-ratio:1440/790">
+          <img src="/portfolio/crownline-reel.webp" alt="Crownline services section" style="margin-top:-66.67%" loading="lazy">
+          <span class="mk" style="left:50%;top:9%">1</span>
+          <span class="mk" style="left:26%;top:52%">2</span>
+          <span class="mk" style="left:72%;top:38%">3</span>
+        </div>
+        <div class="shot-cap mono">Fig. 02 &mdash; <b>services</b></div>
+      </div>
+    </div>
+    <div class="notes">
+      <span class="notes-tag">Findability</span>
+      <h3>Every job you do is one click deep.</h3>
+      <div class="note"><i>1</i><div><b>Services named in plain trade language</b><p>Panels, generators, EV charging. The words customers actually search.</p></div></div>
+      <div class="note"><i>2</i><div><b>Real-work photography</b><p>A tech in a panel, not a stock handshake. Credibility is visual first.</p></div></div>
+      <div class="note"><i>3</i><div><b>Nine services, zero dropdowns</b><p>Each is its own page Google can rank for &ldquo;service + town&rdquo; searches.</p></div></div>
+    </div>
+  </div>
+
+  <div class="midcta">
+    <p><b>Following along?</b> Every one of these screens gets rebuilt around your business name, photos, and reviews in about a week.</p>
+    <a class="btn" href="/contact">Claim This Build</a>
+  </div>
+
+  <!-- 03 process -->
+  <div class="row">
+    <div class="shot-wrap">
+      <div class="shot-frame">
+        <div class="shot-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="shot" style="aspect-ratio:1440/640">
+          <img src="/portfolio/crownline-reel.webp" alt="Crownline process section" style="margin-top:-171.53%" loading="lazy">
+          <span class="mk" style="left:56%;top:14%">1</span>
+          <span class="mk" style="left:62%;top:55%">2</span>
+        </div>
+        <div class="shot-cap mono">Fig. 03 &mdash; <b>the process</b></div>
+      </div>
+    </div>
+    <div class="notes">
+      <span class="notes-tag">Objection handling</span>
+      <h3>Uncertainty is the silent deal-killer.</h3>
+      <div class="note"><i>1</i><div><b>Six steps, spelled out</b><p>Consultation to warranty follow-up. Nobody hires a mystery process.</p></div></div>
+      <div class="note"><i>2</i><div><b>&ldquo;No surprises&rdquo; in writing</b><p>Upfront quotes and testing named as steps, because that&rsquo;s what people fear.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 04 proof -->
+  <div class="row flip">
+    <div class="shot-wrap">
+      <div class="shot-frame">
+        <div class="shot-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="shot" style="aspect-ratio:1440/900">
+          <img src="/portfolio/crownline-reel.webp" alt="Crownline stats and reviews" style="margin-top:-391.8%" loading="lazy">
+          <span class="mk" style="left:50%;top:8%">1</span>
+          <span class="mk" style="left:33%;top:56%">2</span>
+        </div>
+        <div class="shot-cap mono">Fig. 04 &mdash; <b>proof</b></div>
+      </div>
+    </div>
+    <div class="notes">
+      <span class="notes-tag">Trust stack</span>
+      <h3>Proof does the closing.</h3>
+      <div class="note"><i>1</i><div><b>Numbers a homeowner can compare</b><p>Customers served, electricians on staff, 24/7 availability. Concrete beats adjectives.</p></div></div>
+      <div class="note"><i>2</i><div><b>Named, specific reviews</b><p>Real names, real jobs (&ldquo;EV charger in my garage&rdquo;). Vague praise converts nobody.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <h2>This teardown could be <span>your storefront</span>.</h2>
+  <p>If this link landed in your inbox, your business was nominated. Same standard, rebuilt around your name, your photos, and your reviews, live in about a week. You own it outright.</p>
+  <a class="btn" href="/contact">Claim This Build</a><a class="call" href="tel:+17049743372">or call (704) 974-3372</a>
+  <small>Free consultation &middot; No obligation</small>
+</section>
+
+<footer>&copy; 2026 <a href="/">Studio O&rsquo;Brien</a> &middot; Shelby, NC</footer>
+
+</body>
+</html>

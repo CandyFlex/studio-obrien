@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Concept C: The Statement</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--bg:#0a0a0b;--bg2:#0f0f11;--card:#161617;--b:#26262a;--fg:#f4f5f6;--muted:#a8adb4;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.7;overflow-x:hidden}
+  a{color:inherit}
+  ::selection{background:rgba(52,211,153,.28);color:#fff}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.75);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-in{max-width:1240px;margin:0 auto;height:60px;padding:0 clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:18px;letter-spacing:-.03em;color:#fff;text-decoration:none}
+  .nav-cta{background:var(--g);color:#06231a;font-weight:700;font-size:13px;padding:9px 18px;border-radius:999px;text-decoration:none}
+
+  .hero{padding:clamp(56px,8vw,104px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr minmax(240px,340px);gap:clamp(28px,5vw,64px);align-items:end}
+  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:780;font-size:clamp(40px,6.6vw,92px);line-height:.97;letter-spacing:-.04em;text-wrap:balance}
+  .hero h1 .l2 em{font-style:italic;font-weight:520;color:var(--g)}
+  .hero h1 .l1,.hero h1 .l2{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+  .hero h1 .l1>span,.hero h1 .l2>span{display:block;transform:translateY(112%);animation:mask .9s var(--ease) forwards}
+  .hero h1 .l2>span{animation-delay:.14s}
+  .hero .who{margin-top:24px;font-size:clamp(15.5px,1.8vw,18.5px);color:var(--muted);max-width:52ch;opacity:0;animation:rise .8s var(--ease) .5s forwards}
+  .hero .who strong{color:#e6e8ea;font-weight:600}
+  .hero .btns{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 clamp(40px,6vw,64px);opacity:0;animation:rise .8s var(--ease) .65s forwards}
+  .btn{display:inline-flex;align-items:center;font-weight:700;font-size:15px;text-decoration:none;padding:14px 26px;border-radius:6px;border:1px solid transparent}
+  .btn-p{background:var(--g);color:#06231a}
+  .btn-g{border-color:var(--b);color:var(--fg)}
+  .btn-g:hover{border-color:var(--g);color:var(--g)}
+  .hero-photo{position:relative;opacity:0;animation:rise .9s var(--ease) .4s forwards}
+  .hero-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border:1px solid var(--b)}
+  .hero-photo .tag{position:absolute;left:0;bottom:0;background:var(--g);color:#06231a;font-family:'Inter Tight',sans-serif;font-weight:720;font-size:13px;padding:8px 14px}
+
+  .tape{background:var(--g);padding:11px 0;overflow:hidden}
+  .tape-track{display:flex;white-space:nowrap;width:max-content;animation:tape 46s linear infinite}
+  .tape span{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:14px;color:#06231a;padding:0 24px;position:relative}
+  .tape span::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:rgba(6,35,26,.55)}
+  @keyframes tape{to{transform:translate3d(-50%,0,0)}}
+
+  .story{background:var(--bg2);border-bottom:1px solid rgba(255,255,255,.05)}
+  .story-in{max-width:860px;margin:0 auto;padding:clamp(52px,7vw,88px) clamp(18px,4vw,40px)}
+  .story p{font-family:'Inter Tight',sans-serif;font-weight:640;font-size:clamp(21px,3vw,32px);line-height:1.35;letter-spacing:-.02em;color:#e9ebed;text-wrap:pretty}
+  .story p+p{margin-top:26px}
+  .story em{font-style:italic;font-weight:520;color:var(--g)}
+  .story .plain{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(15.5px,1.8vw,18px);color:var(--muted);line-height:1.75;letter-spacing:0;margin-top:30px}
+  .story .plain a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+
+  .spec{padding:clamp(52px,7vw,88px) 0}
+  .spec-head{margin-bottom:clamp(28px,4vw,44px)}
+  .spec-head::before{content:'';display:block;width:44px;height:2px;background:var(--g);margin-bottom:14px}
+  .spec-head h2{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(26px,3.8vw,44px);letter-spacing:-.03em;line-height:1.05}
+  .spec-row{display:block;text-decoration:none;border-top:1px solid rgba(255,255,255,.09);padding:clamp(18px,2.6vw,28px) 0;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:18px}
+  .spec-row:last-of-type{border-bottom:1px solid rgba(255,255,255,.09)}
+  .spec-row .n{font-family:'Inter Tight',sans-serif;font-weight:780;font-size:clamp(26px,4.6vw,54px);letter-spacing:-.035em;line-height:1;color:#fff;transition:color .25s var(--ease)}
+  .spec-row:nth-child(odd) .n{color:transparent;-webkit-text-stroke:1.5px rgba(244,245,246,.5)}
+  a.spec-row:hover .n{color:var(--g);-webkit-text-stroke:0}
+  .spec-row .d{font-size:14px;color:var(--muted);max-width:34ch;text-align:right;line-height:1.55}
+
+  .own{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+  .own-in{max-width:860px;margin:0 auto;padding:clamp(48px,6vw,72px) clamp(18px,4vw,40px);text-align:center}
+  .own h2{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(28px,4.4vw,52px);letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
+  .own h2 em{font-style:italic;font-weight:520;color:var(--g)}
+  .own p{margin:18px auto 0;font-size:clamp(15px,1.7vw,17.5px);color:var(--muted);max-width:56ch;line-height:1.7}
+  .own p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+
+  .close{text-align:center;padding:clamp(56px,8vw,96px) 0}
+  .close h2{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(30px,5vw,60px);letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
+  .close h2 em{font-style:italic;font-weight:520;color:var(--g)}
+  .close p{margin:18px auto 26px;font-size:clamp(15px,1.7vw,17.5px);color:var(--muted);max-width:48ch}
+  .close .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+  .close .note{font-size:13px;color:var(--muted);margin:18px 0 0}
+
+  .foot{max-width:1240px;margin:0 auto;padding:26px clamp(18px,4vw,40px);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05)}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--g)}
+
+  @keyframes mask{to{transform:translateY(0)}}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){
+    .hero h1 .l1>span,.hero h1 .l2>span,.hero .who,.hero .btns,.hero-photo{animation:none!important;opacity:1!important;transform:none!important}
+    .tape-track{animation:none!important}
+  }
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo{max-width:300px}
+    .spec-row{grid-template-columns:1fr}
+    .spec-row .d{text-align:left;max-width:60ch}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a href="/" class="nav-logo">Studio O'Brien</a>
+  <a href="/contact" class="nav-cta">Start a project</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>
+        <span class="l1"><span>You run your business.</span></span>
+        <span class="l2"><span><em>I'll keep it visible.</em></span></span>
+      </h1>
+      <p class="who">I'm <strong>Jarred O'Brien</strong>, founder of Studio O'Brien in Shelby, North Carolina. I build custom websites and local SEO for the businesses of Cleveland County and beyond, so the people who need you can find you.</p>
+      <div class="btns">
+        <a href="/contact" class="btn btn-p">Start a project</a>
+        <a href="/#portfolio" class="btn btn-g">See the work</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="/portfolio/jarred.webp" width="800" height="1000" alt="Jarred O'Brien, founder of Studio O'Brien, Shelby NC">
+      <span class="tag">Shelby, NC</span>
+    </div>
+  </div>
+</header>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Cleveland County</span><span>Branding</span><span>Founder-led</span><span>You Own It</span><span>No Templates</span>
+    <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Cleveland County</span><span>Branding</span><span>Founder-led</span><span>You Own It</span><span>No Templates</span>
+  </div>
+</div>
+
+<section class="story">
+  <div class="story-in">
+    <p>The internet keeps moving faster, and it's leaving good local businesses behind. Not because they did anything wrong, but because keeping up with it is now <em>a second full-time job.</em></p>
+    <p>I spent years learning this craft for clients across the country. Then I came home to point it at my own community.</p>
+    <p class="plain">Studio O'Brien is founder-led and built to grow: the plan is to make it the studio this region reaches for, adding to the team as we go and reinvesting in the area the whole way. If you want to see how I think, it's all written down in <a href="/blog">The Field Guide</a>, sources and all.</p>
+  </div>
+</section>
+
+<section class="spec">
+  <div class="wrap">
+    <div class="spec-head"><h2>What I do, in plain terms</h2></div>
+    <a class="spec-row" href="/small-business-websites"><span class="n">Websites</span><span class="d">Hand-coded around your business. Fast, mobile-first, and built to turn visitors into calls.</span></a>
+    <a class="spec-row" href="/seo-services"><span class="n">Local SEO</span><span class="d">Showing up when someone nearby searches for what you sell. That's the whole game.</span></a>
+    <span class="spec-row"><span class="n">Branding</span><span class="d">Logo, palette, and type. One identity across your site, signage, and social.</span></span>
+    <a class="spec-row" href="/website-redesign-migration"><span class="n">Migrations</span><span class="d">Off Wix, Squarespace, or aging WordPress with your content and rankings intact.</span></a>
+  </div>
+</section>
+
+<section class="own">
+  <div class="own-in">
+    <h2>When it ships, it's <em>yours.</em></h2>
+    <p>The code, the content, the domain, the accounts. No platform only we can log into, no subscription that turns your design off the month you stop paying. <a href="/blog/who-owns-your-website-domain-source-code">Here's what owning your website actually means.</a></p>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Losing customers to a website that <em>doesn't sell?</em></h2>
+    <p>Tell me what you're working with. I read every message myself, and you'll hear back within a day.</p>
+    <div class="btns">
+      <a href="/contact" class="btn btn-p">Start a project</a>
+      <a href="/website-cost-calculator" class="btn btn-g">Get a free estimate</a>
+    </div>
+    <p class="note">No email wall on the estimate, and no pressure.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>&copy; 2026 Studio O'Brien</span>
+  <span><a href="/blog">Blog</a> &nbsp;&middot;&nbsp; <a href="/blog/editorial-standards">Editorial Standards</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></span>
+</footer>
+
+</body>
+</html>

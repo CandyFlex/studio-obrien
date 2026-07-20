@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geo Services A: Specimen Poster</title>
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--g-lite:#6ee7b7;--bg:#0a0a0b;--bg-2:#0e0f11;--surface:#141518;--surface-2:#1a1c20;--b:#25272d;--b-2:#33363d;--fg:#f4f5f6;--muted:#a4aab2;--dim:#767b83;--maxw:1240px;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .stub{padding:40px 0;color:var(--dim);font-size:14px}
+
+  section.svc{position:relative;padding:clamp(60px,8vw,110px) 0;overflow:hidden;
+    background-image:
+      repeating-linear-gradient(0deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px),
+      repeating-linear-gradient(90deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px);
+  }
+  section.svc::after{content:'';position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 45%,transparent 40%,var(--bg) 100%);pointer-events:none}
+  .svc .wrap{position:relative;z-index:1}
+
+  .svc-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5.5vw,72px)}
+  h2{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(28px,3.6vw,42px);line-height:1.05;letter-spacing:-.03em;text-wrap:balance}
+  h2 em{font-style:normal;color:var(--g)}
+  .svc-head p{font-size:clamp(14.5px,1.6vw,16.5px);color:var(--muted);line-height:1.65;max-width:46ch;justify-self:end;text-wrap:pretty}
+  @media(max-width:760px){.svc-head{grid-template-columns:1fr}.svc-head p{justify-self:start}}
+
+  .spec{border-top:1px solid var(--b-2)}
+  .spec-row{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:clamp(18px,3vw,48px);padding:clamp(16px,2.2vw,26px) 0;border-bottom:1px solid var(--b-2);text-decoration:none;transition:border-color .3s}
+  .spec-row:hover{border-color:rgba(52,211,153,.4)}
+  .spec-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(30px,4.9vw,68px);line-height:1;letter-spacing:-.04em;color:#fff;white-space:nowrap;transition:transform .35s var(--ease),color .3s}
+  .spec-row:nth-child(even) .spec-name{color:transparent;-webkit-text-stroke:1.5px rgba(244,245,246,.55)}
+  .spec-row.mint .spec-name{color:var(--g);font-style:italic;font-weight:560;letter-spacing:-.03em;-webkit-text-stroke:0}
+  .spec-row:hover .spec-name{transform:translateX(14px)}
+  .spec-row:nth-child(even):hover .spec-name{color:var(--g);-webkit-text-stroke:0}
+  .spec-desc{font-size:clamp(12.5px,1.25vw,14.5px);color:var(--muted);line-height:1.6;max-width:34ch;text-align:right;flex-shrink:1}
+  .spec-desc b{display:block;color:#e6e8ea;font-weight:600;margin-bottom:2px}
+  @media(max-width:700px){
+    .spec-row{flex-direction:column;align-items:flex-start;gap:8px}
+    .spec-name{white-space:normal;font-size:clamp(28px,8vw,40px)}
+    .spec-desc{text-align:left;max-width:56ch}
+  }
+  @media(prefers-reduced-motion:reduce){.spec-name{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap stub">[ map section above ]</div>
+
+<section class="svc">
+  <div class="wrap">
+    <div class="svc-head">
+      <h2>What we do for <em>Shelby businesses</em></h2>
+      <p>One studio for the whole build, the way an agency would cover it, without the agency overhead. Every service is done in-house and built to bring you work.</p>
+    </div>
+    <div class="spec">
+      <a class="spec-row" href="#"><span class="spec-name">Custom websites</span><span class="spec-desc"><b>Hand-coded, no templates</b>Every page and word built around how you actually sell. No Wix, no Squarespace.</span></a>
+      <a class="spec-row" href="#"><span class="spec-name">Local SEO</span><span class="spec-desc"><b>Ranked across the county</b>On-page, technical, and local strategy for the keywords your customers really search.</span></a>
+      <a class="spec-row mint" href="#"><span class="spec-name">Google Business Profile</span><span class="spec-desc"><b>Into the Map Pack</b>Categories, photos, posts, and reviews, handled so nearby searches find you first.</span></a>
+      <a class="spec-row" href="#"><span class="spec-name">Brand &amp; identity</span><span class="spec-desc"><b>Look as good as your work</b>Logo, palette, and type. One identity across site, signage, and social.</span></a>
+      <a class="spec-row" href="#"><span class="spec-name">Migrations</span><span class="spec-desc"><b>Move without losing rank</b>Off Wix, Squarespace, or aging WordPress with your content and rankings intact.</span></a>
+      <a class="spec-row" href="#"><span class="spec-name">Copy that converts</span><span class="spec-desc"><b>Words that get calls</b>Every headline and button written to turn visitors into booked jobs. No filler.</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap stub">[ process below ]</div>
+</body>
+</html>

@@ -33,6 +33,55 @@
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/index.css">
 <style>
+/* ── Nav V1 Whisper (site-standard nav, overrides index.css legacy topbar) ── */
+body{padding-top:60px}
+.topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:transparent;z-index:400;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),background .3s ease}
+.topbar.scrolled{background:rgba(17,17,17,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav-brand{font-size:18px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-family:'Inter',sans-serif;font-variation-settings:'opsz' 32,'wght' 720}
+.nav-brand::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#34d399;transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
+.nav-brand:hover::after{transform:scaleX(1) rotate(-1.5deg)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:#a8a8a8;font-size:13px;font-weight:500;letter-spacing:-.005em;text-decoration:none;position:relative;transition:color .2s;font-family:'Inter',sans-serif}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:#34d399;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:#fff;color:#111;font-size:10.5px;font-weight:600;padding:8px 14px 8px 16px;border-radius:999px;text-decoration:none;display:flex;align-items:center;gap:5px;position:relative;overflow:hidden;transition:color .3s;font-family:'Inter',sans-serif}
+.nav-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.nav-cta span{position:relative;z-index:1}
+.nav-cta:hover::before{transform:translateY(0)}
+.nav-menu-toggle{display:none;background:transparent;border:0;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center;color:#fff;padding:0;position:relative;z-index:401;margin-right:-6px}
+.nav-menu-toggle-icon,.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{display:block;width:22px;height:2px;background:currentColor;transition:transform .35s cubic-bezier(.16,1,.3,1),top .25s ease,background .25s ease;position:relative}
+.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{content:'';position:absolute;left:0;right:0}
+.nav-menu-toggle-icon::before{top:-7px}
+.nav-menu-toggle-icon::after{top:7px}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon{background:transparent;transition:background .15s ease}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::before{top:0;transform:rotate(45deg)}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::after{top:0;transform:rotate(-45deg)}
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(10,10,11,.97);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);z-index:399;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;overflow-y:auto}
+.nav-menu-overlay.is-open{opacity:1;visibility:visible}
+.nav-menu-overlay-list{display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.8vw,32px);width:100%;max-width:480px}
+.nav-menu-overlay-list a{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(34px,9vw,56px);letter-spacing:-.04em;color:#fff;text-decoration:none;line-height:1;text-align:center;font-variation-settings:'opsz' 32,'wght' 720;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),color .2s ease,font-style .2s ease}
+.nav-menu-overlay-list a:hover,.nav-menu-overlay-list a:focus-visible{color:#34d399;font-style:italic;font-weight:500;outline:none}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a{opacity:1;transform:translateY(0)}
+.nav-menu-overlay-cta{margin-top:clamp(32px,5vw,56px);background:#fff;color:#0a0a0b;padding:16px 28px 16px 32px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.005em;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .4s ease .32s,transform .4s cubic-bezier(.16,1,.3,1) .32s,color .3s ease}
+.nav-menu-overlay-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.nav-menu-overlay-cta:hover::before{transform:translateY(0)}
+.nav-menu-overlay-cta span{position:relative;z-index:1}
+.nav-menu-overlay.is-open .nav-menu-overlay-cta{opacity:1;transform:translateY(0)}
+body.is-menu-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){
+  .nav-menu-overlay-list a,.nav-menu-overlay-cta{transition:opacity .15s ease,color .2s ease}
+  .nav-menu-overlay.is-open .nav-menu-overlay-list a{transform:none;transition-delay:0s}
+  .nav-menu-overlay.is-open .nav-menu-overlay-cta{transform:none;transition-delay:0s}
+}
+@media(max-width:999.98px){
+  .topbar{padding:0 16px}
+  .nav-links{display:none}
+  .nav-brand{font-size:15px}
+  .nav-cta{display:none}
+  .nav-menu-toggle{display:inline-flex}
+}
+
 /* ===== CONTACT PAGE ===== */
 .contact-page{min-height:100vh;display:flex;flex-direction:column}
 .contact-hero{padding:60px 20px 32px;text-align:center;opacity:0;transform:translate3d(0,20px,0);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
@@ -175,27 +224,36 @@
 <!-- SCROLL PROGRESS BAR -->
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-<!-- TOPBAR -->
-<div class="topbar" data-animate>
-  <div class="wrap">
-    <div class="topbar-inner">
-      <div class="topbar-email-group">
-        <a class="topbar-cta" href="/contact">Start Project</a>
-        <a class="topbar-email" href="/">Work</a>
-        <a class="topbar-email" href="/blog">Blog</a>
-        <a class="topbar-email" href="#process-section">How It Works</a>
-        <a class="topbar-email" href="/contact">Contact</a>
-      </div>
-      <div class="topbar-social">
-        <a class="social-btn" href="https://github.com/CandyFlex" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <a class="social-btn" href="https://linkedin.com/in/jarred-kern" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-      </div>
-    </div>
+<!-- TOPBAR (site-standard Nav V1 Whisper) -->
+<nav class="topbar" data-animate aria-label="Site navigation">
+  <a class="nav-brand" href="/">O'BRIEN</a>
+  <div class="nav-links">
+    <a href="/#portfolio">Work</a>
+    <a href="/#process-section">Process</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
   </div>
+  <a class="nav-cta" href="tel:+17049743372">
+    <span>Call (704) 974-3372</span>
+  </a>
+  <button class="nav-menu-toggle" id="nav-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-overlay">
+    <span class="nav-menu-toggle-icon" aria-hidden="true"></span>
+  </button>
+</nav>
+
+<!-- MOBILE OVERLAY MENU -->
+<div class="nav-menu-overlay" id="nav-menu-overlay" aria-hidden="true">
+  <div class="nav-menu-overlay-list">
+    <a href="/">Home</a>
+    <a href="/#portfolio">Work</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
+  </div>
+  <a class="nav-menu-overlay-cta" href="tel:+17049743372">
+    <span>Call (704) 974-3372</span>
+  </a>
 </div>
 
 <main>
@@ -217,7 +275,7 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h2>Got it. Talk soon.</h2>
-          <p>I read every submission. Expect a reply within 24 hours at <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>. No autoresponder, no template — just me.</p>
+          <p>I read every submission. Expect a reply within 24 hours at <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>. No autoresponder, no template, just me.</p>
           <a href="/" class="cta-btn-primary">
             View Portfolio
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -374,7 +432,7 @@
       <aside class="contact-info-sidebar" id="contact-sidebar">
         <div class="contact-info-card">
           <h3>Prefer to reach out directly?</h3>
-          <p class="info-sub">Skip the form. Same inbox — every message gets read.</p>
+          <p class="info-sub">Skip the form. Same inbox, and every message gets read.</p>
           <div class="contact-info-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <div>
@@ -402,7 +460,7 @@
         <div>
           <h2>What happens after you reach out</h2>
           <div class="step-row"><span class="step-num">1</span><div><strong>You send the form.</strong> Name, what you need, timeline. I read every one.</div></div>
-          <div class="step-row"><span class="step-num">2</span><div><strong>I reply within 24 hours.</strong> Straightforward take on scope, timeline, and cost — no sales call, no pressure.</div></div>
+          <div class="step-row"><span class="step-num">2</span><div><strong>I reply within 24 hours.</strong> Straightforward take on scope, timeline, and cost. No sales call, no pressure.</div></div>
           <div class="step-row"><span class="step-num">3</span><div><strong>If it fits, we start.</strong> Custom design, copywriting, build. Most small business sites launch in 14 days.</div></div>
         </div>
         <div>
@@ -432,7 +490,7 @@
       </nav>
     </div>
     <div class="footer-bottom-row">
-      <span>&copy; 2025 Studio O'Brien</span>
+      <span>&copy; 2026 Studio O'Brien</span>
       <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
       </button>
@@ -600,6 +658,39 @@
     sidebar.style.display = 'none';
     wrap.classList.add('no-sidebar');
   }
+})();
+</script>
+<script>
+(function(){
+  /* Topbar background after scroll (sentinel observer) */
+  var topbar = document.querySelector('.topbar');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:9px;pointer-events:none';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function(entries){
+    topbar.classList.toggle('scrolled', !entries[0].isIntersecting);
+  }).observe(sentinel);
+
+  /* Mobile menu */
+  var menuToggle = document.getElementById('nav-menu-toggle');
+  var menuOverlay = document.getElementById('nav-menu-overlay');
+  function setMenu(open){
+    menuToggle.classList.toggle('is-open', open);
+    menuOverlay.classList.toggle('is-open', open);
+    document.body.classList.toggle('is-menu-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+  menuToggle.addEventListener('click', function(){
+    setMenu(!menuToggle.classList.contains('is-open'));
+  });
+  menuOverlay.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menuToggle.classList.contains('is-open')) setMenu(false);
+  });
 })();
 </script>
 </body>

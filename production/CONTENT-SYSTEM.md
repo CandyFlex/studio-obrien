@@ -152,11 +152,13 @@ as the skeleton. Non-negotiable parts:
    across all `blog/*.html` (both the no-url and homepage-url variants).
 3. ✅ `/about` + `/blog/editorial-standards` linked from the homepage footer
    (`index.html` + `index-v2.html`).
+4. ✅ **Self-host local images** (Stream D): the 24 hotlinked `upload.wikimedia.org`
+   images (94 refs across 30 blog files) downloaded, converted to webp, and
+   self-hosted under `blog/img/`. Fixed the Ahrefs 7/17 "broken image" 429 errors.
+   CC attribution links in figcaptions retained. `ARTICLE-SPEC.md` already forbids
+   new hotlinks.
 
 **Open:**
-4. **Self-host local images** (Stream D): 30 articles hotlink `upload.wikimedia.org`.
-   Replace with owned local photos under `blog/img/`; add the image-sourcing step
-   to `ARTICLE-SPEC.md`.
 5. **Site-wide voice cleanup** (Stream C): ~625 em dashes across the 40 root
    location/service pages still need the humanizer/SEO pass.
 

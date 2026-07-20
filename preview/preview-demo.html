@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview animation — isolated demo</title>
+<link rel="stylesheet" href="preview.css">
+<style>
+  :root{color-scheme:dark}
+  body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#101c17,#0a0a0b 60%);
+    font-family:'Inter',system-ui,sans-serif;color:#e6e6e8;
+    display:flex;flex-direction:column;align-items:center;gap:48px;padding:56px 24px 120px}
+  h1{font-weight:640;letter-spacing:-.02em;font-size:20px;margin:0}
+  p.note{color:#8a8a8c;font-size:13px;margin:0 0 8px;max-width:560px;text-align:center}
+  .row{display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap;justify-content:center;width:100%}
+  .col{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .cap{font-size:12px;color:#9a9a9c;letter-spacing:.02em}
+  /* Laptop frame (19:10) — mirrors .v5-laptop / .v5-screen */
+  .frame-laptop{width:min(760px,92vw);background:#1a1a1c;border:1px solid #2a2a2c;
+    border-radius:14px 14px 4px 4px;padding:14px;
+    box-shadow:0 60px 120px -50px rgba(0,0,0,.9),0 0 160px -30px rgba(52,211,153,.25)}
+  .screen-laptop{position:relative;aspect-ratio:19/10;border-radius:6px;overflow:hidden;background:#000}
+  .kbd{height:12px;margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c,#0e0e10);
+    border-radius:0 0 20px 20px}
+  /* Phone frame (9:19.5) — mirrors .v5-phone / .v5-phone-screen */
+  .frame-phone{width:220px;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:30px;padding:8px;
+    box-shadow:0 50px 90px -20px rgba(0,0,0,.85)}
+  .screen-phone{position:relative;aspect-ratio:9/19.5;border-radius:22px;overflow:hidden;background:#000}
+  /* toolbar */
+  .bar{display:flex;gap:10px;align-items:center}
+  button{background:#171717;color:#ccc;border:1px solid #2e2e30;border-radius:8px;
+    padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}
+  button:hover{border-color:#12b981;color:#fff}
+</style>
+</head>
+<body>
+  <h1>Website-preview animation · isolated demo</h1>
+  <p class="note">Coded (HTML/CSS/SVG) — vector, so it stays sharp at any size and never pixelates.
+  Left: desktop 19:10 with cursor (scroll → click → section change → drag highlight).
+  Right: mobile 9:19.5, no cursor (scroll → tap → page loads → tap → back-slide).</p>
+  <div class="bar">
+    <button onclick="document.querySelectorAll('.pv').forEach(function(p){p.classList.toggle('pv--paused')})">Play / Pause</button>
+    <button onclick="location.reload()">Restart loop</button>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="frame-laptop"><div class="screen-laptop"><div data-preview="desktop"></div></div></div>
+      <div class="kbd"></div>
+      <span class="cap">Desktop · .v5-screen (19:10)</span>
+    </div>
+    <div class="col">
+      <div class="frame-phone"><div class="screen-phone"><div data-preview="mobile"></div></div></div>
+      <span class="cap">Mobile · .v5-phone-screen (9:19.5)</span>
+    </div>
+  </div>
+  <script src="preview.js" defer></script>
+</body>
+</html>

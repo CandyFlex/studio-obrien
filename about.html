@@ -11,202 +11,127 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About Jarred O'Brien | Designer &amp; Developer | Studio O'Brien</title>
-<meta name="description" content="Jarred O'Brien is the founder of Studio O'Brien, a design and development studio in Shelby, NC. Top Rated, 4.9-star record, building for local businesses.">
+<title>About Jarred O'Brien | Web Designer in Shelby, NC | Studio O'Brien</title>
+<meta name="description" content="Jarred O'Brien founded Studio O'Brien in Shelby, NC to help local businesses get found online and turn that into real work. Custom sites, local SEO, no templates.">
 <link rel="canonical" href="https://studioobrien.com/about">
 <meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://studioobrien.com/about">
 <meta property="og:site_name" content="Studio O&#39;Brien">
-<meta property="og:title" content="About Jarred O'Brien | Studio O'Brien">
-<meta property="og:description" content="Founder of Studio O'Brien, a design and development studio in Shelby, NC. Top Rated work for local businesses, built to grow.">
+<meta property="og:title" content="About Jarred O'Brien | Web Designer in Shelby, NC">
+<meta property="og:description" content="Founder of Studio O'Brien, a design and development studio in Shelby, NC. Helping local businesses get found online and turn that into real work.">
 <meta property="og:image" content="https://studioobrien.com/portfolio/jarred.webp">
 <meta name="twitter:card" content="summary_large_image">
-
+<meta name="twitter:title" content="About Jarred O'Brien | Web Designer in Shelby, NC">
+<meta name="twitter:description" content="Founder of Studio O'Brien in Shelby, NC. Custom websites and local SEO for the businesses of Cleveland County and beyond.">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/jarred.webp">
 <link rel="stylesheet" href="/fonts.css">
-<link rel="stylesheet" href="/blog/blog.css?v=20260703">
 <style>
-  .prof-anchor{width:44px;height:2px;background:var(--g);display:block;margin-bottom:22px}
-  .prof-hero{max-width:1000px;margin:0 auto;padding:clamp(40px,6vw,72px) 20px clamp(28px,3vw,40px);display:grid;grid-template-columns:280px 1fr;gap:clamp(28px,4vw,56px);align-items:center}
-  .prof-portrait{position:relative;aspect-ratio:4/5;border:1px solid var(--b);overflow:hidden;background:linear-gradient(150deg,#1c1c1d,#0d2418)}
-  .prof-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-  .prof-head h1{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(32px,5.5vw,58px);line-height:1;letter-spacing:-.03em;margin:0 0 14px;text-wrap:balance}
-  .prof-head h1 em{font-style:italic;font-weight:500;color:var(--g)}
-  .prof-role{font-size:15px;color:var(--muted);margin:0 0 20px}
-  .prof-role strong{color:#cfcfcf;font-weight:600}
-  .prof-links{display:flex;flex-wrap:wrap;gap:10px}
-  .prof-links a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#cfcfcf;text-decoration:none;border:1px solid var(--b);padding:9px 15px;transition:color .2s,border-color .2s}
-  .prof-links a:hover{color:var(--g);border-color:var(--g)}
+  :root{--g:#34d399;--bg:#0a0a0b;--b:#26262a;--fg:#f4f5f6;--muted:#a8adb4}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.7}
+  a{color:inherit}
+  ::selection{background:rgba(52,211,153,.28);color:#fff}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-  .prof-facts{max-width:1000px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--b);border:1px solid var(--b)}
-  .prof-fact{background:var(--card);padding:22px 20px}
-  .prof-fact .n{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,3.5vw,34px);color:var(--g);line-height:1;margin-bottom:6px}
-  .prof-fact .l{font-size:13px;color:var(--muted);line-height:1.4}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-in{max-width:1100px;margin:0 auto;height:60px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:18px;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;white-space:nowrap}
+  .nav-logo::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:var(--g);transform:scaleX(.32);transform-origin:left;transition:transform .32s ease}
+  .nav-logo:hover::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:clamp(14px,2.2vw,24px)}
+  .nav-right a{font-size:13.5px;font-weight:500;color:#aeb3ba;text-decoration:none;transition:color .2s}
+  .nav-right a:hover{color:#fff}
+  .nav-cta{background:var(--g);color:#06231a!important;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px}
+  .nav-cta:hover{filter:brightness(1.08)}
+  @media(max-width:640px){.nav-right a:not(.nav-cta){display:none}}
 
-  .prof-body{max-width:720px;margin:0 auto;padding:clamp(36px,5vw,56px) 20px}
-  .prof-body h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,30px);letter-spacing:-.02em;margin:36px 0 14px;line-height:1.15}
-  .prof-body h2:first-child{margin-top:0}
-  .prof-body p{color:var(--muted);font-size:16px;line-height:1.75;margin:0 0 16px;max-width:65ch}
-  .prof-body p strong{color:#cfcfcf;font-weight:600}
-  .prof-body a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
-  .prof-body a:hover{border-bottom-color:var(--g)}
-  .prof-body ul{padding-left:20px;margin:0 0 16px}
-  .prof-body li{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:7px}
-  .prof-body li strong{color:#cfcfcf}
+  main{max-width:1000px;margin:0 auto;padding:clamp(48px,8vw,96px) 24px clamp(56px,8vw,96px);display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+  .photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center top;border:1px solid var(--b);display:block}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(30px,4.4vw,44px);letter-spacing:-.035em;line-height:1;margin-bottom:10px;text-wrap:balance}
+  .promise{font-family:'Inter Tight',sans-serif;font-weight:640;font-size:clamp(17px,2vw,21px);letter-spacing:-.02em;margin-bottom:24px}
+  .promise em{font-style:italic;font-weight:500;color:var(--g)}
+  p.body{font-size:15.5px;color:#c9cdd2;margin-bottom:16px;max-width:58ch;text-wrap:pretty}
+  p.body strong{color:#fff;font-weight:600}
+  p.body a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  p.body a:hover{border-bottom-color:var(--g)}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;font-weight:700;font-size:14.5px;text-decoration:none;padding:13px 24px;border-radius:6px;border:1px solid transparent}
+  .btn-p{background:var(--g);color:#06231a}
+  .btn-g{border-color:var(--b);color:var(--fg)}
+  .btn-g:hover{border-color:var(--g);color:var(--g)}
+  .note{font-size:13px;color:var(--muted);margin-top:14px}
 
-  .prof-links a.primary{background:var(--g);color:#0a0a0b;border-color:var(--g)}
-  .prof-links a.primary:hover{color:#0a0a0b;border-color:var(--g);filter:brightness(1.08)}
-
-  .prof-cta{margin:clamp(24px,4vw,40px) 0 8px;padding:clamp(28px,4vw,40px) clamp(24px,3vw,34px);border:1px solid var(--b);background:radial-gradient(130% 150% at 0% 0%,rgba(52,211,153,.09),transparent 62%)}
-  .prof-cta h2{margin-top:0 !important;margin-bottom:12px}
-  .prof-cta > p{margin-bottom:0;max-width:52ch}
-  .prof-cta-actions{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 16px}
-  .prof-cta-actions a{display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;text-decoration:none;padding:13px 24px;border:1px solid var(--b);border-radius:2px;transition:color .2s,border-color .2s,filter .2s}
-  .prof-cta-actions a.cta-primary{background:var(--g);color:#0a0a0b;border-color:var(--g)}
-  .prof-cta-actions a.cta-primary:hover{filter:brightness(1.08)}
-  .prof-cta-actions a.cta-secondary{color:#cfcfcf;background:transparent}
-  .prof-cta-actions a.cta-secondary:hover{color:var(--g);border-color:var(--g)}
-  .prof-cta-note{font-size:13px;color:var(--muted);margin:0 !important}
+  .foot{border-top:1px solid rgba(255,255,255,.05)}
+  .foot-in{max-width:1000px;margin:0 auto;padding:26px 24px;font-size:13px;color:var(--muted)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+  .foot-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .foot-links a:hover{color:var(--g)}
+  .foot-in p a{color:var(--muted);text-decoration:none}
+  .foot-in p a:hover{color:var(--g)}
 
   @media(max-width:680px){
-    .prof-cta-actions{flex-direction:column}
-    .prof-cta-actions a{width:100%}
-    .prof-hero{grid-template-columns:1fr;padding:32px 16px 24px;gap:24px}
-    .prof-portrait{max-width:220px}
-    .prof-facts,.prof-body{padding-left:16px;padding-right:16px}
+    main{grid-template-columns:1fr;gap:24px}
+    .photo{max-width:240px}
   }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Jarred O'Brien","url":"https://studioobrien.com/about","image":"https://studioobrien.com/portfolio/jarred.webp","jobTitle":"Web Designer & Developer","description":"Web designer and developer in Shelby, North Carolina, and founder of Studio O'Brien. Top Rated on Upwork with a 4.9-star rating over five years and more than $100,000 in completed work, now building custom websites for small businesses across western North Carolina. Author of The Field Guide.","knowsAbout":["Web Design","Web Development","Local SEO","Search Engine Optimization","Google Business Profile","Graphic Design","Illustration","Core Web Vitals","Website Accessibility","Conversion Optimization"],"worksFor":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com"},"sameAs":["https://linkedin.com/in/jarred-kern","https://github.com/CandyFlex"],"address":{"@type":"PostalAddress","addressLocality":"Shelby","addressRegion":"NC","addressCountry":"US"}}}
+{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Jarred O'Brien","url":"https://studioobrien.com/about","image":"https://studioobrien.com/portfolio/jarred.webp","jobTitle":"Web Designer & Developer","description":"Web designer and developer in Shelby, North Carolina, and founder of Studio O'Brien. Builds custom websites and local SEO for small businesses across western North Carolina. Author of The Field Guide.","knowsAbout":["Web Design","Web Development","Local SEO","Search Engine Optimization","Google Business Profile","Graphic Design","Branding","Core Web Vitals","Website Accessibility","Conversion Optimization"],"worksFor":{"@type":"Organization","name":"Studio O'Brien","url":"https://studioobrien.com"},"sameAs":["https://linkedin.com/in/jarred-kern","https://github.com/CandyFlex"],"address":{"@type":"PostalAddress","addressLocality":"Shelby","addressRegion":"NC","addressCountry":"US"}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Studio O'Brien","item":"https://studioobrien.com/"},{"@type":"ListItem","position":2,"name":"About Jarred O'Brien","item":"https://studioobrien.com/about"}]}
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you only work with businesses near Shelby, NC?","acceptedAnswer":{"@type":"Answer","text":"No. Most clients are in the five counties around Cleveland County, but Studio O'Brien builds for owners anywhere in the Carolinas and beyond. The towns in the portfolio just happen to be home."}},{"@type":"Question","name":"What does a website cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on how many pages you need and what the site has to do. You can get a no-email estimate from the website cost calculator in about a minute, or email the specifics for a real number."}},{"@type":"Question","name":"Do you do more than websites?","acceptedAnswer":{"@type":"Answer","text":"Yes. Alongside websites, Studio O'Brien handles SEO, brand and graphic design, and the technical groundwork that keeps a site ranking and running. Design and SEO were both a large part of Jarred's freelance years."}},{"@type":"Question","name":"Can you fix or rebuild my existing website?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. If the bones are good, a redesign is cheaper than a full rebuild. If they are not, Jarred will tell you that too."}}]}
-</script>
-<style>
-/* unified nav + grid overlay (location batch) */
-body{position:relative;z-index:0}
-.topbar{background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-.topbar-inner{max-width:1100px;padding:0 clamp(16px,3vw,32px);height:60px}
-.topbar-logo{font-family:'Inter',sans-serif;font-weight:720;font-size:18px;color:#fff;letter-spacing:-.03em;position:relative}
-.topbar-logo::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--g);transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
-.topbar-logo:hover::after{transform:scaleX(1) rotate(-1.5deg)}
-.topbar-links{gap:clamp(16px,2.4vw,26px)}
-.topbar-link{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#a8a8a8;position:relative;transition:color .2s}
-.topbar-link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-.topbar-link:hover{color:#fff}
-.topbar-link:hover::after{transform:scaleX(1)}
-.topbar-link[href="/contact"]{background:#fff;color:#0a0a0b;font-weight:600;font-size:11px;padding:8px 14px;border-radius:999px;overflow:hidden;transition:background .3s,color .3s}
-.topbar-link[href="/contact"]::after{display:none}
-.topbar-link[href="/contact"]:hover{color:#0a0a0b;background:var(--g)}
-</style>
 </head>
 <body>
 
-<nav class="topbar" aria-label="Site navigation">
-  <div class="topbar-inner">
-    <a href="/" class="topbar-logo">Studio O'Brien</a>
-    <div class="topbar-links">
-      <a href="/blog" class="topbar-link">Blog</a>
-      <a href="/#portfolio" class="topbar-link">View Work</a>
-      <a href="/about" class="topbar-link">About</a>
-      <a href="/contact" class="topbar-link">Start a Website</a>
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">Studio O'Brien</a>
+    <div class="nav-right">
+      <a href="/blog">Blog</a>
+      <a href="/#portfolio">View Work</a>
+      <a href="/about" aria-current="page">About</a>
+      <a href="/contact" class="nav-cta">Start a Website</a>
     </div>
   </div>
 </nav>
 
-<header class="prof-hero">
-  <div class="prof-portrait">
-    <img src="/portfolio/jarred.webp" width="800" height="1000" alt="Jarred O'Brien, founder of Studio O'Brien, Shelby NC" loading="eager">
+<main>
+  <div class="photo">
+    <img src="/portfolio/jarred.webp" width="800" height="1000" alt="Jarred O'Brien, founder of Studio O'Brien, Shelby NC" loading="eager" fetchpriority="high">
   </div>
-  <div class="prof-head">
-    <span class="prof-anchor" aria-hidden="true"></span>
-    <h1>Jarred <em>O'Brien</em></h1>
-    <p class="prof-role">Founder of Studio O'Brien, a design &amp; development studio in Shelby, North Carolina. I help local businesses build <strong>websites that bring in real work</strong>.</p>
-    <div class="prof-links">
-      <a href="/contact" class="primary">Start a project</a>
-      <a href="/#portfolio">See the work</a>
-      <a href="mailto:hello@studioobrien.com">Email me</a>
-      <a href="https://linkedin.com/in/jarred-kern" target="_blank" rel="noopener me">LinkedIn</a>
+  <div>
+    <h1>Jarred O'Brien</h1>
+    <p class="promise">You run your business. <em>I'll keep it visible.</em></p>
+    <p class="body">Somewhere along the way, keeping a business visible online turned into a second full-time job. Nobody warned anybody, and nobody's hiring for it. That's the job you hand me. I'm Jarred, founder of Studio O'Brien in <strong>Shelby, North Carolina</strong>, and closing that gap for the businesses around here is the whole reason I came home.</p>
+    <p class="body">What that looks like day to day: custom websites, <a href="/seo-services">local SEO</a>, and branding for the restaurants, trades, shops, and practices of <a href="/shelby-nc-web-design">Cleveland County</a> and beyond. Hand-coded, no templates, and when your site ships, it's <strong>yours</strong>: code, content, domain, everything.</p>
+    <p class="body">You don't have to take my word for any of it. <a href="/#portfolio">The work</a> speaks for itself, and <a href="/blog">The Field Guide</a> is where I share what I know, sources and all.</p>
+    <div class="btns">
+      <a href="/contact" class="btn btn-p">Start a project</a>
+      <a href="/website-cost-calculator" class="btn btn-g">Get a free estimate</a>
     </div>
-  </div>
-</header>
-
-<div class="prof-facts">
-  <div class="prof-fact"><div class="n">4.9&#9733;</div><div class="l">Top Rated on Upwork, five years running</div></div>
-  <div class="prof-fact"><div class="n">$100K+</div><div class="l">in completed client work</div></div>
-  <div class="prof-fact"><div class="n">5 counties</div><div class="l">Cleveland, Gaston, Lincoln, Rutherford, Catawba</div></div>
-  <div class="prof-fact"><div class="n">Shelby, NC</div><div class="l">home, and where I'm building the studio</div></div>
-</div>
-
-<main class="prof-body">
-  <h2>Coming home to build</h2>
-  <p>I'm Jarred O'Brien, and I've come home to <a href="/shelby-nc-web-design">Shelby</a> to build a studio worth my family's name. After years of design and development work for clients across the country, I moved back to Cleveland County to plant Studio O'Brien right here and build for the businesses around me.</p>
-  <p>I'm not new to this. I spent five years as a Top Rated designer and developer on Upwork, holding a 4.9-star rating and delivering more than $100,000 in work across custom websites, brand and graphic design, illustration, and SEO for all kinds of businesses. That's the range of a full agency, held to the standard of someone who has done it at a high level for years. What is new is where I am pointing it: at my own community.</p>
-  <p>Studio O'Brien is founder-led and built to grow. The plan is to make it the studio this region reaches for, adding to the team and the work as we go, and reinvesting in the area the whole way. You are not hiring a hobby. You are hiring a studio that intends to be here for the long run.</p>
-
-  <h2>The standard behind every project</h2>
-  <p>Every project the studio takes on is built to a professional standard, from the first plan to the day it launches. I have delivered for demanding clients who expected agency-quality work, and local businesses get held to exactly that bar. Nothing gets phoned in because a project is small or close to home.</p>
-  <p>We build in real code rather than on a page-builder platform, and that choice is for your benefit more than ours. It keeps your site fast, keeps it yours, and keeps it flexible enough to grow alongside your business. No monthly platform rent, no template shared with thousands of other companies, no forced rebuild the week a plugin stops working.</p>
-  <p>Just as important, I try to make the whole process easy on you. A lot of owners arrive a little worn out by past web experiences and unsure what they even need. Figuring that out with you, then carrying the technical weight so you do not have to, is the part of this work I care about most.</p>
-
-  <h2>What the studio does</h2>
-  <p>Studio O'Brien covers the whole picture, the way an agency would, without the agency overhead:</p>
-  <ul>
-    <li><strong>Web design and development:</strong> fast, custom-built, mobile-first sites, and redesigns that turn visitors into calls.</li>
-    <li><strong>Local SEO and Google Business Profile:</strong> getting you found in the map results, even in a competitive small market.</li>
-    <li><strong>Brand and graphic design:</strong> logos, visual identity, and the details that make a business look as established as it is.</li>
-    <li><strong>Technical SEO and accessibility:</strong> migrations, structured data, page speed, and ADA/WCAG done properly.</li>
-  </ul>
-
-  <h2>Who we build for</h2>
-  <p>The studio does its best work for ambitious local businesses. Restaurants, shops, trades, studios, and professional practices that are ready to look as good online as they already are in person. If you take your business seriously, we will get along.</p>
-  <p>I will also be straight with you about fit, because it saves us both time. If you want the cheapest possible template or a build run by committee, there are better matches out there. But if you want work that raises how your business is seen, and a partner who tells you the truth, that is exactly what Studio O'Brien is for.</p>
-
-  <h2>What you walk away with</h2>
-  <p>When your project ships, it is yours. All of it: the code, the content, the domain, the accounts. Studio O'Brien does not lock your website inside a platform only we can log into, and there is no subscription that quietly disables your design the month you stop paying. If you ever move on, you take everything with you. I wrote a <a href="/blog/who-owns-your-website-domain-source-code">full breakdown of what owning your website actually means</a>, because too many owners learn the hard way that they never really did.</p>
-
-  <h2>Why I write The Field Guide</h2>
-  <p>Most small-business web advice is either vague agency filler or SEO copy written to rank instead of help. I started <a href="/blog">The Field Guide</a> because the owners I work with kept asking the same good questions. <em>Does my Google profile really matter? Is my slow site quietly costing me sales? Are these ADA lawsuit emails real?</em> They deserved straight answers with the numbers to back them up.</p>
-  <p>So every article starts from a real question and leans on cited data. When I tell you Google Business Profile signals drive about a third of your local ranking, there is a source on that number. When it is my own read rather than a study, I say so. You can see exactly how each piece gets researched and checked on the <a href="/blog/editorial-standards">editorial standards</a> page, and browse everything by topic in the <a href="/blog/clusters">content clusters index</a>.</p>
-
-  <h2>Common questions</h2>
-  <ul>
-    <li><strong>Do you only work with businesses near Shelby?</strong> No. Studio O'Brien is rooted in Cleveland County and the five surrounding counties, but the work ships anywhere. The towns in the portfolio just happen to be home.</li>
-    <li><strong>What does a website cost?</strong> It depends on how many pages you need and what the site has to do. You can get a no-email estimate from the <a href="/website-cost-calculator">cost calculator</a> in about a minute, or send over the specifics and we'll give you a real number.</li>
-    <li><strong>Do you do more than websites?</strong> Yes. Alongside websites, the studio handles SEO, brand and graphic design, and the technical groundwork that keeps a site ranking and running. Design and SEO were both a large part of my freelance years. See <a href="/seo-services">SEO services</a>.</li>
-    <li><strong>Can you fix or rebuild my existing site?</strong> Often, yes. If the bones are good, a redesign is cheaper than a full rebuild. If they are not, we'll tell you that too. Here is <a href="/blog/website-redesign-roi-small-business">what a redesign actually returns</a>.</li>
-  </ul>
-
-  <div class="prof-cta">
-    <h2>Ready to build something that works?</h2>
-    <p>Tell me about your business and what you need. As founder, I read every message myself, and you will hear back within a day.</p>
-    <div class="prof-cta-actions">
-      <a href="/contact" class="cta-primary">Start a project</a>
-      <a href="/website-cost-calculator" class="cta-secondary">Get a free estimate</a>
-    </div>
-    <p class="prof-cta-note">No email wall on the estimate, and no pressure. Just a real conversation about your website.</p>
+    <p class="note">No email wall on the estimate, and no pressure. I read every message myself, and you'll hear back within a day.</p>
   </div>
 </main>
 
-<footer>
-  <p><strong>Studio O'Brien</strong> &middot; Web design &amp; development for Shelby, NC</p>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/blog">Blog</a>
-    <a href="/blog/editorial-standards">Editorial Standards</a>
-    <a href="/contact">Start a Website</a>
-    <a href="/website-cost-calculator">Cost Calculator</a>
-    <a href="/seo-services">SEO Services</a>
-    <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/blog/editorial-standards">Editorial Standards</a>
+      <a href="/contact">Start a Website</a>
+      <a href="/website-cost-calculator">Cost Calculator</a>
+      <a href="/seo-services">SEO Services</a>
+      <a href="/shelby-nc-web-design">Web Design Shelby NC</a>
+    </div>
+    <p>&copy; 2026 Studio O'Brien &middot; Web design &amp; development for Shelby, NC &middot; <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
   </div>
-  <p style="margin-top:12px"><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></p>
-  <p>&copy; 2026 <a href="/">Studio O'Brien</a></p>
 </footer>
 
 </body>

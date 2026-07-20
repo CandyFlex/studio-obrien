@@ -1,0 +1,202 @@
+[
+  {
+    "id": "creekside-clock-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 241, "rating": 3.8 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Home-cooking seafood/steak diner, 1025 Kiser St. Only web presence is a Toast online-ordering page (order.toasttab.com/online/creek-side) + FB - no business-owned site. Est 2001, current owners since 2004 (name not surfaced). Restaurantji 241 reviews; TripAdvisor 3.7 / OverlookMaps 3.8. Fri seafood buffet."
+  },
+  {
+    "id": "alston-bridges-barbecue-shelby",
+    "exists": true,
+    "realWebsite": "https://alstonbridgesbbq.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Shelby BBQ institution since 1955, NC BBQ Hall of Fame. Real site EXISTS but is a dated GoDaddy-builder template (basic, menu content not shown, active vacation notice = managed). Family-run (Bridges family); current owner name not confirmed. FB + IG + TikTok linked. High notability/longevity = HIGH capacity signal."
+  },
+  {
+    "id": "the-honey-hog-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 371, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Farm-to-table BBQ in renovated farmhouse, whole-hog daily + weekend brisket/ribs. FB-only (HoneyHogBBQ); the-honey-hog.edan.io is an auto-generated microsite (labeled 'Johnny Rays Smokehouse'), NOT a real site. Strong review mass: Restaurantji 371, Yelp 65."
+  },
+  {
+    "id": "27-west-family-restaurant-vale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 125, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Diner w/ drive-thru, 5525 NC-27, 'best kept secret in W Lincoln County'. FB-only (27west.fam.rest); other hits are auto-gen directory pages. Restaurantji 125 reviews; TripAdvisor 5.0 (small sample). Owner name not surfaced."
+  },
+  {
+    "id": "el-michoacan-mexican-restaurant-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 54, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Mexican, 107 W Main St. FB-only + order.online ordering, no business-owned site. Related sister location 'The Soul of Michoacan' at 2270 College Ave (separate GBP). Yelp 54 reviews; TripAdvisor 4.5, #10 of 47 Forest City."
+  },
+  {
+    "id": "the-whistle-stop-bakery-farm-store-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Scratch bakery + farm store (breads/cakes, pasture pork/goat, produce), 158 N Main St. Registered as Whistle-Stop Bakery Inc. FB-only (whistlestopbakeryandfarmstore) + UberEats/Postmates; no business-owned site. Listed on VisitNCSmallTowns. Review count not clearly findable."
+  },
+  {
+    "id": "waynes-lunch-box-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 95, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Sandwich/lunch spot + catering, 391 E Main St, limited hours (M-Th 11-2). FB-only (Waynes-Lunch-Box); other hits auto-gen directories. Restaurantji ~95 reviews, 98% recommend. Owner (Wayne) name not confirmed."
+  },
+  {
+    "id": "barnes-tire-forest-city",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Likely CLOSED - loc8nearme lists Barnes Tire at 846 W Main St, Forest City as CLOSED; searches point users to alternatives (Barry's Tire, Brandon's James Forest City Tire). Google permanently-closed flag not directly confirmed. No website."
+  },
+  {
+    "id": "cane-creek-mufflers-used-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 37, "rating": 4.9 },
+    "owner": { "name": "Roy Yelton" },
+    "gbpClosed": null,
+    "notes": "Muffler/exhaust + used cars, Ed Thomson Rd (BBB also lists Union Mills / US-64). Owner Roy Yelton. No business-owned site (directory listings only). Birdeye 4.9 / 37 reviews."
+  },
+  {
+    "id": "charles-yelton-garage-union-mills",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Charlie Yelton" },
+    "gbpClosed": null,
+    "notes": "General auto/trailer/steering repair, 5267 US-64, Union Mills. Contact 'Charlie Yelton'. Founder George Charles Yelton (1941-2021) deceased; garage still listed active (Yelp updated Jul 2026) - verify still operating. No website."
+  },
+  {
+    "id": "edge-express-car-wash-shelby",
+    "exists": true,
+    "realWebsite": "https://www.edgeexpresscarwash.com/shelby-north-carolina-location/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": 81, "rating": 4.6 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "P12 DISQUALIFIER - CHAIN. Charlotte-based Edge Express Car Wash w/ corporate site and dedicated location pages; TWO Shelby tunnels (925 & 1696 E Dixon Blvd). Corporate-controlled web = not closeable. 4.6 / 81 reviews. Drop at sourcing."
+  },
+  {
+    "id": "dixie-tire-diesel-inc-shelby",
+    "exists": true,
+    "realWebsite": "https://mainstreetauto.com/location/dixie-automotive/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": { "name": "Curtis Hamrick" },
+    "gbpClosed": null,
+    "notes": "P12 DISQUALIFIER - now 'Dixie Tire & Diesel, a Main Street Auto shop': acquired by the Main Street Auto group, web is corporate (mainstreetauto.com/location/dixie-automotive). Goodyear tire/heavy-truck service, 2722 Polkville Rd. Former owner Curtis Hamrick (BBB). Group-controlled web = drop."
+  },
+  {
+    "id": "white-tire-center-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 154, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Independent tire/inspection/alignment shop, 5715 Fallston Rd. whitetirecenters.com is a SEPARATE 5-location chain (Hickory x2 / Lenoir / Newton / Salisbury) that does NOT list Lawndale - so this shop appears to have no site of its own. Strong revenue proxy: 4.8 / 154 reviews. Bridgestone dealer."
+  },
+  {
+    "id": "gingers-gardens-pond-center-lawndale",
+    "exists": true,
+    "realWebsite": "https://gingersgardens.webs.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Garden/nursery + pond center, 5164 Fallston Rd. Real site EXISTS but on the free webs.com builder (dated/weak, not mobile-modern). Two FB pages (GingersGardens + Gingers-Garden-Pond-Center). Owner (Ginger) name not confirmed. Review count not findable."
+  },
+  {
+    "id": "hendren-racing-engines-inc-rutherfordton",
+    "exists": true,
+    "realWebsite": "http://www.hendrensracingengines.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": { "name": "Bettie, Steve & Mike Hendren" },
+    "gbpClosed": null,
+    "notes": "National racing notoriety - premier US GM crate-engine rebuilder (GM 604/602/CT525), 1310 US-221 N. Founded 1976 by Bill & Bettie Hendren; now run by Bettie w/ sons Steve & Mike. Real site EXISTS but is an old-style builder (individual .html page URLs; server didn't respond on fetch = likely dated/unmaintained). HIGH capacity signal (49 yrs, notability)."
+  },
+  {
+    "id": "it-s-brake-time-auto-care-polkville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Brake/auto-care shop. Address actually 4704 Peyton Pl, SHELBY (not Polkville per OSM). FB-only (FB page ~2022, newer business); Yelp/loc8nearme listings. No website. Review count not clearly findable."
+  },
+  {
+    "id": "watts-automotive-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "CAUTION on identity: wattsautomotive.com is an UNRELATED Utah lifted-truck dealer, NOT this shop. Shelby 'Watts Automotive' at 4010 Polkville Rd (LinkedIn: motor-vehicle mfg, 2-10 emp). Possibly related to 'Watts Perfections' (704-538-9990, 2617 Royster Rd) / 'Watts Auto & Customs' (IG @wattsauto). No confirmed business-owned site for the Shelby entity; owner unconfirmed."
+  },
+  {
+    "id": "phillips-aluminum-co-inc-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Richard Calvin Phillips" },
+    "gbpClosed": null,
+    "notes": "Aluminum awnings/canopies/fascia manufacturer (NOT auto), 3032 Polkville Rd. Owner Richard Calvin Phillips. ~48 yrs, ~17 employees, A+ BBB, holds a NC Building license. Directory listings only, no business-owned site. B2B/industrial = weak fit for the studio's consumer-site plays."
+  },
+  {
+    "id": "shelby-transmission-specialist-llc-shelby",
+    "exists": true,
+    "realWebsite": "https://shelbytransmissionspecialistllc.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 69, "rating": 4.4 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Transmission repair, 734 Nalley Dr. Real site EXISTS but is a dated vendor template (footer credits 'American Marketing & Publishing, L.L.C.'; multiple parallel domains). No owner named on site; SoS officer not retrieved. LLC formed 2017, ~39 yrs in business. Birdeye 4.4 / 69 reviews."
+  },
+  {
+    "id": "wills-auto-electric-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 57, "rating": 4.8 },
+    "owner": { "name": "Tommy Willis" },
+    "gbpClosed": null,
+    "notes": "Correct name is 'WILLIS Auto Electric Inc' (not Wills), 1012 S Morgan St. Owner Tommy Willis. Alternator/generator + auto repair specialist since 1961, 4 emp. willis-auto-electric.edan.io is an auto-gen microsite, NOT a real site. Birdeye 4.8 / 57 reviews."
+  }
+]

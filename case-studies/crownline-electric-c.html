@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- CONCEPT C — "Storyboard"
+     Cinematic full-bleed split panels: big numbered chapters, one crop per
+     panel, few words set large. Persistent bottom claim bar. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept C: Storyboard | Crownline Case Study</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090909">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip;padding-bottom:64px}
+
+/* slim top */
+.top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,3vw,44px);z-index:10}
+.top a{color:#fff;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:-.02em}
+.top span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a}
+
+/* hero: title over laptop */
+.hero{position:relative;padding:clamp(84px,9vw,140px) clamp(20px,3vw,44px) clamp(56px,7vw,110px);text-align:center;background:radial-gradient(ellipse at 50% -10%,rgba(52,211,153,.14),transparent 55%)}
+.hero .pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#34d399;border:1px solid rgba(52,211,153,.35);padding:7px 16px;border-radius:999px;margin-bottom:22px}
+.hero .pill i{width:6px;height:6px;border-radius:50%;background:#34d399}
+.hero h1{font-weight:700;font-size:clamp(42px,7.4vw,104px);letter-spacing:-.045em;line-height:.98;margin:0 auto 18px;max-width:12ch}
+.hero h1 b{color:#34d399}
+.hero>p{color:#a8a8a8;font-size:clamp(14.5px,1.35vw,18px);line-height:1.6;max-width:56ch;margin:0 auto clamp(36px,4.5vw,60px)}
+.hero>p b{color:#fff}
+.stage{position:relative;max-width:1150px;margin:0 auto;--pw:clamp(64px,9vw,160px)}
+.lap{position:relative;background:#19191b;border:1px solid #2a2a2c;border-radius:clamp(8px,1vw,14px) clamp(8px,1vw,14px) 4px 4px;padding:clamp(8px,1vw,14px);box-shadow:0 60px 140px -40px rgba(0,0,0,.95),0 0 200px -30px rgba(52,211,153,.3)}
+.scr{position:relative;aspect-ratio:19/10;border-radius:4px;overflow:hidden;background:#000}
+.reel{position:absolute;inset:0;overflow:hidden;contain:paint;clip-path:inset(0)}
+.reel-t{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:reel 110s linear infinite}
+.reel-t img{width:100%;height:auto;display:block}
+@keyframes reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-50%,0)}}
+@media(prefers-reduced-motion:reduce){.reel-t{animation:none}}
+.kb{height:clamp(8px,.9vw,12px);margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c,#0e0e10);border-radius:0 0 16px 16px}
+.ph{position:absolute;right:-12px;bottom:calc(var(--pw) * -.32);width:var(--pw);aspect-ratio:9/19.5;background:#19191b;border:1px solid #2a2a2c;border-radius:calc(var(--pw) * .14);padding:calc(var(--pw) * .04);box-shadow:0 40px 90px -20px rgba(0,0,0,.9);z-index:3}
+.ph-s{position:relative;width:100%;height:100%;border-radius:calc(var(--pw) * .1);overflow:hidden;background:#000}
+.hero .facts{display:flex;justify-content:center;gap:clamp(24px,4vw,64px);flex-wrap:wrap;margin-top:calc(clamp(64px,9vw,160px) * .42)}
+.hero .facts div b{display:block;font-size:clamp(15px,1.4vw,18px);font-weight:700}
+.hero .facts div span{font-size:11.5px;color:#888}
+
+/* chapters */
+.chap{display:grid;grid-template-columns:1fr 1fr;min-height:min(78vh,760px);border-top:1px solid #1d1d1e}
+.chap-media{position:relative;overflow:hidden;background:#101011;min-height:340px}
+.chap-media img{position:absolute;top:0;width:150%;height:auto}
+.chap-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:clamp(40px,5vw,88px)}
+.chap.flip .chap-media{order:2}
+.chap.flip .chap-copy{order:1}
+.chap-num{font-weight:700;font-size:clamp(60px,7vw,110px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(52,211,153,.55);letter-spacing:-.04em}
+.chap-kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#34d399}
+.chap h2{font-weight:700;font-size:clamp(26px,3.2vw,46px);letter-spacing:-.03em;line-height:1.05;max-width:16ch}
+.chap p{color:#a8a8a8;font-size:clamp(14px,1.25vw,16.5px);line-height:1.6;max-width:44ch}
+.chap p b{color:#fff}
+.chap ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.chap li{position:relative;padding-left:22px;font-size:13.5px;line-height:1.5;color:#c9c9c9}
+.chap li::before{content:'';position:absolute;left:0;top:7px;width:10px;height:2px;background:#34d399}
+@media(max-width:859.98px){
+  .chap,.chap.flip{grid-template-columns:1fr;min-height:0}
+  .chap.flip .chap-media{order:1}
+  .chap.flip .chap-copy{order:2}
+  .chap-media{min-height:0;aspect-ratio:4/3}
+  .chap-copy{padding:32px 22px 48px}
+}
+
+/* week strip */
+.week{border-top:1px solid #1d1d1e;padding:clamp(56px,7vw,96px) clamp(20px,3vw,44px);text-align:center}
+.week h2{font-weight:700;font-size:clamp(26px,3.4vw,48px);letter-spacing:-.03em;margin-bottom:clamp(28px,3.5vw,44px)}
+.week h2 b{color:#34d399}
+.week-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1d1d1e;border:1px solid #1d1d1e;max-width:1000px;margin:0 auto}
+.wk{background:#0e0e0f;padding:clamp(20px,2.4vw,32px) 18px}
+.wk i{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34d399;margin-bottom:10px}
+.wk b{display:block;font-size:clamp(15px,1.5vw,19px);font-weight:700;margin-bottom:6px}
+.wk p{font-size:12.5px;line-height:1.5;color:#9a9a9a}
+@media(max-width:759.98px){.week-row{grid-template-columns:1fr 1fr}}
+
+/* final */
+.final{border-top:1px solid #1d1d1e;padding:clamp(64px,8vw,120px) 24px;text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(52,211,153,.12),transparent 60%)}
+.final h2{font-weight:700;font-size:clamp(34px,5.6vw,76px);letter-spacing:-.04em;line-height:1;margin-bottom:16px}
+.final h2 b{color:#34d399}
+.final p{color:#a8a8a8;font-size:clamp(14.5px,1.35vw,17px);max-width:50ch;margin:0 auto 30px;line-height:1.6}
+.btn{display:inline-block;background:#34d399;color:#06130d;font-weight:700;font-size:15px;padding:17px 36px;border-radius:999px;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:#2ec48d;transform:translateY(-1px)}
+.final .call{color:#34d399;text-decoration:none;font-weight:700;margin-left:16px}
+footer{border-top:1px solid #1c1c1d;padding:22px;text-align:center;color:#666;font-size:12px}
+footer a{color:#a8a8a8;text-decoration:none}
+
+/* persistent claim bar */
+.claimbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 16px;background:rgba(9,9,9,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid #222}
+.claimbar p{font-size:13px;color:#c9c9c9}
+.claimbar p b{color:#fff}
+.claimbar .btn{font-size:12.5px;padding:10px 22px}
+@media(max-width:599.98px){.claimbar p span{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a href="/">STUDIO O&rsquo;BRIEN</a>
+  <span>Case Study &middot; Electrical</span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="pill"><i></i>Finished build &middot; Available to claim</span>
+  <h1>Built to turn searches into <b>service calls</b>.</h1>
+  <p><b>Crownline Electric</b> is a complete website we designed and coded for the electrical trade before anyone asked. Scroll the story: each chapter shows a screen and the reason it earns the call.</p>
+  <div class="stage">
+    <div class="lap">
+      <div class="scr">
+        <div class="reel" aria-hidden="true"><div class="reel-t">
+          <img src="/portfolio/crownline-reel.webp" alt="" width="1440" height="8373">
+          <img src="/portfolio/crownline-reel.webp" alt="" width="1440" height="8373">
+        </div></div>
+      </div>
+    </div>
+    <div class="kb"></div>
+    <div class="ph"><div class="ph-s">
+      <div class="reel" aria-hidden="true"><div class="reel-t" style="animation-duration:210s">
+        <img src="/portfolio/crownline-reel-mobile.webp" alt="" width="470" height="15879">
+        <img src="/portfolio/crownline-reel-mobile.webp" alt="" width="470" height="15879">
+      </div></div>
+    </div></div>
+  </div>
+  <div class="facts">
+    <div><b>Full site</b><span>design + build</span></div>
+    <div><b>Hand-coded</b><span>no theme, no builder</span></div>
+    <div><b>Yours outright</b><span>no platform lock-in</span></div>
+    <div><b>~1 week</b><span>adapted to your business</span></div>
+  </div>
+</header>
+
+<!-- CH 01 -->
+<section class="chap">
+  <div class="chap-media">
+    <img src="/portfolio/crownline-reel.webp" alt="Crownline first screen" style="margin-top:-6.25%;left:0" loading="lazy">
+  </div>
+  <div class="chap-copy">
+    <span class="chap-num">01</span>
+    <span class="chap-kick">The first screen</span>
+    <h2>Five words and two buttons.</h2>
+    <p>&ldquo;Power problems fixed fast.&rdquo; Licensing in a badge, warranty on a shield, and a 4.9-star Google card, all before one scroll.</p>
+    <ul>
+      <li><b>Call Us Now</b> for the outage at 9pm</li>
+      <li><b>Book Appointment</b> for the planned panel upgrade</li>
+      <li>Google reviews carry the trust, not self-praise</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CH 02 -->
+<section class="chap flip">
+  <div class="chap-media">
+    <img src="/portfolio/crownline-reel.webp" alt="Crownline completed projects" style="margin-top:-331.25%;left:0" loading="lazy">
+  </div>
+  <div class="chap-copy">
+    <span class="chap-num">02</span>
+    <span class="chap-kick">Proof of work</span>
+    <h2>Real jobs, real towns, real names.</h2>
+    <p>Every project is titled like a search: &ldquo;200-Amp panel upgrade in Davidson, NC.&rdquo; That one habit ranks on Google and reassures humans in the same stroke.</p>
+    <ul>
+      <li>Town tags let visitors find their own neighborhood</li>
+      <li>Customer names make the grid verifiable</li>
+      <li>Booking CTA sits beside the proof</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CH 03 -->
+<section class="chap">
+  <div class="chap-media">
+    <img src="/portfolio/crownline-reel.webp" alt="Crownline stats and reviews" style="width:100%;margin-top:-391.8%;left:0" loading="lazy">
+  </div>
+  <div class="chap-copy">
+    <span class="chap-num">03</span>
+    <span class="chap-kick">The trust stack</span>
+    <h2>Numbers first, then voices.</h2>
+    <p>A stat band a homeowner can compare, followed by a wall of named, specific reviews. Nothing vague survives on this page.</p>
+    <ul>
+      <li>Customers served, staff size, 24/7 availability</li>
+      <li>Reviews mention actual jobs, not just &ldquo;great service&rdquo;</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CH 04 -->
+<section class="chap flip">
+  <div class="chap-media">
+    <img src="/portfolio/crownline-reel.webp" alt="Crownline FAQ section" style="margin-top:-720.84%;left:-25%" loading="lazy">
+  </div>
+  <div class="chap-copy">
+    <span class="chap-num">04</span>
+    <span class="chap-kick">Objections, closed</span>
+    <h2>The sales call, answered in advance.</h2>
+    <p>Licensing, upfront pricing, emergencies, warranty. Six questions people actually ask, plus a catch-all that points the undecided to the phone.</p>
+    <ul>
+      <li>FAQ copy doubles as long-tail search content</li>
+      <li>&ldquo;Have a different question?&rdquo; ends every dead end</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WEEK -->
+<section class="week">
+  <h2>Claimed to launched in <b>about a week</b>.</h2>
+  <div class="week-row">
+    <div class="wk"><i>Day 1</i><b>The call</b><p>Your services, your area, your photos, your name.</p></div>
+    <div class="wk"><i>Days 2 to 4</i><b>The rebuild</b><p>Brand, copy, photos, and reviews swapped to yours.</p></div>
+    <div class="wk"><i>Days 5 to 6</i><b>Your review</b><p>You walk it on your phone; we adjust until it&rsquo;s right.</p></div>
+    <div class="wk"><i>Day 7</i><b>Launch</b><p>Your domain, your site, owned outright.</p></div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <h2>Nominated? <b>Claim it.</b></h2>
+  <p>This build is finished, and it can be carrying your name, your brand, and your reviews by this time next week.</p>
+  <a class="btn" href="/contact">Claim This Build</a><a class="call" href="tel:+17049743372">(704) 974-3372</a>
+</section>
+
+<footer>&copy; 2026 <a href="/">Studio O&rsquo;Brien</a> &middot; Shelby, NC &middot; Free consultation, no obligation</footer>
+
+<div class="claimbar">
+  <p><b>Crownline Electric</b><span> &middot; finished build &middot; adapted to your business in about a week</span></p>
+  <a class="btn" href="/contact">Claim This Build</a>
+</div>
+
+</body>
+</html>

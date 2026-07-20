@@ -1,0 +1,202 @@
+[
+  {
+    "id": "doggett-heat-and-air-bostic",
+    "exists": true,
+    "realWebsite": "https://doggettheatandair.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": { "name": "Christopher Doggett" },
+    "gbpClosed": null,
+    "notes": "Doggett Heating & Air LLC, Bostic; president Christopher Doggett (est. 2016); active FB @doggetthvac; BBB-listed. Website is a dated static .htm site but domain doggettheatandair.com did NOT resolve on 2026-07 check (possibly lapsed) - verify before using."
+  },
+  {
+    "id": "rutherford-heating-air-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.rutherfordheatingandair.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": { "name": "Eric Andrew Fensterer" },
+    "gbpClosed": null,
+    "notes": "Rutherford Heating & Air Conditioning; HQ 300 Spindale Plaza Dr, Spindale (OSM 'Forest City' is service-area/branch). Owner Eric A. Fensterer. Site is dated (mid-2010s) but responsive, no agency footer. Carrier dealer."
+  },
+  {
+    "id": "young-and-alexander-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "HVAC + electrical contractor actually at 159 N Washington St, Rutherfordton (NOT Forest City), phone 828-287-3421. Only directory listings, no website. Harold Alexander (obituary Sep 2022, Rutherfordton) may be a principal - unconfirmed. Distinct from 'Alexander Services' of Holly Springs."
+  },
+  {
+    "id": "forest-city-heating-air-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.forestcityheating.com/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": null, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-owned since 1972, Trane Comfort Specialist; NC lic #22692, SC #CLM.113231. Modern professional site, no agency footer. Rating 4.8 on Angi (Google count not found). Good current site = low web gap."
+  },
+  {
+    "id": "italian-garden-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 842, "rating": 4.1 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "105 N Main St; under new management (quality recovering after rough patch). No real website - only aggregators (bestcafes.online, res-menu, DoorDash). Reviews per RestaurantGuru 4.1 (842); TripAdvisor 3.7."
+  },
+  {
+    "id": "bills-place-billiards-pool-lincolnton",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Bill Warford" },
+    "gbpClosed": null,
+    "notes": "Permanently closed since June 30, 2020 (per FB @billspool). Was 2667 E Main St, Lincolnton (billiards/bar/grill). Owner Bill Warford (Billiards & Pool at Bill's Place LLC). DO NOT target."
+  },
+  {
+    "id": "enzos-pizzeria-gastonia",
+    "exists": true,
+    "realWebsite": "https://enzos.net/",
+    "liveSiteGrade": null,
+    "reviews": { "count": 900, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-owned since 2012, 117 N Myrtle School Rd. Real site enzos.net but did not respond on 2026-07 check (may be down) - verify/grade later. Reviews: RestaurantGuru 4.5 (900); Google 4.6; Yelp 92."
+  },
+  {
+    "id": "china-king-gastonia",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 141, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "117 N Myrtle School Rd Ste 160; Chinese takeout. No real website - aggregators/UberEats only (zmenu, menu-buzz.net, placejoys). Reviews: TripAdvisor 4.0, Restaurantji 141 reviews."
+  },
+  {
+    "id": "home-place-lincolnton",
+    "exists": true,
+    "realWebsite": "https://homeplace1.com/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": { "name": "Clay Heafner" },
+    "gbpClosed": null,
+    "notes": "Southern comfort/BBQ since 1986 (founder David Heafner d.2012; son Clay Heafner reported owner). Site homeplace1.com is a SpotHopper vendor template (footer-credited, vendor-locked) but modern/professional. Site contact email hamid30nbl@hotmail.com suggests a possible ownership change - verify owner."
+  },
+  {
+    "id": "sagebrush-steakhouse-shelby",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Shelby location (1237 E Dixon Blvd) listed CLOSED on Yelp. Sagebrush chain largely rebranded to Texas Steakhouse & Saloon. Appears closed - DO NOT target."
+  },
+  {
+    "id": "greenes-cafe-carry-out-services-forest-city",
+    "exists": true,
+    "realWebsite": "https://greenescafe.weebly.com/",
+    "liveSiteGrade": "weak",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "858 W Main St; family-run breakfast/lunch cafe & carry-out. Website is a free Weebly subdomain (greenescafe.weebly.com) - dated/weak, builder-locked. Good B2/A2 upgrade candidate."
+  },
+  {
+    "id": "the-flying-pig-bbq-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "OSM town is wrong: this is The Flying Pig at 901 College Ave, SHELBY (phone 704-487-0087 matches). Family-owned BBQ. FB-only web presence (@TheFlyingPigShelby); no real website."
+  },
+  {
+    "id": "jesse-james-railroad-express-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 556, "rating": 4.7 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Original 531 Railroad Ave location shows CLOSED (Yelp, June 2025), but DoorDash shows relocated/rebranded to 126 Park Lane Drive ('new name, new location, same hotdogs') - likely still operating, VERIFY. Railroad-themed diner. RestaurantGuru 4.7 (556). No real website (aggregators only)."
+  },
+  {
+    "id": "china-hibachi-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.chinahibachi.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "464 W Main St; Chinese/hibachi with online ordering. Two owned domains: chinahibachi.com + chinahibachifood.com (real ordering sites, not aggregators). FB page present. Grade not assessed."
+  },
+  {
+    "id": "owls-nest-sports-lounge-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "254 W Trade St sports bar; est. 2008 by two brothers (names not published). FB-only web presence; wings/beer/live-music focus. No website."
+  },
+  {
+    "id": "americas-fudge-shop-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.americasfudgeshop.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 47, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "155 E Main St; mom-&-pop fudge shop (began as a mobile/festival unit). Site americasfudgeshop.com is an unfinished Wix template (default 'My Site 4' page title) - weak. Active FB + IG. Birdeye 4.9 (47)."
+  },
+  {
+    "id": "copper-penny-grill-forest-city",
+    "exists": true,
+    "realWebsite": "https://copperpennygrill.com/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": null, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "146 E Main St; est. 2015, multi-location (Rutherfordton, Forest City, Lake Hickory + Marion soon). Good modern SpotHopper site (vendor-locked, footer-credited) with online ordering. TripAdvisor 4.3, #1 of 48 in Forest City. Low web gap - established w/ good site."
+  },
+  {
+    "id": "scoop-forest-city-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 133, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "149 S Broadway; seasonal homemade/hand-dipped ice cream, locally owned ~10 yrs (sister shop Scoop Rutherfordton). FB/IG-only web presence (@scoopforestcity), no website. Restaurantji shows 133 reviews (rating not captured)."
+  },
+  {
+    "id": "louies-cafe-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 398, "rating": 4.4 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "235 S Powell St; NY-style pizza/Italian. Opened 2012 by Louie Zeleskey but SOLD to new owners ~2022 (current owner unknown - former owner name not asserted). FB-only web presence. MenuPix aggregate 4.4 (398)."
+  },
+  {
+    "id": "mitchems-kitchen-vale",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": { "count": 912, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "STATUS AMBIGUOUS: Yelp lists CLOSED (Apr 2026) at 6679 W Hwy 27, but FB @MitchemsKitchen, RestaurantGuru 4.3 (912), TripAdvisor 4.1 (#3/10), and a .shop template site (mitchemskitchen.shop, 2026 copyright, current hours - likely auto-generated, not confirmed owner-owned) all remain up. VERIFY by phone before targeting."
+  }
+]

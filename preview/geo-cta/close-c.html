@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geo CTA close C: Tape Sign-off</title>
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--g-lite:#6ee7b7;--ink:#06231a;--bg:#0a0a0b;--bg-2:#0e0f11;--surface:#141518;--surface-2:#1a1c20;--b:#25272d;--b-2:#33363d;--fg:#f4f5f6;--muted:#a4aab2;--dim:#767b83;--maxw:1240px;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .stub{padding:40px 0;color:var(--dim);font-size:14px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:6px;min-height:52px;border:1px solid transparent;transition:transform .2s var(--ease),box-shadow .3s,background .2s,border-color .2s,color .2s}
+  .btn svg{width:18px;height:18px;flex-shrink:0}
+  .btn-primary{background:var(--g);color:var(--ink)}
+  .btn-primary:hover{background:var(--g-lite);transform:translateY(-2px);box-shadow:0 12px 34px rgba(52,211,153,.28)}
+  .btn-ghost{background:transparent;color:var(--fg);border-color:var(--b-2)}
+  .btn-ghost:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
+
+  /* TAPE SIGN-OFF: compact centered close, hero tape reprised at the exit */
+  .signoff{position:relative;overflow:hidden;padding:clamp(56px,7.5vw,96px) 0 0;background:var(--bg-2);border-top:1px solid rgba(255,255,255,.04)}
+  .signoff-in{text-align:center}
+  .signoff h2{font-family:'Inter Tight',sans-serif;font-weight:780;font-size:clamp(30px,4.3vw,62px);line-height:1.04;letter-spacing:-.036em;color:#fff;text-wrap:balance;max-width:22ch;margin:0 auto}
+  .signoff h2 em{font-style:italic;font-weight:540;color:var(--g);letter-spacing:-.028em}
+  .signoff-say{font-size:clamp(14.5px,1.6vw,17px);color:var(--muted);line-height:1.62;max-width:56ch;margin:clamp(14px,1.8vw,22px) auto clamp(22px,2.8vw,32px);text-wrap:pretty}
+  .signoff-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .signoff-note{display:block;font-size:13px;color:var(--dim);margin-top:18px}
+  .signoff-tape{position:relative;transform:rotate(-1.5deg);margin:clamp(40px,5.5vw,72px) -4vw 0;background:var(--g);padding:12px 0;overflow:hidden}
+  .signoff-tape .track{display:flex;white-space:nowrap;width:max-content;animation:soTape 52s linear infinite}
+  .signoff-tape span{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:15px;letter-spacing:.01em;color:var(--ink);padding:0 26px;position:relative}
+  .signoff-tape span::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:rgba(6,35,26,.55)}
+  .signoff-after{height:clamp(30px,4vw,48px);background:var(--bg-2)}
+  @keyframes soTape{to{transform:translate3d(-50%,0,0)}}
+  @media(max-width:600px){.signoff-btns .btn{flex:1 1 100%}}
+  @media(prefers-reduced-motion:reduce){.signoff-tape .track{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap stub">[ FAQ above ]</div>
+
+<section class="signoff">
+  <div class="wrap signoff-in">
+    <h2>Losing customers to a website that <em>doesn't sell?</em></h2>
+    <p class="signoff-say">Let's fix that. I build custom websites for Shelby businesses that turn visitors into phone calls and booked jobs. Tell me what you're working with, and I'll show you what's possible.</p>
+    <div class="signoff-btns">
+      <a href="/contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start a project
+      </a>
+      <a href="tel:+17049743372" class="btn btn-ghost">(704) 974-3372</a>
+    </div>
+    <span class="signoff-note">Free quote. Most builds launch in about 14 days.</span>
+  </div>
+  <div class="signoff-tape" aria-hidden="true">
+    <div class="track">
+      <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Kings Mountain</span><span>Google Business Profile</span><span>Boiling Springs</span><span>Branding</span><span>Forest City</span><span>Website Migration</span><span>Rutherfordton</span>
+      <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Kings Mountain</span><span>Google Business Profile</span><span>Boiling Springs</span><span>Branding</span><span>Forest City</span><span>Website Migration</span><span>Rutherfordton</span>
+    </div>
+  </div>
+  <div class="signoff-after"></div>
+</section>
+
+<div class="wrap stub">[ footer below ]</div>
+</body>
+</html>

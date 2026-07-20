@@ -1,0 +1,123 @@
+[
+  {
+    "id": "willis-auto-electric-shelby",
+    "tier": "HIGH",
+    "signals": [
+      "Longevity: in business since 1961 (60+ years), owner Tommy Willis (U.S. Navy SeaBees veteran) - a genuine multi-decade institution",
+      "Notability: Shelby Shopper ran a '50 Years In Business' feature (local press / institution status)",
+      "Review mass: ~49-57 Google reviews @4.8 (high rating, solid for a niche alternator/starter shop)",
+      "BBB-profiled, chamber-listed; employs ~2-5 people (staff beyond owner-solo)"
+    ],
+    "counterSignals": [],
+    "notes": "Two strong signals (60-year longevity + local press feature) = HIGH established money despite the auto category's low value-tier. Web presence is only an auto-generated edan.io microsite = B2-gold gap (proven, beloved, effectively no real site). P3 auto reachability is phone/in-person, not email. Work early."
+  },
+  {
+    "id": "the-honey-hog-lawndale",
+    "tier": "HIGH",
+    "signals": [
+      "Review mass: ~371 reviews @4.5 (300+ = strong revenue proxy) with recent activity",
+      "Investment behavior: Yelp listing flagged 'RENOVATED' (Updated May 2026); operates from a renovated farmhouse - recent capital spend on the space",
+      "Strong recurring demand: Friday-night ribs / Saturday brisket draw crowds and waits; 'worth the drive' repeat-visit reputation"
+    ],
+    "counterSignals": [],
+    "notes": "High review mass + a fresh renovation = HIGH. FB-only web presence (B2-gold gap). Note: the edan.io microsite and Restaurantji list an alternate name 'Johnny Ray's Smokehouse' at the same 4629 Fallston Rd address - likely a former/related name; confirm current operating name before any outreach. Lawndale is Tier-2 opportunistic (northern county, zero local competition)."
+  },
+  {
+    "id": "white-tire-center-lawndale",
+    "tier": "MID",
+    "signals": [
+      "Review mass: 154 reviews @4.8 (solid mass + high rating for a rural tire shop)",
+      "Broad capability: alignments, brakes, oil, NC inspections, plus specialty work (tractor tires, golf-cart rims) = more than a single-service operator",
+      "Reputation for loyal, long-term repeat customers; recommended local small business"
+    ],
+    "counterSignals": [],
+    "notes": "Confirmed INDEPENDENT - not part of the whitetirecenters.com chain (that is a separate Lenoir NC company). Solid review mass + high rating, single location, but no longevity/press/scale hard signal surfaced, so MID not HIGH. Founding year or a second bay/location would resolve toward HIGH."
+  },
+  {
+    "id": "cane-creek-mufflers-used-rutherfordton",
+    "tier": "MID",
+    "signals": [
+      "Scale: two revenue streams - exhaust/muffler + custom work AND a used-car sales arm (listed as 'Cane Creek Mufflers & Used Cars') = diversification beyond a single-service shop",
+      "Named, reachable owner (Roy Yelton), BBB-profiled",
+      "37 reviews @4.9 (very high rating; reputation for trust, fair prices, custom work)"
+    ],
+    "counterSignals": [
+      "Thin review mass (37) and small rural shop - review-count signal is weak on its own"
+    ],
+    "notes": "The used-car sales arm is the differentiator that lifts this above a solo muffler shop, hence MID over LOW. Rutherford County is a state Tier-One (economically distressed) territory = smaller budgets; keep the angle grounded. NC dealer license status would further confirm the used-car scale."
+  },
+  {
+    "id": "creekside-clock-shelby",
+    "tier": "MID",
+    "signals": [
+      "Longevity: the original 'Clock' established 2001; current owners since 2004 - 20+ years continuous operation",
+      "Investment behavior: relocated to a new/larger location in May 2016",
+      "Review mass: ~241 reviews; recognized locally as a go-to home-cooking steak/seafood spot (ranked #20 of 85 Shelby restaurants)"
+    ],
+    "counterSignals": [
+      "Soft rating (~3.7-3.8) with some negative service reviews - a quality/consistency signal, not a budget signal"
+    ],
+    "notes": "IMPORTANT: this is a RESTAURANT ('The Creekside Clock Restaurant of Shelby,' 1025 Kiser St), NOT a clock-repair shop - the name is misleading. Longevity + a past relocation + real review mass = genuine budget, so MID; the soft rating is a quality issue to sidestep in the pitch, not a red flag on capacity. Tier-1 Shelby home turf."
+  },
+  {
+    "id": "27-west-family-restaurant-vale",
+    "tier": "MID",
+    "signals": [
+      "Review mass: ~125-247 reviews @4.6 (solid mass, high rating across platforms; 5.0 on Tripadvisor)",
+      "Full-service breadth: breakfast/lunch/dinner, daily home-cooked specials and desserts - a real operating restaurant, not a pop-up",
+      "Strong local reputation (chili cheeseburgers/hush puppies repeatedly cited); reasonable prices + generous portions = steady volume"
+    ],
+    "counterSignals": [],
+    "notes": "Healthy single-location family restaurant with good review mass and rating. No longevity/press/scale hard signal found, so MID. Vale (Lincoln County edge) is reachable Tier-2. Standard P4 play for its route."
+  },
+  {
+    "id": "el-michoacan-mexican-restaurant-forest-city",
+    "tier": "MID",
+    "signals": [
+      "Review mass: high aggregate volume - ~1,056 reviews @4.4 on Restaurant Guru, ~214 on Restaurantji, plus 54 Google @4.5 (strong sustained demand)",
+      "Prime Main Street location (107 W Main St, Forest City); '#10 of 47 Forest City restaurants'",
+      "Investment/ownership behavior: reviews cite 'new owners' who 'elevated the food quality' - active reinvestment in the operation"
+    ],
+    "counterSignals": [
+      "Some mixed lunch-service reviews (quality consistency, not budget)"
+    ],
+    "notes": "Carried by strong cross-platform review mass + a Main St storefront + a recent ownership upgrade = MID. Forest City / Rutherford County is a Tier-One distressed territory (Storefront-first, convert up), so keep budget framing realistic despite the review volume."
+  },
+  {
+    "id": "waynes-lunch-box-spindale",
+    "tier": "MID",
+    "signals": [
+      "Review mass: ~95 reviews (Restaurantji) up to ~310 @4.8 on Google-derived listings - high rating and real velocity",
+      "Scale: an active catering arm (hamburger steak, steak tips, seasoned chicken, mac & cheese) beyond the counter service",
+      "Extensive from-scratch menu (homemade chicken salad, pimento cheese, egg salad) and strong 'home-cooked' repeat reputation"
+    ],
+    "counterSignals": [
+      "Very limited hours - open Mon-Thu ~11:00-2:00 only (lunch-only, 4 days) = small-operator schedule that caps revenue ceiling"
+    ],
+    "notes": "MID: catering arm + high rating/velocity push it up, but the lunch-only Mon-Thu hours are a real small-scale counter-signal. FB-only web presence (B2 gap). Spindale is Tier-One distressed Rutherford County - lead with a low-friction angle even though the reviews are strong."
+  },
+  {
+    "id": "el-taco-loco-forest-city",
+    "tier": "LOW",
+    "signals": [
+      "Investment behavior (lapsed): the business owned its own domain, now SUSPENDED/dead - they once valued and paid for a web presence (re-engagement hook)",
+      "Review mass: ~64-94 reviews @4.6-4.7 (decent rating; al pastor/steak tacos and salsa repeatedly praised)"
+    ],
+    "counterSignals": [
+      "Food-truck scale (fixed spot at 535 S Broadway, but categorized as a food truck) = smaller operation",
+      "Limited hours (closed Sun/Mon); multiple reviews note the food is 'expensive'",
+      "Forest City / Rutherford = Tier-One distressed territory"
+    ],
+    "notes": "Food-truck scale in a distressed county = LOW, but not hobby-scale (90+ reviews, real following). The dead/suspended own-domain is the standout angle: A2 'your site went down' re-engagement rather than a cold B2. Low-commitment framing (Storefront / revive-the-site) only."
+  },
+  {
+    "id": "dawgs-sports-bar-shelby",
+    "tier": null,
+    "signals": [
+      "Operating sports bar & grill at 121 Earl Rd, Shelby; active on Facebook AND Instagram (@dawgssportsbarandgrill)",
+      "Bar/alcohol revenue model with a casual/trendy atmosphere and 'great beer selection' (higher-margin category than food-only)"
+    ],
+    "counterSignals": [],
+    "notes": "Signals too thin to tier - could not confirm a Google review count/rating (thin online footprint; CMac shows 0 reviews, likely stale) or years in operation. Treat as MID per the null rule. FB/IG-only = B2 gap. Resolve by pulling the Google Maps review count and founding year before ordering. Tier-1 Shelby home turf."
+  }
+]

@@ -1,0 +1,1880 @@
+[
+  {
+    "#debug": {
+      "requestId": "DAGtyaD1IMpVU2c",
+      "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en",
+      "loadedUrl": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "lawyer shelby nc",
+      "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en",
+      "device": "DESKTOP",
+      "page": 1,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhhEAE"
+      },
+      {
+        "title": "Traffic lawyers shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+shelby+nc&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhmEAE"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhjEAE"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhlEAE"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhfEAE"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhgEAE"
+      },
+      {
+        "title": "Personal injury lawyer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Personal+injury+lawyer+shelby+nc&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhkEAE"
+      },
+      {
+        "title": "Meekins attorney Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Meekins+attorney+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhiEAE"
+      },
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhhEAE"
+      },
+      {
+        "title": "Traffic lawyers shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+shelby+nc&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhmEAE"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhjEAE"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhlEAE"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhfEAE"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhgEAE"
+      },
+      {
+        "title": "Personal injury lawyer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Personal+injury+lawyer+shelby+nc&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhkEAE"
+      },
+      {
+        "title": "Meekins attorney Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Meekins+attorney+Shelby,+NC&sa=X&ved=2ahUKEwj0xcLkycSVAxWw4ckDHfSNM-EQ1QJ6BAhiEAE"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Best Lawyers in Shelby, NC",
+        "websiteTitle": "Justia",
+        "url": "https://www.justia.com/lawyers/north-carolina/shelby",
+        "displayedUrl": "https://www.justia.com › ... › North Carolina",
+        "description": "Compare top rated attorneys in Shelby on the Justia Lawyer Directory. View lawyer ratings, client reviews, awards, and case results, and schedule a ...",
+        "emphasizedKeywords": [
+          "Compare top rated attorneys in Shelby"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 1
+      },
+      {
+        "title": "Teddy, Meekins & Talbert, P.L.L.C.: Shelby Attorneys",
+        "websiteTitle": "Teddy, Meekins & Talbert, P.L.L.C.",
+        "url": "https://www.teddyandmeekins.com/",
+        "displayedUrl": "https://www.teddyandmeekins.com",
+        "description": "Our Shelby attorneys at Teddy, Meekins & Talbert, P.L.L.C. put 30 years of practice on your side in criminal law, family law, personal injury law, and more.",
+        "emphasizedKeywords": [
+          "criminal law, family law, personal injury law, and more"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 2
+      },
+      {
+        "title": "Law Office and Attorneys in Shelby, North Carolina",
+        "websiteTitle": "King Law",
+        "url": "https://kinglawoffices.com/office-locations/north-carolina/shelby",
+        "displayedUrl": "https://kinglawoffices.com › office-locations › shelby",
+        "description": "King Law is a general practice law firm. The Shelby attorneys offer legal services in nearly all areas of law including Family Law, Criminal Defense, Estate ...Read more",
+        "emphasizedKeywords": [
+          "King Law is a general practice law firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 3
+      },
+      {
+        "title": "Shelby Attorneys - North Carolina - Lawyers",
+        "websiteTitle": "Cornell University",
+        "url": "https://lawyers.law.cornell.edu/lawyers/north-carolina/shelby",
+        "displayedUrl": "https://lawyers.law.cornell.edu › North Carolina",
+        "description": "Lawyer Serving Shelby, NC. (919) 459-7272 (919) 459-7272 Free Consultation ... Shelby, NC Attorney. (704) 285-0613. North CarolinaAvvo and Rutherford ...Read more",
+        "emphasizedKeywords": [
+          "Lawyer Serving Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 4
+      },
+      {
+        "title": "Attorneys at Law | Shelby NC: Horn, Pack, Brown & Dow",
+        "websiteTitle": "hpbdlaw.com",
+        "url": "https://www.hpbdlaw.com/",
+        "displayedUrl": "https://www.hpbdlaw.com",
+        "description": "Our skilled attorneys are dedicated to guiding clients through the complexities of family law in Cleveland, Lincoln and rutherford counties.Read more",
+        "emphasizedKeywords": [
+          "attorneys"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 5
+      },
+      {
+        "title": "Lutz Law Firm, PLLC: Shelby Law Firm",
+        "websiteTitle": "Lutz Law Firm, PLLC",
+        "url": "https://www.rlutzlaw.com/",
+        "displayedUrl": "https://www.rlutzlaw.com",
+        "description": "With an office in Shelby, NC, Attorney Robert Lutz has more than 35 years of experience serving individuals and businesses across Cleveland County and the ...Read more",
+        "emphasizedKeywords": [
+          "Attorney Robert Lutz"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 6
+      },
+      {
+        "title": "Attorney at Law | Shelby, NC | Deaton & Biggers, PLLC",
+        "websiteTitle": "Deaton & Biggers, PLLC",
+        "url": "https://www.deatonandbiggers.com/",
+        "displayedUrl": "https://www.deatonandbiggers.com",
+        "description": "Our firm practices multiple areas of the law, with particular emphasis on Family Law, Deeds, Social Security Disability, Traffic Offenses, Wills and Estates.Read more",
+        "emphasizedKeywords": [
+          "Family Law, Deeds, Social Security Disability, Traffic Offenses, Wills and Estates"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 7
+      },
+      {
+        "title": "THE BEST 10 LAWYERS IN SHELBY, NC",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.ca/search?cflt=lawyers&find_loc=Shelby%2C+NC",
+        "displayedUrl": "https://www.yelp.ca › Professional Services › Lawyers",
+        "description": "Top 10 Best Lawyers Near Shelby, North Carolina - With Real Reviews · Anderson Law Firm · The Bollinger Law Firm PC · Teddy, Meekins & Talbert · Caulder & ...Read more",
+        "emphasizedKeywords": [
+          "Anderson Law Firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 4,
+        "numberOfReviews": 30,
+        "type": "organic",
+        "position": 8
+      },
+      {
+        "title": "Shelby Civil Litigation Lawyer & Law Firm - Free Consultation",
+        "websiteTitle": "The Schweppe Law Firm, P.A.",
+        "url": "https://www.lawshelby.com/shelby-civil-litigation-lawyer/",
+        "displayedUrl": "https://www.lawshelby.com › shelby-civil-litigation-law...",
+        "description": "We offer a free consultation so that you can get answers. Discuss your issue with a Shelby civil litigation lawyer at our firm by calling 704-487-7204.Read more",
+        "emphasizedKeywords": [
+          "Shelby civil litigation lawyer"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 9
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [
+      {
+        "answer": null,
+        "question": "How much does an attorney cost in NC?",
+        "title": null,
+        "url": null,
+        "date": null
+      },
+      {
+        "answer": null,
+        "question": "Who is the best lawyer in North Carolina?",
+        "title": null,
+        "url": null,
+        "date": null
+      },
+      {
+        "answer": "Cleveland & Lincoln County District Attorney's Office | Shelby NC. The official Facebook page of the Cleveland and Lincoln County District Attorney's Office, led by District Attorney Mike Miller.",
+        "question": "Who is the DA in Shelby, NC?",
+        "title": "Cleveland & Lincoln County District Attorney's Office | Shelby NC",
+        "url": "https://www.facebook.com/27bDA/#:~:text=Cleveland%20%26%20Lincoln%20County%20District%20Attorney's%20Office%20%7C%20Shelby%20NC&text=The%20official%20Facebook%20page%20of,by%20District%20Attorney%20Mike%20Miller.",
+        "date": null
+      },
+      {
+        "answer": null,
+        "question": "How to get free legal advice in North Carolina?",
+        "title": null,
+        "url": null,
+        "date": null
+      }
+    ],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/DAGtyaD1IMpVU2c-0.html?signature=v7io6MbBh5UMMf7nj2ic"
+  },
+  {
+    "#debug": {
+      "requestId": "rVs1Lz4IH7nbnQJ",
+      "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en",
+      "loadedUrl": "http://www.google.com/search?q=accounting+shelby+nc&hl=en",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "accounting shelby nc",
+      "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en",
+      "device": "DESKTOP",
+      "page": 1,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Accounting shelby nc phone number",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+phone+number&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgsEAE"
+      },
+      {
+        "title": "Best accounting shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+accounting+shelby+nc&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAguEAE"
+      },
+      {
+        "title": "Accounting shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+reviews&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAg4EAE"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAg2EAE"
+      },
+      {
+        "title": "Tax preparer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Tax+preparer+shelby+nc&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgzEAE"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgtEAE"
+      },
+      {
+        "title": "Accounting shelby nc phone number",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+phone+number&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgsEAE"
+      },
+      {
+        "title": "Best accounting shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+accounting+shelby+nc&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAguEAE"
+      },
+      {
+        "title": "Accounting shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+reviews&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAg4EAE"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAg2EAE"
+      },
+      {
+        "title": "Tax preparer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Tax+preparer+shelby+nc&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgzEAE"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiC2OzkycSVAxWlSWwGHQPbBhoQ1QJ6BAgtEAE"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Accounting Firm | Shelby, NC | Craig Barry & Poston P.A. CPA",
+        "websiteTitle": "nextlevelcpa.com",
+        "url": "https://www.nextlevelcpa.com/",
+        "displayedUrl": "https://www.nextlevelcpa.com",
+        "description": "Are you looking for accounting services you can trust? Contact Craig Barry & Poston P.A. CPA in Shelby, NC, at (704) 487-5111 to learn how.",
+        "emphasizedKeywords": [
+          "Contact Craig Barry & Poston P.A. CPA in Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 1
+      },
+      {
+        "title": "BCD Income Tax & Accounting LLC - Shelby",
+        "websiteTitle": "bcdtax.com",
+        "url": "https://www.bcdtax.com/",
+        "displayedUrl": "https://www.bcdtax.com",
+        "description": "BCD Income Tax & Accounting LLC · 205 West Dixon Boulevard · Shelby, NC 28152 · 704-481-0223 · On Highway 74 Beside Chen's Chinese Restaurant · We know taxes!",
+        "emphasizedKeywords": [
+          "205 West Dixon Boulevard · Shelby, NC 28152"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 2
+      },
+      {
+        "title": "THE BEST 10 ACCOUNTANTS IN SHELBY, NC",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/search?cflt=accountants&find_loc=Shelby%2C+NC",
+        "displayedUrl": "https://www.yelp.com › ... › Accountants",
+        "description": "Wright Way Accounting · Accountants · Bookkeepers · Tax Services · 104 Plantation Ct, Shelby, NC 28150. (704) 470-5104 ; Craig Barry & Poston · Accountants · Tax ...",
+        "emphasizedKeywords": [
+          "104 Plantation Ct, Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 3.6,
+        "numberOfReviews": 59,
+        "type": "organic",
+        "position": 3
+      },
+      {
+        "title": "Accounting Firm — Shelby, North Carolina",
+        "websiteTitle": "Gale S. Elmore, CPA",
+        "url": "https://www.galeelmorecpa.com/contact-us",
+        "displayedUrl": "https://www.galeelmorecpa.com › contact-us",
+        "description": "reach out to Gale S. Elmore for help with personal or business tax preparation and accounting in Shelby, North Carolina. Phone: 704-480-1331.",
+        "emphasizedKeywords": [
+          "personal or business tax preparation and accounting"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 4
+      },
+      {
+        "title": "Numbers of Shelby",
+        "websiteTitle": "numbersofshelby.com",
+        "url": "https://numbersofshelby.com/",
+        "displayedUrl": "https://numbersofshelby.com",
+        "description": "Numbers Bookkeeping and Income Tax Services LLC offers comprehensive bookkeeping services, payroll services, tax planning and tax preparation and for our ...",
+        "emphasizedKeywords": [
+          "Numbers Bookkeeping and Income Tax Services LLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 5
+      },
+      {
+        "title": "Sara Lynn Little – Shelby NC CPA",
+        "websiteTitle": "Sara Lynn Little",
+        "url": "https://littlepllc.com/",
+        "displayedUrl": "https://littlepllc.com",
+        "description": "The firm is a relationship-based accounting service where their work attitude is “if you succeed then we succeed!” WHY US? Client oriented with step-by-step ...",
+        "emphasizedKeywords": [
+          "relationship-based accounting service"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 6
+      },
+      {
+        "title": "Erin Borders CPA PLLC | Shelby NC",
+        "websiteTitle": "Facebook · Erin Borders CPA PLLC",
+        "url": "https://www.facebook.com/ErinBordersCPA/",
+        "displayedUrl": "Facebook › Erin Borders CPA PLLC",
+        "description": "NC CPA with 30 years experience in tax preparation and planning, bookkeeping and general business. 󱞴 Accounting Service · $$.",
+        "emphasizedKeywords": [
+          "NC",
+          "Accounting"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 5,
+        "numberOfReviews": 1,
+        "followersAmount": "560+ followers",
+        "type": "organic",
+        "position": 7
+      },
+      {
+        "title": "BCD Income Tax & Accounting - North Carolina",
+        "websiteTitle": "MapQuest",
+        "url": "https://www.mapquest.com/us/north-carolina/bcd-income-tax-accounting-270834436",
+        "displayedUrl": "https://www.mapquest.com › ... › Shelby, NC",
+        "description": "205 W Dixon Blvd, Shelby, NC, 28152-6548. BCD Income Tax Accounting LLC is an independently owned tax preparation company located in Shelby, NC. With over 30 ...",
+        "emphasizedKeywords": [
+          "205 W Dixon Blvd, Shelby, NC, 28152-6548"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 8
+      },
+      {
+        "title": "Fedyshyn CPA Group PLLC | CPA | 800 South Lafayette ...",
+        "websiteTitle": "Fedyshyn CPA Group",
+        "url": "https://www.carolinacpas.com/",
+        "displayedUrl": "https://www.carolinacpas.com",
+        "description": "Fedyshyn CPA Group PLLC is a Certified Public Accounting firm specializing in tax reduction planning and integrated holistic wealth management.",
+        "emphasizedKeywords": [
+          "Fedyshyn CPA Group PLLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 9
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/rVs1Lz4IH7nbnQJ-0.html?signature=R0dUPSGhTQxzybustBoi"
+  },
+  {
+    "#debug": {
+      "requestId": "1TDo1Y7GGsz06HT",
+      "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en",
+      "loadedUrl": "http://www.google.com/search?q=cpa+shelby+nc&hl=en",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "cpa shelby nc",
+      "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en",
+      "device": "DESKTOP",
+      "page": 1,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Best cpa shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+cpa+shelby+nc&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhFEAE"
+      },
+      {
+        "title": "Cpa shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Cpa+shelby+nc+reviews&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhPEAE"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhIEAE"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhGEAE"
+      },
+      {
+        "title": "Best cpa shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+cpa+shelby+nc&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhFEAE"
+      },
+      {
+        "title": "Cpa shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Cpa+shelby+nc+reviews&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhPEAE"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhIEAE"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwiVgYnlycSVAxV9qZUCHXwRLTsQ1QJ6BAhGEAE"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Accounting Firm | Shelby, NC | Craig Barry & Poston P.A. CPA",
+        "websiteTitle": "nextlevelcpa.com",
+        "url": "https://www.nextlevelcpa.com/",
+        "displayedUrl": "https://www.nextlevelcpa.com",
+        "description": "Are you looking for accounting services you can trust? Contact Craig Barry & Poston P.A. CPA in Shelby, NC, at (704) 487-5111 to learn how.",
+        "emphasizedKeywords": [
+          "Craig Barry & Poston P.A. CPA in Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 1
+      },
+      {
+        "title": "CPA — Shelby, North Carolina — Gale S. Elmore, CPA",
+        "websiteTitle": "Gale S. Elmore, CPA",
+        "url": "https://www.galeelmorecpa.com/",
+        "displayedUrl": "https://www.galeelmorecpa.com",
+        "description": "Choose Gale S. Elmore, CPA for professional handling of your taxes and finances. Visit our office in Shelby, North Carolina or call 704-480-1331.",
+        "emphasizedKeywords": [
+          "CPA",
+          "Shelby",
+          "North Carolina"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 2
+      },
+      {
+        "title": "Erin Borders CPA PLLC | Shelby NC",
+        "websiteTitle": "Facebook · Erin Borders CPA PLLC",
+        "url": "https://www.facebook.com/ErinBordersCPA/",
+        "displayedUrl": "Facebook › Erin Borders CPA PLLC",
+        "description": "NC CPA with 30 years experience in tax preparation and planning, bookkeeping and general business. 󱞴 Accounting Service · $$.Read more",
+        "emphasizedKeywords": [
+          "NC CPA"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 5,
+        "numberOfReviews": 1,
+        "followersAmount": "560+ followers",
+        "type": "organic",
+        "position": 3
+      },
+      {
+        "title": "THE BEST 10 ACCOUNTANTS IN SHELBY, NC",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/search?cflt=accountants&find_loc=Shelby%2C+NC",
+        "displayedUrl": "https://www.yelp.com › ... › Accountants",
+        "description": "Wright Way Accounting · Accountants · Bookkeepers · Tax Services · 104 Plantation Ct, Shelby, NC 28150. (704) 470-5104 ; Craig Barry & Poston · Accountants · Tax ...Read more",
+        "emphasizedKeywords": [
+          "104 Plantation Ct, Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 3.6,
+        "numberOfReviews": 59,
+        "type": "organic",
+        "position": 4
+      },
+      {
+        "title": "Sara Lynn Little – Shelby NC CPA",
+        "websiteTitle": "Sara Lynn Little",
+        "url": "https://littlepllc.com/",
+        "displayedUrl": "https://littlepllc.com",
+        "description": "Sara Lynn Little, CPA, PLLC (Professional Limited Liability Company), takes the guesswork and worry out of preparing your individual returns and running your ...Read more",
+        "emphasizedKeywords": [
+          "Sara Lynn Little, CPA, PLLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 5
+      },
+      {
+        "title": "Accounting Firm — Shelby, North Carolina",
+        "websiteTitle": "Gale S. Elmore, CPA",
+        "url": "https://www.galeelmorecpa.com/contact-us",
+        "displayedUrl": "https://www.galeelmorecpa.com › contact-us",
+        "description": "Reach out to us today to schedule a meeting. Gale S. Elmore, CPA. 201 S Washington St Shelby Suite 101, NC 28150. Phone: 704-480-1331. Email: contact@ ...Read more",
+        "emphasizedKeywords": [
+          "201 S Washington St Shelby Suite 101, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 6
+      },
+      {
+        "title": "Fedyshyn CPA Group PLLC | CPA | 800 South Lafayette ...",
+        "websiteTitle": "Fedyshyn CPA Group",
+        "url": "https://www.carolinacpas.com/",
+        "displayedUrl": "https://www.carolinacpas.com",
+        "description": "Fedyshyn CPA Group PLLC is a Certified Public Accounting firm specializing in tax reduction planning and integrated holistic wealth management.",
+        "emphasizedKeywords": [
+          "Fedyshyn CPA Group PLLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 7
+      },
+      {
+        "title": "E. Brent Stewart, Accounting Firm in Shelby, North Carolina",
+        "websiteTitle": "CPAdirectory",
+        "url": "https://cpadirectory.com/accounting-firms/north-carolina/shelby-nc/e-brent-stewart/125297",
+        "displayedUrl": "https://cpadirectory.com › ... › North Carolina › Shelby",
+        "description": "Brent Stewart is a verified accounting firm, offering accounting and tax preparation services to customers and small business owners located in and around ...Read more",
+        "emphasizedKeywords": [
+          "Brent Stewart is a verified accounting firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 8
+      },
+      {
+        "title": "Don E Jones CPA, 621 S Lafayette St, Shelby, NC ...",
+        "websiteTitle": "MapQuest",
+        "url": "https://www.mapquest.com/us/north-carolina/don-e-jones-cpa-401637424",
+        "displayedUrl": "https://www.mapquest.com › ... › Shelby, NC",
+        "description": "Don E Jones CPA is a reputable accounting firm based in Shelby, NC, specializing in providing a range of financial services to individuals and businesses.Read more",
+        "emphasizedKeywords": [
+          "Don E Jones CPA"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 9
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [
+      {
+        "answer": null,
+        "question": "How much does a CPA cost in NC?",
+        "title": null,
+        "url": "https://www.skfinancial.com/blog/how-much-does-a-cpa-cost-for-a-small-business",
+        "date": null
+      },
+      {
+        "answer": "Vault Accounting 25\n#1. PwC. SCORE 8.434. 2026 Ranking. ... #2. Ernst & Young LLP. SCORE 8.110. 2026 Ranking. ... #3. KPMG LLP. SCORE 8.057. 2026 Ranking. ... #4. Plante Moran. SCORE 7.657. 2026 Ranking. ... #5. BDO USA. SCORE 7.387. 2026 Ranking. ... #6. Baker Tilly. SCORE 7.200. 2026 Ranking. ... #7. CohnReznick. SCORE 7.139. ... #8. PKF O'Connor Davies. SCORE 7.077.",
+        "question": "What are the top 20 CPA firms?",
+        "title": "Top 25 Accounting Firms | Accounting Firm rankings - Vault",
+        "url": "https://vault.com/best-companies-to-work-for/accounting/vault-accounting-25",
+        "date": null
+      },
+      {
+        "answer": "Cpa Salary in North Carolina $67.6K is the 25th percentile. Wages below this are outliers. The median wage is $79.1K / yr. $91.2K is the 75th percentile.",
+        "question": "How much does a CPA make a year in NC?",
+        "title": "Salary: Cpa in North Carolina (June, 2026) - ZipRecruiter",
+        "url": "https://www.ziprecruiter.com/Salaries/Cpa-Salary--in-North-Carolina#:~:text=Cpa%20Salary%20in%20North%20Carolina&text=%2467.6K%20is%20the%2025th,Wages%20below%20this%20are%20outliers.&text=The%20median%20wage%20is%20%2479.1K%20%2F%20yr.&text=%2491.2K%20is%20the%2075th%20percentile.",
+        "date": null
+      },
+      {
+        "answer": "In addition to 120–150 credit hours of education, prospective CPAs in NC need to pass all 4 CPA Exam sections, complete a state-specific ethics course, and earn 1 to 2 years of supervised experience. The whole process of becoming a CPA typically takes 6–8 years from the start of college to licensure.",
+        "question": "How many credits do you need to become a CPA in NC?",
+        "title": "How to Become a CPA in North Carolina - Intuit Blog",
+        "url": "https://www.intuit.com/blog/life-at-intuit/intuit-experts/how-to-become-a-cpa-in-north-carolina/#:~:text=In%20addition%20to%20120%E2%80%93150,start%20of%20college%20to%20licensure.",
+        "date": "Jun 11, 2026"
+      }
+    ],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/1TDo1Y7GGsz06HT-0.html?signature=ilRhUuC6OdkGULkmUows"
+  },
+  {
+    "#debug": {
+      "requestId": "mmLRce2NUB3VqY0",
+      "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en",
+      "loadedUrl": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "law firm shelby nc",
+      "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en",
+      "device": "DESKTOP",
+      "page": 1,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhEEAE"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhLEAE"
+      },
+      {
+        "title": "Estate lawyers in shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+shelby+nc&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhGEAE"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhFEAE"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhHEAE"
+      },
+      {
+        "title": "Schweppe Law firm",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+Law+firm&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhIEAE"
+      },
+      {
+        "title": "Schweppe law firm Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+law+firm+Shelby+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhKEAE"
+      },
+      {
+        "title": "King Law Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=King+Law+Shelby+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhJEAE"
+      },
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhEEAE"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhLEAE"
+      },
+      {
+        "title": "Estate lawyers in shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+shelby+nc&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhGEAE"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhFEAE"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhHEAE"
+      },
+      {
+        "title": "Schweppe Law firm",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+Law+firm&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhIEAE"
+      },
+      {
+        "title": "Schweppe law firm Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+law+firm+Shelby+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhKEAE"
+      },
+      {
+        "title": "King Law Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=King+Law+Shelby+NC&sa=X&ved=2ahUKEwjJxr7mycSVAxVdgVYBHYKFPGEQ1QJ6BAhJEAE"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Shelby, NC Personal Injury & Criminal Defense Attorney - The ...",
+        "websiteTitle": "The Schweppe Law Firm, P.A.",
+        "url": "https://www.lawshelby.com/",
+        "displayedUrl": "https://www.lawshelby.com",
+        "description": "The Schweppe Law Firm, P.A., in Shelby assists clients in real estate, personal injury, criminal law, bankruptcy and other legal matters. -487-7204",
+        "emphasizedKeywords": [
+          "Law Firm",
+          "Shelby",
+          "law"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 1
+      },
+      {
+        "title": "Best Lawyers in Shelby, NC",
+        "websiteTitle": "Justia",
+        "url": "https://www.justia.com/lawyers/north-carolina/shelby",
+        "displayedUrl": "https://www.justia.com › ... › North Carolina",
+        "description": "Compare top rated attorneys in Shelby on the Justia Lawyer Directory. View lawyer ratings, client reviews, awards, and case results, and schedule a ...",
+        "emphasizedKeywords": [
+          "Compare top rated attorneys in Shelby"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 2
+      },
+      {
+        "title": "Teddy, Meekins & Talbert, P.L.L.C.: Shelby Attorneys",
+        "websiteTitle": "Teddy, Meekins & Talbert, P.L.L.C.",
+        "url": "https://www.teddyandmeekins.com/",
+        "displayedUrl": "https://www.teddyandmeekins.com",
+        "description": "Our Shelby attorneys at Teddy, Meekins & Talbert, P.L.L.C. put 30 years of practice on your side in criminal law, family law, personal injury law, and more.",
+        "emphasizedKeywords": [
+          "criminal law, family law, personal injury law, and more"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 3
+      },
+      {
+        "title": "Lutz Law Firm, PLLC: Shelby Law Firm",
+        "websiteTitle": "Lutz Law Firm, PLLC",
+        "url": "https://www.rlutzlaw.com/",
+        "displayedUrl": "https://www.rlutzlaw.com",
+        "description": "Address 310 E Graham Street, Suite 8, Shelby, North Carolina 28150 Phone 704-751-0048 Fax 704-600-6004 Email rlutzlaw@yahoo.com 0048 Home Attorney Practice ...",
+        "emphasizedKeywords": [
+          "310 E Graham Street, Suite 8, Shelby, North Carolina 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 4
+      },
+      {
+        "title": "Law Office and Attorneys in Shelby, North Carolina",
+        "websiteTitle": "King Law",
+        "url": "https://kinglawoffices.com/office-locations/north-carolina/shelby",
+        "displayedUrl": "https://kinglawoffices.com › office-locations › shelby",
+        "description": "King Law's Shelby, North Carolina office offers legal services in the areas of family law, estates & asset protection, civil disputes, personal injury and ...",
+        "emphasizedKeywords": [
+          "King Law's Shelby, North Carolina office"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 5
+      },
+      {
+        "title": "Attorney at Law | Shelby, NC | Deaton & Biggers, PLLC",
+        "websiteTitle": "Deaton & Biggers, PLLC",
+        "url": "https://www.deatonandbiggers.com/",
+        "displayedUrl": "https://www.deatonandbiggers.com",
+        "description": "Our firm practices multiple areas of the law, with particular emphasis on Family Law, Deeds, Social Security Disability, Traffic Offenses, Wills and Estates.Read more",
+        "emphasizedKeywords": [
+          "Family Law, Deeds, Social Security Disability, Traffic Offenses, Wills and Estates"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 6
+      },
+      {
+        "title": "Greene Law Offices, PLLC - Shelby",
+        "websiteTitle": "Greene Law Offices, PLLC",
+        "url": "https://www.nicholegreenelaw.com/",
+        "displayedUrl": "https://www.nicholegreenelaw.com",
+        "description": "From our Shelby office, she delivers aggressive, no-nonsense representation in family law, criminal defense, traffic matters, wills and estate planning.",
+        "emphasizedKeywords": [
+          "family law, criminal defense, traffic matters, wills and estate planning"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 7
+      },
+      {
+        "title": "CERWIN LAW FIRM - Updated July 2026 - 522 S Dekalb ...",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/biz/cerwin-law-firm-shelby-2",
+        "displayedUrl": "https://www.yelp.com › ... › Divorce & Family Law",
+        "description": "S Dekalb St Shelby, NC 28150 Directions (704) 471-0808 … practice is focused on Social Security Disability, Personal Injury, and Workers' Compensation.",
+        "emphasizedKeywords": [
+          "704) 471-0808"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 8
+      },
+      {
+        "title": "Richard J. Luptak, PLLC – Shelby, NC – Kings Mountain, NC ...",
+        "websiteTitle": "Luptak and Chapman",
+        "url": "https://luptakandchapman.com/",
+        "displayedUrl": "https://luptakandchapman.com",
+        "description": "The Law Office of Luptak and Chapman, LLC, provides a wide array of legal representation, exclusively in the areas of family law, estate planning, and probate.Read more",
+        "emphasizedKeywords": [
+          "provides a wide array of legal representation"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 9
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/mmLRce2NUB3VqY0-0.html?signature=3LXPPetsGk5jSgOkLhOY"
+  },
+  {
+    "#debug": {
+      "requestId": "QM6cCjNpxavCMia",
+      "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en&start=10",
+      "loadedUrl": "http://www.google.com/search?q=accounting+shelby+nc&hl=en&start=10",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "accounting shelby nc",
+      "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en&start=10",
+      "device": "DESKTOP",
+      "page": 2,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=accounting+shelby+nc&hl=en&start=10",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Accounting shelby nc phone number",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+phone+number&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECCsQAQ"
+      },
+      {
+        "title": "Best accounting shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+accounting+shelby+nc&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Accounting shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+reviews&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "Tax preparer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Tax+preparer+shelby+nc&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC0QAQ"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Numbers accounting",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Numbers+accounting&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECCwQAQ"
+      },
+      {
+        "title": "Accounting shelby nc phone number",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+phone+number&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECCsQAQ"
+      },
+      {
+        "title": "Best accounting shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+accounting+shelby+nc&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Accounting shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Accounting+shelby+nc+reviews&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "Craig Barry and Poston Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+Barry+and+Poston+Shelby,+NC&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "Tax preparer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Tax+preparer+shelby+nc&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC0QAQ"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Numbers accounting",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Numbers+accounting&sa=X&ved=2ahUKEwjD45LnycSVAxX4gP0HHYNwLJ44ChDVAnoECCwQAQ"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "E. Brent Stewart, Accounting Firm in Shelby, North Carolina",
+        "websiteTitle": "CPAdirectory",
+        "url": "https://cpadirectory.com/accounting-firms/north-carolina/shelby-nc/e-brent-stewart/125297",
+        "displayedUrl": "https://cpadirectory.com › ... › North Carolina › Shelby",
+        "description": "E. Brent Stewart is a verified accounting firm, offering accounting and tax preparation services to customers and small business owners located in and around ...",
+        "emphasizedKeywords": [
+          "E. Brent Stewart is a verified accounting firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 10
+      },
+      {
+        "title": "Fedyshyn CPA Group PLLC | CPA | 800 South Lafayette ...",
+        "websiteTitle": "Fedyshyn CPA Group",
+        "url": "https://www.carolinacpas.com/",
+        "displayedUrl": "https://www.carolinacpas.com",
+        "description": "Fedyshyn CPA Group PLLC is a Certified Public Accounting firm specializing in tax reduction planning and integrated holistic wealth management.",
+        "emphasizedKeywords": [
+          "Fedyshyn CPA Group PLLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 11
+      },
+      {
+        "title": "Putnam Company Inc.",
+        "websiteTitle": "Putnam Company Inc.",
+        "url": "https://putnamandcompany.com/",
+        "displayedUrl": "https://putnamandcompany.com",
+        "description": "... Your small business tax and strategy consultants (704) 487-9686. Certifications. Privacy Policy. Contact Us. (704) 487-9686; 209-A Patton Dr, Shelby, NC 28150.",
+        "emphasizedKeywords": [
+          "209-A Patton Dr, Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 12
+      },
+      {
+        "title": "The 10 Best Tax Preparation Services in Shelby, NC 2026",
+        "websiteTitle": "Thumbtack",
+        "url": "https://www.thumbtack.com/nc/shelby/tax-preparation",
+        "displayedUrl": "https://www.thumbtack.com › NC › Shelby",
+        "description": "1. Precision Tax and Consulting Group · 5.0 ; 2. Thompson Tax Services · Exceptional 5.0 ; 3. Steve Shapiro, EA · Good 4.2 ; 4. Tax Help of Carrollton · Excellent 4.9.",
+        "emphasizedKeywords": [
+          "1. Precision Tax and Consulting Group"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 13
+      },
+      {
+        "title": "ABT Tax Services | Shelby, North Carolina | (704) 484-9980",
+        "websiteTitle": "abttaxservice.com",
+        "url": "https://abttaxservice.com/",
+        "displayedUrl": "https://abttaxservice.com",
+        "description": "ABT Tax Services has been in operation since 1990 and provides accounting and income tax services to individuals and small businesses.",
+        "emphasizedKeywords": [
+          "provides accounting and income tax services"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 14
+      },
+      {
+        "title": "Tax Preparation Offices In Shelby, NC",
+        "websiteTitle": "Jackson Hewitt",
+        "url": "https://office.jacksonhewitt.com/tax-preparation-services-locations/en/nc/shelby",
+        "displayedUrl": "https://office.jacksonhewitt.com › Jackson Hewitt › NC",
+        "description": "With tax offices throughout Shelby, finding your local Tax Pro has never been easier. · Visit agent page. 918.85 miles. 233 East Marion Street, Shelby, NC, 28150.",
+        "emphasizedKeywords": [
+          "233 East Marion Street, Shelby, NC, 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 15
+      },
+      {
+        "title": "Financial Services Shelby Nc - Mark Patty & Associates LLC",
+        "websiteTitle": "Mark Patty & Associates, LLC",
+        "url": "https://markpattyaccounting.com/",
+        "displayedUrl": "https://markpattyaccounting.com",
+        "description": "Mark Patty & Associates, LLC is a full service accounting firm in Shelby, NC. We are dedicated to you and all your accounting and tax needs.",
+        "emphasizedKeywords": [
+          "Mark Patty & Associates, LLC is a full service accounting firm in Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 16
+      },
+      {
+        "title": "ACCOUNTING PAYROLL & TAXES - Updated June 2026",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/biz/accounting-payroll-and-taxes-shelby",
+        "displayedUrl": "https://www.yelp.com › ... › Accountants",
+        "description": "More info about Accounting Payroll & Taxes. Map. 1016 Earl Rd. Shelby, NC 28152. Directions. (704) 482-1722. Call Now. Verify this business for free.",
+        "emphasizedKeywords": [
+          "1016 Earl Rd. Shelby, NC 28152"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 17
+      },
+      {
+        "title": "Cooks Tax Service - Shelby, NC Tax Experts - DoTax, Inc.",
+        "websiteTitle": "dotax.com",
+        "url": "https://www.dotax.com/accountant/north-carolina/shelby/cooks-tax-service/396894",
+        "displayedUrl": "https://www.dotax.com › ... › North Carolina › Shelby",
+        "description": "Whether you're running a small business or managing family finances, Steven Cook offers personalized tax prep, planning, and accounting support ...",
+        "date": "2015-03-24T12:00:00.000Z",
+        "emphasizedKeywords": [
+          "Steven Cook offers personalized tax prep, planning, and accounting support"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 18
+      },
+      {
+        "title": "Best 3 B C D Income Tax Accounting Llc in Shelby, NC",
+        "websiteTitle": "Yellow Pages",
+        "url": "https://www.yellowpages.com/shelby-nc/b-c-d-income-tax-accounting-llc",
+        "displayedUrl": "https://www.yellowpages.com › NC › Shelby",
+        "description": "Accutrol is not closed! The new location is: 416 North Lafayette Street, Shelby, about 1 mile from the old office.",
+        "emphasizedKeywords": [
+          "416 North Lafayette Street, Shelby"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 19
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/QM6cCjNpxavCMia-0.html?signature=4vg8PlxVg4hD1FEFSlYt"
+  },
+  {
+    "#debug": {
+      "requestId": "Jt0TbsgGrAL35Jr",
+      "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en&start=10",
+      "loadedUrl": "http://www.google.com/search?q=cpa+shelby+nc&hl=en&start=10",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "cpa shelby nc",
+      "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en&start=10",
+      "device": "DESKTOP",
+      "page": 2,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=cpa+shelby+nc&hl=en&start=10",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Best cpa shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+cpa+shelby+nc&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEcQAQ"
+      },
+      {
+        "title": "Cpa shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Cpa+shelby+nc+reviews&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEoQAQ"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEkQAQ"
+      },
+      {
+        "title": "Craig barry and poston shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+barry+and+poston+shelby+nc&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEgQAQ"
+      },
+      {
+        "title": "Best cpa shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Best+cpa+shelby+nc&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEcQAQ"
+      },
+      {
+        "title": "Cpa shelby nc reviews",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Cpa+shelby+nc+reviews&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEoQAQ"
+      },
+      {
+        "title": "Gale elmore CPA",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Gale+elmore+CPA&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEkQAQ"
+      },
+      {
+        "title": "Craig barry and poston shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Craig+barry+and+poston+shelby+nc&sa=X&ved=2ahUKEwiFx6HnycSVAxXsU6QEHW4vKrk4ChDVAnoECEgQAQ"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Staff",
+        "websiteTitle": "Sara Lynn Little",
+        "url": "https://littlepllc.com/staff/",
+        "displayedUrl": "https://littlepllc.com › staff",
+        "description": "Sara Lynn Little, CPA, established the accounting firm when she purchased the Shelby office of McGladrey LLP, formerly known as McGladrey & Pullen, LLP and RSM ...Read more",
+        "emphasizedKeywords": [
+          "established the accounting firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 10
+      },
+      {
+        "title": "The 10 Best Tax Preparation Services in Shelby, NC 2026",
+        "websiteTitle": "Thumbtack",
+        "url": "https://www.thumbtack.com/nc/shelby/tax-preparation",
+        "displayedUrl": "https://www.thumbtack.com › NC › Shelby",
+        "description": "1. Precision Tax and Consulting Group · 5.0 ; 2. Thompson Tax Services · Exceptional 5.0 ; 3. Steve Shapiro, EA · Good 4.2 ; 4. Tax Help of Carrollton · Excellent 4.9.Read more",
+        "emphasizedKeywords": [
+          "1. Precision Tax and Consulting Group"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 11
+      },
+      {
+        "title": "Craig, Barry & Poston, P.A. CPA | Shelby NC",
+        "websiteTitle": "Facebook · Craig, Barry & Poston, P.A. CPA",
+        "url": "https://www.facebook.com/p/Craig-Barry-Poston-PA-CPA-100088692125820/",
+        "displayedUrl": "Facebook › Craig, Barry & Poston, P.A. CPA",
+        "description": "Trust our team of expert CPAs in Shelby, NC to provide comprehensive accounting services tailored to your business's needs. Contact us at 704-487-5111 or visit ...Read more",
+        "emphasizedKeywords": [
+          "expert CPAs in Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "followersAmount": "100+ followers",
+        "type": "organic",
+        "position": 12
+      },
+      {
+        "title": "BRC CPAs and Advisors - CPA North Carolina - NC ...",
+        "websiteTitle": "BRC CPAs and Advisors",
+        "url": "https://www.brc.cpa/",
+        "displayedUrl": "https://www.brc.cpa",
+        "description": "BRC CPAs and Advisors is a North Carolina CPA firm providing tax, assurance, and advisory services to individuals and businesses.",
+        "emphasizedKeywords": [
+          "BRC CPAs and Advisors"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 13
+      },
+      {
+        "title": "REDDING RYLAN C JR CPA - Updated June 2026",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/biz/redding-rylan-c-jr-cpa-shelby",
+        "displayedUrl": "https://www.yelp.com › ... › Accountants",
+        "description": "More info about Redding Rylan C Jr CPA. Map. 5 E Marion St. Shelby, NC 28150. Directions. (704) 484-0701. Call Now. Verify this business for free.Read more",
+        "emphasizedKeywords": [
+          "5 E Marion St. Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 14
+      },
+      {
+        "title": "BCD Income Tax & Accounting LLC - Shelby",
+        "websiteTitle": "bcdtax.com",
+        "url": "https://www.bcdtax.com/",
+        "displayedUrl": "https://www.bcdtax.com",
+        "description": "BCD Income Tax & Accounting LLC · 205 West Dixon Boulevard · Shelby, NC 28152 · 704-481-0223 · On Highway 74 Beside Chen's Chinese Restaurant · We know taxes!Read more",
+        "emphasizedKeywords": [
+          "205 West Dixon Boulevard · Shelby, NC 28152"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 15
+      },
+      {
+        "title": "Tax Preparation Offices In Shelby, NC",
+        "websiteTitle": "Jackson Hewitt",
+        "url": "https://office.jacksonhewitt.com/tax-preparation-services-locations/en/nc/shelby",
+        "displayedUrl": "https://office.jacksonhewitt.com › Jackson Hewitt › NC",
+        "description": "Visit agent page. 918.85 miles. 233 East Marion Street, Shelby, NC, 28150. Closed - Opens at 10:00 AM Tuesday. Book an appointment · Visit agent page. 919.41 ...Read more",
+        "emphasizedKeywords": [
+          "233 East Marion Street, Shelby, NC, 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 16
+      },
+      {
+        "title": "Putnam Company Inc.",
+        "websiteTitle": "Putnam Company Inc.",
+        "url": "https://putnamandcompany.com/",
+        "displayedUrl": "https://putnamandcompany.com",
+        "description": "... Your small business tax and strategy consultants (704) 487-9686. Certifications. Privacy Policy. Contact Us. (704) 487-9686; 209-A Patton Dr, Shelby, NC 28150.Read more",
+        "emphasizedKeywords": [
+          "209-A Patton Dr, Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 17
+      },
+      {
+        "title": "Best 1 Gragg And Gragg Accounting Firm in Shelby, NC",
+        "websiteTitle": "Yellow Pages",
+        "url": "https://www.yellowpages.com/shelby-nc/gragg-and-gragg-accounting-firm",
+        "displayedUrl": "https://www.yellowpages.com › NC › Shelby",
+        "description": "Sara Lynn Little CPA PLLC. 403 S Lafayette St. Shelby, NC. 17 Years. in Business · Accounting ServicesAccountants-Certified Public · Visit ...Read more",
+        "emphasizedKeywords": [
+          "403 S Lafayette St. Shelby, NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 18
+      },
+      {
+        "title": "ABT Tax Services | Shelby, North Carolina | (704) 484-9980",
+        "websiteTitle": "abttaxservice.com",
+        "url": "https://abttaxservice.com/",
+        "displayedUrl": "https://abttaxservice.com",
+        "description": "ABT Tax Services has been in operation since 1990 and provides accounting and income tax services to individuals and small businesses.",
+        "emphasizedKeywords": [
+          "provides accounting and income tax services"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 19
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/Jt0TbsgGrAL35Jr-0.html?signature=u1UQWFqafmfjerRBtS3"
+  },
+  {
+    "#debug": {
+      "requestId": "MT8pezbgLTnsO6M",
+      "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en&start=10",
+      "loadedUrl": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en&start=10",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "lawyer shelby nc",
+      "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en&start=10",
+      "device": "DESKTOP",
+      "page": 2,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=lawyer+shelby+nc&hl=en&start=10",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC0QAQ"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDMQAQ"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDIQAQ"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Personal injury lawyer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Personal+injury+lawyer+shelby+nc&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "Meekins attorney Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Meekins+attorney+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECCwQAQ"
+      },
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC0QAQ"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDMQAQ"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDIQAQ"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Personal injury lawyer shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Personal+injury+lawyer+shelby+nc&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "Meekins attorney Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&rlz=1C1ONGR_enUS1170US1170&q=Meekins+attorney+Shelby,+NC&sa=X&ved=2ahUKEwj9ouzpycSVAxV9xTgGHe0RB0c4ChDVAnoECCwQAQ"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Personal Injury Attorney | Haynes At Law | Shelby NC",
+        "websiteTitle": "haynesatlaw.com",
+        "url": "https://www.haynesatlaw.com/",
+        "displayedUrl": "https://www.haynesatlaw.com",
+        "description": "Our practice areas include Criminal Defense & Traffic, Personal Injury and Civil Litigation. We're dedicated to giving our clients the best legal ...Read more",
+        "emphasizedKeywords": [
+          "Criminal Defense & Traffic, Personal Injury and Civil Litigation"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 10
+      },
+      {
+        "title": "Richard J. Luptak, PLLC – Shelby, NC – Kings Mountain, NC ...",
+        "websiteTitle": "Luptak and Chapman",
+        "url": "https://luptakandchapman.com/",
+        "displayedUrl": "https://luptakandchapman.com",
+        "description": "Richard Luptak and Chelsea Chapman have over 40 years of combined experience serving the residents of Cleveland County and Gaston County. Learn More ...Read more",
+        "emphasizedKeywords": [
+          "Richard Luptak and Chelsea Chapman"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 11
+      },
+      {
+        "title": "Personal Injury Lawyer In Shelby, NC",
+        "websiteTitle": "Dr. Ted Injury Law",
+        "url": "https://drtedinjurylaw.com/shelby/",
+        "displayedUrl": "https://drtedinjurylaw.com › shelby",
+        "description": "Call (800) 693-7833 today for your free, no-obligation consultation with an experienced Shelby, NC personal injury attorney. You pay absolutely nothing — no out ...Read more",
+        "emphasizedKeywords": [
+          "Call (800) 693-7833 today for your free"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 12
+      },
+      {
+        "title": "THE BEST 10 LAWYERS IN SHELBY, NC",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/search?cflt=lawyers&find_loc=Shelby%2C+NC",
+        "displayedUrl": "https://www.yelp.com › Professional Services › Lawyers",
+        "description": "Top 10 Best Lawyers Near Shelby, North Carolina - With Real Reviews · Anderson Law Firm · The Bollinger Law Firm PC · Teddy, Meekins & Talbert · Caulder & ...Read more",
+        "emphasizedKeywords": [
+          "Anderson Law Firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "averageRating": 4,
+        "numberOfReviews": 30,
+        "type": "organic",
+        "position": 13
+      },
+      {
+        "title": "Greene Law Offices, PLLC - Shelby",
+        "websiteTitle": "Greene Law Offices, PLLC",
+        "url": "https://www.nicholegreenelaw.com/",
+        "displayedUrl": "https://www.nicholegreenelaw.com",
+        "description": "Greene Law Offices, PLLC is a North Carolina law firm dedicated to providing trusted legal representation across family law, criminal defense, traffic matters, ...Read more",
+        "emphasizedKeywords": [
+          "Greene Law Offices, PLLC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 14
+      },
+      {
+        "title": "Shelby, Pethel and Hudson Attorneys at Law | Practicing law ...",
+        "websiteTitle": "Shelby, Pethel and Hudson, PA",
+        "url": "https://leestreetlawyers.com/",
+        "displayedUrl": "https://leestreetlawyers.com",
+        "description": "The law firm has practiced for more than 20 years at their 122 N. Lee St. offices, working in the areas of Civil Litigation, Workers Compensation, Elder Law, ...Read more",
+        "emphasizedKeywords": [
+          "122 N. Lee St. offices"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 15
+      },
+      {
+        "title": "David R. Teddy",
+        "websiteTitle": "Teddy, Meekins & Talbert, P.L.L.C.",
+        "url": "https://www.teddyandmeekins.com/who-we-are/david-r-teddy/",
+        "displayedUrl": "https://www.teddyandmeekins.com › who-we-are › davi...",
+        "description": "Contact a Shelby Law Firm at Teddy, Meekins & Talbert now for helpful information about David R. Teddy and to learn more about our personal injury services.",
+        "emphasizedKeywords": [
+          "Contact a Shelby Law Firm at Teddy, Meekins & Talbert"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 16
+      },
+      {
+        "title": "Shelby Estate Planning & Elder Law Attorneys",
+        "websiteTitle": "McIntyre Elder Law",
+        "url": "https://mcelderlaw.com/locations/shelby/",
+        "displayedUrl": "https://mcelderlaw.com › Locations",
+        "description": "Secure your family's future with trusted estate planning and elder law services from McIntyre Elder Law in Shelby. Schedule a free consultation today to ...",
+        "emphasizedKeywords": [
+          "McIntyre Elder Law in Shelby"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 17
+      },
+      {
+        "title": "Shelby Family Law Attorney - Free Consultation",
+        "websiteTitle": "The Schweppe Law Firm, P.A.",
+        "url": "https://www.lawshelby.com/shelby-family-law-attorney/",
+        "displayedUrl": "https://www.lawshelby.com › shelby-family-law-attorney",
+        "description": "As a group of three established attorneys who have big-firm experience, we know the law, the courts and how to handle North Carolina family law issues.Read more",
+        "emphasizedKeywords": [
+          "three established attorneys who have big-firm experience"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 18
+      },
+      {
+        "title": "Yelton, Farfour & Bridges - Shelby",
+        "websiteTitle": "shelbylawyers.com",
+        "url": "https://www.shelbylawyers.com/",
+        "displayedUrl": "https://www.shelbylawyers.com",
+        "description": "Robert (Bob) W. Yelton – Retired. Education. Wake Forest University, B.A. Political Science, cum laude, 1964; Wake Forest University School of Law, J.D., ...Read more",
+        "emphasizedKeywords": [
+          "Robert (Bob) W. Yelton"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 19
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/MT8pezbgLTnsO6M-0.html?signature=ixlrRTpmdP405mr4Z5hy"
+  },
+  {
+    "#debug": {
+      "requestId": "kK1DUBjNtKNR2iN",
+      "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en&start=10",
+      "loadedUrl": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en&start=10",
+      "method": "GET",
+      "retryCount": 0,
+      "errorMessages": [],
+      "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+      "term": "law firm shelby nc",
+      "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en&start=10",
+      "device": "DESKTOP",
+      "page": 2,
+      "type": "SEARCH",
+      "domain": "google.com",
+      "countryCode": "US",
+      "languageCode": "en",
+      "locationUule": null,
+      "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=law+firm+shelby+nc&hl=en&start=10",
+    "hasNextPage": true,
+    "serpProviderCode": "L",
+    "resultsTotal": null,
+    "relatedQueries": [
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDIQAQ"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDMQAQ"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "Schweppe law firm Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+law+firm+Shelby+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "King law shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=King+law+shelby+nc&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECCwQAQ"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC0QAQ"
+      },
+      {
+        "title": "Criminal lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Criminal+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC8QAQ"
+      },
+      {
+        "title": "Family lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Family+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDIQAQ"
+      },
+      {
+        "title": "Estate lawyers in Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Estate+lawyers+in+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDMQAQ"
+      },
+      {
+        "title": "Traffic lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Traffic+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDEQAQ"
+      },
+      {
+        "title": "Divorce lawyers Shelby, NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Divorce+lawyers+Shelby,+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECDAQAQ"
+      },
+      {
+        "title": "Schweppe law firm Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=Schweppe+law+firm+Shelby+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC4QAQ"
+      },
+      {
+        "title": "King law shelby nc",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=King+law+shelby+nc&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECCwQAQ"
+      },
+      {
+        "title": "David Teddy Shelby NC",
+        "url": "https://www.google.com/search?sca_esv=ab67fec4bf38176f&hl=en&q=David+Teddy+Shelby+NC&sa=X&ved=2ahUKEwju4OjpycSVAxUQQfEDHTFJHVQ4ChDVAnoECC0QAQ"
+      }
+    ],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [
+      {
+        "title": "Personal Injury Attorney | Haynes At Law | Shelby NC",
+        "websiteTitle": "haynesatlaw.com",
+        "url": "https://www.haynesatlaw.com/",
+        "displayedUrl": "https://www.haynesatlaw.com",
+        "description": "Our practice areas include Criminal Defense & Traffic, Personal Injury and Civil Litigation. We're dedicated to giving our clients the best legal ...Read more",
+        "emphasizedKeywords": [
+          "Criminal Defense & Traffic, Personal Injury and Civil Litigation"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 10
+      },
+      {
+        "title": "CERWIN LAW FIRM - Updated July 2026 - 522 S Dekalb ...",
+        "websiteTitle": "Yelp",
+        "url": "https://www.yelp.com/biz/cerwin-law-firm-shelby-2",
+        "displayedUrl": "https://www.yelp.com › ... › Divorce & Family Law",
+        "description": "More info about Cerwin Law Firm · Map · 522 S Dekalb St. Shelby, NC 28150. Directions · (704) 471-0808. Call Now · From the Business. Specialties. Professional ...Read more",
+        "emphasizedKeywords": [
+          "522 S Dekalb St. Shelby, NC 28150"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 11
+      },
+      {
+        "title": "Shelby, Pethel and Hudson Attorneys at Law | Practicing law ...",
+        "websiteTitle": "Shelby, Pethel and Hudson, PA",
+        "url": "https://leestreetlawyers.com/",
+        "displayedUrl": "https://leestreetlawyers.com",
+        "description": "The law firm has practiced for more than 20 years at their 122 N. Lee St. offices, working in the areas of Civil Litigation, Workers Compensation, Elder Law, ...Read more",
+        "emphasizedKeywords": [
+          "122 N. Lee St. offices"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 12
+      },
+      {
+        "title": "Best Shelby, NC Civil Litigation Attorneys",
+        "websiteTitle": "Super Lawyers",
+        "url": "https://attorneys.superlawyers.com/civil-litigation/north-carolina/shelby/",
+        "displayedUrl": "https://attorneys.superlawyers.com › ... › North Carolina",
+        "description": "Free profiles of 157 top rated Shelby, North Carolina civil litigation attorneys on Super Lawyers. Browse comprehensive profiles ...",
+        "emphasizedKeywords": [
+          "Shelby",
+          "North Carolina",
+          "Lawyers"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 13
+      },
+      {
+        "title": "Taylor Law, PLLC | Real Estate Law Firm",
+        "websiteTitle": "Taylor Law, PLLC",
+        "url": "https://www.taylorlawpllc.com/",
+        "displayedUrl": "https://www.taylorlawpllc.com",
+        "description": "At Taylor Law, PLLC, our attorneys strive to provide focused legal advocacy, superior service, and exceptional guidance for clients in North Carolina and South ...Read more",
+        "emphasizedKeywords": [
+          "focused legal advocacy, superior service, and exceptional guidance"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 14
+      },
+      {
+        "title": "Yelton, Farfour & Bridges - Shelby",
+        "websiteTitle": "shelbylawyers.com",
+        "url": "https://www.shelbylawyers.com/",
+        "displayedUrl": "https://www.shelbylawyers.com",
+        "description": "UNC-Chapel Hill School of Law, J.D., 1972; Signa Nu Fraternity; Order of the Old Well (UNC-Chapel Hill). Practice Areas. Family Law (Separation, Divorce ...Read more",
+        "emphasizedKeywords": [
+          "UNC-Chapel Hill School of Law, J.D., 1972"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 15
+      },
+      {
+        "title": "Shelby Attorneys - North Carolina - Lawyers",
+        "websiteTitle": "Cornell University",
+        "url": "https://lawyers.law.cornell.edu/lawyers/north-carolina/shelby",
+        "displayedUrl": "https://lawyers.law.cornell.edu › North Carolina",
+        "description": "Shelby, NC Attorney. (704) 285-0613. University of North Carolina School of LawWofford College and Wofford CollegeNorth Carolina and South CarolinaSouth ...Read more",
+        "emphasizedKeywords": [
+          "704) 285-0613"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 16
+      },
+      {
+        "title": "Shelby Estate Planning & Elder Law Attorneys",
+        "websiteTitle": "McIntyre Elder Law",
+        "url": "https://mcelderlaw.com/locations/shelby/",
+        "displayedUrl": "https://mcelderlaw.com › Locations",
+        "description": "Shelby Estate Planning & Elder Law Attorneys · Proud to be a part of the Shelby community · McIntyre Elder Law · (888) 999-6600 · We are here serving you 24/7.Read more",
+        "emphasizedKeywords": [
+          "Shelby",
+          "Law",
+          "Shelby",
+          "Law"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 17
+      },
+      {
+        "title": "Shelby Civil Litigation Lawyer & Law Firm - Free Consultation",
+        "websiteTitle": "The Schweppe Law Firm, P.A.",
+        "url": "https://www.lawshelby.com/shelby-civil-litigation-lawyer/",
+        "displayedUrl": "https://www.lawshelby.com › shelby-civil-litigation-law...",
+        "description": "Involved in civil litigation in Shelby? The Schweppe Law Firm, P.A. ... Warren St. Shelby, NC 28150. Phone:704-487-7204. Fax:704-482-2103. payment ...Read more",
+        "emphasizedKeywords": [
+          "Law Firm",
+          "Shelby",
+          "NC"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 18
+      },
+      {
+        "title": "Robinson Bradshaw | Southeast Corporate & Litigation Law Firm",
+        "websiteTitle": "Robinson, Bradshaw & Hinson",
+        "url": "https://www.robinsonbradshaw.com/",
+        "displayedUrl": "https://www.robinsonbradshaw.com",
+        "description": "Robinson Bradshaw is a full-service law firm with offices in Charlotte, Raleigh and the Research Triangle in North Carolina, and Rock Hill, South Carolina.",
+        "emphasizedKeywords": [
+          "Robinson Bradshaw is a full-service law firm"
+        ],
+        "siteLinks": [],
+        "productInfo": {},
+        "type": "organic",
+        "position": 19
+      }
+    ],
+    "suggestedResults": [],
+    "peopleAlsoAsk": [],
+    "customData": null,
+    "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/aQREPA0XCVGysObYi/records/kK1DUBjNtKNR2iN-0.html?signature=YW5lATnDq5gEtNO9DN3u"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "blacks-grill-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 39, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Longtime Cherryville burger spot (Lotta Burger / cherry lemon Sundrop), cash-only. Directory-only presence (Yelp/Tripadvisor/edan.io); no business-owned site. Count is Yelp (39); Tripadvisor 4.3, #3 of 21. Phone 704-435-5666."
+  },
+  {
+    "id": "manantail-mexican-grill-cherryville",
+    "exists": true,
+    "realWebsite": "https://manantialmexicangrill.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "OSM name misspelled; correct name is 'Manantial Mexican Grill', est. 2013, 1205 Shelby Hwy, 704-435-6887. Has its own domain site (could not grade, returned 403). Tripadvisor 4.3, #5 of 21. Already has a real site = likely not a first-pitch fit."
+  },
+  {
+    "id": "shake-shop-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 763, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Institution-tier: awarded Best Burger in NC by Our State Magazine and Charlotte Observer; #1 of 20 in Cherryville. Cash-only. FB page + directories only, no business-owned site. Count 763 is Restaurant Guru aggregate. High capacity signal (notability + review mass), weak web = strong combo."
+  },
+  {
+    "id": "small-town-kitchen-cherryville",
+    "exists": true,
+    "realWebsite": "https://smalltownkitchen.com/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Homestyle/country-cooking eatery in former Pizza Hut, 1011 E Church St. Site is a SpotHopper vendor template (functional, mobile, online ordering, galleries) — vendor-locked, not owned. Angle would be 'you don't own your site', not 'you have none'."
+  },
+  {
+    "id": "family-carry-out-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.5 },
+    "owner": { "name": "Lisa Beattie & Brooke Harris" },
+    "gbpClosed": null,
+    "notes": "CONFLICT: Yelp lists CLOSED, but Tripadvisor shows active (#11 of 30, 4.5) and it's described as operating 33 years — verify open before any touch. Owners Lisa Beattie & Brooke Harris. Southern + Chinese/American. FB + edan.io only, no site. 801 W Church St, 704-435-5321."
+  },
+  {
+    "id": "mr-tokyo-japanese-restaurant-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.tokyojapanesecherryville.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "OSM name off: actual name is 'Tokyo Japanese Restaurant' (the 'Mr Tokyo' brand is Charlotte/Monroe, different owner). 120 N Cherry St, 704-445-4449. Has its own domain site (could not fetch — cert error). Only ~a handful of reviews on Yelp."
+  },
+  {
+    "id": "hong-kong-chinese-restaurant-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 113, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Actual name 'Hong Kong Restaurant', 104 N Cherry St, 704-435-2888. Cantonese, buffet. Directory-only (edan.io, menu-world, allmenus); no business-owned site. Count 113 is Restaurantji; Yelp 10."
+  },
+  {
+    "id": "papas-pizza-cherryville",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 3.6 },
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "PERMANENTLY CLOSED: 'Papa's Pizza To Go' shut its Cherryville location Sun June 8 2025; a Pizza Inn franchise opened in the spot June 23 2025. Drop — do not source. Was 1002 E Main St."
+  },
+  {
+    "id": "mi-pueblito-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.mipubs.com/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": 71, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Local 3-location family chain (Rutherfordton/Forest City/Shelby) since 1996; 220 Oak St, 828-288-3600. Custom, modern, mobile-friendly site covering all locations (8/10) with online ordering — NOT a fit; already has a strong owned site."
+  },
+  {
+    "id": "china-wall-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Could not verify a 'China Wall' in Forest City — no listing found. OSM name likely wrong or business closed. Actual Forest City Chinese spots are China Wok (chinawokforestcity.com), China & Hibachi, and Dragon Palace. Recommend dropping this row or re-sourcing the correct name."
+  },
+  {
+    "id": "diversified-cabinetry-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Custom cabinet shop, ~26 yrs, 2204 Polkville Rd, Shelby; listed phone 704-473-2222 (differs from the provided 704-487-1733 — reconcile). Directory-only (YP/Yelp/Manta/Houzz), no business-owned site. Owner name NOT retrievable via automated search (NC SoS entity pages 403 to fetch) — do a manual sosnc.gov entity/registered-agent lookup; high-ticket custom work = strong P1/P2-adjacent fit and highest-value non-restaurant in this batch."
+  },
+  {
+    "id": "hounds-grill-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://houndsdrivein.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": 7, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "TERRITORY: this is the concession grill at Hound's Drive-In Theater (114 Raven Circle, 704-739-4474) — a well-established Kings Mountain attraction with its own site + large FB following and a campground. Grill itself has only 7 reviews (4.9). The drive-in is the real entity and already has web; grill unlikely a standalone target."
+  },
+  {
+    "id": "papas-pizza-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "DISQUALIFY (P12): the OSM 'Papa's Pizza' at Boiling Springs resolves to a Papa John's franchise (307A E College Ave, 704-434-7797) — corporate-controlled web (papajohns.com). No independent 'Papa's Pizza' found in Boiling Springs. Flag and drop."
+  },
+  {
+    "id": "chens-fusion-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Asian/Chinese, family-run, 117 E College Ave near Gardner-Webb, 704-434-9876. Directory/aggregator only (com-fnb, wheree, foursquare); no business-owned site. Solid B2 Storefront candidate (college-town, no site)."
+  },
+  {
+    "id": "red-wok-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 15, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Actual name 'Red Wok Express', 610 E Grover St, 704-481-9191; ~24 years in business (longevity signal). Owner referred to as 'Bruno' in customer reviews (first name only, unconfirmed). Directory-only (res-menu.net, zmenu, allmenus); no owned site."
+  },
+  {
+    "id": "kind-boiling-springs",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "CLOSED: Yelp lists 'Kind' as CLOSED (105 S Main St, coffee/juice/smoothie/bakery). Had FB + IG only, no business-owned site. Drop — do not source. (Closure per Yelp, not confirmed on Google.)"
+  },
+  {
+    "id": "hoshi-express-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 14, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Japanese hibachi express w/ drive-thru, 121 N Main St (uptown Shelby), 704-313-7286. Directory/aggregator only (wheree, ubereats, zmenu, foodjoyy); no owned site. Uptown location = drive-by reachable."
+  },
+  {
+    "id": "clover-grill-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "TERRITORY: could not verify a 'Clover Grill' in Kings Mountain — no listing found. OSM name likely wrong or business closed. Nearby real spots: 238 Cherokee Grill, Clover Harvest. Recommend re-sourcing the correct name before spending a KM slot on it."
+  },
+  {
+    "id": "bulldog-quik-snak-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Homestyle diner (burgers/tenders/breakfast), 131 N Main St, uptown Shelby, 704-434-9336. Facebook-only (QuikSnakLLC), no site — clean B2 Storefront candidate. 'Bulldog' = Gardner-Webb mascot theme; some listings tag Boiling Springs."
+  },
+  {
+    "id": "jenkins-foods-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Harry Mauney" },
+    "gbpClosed": null,
+    "notes": "NOT a restaurant — a USDA-inspected livermush/sausage MANUFACTURER (livermush, liver pudding, scrapple, souse, salads), est. 1933, 2119 New House Rd, ~50 employees, ~$7.4M revenue; a genuine Shelby/Cleveland County institution (featured in Our State's livermush piece). Listed contact 'Harry Mauney' (704-434-2347) — likely principal. Directory-only (USDA/D&B/Manta), no consumer site. B2B/wholesale, so restaurant-profile fit is weak, but high-capacity local landmark."
+  }
+]

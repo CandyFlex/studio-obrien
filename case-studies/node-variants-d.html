@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Scroll-board NODE variants — five looks + five copy formulas,
+     each demoed against the same arcade hero crop with three sample notes. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Node Variants | Concept D Scroll Board</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090909">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip}
+.vlabel{position:absolute;top:16px;left:18px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#666;border:1px dashed #333;padding:5px 10px;border-radius:4px;z-index:5}
+.row{position:relative;border-bottom:2px dashed #262627;padding:clamp(56px,6vw,84px) 16px}
+.board{position:relative;max-width:1250px;margin:0 auto}
+.shot{width:min(46%,540px);margin:0 auto;overflow:hidden;border:1px solid #262627;border-radius:6px;aspect-ratio:800/420}
+.shot img{display:block;width:100%;height:auto;margin-top:-3.1%}
+.node{position:absolute;transform:translateY(-50%);width:calc(50% - min(23%,270px) - clamp(16px,2vw,30px))}
+.nl{left:0;text-align:right;padding-right:clamp(24px,2.8vw,40px)}
+.nr{right:0;text-align:left;padding-left:clamp(24px,2.8vw,40px)}
+
+/* N1 — CHIP: tiny bordered tag, claim only */
+.n1 .node{width:auto;max-width:calc(50% - min(23%,270px) - 16px)}
+.n1 .nl{padding-right:clamp(18px,2.2vw,30px)}
+.n1 .nr{padding-left:clamp(18px,2.2vw,30px)}
+.n1 .tagchip{display:inline-flex;align-items:center;gap:8px;background:#101011;border:1px solid #2a2a2b;border-radius:6px;padding:7px 12px;font-size:12.5px;font-weight:700;letter-spacing:-.005em;white-space:nowrap}
+.n1 .tagchip i{width:6px;height:6px;border-radius:50%;background:#34d399;flex:none}
+.n1 .nl::after,.n1 .nr::after{content:'';position:absolute;top:50%;width:clamp(12px,1.6vw,24px);height:1px;background:rgba(52,211,153,.5)}
+.n1 .nl::after{right:2px}
+.n1 .nr::after{left:2px}
+
+/* N2 — FOOTNOTE: underlined claim + one-line takeaway, elbow line */
+.n2 .node b{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.01em;padding-bottom:3px;border-bottom:1px solid rgba(52,211,153,.6);margin-bottom:5px}
+.n2 .nl b{border-bottom-color:rgba(52,211,153,.6)}
+.n2 .node p{font-size:11.5px;line-height:1.5;color:#8f8f8f}
+.n2 .nl::before,.n2 .nr::before{content:'';position:absolute;top:50%;width:clamp(16px,2vw,28px);height:1px;background:#2e2e2f}
+.n2 .nl::before{right:4px}
+.n2 .nr::before{left:4px}
+
+/* N3 — LEGEND: numbered dot at image edge + numbered text */
+.n3 .node b{display:block;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.n3 .node b i{font-style:normal;color:#34d399;margin:0 6px}
+.n3 .node p{font-size:11.5px;line-height:1.5;color:#8f8f8f;margin-top:3px}
+.n3 .edge{position:absolute;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:#0e0e0f;border:1.5px solid #34d399;color:#34d399;font-size:10.5px;font-weight:700;line-height:17px;text-align:center}
+.n3 .nl .edge{right:-2px}
+.n3 .nr .edge{left:-2px}
+
+/* N4 — OUTCOME BAR: mint top bar, owner-benefit voice */
+.n4 .node b{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.01em;position:relative;padding-top:9px;margin-bottom:3px}
+.n4 .node b::before{content:'';position:absolute;top:0;width:18px;height:2px;background:#34d399}
+.n4 .nl b::before{right:0}
+.n4 .nr b::before{left:0}
+.n4 .node p{font-size:11.5px;line-height:1.5;color:#8f8f8f}
+
+/* N5 — STAT-LED: big figure in mint, tiny label under */
+.n5 .node b{display:block;font-weight:700;font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;color:#34d399;line-height:1}
+.n5 .node p{font-size:11.5px;line-height:1.45;color:#c9c9c9;margin-top:5px;font-weight:400}
+.n5 .node p b{display:inline;font-size:inherit;color:#fff;letter-spacing:-.005em}
+.n5 .nl::after,.n5 .nr::after{content:'';position:absolute;top:50%;width:clamp(14px,1.8vw,26px);height:1px;background:transparent;border-top:1px dotted rgba(52,211,153,.6)}
+.n5 .nl::after{right:3px}
+.n5 .nr::after{left:3px}
+
+@media(max-width:759.98px){
+  .shot{width:78%}
+  .node{position:static;transform:none;width:auto;text-align:left;padding:10px 0 0}
+  .board{display:flex;flex-direction:column}
+  .n3 .edge{display:none}
+  .n1 .nl::after,.n1 .nr::after,.n2 .nl::before,.n2 .nr::before,.n5 .nl::after,.n5 .nr::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- N1 — CHIP -->
+<section class="row n1">
+  <span class="vlabel">N1 &middot; Chip &mdash; label only, 3&ndash;5 words</span>
+  <div class="board">
+    <div class="shot"><img src="/portfolio/arcade-full.webp" alt="Arcade hero crop"></div>
+    <div class="node nl" style="top:26%"><span class="tagchip"><i></i>$13 all day, said first</span></div>
+    <div class="node nr" style="top:38%"><span class="tagchip"><i></i>Press Start, not &ldquo;Learn More&rdquo;</span></div>
+    <div class="node nl" style="top:72%"><span class="tagchip"><i></i>4.9&#9733; where eyes land</span></div>
+  </div>
+</section>
+
+<!-- N2 — FOOTNOTE -->
+<section class="row n2">
+  <span class="vlabel">N2 &middot; Footnote &mdash; underlined claim + takeaway</span>
+  <div class="board">
+    <div class="shot"><img src="/portfolio/arcade-full.webp" alt="Arcade hero crop"></div>
+    <div class="node nl" style="top:26%"><b>The price is the greeting</b><p>$13 answered before anyone has to ask</p></div>
+    <div class="node nr" style="top:38%"><b>Buttons that speak arcade</b><p>Press Start beats a beige &ldquo;Learn More&rdquo;</p></div>
+    <div class="node nl" style="top:72%"><b>The stars do the vouching</b><p>Google&rsquo;s 4.9, moved to the front door</p></div>
+  </div>
+</section>
+
+<!-- N3 — LEGEND -->
+<section class="row n3">
+  <span class="vlabel">N3 &middot; Legend &mdash; numbered, names the thing</span>
+  <div class="board">
+    <div class="shot"><img src="/portfolio/arcade-full.webp" alt="Arcade hero crop"></div>
+    <div class="node nl" style="top:26%"><span class="edge">1</span><b>The cost, answered</b><p>$13 all day sits beside the logo</p></div>
+    <div class="node nr" style="top:38%"><span class="edge">2</span><b>Two paths in</b><p>play now or plan the visit</p></div>
+    <div class="node nl" style="top:72%"><span class="edge">3</span><b>Proof at the top</b><p>the rating rides with the brand</p></div>
+  </div>
+</section>
+
+<!-- N4 — OUTCOME -->
+<section class="row n4">
+  <span class="vlabel">N4 &middot; Outcome &mdash; what the owner gets</span>
+  <div class="board">
+    <div class="shot"><img src="/portfolio/arcade-full.webp" alt="Arcade hero crop"></div>
+    <div class="node nl" style="top:26%"><b>Fewer &ldquo;how much?&rdquo; calls</b><p>the price is on the door, not behind it</p></div>
+    <div class="node nr" style="top:38%"><b>Clicks that become visits</b><p>the main button starts the trip</p></div>
+    <div class="node nl" style="top:72%"><b>Your rating, put to work</b><p>4.9 stars pulled out of Google and framed</p></div>
+  </div>
+</section>
+
+<!-- N5 — STAT-LED -->
+<section class="row n5">
+  <span class="vlabel">N5 &middot; Stat-led &mdash; the figure is the note</span>
+  <div class="board">
+    <div class="shot"><img src="/portfolio/arcade-full.webp" alt="Arcade hero crop"></div>
+    <div class="node nl" style="top:26%"><b>$13</b><p>the first thing a visitor learns</p></div>
+    <div class="node nr" style="top:38%"><b>2</b><p>buttons, <b>two mindsets</b>: play now or plan it</p></div>
+    <div class="node nl" style="top:72%"><b>4.9&#9733;</b><p>borrowed straight from Google</p></div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+[
+  {
+    "id": "believe-in-abilities-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Thrift store / social enterprise that hires individuals with developmental disabilities (1635-2 E Dixon Blvd, Shelby). Nonprofit-mission retail. Only presence is directory listings + X @biastores. Nonprofit/thrift - DROP."
+  },
+  {
+    "id": "buddys-home-furnishings-shelby",
+    "exists": true,
+    "realWebsite": "https://www.buddyshomefurnishings.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "National rent-to-own furniture franchise. Corporate-controlled web. CHAIN - DROP (hard disqualifier P12)."
+  },
+  {
+    "id": "tas-drug-vale",
+    "exists": true,
+    "realWebsite": "https://www.tasdrug.com",
+    "liveSiteGrade": "C-",
+    "reviews": "Modest online footprint; Healthgrades/RxLocal listings, few text reviews.",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Independent pharmacy, multi-location (Vale/West Lincoln 4417 W Hwy 27, plus Maiden & Cherryville), since 1990. Site is a Wix template - dated, vendor-locked, stock imagery. Real target but already has a site; gap is weak-old-site (vendor-locked) not no-site. Owner name not disclosed (TAS = initials)."
+  },
+  {
+    "id": "bostics-thrifty-closet-bostic",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Could NOT confirm existence - no directory/GBP/social listing found under this name in Bostic. Nearest Bostic thrift is Washburn Community Outreach Center (different name). Thrift category anyway - DROP / unverifiable."
+  },
+  {
+    "id": "norris-merchandise-shelby",
+    "exists": true,
+    "realWebsite": "https://www.norrismerchandise.com",
+    "liveSiteGrade": "C",
+    "reviews": "Well-established local retailer since 1947; positive local reputation (archery/outdoor destination).",
+    "owner": "Bridges family - David Bridges + daughter Sara, son-in-law Todd, and Ben.",
+    "gbpClosed": false,
+    "notes": "REAL TARGET. Family-owned since 1947 (2011 S Lafayette St). Archery pro shop (Mathews/Hoyt/Bowtech), Carhartt/Under Armour, furniture, hardware, indoor archery range. Site is Shopify but dated - '2000s-era retail' feel, basic styling. No agency credit. Dated-site flaw = real gap."
+  },
+  {
+    "id": "cleveland-county-school-administration-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Government - school district administration. DROP."
+  },
+  {
+    "id": "boys-girls-club-of-america-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "National nonprofit chapter. DROP."
+  },
+  {
+    "id": "farmers-friend-feed-seed-supply-forest-city",
+    "exists": true,
+    "realWebsite": "https://farmersfriendfeedandseed.com",
+    "liveSiteGrade": null,
+    "reviews": "Yelp listing present; modest reviews. Roughly 14 years in business.",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: actually in RUTHERFORDTON (188 Whitesides Rd, 28139), ~8 mi from Forest City - not Forest City. Farm/feed supply. Already has a Shopify ecommerce site (farm-ranch-supplies pages) - gap is site-quality not no-site; not graded in depth. Real niche but reduced gap severity."
+  },
+  {
+    "id": "medicine-box-pharmacy-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "Yelp 4.5 (small count); praised staff. ~39 years in business.",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "STRONG REAL TARGET. Independent pharmacy, 664 S Broadway St, Forest City, ~39 yrs. Facebook-only, NO real website - high web-gap severity (social-only). RxLocal listing only otherwise. Owner not named publicly."
+  },
+  {
+    "id": "carolina-colors-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Auto parts store (404 S Broadway St, Forest City) - NAPA/Dickson-affiliated auto parts, not a paint/color business as name suggests. Auto-parts, jobber-affiliated - LOW non-target."
+  },
+  {
+    "id": "rutherford-county-cooperative-extension-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Government (NC Cooperative Extension / county). DROP."
+  },
+  {
+    "id": "rutherford-county-transit-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Government - county transit agency. DROP."
+  },
+  {
+    "id": "rutherford-county-board-of-elections-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Government - board of elections. DROP."
+  },
+  {
+    "id": "transit-damaged-freight-furniture-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.tdffurniture.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "REGIONAL MULTI-LOCATION furniture chain (TDF Furniture / Transit Damage Freight) - locations incl Forest City (2270 Hwy 74) and Spindale, 'Get Ashley for less.' Already has ecommerce site (tdffurniture.com) plus transitdamagedfreightnconline.com. Multi-store regional chain w/ site - LOW / near-chain, reduced fit."
+  },
+  {
+    "id": "tobacco-vape-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Tobacco/vape shop - convenience, LOW non-target. Not pursued."
+  },
+  {
+    "id": "burkes-outlet-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.bealls.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "National off-price retail chain (Burkes Outlet / Bealls). CHAIN - DROP."
+  },
+  {
+    "id": "game-haven-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "4.7 stars, ~390 reviews (high volume + high rating - strong revenue proxy).",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "BEST FIND / STRONG REAL TARGET. Video-game & collectibles store, 134 Allendale Dr, Forest City. Facebook + Instagram only, NO real website - the priority combo: high reviews (390 @ 4.7) + zero-site web gap. Trades-in games, retro-to-current. Owner not named online."
+  },
+  {
+    "id": "folks-cleaners-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "~27 reviews, ~4 stars; ~33 years in business.",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Dry cleaner + coin laundry (227 Oak St, Forest City). No website. Laundromat/cleaner category - LOW non-target. (Likely related to Shelby Folk's brand - same 'Folk's' cleaner family.)"
+  },
+  {
+    "id": "plum-wellness-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.plumnatural.com",
+    "liveSiteGrade": "C",
+    "reviews": "Long-standing local health store since 1979 (Gracious Goodness > Earth Fare > Plum); good local reputation.",
+    "owner": "Heather Collins (bought from Carol & Steve Neely in 2019).",
+    "gbpClosed": false,
+    "notes": "REAL TARGET (Plum Natural Wellness, 213 Oak St Ext, Forest City). Natural-health/wellness store w/ smoothie bar + salt sauna. Has a template site (Weebly-ish), dated ~2021, self-managed, no agency. Named reachable owner (Heather Collins) is a plus; gap is dated-site not no-site."
+  },
+  {
+    "id": "movement-mortgage-forest-city",
+    "exists": true,
+    "realWebsite": "https://movement.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "National mortgage lender branch. Corporate-controlled web. CHAIN - DROP."
+  },
+  {
+    "id": "duke-energy-operation-center-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Utility corporate facility (Duke Energy). DROP."
+  },
+  {
+    "id": "nancys-alterations-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": "Nancy (proprietor)",
+    "gbpClosed": false,
+    "notes": "AMBIGUOUS - multiple Nancy's in area: 'Nancy's Alteration Shop' (610 S Broadway, Forest City, 828-289-9929) with no clear site, vs 'Nancy's Alterations and Yarn Shop' (nancysalterationsandyarnshop.com, Shopify) and a Wix booking page (truele0077.wixsite.com) which may be a different/related Nancy's. Small alterations/tailoring shop. Low-mid; verify which entity before any touch."
+  },
+  {
+    "id": "empire-gaming-forest-city",
+    "exists": true,
+    "realWebsite": "https://empire-gaming-nc.myshopify.com",
+    "liveSiteGrade": null,
+    "reviews": "Community-favored tabletop store; active events; positive local sentiment.",
+    "owner": "Contact email jkhx87@gmail.com (owner name not published).",
+    "gbpClosed": false,
+    "notes": "Tabletop/TCG game store (139 S Powell St, Forest City) - Magic/Pokemon/Yu-Gi-Oh, board games, events. Already runs a Shopify store (unbranded myshopify.com subdomain - a real flaw/opportunity: no custom domain). Real niche; gap is weak-Shopify not no-site. Direct owner email available."
+  },
+  {
+    "id": "alexa-mini-market-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Convenience mini-market, Shelby. Convenience - LOW non-target. Not pursued."
+  },
+  {
+    "id": "gaston-community-action-inc-cleveland-county-division-department-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Nonprofit/community-action agency (Cleveland County division). DROP."
+  },
+  {
+    "id": "kwik-mart-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Convenience/fuel mart, Forest City. Convenience - LOW non-target."
+  },
+  {
+    "id": "wow-supermarket-gastonia",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Grocery/supermarket in Gastonia (out of core Shelby/Cleveland/Rutherford territory). Convenience/grocery - LOW non-target. DROP."
+  },
+  {
+    "id": "the-shelby-town-plaza-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "A shopping center / property, not an operating business. DROP."
+  },
+  {
+    "id": "lloyd-little-gymnasium-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Municipal/school basketball gymnasium (tied to Shelby men's basketball / city rec). Government/rec facility - DROP."
+  },
+  {
+    "id": "houser-drug-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.houserdrugnc.com",
+    "liveSiteGrade": "C+",
+    "reviews": "Beloved historic downtown pharmacy since 1935 w/ working soda fountain (ice cream + orange ade); strong local heritage reputation.",
+    "owner": "Beam, Beam & Moss (current ownership).",
+    "gbpClosed": false,
+    "notes": "REAL TARGET w/ great story. Independent pharmacy, 302 E Main St, Cherryville, est 1935, historic soda fountain still operating. Site is a clean-but-template Wix (also a stray mcmoss4.wixsite.com dev page floating). Vendor-locked Wix = the flaw; gap is site-quality not no-site. Strong heritage/portfolio narrative."
+  },
+  {
+    "id": "ellenboro-save-mart-ellenboro",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Convenience/grocery mart, Ellenboro. Convenience - LOW non-target."
+  },
+  {
+    "id": "kwik-stop-ellenboro",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Convenience/fuel, Ellenboro. Convenience - LOW non-target. Likely same store as #33 'Kwick Stop' (spelling variant duplicate)."
+  },
+  {
+    "id": "kwick-stop-ellenboro",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "LIKELY DUPLICATE of #32 'kwik-stop-ellenboro' (spelling variant of same Ellenboro convenience store). Convenience - LOW non-target. DROP as dup."
+  },
+  {
+    "id": "kids-at-play-ellenboro",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Kids At Play Childcare Center LLC, 126 Piney Mountain Rd, Ellenboro. 4-star licensed center, cap 36, ages 0-12 (NC lic #81000292). Facebook-only, NO website - social-only gap. Small childcare - mid target; limited revenue scale."
+  },
+  {
+    "id": "oak-tree-lodge-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Budget motel/lodge, 1530 E Dixon Blvd, Shelby (Oak Tree Lodge LLC, founded 2010). Only web presence is an auto-generated edan.io placeholder page - effectively NO real site. Independent lodging but budget-motel tier - LOW/mid; weak revenue + low web-conversion value."
+  },
+  {
+    "id": "hot-spot-kings-mountain",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Hot Spot gas/convenience chain (RaceTrac/Sammy's-affiliated regional chain). CHAIN - DROP."
+  },
+  {
+    "id": "my-sweet-love-vinyard-forest-city",
+    "exists": true,
+    "realWebsite": "https://mslvineyard.com",
+    "liveSiteGrade": null,
+    "reviews": "TripAdvisor / NC Wine listed; seasonal tasting room, live music + food trucks; positive tourism sentiment.",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: actually in SPINDALE (241 Greer St, 28160), not Forest City. Real vineyard/winery w/ tasting room, weddings, events (open Sat/Sun May-Nov). Already has a site (mslvineyard.com, not graded in depth) + active FB/IG. Real niche but has site; seasonal."
+  },
+  {
+    "id": "icc-book-store-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "College bookstore (Isothermal Community College). Institutional. DROP."
+  },
+  {
+    "id": "padgetts-amoco-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Gas station / Amoco fuel, Shelby. Fuel/convenience - LOW non-target. DROP."
+  },
+  {
+    "id": "carols-hope-thrift-store-earl",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Thrift store, Earl NC (likely charity/ministry-affiliated). Thrift/nonprofit - DROP."
+  }
+]

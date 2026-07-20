@@ -1,0 +1,54 @@
+{
+  "_sources": [
+    {
+      "fact": "Burke County named after Thomas Burke, delegate to Continental Congress and governor (1781-82)",
+      "url": "https://www.america250.nc.gov/blog/2026/02/13/revolutionary-origins-nc-county-names-burke-county"
+    },
+    {
+      "fact": "Morganton named in honor of General Daniel Morgan, Revolutionary War hero who led troops at Cowpens and King's Mountain; first chartered town in western NC in 1784",
+      "url": "https://en.wikipedia.org/wiki/Morganton,_North_Carolina"
+    },
+    {
+      "fact": "Morganton furniture manufacturing heritage: Henredon founded 1945, Drexel Furniture began 1903, Guy Chaddock relocated 2004. Historic courthouse square renovated and reopened May 4, 2022",
+      "url": "https://businessnc.com/craft-renewing-a-morganton-manufacturer-excels-with-artisans-crafting-luxury-furniture-for-discerning-consumers/"
+    }
+  ],
+
+  "town": "Morganton",
+  "slug": "morganton",
+  "county": "Burke County",
+  "brandPlace": "downtown",
+  "mapQuery": "Morganton,NC",
+
+  "metaDesc": "Custom web design and SEO for Morganton and Burke County businesses: furniture makers, trades, shops, and manufacturers. Sites you own, no templates.",
+  "ogDesc": "Custom web design and development for Morganton and Burke County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Morganton, NC. Websites, SEO, and branding for furniture makers, trades, and small businesses in Burke County.",
+  "schemaDesc": "Web development and design in Morganton, NC. Custom websites, SEO, and branding for furniture makers, Main Street businesses, trades, and manufacturers in Burke County, Hickory, Conover, and Newton.",
+
+  "heroSub": "Custom websites, SEO, and branding for the furniture makers, trades, shops, and Main Street businesses of Morganton and Burke County. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Morganton</em> and the county it anchors.",
+  "localP1": "Morganton has been Burke County's seat since 1784, when it was named in honor of <strong>General Daniel Morgan</strong>, the Revolutionary War hero who led troops at Cowpens and King's Mountain. For nearly 150 years, the town's backbone has been furniture making and manufacturing. <strong>Henredon</strong>, <strong>Drexel</strong>, and <strong>Guy Chaddock</strong> built operations here, turning local craftsmanship into brands that sold across America. That tradition of skilled work, attention to detail, and moving inventory at scale still runs through Morganton's economy.",
+  "localP2": "We build for the people who keep this town going: the furniture maker running a shop downtown, the contractor and the machine operator, the restaurant and service business on Main Street. The foothills and the <strong>Catawba River</strong> draw steady traffic through Burke County, and your website needs to work as hard as you do. Every site is designed and coded around your business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Morganton</strong>, Hickory, Conover, Newton, Rutherfordton &amp; the foothills",
+
+  "areaServed": ["Morganton", "Hickory", "Conover", "Newton", "Rutherfordton"],
+
+  "citiesIntro": "Rooted in Morganton, working across the region. Explore a nearby town:",
+  "hereCard": "Furniture makers, trades, and Main Street shops in Burke County. Sites that bring customers through the door.",
+  "neighborCards": [
+    {"slug": "hickory", "name": "Hickory", "desc": "The furniture hub of the region with retail and manufacturing businesses that need modern sites to reach customers."},
+    {"slug": "conover", "name": "Conover", "desc": "A working town with trades, small manufacturers, and local businesses building on North Carolina craftsmanship."},
+    {"slug": "newton", "name": "Newton", "desc": "A Catawba County town with furniture history and service businesses that need clean, fast websites."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Burke County, Hickory, Conover, Newton, Rutherfordton, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Furniture makers and manufacturers, trades and contractors, Main Street shops and restaurants, small professional practices, and nonprofits across Burke County.",
+
+  "footerNearby": [
+    {"slug": "hickory", "name": "Hickory"},
+    {"slug": "conover", "name": "Conover"},
+    {"slug": "newton", "name": "Newton"},
+    {"slug": "rutherfordton", "name": "Rutherfordton"}
+  ]
+}

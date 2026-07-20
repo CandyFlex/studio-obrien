@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- CASE STUDY — Scroll Board template (locked from carolina-arcade-d).
+     Ben's Smokehouse. Capture: /portfolio/bens-full.webp (800x3579).
+     Note position math: top% = y / 3579 * 100. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ben's Smokehouse | A Studio O'Brien Case Study</title>
+<meta name="description" content="A complete website built for Ben's Smokehouse in Spindale, NC. Every screen annotated for search, order-ahead, and the Saturday rush.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://studioobrien.com/case-studies/bens-smokehouse">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://studioobrien.com/case-studies/bens-smokehouse">
+<meta property="og:site_name" content="Studio O&#39;Brien">
+<meta property="og:title" content="Ben's Smokehouse | A Studio O'Brien Case Study">
+<meta property="og:description" content="One smoke day a week and a website built to fill it, annotated top to bottom.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/bens.webp">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="415">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ben's Smokehouse | A Studio O'Brien Case Study">
+<meta name="twitter:description" content="One smoke day a week and a website built to fill it, annotated top to bottom.">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/bens.webp">
+<meta name="theme-color" content="#090909">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://studioobrien.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Ben's Smokehouse Case Study", "item": "https://studioobrien.com/case-studies/bens-smokehouse" }
+  ]
+}
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip;padding-bottom:64px}
+
+/* slim top */
+.top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,3vw,44px);z-index:10}
+.top a{color:#fff;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:-.02em}
+.top span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a}
+
+/* hero — "The answer" */
+.hero{position:relative;padding:clamp(90px,10vw,150px) clamp(24px,4.5vw,80px) clamp(36px,4.5vw,60px);background:radial-gradient(ellipse at 12% -10%,rgba(52,211,153,.12),transparent 55%)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,8fr);gap:clamp(28px,5vw,96px);align-items:end;max-width:1360px;margin:0 auto}
+.kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a;display:block;margin-bottom:20px}
+.kick b{color:#34d399}
+.hero h1{font-weight:700;font-size:clamp(38px,5.2vw,76px);letter-spacing:-.045em;line-height:1}
+.hero h1 span{color:#34d399}
+.hero-side{padding-bottom:8px}
+.hero-side p{color:#a8a8a8;font-size:clamp(14px,1.3vw,17px);line-height:1.65}
+.hero-side p b{color:#fff}
+.hero-band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,56px);max-width:1360px;margin:clamp(32px,4.5vw,64px) auto 0;border-top:1px solid #222;padding-top:clamp(20px,2.6vw,32px)}
+.hero-band b{display:block;font-size:clamp(14.5px,1.35vw,17.5px);font-weight:700;margin-bottom:5px}
+.hero-band p{font-size:clamp(12.5px,1.1vw,14.5px);line-height:1.55;color:#8f8f8f}
+@media(max-width:819.98px){.hero-grid{grid-template-columns:1fr}.hero-band{grid-template-columns:1fr;gap:16px}}
+
+/* scroll board */
+.board-wrap{max-width:1500px;margin:0 auto;padding:clamp(28px,3.5vw,56px) 16px clamp(56px,7vw,96px)}
+.board{position:relative;width:100%}
+.site{display:block;width:min(56%,820px);margin:0 auto;border:1px solid #262627;border-radius:6px;box-shadow:0 40px 120px -40px rgba(0,0,0,.9),0 0 140px -40px rgba(52,211,153,.22)}
+.site img{display:block;width:100%;height:auto;border-radius:5px}
+.pt{position:absolute;width:calc(50% - min(28%,410px) - clamp(18px,2.4vw,34px));transform:translateY(-50%);opacity:0;transition:opacity .6s ease,transform .6s ease}
+.pt.on{opacity:1}
+.pt-l{left:0;text-align:right;padding-right:clamp(26px,3vw,42px);transform:translate(-8px,-50%)}
+.pt-r{right:0;text-align:left;padding-left:clamp(26px,3vw,42px);transform:translate(8px,-50%)}
+.pt.on{transform:translate(0,-50%)}
+.pt b{display:block;font-size:clamp(12px,1.05vw,14px);font-weight:700;letter-spacing:-.01em;line-height:1.25;color:#fff;text-wrap:balance}
+.pt span{display:block;font-size:clamp(10.5px,.9vw,12px);line-height:1.45;color:#8f8f8f;margin-top:3px;text-wrap:balance}
+.pt::before{content:'';position:absolute;top:50%;transform:translateY(-50%);width:clamp(14px,1.8vw,26px);height:1px;background:rgba(52,211,153,.55)}
+.pt::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.16)}
+.pt-l::after{right:clamp(4px,.6vw,9px)}
+.pt-l::before{right:calc(clamp(4px,.6vw,9px) + 3px)}
+.pt-r::after{left:clamp(4px,.6vw,9px)}
+.pt-r::before{left:calc(clamp(4px,.6vw,9px) + 3px)}
+@media(prefers-reduced-motion:reduce){.pt{opacity:1;transition:none}}
+@media(max-width:899.98px){
+  .site{width:100%}
+  .pt{width:auto;max-width:46%;background:rgba(9,9,9,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid #232324;border-radius:6px;padding:5px 9px;z-index:2}
+  .pt-l{left:8px;text-align:left;padding-right:9px}
+  .pt-r{right:8px;padding-left:9px}
+  .pt::before,.pt::after{display:none}
+  .pt span{display:none}
+}
+
+/* the letter close */
+.close{border-top:1px solid #1d1d1e;padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px);background:radial-gradient(ellipse at 88% 90%,rgba(52,211,153,.09),transparent 55%)}
+.close .grid{display:grid;grid-template-columns:minmax(0,12fr) minmax(0,7fr);gap:clamp(36px,5.5vw,100px);align-items:center;max-width:1240px;margin:0 auto}
+.close h2{font-weight:700;font-size:clamp(32px,4.4vw,62px);letter-spacing:-.04em;line-height:1;margin-bottom:18px}
+.close h2 span{color:#34d399}
+.close .left p{color:#a8a8a8;font-size:clamp(14.5px,1.35vw,17.5px);line-height:1.7;max-width:50ch;margin-bottom:1em}
+.close .left p b{color:#fff}
+.close .left p:last-of-type{margin-bottom:0}
+.close .sig{margin-top:22px;font-size:13px;color:#8f8f8f}
+.close .sig b{display:block;color:#fff;font-size:14.5px;margin-bottom:2px}
+.close .card{border:1px solid #2a2a2b;border-radius:14px;background:#0e0e0f;padding:clamp(24px,3vw,36px);text-align:center}
+.close .card i{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8f8f8f;margin-bottom:14px}
+.close .card a.big{display:block;color:#34d399;text-decoration:none;font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em;margin-bottom:8px}
+.close .card a.mail{display:block;color:#d4d4d4;text-decoration:none;font-weight:400;font-size:13.5px}
+.close .card p{font-size:11.5px;color:#666;margin-top:16px;padding-top:16px;border-top:1px solid #1f1f20}
+@media(max-width:819.98px){.close .grid{grid-template-columns:1fr}}
+.btn{display:inline-block;background:#34d399;color:#06130d;font-weight:700;font-size:15px;padding:16px 34px;border-radius:999px;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:#2ec48d;transform:translateY(-1px)}
+
+footer{border-top:1px solid #1c1c1d;padding:22px;text-align:center;color:#666;font-size:12px}
+footer a{color:#a8a8a8;text-decoration:none}
+
+/* persistent bar */
+.claimbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 16px;background:rgba(9,9,9,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid #222}
+.claimbar p{font-size:13px;color:#c9c9c9}
+.claimbar p b{color:#fff}
+.claimbar .btn{font-size:12.5px;padding:10px 22px}
+@media(max-width:599.98px){.claimbar p span{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a href="/">STUDIO O&rsquo;BRIEN</a>
+  <span>Case Study &middot; Smokehouse</span>
+</div>
+
+<!-- HERO — "The answer" -->
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="kick">Ben&rsquo;s Smokehouse <b>&middot;</b> the new website</span>
+      <h1>One smoke day a week. A website that <span>fills it.</span></h1>
+    </div>
+    <div class="hero-side">
+      <p>Ben&rsquo;s fires the pit on Saturdays, and this build treats that like the feature it is: <b>menu up front, order-ahead everywhere,</b> and a first-in-line list for the weeks it sells out. Scroll it below; the notes explain each choice.</p>
+    </div>
+  </div>
+  <div class="hero-band">
+    <div><b>Found on Google</b><p>Built to own &ldquo;BBQ in Spindale&rdquo; and every hungry search like it.</p></div>
+    <div><b>Order-ahead, front and center</b><p>The Saturday rush starts midweek when ordering ahead is this easy.</p></div>
+    <div><b>Backs up your Google profile</b><p>The site and your Business Profile point at each other, hours and photos matched.</p></div>
+  </div>
+</header>
+
+<!-- SCROLL BOARD -->
+<div class="board-wrap">
+  <div class="board">
+    <div class="site"><img src="/portfolio/bens-full.webp" alt="Ben's Smokehouse full website" width="800" height="3579"></div>
+
+    <div class="pt pt-r" style="top:0.5%"><b>Saturdays only, said first</b><span>the schedule is the headline</span></div>
+    <div class="pt pt-l" style="top:8.4%"><b>Spindale, claimed in one line</b><span>home for pit-smoked BBQ</span></div>
+    <div class="pt pt-r" style="top:11%"><b>Order or browse, both ready</b><span>two buttons for two mindsets</span></div>
+    <div class="pt pt-l" style="top:18.4%"><b>A story that smells like smoke</b><span>the pit is lit before sunrise</span></div>
+    <div class="pt pt-r" style="top:24.3%"><b>The hits, scrolling by</b><span>ribs, brisket, wings</span></div>
+    <div class="pt pt-l" style="top:30.2%"><b>Prices on the page</b><span>no PDF, no guessing</span></div>
+    <div class="pt pt-r" style="top:38.7%"><b>The $48 platter, star billing</b><span>feeds 4 to 6 and sells itself</span></div>
+    <div class="pt pt-r" style="top:47.2%"><b>Sunday suppers have a room</b><span>events pitched like a neighbor would</span></div>
+    <div class="pt pt-l" style="top:58%"><b>Catering, two weeks&rsquo; notice</b><span>expectations set up front</span></div>
+    <div class="pt pt-r" style="top:65.7%"><b>The method is the marketing</b><span>24-hour hog, 12-hour brisket</span></div>
+    <div class="pt pt-l" style="top:74%"><b>Proof by the trayful</b><span>real plates, real smoke</span></div>
+    <div class="pt pt-r" style="top:83.5%"><b>The sellout works for you</b><span>a list that fills before the pit does</span></div>
+    <div class="pt pt-l" style="top:90.4%"><b>The family on the wall</b><span>people buy from people</span></div>
+    <div class="pt pt-r" style="top:96.4%"><b>Hours nobody has to hunt</b><span>Saturday 11 to 5, plain as day</span></div>
+  </div>
+</div>
+
+<!-- THE LETTER CLOSE -->
+<section class="close">
+  <div class="grid">
+    <div class="left">
+      <h2>We made this one for <span>you.</span></h2>
+      <p>Not a template and not a pitch deck. A finished website for <b>Ben&rsquo;s Smokehouse</b>, built because barbecue smoked low and slow since before sunrise deserved a website that works as hard as the pit does.</p>
+      <p>If you want it, it&rsquo;s yours in about a week, menu, photos, and story included. If not, no hard feelings. It was a good week of work either way.</p>
+      <div class="sig"><b>Studio O&rsquo;Brien</b>Shelby, NC</div>
+    </div>
+    <div class="card">
+      <i>Whenever you&rsquo;re ready</i>
+      <a class="big" href="tel:+17049743372">(704) 974-3372</a>
+      <a class="mail" href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>
+      <p>No contract talk on the first call. Just whether you like the site.</p>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 <a href="/">Studio O&rsquo;Brien</a> &middot; Shelby, NC &middot; Free consultation, no obligation</footer>
+
+<div class="claimbar">
+  <p><b>Ben&rsquo;s Smokehouse</b><span> &middot; built for you, ready when you are</span></p>
+  <a class="btn" href="/contact">Say Hello</a>
+</div>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:0.6,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.pt').forEach(function(p){ io.observe(p); });
+})();
+</script>
+</body>
+</html>

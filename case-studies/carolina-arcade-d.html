@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- CONCEPT D — "Scroll Board"
+     The full site capture runs down the center at page scroll; incredibly
+     small callouts sit on both sides at the exact height of what they point
+     at, with hairline connectors. Minimal words; the work speaks.
+     Note position math: top% = y / 3340 * 100 (source image 800x3340). -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept D: Scroll Board | Carolina Arcade Museum</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090909">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip;padding-bottom:64px}
+
+/* slim top */
+.top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,3vw,44px);z-index:10}
+.top a{color:#fff;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:-.02em}
+.top span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a}
+
+/* hero — "The answer" (H1, locked 2026-07-16) */
+.hero{position:relative;padding:clamp(90px,10vw,150px) clamp(24px,4.5vw,80px) clamp(36px,4.5vw,60px);background:radial-gradient(ellipse at 12% -10%,rgba(52,211,153,.12),transparent 55%)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,8fr);gap:clamp(28px,5vw,96px);align-items:end;max-width:1360px;margin:0 auto}
+.kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a;display:block;margin-bottom:20px}
+.kick b{color:#34d399}
+.hero h1{font-weight:700;font-size:clamp(38px,5.2vw,76px);letter-spacing:-.045em;line-height:1}
+.hero h1 span{color:#34d399}
+.hero-side{padding-bottom:8px}
+.hero-side p{color:#a8a8a8;font-size:clamp(14px,1.3vw,17px);line-height:1.65}
+.hero-side p b{color:#fff}
+.hero-band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,56px);max-width:1360px;margin:clamp(32px,4.5vw,64px) auto 0;border-top:1px solid #222;padding-top:clamp(20px,2.6vw,32px)}
+.hero-band b{display:block;font-size:clamp(14.5px,1.35vw,17.5px);font-weight:700;margin-bottom:5px}
+.hero-band p{font-size:clamp(12.5px,1.1vw,14.5px);line-height:1.55;color:#8f8f8f}
+@media(max-width:819.98px){.hero-grid{grid-template-columns:1fr}.hero-band{grid-template-columns:1fr;gap:16px}}
+
+/* scroll board */
+.board-wrap{max-width:1500px;margin:0 auto;padding:clamp(28px,3.5vw,56px) 16px clamp(56px,7vw,96px)}
+.board{position:relative;width:100%}
+.site{display:block;width:min(56%,820px);margin:0 auto;border:1px solid #262627;border-radius:6px;box-shadow:0 40px 120px -40px rgba(0,0,0,.9),0 0 140px -40px rgba(52,211,153,.22)}
+.site img{display:block;width:100%;height:auto;border-radius:5px}
+.pt{position:absolute;width:calc(50% - min(28%,410px) - clamp(18px,2.4vw,34px));transform:translateY(-50%);opacity:0;transition:opacity .6s ease,transform .6s ease}
+.pt.on{opacity:1}
+.pt-l{left:0;text-align:right;padding-right:clamp(26px,3vw,42px);transform:translate(-8px,-50%)}
+.pt-r{right:0;text-align:left;padding-left:clamp(26px,3vw,42px);transform:translate(8px,-50%)}
+.pt.on{transform:translate(0,-50%)}
+.pt b{display:block;font-size:clamp(12px,1.05vw,14px);font-weight:700;letter-spacing:-.01em;line-height:1.25;color:#fff;text-wrap:balance}
+.pt span{display:block;font-size:clamp(10.5px,.9vw,12px);line-height:1.45;color:#8f8f8f;margin-top:3px;text-wrap:balance}
+.pt::before{content:'';position:absolute;top:50%;transform:translateY(-50%);width:clamp(14px,1.8vw,26px);height:1px;background:rgba(52,211,153,.55)}
+.pt::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.16)}
+.pt-l::after{right:clamp(4px,.6vw,9px)}
+.pt-l::before{right:calc(clamp(4px,.6vw,9px) + 3px)}
+.pt-r::after{left:clamp(4px,.6vw,9px)}
+.pt-r::before{left:calc(clamp(4px,.6vw,9px) + 3px)}
+@media(prefers-reduced-motion:reduce){.pt{opacity:1;transition:none}}
+@media(max-width:899.98px){
+  .site{width:100%}
+  .pt{width:auto;max-width:46%;background:rgba(9,9,9,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid #232324;border-radius:6px;padding:5px 9px;z-index:2}
+  .pt-l{left:8px;text-align:left;padding-right:9px}
+  .pt-r{right:8px;padding-left:9px}
+  .pt::before,.pt::after{display:none}
+  .pt span{display:none}
+}
+
+/* the letter close (E2, locked 2026-07-16) */
+.close{border-top:1px solid #1d1d1e;padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px);background:radial-gradient(ellipse at 88% 90%,rgba(52,211,153,.09),transparent 55%)}
+.close .grid{display:grid;grid-template-columns:minmax(0,12fr) minmax(0,7fr);gap:clamp(36px,5.5vw,100px);align-items:center;max-width:1240px;margin:0 auto}
+.close h2{font-weight:700;font-size:clamp(32px,4.4vw,62px);letter-spacing:-.04em;line-height:1;margin-bottom:18px}
+.close h2 span{color:#34d399}
+.close .left p{color:#a8a8a8;font-size:clamp(14.5px,1.35vw,17.5px);line-height:1.7;max-width:50ch;margin-bottom:1em}
+.close .left p b{color:#fff}
+.close .left p:last-of-type{margin-bottom:0}
+.close .sig{margin-top:22px;font-size:13px;color:#8f8f8f}
+.close .sig b{display:block;color:#fff;font-size:14.5px;margin-bottom:2px}
+.close .card{border:1px solid #2a2a2b;border-radius:14px;background:#0e0e0f;padding:clamp(24px,3vw,36px);text-align:center}
+.close .card i{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8f8f8f;margin-bottom:14px}
+.close .card a.big{display:block;color:#34d399;text-decoration:none;font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em;margin-bottom:8px}
+.close .card a.mail{display:block;color:#d4d4d4;text-decoration:none;font-weight:400;font-size:13.5px}
+.close .card p{font-size:11.5px;color:#666;margin-top:16px;padding-top:16px;border-top:1px solid #1f1f20}
+@media(max-width:819.98px){.close .grid{grid-template-columns:1fr}}
+.btn{display:inline-block;background:#34d399;color:#06130d;font-weight:700;font-size:15px;padding:16px 34px;border-radius:999px;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:#2ec48d;transform:translateY(-1px)}
+footer{border-top:1px solid #1c1c1d;padding:22px;text-align:center;color:#666;font-size:12px}
+footer a{color:#a8a8a8;text-decoration:none}
+
+/* persistent claim bar */
+.claimbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 16px;background:rgba(9,9,9,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid #222}
+.claimbar p{font-size:13px;color:#c9c9c9}
+.claimbar p b{color:#fff}
+.claimbar .btn{font-size:12.5px;padding:10px 22px}
+@media(max-width:599.98px){.claimbar p span{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a href="/">STUDIO O&rsquo;BRIEN</a>
+  <span>Case Study &middot; Arcade</span>
+</div>
+
+<!-- HERO — "The answer" -->
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="kick">Carolina Arcade Museum <b>&middot;</b> the new website</span>
+      <h1>Be the answer when Forest City asks <span>&ldquo;what&rsquo;s fun around&nbsp;here?&rdquo;</span></h1>
+    </div>
+    <div class="hero-side">
+      <p>This build is written around the searches real people type, and it hands Google everything it needs to put <b>your arcade</b> in front of them. Scroll it below; the notes explain each choice.</p>
+    </div>
+  </div>
+  <div class="hero-band">
+    <div><b>Found on Google</b><p>Every page is built around a real local search, from &ldquo;arcade near me&rdquo; to &ldquo;birthday party places.&rdquo;</p></div>
+    <div><b>Questions answered before the call</b><p>Price, hours, and what a party costs, all visible in the first minute on a phone.</p></div>
+    <div><b>Backs up your Google profile</b><p>The site and your Business Profile point at each other, so the 4.9 stars work twice.</p></div>
+  </div>
+</header>
+
+<!-- SCROLL BOARD -->
+<div class="board-wrap">
+  <div class="board">
+    <div class="site"><img src="/portfolio/arcade-full.webp" alt="Carolina Arcade Museum full website" width="800" height="3340"></div>
+
+    <div class="pt pt-l" style="top:1.8%"><b>One nav, one red CTA</b><span>Press Start is the only loud thing</span></div>
+    <div class="pt pt-r" style="top:4.4%"><b>105+ machines. $13 all day.</b><span>the sell, in two stats</span></div>
+    <div class="pt pt-l" style="top:6.2%"><b>4.9&#9733; before the fold</b><span>Google proof, not self-praise</span></div>
+    <div class="pt pt-r" style="top:9.4%"><b>Two buttons, two mindsets</b><span>Press Start / Plan Your Visit</span></div>
+    <div class="pt pt-l" style="top:14.6%"><b>Every cabinet powered on</b><span>the collection, in plain words</span></div>
+    <div class="pt pt-r" style="top:19%"><b>Real photos, zero stock</b><span>the room sells itself</span></div>
+    <div class="pt pt-r" style="top:29%"><b>&ldquo;Insert coin. Just kidding.&rdquo;</b><span>pricing answered in one screen</span></div>
+    <div class="pt pt-l" style="top:30.5%"><b>All-day pass framed as the pick</b><span>choosing takes zero thought</span></div>
+    <div class="pt pt-r" style="top:36.6%"><b>$0 per play</b><span>the quarters objection, dead</span></div>
+    <div class="pt pt-l" style="top:41.5%"><b>Both floors in photos</b><span>including the blacklight basement</span></div>
+    <div class="pt pt-r" style="top:57.5%"><b>$150 party on one card</b><span>itemized, with its own button</span></div>
+    <div class="pt pt-l" style="top:56.5%"><b>The highest-ticket sale, treated like one</b><span>no &ldquo;call for pricing&rdquo;</span></div>
+    <div class="pt pt-l" style="top:68%"><b>Est. 2018, PBS-featured</b><span>the story earns the trust</span></div>
+    <div class="pt pt-r" style="top:76.5%"><b>Reviews with names on them</b><span>4.9&#9733; in real voices</span></div>
+    <div class="pt pt-r" style="top:88.5%"><b>Map, hours, one-tap call</b><span>zero friction to visit</span></div>
+    <div class="pt pt-l" style="top:89.5%"><b>Closed Sunday, said plainly</b><span>honesty is a feature</span></div>
+    <div class="pt pt-r" style="top:97.5%"><b>Neon sign-off</b><span>brand carried to the last pixel</span></div>
+  </div>
+</div>
+
+<!-- THE LETTER CLOSE -->
+<section class="close">
+  <div class="grid">
+    <div class="left">
+      <h2>We made this one for <span>you.</span></h2>
+      <p>Not a template and not a pitch deck. A finished website for <b>Carolina Arcade Museum</b>, built because two floors of working arcade history deserved better than the site it had.</p>
+      <p>If you want it, it&rsquo;s yours in about a week, photos, prices, and reviews included. If not, no hard feelings. It was a good week of work either way.</p>
+      <div class="sig"><b>Studio O&rsquo;Brien</b>Shelby, NC</div>
+    </div>
+    <div class="card">
+      <i>Whenever you&rsquo;re ready</i>
+      <a class="big" href="tel:+17049743372">(704) 974-3372</a>
+      <a class="mail" href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>
+      <p>No contract talk on the first call. Just whether you like the site.</p>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 <a href="/">Studio O&rsquo;Brien</a> &middot; Shelby, NC &middot; Free consultation, no obligation</footer>
+
+<div class="claimbar">
+  <p><b>Carolina Arcade Museum</b><span> &middot; built for you, ready when you are</span></p>
+  <a class="btn" href="/contact">Say Hello</a>
+</div>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:0.6,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.pt').forEach(function(p){ io.observe(p); });
+})();
+</script>
+</body>
+</html>

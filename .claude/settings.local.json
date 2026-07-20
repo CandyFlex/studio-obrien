@@ -1,0 +1,102 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Bash(rtk --version)",
+      "Bash(rtk gain *)",
+      "Bash(ccf *)",
+      "Bash(ccf subagent *)",
+      "Bash(ccf gain *)",
+      "WebFetch(domain:github.com)",
+      "Bash(cc-fleet --version)",
+      "Bash(cc-fleet --help)",
+      "Bash(cc-fleet subagent *)",
+      "Bash(cc-fleet doctor *)",
+      "Bash(cc-fleet list *)",
+      "Bash(cc-fleet add *)",
+      "Bash(cc-fleet models *)",
+      "Bash(cc-fleet edit *)",
+      "Bash(cc-fleet refresh *)",
+      "WebFetch(domain:impeccable.style)",
+      "Bash(npx impeccable *)",
+      "Skill(impeccable)",
+      "Bash(node *)",
+      "Bash(python -m http.server 8000)",
+      "Bash(rtk hook *)",
+      "Bash(rtk help *)",
+      "Bash(rtk --help)",
+      "Bash(rtk verify *)",
+      "Bash(where rtk *)",
+      "Bash(rtk read *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk git *)",
+      "Bash(rtk wc *)",
+      "Bash(python -m http.server 8765 --bind 127.0.0.1)",
+      "Bash(curl -sI http://127.0.0.1:8765/index.html)",
+      "Bash(rtk curl *)",
+      "Bash(curl -sI http://127.0.0.1:8765/index.css)",
+      "Bash(pkill -f \"python -m http.server 8765\")",
+      "Bash(curl -s http://127.0.0.1:8765/index.html)",
+      "WebFetch(domain:studioobrien.com)",
+      "Bash(vercel whoami *)",
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "PowerShell(Start-Process python -ArgumentList \"-m\", \"http.server\", \"8080\", \"--directory\", \"C:\\\\Users\\\\Jarre\\\\Desktop\\\\Obrien Studio Portfolio\" -WindowStyle Hidden)",
+      "Bash(rtk npx *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk --version && rtk gain || echo 'RTK check failed'",
+            "statusMessage": "Verifying RTK status...",
+            "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f .claude/sessions/LAST_SESSION.md ]; then echo '📋 LAST SESSION HANDOFF:' && echo '' && cat .claude/sessions/LAST_SESSION.md && echo '' && echo '---'; else echo '📋 No previous session handoff found'; fi",
+            "statusMessage": "Loading session context...",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p .claude/sessions && echo '⚠️  HANDOFF NOTES REQUIRED BEFORE COMPACT' && echo '' && echo 'Fill in the SESSION_TEMPLATE.md blanks and commit:' && echo 'cat .claude/SESSION_TEMPLATE.md' && echo '' && rtk gain | head -12",
+            "statusMessage": "Pre-compact: Generate session handoff...",
+            "async": false
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/hook.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Checking UI changes"
+          }
+        ]
+      }
+    ]
+  },
+  "autoCompactWindow": 180000,
+  "autoCompactEnabled": false,
+  "description": "Impeccable design detector: runs after Edit/Write/MultiEdit on UI files and surfaces findings as system reminders."
+}

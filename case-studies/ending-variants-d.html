@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Scroll-board ENDING variants — three ways to do week-timeline + close. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ending Variants | Concept D Scroll Board</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090909">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip}
+.vlabel{position:absolute;top:16px;left:18px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#666;border:1px dashed #333;padding:5px 10px;border-radius:4px;z-index:5}
+.v{position:relative;border-bottom:2px dashed #262627;overflow:hidden}
+.mint{color:#34d399}
+
+/* ── E1: SIDE-BY-SIDE — copy left, week rail right, quiet links ── */
+.e1{padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px)}
+.e1 .grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,8fr);gap:clamp(36px,5.5vw,100px);align-items:center;max-width:1240px;margin:0 auto}
+.e1 h2{font-weight:700;font-size:clamp(30px,4vw,56px);letter-spacing:-.04em;line-height:1.02;margin-bottom:16px}
+.e1 .left p{color:#a8a8a8;font-size:clamp(14px,1.3vw,17px);line-height:1.65;max-width:46ch}
+.e1 .left p b{color:#fff}
+.e1 .acts{display:flex;align-items:center;gap:22px;margin-top:26px;flex-wrap:wrap}
+.e1 .link{color:#34d399;text-decoration:none;font-weight:700;font-size:15px;border-bottom:1px solid rgba(52,211,153,.4);padding-bottom:3px;transition:border-color .2s}
+.e1 .link:hover{border-color:#34d399}
+.e1 .tel{color:#d4d4d4;text-decoration:none;font-weight:700;font-size:15px}
+.e1 .rail .r{display:grid;grid-template-columns:74px 1fr;gap:16px;align-items:baseline;border-top:1px solid #222;padding:clamp(13px,1.6vw,18px) 0}
+.e1 .rail .r:last-child{border-bottom:1px solid #222}
+.e1 .rail i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34d399}
+.e1 .rail b{display:block;font-size:clamp(13.5px,1.25vw,16px);font-weight:700;color:#fff}
+.e1 .rail span{display:block;font-size:12px;color:#8f8f8f;margin-top:2px}
+@media(max-width:819.98px){.e1 .grid{grid-template-columns:1fr}}
+
+/* ── E2: THE LETTER — plain talk left, contact card right ── */
+.e2{padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px);background:radial-gradient(ellipse at 88% 90%,rgba(52,211,153,.09),transparent 55%)}
+.e2 .grid{display:grid;grid-template-columns:minmax(0,12fr) minmax(0,7fr);gap:clamp(36px,5.5vw,100px);align-items:center;max-width:1240px;margin:0 auto}
+.e2 h2{font-weight:700;font-size:clamp(32px,4.4vw,62px);letter-spacing:-.04em;line-height:1;margin-bottom:18px}
+.e2 .left p{color:#a8a8a8;font-size:clamp(14.5px,1.35vw,17.5px);line-height:1.7;max-width:50ch;margin-bottom:1em}
+.e2 .left p b{color:#fff}
+.e2 .left p:last-of-type{margin-bottom:0}
+.e2 .sig{margin-top:22px;font-size:13px;color:#8f8f8f}
+.e2 .sig b{display:block;color:#fff;font-size:14.5px;margin-bottom:2px}
+.e2 .card{border:1px solid #2a2a2b;border-radius:14px;background:#0e0e0f;padding:clamp(24px,3vw,36px);text-align:center}
+.e2 .card i{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8f8f8f;margin-bottom:14px}
+.e2 .card a.big{display:block;color:#34d399;text-decoration:none;font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em;margin-bottom:8px}
+.e2 .card a.mail{display:block;color:#d4d4d4;text-decoration:none;font-weight:400;font-size:13.5px}
+.e2 .card p{font-size:11.5px;color:#666;margin-top:16px;padding-top:16px;border-top:1px solid #1f1f20}
+@media(max-width:819.98px){.e2 .grid{grid-template-columns:1fr}}
+
+/* ── E3: THE RECEIPT — one framed card: steps row + footer bar ── */
+.e3{padding:clamp(72px,8vw,120px) clamp(20px,3.5vw,64px)}
+.e3 .card{max-width:1240px;margin:0 auto;border:1px solid #2a2a2b;background:#0d0d0e}
+.e3 .head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:clamp(20px,2.6vw,32px) clamp(20px,3vw,40px);border-bottom:1px solid #222}
+.e3 .head h2{font-weight:700;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.03em}
+.e3 .head span{font-size:12.5px;color:#8f8f8f}
+.e3 .head span b{color:#34d399}
+.e3 .steps{display:grid;grid-template-columns:repeat(4,1fr)}
+.e3 .step{padding:clamp(20px,2.6vw,32px) clamp(20px,3vw,40px);border-left:1px solid #222}
+.e3 .step:first-child{border-left:0}
+.e3 .step i{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34d399;margin-bottom:9px}
+.e3 .step b{display:block;font-size:clamp(14.5px,1.4vw,18px);font-weight:700;margin-bottom:5px}
+.e3 .step p{font-size:12.5px;line-height:1.55;color:#8f8f8f}
+.e3 .foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid #222;padding:clamp(16px,2vw,24px) clamp(20px,3vw,40px)}
+.e3 .foot p{font-size:13px;color:#a8a8a8}
+.e3 .foot p b{color:#fff}
+.e3 .foot .right{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.e3 .btn{background:#34d399;color:#06130d;font-weight:700;font-size:13.5px;padding:12px 24px;border-radius:999px;text-decoration:none}
+.e3 .tel{color:#d4d4d4;text-decoration:none;font-weight:700;font-size:14px}
+@media(max-width:819.98px){.e3 .steps{grid-template-columns:1fr 1fr}.e3 .step:nth-child(3){border-left:0}.e3 .step{border-top:1px solid #222}.e3 .step:nth-child(-n+2){border-top:0}}
+</style>
+</head>
+<body>
+
+<!-- E1 — SIDE-BY-SIDE -->
+<section class="v e1">
+  <span class="vlabel">E1 &middot; Side-by-side</span>
+  <div class="grid">
+    <div class="left">
+      <h2>Like it? It&rsquo;s a week of work <span class="mint">away.</span></h2>
+      <p>Everything you just scrolled is already built. We swap in <b>your photos, your prices, and your reviews</b>, and you check the whole thing on your own phone before anyone else sees it.</p>
+      <div class="acts">
+        <a class="link" href="/contact">Talk it through</a>
+        <a class="tel" href="tel:+17049743372">(704) 974-3372</a>
+      </div>
+    </div>
+    <div class="rail">
+      <div class="r"><i>Day 1</i><div><b>A short call</b><span>hours, photos, party pricing</span></div></div>
+      <div class="r"><i>2 to 4</i><div><b>Your details go in</b><span>photos, prices, reviews, machine list</span></div></div>
+      <div class="r"><i>5 to 6</i><div><b>You look it over</b><span>we adjust until it feels right</span></div></div>
+      <div class="r"><i>Day 7</i><div><b>Live on your domain</b><span>owned outright, no strings</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- E2 — THE LETTER -->
+<section class="v e2">
+  <span class="vlabel">E2 &middot; The letter</span>
+  <div class="grid">
+    <div class="left">
+      <h2>We made this one for <span class="mint">you.</span></h2>
+      <p>Not a template and not a pitch deck. A finished website for <b>Carolina Arcade Museum</b>, built because two floors of working arcade history deserved better than the site it had.</p>
+      <p>If you want it, it&rsquo;s yours in about a week, photos, prices, and reviews included. If not, no hard feelings. It was a good week of work either way.</p>
+      <div class="sig"><b>Studio O&rsquo;Brien</b>Shelby, NC</div>
+    </div>
+    <div class="card">
+      <i>Whenever you&rsquo;re ready</i>
+      <a class="big" href="tel:+17049743372">(704) 974-3372</a>
+      <a class="mail" href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>
+      <p>No contract talk on the first call. Just whether you like the site.</p>
+    </div>
+  </div>
+</section>
+
+<!-- E3 — THE RECEIPT -->
+<section class="v e3">
+  <span class="vlabel">E3 &middot; The receipt</span>
+  <div class="card">
+    <div class="head">
+      <h2>What happens if you say yes</h2>
+      <span>start to live: <b>about a week</b></span>
+    </div>
+    <div class="steps">
+      <div class="step"><i>Day 1</i><b>The call</b><p>Your hours, your photos, your party pricing. Twenty minutes.</p></div>
+      <div class="step"><i>Days 2 to 4</i><b>The swap</b><p>We rebuild every screen around your business, not a template.</p></div>
+      <div class="step"><i>Days 5 to 6</i><b>Your pass</b><p>You walk it on your phone and we adjust until you&rsquo;d share it.</p></div>
+      <div class="step"><i>Day 7</i><b>Launch</b><p>Your domain, your site, owned outright.</p></div>
+    </div>
+    <div class="foot">
+      <p>Built for <b>Carolina Arcade Museum</b> &middot; Forest City, NC</p>
+      <div class="right">
+        <a class="btn" href="/contact">Make It Yours</a>
+        <a class="tel" href="tel:+17049743372">(704) 974-3372</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

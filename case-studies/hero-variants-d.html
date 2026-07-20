@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Concept D hero — round 3: three variants. No spec facts, no hard sell.
+     Horizontal compositions. Copy = owner benefits (search, visits, reviews). -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero Variants R3 | Concept D Scroll Board</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090909">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#090909;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{background:#090909;color:#fff;font-family:'Inter',system-ui,sans-serif;overflow-x:clip}
+.vlabel{position:absolute;top:16px;left:18px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#666;border:1px dashed #333;padding:5px 10px;border-radius:4px;z-index:5}
+.v{position:relative;border-bottom:2px dashed #262627;overflow:hidden}
+.mint{color:#34d399}
+.kick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a}
+.kick b{color:#34d399}
+
+/* ── H1: THE ANSWER — search angle, headline left / sub right, benefit band below ── */
+.h1v{padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px) clamp(44px,5vw,68px)}
+.h1v .grid{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,8fr);gap:clamp(28px,5vw,96px);align-items:end;max-width:1360px;margin:0 auto}
+.h1v .kick{display:block;margin-bottom:20px}
+.h1v h1{font-weight:700;font-size:clamp(38px,5.2vw,76px);letter-spacing:-.045em;line-height:1}
+.h1v .side{padding-bottom:8px}
+.h1v .side p{color:#a8a8a8;font-size:clamp(14px,1.3vw,17px);line-height:1.65}
+.h1v .side p b{color:#fff}
+.h1v .band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,56px);max-width:1360px;margin:clamp(32px,4.5vw,64px) auto 0;border-top:1px solid #222;padding-top:clamp(20px,2.6vw,32px)}
+.h1v .band b{display:block;font-size:clamp(14.5px,1.35vw,17.5px);font-weight:700;margin-bottom:5px}
+.h1v .band b i{font-style:normal;color:#34d399;margin-right:8px}
+.h1v .band p{font-size:clamp(12.5px,1.1vw,14.5px);line-height:1.55;color:#8f8f8f}
+@media(max-width:819.98px){.h1v .grid{grid-template-columns:1fr}.h1v .band{grid-template-columns:1fr;gap:16px}}
+
+/* ── H2: SATURDAY — foot-traffic angle, wide headline row + three cells ── */
+.h2v{padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px) clamp(44px,5vw,68px);background:linear-gradient(90deg,rgba(52,211,153,.07),transparent 45%)}
+.h2v .row{display:flex;align-items:baseline;justify-content:space-between;gap:clamp(20px,4vw,72px);flex-wrap:wrap;max-width:1360px;margin:0 auto}
+.h2v h1{font-weight:700;font-size:clamp(40px,5.6vw,82px);letter-spacing:-.045em;line-height:.98;max-width:15ch}
+.h2v .row p{color:#a8a8a8;font-size:clamp(13.5px,1.2vw,16px);line-height:1.6;max-width:34ch}
+.h2v .row p b{color:#fff}
+.h2v .cells{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#232324;border:1px solid #232324;max-width:1360px;margin:clamp(32px,4.5vw,60px) auto 0}
+.h2v .cell{background:#0e0e0f;padding:clamp(18px,2.4vw,30px) clamp(18px,2.2vw,28px)}
+.h2v .cell b{display:block;font-size:clamp(15px,1.4vw,19px);font-weight:700;letter-spacing:-.015em;margin-bottom:7px}
+.h2v .cell p{font-size:clamp(12.5px,1.1vw,14.5px);line-height:1.55;color:#8f8f8f}
+.h2v .cell p b{display:inline;font-size:inherit;color:#d4d4d4;font-weight:700;margin:0}
+@media(max-width:819.98px){.h2v .cells{grid-template-columns:1fr}}
+
+/* ── H3: FOUR-NINE — reviews angle, low horizontal split with 2x2 points right ── */
+.h3v{padding:clamp(72px,8vw,120px) clamp(24px,4.5vw,80px) clamp(48px,5.5vw,76px);background:radial-gradient(ellipse at 92% 10%,rgba(52,211,153,.1),transparent 50%)}
+.h3v .grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:clamp(32px,5vw,90px);align-items:center;max-width:1360px;margin:0 auto}
+.h3v .kick{display:block;margin-bottom:18px}
+.h3v h1{font-weight:700;font-size:clamp(36px,4.8vw,68px);letter-spacing:-.045em;line-height:1.02;margin-bottom:16px}
+.h3v .left p{color:#a8a8a8;font-size:clamp(14px,1.25vw,16.5px);line-height:1.65;max-width:46ch}
+.h3v .left p b{color:#fff}
+.h3v .pts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,34px) clamp(20px,2.6vw,40px)}
+.h3v .pt b{display:block;font-size:clamp(13.5px,1.25vw,16px);font-weight:700;margin-bottom:4px;padding-top:10px;position:relative}
+.h3v .pt b::before{content:'';position:absolute;top:0;left:0;width:18px;height:2px;background:#34d399}
+.h3v .pt p{font-size:clamp(12px,1.05vw,14px);line-height:1.5;color:#8f8f8f}
+@media(max-width:819.98px){.h3v .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- H1 — THE ANSWER: search / Google angle -->
+<section class="v h1v">
+  <span class="vlabel">H1 &middot; The answer</span>
+  <div class="grid">
+    <div>
+      <span class="kick">Carolina Arcade Museum <b>&middot;</b> the new website</span>
+      <h1>Be the answer when Forest City asks <span class="mint">&ldquo;what&rsquo;s fun around&nbsp;here?&rdquo;</span></h1>
+    </div>
+    <div class="side">
+      <p>This build is written around the searches real people type, and it hands Google everything it needs to put <b>your arcade</b> in front of them. Scroll it below; the notes explain each choice.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div><b>Found on Google</b><p>Every page is built around a real local search, from &ldquo;arcade near me&rdquo; to &ldquo;birthday party places.&rdquo;</p></div>
+    <div><b>Questions answered before the call</b><p>Price, hours, and what a party costs, all visible in the first minute on a phone.</p></div>
+    <div><b>Backs up your Google profile</b><p>The site and your Business Profile point at each other, so the 4.9 stars work twice.</p></div>
+  </div>
+</section>
+
+<!-- H2 — SATURDAY: foot-traffic angle -->
+<section class="v h2v">
+  <span class="vlabel">H2 &middot; Saturday</span>
+  <div class="row">
+    <h1>Built to fill both floors on a <span class="mint">Saturday.</span></h1>
+    <p>Every screen has one job: turn a phone in a parking lot into a <b>family walking through the door</b>.</p>
+  </div>
+  <div class="cells">
+    <div class="cell"><b>The trip, made easy</b><p>Hours, map, and a tap-to-call are never more than one glance away, because the visit is the whole point.</p></div>
+    <div class="cell"><b>Parties without phone tag</b><p>The party package is priced, itemized, and bookable on the page. Parents plan at 10pm; now you&rsquo;re open then too.</p></div>
+    <div class="cell"><b>Looks as fun as it feels</b><p>Real photos of the floor, the neon, and the blacklight basement. The room does the convincing.</p></div>
+  </div>
+</section>
+
+<!-- H3 — FOUR-NINE: reviews / reputation angle -->
+<section class="v h3v">
+  <span class="vlabel">H3 &middot; Four-nine</span>
+  <div class="grid">
+    <div class="left">
+      <span class="kick">Carolina Arcade Museum <b>&middot;</b> Forest City, NC</span>
+      <h1>4.9 stars in person. Now it shows <span class="mint">online.</span></h1>
+      <p>Your reviews, your story, and your PBS feature were already doing the selling. The new site just puts them where people actually look, <b>before they decide where to spend the afternoon</b>.</p>
+    </div>
+    <div class="pts">
+      <div class="pt"><b>Reviews out front</b><p>Real names and real quotes, on the first screen instead of buried on Google.</p></div>
+      <div class="pt"><b>The story, told right</b><p>Est. 2018, the founder, the PBS spotlight. Trust people can feel.</p></div>
+      <div class="pt"><b>Every question, one tap</b><p>Hours, prices, parking, parties. Nobody has to call to find out.</p></div>
+      <div class="pt"><b>The floor on display</b><p>105+ machines photographed for real, no stock anything.</p></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

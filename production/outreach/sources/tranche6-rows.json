@@ -1,0 +1,282 @@
+[
+ {
+  "id": "freemans-convenience-bostic",
+  "name": "Freeman's Convenience",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+1-828-245-4422"
+ },
+ {
+  "id": "golden-valley-convenience-center-bostic",
+  "name": "Golden Valley Convenience Center",
+  "niche": "professional-other",
+  "town": "Bostic",
+  "phone": "+1-828-245-1328"
+ },
+ {
+  "id": "hunt-family-farm-supply-bostic",
+  "name": "Hunt Family Farm Supply",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+1-828-395-1228"
+ },
+ {
+  "id": "drop-in-1-forest-city",
+  "name": "Drop-In #1",
+  "niche": "retail",
+  "town": "Forest City",
+  "phone": "+1-828-245-7689"
+ },
+ {
+  "id": "ulysses-miller-funeral-services-rutherfordton",
+  "name": "Ulysses Miller Funeral Services",
+  "niche": "retail",
+  "town": "Rutherfordton",
+  "phone": "+1-828-287-3800"
+ },
+ {
+  "id": "great-finds-consignment-rutherfordton",
+  "name": "Great Finds Consignment",
+  "niche": "retail",
+  "town": "Rutherfordton",
+  "phone": "+1-910-987-7366"
+ },
+ {
+  "id": "oakland-kwik-stop-spindale",
+  "name": "Oakland Kwik-Stop",
+  "niche": "retail",
+  "town": "Spindale",
+  "phone": "+1-828-286-3907"
+ },
+ {
+  "id": "debs-mini-mart-spindale",
+  "name": "Deb's Mini Mart",
+  "niche": "retail",
+  "town": "Spindale",
+  "phone": "+1-828-287-5595"
+ },
+ {
+  "id": "manis-forest-city",
+  "name": "Mani's",
+  "niche": "retail",
+  "town": "Forest City",
+  "phone": "+18283820145"
+ },
+ {
+  "id": "needmore-corner-bostic",
+  "name": "NEEDMORE CORNER",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18283820204"
+ },
+ {
+  "id": "food-country-vale",
+  "name": "Food Country",
+  "niche": "retail",
+  "town": "Vale",
+  "phone": "+17042761273"
+ },
+ {
+  "id": "mcdaniel-textiles-boiling-springs",
+  "name": "McDaniel Textiles",
+  "niche": "trades-other",
+  "town": "Boiling Springs",
+  "phone": null
+ },
+ {
+  "id": "sunshine-storage-llc-bostic",
+  "name": "Sunshine Storage, LLC",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18284589155"
+ },
+ {
+  "id": "washburn-dorsey-funeral-home-bostic",
+  "name": "Washburn & Dorsey Funeral Home",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18282481234"
+ },
+ {
+  "id": "bobs-storage-bostic",
+  "name": "Bob's Storage",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18282458926"
+ },
+ {
+  "id": "kwik-stop-2-bostic",
+  "name": "KWIK STOP 2",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18282459773"
+ },
+ {
+  "id": "mountain-view-casar",
+  "name": "Mountain view",
+  "niche": "retail",
+  "town": "Casar",
+  "phone": "+17045388020"
+ },
+ {
+  "id": "pit-road-fallston",
+  "name": "Pit Road",
+  "niche": "retail",
+  "town": "Fallston",
+  "phone": "+17043126400"
+ },
+ {
+  "id": "18-north-convenience-and-cafe-lawndale",
+  "name": "18 North Convenience and Cafe",
+  "niche": "retail",
+  "town": "Lawndale",
+  "phone": "+17045380287"
+ },
+ {
+  "id": "fasgas-minimart-lawndale",
+  "name": "Fasgas Minimart",
+  "niche": "retail",
+  "town": "Lawndale",
+  "phone": "+17043126417"
+ },
+ {
+  "id": "home-town-market-polkville",
+  "name": "Home Town Market",
+  "niche": "retail",
+  "town": "Polkville",
+  "phone": "+17045380120"
+ },
+ {
+  "id": "polkville-discount-shelby",
+  "name": "Polkville Discount",
+  "niche": "retail",
+  "town": "Shelby",
+  "phone": "+17045380101"
+ },
+ {
+  "id": "226-climate-controlled-storage-shelby",
+  "name": "226 Climate Controlled Storage",
+  "niche": "retail",
+  "town": "Shelby",
+  "phone": "+17046928480"
+ },
+ {
+  "id": "its-a-small-world-day-care-lawndale",
+  "name": "It's A Small World Day Care",
+  "niche": "childcare",
+  "town": "Lawndale",
+  "phone": "+17044808026"
+ },
+ {
+  "id": "the-camper-pros-mobile-rv-repair-bostic",
+  "name": "The Camper Pros / Mobile RV Repair",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18885014456"
+ },
+ {
+  "id": "eastside-drive-thru-forest-city",
+  "name": "Eastside Drive-Thru",
+  "niche": "retail",
+  "town": "Forest City",
+  "phone": "+18282452230"
+ },
+ {
+  "id": "keever-pharmacy-lincolnton",
+  "name": "Keever Pharmacy",
+  "niche": "retail",
+  "town": "Lincolnton",
+  "phone": "+17047359072"
+ },
+ {
+  "id": "fashion-store-lawndale",
+  "name": "Fashion Store",
+  "niche": "retail",
+  "town": "Lawndale",
+  "phone": "+17045383990"
+ },
+ {
+  "id": "riverside-nutrition-lawndale",
+  "name": "Riverside Nutrition",
+  "niche": "retail",
+  "town": "Lawndale",
+  "phone": "+17043126443"
+ },
+ {
+  "id": "joyer-a-y-variedades-ana-llc-gastonia",
+  "name": "Joyería y variedades Ana LLC",
+  "niche": "retail",
+  "town": "Gastonia",
+  "phone": "+1-704-390-2170"
+ },
+ {
+  "id": "upper-cleveland-medical-center-fallston",
+  "name": "Upper Cleveland Medical Center",
+  "niche": "medical",
+  "town": "Fallston",
+  "phone": "+17045388532"
+ },
+ {
+  "id": "folks-cleaner-boiling-springs",
+  "name": "Folk's Cleaner",
+  "niche": "retail",
+  "town": "Boiling Springs",
+  "phone": "+1-704-434-5403"
+ },
+ {
+  "id": "spindale-house-spindale",
+  "name": "Spindale House",
+  "niche": "fitness-rec",
+  "town": "Spindale",
+  "phone": "+18282863716"
+ },
+ {
+  "id": "u-store-warehouses-shelby",
+  "name": "U-Store Warehouses",
+  "niche": "retail",
+  "town": "Shelby",
+  "phone": "+17044777397"
+ },
+ {
+  "id": "west-express-vale",
+  "name": "West Express",
+  "niche": "retail",
+  "town": "Vale",
+  "phone": "+1-704-276-9001"
+ },
+ {
+  "id": "shree-ambika-mart-spindale",
+  "name": "Shree Ambika Mart",
+  "niche": "retail",
+  "town": "Spindale",
+  "phone": "+18282862229"
+ },
+ {
+  "id": "bostic-florist-bostic",
+  "name": "Bostic Florist",
+  "niche": "retail",
+  "town": "Bostic",
+  "phone": "+18282452884"
+ },
+ {
+  "id": "spinning-leaf-gather-celebrate-retreat-shelby",
+  "name": "Spinning Leaf: Gather, Celebrate, Retreat",
+  "niche": "trades-other",
+  "town": "Shelby",
+  "phone": null
+ },
+ {
+  "id": "sewing-center-shelby",
+  "name": "Sewing Center",
+  "niche": "retail",
+  "town": "Shelby",
+  "phone": "+1-704-484-0977"
+ },
+ {
+  "id": "kingsway-5-bessemer-city",
+  "name": "Kingsway #5",
+  "niche": "retail",
+  "town": "Bessemer City",
+  "phone": "+1-704-629-4896"
+ }
+]

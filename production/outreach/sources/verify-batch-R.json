@@ -1,0 +1,362 @@
+[
+  {
+    "id": "mikes-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Mike's Food Store, Grover NC (FB 'MikesfoodstoreGrover', tagged Blacksburg SC border). Convenience store - LOW non-target. DROP."
+  },
+  {
+    "id": "hickory-point-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Hickory Point Gas - gas/fuel station, Grover NC. Convenience/fuel - LOW non-target. DROP. (Not a restaurant/store as the hint questioned.)"
+  },
+  {
+    "id": "miss-mollys-boutique-shelby",
+    "exists": true,
+    "realWebsite": "https://www.shopmissmollys.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED uptown Shelby (111 W Graham St, 28150). Women's clothing boutique, Miss Molly's Boutique LLC. Has a working Shopify store (shopmissmollys.com) = lower web gap. Real independent Shelby Tier-1 boutique but already selling online. Owner not surfaced."
+  },
+  {
+    "id": "workshop-vintage-market-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED uptown Shelby (108 N Lafayette St, 28150). Largest craft/vintage multi-vendor market in Cleveland County - 80+ vendors, two stories. FB-only (facebook.com/WorkShopVintageMarket), no dedicated website = clean web gap. STRONG Shelby Tier-1 real target (foot-traffic + vendor-recruitment both benefit from a site). Owner not surfaced."
+  },
+  {
+    "id": "nells-farm-house-vacation-rental-shelby",
+    "exists": true,
+    "realWebsite": "https://www.nellsfarmhouse.com",
+    "liveSiteGrade": null,
+    "reviews": "9.8/10 (~20 reviews, Vrbo)",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Shelby (1903 Barbee Rd, 28150), 3BR/1BA farmhouse renting since 2011, serves Gardner-Webb + Tryon equestrian traffic. Has its OWN booking website (nellsfarmhouse.com) plus Vrbo/Airbnb/Tripadvisor = lower gap. Real booking-driven target but already has a direct-booking site. Owner not surfaced."
+  },
+  {
+    "id": "morgan-and-wells-bb-shelby",
+    "exists": true,
+    "realWebsite": "https://morganandwells.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED historic uptown Shelby (400 N Morgan St, 28150). 6-guestroom Craftsman B&B (early-1900s home) + on-site spa; notable, well-reviewed. Has its own website (morganandwells.com) + full OTA presence = lower gap. Real notable B&B but already has a booking site. Owner not surfaced."
+  },
+  {
+    "id": "town-of-rutherfordton-public-works-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Municipal Public Works department (Town of Rutherfordton - note town is Rutherfordton, not Forest City). Government. Hard disqualifier. DROP."
+  },
+  {
+    "id": "rutherfordton-enrichment-council-the-hut-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Community enrichment council / civic org operating 'The Hut' (Rutherfordton, not Forest City). Nonprofit org. Category disqualifier. DROP."
+  },
+  {
+    "id": "smith-trading-post-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED - no exact 'Smith Trading Post' surfaces in Forest City. Likely a conflation of either West Main Trading Post (pawn/FFL, 1302 W Main St = see #90) or Smith's Drugs of Forest City (independent pharmacy w/ gift shop, since 1939). If it's the pawn shop = DROP; if it resolves to Smith's Drugs that would be a real gift-shop-adjacent target. Skip until the name is confirmed."
+  },
+  {
+    "id": "bb-antique-and-artisan-mall-kings-mountain",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "4.5 stars (Yelp)",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Gastonia NC (3209 Franklin Blvd, 28052), NOT Kings Mountain - OSM mislabel (~7mi from KM). Large 90+ dealer antique & artisan mall, 4.5 Yelp, FB-only, no website = clean web gap. Real antiques/vintage target but Gaston County (outside Cleveland-County core and not the KM downtown the hint expected). Owner not surfaced."
+  },
+  {
+    "id": "moonshine-ridge-bed-and-breakfast-kings-mountain",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Bessemer City NC (354 White Jenkins Rd, 28016), NOT Kings Mountain (Gaston County). Small 1BR/1BA Airbnb-based B&B (~$280/night). No dedicated website - lives entirely on Airbnb/booking platforms = booking-driven web gap, but a single-room operation = very small revenue. Marginal target."
+  },
+  {
+    "id": "victoria-cole-gifts-collectibles-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Sandra Beam" },
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (112 E Main St, 28021). Gift/collectibles boutique - carries Simply Southern, Twine & Twig, home decor; established 1995, owner Sandra Beam. FB + Instagram only, no website = clean social-only web gap. Named owner + downtown Main St = solid quick-check target (modest revenue, gift retail)."
+  },
+  {
+    "id": "victorian-lace-antique-mall-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Ann Calton" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (196 N Main St, 28139), NOT Forest City. Established downtown antique mall (owner Ann Calton, open since 1988; historic 1920 building w/ landmark mural). Multi-booth/dealer. No own domain - only directory/locable listings = web gap. Real, well-rooted antiques target with a named owner."
+  },
+  {
+    "id": "jrs-guns-sales-grover",
+    "exists": true,
+    "realWebsite": "https://www.jrsgunsales.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Jr Smith" },
+    "gbpClosed": false,
+    "notes": "FIREARMS SENSITIVITY. FFL dealer (Class III SOT) operating in both NC & SC + CCW classes 7 days/wk; also Jr Smith taxidermy (Bessemer City since 1982). Grover-area border business (also shows Blacksburg SC / Gastonia NC). Has its own website (jrsgunsales.com) = lower web gap. Real but firearms-sensitive + already has a site. Low priority."
+  },
+  {
+    "id": "magnolia-house-and-gardens-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://magnoliahouseandgardens.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Clover SC (221 N Main St), NOT Kings Mountain NC - it's ~10-13mi from the KM State Park / National Military Park (which are themselves on the SC side), hence the mislabel. B&B + event/garden venue. HAS its own website (magnoliahouseandgardens.com). SC = OUT OF TERRITORY + already has a site. DROP (out of territory)."
+  },
+  {
+    "id": "imperial-mercantile-inc-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://www.imperialmercantilekm.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED downtown Kings Mountain (138 W Mountain St, 28086) - KM establishment/casino-growth territory as flagged. Family-owned modern general store (home decor, apparel, coffee, wine), sister to two Outfitters locations. HAS its own branded website (imperialmercantilekm.com, JS-heavy - platform/quality not fully assessed, likely Squarespace/Wix-class) = lower gap but a growing multi-store local brand worth a soft-touch note. Owner not surfaced."
+  },
+  {
+    "id": "trading-post-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Resolves to West Main Trading Post LLC (1302 W Main St, Forest City) - a pawn shop / FFL dealer (buy-sell-trade-pawn: guns, jewelry, electronics, tools). Pawn = non-target + firearms-adjacent. FB-only, no website. DROP."
+  },
+  {
+    "id": "cherokee-gun-and-ammo-earl",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION as predicted: Gaffney SC (808-B Victory Trail Rd, 29340) in Cherokee County SC, NOT Earl NC - 'Cherokee' = Cherokee County SC. Licensed FFL dealer. SC = OUT OF TERRITORY + firearms sensitivity. DROP (out of territory)."
+  },
+  {
+    "id": "estes-forwarding-worldwide-cherryville",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "EFW - Estes Forwarding Worldwide, corporate logistics/freight-forwarding subsidiary of Estes Express Lines. National corporate, corporate-controlled web. Hard disqualifier. DROP."
+  },
+  {
+    "id": "cherryville-area-ministries-cherryville",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Faith-based community-assistance nonprofit (food/crisis ministry). Ministry category hard disqualifier. DROP."
+  },
+  {
+    "id": "nc-dot-div-12-traffic-services-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NCDOT Division 12 Traffic Services - state government agency. Hard disqualifier. DROP."
+  },
+  {
+    "id": "cleveland-county-maint-department-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Cleveland County Maintenance Department - county government. Hard disqualifier. DROP."
+  },
+  {
+    "id": "antiques-reproductions-accessories-gifts-lawndale",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED - no business under this exact name surfaces for Lawndale. Current Lawndale antique shops are Serendipity Antiques (232 E Main St), Rescued Treasure, Back Road Pickers, Time & Time Again Antique Mall - none named 'Antiques Reproductions Accessories & Gifts'. Likely a stale/renamed/defunct OSM node. Skip until confirmed; if it's a live antiques shop it would be a real quick-check target."
+  },
+  {
+    "id": "dean-blacks-food-mart-dallas",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED - no footprint surfaces for 'Dean Black's Food Mart' in Dallas NC. Name reads as a convenience/food mart = LOW non-target regardless. DROP (LOW category; no verifiable presence)."
+  },
+  {
+    "id": "town-of-forest-city-town-hall-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Town of Forest City municipal Town Hall - local government. Hard disqualifier. DROP."
+  },
+  {
+    "id": "next-door-used-books-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.nextdoorusedbooks.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Forest City (139 Thomas St, 28043). Independent used bookstore, 20,000+ books, strong Tripadvisor/community reviews, sells local maker goods. HAS its own website (nextdoorusedbooks.com) = lower web gap. Real charming independent target but already has a site (quality not inspected). Owner not surfaced."
+  },
+  {
+    "id": "powersport-supply-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Forest City (127 Thomas St, 28043). Motorcycle/ATV/UTV parts, tires (Dunlop dealer) & service incl. racebike prep. Lives on FB + third-party powersports/dealer directories only, NO dedicated website = clean web gap. STRONG real target: big-ticket powersports = high revenue proxy + fixable gap. Owner not surfaced."
+  },
+  {
+    "id": "amp-nutrition-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Forest City (124 Park Square Cir, 28043). Nutrition club (loaded teas/protein shakes/coffee, light food), across from POPS Pavilion. FB-only, no website = social-only gap. Real but low-revenue nutrition-club tail niche. Marginal quick-check target."
+  },
+  {
+    "id": "rutherford-veterinary-hospital-forest-city",
+    "exists": true,
+    "realWebsite": "https://rutherfordvethospital.com",
+    "liveSiteGrade": null,
+    "reviews": "5 stars (Yellow Pages)",
+    "owner": { "name": "Dr. Michelle Toms-Greene (+ Drs. Christian, Alisha, Shauna)" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (305 Chimney Rock Rd, 28139), NOT Forest City. INDEPENDENT multi-vet hospital (not a corporate group) - own team, own branding. HAS its own website (rutherfordvethospital.com) = lower gap. Real independent vet target but already has a site. Rutherford County (outside Cleveland-County core)."
+  },
+  {
+    "id": "hamricks-corporate-office-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://www.hamricks.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Corporate HQ of Hamrick's Inc. (742 Peachoid Rd, Gaffney SC 29341) - a 20+ store regional retail chain across SC/NC/GA/TN/VA. Corporate HQ + chain + SC. Hard disqualifier. DROP."
+  },
+  {
+    "id": "peach-tree-racquet-club-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Forest City (515 Long Branch Rd, 28043). Private tennis/racquet club (Peach Tree Racquet Club Inc), 6 clay+hard courts, hosts USTA League & tournaments. FB + tennis directories only, NO website = clean web gap. STRONG membership-driven real target (recurring dues revenue + a site would drive membership/league signups). Owner not surfaced."
+  },
+  {
+    "id": "petro-pointe-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Boiling Springs SC (3440 Boiling Springs Rd, 29316), NOT Boiling Springs NC - two same-named towns; this is the SC one. Gas station/convenience. LOW non-target + out of territory. DROP."
+  },
+  {
+    "id": "v-lucky-corner-store-patterson-springs",
+    "exists": null,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Convenience corner store, Patterson Springs. Name/category = LOW non-target; no meaningful verifiable footprint. DROP (LOW convenience)."
+  },
+  {
+    "id": "fowlers-thrift-resale-shop-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED - Fowler's Resale and Thrift (369 E Main St, Spindale). Thrift/resale (discount clothing & decor), FB-only. Thrift = LOW non-target. DROP."
+  },
+  {
+    "id": "taylors-small-engines-sales-service-rutherfordton",
+    "exists": true,
+    "realWebsite": "https://taylorssmallengines.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Rutherfordton (299 Railroad Ave, 28139). Locally owned small-engine sales/service - mowers, ATV/UTV; authorized dealer (Marr Bros., Joy of Mowing network). HAS its own website (taylorssmallengines.com) = lower gap. Real independent equipment-dealer target but already has a site. Rutherford County."
+  },
+  {
+    "id": "todays-pro-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "3.5 stars, ~13 reviews (BBB)",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Shelby (1325 E Dixon Blvd, 28152). Construction/remodeling contractor (holds NC fuel-piping + other license). BBB lists a website (thetodayspro.com) but the DOMAIN NO LONGER RESOLVES (DNS ENOTFOUND) - site is effectively DEAD/gone, so treat as NONE = clean, obvious web gap. Active on FB. Real Shelby Tier-1 construction/remodel trade (P1-adjacent) with a broken web presence to fix - solid target; mediocre 3.5/13 reviews are a soft flag. Owner not surfaced."
+  }
+]

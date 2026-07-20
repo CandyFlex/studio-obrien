@@ -1,0 +1,402 @@
+[
+  {
+    "id": "sts-auto-sales-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.stsautosales.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Scott Brown" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: located in Rutherfordton, NC (184 Charlotte Rd), not Forest City. Independent used-car lot, owner-operated by Scott Brown; real dealer site (stsautosales.com) + active FB. Real P3 target but already has a site = lower gap. Site quality not inspected."
+  },
+  {
+    "id": "maxwell-b-hamrick-insurance-forest-city",
+    "exists": true,
+    "realWebsite": "https://mbhamrickins.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Maxwell B. Hamrick (founder, est. 1953)" },
+    "gbpClosed": false,
+    "notes": "CONFIRMED second location, same mbhamrickins.com. HQ 116 N Main St Boiling Springs; this office 294 S Broadway St Forest City. Multi-location independent agency since 1953. Treat as ONE entity with the already-verified Boiling Springs row; do not double-target."
+  },
+  {
+    "id": "jerrys-used-cars-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (255 Railroad Ave), not Forest City (~8mi). Independent used-car dealer ~48 yrs. No real website (BBB/hub.biz/YellowPages only). Long-established + no site = strong B2 Storefront candidate. Owner name not surfaced."
+  },
+  {
+    "id": "lendmark-financial-services-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.lendmarkfinancial.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NATIONAL CHAIN (consumer-finance company, corporate-controlled web). Forest City branch 181 Commercial Dr. P12 hard disqualifier. DROP."
+  },
+  {
+    "id": "king-law-forest-city",
+    "exists": true,
+    "realWebsite": "https://kinglawoffices.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED multi-office regional firm (King Law Offices PLLC; offices across NC/SC/TN). Forest City is one branch (364 Butler Rd). Strong central corporate website = low gap + centrally controlled web. Effectively DROP / low-priority per P8 disqualifier."
+  },
+  {
+    "id": "friendship-chrysler-dodge-jeep-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.friendshipchryslerofforestcity.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "FRANCHISE DEALER, part of the Friendship Family of dealerships (opened Forest City 2014), 190 Oak St Ext. Corporate-controlled web. P12 hard disqualifier. DROP."
+  },
+  {
+    "id": "friendship-nissan-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.friendshipnissan.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "FRANCHISE DEALER (Friendship Family; bought the Forest City Nissan franchise 2014), 156 Oak St Ext. Corporate web. DROP."
+  },
+  {
+    "id": "miller-law-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY a firm named 'Miller Law' in Forest City. Closest matches are in RUTHERFORDTON, not Forest City: 'Dalton & Miller LLP' (atty Elizabeth T. Miller, 346 N Main St) and possibly 'Miller Monroe Holton & Plyler'. Likely OSM town mislabel / name variance. If it resolves to Dalton & Miller or E.T. Miller: solo/small firm, directory-only web = real P8 target. Recheck exact name + town before outreach."
+  },
+  {
+    "id": "richard-p-williams-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Richard P. Williams" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (347/349 N Main St), not Forest City. Solo attorney; practice est. 1994, 30+ yrs (real estate/estate/criminal/family); now partner at Williams & Martell PLLC. No real website (Justia/Avvo/Martindale/YellowPages only) = genuine P8 target, credibility-gap angle. LinkedIn present for reachability."
+  },
+  {
+    "id": "nissan-of-shelby-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "FRANCHISE DEALER. 'Nissan of Shelby' appears to be the Shelby Nissan store now branded DISCOVERY NISSAN (discoverynissan.com, 631 S Post Rd). Corporate web. DROP. May be a stale duplicate of Discovery Nissan - verify listing."
+  },
+  {
+    "id": "turning-heads-hair-nail-salon-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.turningheadsalon.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 13, "rating": 5.0 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Full-service Paul Mitchell hair/nail salon, 421 S Broadway St, Forest City (town confirmed). Real website (turningheadsalon.com) + FB. 5.0 stars / 13 reviews. P5 target but already has a site = moderate/low gap; conversion/booking angle over 'you have none'."
+  },
+  {
+    "id": "mikes-auto-sales-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.mikesautosalesinc.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Mike Pruett" },
+    "gbpClosed": false,
+    "notes": "Independent used-car lot, 417 S Broadway St, Forest City (town CONFIRMED). Owner Mike Pruett. Has a real dealer website. P3 target but has site = lower gap."
+  },
+  {
+    "id": "split-endz-hair-nail-salon-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 28, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Splitendz Hair & Nail Salon, 384 S Broadway St, Forest City. 4.9 stars / 28 reviews. Web = FB + directories only (the 'splitendz.info' result is an UNRELATED salon elsewhere - do not attribute). Strong P5 B2 Storefront target: real review mass, no real site."
+  },
+  {
+    "id": "cutz-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY a barbershop named 'CUTZ' in Earl, NC. No listing surfaced (only unrelated '*Cutz' shops in Charlotte/Concord/etc.). Likely social-only / very small or OSM mislabel. Recheck Maps/FB for Earl NC before any action. Barber = low-mid P5."
+  },
+  {
+    "id": "renaldo-buick-gmc-shelby",
+    "exists": true,
+    "realWebsite": "https://www.renaldogmcbuickcadillac.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 59, "rating": null },
+    "owner": { "name": "Donald Renaldo" },
+    "gbpClosed": false,
+    "notes": "FRANCHISE DEALER, part of Renaldo Auto Mall (Honda/Kia/Buick/GMC/Cadillac), 4423 E Dixon Blvd, Shelby. Owner Donald Renaldo (son Donald Renaldo II VP). Corporate web. P12 disqualifier. DROP."
+  },
+  {
+    "id": "southern-auto-of-the-carolinas-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY under this exact name in Earl/Grover NC. Search surfaced only 'Southern Imports' (import auto-PARTS salvage yard, 1120 Longbranch Rd, Grover) plus unrelated 'Southern Auto' dealers elsewhere in the Carolinas. Possible OSM mislabel or the parts yard mis-described as a dealer. Name implied scale is NOT confirmed. Needs phone/address recheck before use."
+  },
+  {
+    "id": "gordon-accounting-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Judy B. Gordon" },
+    "gbpClosed": false,
+    "notes": "Small accounting/tax firm, 109 W Main St, Cherryville. Owner/preparer Judy B. Gordon. Only web is a free gordonaccounting.wordpress.com blog (not a real site) + directories. Real P8 target (credibility-gap angle); phone-reachable. Tax preparer, CPA credential not confirmed."
+  },
+  {
+    "id": "rockin-realty-cherryville",
+    "exists": true,
+    "realWebsite": "https://rockinrealtyinc.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Rockin Realty Inc, 124 W Main St, Cherryville (serves Gastonia/Cherryville/Shelby/Lincolnton/KM area). Agents incl. Marcella Connelly, Jamie McSwain (broker-in-charge/owner not surfaced). Real website (rockinrealtyinc.com) + ~30 listings. P8 real-estate target but has a site = lower gap; conversion angle."
+  },
+  {
+    "id": "bennett-insurance-group-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.bennettigi.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 10, "rating": 4.4 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Family-owned independent agency (Erie / Progressive carriers), 116 W Main St, Cherryville, est. 1987. Real website (bennettigi.com). 4.4 stars / 10 reviews. P8 target but decent existing site = low gap."
+  },
+  {
+    "id": "beauty-villa-dallas",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 1, "rating": 5.0 },
+    "owner": { "name": "Bernice Black" },
+    "gbpClosed": false,
+    "notes": "Small beauty salon, 800 S Lincoln St, Dallas NC (Gaston County edge). Contact Bernice Black. Directory-only, no site; thin review mass (1). LOW-capacity P5 - Storefront-only angle if pursued."
+  },
+  {
+    "id": "gaffney-buick-gmc-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://www.gaffneyauto.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "FRANCHISE DEALER + LOCATION CORRECTION: physically in GAFFNEY, SC (730 Chesnee Hwy), not Boiling Springs NC (it merely serves Boiling Springs). Franchise corporate web AND across the SC state line (excluded by default). DROP."
+  },
+  {
+    "id": "rutherford-county-schools-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - public school district. Cannot buy independent web. DROP (no search needed)."
+  },
+  {
+    "id": "lincoln-county-health-department-lincolnton",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county health department. DROP (no search needed)."
+  },
+  {
+    "id": "usa-food-mart-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Gita Patel (president)" },
+    "gbpClosed": false,
+    "notes": "Convenience/food mart, 1409 E Main St, Cherryville. No site. Convenience = LOW-capacity non-target. DROP."
+  },
+  {
+    "id": "heafners-superette-cherryville",
+    "exists": true,
+    "realWebsite": "https://heafnerssuperette.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 154, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Gas-station/convenience with a made-to-order GRILL, 1410 E Church St, Cherryville. 4.2 stars / 154 reviews (real local following) and ALREADY has a website (heafnerssuperette.com) + DoorDash. Convenience category = low priority, but capacity is real; existing site = low gap."
+  },
+  {
+    "id": "tobacco-house-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Tobacco shop, 100 W Church St, Cherryville. Tobacco = LOW-capacity non-target. No site. DROP."
+  },
+  {
+    "id": "nobles-mini-mart-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience/mini-mart, 701 W Church St, Cherryville (est. 2006). LOW-capacity non-target. No site. DROP."
+  },
+  {
+    "id": "corner-stop-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT confirm a 'Corner Stop' in Forest City NC; nearest match carried an out-of-area (864/SC) number ~11mi away. Convenience = LOW non-target regardless. Likely DROP; recheck town only if ever needed."
+  },
+  {
+    "id": "abc-package-store-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NC ABC (state/county-controlled liquor store) = GOVERNMENT. Cannot buy independent web. DROP."
+  },
+  {
+    "id": "daniel-morgan-water-district-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://danielmorganwater.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT utility + LOCATION CORRECTION: Daniel Morgan (Rural) Water District is in GAFFNEY / Cherokee County, SC (3329 Chesnee Hwy), serving Boiling Springs SC - NOT Boiling Springs NC. Out of territory + government. DROP."
+  },
+  {
+    "id": "arnolds-jewelry-shelby",
+    "exists": true,
+    "realWebsite": "https://www.arnoldsjewelry.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Arnold's Jewelry & Gift Gallery, 228 S Washington St, uptown Shelby. Est. June 1973 (~50 yrs), landmark uptown jeweler with in-house repair = HIGH capacity/notability. Has a real website (arnoldsjewelry.com). P10 retail; gap depends on site quality (not inspected). Founded by Arnold & Freda; current owner not surfaced."
+  },
+  {
+    "id": "sinta-automotive-gastonia",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 30, "rating": 4.4 },
+    "owner": { "name": "Mamoudu Bah" },
+    "gbpClosed": false,
+    "notes": "Full-service auto repair, 1310 W Franklin Blvd, Gastonia. Owner Mamoudu Bah; since 2012, ~10 employees; 4.4 stars / 30 reviews. No real website (directories/FB only) = solid P3 profile, BUT Gastonia is Tier-3 metro edge (weaker local-trust) - referral/portfolio-led only, not a cold local sweep."
+  },
+  {
+    "id": "sugar-shack-antiques-cherryville",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "COULD NOT VERIFY 'Sugar Shack Antiques' in Cherryville. The sugarshackantiques.weebly.com result is a DIFFERENT business (Texas-longhorn-meat/antiques, owners Kim & Doug Marsh, not Cherryville). Cherryville antique stores that DO surface: Sugar Magnolias Antiques, Carriage House Antiques, Yesteryears Antique Mall - possible OSM name error (maybe 'Sugar Magnolias'). Recheck before use."
+  },
+  {
+    "id": "hamrick-grocery-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 254, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Family-run grocery + butcher + made-to-order grill + gas, 3142 Cliffside Rd, Shelby, since 1977. 4.5 stars / 254 reviews - strong local institution / HIGH capacity (butcher, livermush/sausage, country grill). Grocery category is low-priority, but a real destination business with NO real website (directories only) = notable Storefront/B2 opportunity. Owner name not surfaced."
+  },
+  {
+    "id": "rutherford-county-office-building-rutherfordton",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - county office building. DROP (no search needed)."
+  },
+  {
+    "id": "boger-city-pawn-cherryville",
+    "exists": true,
+    "realWebsite": "https://bogercitypawn.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Boger City Pawn (aka Boger City Exchange & Pawn) is in LINCOLNTON, NC (2709 E Main St; 'Boger City' is a Lincolnton-area community), not Cherryville. Has a real website (bogercitypawn.com). Pawn/retail target but already has a site; Lincolnton = Tier-2 mid (weaker local-trust)."
+  },
+  {
+    "id": "monroe-tire-service-shelby",
+    "exists": true,
+    "realWebsite": "https://tirediscounters.com/pages/locations/shelby-nc",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NAME CHANGE / CHAIN FLAG: former family-owned 'Monroe Tire & Service' (43 yrs, 515 S Lafayette St, Shelby) now operates as 'Monroe Tire Discounters' under the Tire Discounters chain / Goodyear network = corporate-controlled web. Appears acquired. Treat as CHAIN -> DROP unless confirmed still independently owned/operated."
+  },
+  {
+    "id": "bargain-hunt-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NATIONAL CHAIN (Bargain Hunt closeout retailer, corporate web bargainhunt.com). P12 hard disqualifier. DROP. (Flagged per triage; Shelby location not independently re-searched.)"
+  },
+  {
+    "id": "abc-liquor-store-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NC ABC (county-controlled liquor store) = GOVERNMENT. Cannot buy independent web. DROP."
+  },
+  {
+    "id": "mighty-dollar-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Discount/dollar retail CHAIN - corporate-controlled web = P12 disqualifier. DROP. (Flagged per triage; Shelby location not independently re-searched.)"
+  }
+]

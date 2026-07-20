@@ -1,0 +1,200 @@
+<!--
+  Studio O'Brien - Gap Read asset delivery email
+  Send AFTER a prospect says "yes, send it" (OUTREACH-SYSTEM section 8/9).
+  Fill every {{field}}. Any field you cannot verify by hand: "(unknown - let's talk)".
+  Dark theme survives class-stripping: every td carries bgcolor + inline color.
+-->
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<style>
+  /* Optional niceties only - core render must not depend on this block. */
+  body { margin: 0; padding: 0; }
+  a { text-decoration: none; }
+  @media only screen and (max-width: 600px) {
+    .container { width: 100% !important; }
+    .pad { padding-left: 22px !important; padding-right: 22px !important; }
+    .stack { display: block !important; width: 100% !important; }
+  }
+</style>
+
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#0f0f10;">One page on how Shelby customers find {{BusinessName}} right now. Free. No attachment until you asked.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0f10" style="background-color:#0f0f10;margin:0;padding:0;">
+  <tr>
+    <td align="center" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:28px 12px;">
+
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0f10" style="width:600px;max-width:600px;background-color:#0f0f10;">
+
+        <!-- HEADER: wordmark + mint anchor bar -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:8px 40px 0 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:700;letter-spacing:-0.02em;color:#ffffff;">STUDIO O'BRIEN</div>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;">
+              <tr><td height="2" width="48" bgcolor="#34d399" style="height:2px;width:48px;background-color:#34d399;font-size:0;line-height:2px;mso-line-height-rule:exactly;">&nbsp;</td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- INTRO -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:30px 40px 0 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:26px;line-height:1.15;font-weight:720;letter-spacing:-0.03em;color:#ffffff;">The Gap Read for <span style="font-style:italic;font-weight:500;color:#34d399;">{{BusinessName}}</span></div>
+            <p style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.65;color:#a8a8a8;margin:20px 0 0 0;">Hi {{ownerFirstName}}, thanks for saying yes. Here is the one-pager I promised. It is a plain read on how folks around Shelby find you when they go looking right now. No proposal, no pitch buried in it. Everything here is something you can pull up on your own phone in about 30 seconds, so please do.</p>
+          </td>
+        </tr>
+
+        <!-- SERP POSITION TABLE -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:34px 40px 0 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:20px;line-height:1.2;font-weight:650;letter-spacing:-0.02em;color:#ffffff;margin-bottom:16px;">The four ways people search for you</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#1c1c1d" style="width:100%;background-color:#1c1c1d;border:1px solid #2a2a2b;border-collapse:separate;">
+              <tr>
+                <td bgcolor="#181819" style="background-color:#181819;border-bottom:1px solid #2a2a2b;padding:12px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.02em;color:#888888;">QUERY</td>
+                <td bgcolor="#181819" style="background-color:#181819;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:12px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.02em;color:#888888;">WHO IS AHEAD</td>
+                <td bgcolor="#181819" style="background-color:#181819;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:12px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.02em;color:#888888;">YOUR SPOT</td>
+              </tr>
+              <tr>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#d4d4d4;">{{query_1}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#a8a8a8;">{{ahead_1}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;font-weight:600;color:#ffffff;">{{pos_1}}</td>
+              </tr>
+              <tr>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#d4d4d4;">{{query_2}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#a8a8a8;">{{ahead_2}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;font-weight:600;color:#ffffff;">{{pos_2}}</td>
+              </tr>
+              <tr>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#d4d4d4;">{{query_3}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#a8a8a8;">{{ahead_3}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-bottom:1px solid #2a2a2b;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;font-weight:600;color:#ffffff;">{{pos_3}}</td>
+              </tr>
+              <tr>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#d4d4d4;">{{query_4}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;color:#a8a8a8;">{{ahead_4}}</td>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;border-left:1px solid #2a2a2b;padding:14px 16px;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;font-weight:600;color:#ffffff;">{{pos_4}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- STAT LEDGER: 3-cell row -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:28px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0f10" style="width:100%;background-color:#0f0f10;border:1px solid #2a2a2b;border-collapse:separate;">
+              <tr>
+                <td width="33.33%" bgcolor="#0f0f10" style="width:33.33%;background-color:#0f0f10;padding:20px 16px;vertical-align:top;">
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:30px;font-weight:720;letter-spacing:-0.03em;color:#ffffff;line-height:1;">{{avg_pos}}</div>
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;line-height:1.4;color:#888888;margin-top:8px;">Average position across the four searches.</div>
+                </td>
+                <td width="33.33%" bgcolor="#0f0f10" style="width:33.33%;background-color:#0f0f10;border-left:1px solid #2a2a2b;padding:20px 16px;vertical-align:top;">
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:30px;font-weight:720;letter-spacing:-0.03em;color:#ffffff;line-height:1;">{{specialist_count}}</div>
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;line-height:1.4;color:#888888;margin-top:8px;">Real local businesses in the top 10.</div>
+                </td>
+                <td width="33.33%" bgcolor="#0f0f10" style="width:33.33%;background-color:#0f0f10;border-left:1px solid #2a2a2b;padding:20px 16px;vertical-align:top;">
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:30px;font-weight:720;letter-spacing:-0.03em;color:#ffffff;line-height:1;">{{directory_count}}</div>
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;line-height:1.4;color:#888888;margin-top:8px;">Directories in the top 10.</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CHECKLIST: what's true about you right now -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:36px 40px 0 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:20px;line-height:1.2;font-weight:650;letter-spacing:-0.02em;color:#ffffff;margin-bottom:6px;">What is true about you right now</div>
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;line-height:1.5;color:#888888;margin-bottom:18px;">Checked by hand, not guessed. Anything I could not confirm says so.</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0f10" style="width:100%;background-color:#0f0f10;">
+              <tr>
+                <td width="24" valign="top" bgcolor="#0f0f10" style="width:24px;background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#34d399;line-height:1.6;">-</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#d4d4d4;">Your site: {{site_observation}}</td>
+              </tr>
+              <tr>
+                <td width="24" valign="top" bgcolor="#0f0f10" style="width:24px;background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#34d399;line-height:1.6;">-</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#d4d4d4;">Google Business Profile: {{gbp_observation}}</td>
+              </tr>
+              <tr>
+                <td width="24" valign="top" bgcolor="#0f0f10" style="width:24px;background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#34d399;line-height:1.6;">-</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#d4d4d4;">Phone number visible at the top of the site: {{phone_visible}}</td>
+              </tr>
+              <tr>
+                <td width="24" valign="top" bgcolor="#0f0f10" style="width:24px;background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#34d399;line-height:1.6;">-</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 14px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#d4d4d4;">Usable on a phone: {{mobile_usable}}</td>
+              </tr>
+              <tr>
+                <td width="24" valign="top" bgcolor="#0f0f10" style="width:24px;background-color:#0f0f10;padding:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#34d399;line-height:1.6;">-</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#d4d4d4;">Contact form: {{contact_form}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- GAP SENTENCE: pull-quote block -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:36px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#1c1c1d" style="width:100%;background-color:#1c1c1d;border:1px solid #2a2a2b;">
+              <tr>
+                <td bgcolor="#1c1c1d" style="background-color:#1c1c1d;padding:28px 28px 30px 28px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:18px;">
+                    <tr><td height="2" width="48" bgcolor="#34d399" style="height:2px;width:48px;background-color:#34d399;font-size:0;line-height:2px;mso-line-height-rule:exactly;">&nbsp;</td></tr>
+                  </table>
+                  <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:22px;line-height:1.35;font-weight:600;letter-spacing:-0.02em;color:#ffffff;">{{gap_sentence}}</div>
+                  <p style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6;color:#a8a8a8;margin:18px 0 0 0;">The proof is one Google search on your phone for "{{lead_query}}". You can verify this in 30 seconds.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- THREE QUESTIONS -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:36px 40px 0 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:20px;line-height:1.2;font-weight:650;letter-spacing:-0.02em;color:#ffffff;margin-bottom:6px;">What I would want to know from you</div>
+            <p style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#a8a8a8;margin:0 0 20px 0;">Three questions. I am not pitching anything in your answers. The follow-up after this email is a phone call only if you want one.</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f0f10" style="width:100%;background-color:#0f0f10;">
+              <tr>
+                <td width="34" valign="top" bgcolor="#0f0f10" style="width:34px;background-color:#0f0f10;padding:0 0 18px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:700;color:#34d399;line-height:1.6;">1</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 18px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.6;color:#d4d4d4;">When business is slow for a week, what is the first thing you check for? What does "we need more leads" look like at your shop?</td>
+              </tr>
+              <tr>
+                <td width="34" valign="top" bgcolor="#0f0f10" style="width:34px;background-color:#0f0f10;padding:0 0 18px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:700;color:#34d399;line-height:1.6;">2</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0 0 18px 0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.6;color:#d4d4d4;">What have you already tried to fix the online side? Website redo, Google ads, Angi/Thumbtack, Facebook posts, something else?</td>
+              </tr>
+              <tr>
+                <td width="34" valign="top" bgcolor="#0f0f10" style="width:34px;background-color:#0f0f10;padding:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:700;color:#34d399;line-height:1.6;">3</td>
+                <td valign="top" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.6;color:#d4d4d4;">What would need to be true for you to want this conversation to continue? Sentence it however feels right.</td>
+              </tr>
+            </table>
+            <p style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#a8a8a8;margin:22px 0 0 0;">That is it. No deck, no proposal, no calendar link.</p>
+          </td>
+        </tr>
+
+        <!-- DIVIDER -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:34px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" bgcolor="#1f1f20" style="height:1px;background-color:#1f1f20;font-size:0;line-height:1px;">&nbsp;</td></tr></table>
+          </td>
+        </tr>
+
+        <!-- SIGNATURE -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:24px 40px 8px 40px;">
+            <p style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.6;color:#a8a8a8;margin:0 0 20px 0;">No rush on a reply, and no hard feelings if the timing is not right. If you would rather I not follow up, just reply "stop" and I will close the file for good.</p>
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.55;color:#ffffff;font-weight:600;">Jarred O'Brien</div>
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6;color:#888888;">Studio O'Brien, Shelby NC<br>
+              <a href="https://studioobrien.com" style="color:#34d399;text-decoration:none;">studioobrien.com</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="tel:+17049743372" style="color:#888888;text-decoration:none;">704-974-3372</a>
+            </div>
+          </td>
+        </tr>
+
+        <!-- FOOTER MARK -->
+        <tr>
+          <td class="pad" bgcolor="#0f0f10" style="background-color:#0f0f10;padding:28px 40px 20px 40px;">
+            <div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:12px;line-height:1.5;color:#666666;">Studio O'Brien &middot; Shelby, North Carolina. You are getting this because you asked me to send it.</div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>

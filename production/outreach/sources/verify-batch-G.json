@@ -1,0 +1,202 @@
+[
+  {
+    "id": "yellow-sun-pizza-pints-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.yellowsunpizza.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton NC (127 Trade St, 28139), NOT Forest City. Rutherford County (lower-priority territory). Family-owned craft-pizza spot since 2018, open ~3 nights/wk. Owns real site yellowsunpizza.com (also a weeblyte aggregator page floating). Site not gradeable this pass. Notable/newer concept as flagged."
+  },
+  {
+    "id": "gregorys-forest-city",
+    "exists": true,
+    "realWebsite": "https://gregorysoriginal.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: 'Gregory's Original' is in Rutherfordton NC (161 Park Ln Dr, 28139), NOT Forest City. Rutherford County. 20+ yr American/Italian staple with a catering arm (cateredbygregorys.com). Owns real site gregorysoriginal.com; not graded this pass."
+  },
+  {
+    "id": "us-wings-deli-earl",
+    "exists": null,
+    "realWebsite": "https://www.uswingsanddeli.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "CHAIN/FRANCHISE - DISQUALIFY (P12). US Wings & Deli is a multi-location SC/NC brand (based Columbia/Greenville SC; NC units in Lumberton, Fayetteville). No Earl NC location confirmed in search - OSM row may be stale or mislabeled. Corporate-controlled web = zero close-ability regardless."
+  },
+  {
+    "id": "wings-etc-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://www.wingsetc.com/boiling-springs/",
+    "liveSiteGrade": null,
+    "reviews": { "count": 60, "rating": null },
+    "owner": { "name": "Scott McFalls (franchisee)" },
+    "gbpClosed": false,
+    "notes": "CHAIN/FRANCHISE + OUT OF TERRITORY - DISQUALIFY. Wings Etc is a national franchise brand AND this unit is in Boiling Springs SOUTH CAROLINA (2644 Boiling Springs Rd, 864 area code), NOT Boiling Springs NC. Franchisee Scott McFalls, opened Jul 2017 (first SC location). Web on corporate chain platform. Review count from Yelp (non-Google)."
+  },
+  {
+    "id": "osaka-sushi-steakhouse-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://osakaeat.com/gaffney/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "STATE CORRECTION + MINI-CHAIN - DISQUALIFY. Osaka Sushi & Steakhouse is in Gaffney SOUTH CAROLINA (1633 W Floyd Baker Blvd, 29341), NOT Boiling Springs NC (OSM label wrong - near the SC line). Part of the Osaka group (multiple SC & TN locations, osakaeat.com). Out of territory."
+  },
+  {
+    "id": "the-arsenal-earl",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "LIKELY OUT OF TERRITORY - verify. Only match is 'The Arsenal Grill' whose Facebook page (facebook.com/arsenalgrill) lists Gaffney SC, not Earl NC as OSM claims. Earl NC borders Gaffney SC so the OSM town label is suspect. Facebook-only, no website. Confirm which side of the state line before any touch; treat as SC/out-of-territory unless proven NC."
+  },
+  {
+    "id": "petes-of-gaffney-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://www.petesofgaffney.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "STATE CORRECTION - DISQUALIFY (out of territory). Pete's of Gaffney is in Gaffney SOUTH CAROLINA (1405 Floyd Baker Blvd, 29341), single location, NOT Boiling Springs NC (OSM label wrong). Owns real site petesofgaffney.com. SC = out of territory per TARGETING Part 2 (Gaffney exclude-by-default)."
+  },
+  {
+    "id": "lunas-pizza-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.lunapizzarutherfordton.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "LIKELY TOWN CORRECTION: best match is Luna Pizza at 151 Central St, Rutherfordton NC 28139 (NY-style), near Forest City - verify a distinct Forest City branch exists vs. OSM mislabel. Owns real site lunapizzarutherfordton.com. Caution: many unrelated 'Luna Pizza/Luna's Pizza' elsewhere in NC (Oakboro, etc.)."
+  },
+  {
+    "id": "rutherford-thai-forest-city",
+    "exists": true,
+    "realWebsite": "https://rutherfordthai.wordpress.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 147, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton NC (123 W 2nd St, 28139), NOT Forest City. Rutherford County. Site is a free WordPress blog (rutherfordthai.wordpress.com) = weak/DIY, real upgrade angle. Well-regarded, ~147 Yelp reviews (non-Google count). Good gap-fit but Rutherford County (lower priority)."
+  },
+  {
+    "id": "pour-boys-bar-hangout-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Spindale NC (195 W Main St), NOT Forest City. Newer bar (opened ~2024). Social-only - Instagram @pour_boys_bar + Facebook, no website (B2 Storefront candidate). Rutherford County."
+  },
+  {
+    "id": "blanton-miller-moore-dentistry-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.bmmdental.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Drs. Samuel Blanton, John Miller, Brian Moore & Trevor Rhea (DDS partner-owners; Cecil B. Moore DDS also listed)" },
+    "gbpClosed": false,
+    "notes": "DENTAL (high-value). TOWN CORRECTION: Rutherfordton NC (363 N Main St, 28139), NOT Forest City (partner Samuel Blanton was raised in Forest City - likely the OSM confusion). Rutherford County. Owner-dentists are the named partners above. Owns real site bmmdental.com but it returned HTTP 403 - could not grade this pass. Google review count not surfaced (small counts on Birdeye only)."
+  },
+  {
+    "id": "carolina-cafe-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 48, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Spindale NC (584 E Main St, 28160), NOT Forest City. Longtime home-cooking breakfast/lunch diner. No real owned website (only menu-aggregator pages). ~48 Yelp / ~243 Restaurantji reviews (non-Google). Rutherford County. Social/aggregator-only = B2 candidate."
+  },
+  {
+    "id": "kyoto-express-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Town confirmed: Forest City NC (247 Oak St, 28043). Japanese/sushi (Kyoto Express LLC). No real owned marketing site - only Facebook + ordering/aggregator pages (orderkyotoexpress.com, hey-restaurants, DoorDash). Social-only = B2 candidate. Rutherford County."
+  },
+  {
+    "id": "fatz-forest-city",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "CLOSED + CHAIN - DISQUALIFY. Fatz Cafe / Fatz Southern Kitchen was a regional chain that went bankrupt and closed ALL locations effective 8/23/2023. Forest City unit (118 Hill Top Way) permanently closed (Yelp: CLOSED). Confirmed as flagged."
+  },
+  {
+    "id": "don-ramon-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.donramonmexican.com/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": 67, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Town confirmed: Forest City NC (657 Oak St, 28043). Strong review mass (Yelp 67; Tripadvisor 4.3 ranked #5/48; Restaurant Guru 4.7 across ~2,300 aggregated) = real revenue proxy. BUT site donramonmexican.com is already modern/mobile-responsive (Fisherman platform + ChowNow ordering) = good, so low web-presence gap (scorecard gap likely near 0). Rutherford County."
+  },
+  {
+    "id": "fuji-yama-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 25, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Town confirmed: Forest City NC (721 Oak St, 28043). Japanese steakhouse/hibachi. No real owned website - Facebook + weeblyte aggregator only. ~25 Yelp reviews (non-Google). Social-only = B2 candidate. Rutherford County."
+  },
+  {
+    "id": "dons-italian-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Taki & Valerie (current owners, retiring); founded by Don & Nitsa 1986" },
+    "gbpClosed": false,
+    "notes": "CLOSING - DISQUALIFY (Stage-1 #2). TOWN CORRECTION: Spindale NC (619 Oakland Rd, 28160), NOT Forest City. Announced permanent closure Sunday July 27, 2026 - owners Taki & Valerie retiring (biz traces to 1986). gbpClosed still shows open today (2026-07-16) but closes in ~11 days. Facebook-only. Do not touch."
+  },
+  {
+    "id": "forest-city-family-dentistry-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.fcfdentistry.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": 33, "rating": 4.8 },
+    "owner": { "name": "Dr. Jeffrey D. Hall, DMD" },
+    "gbpClosed": false,
+    "notes": "DENTAL (high-value). Town CONFIRMED: Forest City NC (621 S Broadway St, 28043) - OSM correct here. Owner-dentist Dr. Jeffrey D. Hall, DMD. Owns real site fcfdentistry.com but it is JS-rendered and did not return gradeable content this pass (liveSiteGrade null - inspect manually). Reviews: Birdeye 4.8/33, Vitals 4.9/7 (Google count not surfaced). Rutherford County. Best in-territory dental of the two."
+  },
+  {
+    "id": "phyllis-sweet-shop-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 87, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Town CONFIRMED: Shelby NC (125 N Trade St, 28150) - UPTOWN SHELBY, Tier-1 home turf. Generational 'institution' bakery. Google 4.9 rating; ~87 reviews (count via Restaurantji). Social-only - Facebook + Instagram @phyllissweetshop, NO website = prime B2 Storefront target in the Uptown walkable cluster. Owner first-name 'Phyllis' only, surname not surfaced."
+  },
+  {
+    "id": "sweet-house-bakery-shelby",
+    "exists": true,
+    "realWebsite": "https://karrenwalls.wixsite.com/sweethousebakery",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 108, "rating": null },
+    "owner": { "name": "Karren Walls (inferred from Wix site URL - verify)" },
+    "gbpClosed": false,
+    "notes": "Town: Shelby NC (203 W Marion St, 28150) but MULTIPLE listings show a relocation to Kings Mountain (304 E King St, 28086) - confirm current town before touch. Est. 2013. Site is a free Wix subdomain (karrenwalls.wixsite.com) = weak/DIY, real upgrade angle + own-domain pitch. Owner likely Karren Walls (per Wix subdomain, unconfirmed). ~108 reviews (Restaurantji, non-Google)."
+  }
+]

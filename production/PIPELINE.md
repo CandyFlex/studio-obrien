@@ -62,6 +62,14 @@ call (2–3 posts per call, ~$0.10 baseline each — never one call per small ta
 → Claude edits for voice/accuracy/no-em-dashes → wired into /blog with matching
 template, schema, and internal links → sitemap updated → deployed.
 
+## Track E — Outbound (runs from production/outreach/)
+
+The outreach operating system lives in `production/outreach/` —
+`OUTREACH-SYSTEM.md` (doctrine + weekly rhythm), `CRM.md` (every target,
+every touch, every re-approach date), `INFRA-CHECKLIST.md` (gates),
+`SOCIAL-PLAYBOOK.md`, `email-templates/`. Current gate: Layer 1
+(jarred@studioobrien.com + SPF/DKIM/DMARC) blocks all cold email.
+
 ## Track D — Research handoff (Jarred → Claude)
 
 Anything you gather — voice notes, screenshots of competitor sites, a list of

@@ -1,0 +1,51 @@
+{
+  "date": "2026-07-09",
+  "scored": [
+    {
+      "niche": "roofing-contractor",
+      "date": "2026-07-09",
+      "keywordCount": 5,
+      "DD": 0.2,
+      "SA": 5.4,
+      "DR": 9.4,
+      "CNAF": 0
+    },
+    {
+      "niche": "hvac",
+      "date": "2026-07-09",
+      "keywordCount": 4,
+      "DD": 0,
+      "SA": 5.5,
+      "DR": 12.75,
+      "CNAF": 0
+    },
+    {
+      "niche": "auto-repair",
+      "date": "2026-07-09",
+      "keywordCount": 4,
+      "DD": 0.75,
+      "SA": 3,
+      "DR": 11.25,
+      "CNAF": 0
+    },
+    {
+      "niche": "salon-spa",
+      "date": "2026-07-09",
+      "keywordCount": 4,
+      "DD": 0,
+      "SA": 4,
+      "DR": 9.25,
+      "CNAF": 0
+    },
+    {
+      "niche": "landscaping-lawn",
+      "date": "2026-07-09",
+      "keywordCount": 3,
+      "DD": 0.3333333333333333,
+      "SA": 5,
+      "DR": 7,
+      "CNAF": 0
+    }
+  ],
+  "crossNicheList": []
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terry Black's BBQ — Austin's Home for Legendary Central Texas BBQ</title>
+  <meta name="description" content="Terry Black's BBQ serves legendary Central Texas barbecue in Austin, TX. Brisket, beef ribs, sausage and all the fixings — served hot and ready at 1003 Barton Springs Rd." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__wrap">
+      <a class="nav__logo" href="#top" aria-label="Terry Black's BBQ home">
+        <img src="assets/logo.png" alt="Terry Black's BBQ" />
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#" class="nav__link has-caret">Locations
+          <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <a href="#menu" class="nav__link">Menu</a>
+        <a href="#catering" class="nav__link">Catering &amp; Events</a>
+        <a href="#" class="nav__link">Black Family Hospitality</a>
+        <a href="#" class="nav__link has-caret">Shop
+          <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <a href="#" class="btn btn--outline nav__cta">Nationwide Shipping</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__bg" style="background-image:url('assets/hero-bg.jpg')"></div>
+      <div class="hero__fade"></div>
+      <div class="hero__inner">
+        <h1 class="hero__title">Austin's Home for<br />Legendary Central<br />Texas BBQ</h1>
+        <p class="hero__addr">1003 Barton Springs Rd <span class="dot">&bull;</span> Austin, TX</p>
+        <a href="#menu" class="btn btn--red hero__cta">Order Online</a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT / STORY ============ -->
+    <section class="about" id="story">
+      <div class="about__inner">
+        <div class="about__copy">
+          <div class="eyebrow-title">
+            <p class="eyebrow">Our Story</p>
+            <h2 class="h2">The Terry Black's BBQ Story</h2>
+          </div>
+          <div class="about__body">
+            <p>Born and raised in Lockhart, Texas &mdash; the barbecue capital of Texas, and perhaps the world &mdash; our dad Terry Black passed down generations of barbecue wisdom from his experience in the Lockhart BBQ scene.</p>
+            <p>We opened Terry Black's to honor that hard-earned family know-how and to bring delicious Central Texas flavors to you with our own unique style.</p>
+          </div>
+        </div>
+        <div class="about__photo">
+          <img src="assets/story.png" alt="The Terry Black's BBQ family" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack">
+        <!-- content injected/duplicated by JS; static fallback below -->
+        <span class="marquee__group">
+          <span class="marquee__item">Beef Ribs</span><img class="star" src="assets/texas-star.svg" alt="" />
+          <span class="marquee__item">Brisket</span><img class="star" src="assets/texas-star.svg" alt="" />
+          <span class="marquee__item">Sausage</span><img class="star" src="assets/texas-star.svg" alt="" />
+          <span class="marquee__item">Pork Ribs</span><img class="star" src="assets/texas-star.svg" alt="" />
+          <span class="marquee__item">Turkey</span><img class="star" src="assets/texas-star.svg" alt="" />
+        </span>
+      </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section class="menu" id="menu">
+      <div class="menu__inner">
+        <header class="menu__head">
+          <p class="eyebrow eyebrow--center">Served Hot and Ready</p>
+          <h2 class="menu__title">Austin Menu</h2>
+          <ul class="menu__legend">
+            <li><span class="diet diet--gf">GF</span> = Gluten free</li>
+            <li><span class="diet diet--df">DF</span> = Dairy free</li>
+            <li><span class="diet diet--v">V</span> = Vegetarian</li>
+          </ul>
+        </header>
+
+        <div class="menu__cols">
+          <!-- LEFT COLUMN -->
+          <div class="menu__col">
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Meats</h3>
+              <ul class="menu-list">
+                <li><span class="mi__name">Sliced Brisket <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span><span class="mi__price">$39.48<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Beef Ribs <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span><span class="mi__price">$40.48<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Pork Ribs <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span><span class="mi__price">$32.98<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Turkey <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span><span class="mi__price">$32.98<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Chopped Beef <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span><span class="mi__price">$33.98<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Original Sausage <span class="diet diet--gf">GF</span></span><span class="mi__price">$30.00<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Jalapeno Cheese Sausage <span class="diet diet--gf">GF</span></span><span class="mi__price">$30.00<span class="u">/lb</span></span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Family Packs</h3>
+              <p class="menu-group__note">Family Packs do not include Beef Ribs</p>
+              <ul class="menu-list">
+                <li class="mi--stacked"><span class="mi__name">Large Family Pack</span><span class="mi__desc">6 lbs of meat, 5 quarts of sides (serves 10-12 people)</span><span class="mi__price mi__price--block">$308.00</span></li>
+                <li class="mi--stacked"><span class="mi__name">Small Family Pack</span><span class="mi__desc">3 lbs of meat, 5 pints of sides (serves 5-6 people)</span><span class="mi__price mi__price--block">$154.50</span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Sandwich Combos</h3>
+              <ul class="menu-list">
+                <li class="mi--stacked"><span class="mi__name">Turkey Sandwich Combo</span><span class="mi__desc">Chips and a Regular Drink</span><span class="mi__price mi__price--block">$20.25</span></li>
+                <li class="mi--stacked"><span class="mi__name">Sliced Brisket Sandwich Combo</span><span class="mi__desc">Chips and a Regular Drink</span><span class="mi__price mi__price--block">$21.75</span></li>
+                <li class="mi--stacked"><span class="mi__name">Chopped Beef Sandwich Combo</span><span class="mi__desc">Chips and a Regular Drink</span><span class="mi__price mi__price--block">$20.25</span></li>
+                <li class="mi--stacked"><span class="mi__name">Sausage Sandwich Combo</span><span class="mi__desc">Chips and a Regular Drink</span><span class="mi__price mi__price--block">$20.25</span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Sandwiches</h3>
+              <ul class="menu-list">
+                <li><span class="mi__name">Turkey Sandwich</span><span class="mi__price">$16.00</span></li>
+                <li><span class="mi__name">Sliced Brisket Sandwich</span><span class="mi__price">$17.50</span></li>
+                <li><span class="mi__name">Chopped Beef Sandwich</span><span class="mi__price">$16.00</span></li>
+                <li><span class="mi__name">Sausage Sandwich</span><span class="mi__price">$16.00</span></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="menu__col">
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Sides</h3>
+              <p class="menu-group__pricing">Single $4.50 <i>|</i> Pint $9.50 <i>|</i> Quart $18.00 <i>|</i> Gallon $47.00</p>
+              <ul class="menu-list">
+                <li><span class="mi__name">Mac and Cheese <span class="diet diet--v">V</span></span></li>
+                <li><span class="mi__name">Pinto Beans <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span></li>
+                <li><span class="mi__name">Green Beans <span class="diet diet--gf">GF</span><span class="diet diet--v">V</span></span></li>
+                <li><span class="mi__name">Mexican Rice <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span></span></li>
+                <li><span class="mi__name">Cream Corn <span class="diet diet--gf">GF</span><span class="diet diet--v">V</span></span></li>
+                <li><span class="mi__name">Potato Salad <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span><span class="diet diet--v">V</span></span></li>
+                <li><span class="mi__name">Cole Slaw <span class="diet diet--gf">GF</span><span class="diet diet--df">DF</span><span class="diet diet--v">V</span></span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Desserts</h3>
+              <p class="menu-group__pricing">Single $4.75 <i>|</i> Pint $10.00 <i>|</i> Quart $18.00 <i>|</i> Gallon $50.00</p>
+              <ul class="menu-list">
+                <li><span class="mi__name">Mini Pecan Pie <span class="diet diet--v">V</span></span><span class="mi__price">$4.75<span class="u">/ea</span></span></li>
+                <li><span class="mi__name">Peach Cobbler</span></li>
+                <li><span class="mi__name">Banana Pudding <span class="diet diet--v">V</span></span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Drinks</h3>
+              <ul class="menu-list">
+                <li class="mi--multi"><span class="mi__name">Teas &amp; Fountain Drinks</span>
+                  <span class="mi__price mi__price--multi">Regular <b>$3.75</b><br />Large <b>$4.25</b><br />Gallon Tea <b>$10.00</b></span>
+                </li>
+                <li><span class="mi__name">Bottled Drinks</span><span class="mi__price">$4.25</span></li>
+                <li><span class="mi__name">Beer</span><span class="mi__price">Pricing Varies</span></li>
+                <li><span class="mi__name">Wine</span><span class="mi__price">Pricing Varies</span></li>
+              </ul>
+            </div>
+
+            <div class="menu-group">
+              <h3 class="menu-group__title">Chilled Meats</h3>
+              <p class="menu-group__note">First come, first served when available</p>
+              <ul class="menu-list">
+                <li><span class="mi__name">Whole Frozen Brisket</span><span class="mi__price">$30.00<span class="u">/lb</span></span></li>
+                <li><span class="mi__name">Cooked Cold Sausage</span><span class="mi__price">$6.00<span class="u">/link</span></span></li>
+                <li><span class="mi__name">Whole Chilled Brisket</span><span class="mi__price">$175.00</span></li>
+                <li><span class="mi__name">Whole Chilled Turkey Breast</span><span class="mi__price">$115.00</span></li>
+                <li><span class="mi__name">Whole Rack of Chilled Pork Spare Ribs</span><span class="mi__price">$80.00</span></li>
+                <li><span class="mi__name">Whole Rack of Chilled Beef Ribs</span><span class="mi__price">$185.00</span></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="menu__cta-wrap">
+          <a href="#" class="btn btn--red">Reheating Instructions</a>
+        </div>
+
+        <!-- decorative polaroids -->
+        <img class="menu-polaroid menu-polaroid--tl" src="assets/polaroid-2.png" alt="" aria-hidden="true" />
+        <img class="menu-polaroid menu-polaroid--tr" src="assets/polaroid-4.png" alt="" aria-hidden="true" />
+        <img class="menu-polaroid menu-polaroid--bl" src="assets/polaroid-1.png" alt="" aria-hidden="true" />
+      </div>
+    </section>
+
+    <!-- ============ CATERING / EVENTS ============ -->
+    <section class="feature" id="catering">
+      <div class="feature__bg" style="background-image:url('assets/catering-bg.jpg')"></div>
+      <div class="feature__fade-top"></div>
+      <div class="feature__fade-bottom"></div>
+
+      <div class="feature__row">
+        <div class="feature__media"><img src="assets/private-events.png" alt="The High Road on Dawson private event venue" /></div>
+        <div class="feature__copy">
+          <div class="eyebrow-title">
+            <p class="eyebrow">The High Road on Dawson</p>
+            <h2 class="h2">Private Events</h2>
+          </div>
+          <div class="feature__body">
+            <p>Perched on a hill overlooking downtown, The "High Road" building is vintage old Austin. This one of a kind property features a large private parking lot, spectacular views and plenty of good times (past and present).</p>
+            <p>The High Road on Dawson formerly operated as a club and Elks lodge since the 1950's and is now owned and operated by the Terry Black family. The venue is located behind the restaurant at 700 Dawson Road.</p>
+          </div>
+          <a href="#updates" class="btn btn--red">Inquire Now</a>
+        </div>
+      </div>
+
+      <div class="feature__row feature__row--reverse">
+        <div class="feature__copy">
+          <div class="eyebrow-title">
+            <p class="eyebrow">True Texas Hospitality</p>
+            <h2 class="h2">Catering</h2>
+          </div>
+          <div class="feature__body">
+            <p>Experience true Texas hospitality with Terry Black's BBQ, where our passion for authentic barbecue meets a commitment to outstanding service.</p>
+            <p>Whether you're hosting a corporate gathering, wedding, or family celebration, we bring the taste of Texas to your table with customizable catering options. Let us elevate your next event with the warmth, flavor, and hospitality that Texas is known for.</p>
+          </div>
+          <a href="#updates" class="btn btn--red">Book Catering</a>
+        </div>
+        <div class="feature__media"><img src="assets/catering-plate.png" alt="A spread of Terry Black's catered barbecue" /></div>
+      </div>
+
+      <div class="feature__row">
+        <div class="feature__media"><img src="assets/experience.png" alt="Behind the scenes at the Terry Black's pits" /></div>
+        <div class="feature__copy">
+          <div class="eyebrow-title">
+            <p class="eyebrow">Take a Tour</p>
+            <h2 class="h2">The Terry Black's BBQ Experience</h2>
+          </div>
+          <div class="feature__body">
+            <p>Go beyond the tray and step behind the scenes.</p>
+            <p>The Terry Black's Experience is a one-hour experience that offers an insider's look at how we fire up some of the best barbecue in Texas. You'll meet our pit masters, get a private tour of the pits, and enjoy a generous spread at a reserved table &mdash; no line required.</p>
+          </div>
+          <a href="#updates" class="btn btn--red">Reserve</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL FEED ============ -->
+    <section class="social" aria-label="From our social feed">
+      <div class="social__track" id="socialTrack">
+        <a class="social__item"><img src="assets/social-1.png" alt="Brisket on the grill" /></a>
+        <a class="social__item"><img src="assets/social-2.png" alt="The Black's Barbecue mural" /></a>
+        <a class="social__item"><img src="assets/social-3.png" alt="Terry Black's storefront" /></a>
+        <a class="social__item"><img src="assets/social-4.png" alt="A pitmaster at work" /></a>
+        <a class="social__item"><img src="assets/social-5.png" alt="Terry Black's BBQ tee" /></a>
+        <a class="social__item"><img src="assets/social-7.png" alt="Fire in the pit" /></a>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="updates" id="updates">
+      <div class="updates__bg" style="background-image:url('assets/newsletter-bg.jpg')"></div>
+      <div class="updates__fade-top"></div>
+      <div class="updates__fade-bottom"></div>
+      <div class="updates__inner">
+        <h2 class="updates__title">Sign up for Updates!</h2>
+        <p class="updates__sub">Sign up for our online newsletter to receive important information about upcoming events, subscriber-only promotions, and more!</p>
+        <form class="updates__form" id="signupForm" novalidate>
+          <div class="updates__row">
+            <input type="text" name="first" placeholder="First Name" autocomplete="given-name" required />
+            <input type="text" name="last" placeholder="Last Name" autocomplete="family-name" required />
+          </div>
+          <input type="email" name="email" placeholder="Email Address" autocomplete="email" required />
+          <select name="location" required>
+            <option value="" disabled selected>Select Location…</option>
+            <option value="austin">Austin — Barton Springs</option>
+            <option value="lockhart">Lockhart</option>
+            <option value="dallas">Dallas — Deep Ellum</option>
+            <option value="fortworth">Fort Worth</option>
+          </select>
+          <button type="submit" class="btn btn--red updates__submit">Sign Up</button>
+          <p class="updates__thanks" id="formThanks" hidden>Thanks — you're on the list! 🤠</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__wrap">
+      <a class="footer__logo" href="#top" aria-label="Terry Black's BBQ home">
+        <img src="assets/logo.png" alt="Terry Black's BBQ" />
+      </a>
+
+      <div class="footer__info">
+        <div class="footer__col">
+          <h2 class="footer__head">Hours</h2>
+          <div class="footer__hours">
+            <div class="footer__day"><span>Sun. – Thurs.</span><span class="muted">10:30 AM – 9:30 PM</span></div>
+            <div class="footer__day"><span>Fri. &amp; Sat.</span><span class="muted">10:30 AM – 10:00 PM</span></div>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h2 class="footer__head">Location</h2>
+          <div class="footer__list">
+            <a href="https://maps.google.com/?q=1003+Barton+Springs+Rd+Austin+TX" target="_blank" rel="noopener">1003 Barton Springs Rd.</a>
+            <a href="https://maps.google.com/?q=1003+Barton+Springs+Rd+Austin+TX" target="_blank" rel="noopener">Austin, Texas</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h2 class="footer__head">Contact</h2>
+          <div class="footer__list">
+            <a href="#updates">Contact Us</a>
+            <a href="tel:5123945899">512-394-5899</a>
+          </div>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zm0 10.16A4 4 0 1116 12a4 4 0 01-4 4zm6.41-10.4a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.5 3c.3 2.02 1.48 3.4 3.5 3.7v2.4c-1.2.1-2.3-.2-3.5-.86v5.9c0 4.2-3.6 6.7-7 5.3-2.4-1-3.3-4-2-6.3 1-1.7 3-2.5 5-2.1v2.5c-.3-.1-.6-.15-.9-.12-1.2.1-2 .9-2 2 0 1.2 1 2.1 2.2 2 1.1-.1 1.9-1 1.9-2.2V3h2.3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.77-1.77C19.34 5.13 12 5.13 12 5.13s-7.34 0-8.83.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.77 1.77c1.49.4 8.83.4 8.83.4s7.34 0 8.83-.4a2.5 2.5 0 001.77-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.24 2H21.5l-7.13 8.15L22.75 22h-6.6l-5.17-6.76L4.99 22H1.72l7.63-8.72L1.25 2h6.77l4.67 6.18zm-1.16 18h1.83L7.01 3.9H5.05z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer__col footer__col--menu">
+          <div class="footer__menu">
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="footer__menu">
+            <a href="#">Reheating</a>
+            <a href="#">FAQ</a>
+            <a href="#updates">Newsletter</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__line"></div>
+
+      <div class="footer__bottom">
+        <p>Copyright Terry Black's Barbecue 2026</p>
+        <p>Designed by <a href="#">Gabe Creative dept.</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "blue-ridge-tavern-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Dining/bar venue INSIDE Yogi Bear's Jellystone Park Golden Valley campground (Sun Outdoors resort), Bostic. Web is resort-controlled (campgoldenvalley.com) = NOT an independent buyable client (P12-like disqualifier). Do not confuse with the unrelated Blue Ridge Tavern at Asheville airport/Fletcher."
+  },
+  {
+    "id": "creekside-cafe-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 13, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Cafe inside Yogi Bear's Jellystone Park Golden Valley campground (Sun Outdoors). Uses a menufy ordering page (aggregator, not a site); web resort-controlled = resort outlet, not independent. 13 reviews on Restaurantji, no rating captured."
+  },
+  {
+    "id": "roma-italian-restaurant-cherryville",
+    "exists": true,
+    "realWebsite": "https://romaitalian91.wixsite.com/romaitalian",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 207, "rating": 4.1 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Genuine Cherryville business, 101 W Church St, family-owned SINCE 1996 (longevity signal). Real site but a basic free-tier Wix subdomain (weak). Reviews mixed platform: 207 on Restaurantji, 4.1 on Tripadvisor (#6/21 Cherryville)."
+  },
+  {
+    "id": "neha-s-ice-cream-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 35, "rating": null },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Real Cherryville business, 1409 E Main St. FB-only (two FB pages), plus Yelp/Tripadvisor. Hershey's hand-dipped, 80+ flavors; some listings tag it a food truck. ~35 reviews (Tripadvisor, 100% recommend). No website."
+  },
+  {
+    "id": "the-social-house-by-royal-t-kings-mountain",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "KM ESTABLISHMENT SIGNAL: coffee-by-day / full-bar + live-sports-by-night concept at 212 S Railroad Ave, downtown Kings Mountain. Investment-grade fit-out, recent rebrand under 'Royal T'. FB (kmroyaltcafe) + IG only, no website. Fits the casino-territory growth thesis."
+  },
+  {
+    "id": "wells-jenkins-wells-fresh-meat-market-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Real USDA butcher/meat processor, 394 US-221A Forest City (145 Rollins Rd processing). SCALE signal: works with 45+ independent farmers, USDA slaughter + custom-cut facility. FB-only web (the .com-place.com hit is a scraper directory, not a site)."
+  },
+  {
+    "id": "n-washington-street-baking-co-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.nwsbakingco.com/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "LOCATION CORRECTION: actually in Rutherfordton NC (Rutherford County), not Forest City. Real custom-domain site (nwsbakingco.com, with About + Menu pages) = artisan scratch bakery. Already has a real website = low gap. Full page render was 403-blocked; grade inferred from structure."
+  },
+  {
+    "id": "pfeiffer-cafe-confections-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "TIER-1 SHELBY, 116 E Warren St uptown. Cafe + adjacent 'Confections' bakery. Tripadvisor 4.9 (#13/85 Shelby). FB + Clover online-ordering + Uber Eats only, NO owned website. Strong uptown/home-turf fit."
+  },
+  {
+    "id": "china-1-cherryville",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Reported PERMANENTLY CLOSED (MenuPix), 1205 Shelby Hwy Cherryville. DROP. The operating Cherryville Chinese spot is Hong Kong Restaurant (104 N Cherry St). Closure not independently Google-confirmed, so gbpClosed left null."
+  },
+  {
+    "id": "hoshi-express-cherryville",
+    "exists": null,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Cherryville location found. Hoshi Express is a local MULTI-LOCATION mini-chain (Lincolnton 1215 E Main + Shelby 121 N Main), Japanese fast-food since 2016. 'Cherryville' is likely a mislabel. res-menu.net listing is an aggregator, not a site."
+  },
+  {
+    "id": "house-of-pizza-cherryville",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No House of Pizza confirmed in Cherryville. The name belongs to Charlotte (3640 Central Ave, houseofpizza.com) and a Lincolnton location. Cherryville results only surface Pizza Inn (a franchise). Likely a mislabel/non-existent Cherryville entity."
+  },
+  {
+    "id": "homesteads-grill-and-taphouse-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Sackett (co-owner) & wife Christy" },
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (357 N Generals Blvd), not Cherryville (family roots trace to Cherryville/Lincolnton). Opened Mar 2013, co-owned by Sackett & wife Christy; 150+ bottled beers/18 drafts. FB/IG active, but one directory (BringFido) flags '(Closed)' — verify current status before use."
+  },
+  {
+    "id": "zippers-restaurant-lounge-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 1109, "rating": 3.9 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (475 N Generals Blvd), NOT Cherryville. Established 12+ yrs, grew 5->30 staff, 1,109 reviews (Birdeye) = high capacity. CAUTION: local news reports the owner died unexpectedly (succession/continuity risk). FB + allmenus only, no site."
+  },
+  {
+    "id": "italiannos-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (Italianno's Cucina Italiana, 1611 N Aspen St), not Cherryville. Italian, pet-friendly patio. FB-only (italiannos.us). Note italiannosrestaurant.com is a DIFFERENT business ('Sandano's Italian Sub Shop'). Genuine business, mislabeled town."
+  },
+  {
+    "id": "fausto-coffee-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 53, "rating": null },
+    "owner": { "name": "Miriah Truluck-Rhodes & Jacob Rhodes" },
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (116 NE Ct Sq downtown), not Cherryville. In-house roaster + bakery, community 'third place'; history to 1995, current owners Miriah Truluck-Rhodes & Jacob Rhodes (bought 2010). Despite the coffee-shop expectation, it is FB/IG only — NO real website (fausto.co.uk is an unrelated UK company). Longevity + named owners = strong lead."
+  },
+  {
+    "id": "graffitis-cherryville",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (101 Court Sq), not Cherryville. Reported PERMANENTLY CLOSED (MenuPix). DROP. Closure not Google-confirmed, so gbpClosed left null."
+  },
+  {
+    "id": "court-street-grill-cherryville",
+    "exists": true,
+    "realWebsite": "https://courtstreetgrille.com/",
+    "liveSiteGrade": "flawed",
+    "reviews": { "count": null, "rating": 4.4 },
+    "owner": { "name": "Osama and Carrie Yousef" },
+    "gbpClosed": null,
+    "notes": "LOCATION: Lincolnton (113 W Ct Sq), not Cherryville; 2nd location in Mountain View. Real site (courtstreetgrille.com) but DATED WordPress, no online ordering, agency footer 'Website by Philbeck Web Design'. Owners Osama & Carrie Yousef; open since 2003; Tripadvisor 4.4 (#1/59 Lincolnton). Classic Route-A weak-old-site target."
+  },
+  {
+    "id": "the-pizza-man-kings-mountain",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "KM: appears on Yelp's Kings Mountain pizza list (a review references ordering from it) but minimal online footprint — no address/site/review count surfaced. Low-confidence existence; verify locally. KM casino-territory."
+  },
+  {
+    "id": "last-call-social-club-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No 'Last Call Social Club' confirmed in Kings Mountain NC. A 'Last Call Social Club' operates in CLOVER, SC (103 Bethel St, karaoke bar, York County) — likely the mislabeled entity and OUT OF TERRITORY (SC). Verify before use."
+  },
+  {
+    "id": "nagoya-japanese-restaurant-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Kings Mountain 'Nagoya' confirmed — surfaces only in aggregated area listings; other Nagoyas are Greensboro NC / Piedmont & Boiling Springs SC. KM's actual Japanese spot is Yamato Express (1000 W Gold St, 22 reviews). Likely a mislabel — verify."
+  }
+]

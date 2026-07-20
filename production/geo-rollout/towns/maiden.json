@@ -1,0 +1,54 @@
+{
+  "_sources": [
+    {
+      "fact": "Maiden was named from Maiden Creek, believed to derive from Native American origin related to 'Maidencane' grass",
+      "url": "https://www.ncgenweb.us/maiden/history.htm"
+    },
+    {
+      "fact": "Apple iCloud Data Center opened in late 2011, 500,000 square feet, LEED Platinum certified",
+      "url": "https://www.theregister.com/2011/06/09/apple_maiden_data_center/"
+    },
+    {
+      "fact": "Textile and hosiery manufacturing heritage: Union Cotton Mills (1892), Carolina Mills (1916), continuing textile legacy in Catawba County",
+      "url": "https://www.ncpedia.org/geography/catawba"
+    }
+  ],
+
+  "town": "Maiden",
+  "slug": "maiden",
+  "county": "Catawba County",
+  "brandPlace": "on Main Street",
+  "mapQuery": "Maiden,NC",
+
+  "metaDesc": "Custom web design and SEO for Maiden and Catawba County businesses: mills, manufacturers, shops, and services. Sites you own outright, no templates.",
+  "ogDesc": "Custom web design and development for Maiden and Catawba County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Maiden, NC. Websites, SEO, and branding for mills, manufacturers, shops, and services in Catawba County.",
+  "schemaDesc": "Web development and design in Maiden, NC. Custom websites, SEO, and branding for mills, manufacturers, shops, service businesses, and contractors in Catawba County, Newton, Conover, and Lincolnton.",
+
+  "heroSub": "Custom websites, SEO, and branding for the mills, manufacturers, shops, and service businesses of Maiden and central Catawba County. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Maiden</em> and central Catawba County.",
+  "localP1": "Maiden sits in the heart of Catawba County's manufacturing corridor. The town was founded in 1883 as a cotton mill center, with <strong>Union Cotton Mills</strong> starting in 1892 and <strong>Carolina Mills</strong> in 1916. That textile heritage still runs deep, but today Maiden is known for something bigger: <strong>Apple's iCloud Data Center</strong>, a 500,000-square-foot facility that opened in 2011 and powers cloud storage for millions of users worldwide.",
+  "localP2": "We build for the people who keep this region running: the mill operator and the plant manager, the maker and the family business, the shop on Main Street, the manufacturers and contractors serving customers across the Catawba Valley. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Maiden</strong>, Newton, Conover, Lincolnton, Hickory &amp; the Catawba Valley",
+
+  "areaServed": ["Maiden", "Newton", "Conover", "Lincolnton", "Hickory"],
+
+  "citiesIntro": "Rooted in Maiden, working across the region. Explore a nearby town:",
+  "hereCard": "Mills, manufacturers, and makers in central Catawba County. Sites that bring customers and partners to your door.",
+  "neighborCards": [
+    {"slug": "newton", "name": "Newton", "desc": "The Catawba County seat and regional hub where local government, professional services, and Main Street businesses thrive."},
+    {"slug": "conover", "name": "Conover", "desc": "A historic manufacturing town with a legacy of making, from furniture to advanced manufacturing, and a revitalized downtown."},
+    {"slug": "lincolnton", "name": "Lincolnton", "desc": "Lincoln County's seat on the Catawba River, home to local businesses, historic architecture, and a strong community identity."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Catawba County, Newton, Conover, Lincolnton, Hickory, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Mills, manufacturers, hosiery producers, textile plants, makers and service businesses, Main Street shops, and contractors across Catawba County.",
+
+  "footerNearby": [
+    {"slug": "newton", "name": "Newton"},
+    {"slug": "conover", "name": "Conover"},
+    {"slug": "lincolnton", "name": "Lincolnton"},
+    {"slug": "hickory", "name": "Hickory"}
+  ]
+}

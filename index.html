@@ -147,7 +147,7 @@ body.is-menu-open{overflow:hidden}
 /* --phone-w drives every phone dimension (size, padding, radius, notch, peek depth)
    so the phone stays internally consistent and scales with the viewport.
    align-self:center belt-and-suspenders the centering inside the flex section. */
-.v5-stage{position:relative;max-width:1700px;width:calc(100% - 16px);margin:0 auto;align-self:center;--phone-w:clamp(76px,11vw,200px)}
+.v5-stage{position:relative;max-width:2295px;width:calc(100% - 16px);margin:0 auto;align-self:center;--phone-w:clamp(76px,11vw,270px)}
 /* Laptop has its full top bezel back. Phone sits in the foreground (z:3) above the laptop. */
 .v5-laptop{position:relative;z-index:1;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) 4px 4px;padding:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) clamp(7px,1vw,14px);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 80px 140px -50px rgba(0,0,0,.9),0 -40px 200px -20px rgba(52,211,153,.28),0 40px 200px -20px rgba(52,211,153,.22),0 0 180px -20px rgba(52,211,153,.22)}
 .v5-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(56px,6.5vw,96px);height:clamp(8px,1vw,14px);background:#0d0d0e;border-radius:0 0 10px 10px;z-index:5}
@@ -161,12 +161,12 @@ body.is-menu-open{overflow:hidden}
    is a promoted layer and plain overflow:hidden is not enough to clip its
    paint/hit-testing in Chromium — without this the reel escapes the screen. */
 .scroll-bg{position:absolute;inset:0;z-index:1;overflow:hidden;contain:paint;clip-path:inset(0)}
-.scroll-track{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:wt-scroll 48s linear infinite}
-.scroll-bg--mobile .scroll-track{animation-duration:20s}
+.scroll-track{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:wt-scroll 110s linear infinite}
+.scroll-bg--mobile .scroll-track{animation-duration:210s}
 .scroll-track img{width:100%;height:auto;display:block}
 @keyframes wt-scroll{
-  from{transform:translate3d(0,-50%,0)}
-  to  {transform:translate3d(0,0,0)}
+  from{transform:translate3d(0,0,0)}
+  to  {transform:translate3d(0,-50%,0)}
 }
 @media (prefers-reduced-motion:reduce){
   .scroll-track{animation:none;transform:none}
@@ -233,6 +233,12 @@ body.is-menu-open{overflow:hidden}
   .column{justify-content:center}
   .column .card{flex:0 1 80%;max-width:80%}
 }
+/* Enlarge portfolio grid ~35% by raising the width cap that binds on wide screens
+   (base .wrap caps at 1600/1200). Scoped to >=1200 where the 4-column grid shows;
+   on narrower-than-cap viewports it just grows toward full width. Pairs with the
+   +35% laptop/phone showcase (.v5-stage max-width 1700->2295, --phone-w cap 200->270). */
+@media (min-width:1600px){.wrap.portfolio-wrap{max-width:2160px}}
+@media (min-width:1200px) and (max-width:1599.98px){.wrap.portfolio-wrap{max-width:1620px}}
 
 /* ── Page padding fix ──────────────────────────────────────────────────
    The live site collapses `.wrap` to 390px at viewports under 1000px,
@@ -372,6 +378,31 @@ body.is-menu-open{overflow:hidden}
   .hero-eyebrow{font-size:11px;letter-spacing:.1em;margin:0 0 -6px}
   .hero-cta-note{font-size:12px}
 }
+
+/* ── HERO STAGE — locks the wordmark + lower block to one screen ── */
+.hero-stage{min-height:100dvh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding:clamp(24px,3.4vh,44px) 0 clamp(56px,8.5vh,108px);gap:clamp(4px,1.4vh,20px)}
+.hero-stage .header{min-height:0}
+.hero-stage .hero-text{line-height:.82}
+.hero-stage .hero-lead{margin:0 auto;max-width:none}
+/* ── HERO B2 — "the question" ─────────────────────────────────── */
+.hero-b2{gap:0}
+.hero-b2 .b2-q{margin:0;font-weight:730;font-size:clamp(30px,min(7vw,9.2vh),112px);line-height:.98;letter-spacing:-.045em;color:#fff;font-variation-settings:'opsz' 32,'wght' 730;display:flex;flex-direction:column;align-items:center}
+.hero-b2 .b2-q .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hero-b2 .b2-q .ln>span{display:block;animation:hb2Mask .9s cubic-bezier(.16,1,.3,1) both}
+.hero-b2 .b2-q .ln:nth-child(1)>span{animation-delay:.15s}
+.hero-b2 .b2-q .ln:nth-child(2)>span{animation-delay:.28s}
+.hero-b2 .b2-a{position:relative;font-weight:600;font-style:italic;font-size:clamp(19px,min(3.2vw,4.2vh),46px);letter-spacing:-.02em;color:#34d399;margin:clamp(16px,2.4vh,32px) 0 0;animation:hb2Rise .8s cubic-bezier(.16,1,.3,1) .55s both}
+.hero-b2 .b2-a::after{content:"";position:absolute;left:8%;right:8%;bottom:-.16em;height:2px;background:#34d399;clip-path:inset(0 100% 0 0);animation:hb2Sweep .7s cubic-bezier(.16,1,.3,1) .85s forwards}
+.hero-b2 .b2-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:clamp(22px,3vh,40px);animation:hb2Rise .8s cubic-bezier(.16,1,.3,1) .75s both}
+.hero-b2 .b2-note{font-family:'Inter',sans-serif;font-size:13px;color:#888;letter-spacing:-.005em}
+@keyframes hb2Mask{from{opacity:0;transform:translateY(112%)}to{opacity:1;transform:translateY(0)}}
+@keyframes hb2Rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hb2Sweep{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.hero-b2 .b2-q .ln>span,.hero-b2 .b2-a,.hero-b2 .b2-actions{animation:none!important}.hero-b2 .b2-a::after{clip-path:none!important;animation:none!important}}
+@media(max-width:639.98px){.hero-stage{min-height:auto;justify-content:flex-start;padding:clamp(14px,3vh,22px) 0 clamp(24px,6vh,42px);gap:clamp(10px,3vh,22px)}.hero-stage .header{margin-top:clamp(-10px,-2vw,-4px)}.hero-stage .hero-text{line-height:.84}.hero-b2 .b2-q{font-size:clamp(26px,7.8vw,40px)}.hero-b2 .b2-actions{flex-direction:column;gap:12px}
+  /* Mobile: hide the menu bar at the very top (redundant with the wordmark); slide it in on scroll */
+  .topbar{transform:translateY(-100%)!important;opacity:0!important;pointer-events:none}
+  .topbar.scrolled{transform:translateY(0)!important;opacity:1!important;pointer-events:auto;background:rgba(10,10,11,.94);border-bottom:1px solid #1f1f20}}
 
 /* ═════════════════════════════════════════════════════════════════
    SHOWCASE backdrop — portfolio pieces sit fixed behind the laptop and
@@ -534,6 +565,8 @@ body.is-menu-open{overflow:hidden}
 .outreach-lede strong{font-weight:700;color:#0a1f15}
 .outreach-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,12px);margin-bottom:clamp(20px,2.6vw,32px)}
 .outreach-slot{position:relative;display:flex;flex-direction:column;background:#0a0a0b;border:1px solid #0a1f1530;overflow:hidden}
+a.outreach-slot{text-decoration:none;color:inherit;transition:border-color .25s ease}
+a.outreach-slot:hover{border-color:#34d39966}
 .outreach-slot-img{aspect-ratio:4/5;overflow:hidden;background:#0f1512;position:relative}
 .outreach-slot-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
 .outreach-slot:hover .outreach-slot-img img{transform:scale(1.05)}
@@ -809,6 +842,7 @@ body.is-menu-open{overflow:hidden}
 
 <!-- HEADER -->
 <main>
+<section class="hero-stage">
 <div class="header" data-animate>
   <div class="hero-container">
     <span class="hero-text">O'BRIEN</span>
@@ -825,174 +859,174 @@ body.is-menu-open{overflow:hidden}
   </div>
 </div>
 
-<!-- HERO LEAD — value prop + CTA -->
+<!-- HERO LEAD — B2 "the question" -->
 <div class="wrap">
-  <div class="hero-lead" data-animate>
-    <div class="hero-eyebrow">Web Design &amp; Development &middot; Shelby, NC</div>
-    <h1>Your business shouldn&rsquo;t look <em>interchangeable.</em></h1>
-    <p>Custom websites for Western North Carolina businesses, built to get found on Google and turn visitors into paying customers.</p>
-    <div class="hero-lead-actions">
+  <div class="hero-lead hero-b2">
+    <h1 class="b2-q"><span class="ln"><span>When they search,</span></span><span class="ln"><span>can they find you?</span></span></h1>
+    <p class="b2-a">Let&rsquo;s make sure they do.</p>
+    <div class="b2-actions">
       <a class="hero-cta-primary" href="/contact">
         <span>Start a Website</span>
         <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <span class="b2-note">Web Design &middot; Shelby, NC</span>
     </div>
-    <p class="hero-cta-note">Free Consultation &middot; No Obligation</p>
   </div>
 </div>
+</section>
 
 <!-- PORTFOLIO -->
 <div class="wrap portfolio-wrap" data-animate>
   <div class="portfolio" id="portfolio">
     <div class="portfolio-row">
       <div class="column column-1" id="col1">
-        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Hero &mdash; Creative Work","color":"#6366F1","img":"portfolio/koji.webp","full":"portfolio/koji-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#6366F1,#363885);aspect-ratio:800/415">
-            <img src="portfolio/koji.webp" alt="Web development for Koji" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Takumi" data-project='{"name":"Takumi","role":"Hero &mdash; Japanese","color":"#C1272D","img":"portfolio/takumi.webp","full":"portfolio/takumi-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C1272D,#6E1418);aspect-ratio:800/415">
+            <img src="portfolio/takumi.webp" alt="Web development for Takumi" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Koji</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Takumi</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Full Site &mdash; Steakhouse","color":"#F59E0B","img":"portfolio/ember.webp","full":"portfolio/ember-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F59E0B,#875706);aspect-ratio:800/1100">
-            <img src="portfolio/ember.webp" alt="Web development for Ember & Oak" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Cardinal Pest Control" data-project='{"name":"Cardinal Pest Control","role":"Full Site &mdash; Pest Control","color":"#15803D","img":"portfolio/cardinal-full.webp","full":"portfolio/cardinal-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#15803D,#0B4A22);aspect-ratio:800/1100">
+            <img src="portfolio/cardinal-full.webp" alt="Web development for Cardinal Pest Control" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Ember & Oak</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Cardinal Pest Control</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Hero &mdash; Storefront","color":"#EC4899","img":"portfolio/bb.webp","full":"portfolio/bb-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#EC4899,#822854);aspect-ratio:800/415">
-            <img src="portfolio/bb.webp" alt="Web development for Butter + Bloom Bakery" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Thalassa" data-project='{"name":"Thalassa","role":"Hero &mdash; Greek","color":"#1D5B9E","img":"portfolio/thalassa.webp","full":"portfolio/thalassa-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#1D5B9E,#0C2E52);aspect-ratio:800/415">
+            <img src="portfolio/thalassa.webp" alt="Web development for Thalassa" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Butter + Bloom Bakery</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Thalassa</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Full Site &mdash; Dark Book","color":"#F97316","img":"portfolio/darkthoughts.webp","full":"portfolio/darkthoughts-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/1100">
-            <img src="portfolio/darkthoughts.webp" alt="Web development for Dark Thoughts" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Hwaro" data-project='{"name":"Hwaro","role":"Full Site &mdash; Korean BBQ","color":"#EA5B24","img":"portfolio/hwaro-full.webp","full":"portfolio/hwaro-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#EA5B24,#7C2F0E);aspect-ratio:800/1100">
+            <img src="portfolio/hwaro-full.webp" alt="Web development for Hwaro" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Dark Thoughts</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Hwaro</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Hero &mdash; Coastal","color":"#0EA5E9","img":"portfolio/azura.webp","full":"portfolio/azura-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#0EA5E9,#085B80);aspect-ratio:800/415">
-            <img src="portfolio/azura.webp" alt="Web development for Azura Coast" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Milpa" data-project='{"name":"Milpa","role":"Hero &mdash; Mexican","color":"#C42A6B","img":"portfolio/milpa.webp","full":"portfolio/milpa-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C42A6B,#6E1739);aspect-ratio:800/415">
+            <img src="portfolio/milpa.webp" alt="Web development for Milpa" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Azura Coast</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Milpa</h3></div></div>
         </div>
       </div>
       <div class="column column-2" id="col2">
-        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim&rsquo;s Bar & Grill","role":"Hero &mdash; Burgers","color":"#DC2626","img":"portfolio/slims.webp","full":"portfolio/slims-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#DC2626,#791515);aspect-ratio:800/415">
-            <img src="portfolio/slims.webp" alt="Web development for Slim's Bar & Grill" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View the Crownline Electric case study" data-case="/case-studies/crownline-electric" data-project='{"name":"Crownline Electric","role":"Hero &mdash; Electrical","color":"#D97706","img":"portfolio/crownline.webp","full":"portfolio/crownline-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#D97706,#7A4304);aspect-ratio:800/415">
+            <img src="portfolio/crownline.webp" alt="Web development for Crownline Electric" loading="eager" fetchpriority="high" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Slim's Bar & Grill</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Crownline Electric</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Full Site &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp","full":"portfolio/sol-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/1100">
-            <img src="portfolio/sol.webp" alt="Web development for Sol Y Sombra" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Thalassa" data-project='{"name":"Thalassa","role":"Full Site &mdash; Greek","color":"#1D5B9E","img":"portfolio/thalassa-full.webp","full":"portfolio/thalassa-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#1D5B9E,#0C2E52);aspect-ratio:800/1100">
+            <img src="portfolio/thalassa-full.webp" alt="Web development for Thalassa" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Sol Y Sombra</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Thalassa</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Full Site &mdash; Arcade","color":"#E8342E","img":"portfolio/arcade.webp","full":"portfolio/arcade-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#E8342E,#801D19);aspect-ratio:800/1100">
-            <img src="portfolio/arcade.webp" alt="Web development for Carolina Arcade" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Takumi" data-project='{"name":"Takumi","role":"Full Site &mdash; Japanese","color":"#C1272D","img":"portfolio/takumi-full.webp","full":"portfolio/takumi-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C1272D,#6E1418);aspect-ratio:800/1100">
+            <img src="portfolio/takumi-full.webp" alt="Web development for Takumi" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Carolina Arcade</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Takumi</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Gameshelf" data-project='{"name":"Gameshelf","role":"Hero &mdash; Game Queue","color":"#7C3AED","img":"portfolio/gs.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#7C3AED,#442082);aspect-ratio:800/415">
-            <img src="portfolio/gs.webp" alt="Web development for Gameshelf" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Lucciola" data-project='{"name":"Lucciola","role":"Hero &mdash; Italian","color":"#C0563A","img":"portfolio/lucciola.webp","full":"portfolio/lucciola-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C0563A,#6B2E1F);aspect-ratio:800/415">
+            <img src="portfolio/lucciola.webp" alt="Web development for Lucciola" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Gameshelf</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Lucciola</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Koji" data-project='{"name":"Koji","role":"Full Site &mdash; Portfolio","color":"#6366F1","img":"portfolio/koji.webp","full":"portfolio/koji-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#6366F1,#363885);aspect-ratio:800/1100">
-            <img src="portfolio/koji.webp" alt="Web development for Koji" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Queen City Comfort" data-project='{"name":"Queen City Comfort","role":"Full Site &mdash; HVAC","color":"#0F766E","img":"portfolio/qccomfort-full.webp","full":"portfolio/qccomfort-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#0F766E,#08423D);aspect-ratio:800/1100">
+            <img src="portfolio/qccomfort-full.webp" alt="Web development for Queen City Comfort" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Koji</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Queen City Comfort</h3></div></div>
         </div>
       </div>
     </div>
     <div class="portfolio-row">
       <div class="column column-3" id="col3">
-        <div class="card" tabindex="0" role="button" aria-label="View Dark Thoughts" data-project='{"name":"Dark Thoughts","role":"Hero &mdash; Design Book","color":"#F97316","img":"portfolio/darkthoughts.webp","full":"portfolio/darkthoughts-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/415">
-            <img src="portfolio/darkthoughts.webp" alt="Web development for Dark Thoughts" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Hwaro" data-project='{"name":"Hwaro","role":"Hero &mdash; Korean BBQ","color":"#EA5B24","img":"portfolio/hwaro.webp","full":"portfolio/hwaro-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#EA5B24,#7C2F0E);aspect-ratio:800/415">
+            <img src="portfolio/hwaro.webp" alt="Web development for Hwaro" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Dark Thoughts</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Hwaro</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Butter + Bloom Bakery" data-project='{"name":"Butter + Bloom Bakery","role":"Full Site &mdash; Cakes","color":"#EC4899","img":"portfolio/bb.webp","full":"portfolio/bb-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#EC4899,#822854);aspect-ratio:800/1100">
-            <img src="portfolio/bb.webp" alt="Web development for Butter + Bloom Bakery" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Lucciola" data-project='{"name":"Lucciola","role":"Full Site &mdash; Italian","color":"#C0563A","img":"portfolio/lucciola-full.webp","full":"portfolio/lucciola-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C0563A,#6B2E1F);aspect-ratio:800/1100">
+            <img src="portfolio/lucciola-full.webp" alt="Web development for Lucciola" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Butter + Bloom Bakery</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Lucciola</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Full Site &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp","full":"portfolio/bc-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#C2410C,#6B2407);aspect-ratio:800/1100">
-            <img src="portfolio/bc.webp" alt="Web development for Black Creek Smokehouse" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View the Crownline Electric case study" data-case="/case-studies/crownline-electric" data-project='{"name":"Crownline Electric","role":"Full Site &mdash; Electrical","color":"#D97706","img":"portfolio/crownline-full.webp","full":"portfolio/crownline-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#D97706,#7A4304);aspect-ratio:800/1100">
+            <img src="portfolio/crownline-full.webp" alt="Web development for Crownline Electric" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Black Creek Smokehouse</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Crownline Electric</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Carolina Arcade" data-project='{"name":"Carolina Arcade","role":"Hero &mdash; Neon Cabinets","color":"#E8342E","img":"portfolio/arcade.webp","full":"portfolio/arcade-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#E8342E,#801D19);aspect-ratio:800/415">
-            <img src="portfolio/arcade.webp" alt="Web development for Carolina Arcade" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Piedmont Concrete" data-project='{"name":"Piedmont Concrete","role":"Hero &mdash; Concrete","color":"#B45309","img":"portfolio/piedmont.webp","full":"portfolio/piedmont-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#B45309,#6B3105);aspect-ratio:800/415">
+            <img src="portfolio/piedmont.webp" alt="Web development for Piedmont Concrete" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Carolina Arcade</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Piedmont Concrete</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Azura Coast" data-project='{"name":"Azura Coast","role":"Full Site &mdash; Beachfront","color":"#0EA5E9","img":"portfolio/azura.webp","full":"portfolio/azura-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#0EA5E9,#085B80);aspect-ratio:800/1100">
-            <img src="portfolio/azura.webp" alt="Web development for Azura Coast" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Clover Dental" data-project='{"name":"Clover Dental","role":"Full Site &mdash; Dental","color":"#0F9D8C","img":"portfolio/clover-full.webp","full":"portfolio/clover-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#0F9D8C,#0A5E54);aspect-ratio:800/1100">
+            <img src="portfolio/clover-full.webp" alt="Web development for Clover Dental" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Azura Coast</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Clover Dental</h3></div></div>
         </div>
       </div>
       <div class="column column-4" id="col4">
-        <div class="card" tabindex="0" role="button" aria-label="View Black Creek Smokehouse" data-project='{"name":"Black Creek Smokehouse","role":"Hero &mdash; BBQ","color":"#C2410C","img":"portfolio/bc.webp","full":"portfolio/bc-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#C2410C,#6B2407);aspect-ratio:800/415">
-            <img src="portfolio/bc.webp" alt="Web development for Black Creek Smokehouse" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Queen City Comfort" data-project='{"name":"Queen City Comfort","role":"Hero &mdash; HVAC","color":"#0F766E","img":"portfolio/qccomfort.webp","full":"portfolio/qccomfort-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#0F766E,#08423D);aspect-ratio:800/415">
+            <img src="portfolio/qccomfort.webp" alt="Web development for Queen City Comfort" loading="eager" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Black Creek Smokehouse</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Queen City Comfort</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Gameshelf" data-project='{"name":"Gameshelf","role":"Full Site &mdash; Dashboard","color":"#7C3AED","img":"portfolio/gs.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#7C3AED,#442082);aspect-ratio:800/1100">
-            <img src="portfolio/gs.webp" alt="Web development for Gameshelf" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Piedmont Concrete" data-project='{"name":"Piedmont Concrete","role":"Full Site &mdash; Concrete","color":"#B45309","img":"portfolio/piedmont-full.webp","full":"portfolio/piedmont-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#B45309,#6B3105);aspect-ratio:800/1100">
+            <img src="portfolio/piedmont-full.webp" alt="Web development for Piedmont Concrete" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Gameshelf</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Piedmont Concrete</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Sol Y Sombra" data-project='{"name":"Sol Y Sombra","role":"Hero &mdash; Design Studio","color":"#F97316","img":"portfolio/sol.webp","full":"portfolio/sol-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F97316,#893F0C);aspect-ratio:800/415">
-            <img src="portfolio/sol.webp" alt="Web development for Sol Y Sombra" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Cardinal Pest Control" data-project='{"name":"Cardinal Pest Control","role":"Hero &mdash; Pest Control","color":"#15803D","img":"portfolio/cardinal.webp","full":"portfolio/cardinal-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#15803D,#0B4A22);aspect-ratio:800/415">
+            <img src="portfolio/cardinal.webp" alt="Web development for Cardinal Pest Control" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Sol Y Sombra</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Cardinal Pest Control</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Slim's Bar &amp; Grill" data-project='{"name":"Slim&rsquo;s Bar & Grill","role":"Full Site &mdash; Diner","color":"#DC2626","img":"portfolio/slims.webp","full":"portfolio/slims-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#DC2626,#791515);aspect-ratio:800/1100">
-            <img src="portfolio/slims.webp" alt="Slim's Bar & Grill" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Milpa" data-project='{"name":"Milpa","role":"Full Site &mdash; Mexican","color":"#C42A6B","img":"portfolio/milpa-full.webp","full":"portfolio/milpa-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#C42A6B,#6E1739);aspect-ratio:800/1100">
+            <img src="portfolio/milpa-full.webp" alt="Web development for Milpa" loading="lazy" width="800" height="1100" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Slim's Bar & Grill</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Milpa</h3></div></div>
         </div>
-        <div class="card" tabindex="0" role="button" aria-label="View Ember & Oak" data-project='{"name":"Ember & Oak","role":"Hero &mdash; Restaurant","color":"#F59E0B","img":"portfolio/ember.webp","full":"portfolio/ember-full.webp"}'>
-          <div class="card-banner" style="background:linear-gradient(135deg,#F59E0B,#875706);aspect-ratio:800/415">
-            <img src="portfolio/ember.webp" alt="Web development for Ember & Oak" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
+        <div class="card" tabindex="0" role="button" aria-label="View Queen City Landscaping" data-project='{"name":"Queen City Landscaping","role":"Hero &mdash; Landscaping","color":"#4D7C0F","img":"portfolio/qcland.webp","full":"portfolio/qcland-full.webp"}'>
+          <div class="card-banner" style="background:linear-gradient(135deg,#4D7C0F,#2A4408);aspect-ratio:800/415">
+            <img src="portfolio/qcland.webp" alt="Web development for Queen City Landscaping" loading="lazy" width="800" height="415" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0">
             <div class="card-hover-zone"><div class="card-hover-icon"><svg viewBox="0 0 32 32"><circle cx="14" cy="14" r="7"/><path d="M10.5 14.5h7 M14 10.5v7"/><path d="M21 21l6.5 6.5"/></svg></div></div>
           </div>
-          <div class="card-details"><div class="card-text"><h3>Ember & Oak</h3></div></div>
+          <div class="card-details"><div class="card-text"><h3>Queen City Landscaping</h3></div></div>
         </div>
       </div>
     </div>
@@ -1000,16 +1034,17 @@ body.is-menu-open{overflow:hidden}
 </div>
 <noscript>
   <div class="portfolio-fallback">
-    <img src="portfolio/koji.webp" alt="Koji Studio &mdash; creative portfolio website design project by Studio O'Brien" width="800" height="415"><br>
-    <img src="portfolio/ember.webp" alt="Ember & Oak Steakhouse &mdash; restaurant website design project by Studio O'Brien" width="800" height="1100"><br>
-    <img src="portfolio/bb.webp" alt="Butter + Bloom Bakery &mdash; storefront website design project by Studio O'Brien" width="800" height="415"><br>
-    <img src="portfolio/slims.webp" alt="Slim's Bar & Grill &mdash; burger restaurant website project by Studio O'Brien" width="800" height="415"><br>
-    <img src="portfolio/sol.webp" alt="Sol Y Sombra &mdash; design studio brand website project by Studio O'Brien" width="800" height="1100"><br>
-    <img src="portfolio/arcade.webp" alt="Carolina Arcade &mdash; arcade business website project by Studio O'Brien" width="800" height="1100"><br>
-    <img src="portfolio/gs.webp" alt="Gameshelf &mdash; mobile-first game queue dashboard project by Studio O'Brien" width="800" height="415"><br>
-    <img src="portfolio/azura.webp" alt="Azura Coast &mdash; coastal brand website project by Studio O'Brien" width="800" height="415"><br>
-    <img src="portfolio/bc.webp" alt="Black Creek Smokehouse &mdash; BBQ restaurant website project by Studio O'Brien Shelby NC" width="800" height="1100"><br>
-    <img src="portfolio/darkthoughts.webp" alt="Dark Thoughts &mdash; book brand website design project by Studio O'Brien" width="800" height="1100"><br>
+    <img src="portfolio/takumi.webp" alt="Takumi — Japanese restaurant website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/hwaro.webp" alt="Hwaro — Korean BBQ restaurant website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/thalassa.webp" alt="Thalassa — Greek taverna website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/lucciola.webp" alt="Lucciola — Italian osteria website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/milpa.webp" alt="Milpa — Mexican taqueria website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/crownline.webp" alt="Crownline Electric — electrician contractor website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/qccomfort.webp" alt="Queen City Comfort — HVAC contractor website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/cardinal.webp" alt="Cardinal Pest Control — pest control website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/piedmont.webp" alt="Piedmont Concrete — concrete and masonry website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/qcland.webp" alt="Queen City Landscaping — landscaping website design project by Studio O’Brien" width="800" height="415"><br>
+    <img src="portfolio/clover.webp" alt="Clover Dental — dental practice website design project by Studio O’Brien" width="800" height="415"><br>
   </div>
 </noscript>
 
@@ -1017,35 +1052,40 @@ body.is-menu-open{overflow:hidden}
 <div class="show-zone">
   <div class="show-fall" aria-hidden="true">
     <div class="show-col show-col--a">
-      <img src="portfolio/koji.webp" alt="Koji Studio website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/bens.webp" alt="Ben's Smokehouse website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/cardinal.webp" alt="Cardinal Pest Control website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/qcland.webp" alt="Queen City Landscaping website design by Studio O'Brien" loading="lazy" width="800" height="415">
       <img src="portfolio/slims.webp" alt="Slim's Bar & Grill website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/gs.webp" alt="Gameshelf game queue dashboard design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/bb.webp" alt="Butter + Bloom Bakery website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/azura.webp" alt="Azura Coast website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/koji.webp" alt="Koji Studio website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/crownline-full.webp" alt="Crownline Electric website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/qccomfort-full.webp" alt="Queen City Comfort website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/piedmont-full.webp" alt="Piedmont Concrete website design by Studio O'Brien" loading="lazy" width="800" height="1100">
     </div>
     <div class="show-col show-col--b">
-      <img src="portfolio/ember.webp" alt="Ember & Oak Steakhouse website design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/darkthoughts.webp" alt="Dark Thoughts book site design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/sol.webp" alt="Sol Y Sombra design studio website by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/bc.webp" alt="Black Creek Smokehouse website design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/ember.webp" alt="Ember & Oak Steakhouse website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/takumi-full.webp" alt="Takumi website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/milpa-full.webp" alt="Milpa website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/hwaro-full.webp" alt="Hwaro website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/arcade-full.webp" alt="Carolina Arcade website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/thalassa.webp" alt="Thalassa website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/lucciola.webp" alt="Lucciola website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/clover.webp" alt="Clover Dental website design by Studio O'Brien" loading="lazy" width="800" height="415">
     </div>
     <div class="show-col show-col--c">
-      <img src="portfolio/arcade.webp" alt="Carolina Arcade website design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/azura.webp" alt="Azura Coast website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/sol.webp" alt="Sol Y Sombra design studio website by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/slims.webp" alt="Slim's Bar & Grill website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/arcade.webp" alt="Carolina Arcade website design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/gs.webp" alt="Gameshelf game queue dashboard design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/crownline.webp" alt="Crownline Electric website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/qccomfort.webp" alt="Queen City Comfort website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/piedmont.webp" alt="Piedmont Concrete website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/bens-full.webp" alt="Ben's Smokehouse website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/cardinal-full.webp" alt="Cardinal Pest Control website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/qcland-full.webp" alt="Queen City Landscaping website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/slims-full.webp" alt="Slim's Bar & Grill website design by Studio O'Brien" loading="lazy" width="800" height="1100">
     </div>
     <div class="show-col show-col--d">
-      <img src="portfolio/bc.webp" alt="Black Creek Smokehouse website design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/koji.webp" alt="Koji Studio website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/darkthoughts.webp" alt="Dark Thoughts book site design by Studio O'Brien" loading="lazy" width="800" height="1100">
-      <img src="portfolio/gs.webp" alt="Gameshelf game queue dashboard design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/bb.webp" alt="Butter + Bloom Bakery website design by Studio O'Brien" loading="lazy" width="800" height="415">
-      <img src="portfolio/sol.webp" alt="Sol Y Sombra design studio website by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/thalassa-full.webp" alt="Thalassa website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/lucciola-full.webp" alt="Lucciola website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/clover-full.webp" alt="Clover Dental website design by Studio O'Brien" loading="lazy" width="800" height="1100">
+      <img src="portfolio/takumi.webp" alt="Takumi website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/milpa.webp" alt="Milpa website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/hwaro.webp" alt="Hwaro website design by Studio O'Brien" loading="lazy" width="800" height="415">
+      <img src="portfolio/arcade.webp" alt="Carolina Arcade website design by Studio O'Brien" loading="lazy" width="800" height="415">
     </div>
   </div>
 
@@ -1058,8 +1098,8 @@ body.is-menu-open{overflow:hidden}
         <div class="v-poster" aria-hidden="true"></div>
         <div class="scroll-bg scroll-bg--desktop" aria-hidden="true">
           <div class="scroll-track">
-            <img src="portfolio/darkthoughts-reel.webp" alt="Dark Thoughts website scrolling page preview" width="1440" height="5794" loading="lazy" decoding="async">
-            <img src="portfolio/darkthoughts-reel.webp" alt="Dark Thoughts website scrolling page preview" width="1440" height="5794" loading="lazy" decoding="async">
+            <img src="portfolio/crownline-reel.webp" alt="Crownline Electric website scrolling page preview" width="1440" height="8373" loading="lazy" decoding="async">
+            <img src="portfolio/crownline-reel.webp" alt="Crownline Electric website scrolling page preview" width="1440" height="8373" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="v5-chrome" aria-hidden="true">
@@ -1074,8 +1114,8 @@ body.is-menu-open{overflow:hidden}
         <div class="v-poster" aria-hidden="true"></div>
         <div class="scroll-bg scroll-bg--mobile" aria-hidden="true">
           <div class="scroll-track">
-            <img src="portfolio/darkthoughts-reel.webp" alt="Dark Thoughts website scrolling page preview" width="1440" height="5794" loading="lazy" decoding="async">
-            <img src="portfolio/darkthoughts-reel.webp" alt="Dark Thoughts website scrolling page preview" width="1440" height="5794" loading="lazy" decoding="async">
+            <img src="portfolio/crownline-reel-mobile.webp" alt="Crownline Electric mobile scrolling page preview" width="470" height="15879" loading="lazy" decoding="async">
+            <img src="portfolio/crownline-reel-mobile.webp" alt="Crownline Electric mobile scrolling page preview" width="470" height="15879" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1083,8 +1123,8 @@ body.is-menu-open{overflow:hidden}
   </div>
 
   <div class="wt-copy">
-    <h2 class="wt-heading">See your site on every screen, in one <em>walkthrough</em>.</h2>
-    <p class="wt-sub">Desktop and mobile, side by side. Every breakpoint reviewed and signed off before launch, no surprises on launch day.</p>
+    <h2 class="wt-heading">You&rsquo;ll see exactly how it looks <em>before</em> it goes live.</h2>
+    <p class="wt-sub">We walk through your site together, phone and desktop side by side, and I don&rsquo;t launch until you&rsquo;ve seen every screen and you&rsquo;re happy with it.</p>
   </div>
 </section>
 
@@ -1098,7 +1138,7 @@ body.is-menu-open{overflow:hidden}
     <div class="svc2-body">
       <div class="svc2-head">
         <span class="svc2-eyebrow">What I build</span>
-        <h2 class="svc2-heading">Everything your site needs, from one studio.</h2>
+        <h2 class="svc2-heading">Everything your site needs to bring in customers, from one studio.</h2>
       </div>
       <ul class="svc2-list">
         <li class="svc2-item">
@@ -1129,7 +1169,7 @@ body.is-menu-open{overflow:hidden}
           <span class="svc2-ico"><i class="svc2-ic" style="--m:url('portfolio/icons/service-leadgen.png')" aria-hidden="true"></i></span>
           <div class="svc2-text">
             <h3 class="svc2-name">Lead Generation &amp; Conversion</h3>
-            <p class="svc2-desc">Clear paths from visitor to enquiry. Forms and calls to action designed to turn traffic into real conversations.</p>
+            <p class="svc2-desc">Clear paths from visitor to inquiry. Forms and calls to action designed to turn visitors into real conversations.</p>
           </div>
           <a class="svc2-more" href="/contact" aria-label="Lead generation and conversion"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
         </li>
@@ -1151,7 +1191,7 @@ body.is-menu-open{overflow:hidden}
 <section class="prc" id="process-section" data-animate aria-label="Process">
   <div class="prc-wrap">
     <div class="prc-head">
-      <h2 class="prc-title">How I design and <em>build</em> your website.</h2>
+      <h2 class="prc-title">From first call to <em>found on Google</em>, here&rsquo;s how it works.</h2>
     </div>
     <div class="prc-grid">
       <article class="prc-card">
@@ -1159,7 +1199,7 @@ body.is-menu-open{overflow:hidden}
         <span class="prc-num" aria-hidden="true">1</span>
         <div class="prc-body">
           <h3 class="prc-name">Strategy &amp; Planning</h3>
-          <p class="prc-desc">We map your goals, audience, and the pages your site needs to rank and convert.</p>
+          <p class="prc-desc">We map your goals, audience, and the pages your site needs to get found and turn visitors into customers.</p>
         </div>
       </article>
       <article class="prc-card">
@@ -1175,7 +1215,7 @@ body.is-menu-open{overflow:hidden}
         <span class="prc-num" aria-hidden="true">3</span>
         <div class="prc-body">
           <h3 class="prc-name">Development &amp; SEO</h3>
-          <p class="prc-desc">Clean, hand-coded, responsive build with on-page SEO baked in from day one.</p>
+          <p class="prc-desc">Clean, hand-coded build that works on every screen, with on-page SEO baked in from day one.</p>
         </div>
       </article>
       <article class="prc-card">
@@ -1196,21 +1236,21 @@ body.is-menu-open{overflow:hidden}
     <div class="outreach-head">
       <div class="outreach-kicker">The Storefront Project</div>
       <h2 class="outreach-heading">Showing local businesses <em>what&rsquo;s possible</em> online.</h2>
-      <p class="outreach-lede">I design concept websites for local businesses to show what a real one could do for them. A starting place, already built. The business it&rsquo;s made for can <strong>step in at a reduced rate and take it further</strong>, and anyone can nominate a spot. A simple way to see how the studio works.</p>
+      <p class="outreach-lede">I pick local spots around here and build them a concept website on my own dime, just to show what a real one could do for them. It&rsquo;s a finished starting point. If it&rsquo;s your business, <strong>step in at a reduced rate and take it further</strong>, and anyone can nominate a place they love. It&rsquo;s the simplest way to see how I work.</p>
     </div>
     <div class="outreach-grid">
-      <div class="outreach-slot">
+      <a class="outreach-slot" href="/case-studies/carolina-arcade" aria-label="View the Carolina Arcade case study">
         <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/arcade.webp" alt="Concept website built for a local arcade as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
-        <div class="outreach-slot-body"><p class="outreach-slot-name">Carolina Arcade</p><p class="outreach-slot-meta">Concept &middot; Entertainment</p></div>
-      </div>
-      <div class="outreach-slot">
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Carolina Arcade</p><p class="outreach-slot-meta">Case Study &middot; Entertainment</p></div>
+      </a>
+      <a class="outreach-slot" href="/case-studies/slims-bar-grill" aria-label="View the Slim's Bar and Grill case study">
         <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/slims.webp" alt="Concept website built for a local bar and grill as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
-        <div class="outreach-slot-body"><p class="outreach-slot-name">Slim&rsquo;s Bar &amp; Grill</p><p class="outreach-slot-meta">Concept &middot; Restaurant</p></div>
-      </div>
-      <div class="outreach-slot">
-        <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/bc.webp" alt="Concept website built for a local BBQ smokehouse as part of the Storefront Project" loading="lazy" width="800" height="1000"></div>
-        <div class="outreach-slot-body"><p class="outreach-slot-name">Black Creek Smokehouse</p><p class="outreach-slot-meta">Concept &middot; BBQ</p></div>
-      </div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Slim&rsquo;s Bar &amp; Grill</p><p class="outreach-slot-meta">Case Study &middot; Restaurant</p></div>
+      </a>
+      <a class="outreach-slot" href="/case-studies/bens-smokehouse" aria-label="View the Ben's Smokehouse case study">
+        <div class="outreach-slot-img"><span class="outreach-slot-tag">Concept</span><img src="portfolio/bens-full.webp" alt="Website built for Ben&rsquo;s Smokehouse, a local BBQ spot in Spindale NC" loading="lazy" width="800" height="1000"></div>
+        <div class="outreach-slot-body"><p class="outreach-slot-name">Ben&rsquo;s Smokehouse</p><p class="outreach-slot-meta">Case Study &middot; BBQ</p></div>
+      </a>
       <div class="outreach-slot outreach-slot--open">
         <div class="outreach-slot-img"><span class="outreach-slot-plus" aria-hidden="true">+</span></div>
         <div class="outreach-slot-body"><p class="outreach-slot-name">Open spot</p><p class="outreach-slot-meta">Nominate a business</p></div>
@@ -1238,8 +1278,8 @@ body.is-menu-open{overflow:hidden}
     </div>
     <div class="about-body">
       <span class="about-anchor" aria-hidden="true"></span>
-      <h2 class="about-heading">You work with <em>me</em>, start to finish.</h2>
-      <p class="about-text">I&rsquo;m Jarred, founder of Studio O&rsquo;Brien. When you hire the studio, the person who plans your site is the person who writes it, designs it, builds it, and picks up the phone. <strong>No account managers, no offshore handoff, no agency layer marking up someone else&rsquo;s work.</strong></p>
+      <h2 class="about-heading">Custom-built by hand since <em>2014</em>.</h2>
+      <p class="about-text">I&rsquo;m Jarred, founder of Studio O&rsquo;Brien. After years building sites for businesses all over, I came home to Shelby to do it for local owners. The person who plans your site is the one who writes it, designs it, builds it, and picks up the phone. <strong>No account managers, no offshore handoff, no agency markup.</strong></p>
       <p class="about-text">I&rsquo;ve been building custom sites since 2014, working with <a href="/restaurant-website-design">restaurants</a>, shops, studios, and trades across <a href="/shelby-nc-web-design">Cleveland County</a> and the wider Carolinas. The promise is simple: original work, clear communication, and a site you fully own when it&rsquo;s done.</p>
       <div class="about-sign">Jarred O'Brien<span>Designer &amp; developer &middot; Shelby, North Carolina</span></div>
     </div>
@@ -1250,8 +1290,8 @@ body.is-menu-open{overflow:hidden}
 <section class="faq" id="faq" data-animate aria-label="Frequently asked questions">
   <div class="faq-wrap">
     <div class="faq-head">
-      <h2 class="faq-heading">Questions, <em>answered</em> straight.</h2>
-      <p class="faq-sub">The things people ask before they reach out. No fine print.</p>
+      <h2 class="faq-heading">What to know <em>before</em> you start.</h2>
+      <p class="faq-sub">The questions owners ask me most, answered straight. No fine print.</p>
     </div>
     <div class="faq-list">
       <details class="faq-item">
@@ -1298,7 +1338,7 @@ body.is-menu-open{overflow:hidden}
 <!-- CTA V2 — Second hero, inline first-step form -->
 <section class="cta-v2" data-animate aria-label="Start a project">
   <div class="cta-v2-wrap">
-    <h2 class="cta-v2-heading">Build a website<br>people <em>remember</em>.</h2>
+    <h2 class="cta-v2-heading">Let&rsquo;s get your business<br><em>found</em>.</h2>
     <p class="cta-v2-detail">Tell me what your business does and what the next site needs to do. You&rsquo;ll get a direct, specific recommendation back, not a sales pitch.</p>
     <form class="cta-v2-form" action="/contact" method="get">
       <input class="cta-v2-input" type="text" name="q" placeholder="My business does &hellip;" aria-label="What does your business do?" autocomplete="off" required>
@@ -1436,9 +1476,14 @@ body.is-menu-open{overflow:hidden}
   document.querySelectorAll('.card').forEach(function(card){
     try {
     var project = JSON.parse(card.getAttribute('data-project'));
-    card.addEventListener('click', function(){ openLightbox(project); });
+    var caseUrl = card.getAttribute('data-case');
+    var activate = caseUrl
+      ? function(){ window.location.href = caseUrl; }
+      : function(){ openLightbox(project); };
+    if(caseUrl) card.setAttribute('aria-label', 'View the ' + project.name + ' case study');
+    card.addEventListener('click', activate);
     card.addEventListener('keydown', function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLightbox(project); }
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); }
     });
     var hoverZone = card.querySelector('.card-hover-zone');
     var hoverIcon = card.querySelector('.card-hover-icon');

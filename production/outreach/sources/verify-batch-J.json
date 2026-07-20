@@ -1,0 +1,202 @@
+[
+  {
+    "id": "r-s-car-wash-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 206, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton, NOT Forest City (803 Railroad Ave). SAME ENTITY as R-S Service Center / R-S Inspections - one full auto shop offering car wash + oil/lube + inspections + tire. Phone 828-288-6256. 206 reviews/4.8 is the combined shop listing. FB/directories only, no owned site. Auto - LOW-MID capacity. Dedupe with #22."
+  },
+  {
+    "id": "r-s-inspections-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 206, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton, not Forest City. SAME ENTITY as R-S Car Wash / R-S Service Center (803 Railroad Ave, Rutherfordton). Emissions/inspection + tire + car wash. 206 reviews/4.8 shared listing. Dedupe with #21 - treat as one target. Auto - LOW-MID."
+  },
+  {
+    "id": "broadway-car-wash-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 139, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Confirmed Forest City (683 S Broadway St). Self-service 24/7 automated/self-serve car wash - LOW capacity, likely no owner or site need. Phone 828-447-9622. FB/directories only."
+  },
+  {
+    "id": "precision-automotive-specialists-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNCONFIRMED after 2 searches. No Kings Mountain shop found by this exact name; nearest 'Precision Automotive' shops are in Charlotte, Oxford, Bryson City (not KM). Possible small/new KM shop or OSM mislabel - needs a manual Google Maps eyeball before scoring. KM is growth territory so worth a second look."
+  },
+  {
+    "id": "el-acapulco-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 560, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CONFIRMED: Shelby (408 N Main St, uptown Shelby favorite) - the Boiling-Springs phone prefix is misleading. 560 reviews/4.5 = strong revenue proxy. Only a Menufy ordering page (el-acapulco.menufyy.com / elacapulco.shop) + FB, no real owned marketing site. P4 restaurant, portfolio-fit HIGH. Good B2/A2 target."
+  },
+  {
+    "id": "wrights-jewelry-fallston",
+    "exists": true,
+    "realWebsite": "https://wrightsjewelrystore.com/",
+    "liveSiteGrade": "B+",
+    "reviews": { "count": 153, "rating": 4.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Established 1937, 4911 Fallston Rd. Modern mobile-responsive Shopify e-comm site (B+), no agency credit. 4.9/153 reviews. HIGH capacity (longevity + notability + review mass). Already has a strong owned site = LOW web gap; likely drops below SEND band. Founded by Loy Wright; current owner not surfaced."
+  },
+  {
+    "id": "fallston-pharmacy-fallston",
+    "exists": true,
+    "realWebsite": "https://www.fallstonrx.com/",
+    "liveSiteGrade": "C",
+    "reviews": null,
+    "owner": { "name": null, "email": "fallstonstore02@yahoo.com" },
+    "gbpClosed": false,
+    "notes": "Independent hometown pharmacy since 1986, 5011 Fallston Rd. Spacecrafted template site, dated (~C, 2015-era feel). Pharmacists named: Gary Harrill, John Cannon. Email fallstonstore02@yahoo.com. Strong independent profile + dated vendor site = real A-route 'you don't own/your site is dated' gap. Review count not surfaced."
+  },
+  {
+    "id": "community-mart-fallston",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Ray Thomas" },
+    "gbpClosed": false,
+    "notes": "4904 Fallston Rd (Fallston/Lawndale line). Owner Ray Thomas, phone 704-312-6152 confirmed. Convenience/grocery - likely LOW capacity. FB only. NOTE: a separate 'Community Mart #3' at 1600 Fallston Rd, Shelby is permanently CLOSED (different location, don't confuse)."
+  },
+  {
+    "id": "shielas-sheds-shelby",
+    "exists": true,
+    "realWebsite": "https://shielasshelby.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Shiela Ripley" },
+    "gbpClosed": false,
+    "notes": "Shiela's Sheds LLC, 2104 E Dixon Blvd, Shelby (also a Cherryville location). Owner Shiela Ripley. Independent DEALER of Old Hickory Buildings - runs a branded dealer-template site (C+, has 3D builder) - branded dealer, NOT a corporate franchise (owner controls it). Big-ticket outdoor retail. Reviews not surfaced."
+  },
+  {
+    "id": "bobs-superette-lincolnton",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Elmore (surname, per Lincoln Times News feature)" },
+    "gbpClosed": false,
+    "notes": "2311 Hwy 27, Lincolnton. Country grocery/convenience + gasoline + vehicle inspections. FB/directories only, no site. Owner surname Elmore (local-news feature 'Elmore credits store's success to employees'); first name not confirmed. Convenience/fuel + small grocery - LOW-MID capacity."
+  },
+  {
+    "id": "beckys-country-store-and-grille-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "2259 NC Hwy 226, Bostic. Country store + home-cooking grill/BBQ; Tuesday-night jam sessions; listed on visitncsmalltowns.com. Only FB + an auto-generated edan.io page, no real owned site. Food/P4-adjacent. Review count not surfaced. LOW-MID capacity."
+  },
+  {
+    "id": "polkville-community-mart-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "4006 Polkville Rd, Shelby 28150 (Polkville community, north county). Convenience store + gas/service station. Phone 704-538-5007. FB only. Convenience/fuel - likely LOW capacity."
+  },
+  {
+    "id": "jerrys-mini-mart-eateria-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Polkville (4400 Polkville Rd, Polkville 28136); OSM said Shelby. Convenience store with a full grill/restaurant inside, daily food specials. 4.0 rating (count not surfaced). FB/IG only. Convenience/eatery - LOW-MID capacity."
+  },
+  {
+    "id": "north-carolina-state-government-equipment-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "GOVERNMENT - DISQUALIFY (Stage-1 hard drop). Confirmed = NCDOT Division 12 Equipment Office, 266 Kemper Road, Shelby 28152. A state DOT equipment yard, not a business. Web is ncdot.gov (corporate-controlled). Drop at sourcing."
+  },
+  {
+    "id": "zumba-rutherfordton",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NOT A STANDALONE BUSINESS - 'Zumba' is a class, not a company. Phone 828-429-7031 resolves to a fitness facility at 3870 US-64, Rutherfordton that also offers Pilates/cycling/HIIT/BodyPump and has its own app. OSM mislabeled a class as a business - disqualify as artifact. The underlying gym could be a separate P9 lead if its real name surfaces."
+  },
+  {
+    "id": "chestnut-forge-furniture-at-cherry-mountain-farm-rutherfordton",
+    "exists": true,
+    "realWebsite": "https://www.generalstoreatcherrymountainfarm.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Craig", "email": "craig@chestnutforgeandfurniture.com" },
+    "gbpClosed": false,
+    "notes": "Real artisan business - hand-forged furniture/decor + marketplace on a 50-acre farm (goats/horses/pottery), 3946 US-64 Hwy, Rutherfordton. Owner Craig (craig@chestnutforgeandfurniture.com). Wix site (C+). AGENCY CREDIT in footer 'created by Small Town Soul' - verify redesign date <18mo before treating as Stage-1 disqualifier #3. Largest Case-knife selection in W-NC. High-ticket artisan, interesting. NOTE: site lists phone (954) 410-2892, differs from OSM's 828-755-6563."
+  },
+  {
+    "id": "mt-vernon-cuppard-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "SPELLING CORRECTION: actual name is 'Mt Vernon Cubbard' (not Cuppard/Cupboard). 2930 Hudlow Rd, Forest City. Convenience store/gas station with a deli (sandwiches, pizza, chef salads). Phone 828-288-4050 confirmed. FB/directories only. Convenience/fuel - likely LOW capacity."
+  },
+  {
+    "id": "drop-in-family-market-formerly-sammys-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 189, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "1518 Bostic Sunshine Hwy, Bostic (formerly Sammy's). Grocery/market + deli + gasoline; known for fresh meats and deli. 189 reviews/4.5 = solid revenue proxy. FB only, no real site. Listed on visitncsmalltowns.com. Convenience/grocery + fuel - LOW-MID capacity but strong review mass."
+  },
+  {
+    "id": "deloach-gunworks-llc-bostic",
+    "exists": true,
+    "realWebsite": "https://deloachgunworks.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Kevin DeLoach" },
+    "gbpClosed": false,
+    "notes": "Registered LLC, 256 Gun Club Rd, Bostic. Owner Kevin DeLoach. Type 07 FFL/02 SOT + NRA Training Center, ~13 years operating, FFL exp 3/1/2028. Site is GoDaddy Website Builder (C+, dated, 'Powered by GoDaddy' footer). Niche craft/gunsmith. Has a real but weak site = A2/weak-site angle. Reviews not surfaced."
+  },
+  {
+    "id": "washburn-general-store-bostic",
+    "exists": true,
+    "realWebsite": "https://www.washburnstore.com/",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Ann Washburn Hutchins" },
+    "gbpClosed": false,
+    "notes": "HIGHLY NOTABLE - NC's oldest continuously operated family business, since 1831; on the National Register of Historic Places (2002 Bostic historic district); featured by WLOS, Our State, OnlyInYourState. Owner Ann Washburn Hutchins (5th generation). Wix site (C+) with online store, many items out-of-stock. AGENCY CREDIT footer 'created by Artifacturing' - verify redesign date before disqualifier #3. HIGH capacity via notability; excellent proof/story piece even if budget is modest. Reviews not shown on site."
+  }
+]

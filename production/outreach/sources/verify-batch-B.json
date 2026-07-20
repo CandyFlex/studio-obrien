@@ -1,0 +1,202 @@
+[
+  {
+    "id": "big-als-restaurant-of-shiloh-rutherfordton",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 75, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Yelp shows CLOSED (page updated Oct 2025) - likely permanently closed. FB page (BIGALSOFSHILOH) exists. Country food-stand/diner. TripAdvisor 4.0; Restaurantji ~75 reviews. Google closed-status not directly confirmed."
+  },
+  {
+    "id": "forest-city-fish-camp-bostic",
+    "exists": true,
+    "realWebsite": "https://theforestcityfishcamp.com/",
+    "liveSiteGrade": "good",
+    "reviews": { "count": 23, "rating": 4.5 },
+    "owner": { "name": "Dave and Laura" },
+    "gbpClosed": null,
+    "notes": "Family seafood restaurant 20+ yrs; owners Dave & Laura named on site. Clean modern site w/ ChowNow online ordering + catering, published email linderfishy5@gmail.com. Yelp 23 reviews; TripAdvisor 4.5, #1 of 7 in Bostic. In Rutherford Chamber directory."
+  },
+  {
+    "id": "tony-s-bbq-grill-fallston",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 5.0 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Address 4835 Fallston Rd listed as Lawndale/Fallston line. FB page active (tonysbbqandgrill); DoorDash listed. TripAdvisor 5.0, #1 of 4 Fallston. No business-owned site found (FB + directories only)."
+  },
+  {
+    "id": "jans-restaurant-fallston",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 650, "rating": 4.7 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-owned breakfast/lunch grill, 4902 Fallston Rd. FB page active. Restaurant Guru 4.7 (650 votes); TripAdvisor 4.8, #3 of 5 Fallston. No real site (FB + menu-aggregators only)."
+  },
+  {
+    "id": "panda-chinese-restaurant-lincolnton",
+    "exists": true,
+    "realWebsite": "https://www.pandachinesenc.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 534, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Own domain pandachinesenc.com (online-ordering/pickup site - returned 403, couldn't fully load; graded weak by inference as ordering-template). Restaurant Guru 4.3 (534 reviews); Yelp 36 reviews. 104 Stanford Rd, Lincolnton."
+  },
+  {
+    "id": "big-daves-family-seafood-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.bigdaveseafood.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": null, "rating": 4.1 },
+    "owner": { "name": "Brannan and Julie" },
+    "gbpClosed": null,
+    "notes": "Wix-built site (vendor template, functional but dated). Open since 2008; Brannan & Julie became owners Feb 2023 (named in site About). TripAdvisor 4.1, #4 of 48 Forest City. 123 Commercial Dr."
+  },
+  {
+    "id": "christies-kitchen-polkville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 19, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Homestyle Southern diner, 110 Lee St. FB page active. Google 4.5; Yelp 19 reviews. No business-owned site (FB + directories only). Named for owner 'Christie' but no full name verified."
+  },
+  {
+    "id": "sakura-express-spindale",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Drive-thru sushi/hibachi, est 2012, 267 W Main St. FB page active (sakuraexpressjapanese). A 'Sakura Japanese Cuisine' Squarespace site exists but appears to be a separate/related brand, not confirmed as this location's site - realWebsite left null. Review count not clearly findable."
+  },
+  {
+    "id": "shake-shop-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 44, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Classic small-town diner (old-fashioned burgers & hand-spun shakes), 302 W Main St. FB page active (TheShakeShop). Yelp 44 reviews 4.2; TripAdvisor 4.2, #3 of 9 Spindale. No real site."
+  },
+  {
+    "id": "granny-bs-sub-shoppe-bakery-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 174, "rating": 4.7 },
+    "owner": { "name": "James Nichols" },
+    "gbpClosed": null,
+    "notes": "Bakery/sub shop (daylight donuts, subs, cakes, now pizza), 322 W Main St. Owner/contact James Nichols per ChamberOfCommerce.com listing. 4.7 (174 reviews); Restaurantji 111. Two FB pages active. No real site."
+  },
+  {
+    "id": "spin-city-cafe-spindale",
+    "exists": true,
+    "realWebsite": "https://spincityscornercafe.com/",
+    "liveSiteGrade": "weak",
+    "reviews": { "count": 88, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Branded 'Spin City's Corner Cafe', lunch cafe, 107 W Main St. Basic template site credited to 'Emerge Multimedia' in footer. Restaurantji 88 reviews; TripAdvisor 4.3, #5 of 9 Spindale."
+  },
+  {
+    "id": "barleys-taproom-pizzaria-spindale",
+    "exists": true,
+    "realWebsite": "https://www.barleystaproomspindale.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.1 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Award-winning taproom/pizzeria ('Best Taproom in the South', 20 taps, live music) in historic 1920s Sloan's Drug Store building, 123 W Main St. Real multi-page site (home/menu/about) but returned 403 - couldn't load to grade. TripAdvisor 4.1, #1 of 9 Spindale."
+  },
+  {
+    "id": "circle-b-bbq-spindale",
+    "exists": true,
+    "realWebsite": "https://www.circlebbbq.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": 115, "rating": null },
+    "owner": { "name": "Tim" },
+    "gbpClosed": null,
+    "notes": "Circle B BBQ LLC, award-winning NC BBQ + catering + food truck, 135 W Main St. Owner appears to be 'Tim' (Instagram @circlebbbqllc bio). Own domain circlebbbq.com (couldn't load to grade). Restaurantji 115 reviews."
+  },
+  {
+    "id": "on-main-spindale",
+    "exists": true,
+    "realWebsite": "https://threeonmain.com/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Branded 'Three On Main' - three eateries/one dining room (Brewdega taproom, Caffeine coffee, The Kitchen), 139 W Main St. Modern professional WordPress/Elementor site. Reviews reference 'three women running it' + staff 'Michaela' but no formal owner name published. Review count not clearly findable."
+  },
+  {
+    "id": "fat-tracys-bbq-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 152, "rating": null },
+    "owner": { "name": "Tracy" },
+    "gbpClosed": null,
+    "notes": "Now operates as a food truck parked at old building (1163 W Main St), same owners, limited menu - check FB for hours. Owner first name Tracy ('Tracy's personal BBQ sauce'); surname not verified. FB + IG active. Restaurantji 152 reviews."
+  },
+  {
+    "id": "scotts-on-broadway-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 20, "rating": 4.4 },
+    "owner": { "name": "Scott" },
+    "gbpClosed": null,
+    "notes": "Southern burgers/country cooking, 753 S Broadway St. Owner named Scott (per reviews: 'the owner, Scott, is a great guy'); surname not verified. FB page active; online ordering via aggregators. Yelp 20 reviews 4.4; TripAdvisor 4.4, #8 of 48 Forest City. No business-owned site."
+  },
+  {
+    "id": "pancake-house-shelby",
+    "exists": true,
+    "realWebsite": "https://pancakehouseshelbync.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Breakfast spot founded 2009, 149 W Dixon Blvd, open 6a-2p daily. Own domain pancakehouseshelbync.com exists but wouldn't load to grade. TripAdvisor 4.2, #19 of 86 Shelby. FB page active."
+  },
+  {
+    "id": "red-bridges-barbecue-lodge-shelby",
+    "exists": true,
+    "realWebsite": "https://www.bridgesbbq.com/",
+    "liveSiteGrade": "good",
+    "reviews": null,
+    "owner": { "name": "Bridges family (3rd generation)" },
+    "gbpClosed": null,
+    "notes": "Famous Shelby institution since 1946, 3 generations of the Bridges family, 2000 E Dixon Blvd. Professional BentoBox restaurant site w/ online ordering + store (as flagged, OSM missed the real site). No specific individual owner name published on homepage; family-run. Review count not pulled (very high-volume regional BBQ landmark)."
+  },
+  {
+    "id": "the-pie-safe-baking-co-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.piesafebakingco.com/",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.6 },
+    "owner": { "name": "Kirk Wilkerson, John Higgins & Stephanie Higgins" },
+    "gbpClosed": null,
+    "notes": "Scratch bakery + espresso bar since 2018, in historic 1923 bank building, 102 W Main St. Founders Kirk Wilkerson and John & Stephanie Higgins named in site About. Real multi-page site piesafebakingco.com (not fetched to grade). TripAdvisor 4.6, #6 of 45 Forest City."
+  },
+  {
+    "id": "davis-donut-house-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.7 },
+    "owner": { "name": "Chris and Deb Taylor" },
+    "gbpClosed": null,
+    "notes": "40+ yr donut institution (est 1972 by Charles & Shirley Davis; Chris & Deb Taylor bought it 2004), 652 W Main St. Famous 'Orange Twist'; featured in WNC Magazine. FB + IG only, no business-owned site. TripAdvisor 4.7, #3 of 45 Forest City."
+  }
+]

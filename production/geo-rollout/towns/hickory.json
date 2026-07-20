@@ -1,0 +1,54 @@
+{
+  "_sources": [
+    {
+      "fact": "Hickory has 189 furniture manufacturers employing over 14,000 people in the metro area, stemming from 1902 when local businessmen decided to build furniture from regional lumber supplies.",
+      "url": "https://www.visithickorync.com/articles/post/furniture-manufacturing-capital/"
+    },
+    {
+      "fact": "Hickory Furniture Mart was established in 1960 and opened to the public in 1985, becoming one of North Carolina's top visitor attractions with nearly 1 million square feet of showroom space.",
+      "url": "https://www.hickoryfurniture.com/about/history/"
+    },
+    {
+      "fact": "CommScope, which was founded in Hickory, invested $60.3 million in 2023 to expand fiber-optic cable manufacturing operations, creating 250+ new jobs for rural broadband deployment.",
+      "url": "https://www.commerce.nc.gov/news/press-releases/2023/07/25/governor-cooper-announces-commscope-add-250-new-jobs-60-million-investment-fiber-optic-cable"
+    }
+  ],
+
+  "town": "Hickory",
+  "slug": "hickory",
+  "county": "Catawba County",
+  "brandPlace": "downtown",
+  "mapQuery": "Hickory,NC",
+
+  "metaDesc": "Custom web design and SEO for Hickory and Catawba County businesses: furniture makers, manufacturers, contractors, and shops. Sites you own, no templates.",
+  "ogDesc": "Custom web design and development for Hickory and Catawba County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Hickory, NC. Websites, SEO, and branding for furniture, manufacturing, contractors, restaurants, and retail in Catawba County.",
+  "schemaDesc": "Web development and design in Hickory, NC. Custom websites, SEO, and branding for furniture manufacturers, contractors, restaurants, and small businesses in Catawba County, Conover, Newton, and Maiden.",
+
+  "heroSub": "Custom websites, SEO, and branding for the furniture makers, manufacturers, contractors, and shops of Hickory and the Catawba Valley. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Hickory</em> and the Catawba Valley.",
+  "localP1": "Hickory's identity is built on furniture and manufacturing. In 1902, local businessmen decided this region's abundant lumber should make furniture right here, and today the Hickory metro is home to 189 furniture manufacturers employing over 14,000 people. The <strong>Hickory Furniture Mart</strong> draws visitors nationwide, while <strong>CommScope</strong>, founded here, continues to anchor advanced manufacturing, recently investing in fiber-optic cable production for rural broadband.",
+  "localP2": "We build for the people who power this economy: the furniture maker and the factory floor, the contractor and the cable technician, the restaurant downtown, the retail and service businesses that keep the Catawba Valley moving. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Hickory</strong>, Conover, Newton, Maiden, Morganton &amp; the Catawba Valley",
+
+  "areaServed": ["Hickory", "Conover", "Newton", "Maiden", "Morganton"],
+
+  "citiesIntro": "Rooted in Hickory, working across the region. Explore a nearby town:",
+  "hereCard": "Furniture manufacturers, cable and telecom, contractors, and retailers in the heart of the Catawba Valley. Sites that bring customers and orders through the door.",
+  "neighborCards": [
+    {"slug": "conover", "name": "Conover", "desc": "A close neighbor to Hickory's industrial core, home to manufacturers and service businesses ready for custom web presence."},
+    {"slug": "newton", "name": "Newton", "desc": "The Catawba County seat with retail, professional services, and local enterprises across the region."},
+    {"slug": "maiden", "name": "Maiden", "desc": "A smaller county town with family-owned shops and trades that thrive with custom, focused websites."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Catawba County, Conover, Newton, Maiden, Morganton, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Furniture manufacturers and wholesalers, cable and telecom companies, contractors and trades, restaurants and retail shops, professional services, and manufacturers across Catawba County.",
+
+  "footerNearby": [
+    {"slug": "conover", "name": "Conover"},
+    {"slug": "newton", "name": "Newton"},
+    {"slug": "maiden", "name": "Maiden"},
+    {"slug": "morganton", "name": "Morganton"}
+  ]
+}

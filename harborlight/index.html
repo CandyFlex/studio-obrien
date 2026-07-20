@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harborlight Animal Rescue · Cormorant Bay, Maine</title>
+<meta name="description" content="All-volunteer animal rescue serving Cormorant Bay, Maine. Adopt, foster, volunteer, or donate. Every animal lives in a foster home until adoption day.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23122033'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23f2c464'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   HARBORLIGHT v2 · light, professional, harbor blue + amber
+   Archivo carries structure (headings, UI, labels). Source Serif carries
+   narrative (ledes, the log, stories). One dark band: the night log.
+   ========================================================================== */
+
+:root {
+  --bg: oklch(1 0 0);
+  --surface: oklch(0.968 0.008 240);
+  --line: oklch(0.90 0.01 240);
+  --ink: oklch(0.24 0.04 245);
+  --ink-2: oklch(0.42 0.035 245);
+  --harbor: oklch(0.38 0.085 235);
+  --harbor-deep: oklch(0.31 0.08 237);
+  --night: oklch(0.15 0.04 240);
+  --night-ink: oklch(0.90 0.012 230);
+  --night-ink-2: oklch(0.78 0.022 231);
+  --night-line: oklch(0.28 0.035 238);
+  --lamp: oklch(0.80 0.14 78);
+  --lamp-bright: oklch(0.84 0.13 80);
+  --lamp-text: oklch(0.50 0.115 58);
+  --lamp-glow: oklch(0.80 0.14 78 / 0.35);
+  --dawn-tint: oklch(0.965 0.02 70);
+
+  --font-ui: "Archivo", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+
+  --gutter: clamp(20px, 4vw, 48px);
+  --section-pad: clamp(64px, 9vh, 104px);
+
+  --z-nav: 100;
+  --z-skip: 200;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--harbor); }
+
+h1, h2, h3 { font-family: var(--font-ui); color: var(--ink); text-wrap: balance; letter-spacing: -0.02em; }
+p { text-wrap: pretty; }
+
+.skip-link {
+  position: fixed; top: -60px; left: 16px; z-index: var(--z-skip);
+  background: var(--ink); color: var(--bg);
+  font-weight: 600; font-size: 14px;
+  padding: 10px 18px; border-radius: 999px; text-decoration: none;
+  transition: top 0.2s ease-out;
+}
+.skip-link:focus { top: 12px; }
+
+:focus-visible { outline: 2px solid var(--harbor); outline-offset: 2px; }
+
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: var(--gutter); }
+
+section { padding-block: var(--section-pad); }
+
+/* section header pattern: amber mark, heading, optional serif lede */
+.sec-head { max-width: 640px; margin-bottom: clamp(32px, 5vh, 48px); }
+.sec-head::before {
+  content: ""; display: block; width: 26px; height: 4px;
+  background: var(--lamp); border-radius: 2px; margin-bottom: 18px;
+}
+.sec-head h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 800; line-height: 1.12;
+}
+.sec-head .lede {
+  margin-top: 12px;
+  font-family: var(--font-serif); font-size: clamp(16px, 1.2vw + 8px, 18.5px);
+  color: var(--ink-2); line-height: 1.65; max-width: 58ch;
+}
+
+/* ==========================================================================
+   BUTTONS — the tag (pill with a punched hole), the one signature carried
+   over from v1. Amber = give money. Harbor = do a thing. Ghost = secondary.
+   ========================================================================== */
+
+.tag-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 15px;
+  background: var(--harbor); color: oklch(1 0 0);
+  border: none; border-radius: 999px;
+  padding: 13px 24px 13px 16px;
+  text-decoration: none; cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tag-btn::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--bg);
+  box-shadow: inset 0 1px 1.5px oklch(0 0 0 / 0.35);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tag-btn:hover { background: var(--harbor-deep); transform: translateY(-1px); }
+.tag-btn:hover::before { transform: scale(1.3); }
+.tag-btn:active { transform: translateY(1px); }
+
+.tag-btn--lamp { background: var(--lamp); color: var(--ink); }
+.tag-btn--lamp::before { background: var(--ink); box-shadow: none; }
+.tag-btn--lamp:hover { background: var(--lamp-bright); }
+
+.tag-btn--ghost {
+  background: transparent; color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+.tag-btn--ghost::before { background: var(--lamp); box-shadow: none; }
+.tag-btn--ghost:hover { background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--ink-2); }
+
+/* ==========================================================================
+   TOPBAR
+   ========================================================================== */
+
+.topbar {
+  position: sticky; top: 0; z-index: var(--z-nav);
+  background: oklch(1 0 0 / 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding-block: 13px;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 17px; letter-spacing: -0.01em;
+  color: var(--ink); text-decoration: none;
+}
+.brand-lamp {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--lamp); flex: none;
+  box-shadow: 0 0 8px 1px var(--lamp-glow);
+  animation: lamp-breathe 5s ease-in-out infinite;
+}
+@keyframes lamp-breathe {
+  0%, 100% { box-shadow: 0 0 8px 1px var(--lamp-glow); }
+  50% { box-shadow: 0 0 14px 4px var(--lamp-glow); }
+}
+.brand small { font-weight: 500; font-size: 12.5px; color: var(--ink-2); letter-spacing: 0; }
+.topnav { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); }
+.topnav a:not(.tag-btn) {
+  font-weight: 600; font-size: 14px; color: var(--ink-2); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 2px solid transparent;
+  transition: color 0.2s ease-out, border-color 0.2s ease-out;
+}
+.topnav a:not(.tag-btn):hover { color: var(--ink); border-color: var(--lamp); }
+.topnav .tag-btn { padding: 9px 18px 9px 12px; font-size: 13.5px; }
+@media (max-width: 860px) {
+  .topnav a:not(.tag-btn) { display: none; }
+  .brand small { display: none; }
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero { padding-block: clamp(48px, 7vh, 88px) 0; }
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 6.5fr) minmax(0, 5.5fr);
+  gap: clamp(32px, 5vw, 72px); align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.9rem);
+  font-weight: 800; line-height: 1.06;
+}
+.hero h1 em { font-style: normal; color: var(--harbor); }
+.hero .lede {
+  margin-top: 18px;
+  font-family: var(--font-serif); font-size: clamp(16.5px, 1.2vw + 9px, 19.5px);
+  color: var(--ink-2); line-height: 1.65; max-width: 52ch;
+}
+.hero-ctas { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-photo { position: relative; }
+.hero-photo img { width: 100%; aspect-ratio: 5 / 5.5; object-fit: cover; }
+.hero-photo figcaption {
+  position: absolute; left: 14px; bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: oklch(1 0 0 / 0.92); color: var(--ink);
+  font-weight: 600; font-size: 12.5px;
+  padding: 7px 14px 7px 10px; border-radius: 999px;
+}
+.hero-photo figcaption::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lamp);
+}
+
+/* trust strip */
+.trust {
+  margin-top: clamp(40px, 6vh, 64px);
+  border-block: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.trust > div { padding: 20px clamp(12px, 2vw, 28px); }
+.trust > div + div { border-left: 1px solid var(--line); }
+.trust .n {
+  font-weight: 800; font-size: clamp(20px, 2vw, 26px);
+  letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.trust .k { margin-top: 2px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { order: -1; max-width: 480px; }
+  .hero-photo img { aspect-ratio: 16 / 11; }
+  .trust { grid-template-columns: repeat(2, 1fr); }
+  .trust > div:nth-child(3) { border-left: none; }
+  .trust > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* ==========================================================================
+   REVEALS — visible without JS; .js arms them, IO fires them
+   ========================================================================== */
+
+.js .rise { opacity: 0; transform: translateY(18px); }
+.js .rise.in {
+  opacity: 1; transform: none;
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js .rise.d1.in { transition-delay: 0.07s; }
+.js .rise.d2.in { transition-delay: 0.14s; }
+@media (prefers-reduced-motion: reduce) {
+  .js .rise { opacity: 1; transform: none; }
+  .brand-lamp { animation: none; }
+}
+
+/* ==========================================================================
+   ADOPTABLE ANIMALS
+   ========================================================================== */
+
+.animals { background: var(--surface); }
+.animals-head {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 16px 32px; margin-bottom: clamp(32px, 5vh, 48px);
+}
+.animals-head .sec-head { margin-bottom: 0; }
+.animals-note { font-size: 14px; color: var(--ink-2); max-width: 34ch; padding-bottom: 6px; }
+.animals-note strong { color: var(--ink); font-weight: 600; }
+
+.kennel {
+  display: grid; gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+}
+.pen {
+  background: var(--bg); border: 1px solid var(--line);
+  text-decoration: none; color: inherit; display: flex; flex-direction: column;
+  transition: border-color 0.3s ease-out, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pen:hover { border-color: var(--harbor); transform: translateY(-3px); }
+.pen-photo { position: relative; overflow: clip; aspect-ratio: 4 / 5; }
+.pen-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pen:hover .pen-photo img { transform: scale(1.04); }
+.pen-status {
+  position: absolute; top: 12px; left: 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600; font-size: 12px;
+  background: oklch(1 0 0 / 0.92); color: var(--ink);
+  padding: 5px 11px 5px 8px; border-radius: 999px;
+}
+.pen-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lamp); }
+.pen-status--pending { color: var(--ink-2); }
+.pen-status--pending::before { background: var(--ink-2); }
+.pen-body { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.pen-name { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.pen-meta { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+.pen-bio {
+  font-family: var(--font-serif); font-size: 15px; line-height: 1.55;
+  color: var(--ink-2); flex: 1;
+}
+.pen-fee {
+  margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 13px; font-weight: 600; color: var(--ink-2);
+}
+.pen-fee b { color: var(--ink); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+.kennel-foot {
+  margin-top: clamp(28px, 4vh, 40px);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px;
+}
+.kennel-foot p { font-size: 14.5px; color: var(--ink-2); max-width: 52ch; }
+
+/* ==========================================================================
+   HOW ADOPTION WORKS
+   ========================================================================== */
+
+.adopt-grid {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+}
+.steps { list-style: none; counter-reset: step; }
+.steps li {
+  counter-increment: step;
+  display: grid; grid-template-columns: 44px 1fr; gap: 18px;
+  padding-block: 22px;
+}
+.steps li + li { border-top: 1px solid var(--line); }
+.steps li::before {
+  content: counter(step);
+  width: 40px; height: 40px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 15px; color: var(--harbor);
+}
+.steps h3 { font-size: 17.5px; font-weight: 700; margin-bottom: 4px; }
+.steps p { font-size: 15.5px; color: var(--ink-2); max-width: 52ch; }
+
+.fees {
+  background: var(--surface); border: 1px solid var(--line);
+  padding: clamp(20px, 2.5vw, 28px);
+}
+.fees h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.fees > p { font-size: 14px; color: var(--ink-2); margin-bottom: 14px; }
+.fees table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.fees td { padding: 10px 0; border-top: 1px solid var(--line); color: var(--ink-2); }
+.fees td:last-child {
+  text-align: right; font-weight: 700; color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.fees .fee-note { margin-top: 14px; font-size: 13px; color: var(--ink-2); }
+
+@media (max-width: 860px) { .adopt-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   THE NIGHT LOG — the one dark band, the signature moment
+   ========================================================================== */
+
+.log { background: var(--night); color: var(--night-ink-2); }
+.log .sec-head h2 { color: oklch(1 0 0); }
+.log .sec-head .lede { color: var(--night-ink-2); }
+.log-grid {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+}
+.ledger { list-style: none; border-top: 1px solid var(--night-line); }
+.ledger li {
+  display: grid; grid-template-columns: 88px 1fr; gap: clamp(14px, 2vw, 28px);
+  padding-block: 20px;
+  border-bottom: 1px solid var(--night-line);
+}
+.ledger .stamp {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 13px; color: var(--lamp); padding-top: 4px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.ledger .entry-title { font-weight: 700; font-size: 16px; color: var(--night-ink); margin-bottom: 3px; letter-spacing: -0.01em; }
+.ledger .entry-body {
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.6;
+  color: var(--night-ink-2); max-width: 54ch;
+}
+.ledger li.quiet-night .entry-body { font-style: italic; }
+
+.log-photo { position: sticky; top: 96px; }
+.log-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: saturate(0.9); }
+.log-photo figcaption {
+  margin-top: 10px; font-family: var(--font-serif); font-style: italic;
+  font-size: 14px; color: var(--night-ink-2);
+}
+.log-cta { margin-top: 28px; }
+.log-cta .tag-btn--ghost { color: var(--night-ink); box-shadow: inset 0 0 0 1.5px var(--night-line); }
+.log-cta .tag-btn--ghost:hover { background: oklch(1 0 0 / 0.06); box-shadow: inset 0 0 0 1.5px var(--night-ink-2); }
+
+@media (max-width: 860px) {
+  .log-grid { grid-template-columns: 1fr; }
+  .log-photo { position: static; max-width: 480px; }
+}
+
+/* ==========================================================================
+   FOSTER & VOLUNTEER
+   ========================================================================== */
+
+.help-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 32px);
+}
+.help-card { border: 1px solid var(--line); padding: clamp(24px, 3vw, 36px); }
+.help-card h3 { font-size: clamp(19px, 1.8vw, 23px); font-weight: 800; margin-bottom: 10px; }
+.help-card > p {
+  font-family: var(--font-serif); font-size: 16px; line-height: 1.62;
+  color: var(--ink-2); margin-bottom: 18px; max-width: 52ch;
+}
+.help-card ul { list-style: none; margin-bottom: 24px; }
+.help-card li {
+  display: grid; grid-template-columns: 14px 1fr; gap: 10px;
+  font-size: 15px; color: var(--ink-2); padding-block: 7px;
+}
+.help-card li::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lamp); margin-top: 7px;
+}
+.help-card li strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) { .help-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   DONATE
+   ========================================================================== */
+
+.give { background: var(--surface); }
+.give-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+}
+.give-side .sec-head { margin-bottom: 24px; }
+.give-monthly {
+  background: var(--bg); border: 1px solid var(--line);
+  padding: clamp(20px, 2.5vw, 28px);
+}
+.give-monthly p { font-size: 15px; color: var(--ink-2); }
+.give-monthly p strong { color: var(--ink); }
+.give-monthly .tag-btn { margin-top: 16px; }
+.give-trust { margin-top: 18px; font-size: 13.5px; color: var(--ink-2); max-width: 40ch; }
+.give-trust strong { color: var(--ink); font-weight: 700; }
+
+.costs { list-style: none; border-top: 1px solid var(--line); }
+.costs li {
+  display: grid; grid-template-columns: 92px 1fr auto;
+  align-items: center; gap: clamp(14px, 2vw, 28px);
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.costs .amount {
+  font-weight: 800; font-size: clamp(21px, 2vw, 26px);
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
+.costs .what { font-weight: 700; font-size: 15.5px; margin-bottom: 2px; }
+.costs .why { font-size: 14px; color: var(--ink-2); max-width: 46ch; }
+.costs .give-this {
+  font-weight: 600; font-size: 13px; color: var(--harbor); text-decoration: none;
+  white-space: nowrap; border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 8px 16px;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out, border-color 0.25s ease-out;
+}
+.costs .give-this:hover { background: var(--harbor); color: oklch(1 0 0); border-color: var(--harbor); }
+
+@media (max-width: 860px) { .give-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .costs li { grid-template-columns: 76px 1fr; }
+  .costs .give-this { grid-column: 2; justify-self: start; }
+}
+
+/* ==========================================================================
+   IMPACT & STORIES — the warm band
+   ========================================================================== */
+
+.impact { background: var(--dawn-tint); }
+.impact-count {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px;
+  margin-bottom: clamp(32px, 5vh, 48px);
+}
+.impact-count .big-number {
+  font-weight: 800; font-size: clamp(2.8rem, 6vw, 4.5rem);
+  line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+}
+.impact-count p {
+  font-family: var(--font-serif); font-size: clamp(16px, 1.3vw, 19px);
+  color: var(--ink-2); max-width: 42ch;
+}
+.impact-count p strong { color: var(--ink); font-weight: 600; }
+
+.stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.5vw, 28px); }
+.story { text-decoration: none; color: inherit; }
+.story .story-photo { overflow: clip; }
+.story img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story:hover img { transform: scale(1.035); }
+.story h3 { margin-top: 14px; font-size: 16.5px; font-weight: 700; }
+.story p {
+  margin-top: 5px; font-family: var(--font-serif);
+  font-size: 15px; line-height: 1.58; color: var(--ink-2); max-width: 42ch;
+}
+@media (max-width: 760px) { .stories { grid-template-columns: 1fr; max-width: 440px; } }
+
+.ticker {
+  margin-top: clamp(36px, 5vh, 52px);
+  overflow: hidden; white-space: nowrap;
+  border-block: 1px solid oklch(0.86 0.03 70);
+  padding-block: 11px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.ticker-track {
+  display: inline-flex; gap: 30px; padding-right: 30px;
+  font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: var(--ink-2);
+  animation: ticker-run 48s linear infinite;
+}
+.ticker-track span { display: inline-flex; gap: 30px; }
+.ticker-track em { font-style: normal; color: var(--lamp-text); }
+@keyframes ticker-run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+.faq-list { max-width: 760px; border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 18px 2px; cursor: pointer; list-style: none;
+  font-weight: 600; font-size: 16px; color: var(--ink);
+  transition: color 0.2s ease-out;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary:hover { color: var(--harbor); }
+.faq-list summary::after {
+  content: "+"; flex: none;
+  width: 28px; height: 28px; border-radius: 999px;
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  font-weight: 500; font-size: 17px; color: var(--ink-2);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease-out;
+}
+.faq-list details[open] summary::after { transform: rotate(45deg); background: var(--surface); }
+.faq-list details p {
+  padding: 0 44px 20px 2px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.65;
+  color: var(--ink-2); max-width: 62ch;
+}
+
+/* ==========================================================================
+   CONTACT & VISIT
+   ========================================================================== */
+
+.contact { background: var(--surface); }
+.contact-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+}
+.contact-info dl { display: grid; gap: 18px; }
+.contact-info dt { font-weight: 700; font-size: 13.5px; color: var(--ink); margin-bottom: 3px; }
+.contact-info dd { font-size: 15px; color: var(--ink-2); }
+.contact-info dd a { color: var(--harbor); font-weight: 600; text-decoration: none; }
+.contact-info dd a:hover { text-decoration: underline; }
+.contact-info .phone-big { font-weight: 800; font-size: 19px; color: var(--ink); }
+
+.inquiry {
+  background: var(--bg); border: 1px solid var(--line);
+  padding: clamp(22px, 3vw, 32px);
+}
+.inquiry h3 { font-size: 17px; font-weight: 700; margin-bottom: 16px; }
+.inquiry .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.inquiry .field { margin-bottom: 14px; }
+.inquiry label { display: block; font-weight: 600; font-size: 13.5px; margin-bottom: 5px; }
+.inquiry input, .inquiry select, .inquiry textarea {
+  width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+  padding: 10px 12px;
+  transition: border-color 0.2s ease-out;
+}
+.inquiry input:focus, .inquiry select:focus, .inquiry textarea:focus {
+  outline: none; border-color: var(--harbor);
+  box-shadow: 0 0 0 3px oklch(0.38 0.085 235 / 0.15);
+}
+.inquiry textarea { resize: vertical; min-height: 96px; }
+.inquiry .form-note { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+.inquiry .sent {
+  display: none; padding: 12px 14px; margin-top: 14px;
+  background: var(--dawn-tint); border: 1px solid oklch(0.86 0.03 70);
+  font-weight: 600; font-size: 14px; color: var(--ink);
+}
+.inquiry.is-sent .sent { display: block; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .inquiry .frow { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-foot { border-top: 1px solid var(--line); padding-top: clamp(48px, 7vh, 72px); }
+.foot-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3.5fr) minmax(0, 3.5fr);
+  gap: clamp(28px, 4vw, 64px);
+  padding-bottom: clamp(40px, 6vh, 64px);
+}
+.foot-brand p {
+  margin-top: 14px; font-size: 14.5px; color: var(--ink-2); max-width: 40ch; line-height: 1.6;
+}
+.foot-col h3 { font-size: 13.5px; font-weight: 700; margin-bottom: 12px; }
+.foot-col ul { list-style: none; }
+.foot-col li { margin-bottom: 9px; font-size: 14.5px; color: var(--ink-2); }
+.foot-col a { color: var(--ink-2); text-decoration: none; }
+.foot-col a:hover { color: var(--harbor); text-decoration: underline; }
+.foot-col .phone { font-weight: 700; color: var(--ink); }
+
+.foot-lightline { background: var(--night); color: var(--night-ink-2); padding-block: 18px; }
+.foot-lightline .wrap {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 10px 24px; font-size: 13px; font-weight: 500;
+}
+.foot-lightline .lit-note { display: inline-flex; align-items: center; gap: 9px; color: var(--night-ink); }
+.foot-lightline .lit-note::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lamp);
+  box-shadow: 0 0 8px 2px var(--lamp-glow);
+  animation: lamp-breathe 5s ease-in-out infinite;
+}
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; gap: 28px; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#adopt">Skip to adoptable animals</a>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top" aria-label="Harborlight Animal Rescue, home">
+      <span class="brand-lamp" aria-hidden="true"></span>
+      Harborlight
+      <small>Cormorant Bay, Maine</small>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#adopt">Adopt</a>
+      <a href="#help">Foster &amp; Volunteer</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#give" class="tag-btn tag-btn--lamp">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-h" class="rise">The rescue that answers at <em>2&nbsp;a.m.</em></h1>
+          <p class="lede rise d1">Harborlight is the all-volunteer animal rescue serving Cormorant Bay, Maine. Every animal we take in lives in a foster home, never a kennel, from the first night until adoption day.</p>
+          <div class="hero-ctas rise d2">
+            <a class="tag-btn" href="#adopt">Meet the animals</a>
+            <a class="tag-btn tag-btn--ghost" href="#give">Donate</a>
+          </div>
+        </div>
+        <figure class="hero-photo rise d1">
+          <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80"
+               alt="Gus, a golden retriever adopted through Harborlight in 2025" width="1200" height="1320" fetchpriority="high">
+          <figcaption>Gus, adopted 2025</figcaption>
+        </figure>
+      </div>
+      <div class="trust rise">
+        <div><p class="n">1,142</p><p class="k">Animals placed since 2014</p></div>
+        <div><p class="n">61</p><p class="k">Active foster homes</p></div>
+        <div><p class="n">100%</p><p class="k">Volunteer run, no kennels</p></div>
+        <div><p class="n">501(c)(3)</p><p class="k">Registered nonprofit</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ADOPTABLE ANIMALS ======================= -->
+  <section class="animals" id="adopt" aria-labelledby="adopt-h">
+    <div class="wrap">
+      <div class="animals-head">
+        <div class="sec-head">
+          <h2 id="adopt-h" class="rise">Waiting for homes</h2>
+          <p class="lede rise d1">Eight animals are ready now or nearly ready. Each one lives with a foster family, so we can tell you exactly what they're like in a real home.</p>
+        </div>
+        <p class="animals-note rise d1"><strong>Adoptions are by appointment</strong> at our Skiff Lane house. Bring everyone in your household, including current pets.</p>
+      </div>
+      <div class="kennel">
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" alt="Banjo, a smiling beagle" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Available</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Banjo</p>
+            <p class="pen-meta">Beagle · 4 yrs · Male</p>
+            <p class="pen-bio">Cheerful, food-motivated, and good with kids and other dogs. House-trained.</p>
+            <p class="pen-fee">Adoption fee <b>$250</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80" alt="Alma, a senior black pug in her knit sweater" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Available</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Alma</p>
+            <p class="pen-meta">Pug · 7 yrs · Female · Senior</p>
+            <p class="pen-bio">Calm and affectionate. Runs cold, so the sweater comes with her. Ideal for a quiet home.</p>
+            <p class="pen-fee">Adoption fee <b>$75</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80" alt="Tater, a French bulldog puppy" loading="lazy" width="800" height="1000">
+            <span class="pen-status pen-status--pending">Adoption pending</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Tater</p>
+            <p class="pen-meta">French bulldog mix · 5 mos · Male</p>
+            <p class="pen-bio">Playful and social. His adoption is in the home-visit stage; we keep a backup list.</p>
+            <p class="pen-fee">Adoption fee <b>$350</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80" alt="Sardine, a corgi puppy" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Available</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Sardine</p>
+            <p class="pen-meta">Corgi · 10 wks · Male</p>
+            <p class="pen-bio">Confident, curious puppy. Will need training time and a family that's home often.</p>
+            <p class="pen-fee">Adoption fee <b>$350</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=800&q=80" alt="June, a rat terrier" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Available</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">June</p>
+            <p class="pen-meta">Rat terrier · 2 yrs · Female</p>
+            <p class="pen-bio">Gentle and observant. Shy with strangers at first; best as the only pet in a calm home.</p>
+            <p class="pen-fee">Adoption fee <b>$250</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=800&q=80" alt="Pickle, a golden kitten with one paw raised" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Available</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Pickle</p>
+            <p class="pen-meta">Domestic shorthair · 12 wks · Female</p>
+            <p class="pen-bio">Bold, busy kitten. Litter-trained and great with the foster family's older cat.</p>
+            <p class="pen-fee">Adoption fee <b>$175</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80" alt="Admiral, a tuxedo cat" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Bonded pair</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Admiral</p>
+            <p class="pen-meta">Tuxedo · 6 yrs · Male · With Clementine</p>
+            <p class="pen-bio">Steady, independent, and devoted to Clementine. They adopt together.</p>
+            <p class="pen-fee">Pair fee <b>$200</b></p>
+          </div>
+        </a>
+        <a class="pen rise" href="#contact">
+          <div class="pen-photo">
+            <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80" alt="Clementine, an orange maine coon mix" loading="lazy" width="800" height="1000">
+            <span class="pen-status">Bonded pair</span>
+          </div>
+          <div class="pen-body">
+            <p class="pen-name">Clementine</p>
+            <p class="pen-meta">Maine coon mix · 3 yrs · Female · With Admiral</p>
+            <p class="pen-bio">Easygoing lap cat, long coat, brushes like a dream. Adopts with Admiral.</p>
+            <p class="pen-fee">Pair fee <b>$200</b></p>
+          </div>
+        </a>
+      </div>
+      <div class="kennel-foot rise">
+        <a class="tag-btn" href="#contact">Ask about an animal</a>
+        <p>Every adoption includes spay/neuter, vaccinations, and a microchip. Details below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= HOW ADOPTION WORKS ======================= -->
+  <section aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="how-h" class="rise">How adoption works</h2>
+        <p class="lede rise d1">Three steps, usually one to two weeks start to finish.</p>
+      </div>
+      <div class="adopt-grid">
+        <ol class="steps">
+          <li class="rise">
+            <div><h3>Send an inquiry</h3>
+            <p>Use the form below or call the line. Tell us who you're interested in and a little about your household. We reply within a day.</p></div>
+          </li>
+          <li class="rise">
+            <div><h3>Meet and greet</h3>
+            <p>Visit by appointment, or meet the animal at its foster home. Bring current pets if the match needs testing. No commitment at this stage.</p></div>
+          </li>
+          <li class="rise">
+            <div><h3>Home check and take-home</h3>
+            <p>A volunteer does a short home visit, you sign the adoption agreement, and your new family member comes home with records, food to start, and our 24-hour support line.</p></div>
+          </li>
+        </ol>
+        <div class="fees rise d1">
+          <h3>Adoption fees</h3>
+          <p>Fees cover a fraction of each animal's care and include spay/neuter, full vaccinations, deworming, and a registered microchip.</p>
+          <table>
+            <tr><td>Puppy (under 1 yr)</td><td>$350</td></tr>
+            <tr><td>Adult dog</td><td>$250</td></tr>
+            <tr><td>Senior dog (7+)</td><td>$75</td></tr>
+            <tr><td>Kitten</td><td>$175</td></tr>
+            <tr><td>Adult cat</td><td>$125</td></tr>
+            <tr><td>Senior cat (10+)</td><td>$75</td></tr>
+          </table>
+          <p class="fee-note">Bonded pairs adopt together at a reduced combined fee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= THE NIGHT LOG ======================= -->
+  <section class="log" aria-labelledby="log-h">
+    <div class="wrap">
+      <div class="log-grid">
+        <div>
+          <div class="sec-head">
+            <h2 id="log-h" class="rise">The night log</h2>
+            <p class="lede rise d1">Our intake line runs 24 hours, because strays don't get found at convenient times. From last week's notebook, names changed:</p>
+          </div>
+          <ol class="ledger">
+            <li class="rise">
+              <span class="stamp">11:47 PM</span>
+              <div><p class="entry-title">Terrier mix, Route 9 shoulder</p>
+              <p class="entry-body">Found soaked through in the rain. Rode to the emergency vet wrapped in the driver's flannel. Stable by morning, in foster care by Friday.</p></div>
+            </li>
+            <li class="rise">
+              <span class="stamp">12:58 AM</span>
+              <div><p class="entry-title">Litter of five behind the cannery</p>
+              <p class="entry-body">Set warm traps and returned nightly until we had the kittens and their mother. All six placed within the month.</p></div>
+            </li>
+            <li class="rise">
+              <span class="stamp">1:36 AM</span>
+              <div><p class="entry-title">Senior golden at the boat launch</p>
+              <p class="entry-body">No chip, no collar, waiting at the top of the ramp. Three weeks later he was adopted by the family that reported him.</p></div>
+            </li>
+            <li class="rise quiet-night">
+              <span class="stamp">3:22 AM</span>
+              <div><p class="entry-title">Nothing</p>
+              <p class="entry-body">Some nights the phone stays quiet. We keep the light on anyway.</p></div>
+            </li>
+          </ol>
+          <div class="log-cta rise">
+            <a class="tag-btn tag-btn--ghost" href="#give">Help fund the night line</a>
+          </div>
+        </div>
+        <figure class="log-photo rise d1">
+          <img src="https://images.unsplash.com/photo-1444212477490-ca407925329e?auto=format&fit=crop&w=1000&q=80"
+               alt="Three young stray dogs standing together on a gravel lane" loading="lazy" width="1000" height="750">
+          <figcaption>The cannery litter, the morning after intake. All placed.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FOSTER & VOLUNTEER ======================= -->
+  <section id="help" aria-labelledby="help-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="help-h" class="rise">Foster or volunteer</h2>
+        <p class="lede rise d1">We have no facility by design. The whole organization is people who share their homes and their time.</p>
+      </div>
+      <div class="help-grid">
+        <div class="help-card rise">
+          <h3>Foster a rescue</h3>
+          <p>Every animal we accept sleeps in a foster home the same night, so our capacity is exactly the number of homes we can call. We currently have 61. We need 100.</p>
+          <ul>
+            <li><span><strong>We cover everything:</strong> food, supplies, and all veterinary care.</span></li>
+            <li><span><strong>Average stay is three weeks.</strong> You choose the species, size, and timing.</span></li>
+            <li><span><strong>Adopting your foster is allowed</strong> and happens often. 74 times so far.</span></li>
+          </ul>
+          <a class="tag-btn" href="#contact">Apply to foster</a>
+        </div>
+        <div class="help-card rise d1">
+          <h3>Volunteer with us</h3>
+          <p>Not everyone can foster. The rescue also runs on drivers, photographers, event hands, and people willing to answer a phone at odd hours.</p>
+          <ul>
+            <li><span><strong>Transport:</strong> vet runs and adoption-day drives, mostly within the county.</span></li>
+            <li><span><strong>Photography and bios:</strong> good photos get animals adopted measurably faster.</span></li>
+            <li><span><strong>Home visits and events:</strong> a few hours a month, scheduled around you.</span></li>
+          </ul>
+          <a class="tag-btn tag-btn--ghost" href="#contact">Join the volunteer list</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DONATE ======================= -->
+  <section class="give" id="give" aria-labelledby="give-h">
+    <div class="wrap">
+      <div class="give-grid">
+        <div class="give-side">
+          <div class="sec-head">
+            <h2 id="give-h" class="rise">Where your donation goes</h2>
+            <p class="lede rise d1">No staff, no building, no gala. Donations buy veterinary care and supplies, and we publish our books every January.</p>
+          </div>
+          <div class="give-monthly rise d1">
+            <p><strong>$12 a month</strong> covers our share of the 24-hour phone line and the utilities at the Skiff Lane house. Monthly gifts are what let us say yes at 2 a.m.</p>
+            <a class="tag-btn tag-btn--lamp" href="#contact">Give monthly</a>
+          </div>
+          <p class="give-trust rise d2"><strong>92¢ of every dollar</strong> goes directly to animal care. Donations are tax-deductible. EIN 88-0000000.</p>
+        </div>
+        <ul class="costs">
+          <li class="rise">
+            <span class="amount">$18</span>
+            <div><p class="what">Intake kit</p>
+            <p class="why">First vaccines, deworming, and flea treatment for one new arrival.</p></div>
+            <a class="give-this" href="#contact">Give $18</a>
+          </li>
+          <li class="rise">
+            <span class="amount">$45</span>
+            <div><p class="what">Microchip, collar, and tag</p>
+            <p class="why">Permanent ID, so a lost pet never has to become an intake again.</p></div>
+            <a class="give-this" href="#contact">Give $45</a>
+          </li>
+          <li class="rise">
+            <span class="amount">$120</span>
+            <div><p class="what">One emergency intake</p>
+            <p class="why">Transport and after-hours stabilization at the emergency vet. The average midnight call costs about this.</p></div>
+            <a class="give-this" href="#contact">Give $120</a>
+          </li>
+          <li class="rise">
+            <span class="amount">$340</span>
+            <div><p class="what">Full veterinary workup</p>
+            <p class="why">Spay or neuter, bloodwork, and dental. The largest line in our budget, per animal.</p></div>
+            <a class="give-this" href="#contact">Give $340</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= IMPACT & STORIES ======================= -->
+  <section class="impact" aria-labelledby="impact-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="impact-h" class="rise">Since 2014</h2>
+      </div>
+      <div class="impact-count rise">
+        <p class="big-number" data-count="1142">1,142</p>
+        <p><strong>animals placed,</strong> and every one of them slept in a home their very first night. That sentence is the whole organization.</p>
+      </div>
+      <div class="stories">
+        <a class="story rise" href="#contact">
+          <div class="story-photo">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80" alt="Waffles and Petra running down a dirt road at golden hour" loading="lazy" width="900" height="675">
+          </div>
+          <h3>Waffles &amp; Petra</h3>
+          <p>Surrendered together, adopted together. Their family sends us this photo every March on the anniversary.</p>
+        </a>
+        <a class="story rise d1" href="#contact">
+          <div class="story-photo">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=80" alt="Captain, an australian shepherd, on the beach at low tide" loading="lazy" width="900" height="675">
+          </div>
+          <h3>Captain</h3>
+          <p>Surrendered at nine when his owner passed away. Adopted by the harbormaster's daughter. Still walks the tide line daily.</p>
+        </a>
+        <a class="story rise d2" href="#contact">
+          <div class="story-photo">
+            <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=900&q=80" alt="Moose the dog and Doris the cat asleep together in the grass" loading="lazy" width="900" height="675">
+          </div>
+          <h3>Moose &amp; Doris</h3>
+          <p>The intake note said "do not separate," underlined twice. We didn't, and neither did their family.</p>
+        </a>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span><em>recently adopted</em> Juniper · Moose · Doris · Waffles · Petra · Captain · Halibut · Fig · Mabel · Skipper · Onion · Bess · Tugboat · Rosemary · Gus · Cricket · Fern · Buoy · Tallulah · Chowder ·</span>
+          <span><em>recently adopted</em> Juniper · Moose · Doris · Waffles · Petra · Captain · Halibut · Fig · Mabel · Skipper · Onion · Bess · Tugboat · Rosemary · Gus · Cricket · Fern · Buoy · Tallulah · Chowder ·</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="faq-h" class="rise">Common questions</h2>
+      </div>
+      <div class="faq-list rise">
+        <details>
+          <summary>Can I visit the animals?</summary>
+          <p>Yes, by appointment. Because our animals live in foster homes rather than a shelter, we schedule meetings at the Skiff Lane house or at the foster home, whichever suits the animal better. Send an inquiry or call the line to set one up.</p>
+        </details>
+        <details>
+          <summary>What does the adoption fee include?</summary>
+          <p>Spay or neuter surgery, age-appropriate vaccinations, deworming, flea treatment, and a registered microchip. Dogs also go home with a collar, tag, and starter food. The fee covers roughly half of what we actually spend per animal.</p>
+        </details>
+        <details>
+          <summary>How long does adoption take?</summary>
+          <p>Usually one to two weeks: inquiry, a meet and greet, then a short home visit before take-home day. If an animal has multiple applicants, the foster family helps pick the best match rather than first-come-first-served.</p>
+        </details>
+        <details>
+          <summary>I need to surrender an animal. Can you help?</summary>
+          <p>Call the 24-hour line first. We accept surrenders as foster space allows and prioritize emergencies. If we're full, we'll help you find alternatives; we would rather help you rehome safely than have an animal abandoned.</p>
+        </details>
+        <details>
+          <summary>Does fostering cost me anything?</summary>
+          <p>No. We supply food, crates, litter, and all veterinary care, and we reimburse mileage for vet runs. You provide the home and the attention. The average foster stay is about three weeks.</p>
+        </details>
+        <details>
+          <summary>Are donations tax-deductible?</summary>
+          <p>Yes. Harborlight is a registered 501(c)(3) nonprofit (EIN 88-0000000) and every donation receives a receipt. We publish a full financial summary each January; 92 cents of every dollar goes directly to animal care.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ======================= -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="contact-h" class="rise">Visit or reach us</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info rise">
+          <dl>
+            <div>
+              <dt>24-hour rescue line</dt>
+              <dd class="phone-big">(207) 555-0117</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:hello@harborlight.example">hello@harborlight.example</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>14 Skiff Lane, Cormorant Bay, ME 04600</dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd>Adoptions and visits by appointment, seven days a week. The rescue line never closes.</dd>
+            </div>
+          </dl>
+        </div>
+        <form class="inquiry rise d1" action="#" novalidate>
+          <h3>Send an inquiry</h3>
+          <div class="frow">
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-interest">I'm interested in</label>
+            <select id="f-interest" name="interest">
+              <option>Adopting an animal</option>
+              <option>Fostering</option>
+              <option>Volunteering</option>
+              <option>Donating or something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message</label>
+            <textarea id="f-msg" name="message" placeholder="If you're asking about a specific animal, include their name."></textarea>
+          </div>
+          <button class="tag-btn" type="submit">Send inquiry</button>
+          <p class="form-note">We answer within a day, usually sooner.</p>
+          <p class="sent" role="status">Thank you. We'll be in touch within a day. (This is a demonstration site; nothing was sent.)</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top"><span class="brand-lamp" aria-hidden="true"></span>Harborlight</a>
+      <p>All-volunteer animal rescue serving Cormorant Bay and the outer peninsula since 2014. Registered 501(c)(3) nonprofit, EIN 88-0000000.</p>
+    </div>
+    <div class="foot-col">
+      <h3>Contact</h3>
+      <ul>
+        <li>14 Skiff Lane, Cormorant Bay, ME 04600</li>
+        <li><a href="mailto:hello@harborlight.example">hello@harborlight.example</a></li>
+        <li class="phone">24-hr line: (207) 555-0117</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h3>Quick links</h3>
+      <ul>
+        <li><a href="#adopt">Adoptable animals</a></li>
+        <li><a href="#help">Foster &amp; volunteer</a></li>
+        <li><a href="#give">Donate</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-lightline">
+    <div class="wrap">
+      <span class="lit-note">The porch light is on. It stays on.</span>
+      <span>Demonstration site. Photos via Unsplash.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Progressive enhancement; the page is complete without this script. */
+document.documentElement.classList.add('js');
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* scroll reveals */
+if ('IntersectionObserver' in window && !reduced) {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.rise').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.rise').forEach(el => el.classList.add('in'));
+}
+
+/* count-up; final value already in markup */
+const counter = document.querySelector('.big-number');
+if (counter && 'IntersectionObserver' in window && !reduced) {
+  const target = parseInt(counter.dataset.count, 10);
+  const cio = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) return;
+    cio.disconnect();
+    const t0 = performance.now(), dur = 1400;
+    const tick = (t) => {
+      const p = Math.min((t - t0) / dur, 1);
+      counter.textContent = Math.round(target * (1 - Math.pow(1 - p, 4))).toLocaleString('en-US');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.6 });
+  cio.observe(counter);
+}
+
+/* mock inquiry form */
+const form = document.querySelector('.inquiry');
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.querySelector('#f-name'), email = form.querySelector('#f-email');
+    if (!name.value.trim()) { name.focus(); return; }
+    if (!email.value.trim() || !email.checkValidity()) { email.focus(); return; }
+    form.classList.add('is-sent');
+    form.querySelector('button[type="submit"]').disabled = true;
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "_sources": [
+    {
+      "fact": "Chartered in 1893, named after Sir Henry Bessemer, inventor of the Bessemer process for iron smelting",
+      "url": "https://northcarolinahistory.org/encyclopedia/bessemer-city/"
+    },
+    {
+      "fact": "Industrial heritage: textile mills starting with Southern Cotton Mills in 1895 established the town's manufacturing foundation",
+      "url": "https://northcarolinahistory.org/encyclopedia/bessemer-city/"
+    },
+    {
+      "fact": "Downtown revitalization through Main Street program, Centennial Park expansion, and Osage Mill redevelopment with 150 apartments and 30,000 sq ft of retail space",
+      "url": "https://businessnc.com/town-square-bessemer-city/"
+    }
+  ],
+
+  "town": "Bessemer City",
+  "slug": "bessemer-city",
+  "county": "Gaston County",
+  "brandPlace": "downtown",
+  "mapQuery": "Bessemer City,NC",
+
+  "metaDesc": "Custom web design and SEO for Bessemer City and Gaston County businesses: contractors, restaurants, and shops. Sites you own outright, no templates.",
+  "ogDesc": "Custom web design and development for Bessemer City and Gaston County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Bessemer City, NC. Websites, SEO, and branding for contractors, restaurants, and local shops in Gaston County.",
+  "schemaDesc": "Web development and design in Bessemer City, NC. Custom websites, SEO, and branding for contractors, restaurants, shops, and service businesses in Gaston County, Gastonia, Kings Mountain, Cherryville, and Dallas.",
+
+  "heroSub": "Custom websites, SEO, and branding for the contractors, restaurants, and Main Street shops of Bessemer City and central Gaston County. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Bessemer City</em> and central Gaston County.",
+  "localP1": "Bessemer City was chartered in 1893 and named after Sir Henry Bessemer, the inventor behind the industrial process that transformed iron production. The town's character was shaped by textile mills starting in the 1890s, beginning with <strong>Southern Cotton Mills</strong> and expanding into a manufacturing heartland. Today, with the <strong>Osage Mill</strong> bringing new apartments and retail to the historic district and <strong>Centennial Park</strong> anchoring a growing calendar of community events, Bessemer City is revitalizing its downtown while staying rooted in that working heritage.",
+  "localP2": "We build for the contractors and restaurant owners who keep Bessemer City running, the shop owners anchoring Main Street's comeback, the service businesses serving central Gaston County. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Bessemer City</strong>, Gastonia, Kings Mountain, Cherryville, Dallas &amp; the Charlotte metro",
+
+  "areaServed": ["Bessemer City", "Gastonia", "Kings Mountain", "Cherryville", "Dallas", "Charlotte"],
+
+  "citiesIntro": "Rooted in Bessemer City, working across the region. Explore a nearby town:",
+  "hereCard": "Main Street revitalization, contractors, restaurants, and local shops. Sites that bring customers through the door.",
+  "neighborCards": [
+    {"slug": "gastonia", "name": "Gastonia", "desc": "Gaston County's seat, the region's business hub with diverse industries and growing commercial corridors."},
+    {"slug": "kings-mountain", "name": "Kings Mountain", "desc": "Home to the historic battleground and state park, with tourism and retail that need mobile-first design."},
+    {"slug": "cherryville", "name": "Cherryville", "desc": "A working town built on trucking and trade, where Main Street businesses keep the community going."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Gaston County, Bessemer City, Gastonia, Kings Mountain, Cherryville, Dallas, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Contractors and service trades, restaurants and food service, Main Street shops and retailers, and small businesses across Gaston County.",
+
+  "footerNearby": [
+    {"slug": "gastonia", "name": "Gastonia"},
+    {"slug": "kings-mountain", "name": "Kings Mountain"},
+    {"slug": "cherryville", "name": "Cherryville"},
+    {"slug": "dallas", "name": "Dallas"}
+  ]
+}

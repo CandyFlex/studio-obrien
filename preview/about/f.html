@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Concept F: The Road Home</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--bg:#0a0a0b;--bg2:#0f0f11;--b:#26262a;--fg:#f4f5f6;--muted:#a8adb4;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65}
+  a{color:inherit}
+  ::selection{background:rgba(52,211,153,.28);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.75);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-in{max-width:820px;margin:0 auto;height:58px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:17px;letter-spacing:-.03em;color:#fff;text-decoration:none}
+  .nav-cta{background:var(--g);color:#06231a;font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:999px;text-decoration:none}
+
+  .hero{max-width:820px;margin:0 auto;padding:clamp(52px,8vw,92px) 20px clamp(32px,5vw,52px);display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:24px;align-items:center}
+  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:770;font-size:clamp(38px,6.4vw,72px);letter-spacing:-.04em;line-height:.98;text-wrap:balance}
+  .hero h1 em{font-style:italic;font-weight:520;color:var(--g)}
+  .hero p{margin-top:14px;font-size:15.5px;color:var(--muted);max-width:46ch}
+  .hero img{width:128px;height:128px;object-fit:cover;object-position:center top;border:1px solid var(--b)}
+
+  .road{max-width:820px;margin:0 auto;padding:0 20px clamp(48px,7vw,80px)}
+  .stop{position:relative;padding:0 0 clamp(30px,4.5vw,46px) 38px}
+  .stop::before{content:'';position:absolute;left:8px;top:26px;bottom:-4px;width:1px;background:rgba(255,255,255,.14)}
+  .stop:last-child::before{display:none}
+  .stop::after{content:'';position:absolute;left:3px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--g)}
+  .stop.here::after{background:var(--g);box-shadow:0 0 0 5px rgba(52,211,153,.18)}
+  .stop h2{font-family:'Inter Tight',sans-serif;font-weight:750;font-size:clamp(21px,3vw,30px);letter-spacing:-.03em;line-height:1.05;margin-bottom:8px}
+  .stop h2 em{font-style:italic;font-weight:520;color:var(--g)}
+  .stop p{font-size:15.5px;color:#c9cdd2;max-width:56ch;text-wrap:pretty}
+  .stop p strong{color:#fff;font-weight:600}
+  .stop p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  .stop p a:hover{border-bottom-color:var(--g)}
+
+  .stop .cta{margin-top:16px;border:1px solid var(--b);background:radial-gradient(130% 150% at 0% 0%,rgba(52,211,153,.09),transparent 62%);padding:clamp(20px,3vw,28px)}
+  .stop .cta p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;font-weight:700;font-size:14px;text-decoration:none;padding:12px 22px;border-radius:6px;border:1px solid transparent}
+  .btn-p{background:var(--g);color:#06231a}
+  .btn-g{border-color:var(--b);color:var(--fg)}
+  .btn-g:hover{border-color:var(--g);color:var(--g)}
+
+  .foot{max-width:820px;margin:0 auto;padding:20px;font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05)}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--g)}
+
+  @media(max-width:560px){
+    .hero{grid-template-columns:1fr;gap:18px}
+    .hero img{width:96px;height:96px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a href="/" class="nav-logo">Studio O'Brien</a>
+  <a href="/contact" class="nav-cta">Start a project</a>
+</div></nav>
+
+<header class="hero">
+  <div>
+    <h1>The road <em>home.</em></h1>
+    <p>How Jarred O'Brien ended up building websites for his own hometown, in four stops.</p>
+  </div>
+  <img src="/portfolio/jarred.webp" width="128" height="128" alt="Jarred O'Brien, founder of Studio O'Brien">
+</header>
+
+<main class="road">
+  <div class="stop">
+    <h2>Leave to learn the craft.</h2>
+    <p>Design, code, SEO, branding: I went where the work was and learned it at a professional level, for clients across the country who expected it done right.</p>
+  </div>
+  <div class="stop">
+    <h2>Watch the gap widen.</h2>
+    <p>Every year the internet moved faster: Google, then mobile, now AI search. And every year the good businesses back home fell a little further behind. <strong>Not their fault.</strong> Keeping up became a second full-time job nobody hired for.</p>
+  </div>
+  <div class="stop">
+    <h2>Come home to <em>Shelby.</em></h2>
+    <p>So I moved back and pointed everything I'd learned at my own community. The promise is simple: <strong>you run your business, I'll keep it visible.</strong> And when your site ships, it's yours: code, content, domain, everything.</p>
+  </div>
+  <div class="stop here">
+    <h2>Build the studio this region reaches for.</h2>
+    <p>That's the stop we're at now. Founder-led, built to grow, reinvesting in the area the whole way. The proof is <a href="/#portfolio">the work</a> and <a href="/blog">The Field Guide</a>, where I write down everything I know, sources and all.</p>
+    <div class="cta">
+      <p>Your business could be the next stop. Tell me what you're working with, and you'll hear back from me within a day.</p>
+      <div class="btns">
+        <a href="/contact" class="btn btn-p">Start a project</a>
+        <a href="/website-cost-calculator" class="btn btn-g">Get a free estimate</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>&copy; 2026 Studio O'Brien</span>
+  <span><a href="/blog/editorial-standards">Editorial Standards</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></span>
+</footer>
+
+</body>
+</html>

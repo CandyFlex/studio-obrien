@@ -1,0 +1,402 @@
+[
+  {
+    "id": "freemans-convenience-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target"
+  },
+  {
+    "id": "golden-valley-convenience-center-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NOT retail - Rutherford County solid-waste/recycling convenience (drop-off) center, government. Non-target."
+  },
+  {
+    "id": "hunt-family-farm-supply-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real farm-supply/agrarian retail at 2600 NC-226, Golden Valley Twp. No owned site found (listings only). Small rural retail; possible social-only gap target."
+  },
+  {
+    "id": "drop-in-1-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target. CHAIN: Drop-In Food Stores (dropinstores.com, 40+ yrs, multi-location)."
+  },
+  {
+    "id": "ulysses-miller-funeral-services-rutherfordton",
+    "exists": true,
+    "realWebsite": "ulyssesdmillerfuneralservice.com",
+    "liveSiteGrade": "C (funeral-network template, unverified)",
+    "reviews": { "count": null, "rating": 4.8 },
+    "owner": { "name": "Ulysses D. Miller" },
+    "gbpClosed": false,
+    "notes": "Real independent funeral home (P8-adjacent professional). Already has a site (looks like industry-template). Named owner. Moderate target - has-site low gap but real budget."
+  },
+  {
+    "id": "great-finds-consignment-rutherfordton",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real consignment/resale boutique (A&D Great Finds), 1201 US-221 S. Facebook-only, no owned domain = social-only gap. Real small-retail target."
+  },
+  {
+    "id": "oakland-kwik-stop-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "convenience/fuel - LOW capacity non-target. One source flags possibly temporarily closed - verify before any use."
+  },
+  {
+    "id": "debs-mini-mart-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target (mini-mart/gas, multi-location since 2006)."
+  },
+  {
+    "id": "manis-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target (tobacco/kratom/beer convenience)."
+  },
+  {
+    "id": "needmore-corner-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/country-store - LOW capacity non-target (thin listing, US-74 Bus, Bostic)."
+  },
+  {
+    "id": "food-country-vale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Small grocery, owner Ken Lingerfelt, ~9 employees. Shares name with Food Country USA (VA chain) but appears independent single store. CHAIN-NAME flag. Grocery - LOW priority non-target."
+  },
+  {
+    "id": "mcdaniel-textiles-boiling-springs",
+    "exists": true,
+    "realWebsite": "mcdanieltextiles.com",
+    "liveSiteGrade": "C (dated DotNetNuke B2B site, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: actually Gaffney/Chesnee SC, not Boiling Springs NC = OUT OF TERRITORY (SC, no warm intro). B2B yarn-roll service to textile plants. Industrial B2B non-target."
+  },
+  {
+    "id": "sunshine-storage-llc-bostic",
+    "exists": true,
+    "realWebsite": "sunshinestorageunits.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Self-storage (low-touch) - LOW capacity non-target. Already has a Storeganise-hosted site."
+  },
+  {
+    "id": "washburn-dorsey-funeral-home-bostic",
+    "exists": true,
+    "realWebsite": "washburndorsey.com",
+    "liveSiteGrade": "C (funeral CMS template, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real independent funeral home, 359 E Church St Bostic. Already has a site (industry CMS). Moderate target - has-site low gap, real budget."
+  },
+  {
+    "id": "bobs-storage-bostic",
+    "exists": true,
+    "realWebsite": "bobs-storage.net",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Self-storage (low-touch) - LOW capacity non-target. Has a basic site."
+  },
+  {
+    "id": "kwik-stop-2-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target (East Kwik Stop / Gulf, 765 US-74 Bus)."
+  },
+  {
+    "id": "mountain-view-casar",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NAME: 'Mountain View Grocery' - grocery + eatery (Hunt Bros pizza), owner Lara Patterson. Grocery/convenience - LOW capacity non-target."
+  },
+  {
+    "id": "pit-road-fallston",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target (Pit Road Drive-Thru, tobacco/pouches, social-only)."
+  },
+  {
+    "id": "18-north-convenience-and-cafe-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/cafe - LOW capacity non-target. Facebook-only; has a small grill/cafe with good local reviews but convenience-scale."
+  },
+  {
+    "id": "fasgas-minimart-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target (country store + grill)."
+  },
+  {
+    "id": "home-town-market-polkville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Grocery/eatery (Hometown Market), WIC store, 4601 Polkville Rd. Grocery/convenience - LOW capacity non-target."
+  },
+  {
+    "id": "polkville-discount-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Variety/discount store (17 yrs), 4001 Polkville Rd. LOW capacity non-target."
+  },
+  {
+    "id": "226-climate-controlled-storage-shelby",
+    "exists": true,
+    "realWebsite": "226ccstorage.storeganise.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Self-storage (low-touch) - LOW capacity non-target. Already on Storeganise platform; 4.8/11 reviews."
+  },
+  {
+    "id": "its-a-small-world-day-care-lawndale",
+    "exists": true,
+    "realWebsite": "itsasmallworlddaycare.com",
+    "liveSiteGrade": "C (basic, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real 4-star licensed childcare (cap 50, ages 0-12), 1424 Union Church Rd. Already has a site. Moderate target - enrollment-driven, has-site low gap."
+  },
+  {
+    "id": "the-camper-pros-mobile-rv-repair-bostic",
+    "exists": true,
+    "realWebsite": "thecamperpros.com",
+    "liveSiteGrade": "C (default WordPress, 'hello-world' slug live, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "STRONG target. Mobile RV/camper repair trade, 7+ yrs family-owned, toll-free 888 (ambition signal), wide service area, strong reviews. Basic WordPress site = clear upgrade path; trades-adjacent portfolio fit."
+  },
+  {
+    "id": "eastside-drive-thru-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/drive-thru - LOW capacity non-target."
+  },
+  {
+    "id": "keever-pharmacy-lincolnton",
+    "exists": true,
+    "realWebsite": "keeverpharmacy.com",
+    "liveSiteGrade": "C (basic independent-pharmacy site, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real independent pharmacy, 1814 E Main St Lincolnton, full services (compounding, delivery, immunizations, DME). Has a site. Good profile/target - strong local pharmacy, has-site low gap."
+  },
+  {
+    "id": "fashion-store-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 42, "rating": 4.6 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NAME CORRECTION: 'Fashion Corner' - women's clothing store, est 1981, long-established local fixture. Facebook-only (social gap). Not originally flagged but a real small-retail target."
+  },
+  {
+    "id": "riverside-nutrition-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Nutrition/smoothie club (Herbalife-style), 303 Grigg St. Social-only (FB/IG). LOW capacity non-target."
+  },
+  {
+    "id": "joyer-a-y-variedades-ana-llc-gastonia",
+    "exists": true,
+    "realWebsite": "anajoyeria.com",
+    "liveSiteGrade": "B- (Shopify e-commerce, unverified)",
+    "reviews": null,
+    "owner": { "name": "Ana Cortez" },
+    "gbpClosed": false,
+    "notes": "Jewelry/variety store, owner Ana Cortez, inside Waoo supermarket. Multi-location (Charlotte/Gastonia/Hendersonville), already has a Shopify e-commerce site = LOW gap. Non-target (good current site)."
+  },
+  {
+    "id": "upper-cleveland-medical-center-fallston",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "DISQUALIFY - Rural Health Clinic under CLECO Primary Care Network (Cleveland County health system satellite), NOT an independent practice. TOWN CORRECTION: 5009 Fallston Rd but city is Lawndale, not Fallston."
+  },
+  {
+    "id": "folks-cleaner-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "Boiling Springs location CLOSED (never recovered post-COVID); operation consolidated to Shelby (1207 E Marion St). Dry cleaner - LOW capacity; this location a non-target/closed."
+  },
+  {
+    "id": "spindale-house-spindale",
+    "exists": true,
+    "realWebsite": "spindalenc.net (government portal)",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Town of Spindale (municipal)" },
+    "gbpClosed": false,
+    "notes": "NOT a business - municipal community/recreation center (1885 Coxe House) run by Town of Spindale Rec Dept. Government-owned. Non-target."
+  },
+  {
+    "id": "u-store-warehouses-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Self-storage (low-touch), 107 Lee St Shelby - LOW capacity non-target."
+  },
+  {
+    "id": "west-express-vale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel + deli - LOW capacity non-target (president Ronald Burton). 'westexpress.lt' listing is an auto-scraper, not an owned site."
+  },
+  {
+    "id": "shree-ambika-mart-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/mart - LOW capacity non-target (278 W Main St, Spindale)."
+  },
+  {
+    "id": "bostic-florist-bostic",
+    "exists": true,
+    "realWebsite": "bosticfloristnc.com",
+    "liveSiteGrade": "C- (FlowerShopNetwork template w/ online ordering, vendor-locked, unverified)",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real locally-owned florist, 15+ yrs, 196 N Main St. Has a florist-network template site (vendor-locked, dated) = real weak-site/e-comm gap. Good small target."
+  },
+  {
+    "id": "spinning-leaf-gather-celebrate-retreat-shelby",
+    "exists": true,
+    "realWebsite": "wedgewoodweddings.com/spinningleaf",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Wedgewood Weddings (corporate)" },
+    "gbpClosed": false,
+    "notes": "DISQUALIFY - CHAIN. Now 'Spinning Leaf by Wedgewood Weddings', operated by Wedgewood Events (national venue chain, corporate-controlled web). 1414 Metcalf Rd vineyard venue."
+  },
+  {
+    "id": "sewing-center-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Dianne Clontz" },
+    "gbpClosed": false,
+    "notes": "'The Sewing Center - Dianne's Patches', alterations/embroidery since 1980, 937 S Morgan St. Facebook-only (social gap), named owner. Real long-established specialty retail but low-touch service - modest target."
+  },
+  {
+    "id": "kingsway-5-bessemer-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "convenience/fuel - LOW capacity non-target. CHAIN: numbered local Kingsway (CITGO) chain, #5, 201 S 14th St."
+  }
+]

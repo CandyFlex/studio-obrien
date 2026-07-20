@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geo Local C: Map Bleed</title>
+<link rel="stylesheet" href="/fonts.css">
+<style>
+  :root{--g:#34d399;--g-lite:#6ee7b7;--bg:#0a0a0b;--bg-2:#0e0f11;--surface:#141518;--surface-2:#1a1c20;--b:#25272d;--b-2:#33363d;--fg:#f4f5f6;--muted:#a4aab2;--dim:#767b83;--maxw:1240px;--ease:cubic-bezier(.16,1,.3,1)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .stub{padding:40px 0;color:var(--dim);font-size:14px}
+
+  section.local{position:relative;background:var(--bg-2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden}
+  .local-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:stretch}
+  .local-copy{padding:clamp(52px,7vw,92px) clamp(24px,4.5vw,64px) clamp(52px,7vw,92px) max(clamp(18px,4vw,40px),calc((100vw - var(--maxw))/2 + clamp(18px,4vw,40px)))}
+  h2{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(29px,4.2vw,46px);line-height:1.05;letter-spacing:-.03em;margin-bottom:20px;text-wrap:balance}
+  h2 em{font-style:normal;color:var(--g)}
+  .local-copy p{font-size:clamp(15px,1.65vw,16.5px);color:var(--muted);line-height:1.75;margin-bottom:16px;max-width:56ch}
+  .local-copy p strong{color:#e6e8ea;font-weight:600}
+  .local-copy p:last-of-type{margin-bottom:0}
+
+  .local-map{position:relative;min-height:460px}
+  .local-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.06)}
+  .local-map::before{content:'';position:absolute;inset:0 auto 0 0;width:120px;background:linear-gradient(to right,var(--bg-2),transparent);z-index:1;pointer-events:none}
+  .map-meta{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px;padding:16px;background:linear-gradient(to top,rgba(10,10,11,.78),transparent)}
+  .map-meta a,.map-meta span{display:inline-flex;align-items:center;gap:7px;background:rgba(10,10,11,.86);backdrop-filter:blur(8px);border:1px solid var(--b-2);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:600;color:#fff;text-decoration:none}
+  .map-meta svg{width:14px;height:14px;color:var(--g)}
+  .map-meta a:hover{border-color:var(--g)}
+  @media(max-width:840px){
+    .local-grid{grid-template-columns:1fr}
+    .local-copy{padding:clamp(44px,8vw,64px) clamp(18px,4vw,40px)}
+    .local-map{min-height:320px}
+    .local-map::before{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap stub">[ hero above ]</div>
+
+<section class="local">
+  <div class="local-grid">
+    <div class="local-copy">
+      <h2>Built for <em>uptown Shelby</em> and the county it anchors.</h2>
+      <p>Shelby is the seat of Cleveland County, and it shows on the square: the 1907 courthouse, the storefronts of a Main Street America district, the crowds for a show at the <strong>Don Gibson Theatre</strong> or the <strong>Earl Scruggs Center</strong>. It is a working town with a real downtown, and the businesses here deserve a website that looks the part.</p>
+      <p>We build for the people who actually run this place: the restaurant off the square, the contractor covering the county, the law office and the clinic, the shop trying to pull customers from Kings Mountain and the Charlotte commute. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.</p>
+    </div>
+    <div class="local-map">
+      <iframe title="Shelby, NC service area map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52126.14791282843!2d-81.5755558!3d35.2923349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856f2b45e0a6191%3A0x60c65f00f0b5e5e7!2sShelby%2C+NC!5e0!3m2!1sen!2sus!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Shelby &middot; Cleveland County</span>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@studioobrien.com</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(704) 974-3372</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap stub">[ services below ]</div>
+</body>
+</html>

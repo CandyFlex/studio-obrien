@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crownline Electric — Showcase Preview (local)</title>
+<style>
+  :root { --bg:#0c0d10; --panel:#15171c; --edge:#2a2d36; --ink:#e9eaee; --muted:#9aa0ab; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:radial-gradient(120% 90% at 50% -10%, #1a1d24 0%, var(--bg) 60%); color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { text-align:center; padding:38px 20px 8px; }
+  header h1 { margin:0 0 6px; font-size:22px; letter-spacing:-.2px; }
+  header p { margin:0; color:var(--muted); font-size:13px; }
+  .stage { display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start; justify-content:center;
+    padding:34px 24px 80px; }
+
+  /* ---- laptop ---- */
+  .laptop { width:min(920px, 92vw); }
+  .laptop .screen { position:relative; border:14px solid #1c1e24; border-radius:18px 18px 0 0;
+    background:#000; box-shadow:0 30px 70px rgba(0,0,0,.55); overflow:hidden; }
+  .laptop .screen .cam { position:absolute; top:6px; left:50%; transform:translateX(-50%); width:5px; height:5px;
+    border-radius:50%; background:#33363e; z-index:2; }
+  .framewrap { position:relative; width:100%; aspect-ratio:1440/900; overflow:hidden; }
+  .framewrap iframe { position:absolute; top:0; left:0; width:1440px; height:900px; border:0;
+    transform-origin:top left; }
+  .laptop .base { height:16px; border-radius:0 0 12px 12px;
+    background:linear-gradient(#c7ccd6,#8b909b); position:relative;
+    box-shadow:0 18px 30px rgba(0,0,0,.45); }
+  .laptop .base::after { content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:120px; height:7px; border-radius:0 0 8px 8px; background:#6b7080; }
+
+  /* ---- phone ---- */
+  .phone { width:328px; }
+  .phone .screen { position:relative; border:12px solid #1c1e24; border-radius:44px; background:#000;
+    box-shadow:0 30px 70px rgba(0,0,0,.55); overflow:hidden; }
+  .phone .notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:110px; height:22px;
+    background:#1c1e24; border-radius:14px; z-index:2; }
+  .phone .framewrap { aspect-ratio:390/844; }
+  .phone .framewrap iframe { width:390px; height:844px; }
+
+  .cap { text-align:center; margin-top:16px; color:var(--muted); font-size:13px; }
+  .cap b { color:var(--ink); font-weight:600; }
+  .note { max-width:680px; margin:0 auto; padding:0 24px 60px; color:var(--muted); font-size:12.5px; text-align:center; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Crownline Electric — local showcase preview</h1>
+    <p>The real site running locally, framed. Scroll inside each device.</p>
+  </header>
+
+  <div class="stage">
+    <div class="laptop">
+      <div class="screen">
+        <span class="cam"></span>
+        <div class="framewrap">
+          <iframe id="lap" title="Crownline Electric — desktop"
+            src="../../Website%20Pipe/projects/touchstone-electric/index.html" scrolling="yes"></iframe>
+        </div>
+      </div>
+      <div class="base"></div>
+      <div class="cap"><b>Laptop</b> — desktop layout (1440&times;900)</div>
+    </div>
+
+    <div class="phone">
+      <div class="screen">
+        <span class="notch"></span>
+        <div class="framewrap">
+          <iframe id="ph" title="Crownline Electric — mobile"
+            src="../../Website%20Pipe/projects/touchstone-electric/index.html" scrolling="yes"></iframe>
+        </div>
+      </div>
+      <div class="cap"><b>Phone</b> — mobile layout (390&times;844)</div>
+    </div>
+  </div>
+
+  <p class="note">Local preview only — nothing is wired into the portfolio yet. If a device looks blank,
+    the iframe is still loading the site; give it a second and it'll paint.</p>
+
+  <script>
+    // Scale each iframe's fixed logical viewport to fit its rendered frame width.
+    function fit(id, logicalW) {
+      const f = document.getElementById(id);
+      const wrap = f.parentElement;
+      const scale = wrap.clientWidth / logicalW;
+      f.style.transform = 'scale(' + scale + ')';
+    }
+    function fitAll() { fit('lap', 1440); fit('ph', 390); }
+    window.addEventListener('resize', fitAll);
+    window.addEventListener('load', fitAll);
+    fitAll();
+  </script>
+</body>
+</html>

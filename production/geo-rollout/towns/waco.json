@@ -1,0 +1,44 @@
+{
+  "town": "Waco",
+  "slug": "waco",
+  "county": "Cleveland County",
+  "brandPlace": "downtown",
+  "mapQuery": "Waco,NC",
+
+  "_sources": [
+    "Waco, North Carolina - Wikipedia: https://en.wikipedia.org/wiki/Waco,_North_Carolina",
+    "Town of Waco, NC - Did You Know?: http://www.townofwaco.com/did-you-know-.html",
+    "Town of Waco Business Directory: http://www.townofwaco.com/waco-business-directory-.html"
+  ],
+
+  "metaDesc": "Custom web design and SEO for Waco and Cleveland County small businesses. Websites, SEO, and branding you own, no templates.",
+  "ogDesc": "Custom web design and development for Waco and Cleveland County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Waco, NC. Websites and SEO for small businesses and local services in Cleveland County.",
+  "schemaDesc": "Web design and development in Waco, NC. Custom websites, SEO, and branding for small businesses and local services in Cleveland County, Shelby, Cherryville, and Kings Mountain.",
+
+  "heroSub": "Custom websites, SEO, and branding for the shops, services, and restaurants of Waco and Cleveland County. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Waco</em> and Cleveland County.",
+  "localP1": "Waco's roots run deep in Cleveland County agriculture and community. Founded in 1879 when local farmer Joe Ramsey's crossroads was renamed <strong>Waco</strong> after the Texas city, it became a farming town where cotton and cattle shaped the landscape. The community has remained centered on small business and local service, with a history of resilience that continues through today's ongoing downtown revitalization efforts.",
+  "localP2": "We build for the people who keep Waco going: the shop owner, the service business, the restaurant. Every site is designed around your business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Waco</strong>, Shelby, Cherryville, Kings Mountain &amp; the region",
+
+  "areaServed": ["Waco", "Shelby", "Cherryville", "Kings Mountain"],
+
+  "citiesIntro": "Rooted in Waco, working across the region. Explore a nearby town:",
+  "hereCard": "Local shops and service businesses in Waco and Cleveland County. Sites that bring customers through the door.",
+  "neighborCards": [
+    {"slug": "shelby", "name": "Shelby", "desc": "Cleveland County's county seat with established downtown businesses and local employers."},
+    {"slug": "cherryville", "name": "Cherryville", "desc": "Northwestern Gaston County hometown of trades, manufacturers, and service businesses."},
+    {"slug": "kings-mountain", "name": "Kings Mountain", "desc": "Tourism, retail, and food businesses near the historic battleground and state park."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Cleveland County, Shelby, Cherryville, Kings Mountain, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Local shops and service businesses, and restaurants across Cleveland County.",
+
+  "footerNearby": [
+    {"slug": "shelby", "name": "Shelby"},
+    {"slug": "cherryville", "name": "Cherryville"},
+    {"slug": "kings-mountain", "name": "Kings Mountain"}
+  ]
+}

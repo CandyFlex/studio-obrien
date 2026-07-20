@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ═══════════════════════════════════════════════════════════════════
+     CASE STUDY TEMPLATE (v2, split-hero informational) - reuse per project.
+     To make a new case study, copy this file and swap:
+       1. <title>, meta description, canonical, og:url/title/description/image
+       2. JSON-LD breadcrumb name + URL
+       3. Hero: project name, pitch paragraph, fact ledger values
+       4. Showcase reel images (desktop + mobile) inside the hero stage
+       5. Ideology trade word, feature inventory, design decisions
+       6. Claim-week steps stay; only trade-specific nouns change
+     Everything else (nav, footer, styles, scripts) stays identical.
+     ═══════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.clarity.ms">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD0V4CRPND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DD0V4CRPND');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crownline Electric Case Study | Studio O'Brien</title>
+<meta name="description" content="Inside Crownline Electric, a complete concept website for the electrical trade by Studio O'Brien. What's in the build, why it's built this way, and how a nominated business can claim it in about a week.">
+<link rel="canonical" href="https://studioobrien.com/case-studies/crownline-electric">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://studioobrien.com/case-studies/crownline-electric">
+<meta property="og:site_name" content="Studio O&#39;Brien">
+<meta property="og:title" content="Crownline Electric | A Studio O'Brien Case Study">
+<meta property="og:description" content="A complete concept website for the electrical trade. What's in the build, why it's built this way, and how a nominated business can claim it in about a week.">
+<meta property="og:image" content="https://studioobrien.com/portfolio/crownline.webp">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="415">
+<meta property="og:image:alt" content="Crownline Electric website design by Studio O'Brien">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crownline Electric | A Studio O'Brien Case Study">
+<meta name="twitter:description" content="A complete concept website for the electrical trade, designed and built by Studio O'Brien.">
+<meta name="twitter:image" content="https://studioobrien.com/portfolio/crownline.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://studioobrien.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Crownline Electric Case Study", "item": "https://studioobrien.com/case-studies/crownline-electric" }
+  ]
+}
+</script>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ── Self-hosted fonts ── */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/inter-700.woff2') format('woff2')}
+
+/* ── Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#0a0a0b;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;scrollbar-gutter:stable;overflow-x:clip}
+body{padding-top:60px;margin:0;width:100%;overflow-x:clip;background:#0a0a0b;color:#fff;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh}
+main{display:block}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── Reveal on scroll (JS-gated so no-JS visitors see everything) ── */
+.js [data-animate]{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);will-change:transform,opacity}
+.js .topbar[data-animate]{transform:translate3d(0,-16px,0)}
+.js [data-animate].visible{opacity:1;transform:translate3d(0,0,0)}
+@media(prefers-reduced-motion:reduce){
+  .js [data-animate]{opacity:1;transform:none;transition:none}
+}
+
+/* ── Grid overlay (matches homepage) ── */
+.nav-grid-overlay{position:fixed;inset:0 0 auto 0;height:100vh;background-image:linear-gradient(to right,rgba(52,211,153,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(52,211,153,.05) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 15%,rgba(0,0,0,.3) 40%,transparent 70%);pointer-events:none;z-index:0}
+
+/* ── Topbar (copied from homepage Nav V1 Whisper) ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:transparent;z-index:400;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),background .3s ease}
+.topbar.scrolled{background:rgba(17,17,17,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav-brand{font-size:18px;font-weight:720;letter-spacing:-.03em;color:#fff;text-decoration:none;position:relative;font-family:'Inter',sans-serif;font-variation-settings:'opsz' 32,'wght' 720}
+.nav-brand::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#34d399;transform:scaleX(.3) rotate(-1.5deg);transform-origin:left;transition:transform .3s ease}
+.nav-brand:hover::after{transform:scaleX(1) rotate(-1.5deg)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:#a8a8a8;font-size:13px;font-weight:500;letter-spacing:-.005em;text-decoration:none;position:relative;transition:color .2s;font-family:'Inter',sans-serif}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:#34d399;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:#fff;color:#111;font-size:10.5px;font-weight:600;padding:8px 14px 8px 16px;border-radius:999px;text-decoration:none;display:flex;align-items:center;gap:5px;position:relative;overflow:hidden;transition:color .3s;font-family:'Inter',sans-serif}
+.nav-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.nav-cta span,.nav-cta svg{position:relative;z-index:1}
+.nav-cta:hover::before{transform:translateY(0)}
+.nav-cta svg{transition:transform .2s}
+.nav-cta:hover svg{transform:translateX(3px)}
+.nav-menu-toggle{display:none;background:transparent;border:0;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center;color:#fff;padding:0;position:relative;z-index:401;margin-right:-6px}
+.nav-menu-toggle-icon,.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{display:block;width:22px;height:2px;background:currentColor;transition:transform .35s cubic-bezier(.16,1,.3,1),top .25s ease,background .25s ease;position:relative}
+.nav-menu-toggle-icon::before,.nav-menu-toggle-icon::after{content:'';position:absolute;left:0;right:0}
+.nav-menu-toggle-icon::before{top:-7px}
+.nav-menu-toggle-icon::after{top:7px}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon{background:transparent;transition:background .15s ease}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::before{top:0;transform:rotate(45deg)}
+.nav-menu-toggle.is-open .nav-menu-toggle-icon::after{top:0;transform:rotate(-45deg)}
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(10,10,11,.97);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);z-index:399;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;overflow-y:auto}
+.nav-menu-overlay.is-open{opacity:1;visibility:visible}
+.nav-menu-overlay-list{display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.8vw,32px);width:100%;max-width:480px}
+.nav-menu-overlay-list a{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(34px,9vw,56px);letter-spacing:-.04em;color:#fff;text-decoration:none;line-height:1;text-align:center;font-variation-settings:'opsz' 32,'wght' 720;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),color .2s ease,font-style .2s ease}
+.nav-menu-overlay-list a:hover,.nav-menu-overlay-list a:focus-visible{color:#34d399;font-style:italic;font-weight:500;outline:none}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a{opacity:1;transform:translateY(0)}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(1){transition-delay:.08s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(2){transition-delay:.14s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(3){transition-delay:.2s}
+.nav-menu-overlay.is-open .nav-menu-overlay-list a:nth-child(4){transition-delay:.26s}
+.nav-menu-overlay-cta{margin-top:clamp(32px,5vw,56px);background:#fff;color:#0a0a0b;padding:16px 28px 16px 32px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.005em;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .4s ease .32s,transform .4s cubic-bezier(.16,1,.3,1) .32s,color .3s ease}
+.nav-menu-overlay-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.nav-menu-overlay-cta:hover::before{transform:translateY(0)}
+.nav-menu-overlay-cta span,.nav-menu-overlay-cta svg{position:relative;z-index:1}
+.nav-menu-overlay-cta svg{transition:transform .25s ease}
+.nav-menu-overlay-cta:hover svg{transform:translateX(4px)}
+.nav-menu-overlay.is-open .nav-menu-overlay-cta{opacity:1;transform:translateY(0)}
+.nav-menu-overlay-tag{position:absolute;bottom:clamp(20px,3vw,32px);left:50%;transform:translateX(-50%);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;opacity:0;transition:opacity .4s ease .45s}
+.nav-menu-overlay-tag::before,.nav-menu-overlay-tag::after{content:'';display:inline-block;width:18px;height:1px;background:#34d399}
+.nav-menu-overlay.is-open .nav-menu-overlay-tag{opacity:1}
+body.is-menu-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){
+  .nav-menu-overlay-list a,.nav-menu-overlay-cta{transition:opacity .15s ease,color .2s ease}
+  .nav-menu-overlay.is-open .nav-menu-overlay-list a{transform:none;transition-delay:0s}
+  .nav-menu-overlay.is-open .nav-menu-overlay-cta{transform:none;transition-delay:0s}
+}
+@media(max-width:999.98px){
+  .topbar{padding:0 16px}
+  .nav-links{display:none}
+  .nav-brand{font-size:15px}
+  .nav-cta{display:none}
+  .nav-menu-toggle{display:inline-flex}
+}
+
+/* ── Split hero: copy + facts left, laptop/phone stage right ── */
+.cs-hero{position:relative;z-index:1;display:grid;grid-template-areas:"copy stage" "facts stage";grid-template-columns:minmax(0,10fr) minmax(0,11fr);grid-template-rows:auto 1fr;column-gap:clamp(32px,4.5vw,80px);row-gap:clamp(28px,3.4vw,48px);align-items:start;max-width:1440px;margin:clamp(20px,3vw,48px) auto clamp(72px,8vw,128px);padding:0 clamp(20px,3vw,44px)}
+.cs-hero-copy{grid-area:copy}
+.cs-pills{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:clamp(18px,2.2vw,26px)}
+.case-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2a2b;color:#a8a8a8;font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;padding:6px 14px;background:transparent}
+.case-pill--green{color:#d4d4d4}
+.case-pill--green .pill-dot{width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block}
+.cs-title{position:relative;font-weight:720;font-variation-settings:'opsz' 32,'wght' 720;font-size:clamp(38px,4.6vw,68px);line-height:1;letter-spacing:-.04em;color:#fff;margin:0 0 clamp(16px,2vw,24px);text-wrap:balance}
+.cs-title::before{content:'';display:block;width:48px;height:2px;background:#34d399;margin-bottom:clamp(14px,1.8vw,22px)}
+.cs-lead{font-size:clamp(15px,1.35vw,18px);font-weight:400;line-height:1.65;color:#a8a8a8;max-width:56ch;margin:0;text-wrap:pretty}
+.cs-lead strong{color:#d4d4d4;font-weight:600}
+.cs-facts{grid-area:facts;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #1f1f20;align-self:end}
+.cs-fact{padding:clamp(14px,1.7vw,20px) clamp(14px,1.7vw,24px) 0 0}
+.cs-fact:nth-child(even){border-left:1px solid #1f1f20;padding-left:clamp(14px,1.7vw,24px)}
+.cs-fact:nth-child(n+3){border-top:1px solid #1f1f20;margin-top:clamp(14px,1.7vw,20px)}
+.cs-fact dt{font-size:12px;font-weight:500;color:#888;letter-spacing:-.005em;margin:0 0 5px}
+.cs-fact dd{font-size:clamp(14px,1.2vw,16px);font-weight:600;color:#fff;letter-spacing:-.01em;line-height:1.35;margin:0}
+.cs-hero-stage{grid-area:stage;min-width:0;align-self:center;padding-bottom:clamp(28px,4vw,64px)}
+@media(max-width:919.98px){
+  .cs-hero{grid-template-areas:"copy" "stage" "facts";grid-template-columns:1fr;grid-template-rows:auto;row-gap:clamp(30px,5vw,44px);margin-top:20px;padding:0 20px}
+  .cs-hero-stage{padding-bottom:clamp(24px,7vw,48px)}
+  .cs-lead{max-width:65ch}
+}
+@media(max-width:459.98px){
+  .cs-facts{grid-template-columns:1fr}
+  .cs-fact:nth-child(even){border-left:0;padding-left:0}
+  .cs-fact + .cs-fact{border-top:1px solid #1f1f20;margin-top:14px}
+}
+
+/* ── Laptop + phone reel stage (from homepage Walkthrough V5, scaled for hero) ── */
+.v5-stage{position:relative;width:100%;margin:0;--phone-w:clamp(64px,9vw,168px)}
+.v5-laptop{position:relative;z-index:1;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) 4px 4px;padding:clamp(8px,1.1vw,16px) clamp(8px,1.1vw,16px) clamp(7px,1vw,14px);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 80px 140px -50px rgba(0,0,0,.9),0 -40px 200px -20px rgba(52,211,153,.28),0 40px 200px -20px rgba(52,211,153,.22),0 0 180px -20px rgba(52,211,153,.22)}
+.v5-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(56px,6.5vw,96px);height:clamp(8px,1vw,14px);background:#0d0d0e;border-radius:0 0 10px 10px;z-index:5}
+.v5-screen{position:relative;aspect-ratio:19/10;border-radius:clamp(4px,.42vw,6px);overflow:hidden;background:#000}
+.v5-screen .v-poster{position:absolute;inset:0;width:100%;height:100%;display:block;background:radial-gradient(ellipse at 50% 40%,rgba(52,211,153,.16),transparent 60%),linear-gradient(135deg,#0e1f17 0%,#0a0a0b 100%);z-index:0}
+.scroll-bg{position:absolute;inset:0;z-index:1;overflow:hidden;contain:paint;clip-path:inset(0)}
+.scroll-track{position:absolute;left:0;top:0;width:100%;display:flex;flex-direction:column;animation:wt-scroll 110s linear infinite}
+.scroll-bg--mobile .scroll-track{animation-duration:210s}
+.scroll-track img{width:100%;height:auto;display:block}
+@keyframes wt-scroll{
+  from{transform:translate3d(0,0,0)}
+  to  {transform:translate3d(0,-50%,0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .scroll-track{animation:none;transform:none}
+}
+.v5-chrome{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:clamp(5px,.6vw,8px);padding:clamp(8px,.9vw,12px) clamp(12px,1.4vw,20px);background:linear-gradient(to bottom,rgba(10,10,11,.65),transparent);pointer-events:none}
+.v5-chrome .dot{width:clamp(6px,.65vw,9px);height:clamp(6px,.65vw,9px);border-radius:50%}
+.v5-chrome .dot:nth-child(1){background:#ff5f56}
+.v5-chrome .dot:nth-child(2){background:#ffbd2e}
+.v5-chrome .dot:nth-child(3){background:#27c93f}
+.v5-keyboard{height:clamp(8px,1vw,14px);margin:0 -1.6%;background:linear-gradient(180deg,#2a2a2c 0%,#0e0e10 100%);border-radius:0 0 clamp(14px,1.6vw,22px) clamp(14px,1.6vw,22px);position:relative;z-index:1}
+.v5-keyboard::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(80px,9.5vw,140px);height:clamp(3px,.36vw,5px);background:#0d0d0e;border-radius:0 0 6px 6px}
+.v5-stage::after{content:'';position:absolute;left:8%;right:8%;bottom:-30px;height:42px;background:radial-gradient(ellipse at center,rgba(0,0,0,.65) 0%,transparent 70%);filter:blur(12px);z-index:-1;pointer-events:none}
+.v5-phone{position:absolute;right:clamp(8px,1.1vw,16px);bottom:calc(var(--phone-w) * -.35);width:var(--phone-w);aspect-ratio:9/19.5;background:#1a1a1c;border:1px solid #2a2a2c;border-radius:calc(var(--phone-w) * .14);padding:calc(var(--phone-w) * .04);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 50px 90px -20px rgba(0,0,0,.85);z-index:3}
+.v5-phone-screen{position:relative;width:100%;height:100%;border-radius:calc(var(--phone-w) * .1);overflow:hidden;background:#000}
+.v5-phone-screen .v-poster{position:absolute;inset:0;width:100%;height:100%;display:block;background:linear-gradient(180deg,#0e1f17,#050505);z-index:0}
+.v5-phone-notch{position:absolute;top:calc(var(--phone-w) * .05);left:50%;transform:translateX(-50%);width:calc(var(--phone-w) * .32);height:calc(var(--phone-w) * .07);background:#0d0d0e;border-radius:calc(var(--phone-w) * .04);z-index:5}
+
+/* ── Ideology ── */
+.cs-ideology{max-width:860px;margin:0 auto;padding:0 24px clamp(80px,9vw,140px)}
+.cs-h2{position:relative;font-weight:720;font-variation-settings:'opsz' 32,'wght' 720;font-size:clamp(30px,3.8vw,52px);line-height:1.05;letter-spacing:-.03em;color:#fff;margin:0 0 clamp(18px,2.2vw,28px);text-wrap:balance}
+.cs-h2::before{content:'';display:block;width:48px;height:2px;background:#34d399;margin-bottom:clamp(14px,1.8vw,20px)}
+.cs-h2 em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500}
+.cs-ideology p{font-size:clamp(15px,1.5vw,18px);font-weight:400;line-height:1.65;color:#a8a8a8;max-width:65ch;margin:0 0 1.2em;text-wrap:pretty}
+.cs-ideology p:last-child{margin-bottom:0}
+.cs-ideology p strong{color:#d4d4d4;font-weight:600}
+
+/* ── Feature inventory ── */
+.cs-inventory{max-width:1200px;margin:0 auto;padding:0 24px clamp(80px,9vw,140px)}
+.cs-inventory .cs-h2{margin-bottom:clamp(28px,3.4vw,48px)}
+.cs-inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,3.2vw,44px) clamp(32px,4vw,64px)}
+.cs-inv-item h3{position:relative;font-weight:700;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.015em;line-height:1.25;color:#fff;margin:0 0 8px;padding-top:12px}
+.cs-inv-item h3::before{content:'';position:absolute;top:0;left:0;width:20px;height:2px;background:#34d399}
+.cs-inv-item p{font-size:clamp(14px,1.3vw,16px);font-weight:400;line-height:1.6;color:#a8a8a8;margin:0;max-width:52ch;text-wrap:pretty}
+@media(max-width:719.98px){
+  .cs-inv-grid{grid-template-columns:1fr;gap:24px}
+}
+
+/* ── Design decisions ledger ── */
+.cs-ledger{max-width:1200px;margin:0 auto;padding:0 24px clamp(80px,9vw,140px)}
+.cs-ledger .cs-h2{margin-bottom:0}
+.cs-ledger-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #2a2a2b;margin-top:clamp(28px,3.4vw,48px)}
+.cs-ledger-cell{padding:clamp(24px,3vw,40px) clamp(20px,2.4vw,36px) 0 0}
+.cs-ledger-cell + .cs-ledger-cell{border-left:1px solid #2a2a2b;padding-left:clamp(20px,2.4vw,36px)}
+.cs-ledger-cell h3{font-weight:700;font-size:clamp(19px,1.9vw,26px);letter-spacing:-.02em;line-height:1.2;color:#fff;margin:0 0 12px}
+.cs-ledger-cell p{font-size:clamp(14px,1.35vw,16.5px);font-weight:400;line-height:1.6;color:#a8a8a8;margin:0;text-wrap:pretty}
+@media(max-width:859.98px){
+  .cs-ledger-grid{grid-template-columns:1fr}
+  .cs-ledger-cell{padding-right:0}
+  .cs-ledger-cell + .cs-ledger-cell{border-left:0;padding-left:0;border-top:1px solid #2a2a2b;margin-top:clamp(22px,3vw,32px)}
+}
+
+/* ── Claim week timeline ── */
+.cs-week{max-width:960px;margin:0 auto;padding:0 24px clamp(80px,9vw,140px)}
+.cs-week-intro{font-size:clamp(15px,1.5vw,18px);font-weight:400;line-height:1.65;color:#a8a8a8;max-width:62ch;margin:0 0 clamp(28px,3.4vw,44px);text-wrap:pretty}
+.cs-week-rows{border-top:1px solid #2a2a2b}
+.cs-week-row{display:grid;grid-template-columns:150px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 0}
+.cs-week-row + .cs-week-row{border-top:1px solid #1f1f20}
+.cs-week-day{align-self:start;justify-self:start;border:1px solid #2a2a2b;border-radius:999px;color:#d4d4d4;font-size:12.5px;font-weight:600;letter-spacing:-.005em;padding:6px 14px;white-space:nowrap}
+.cs-week-row h3{font-weight:700;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.02em;line-height:1.2;color:#fff;margin:0 0 8px}
+.cs-week-row p{font-size:clamp(14px,1.35vw,16.5px);font-weight:400;line-height:1.6;color:#a8a8a8;margin:0;max-width:58ch;text-wrap:pretty}
+@media(max-width:599.98px){
+  .cs-week-row{grid-template-columns:1fr;gap:12px;padding:20px 0}
+}
+
+/* ── Nomination / claim ── */
+.cs-claim{position:relative;background:#0a0a0b;padding:clamp(72px,9vw,140px) 0;z-index:2;overflow:hidden;border-top:1px solid #1f1f20}
+.cs-claim::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(52,211,153,.08),transparent 55%),radial-gradient(circle at 75% 80%,rgba(52,211,153,.05),transparent 55%);pointer-events:none}
+.cs-claim-wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,3vw,40px);position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+.cs-claim-h2{font-weight:720;font-variation-settings:'opsz' 32,'wght' 720;font-size:clamp(34px,5.4vw,72px);line-height:1.05;letter-spacing:-.04em;color:#fff;text-wrap:balance;margin:0 0 clamp(18px,2.2vw,28px)}
+.cs-claim-h2 em{font-style:italic;color:#34d399;font-weight:500;font-variation-settings:'opsz' 32,'wght' 500;line-height:1.1;padding-bottom:.05em}
+.cs-claim-wrap>p{font-size:clamp(15px,1.5vw,18px);font-weight:400;line-height:1.6;color:#a8a8a8;max-width:58ch;margin:0 0 1.1em;text-wrap:pretty}
+.cs-claim-wrap>p strong{color:#d4d4d4;font-weight:600}
+.cs-claim-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(14px,1.8vw,22px);margin-top:clamp(18px,2.4vw,30px)}
+.cs-claim-cta{background:#fff;color:#0a0a0b;font-weight:600;font-size:15px;letter-spacing:-.005em;padding:16px 28px 16px 32px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;position:relative;overflow:hidden;transition:color .3s}
+.cs-claim-cta::before{content:'';position:absolute;inset:0;background:#34d399;transform:translateY(101%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:0}
+.cs-claim-cta:hover::before{transform:translateY(0)}
+.cs-claim-cta span,.cs-claim-cta svg{position:relative;z-index:1}
+.cs-claim-cta svg{transition:transform .25s ease}
+.cs-claim-cta:hover svg{transform:translateX(4px)}
+.cs-claim-cta:focus-visible{outline:2px solid #34d399;outline-offset:3px}
+.cs-claim-call{font-size:14.5px;font-weight:500;color:#34d399;text-decoration:none;border-bottom:1px solid rgba(52,211,153,.35);padding-bottom:2px;transition:border-color .25s ease}
+.cs-claim-call:hover{border-color:#34d399}
+.cs-claim-note{margin-top:clamp(20px,2.4vw,28px);font-weight:500;font-size:13px;color:#a8a8a8;letter-spacing:-.005em;display:inline-flex;align-items:center;gap:12px}
+.cs-claim-note::before,.cs-claim-note::after{content:'';width:24px;height:1px;background:#34d399;display:inline-block}
+
+/* ── Footer (copied from homepage Footer V2) ── */
+.footer-v2{position:relative;background:#0a0a0b;border-top:1px solid #1f1f20;padding:clamp(32px,4vw,44px) 0 clamp(18px,2vw,22px);z-index:2}
+.footer-v2-wrap{max-width:780px;margin:0 auto;padding:0 clamp(20px,3vw,40px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(16px,2vw,20px)}
+.footer-v2-main{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,1.8vw,18px);width:100%}
+.footer-v2-brand-col{display:flex;flex-direction:column;align-items:center;gap:7px;max-width:440px}
+.footer-v2-links-col{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;container-type:inline-size}
+.footer-v2-brand{font-family:'Inter',sans-serif;font-weight:720;font-size:clamp(18px,1.8vw,21px);color:#fff;letter-spacing:-.03em;text-decoration:none;font-variation-settings:'opsz' 32,'wght' 720;line-height:1;transition:color .25s ease}
+.footer-v2-brand:hover{color:#34d399}
+.footer-v2-tag{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:400;color:#a8a8a8;letter-spacing:-.005em;line-height:1.5;margin:0;text-wrap:pretty}
+.footer-v2-tag em{font-style:italic;color:#34d399;font-weight:500}
+.footer-v2-nav{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:0;white-space:nowrap;max-width:100%}
+.footer-v2-nav a{font-family:'Inter',sans-serif;font-size:clamp(6px,1.9cqi,13px);font-weight:500;color:#d4d4d4;letter-spacing:-.005em;text-decoration:none;padding:2px 0;white-space:nowrap;transition:color .25s ease}
+.footer-v2-nav a:hover{color:#34d399}
+.footer-v2-nav a + a::before{content:'\2726';margin:0 .85em;color:#34d39966;font-weight:400;font-size:.75em;display:inline-block;vertical-align:middle}
+.footer-v2-contact{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;row-gap:4px}
+.footer-v2-contact a{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;color:#888;letter-spacing:-.005em;text-decoration:none;padding:2px 0;transition:color .25s ease}
+.footer-v2-contact a:hover{color:#34d399}
+.footer-v2-contact a + a::before{content:'\2726';margin:0 10px;color:#34d39966;font-weight:400;font-size:.8em;display:inline-block;vertical-align:middle}
+.footer-v2-bottom{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;padding-top:clamp(14px,1.6vw,18px);border-top:1px solid #1f1f20}
+.footer-v2-cr{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:400;color:#666;letter-spacing:-.005em;line-height:1.5;white-space:normal;text-align:center;max-width:680px}
+.footer-v2-cr a{color:inherit;text-decoration:none;transition:color .25s ease}
+.footer-v2-cr a:hover{color:#34d399}
+.footer-v2-back{background:transparent;border:1px solid #2a2a2b;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#a8a8a8;cursor:pointer;transition:border-color .25s,color .25s,background .25s;flex-shrink:0}
+.footer-v2-back:hover{border-color:#34d399;color:#34d399;background:#0f0f10}
+.footer-v2-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+@media(max-width:639.98px){
+  .footer-v2{padding:24px 0 16px}
+  .footer-v2-wrap{gap:16px;padding:0 18px}
+  .footer-v2-main{gap:14px}
+  .footer-v2-brand-col{max-width:none}
+  .footer-v2-brand{font-size:19px}
+  .footer-v2-tag{font-size:12px;line-height:1.45}
+  .footer-v2-links-col{gap:9px}
+  .footer-v2-contact a{font-size:12px;padding:2px 0}
+  .footer-v2-contact a + a::before{margin:0 8px;font-size:.7em}
+  .footer-v2-bottom{gap:14px;padding-top:14px}
+  .footer-v2-cr{font-size:11px;white-space:normal}
+  .footer-v2-back{width:34px;height:34px}
+  .footer-v2-back svg{width:14px;height:14px}
+}
+</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x8v48co1gg");
+</script>
+</head>
+<body>
+
+<!-- GRID OVERLAY -->
+<div class="nav-grid-overlay" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<nav class="topbar" data-animate aria-label="Site navigation">
+  <a class="nav-brand" href="/">O'BRIEN</a>
+  <div class="nav-links">
+    <a href="/#portfolio">Work</a>
+    <a href="/#process-section">Process</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
+  </div>
+  <a class="nav-cta" href="/contact">
+    <span>Start a Website</span>
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <button class="nav-menu-toggle" id="nav-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-overlay">
+    <span class="nav-menu-toggle-icon" aria-hidden="true"></span>
+  </button>
+</nav>
+
+<!-- MOBILE OVERLAY MENU -->
+<div class="nav-menu-overlay" id="nav-menu-overlay" aria-hidden="true">
+  <div class="nav-menu-overlay-list">
+    <a href="/#portfolio">Work</a>
+    <a href="/#process-section">Process</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/website-cost-calculator">Calculator</a>
+  </div>
+  <a class="nav-menu-overlay-cta" href="/contact">
+    <span>Start a Website</span>
+    <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="nav-menu-overlay-tag" aria-hidden="true">Studio O&rsquo;Brien &middot; Shelby, NC</div>
+</div>
+
+<main>
+
+<!-- SPLIT HERO — copy + facts left, working site right -->
+<header class="cs-hero">
+  <div class="cs-hero-copy" data-animate>
+    <div class="cs-pills">
+      <span class="case-pill">Case Study</span>
+      <span class="case-pill case-pill--green"><span class="pill-dot" aria-hidden="true"></span>Available to claim</span>
+    </div>
+    <h1 class="cs-title">Crownline Electric</h1>
+    <p class="cs-lead">A complete, working website for an electrical contractor, designed and coded in the studio. <strong>This page is the full tour:</strong> what&rsquo;s in the build, why it&rsquo;s built this way, and how a nominated business claims it in about a week.</p>
+  </div>
+  <div class="cs-hero-stage" data-animate>
+    <div class="v5-stage">
+      <div class="v5-laptop">
+        <span class="v5-notch"></span>
+        <div class="v5-screen">
+          <div class="v-poster" aria-hidden="true"></div>
+          <div class="scroll-bg scroll-bg--desktop" aria-hidden="true">
+            <div class="scroll-track">
+              <img src="/portfolio/crownline-reel.webp" alt="Crownline Electric website scrolling page preview" width="1440" height="8373" loading="eager" decoding="async">
+              <img src="/portfolio/crownline-reel.webp" alt="" width="1440" height="8373" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="v5-chrome" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="v5-keyboard"></div>
+      <div class="v5-phone">
+        <span class="v5-phone-notch"></span>
+        <div class="v5-phone-screen">
+          <div class="v-poster" aria-hidden="true"></div>
+          <div class="scroll-bg scroll-bg--mobile" aria-hidden="true">
+            <div class="scroll-track">
+              <img src="/portfolio/crownline-reel-mobile.webp" alt="Crownline Electric mobile scrolling page preview" width="470" height="15879" loading="eager" decoding="async">
+              <img src="/portfolio/crownline-reel-mobile.webp" alt="" width="470" height="15879" loading="eager" decoding="async">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <dl class="cs-facts" data-animate>
+    <div class="cs-fact">
+      <dt>Trade</dt>
+      <dd>Electrical contractor</dd>
+    </div>
+    <div class="cs-fact">
+      <dt>Scope</dt>
+      <dd>Full site, design and build</dd>
+    </div>
+    <div class="cs-fact">
+      <dt>Code</dt>
+      <dd>Hand-written, no theme</dd>
+    </div>
+    <div class="cs-fact">
+      <dt>Adapted for your business in</dt>
+      <dd>About a week</dd>
+    </div>
+  </dl>
+</header>
+
+<!-- IDEOLOGY — why we build first -->
+<section class="cs-ideology" data-animate aria-label="Why we build first">
+  <h2 class="cs-h2">We build the standard <em>first</em>.</h2>
+  <p>Search for an electrician in most towns and every result looks the same: a stock photo of a breaker panel, a phone number buried three clicks deep, and a template doing the least work it can. The businesses behind those sites are often the best crews in the county. Their websites just don&rsquo;t say so.</p>
+  <p>We think the trades deserve better storefronts, so we don&rsquo;t wait to be hired. We design and code a complete site for one trade at a time, at the standard we&rsquo;d defend to any client. Then we nominate a shortlist of local businesses whose work outclasses their current website and send them this page.</p>
+  <p><strong>Crownline is the electrical build.</strong> It isn&rsquo;t a mockup waiting on a client, and nothing on it is filler. It&rsquo;s finished work, and one business gets to make it theirs.</p>
+</section>
+
+<!-- FEATURE INVENTORY — what's in the build -->
+<section class="cs-inventory" data-animate aria-label="What is in the build">
+  <h2 class="cs-h2">What&rsquo;s in the <em>build</em>.</h2>
+  <div class="cs-inv-grid">
+    <div class="cs-inv-item">
+      <h3>Call-first layout</h3>
+      <p>A tap-to-call button stays within reach in every section, because customers with a dead outlet phone, they don&rsquo;t fill out forms.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Service pages built for search</h3>
+      <p>Each core service gets its own page, structured the way Google matches &ldquo;electrician near me&rdquo; and &ldquo;panel upgrade&rdquo; searches.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Review proof up front</h3>
+      <p>A Google-reviews block sits in the first screen, doing the trust work before a visitor reads a single paragraph.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Booking built in</h3>
+      <p>An appointment button rides alongside the call button, for the planners who&rsquo;d rather schedule than dial.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Mobile-first build</h3>
+      <p>Designed at phone width before desktop. Most urgent searches happen in a parking lot, not at a desk, and the layout respects that.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Hand-written code</h3>
+      <p>No WordPress, no page builder, no stack of plugins waiting to break or slow the site down. Just clean pages that load fast on a weak signal.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Local SEO structure</h3>
+      <p>Clean headings, meta tags, and local-business schema, so the site is legible to Google from the day it goes live.</p>
+    </div>
+    <div class="cs-inv-item">
+      <h3>Yours outright</h3>
+      <p>When it launches under your name, you own the site. No platform lock-in and no retainer required to keep it alive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN DECISIONS -->
+<section class="cs-ledger" data-animate aria-label="Design decisions">
+  <h2 class="cs-h2">Why it looks like <em>this</em>.</h2>
+  <div class="cs-ledger-grid">
+    <div class="cs-ledger-cell">
+      <h3>One color, owned.</h3>
+      <p>A single amber runs from the wordmark to the buttons to the hover states. On a results page full of gray competitors, the brand reads from across the room.</p>
+    </div>
+    <div class="cs-ledger-cell">
+      <h3>Type does the selling.</h3>
+      <p>Heavy, confident headings state the offer plainly. No thin script over a dimmed stock photo, which is the template default in this trade.</p>
+    </div>
+    <div class="cs-ledger-cell">
+      <h3>Proof over promises.</h3>
+      <p>Reviews, licensing, and warranty badges sit high on the page. The layout walks a visitor from problem to proof to phone in one pass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLAIM WEEK — what happens step by step -->
+<section class="cs-week" data-animate aria-label="What claiming looks like">
+  <h2 class="cs-h2">Claimed to launched in about a <em>week</em>.</h2>
+  <p class="cs-week-intro">The design and engineering are already done. Claiming the build means rebuilding it around your business, and that part moves fast.</p>
+  <div class="cs-week-rows">
+    <div class="cs-week-row">
+      <span class="cs-week-day">Day 1</span>
+      <div>
+        <h3>The call</h3>
+        <p>A short consult: your services, your service area, your photos, and the name the truck already carries.</p>
+      </div>
+    </div>
+    <div class="cs-week-row">
+      <span class="cs-week-day">Days 2 to 4</span>
+      <div>
+        <h3>The rebuild</h3>
+        <p>We swap the brand, rewrite the copy around your business, and drop in your photos, reviews, and service list.</p>
+      </div>
+    </div>
+    <div class="cs-week-row">
+      <span class="cs-week-day">Days 5 to 6</span>
+      <div>
+        <h3>Your review</h3>
+        <p>You walk the site on your own phone and we adjust until you&rsquo;d hand the link to a customer without a second thought.</p>
+      </div>
+    </div>
+    <div class="cs-week-row">
+      <span class="cs-week-day">Day 7</span>
+      <div>
+        <h3>Launch</h3>
+        <p>Live on your domain, under your name, owned outright.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOMINATION / CLAIM -->
+<section class="cs-claim" aria-label="Claim this build">
+  <div class="cs-claim-wrap" data-animate>
+    <h2 class="cs-claim-h2">Were you sent this <em>link?</em></h2>
+    <p>Then your business made the shortlist. This build is finished, and it can be carrying <strong>your name, your brand, and your reviews</strong> by this time next week.</p>
+    <div class="cs-claim-actions">
+      <a class="cs-claim-cta" href="/contact">
+        <span>Claim This Build</span>
+        <svg width="14" height="14" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8m0 0L7 3m3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="cs-claim-call" href="tel:+17049743372">or call (704) 974-3372</a>
+    </div>
+    <p class="cs-claim-note">Free consultation &middot; No obligation</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-v2">
+  <div class="footer-v2-wrap">
+    <div class="footer-v2-main">
+      <div class="footer-v2-brand-col">
+        <a href="/" class="footer-v2-brand">Studio O&rsquo;Brien</a>
+        <p class="footer-v2-tag">Custom websites that don&rsquo;t look like templates. <em>Made</em> in Shelby, NC.</p>
+      </div>
+      <div class="footer-v2-links-col">
+        <nav class="footer-v2-nav" aria-label="Footer">
+          <a href="/#portfolio">Work</a>
+          <a href="/#process-section">Process</a>
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/blog/editorial-standards">Editorial Standards</a>
+          <a href="/website-cost-calculator">Calculator</a>
+          <a href="/service-area">Service Area</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="footer-v2-contact">
+          <a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a>
+          <a href="tel:+17049743372">(704) 974-3372</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-v2-bottom">
+      <span class="footer-v2-cr">&copy; 2026 Studio O&rsquo;Brien. Serving <a href="/shelby-nc-web-design">Shelby</a>, <a href="/kings-mountain-nc-web-design">Kings Mountain</a>, <a href="/gastonia-nc-web-design">Gastonia</a>, <a href="/lincolnton-nc-web-design">Lincolnton</a>, <a href="/forest-city-nc-web-design">Forest City</a>, &amp; Western NC Area.</span>
+      <button class="footer-v2-back" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scrollBehavior = reduceMotion ? 'auto' : 'smooth';
+
+  /* Reveal on scroll */
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('[data-animate]').forEach(function(el){ observer.observe(el); });
+
+  /* Topbar background after scroll (sentinel, no scroll listener) */
+  var topbar = document.querySelector('.topbar');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:9px;pointer-events:none';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function(entries){
+    topbar.classList.toggle('scrolled', !entries[0].isIntersecting);
+  }).observe(sentinel);
+
+  /* Mobile menu */
+  var menuToggle = document.getElementById('nav-menu-toggle');
+  var menuOverlay = document.getElementById('nav-menu-overlay');
+  function setMenu(open){
+    menuToggle.classList.toggle('is-open', open);
+    menuOverlay.classList.toggle('is-open', open);
+    document.body.classList.toggle('is-menu-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+  menuToggle.addEventListener('click', function(){
+    setMenu(!menuToggle.classList.contains('is-open'));
+  });
+  menuOverlay.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menuToggle.classList.contains('is-open')) setMenu(false);
+  });
+
+  /* Back to top */
+  var backBtn = document.getElementById('back-to-top');
+  if(backBtn){
+    backBtn.addEventListener('click', function(){
+      window.scrollTo({top:0,behavior:scrollBehavior});
+    });
+  }
+})();
+</script>
+</body>
+</html>

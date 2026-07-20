@@ -1,0 +1,48 @@
+{
+  "_sources": [
+    "https://en.wikipedia.org/wiki/Mount_Holly,_North_Carolina",
+    "https://businessnc.com/community-close-up-gaston-county/",
+    "https://spectrumlocalnews.com/nc/charlotte/news/2023/11/16/mt--holly-cotton-mill-to-reopen-as-distillery",
+    "https://www.mtholly.us/community/history.php",
+    "https://scoutcities.com/states/north-carolina/cities/mount-holly-nc"
+  ],
+
+  "town": "Mount Holly",
+  "slug": "mount-holly",
+  "county": "Gaston County",
+  "brandPlace": "downtown",
+  "mapQuery": "Mount Holly,NC",
+
+  "metaDesc": "Custom web design and SEO for Mount Holly and Gaston County businesses: manufacturers, contractors, restaurants, and shops. Sites you own, no templates.",
+  "ogDesc": "Custom web design and development for Mount Holly and Gaston County. Websites, SEO, and branding you own outright. No templates.",
+  "twDesc": "Custom web design and development in Mount Holly, NC. Websites, SEO, and branding for manufacturers, restaurants, contractors, and small businesses across Gaston County.",
+  "schemaDesc": "Web development and design in Mount Holly, NC. Custom websites, SEO, and branding for manufacturers, contractors, restaurants, small businesses, and service firms in Gaston County, Belmont, Stanley, Cramerton, and Gastonia.",
+
+  "heroSub": "Custom websites, SEO, and branding for the manufacturers, contractors, restaurants, and service businesses of Mount Holly and the Charlotte metro. No templates, no lock-in, and you own every line of it.",
+
+  "localH2": "Built for <em>Mount Holly</em> and Gaston County.",
+  "localP1": "Mount Holly sits on the Catawba River just twenty minutes west of Charlotte, in the heart of Gaston County's manufacturing sector. The town was named in 1875 after the <strong>Mount Holly Cotton Mill</strong>, built that year by Abel Peterson Rhyne and his partners. That mill, now being transformed into <strong>Muddy River Distillery</strong>, tells Mount Holly's story: a working town where real industry happens. Today, <strong>American & Efird</strong>, the world's second-largest thread maker, runs its corporate offices and six plants here, employing over 980 people in manufacturing that ships worldwide.",
+  "localP2": "We build for the people who run this town: the machine shop and the contractor, the thread manufacturer and the logistics firm, the restaurant downtown and the service crew covering the Catawba Valley. Mount Holly is growing fast, with nearly 30 percent population growth in the last decade. Every site we build is designed and coded around your business, not stamped out of a template.",
+  "mapMetaLine": "Serving <strong>Mount Holly</strong>, Belmont, Stanley, Cramerton, Gastonia &amp; the Charlotte metro",
+
+  "areaServed": ["Mount Holly", "Belmont", "Stanley", "Cramerton", "Gastonia", "Charlotte"],
+
+  "citiesIntro": "Rooted in Mount Holly, working across the region. Explore a nearby town:",
+  "hereCard": "Thread makers and manufacturers, contractors, and downtown restaurants in a Catawba River town that keeps growing. Sites built for real, working businesses.",
+  "neighborCards": [
+    {"slug": "belmont", "name": "Belmont", "desc": "A small Gaston County town with local manufacturers and Main Street businesses that need web presence to compete."},
+    {"slug": "stanley", "name": "Stanley", "desc": "Family businesses and contractors in rural Gaston County that deserve clean, mobile-first design and real SEO."},
+    {"slug": "cramerton", "name": "Cramerton", "desc": "A close-knit mill town with local businesses and service firms that need digital platforms built to last."}
+  ],
+
+  "faqOutsideAnswer": "Yes. We serve Gaston County, Belmont, Stanley, Cramerton, Gastonia, Charlotte, and throughout North Carolina, all done remotely with recorded walkthroughs.",
+  "faqBusinessesAnswer": "Manufacturers and thread makers, contractors and machine shops, restaurants and service businesses, logistics and transportation firms across Gaston County.",
+
+  "footerNearby": [
+    {"slug": "belmont", "name": "Belmont"},
+    {"slug": "stanley", "name": "Stanley"},
+    {"slug": "cramerton", "name": "Cramerton"},
+    {"slug": "gastonia", "name": "Gastonia"},
+    {"slug": "charlotte", "name": "Charlotte"}
+  ]
+}

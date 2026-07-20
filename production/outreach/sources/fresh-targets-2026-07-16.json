@@ -1,0 +1,67 @@
+[
+  {
+    "id": "thelma-lous-bbq-and-grill-shelby",
+    "name": "Thelma Lou's BBQ and Grill",
+    "niche": "BBQ restaurant (P4)",
+    "town": "Shelby",
+    "phone": "(704) 466-3080",
+    "websiteStatus": "live",
+    "website": "https://thelmalousbbqandgrillnc.com/",
+    "reviews": { "count": 111, "rating": null },
+    "owner": null,
+    "exists": true,
+    "notes": "Occupies the old Flying Pig / Runway Cafe space at 901 College Ave (the Flying Pig capacity-audit record is dead; this is its successor). HAS a thin GoDaddy-style own site (thelmalousbbqandgrillnc.com), so this is an A-route (weak-site) play, NOT B2. Active FB with recent 'new menu' posts. Open Tue-Sat 11:00-7:00. Review counts vary by source: Yelp 22, Restaurantji ~111; rating not pinned. Owner name not found - resolve via FB/phone."
+  },
+  {
+    "id": "the-social-house-by-royal-t-kings-mountain",
+    "name": "The Social House by Royal T",
+    "niche": "Cafe / coffee shop + evening bar (P4/P10)",
+    "town": "Kings Mountain",
+    "phone": "(704) 750-3392",
+    "websiteStatus": "social-only",
+    "website": null,
+    "reviews": null,
+    "owner": { "name": null, "email": "thesocialhousekm@gmail.com" },
+    "exists": true,
+    "notes": "212 S Railroad Ave, KM. Coffee + pastries by day, cocktails/live music/patio by night (Yelp categorizes it 'Sports Bars'). FB (facebook.com/kmroyaltcafe) + IG (@thesocialhouse_byroyalt) active; no dedicated website found. New env-health inspection 7/13/2026 = newly opened/recently expanded - strong fresh B2 target. Odd hours (closed Tue/Wed). Public email confirmed. KM is Tier-2 top growth town (casino + housing). No Google review count surfaced yet."
+  },
+  {
+    "id": "yamato-express-kings-mountain",
+    "name": "Yamato Express (Yamato Express II)",
+    "niche": "Japanese restaurant (P4)",
+    "town": "Kings Mountain",
+    "phone": "(704) 739-2860",
+    "websiteStatus": "none",
+    "website": null,
+    "reviews": { "count": 22, "rating": null },
+    "owner": null,
+    "exists": true,
+    "notes": "The REAL Kings Mountain Japanese spot at 1000 W Gold St - resolves OSM's phantom 'Nagoya' listing. Listed on aggregators as 'Yamato Express II'; only third-party menu pages exist (res-menu.com, allmenus), no own site = 'none'. CAUTION: appears to be a small LOCAL multi-location chain (KM + Shelby + Gastonia) - verify single-owner control before treating as a P4 lead vs a P12-style multi-unit; a multi-unit local owner may or may not control web. Yelp 22 reviews; Tripadvisor 5.0. Owner not found."
+  },
+  {
+    "id": "rhodies-food-truck-kings-mountain",
+    "name": "Rhodies Food Truck",
+    "niche": "Food truck - wings / comfort fusion (P4)",
+    "town": "Kings Mountain",
+    "phone": "(980) 396-2699",
+    "websiteStatus": "live",
+    "website": "https://rhodiesfoodtruck.com/",
+    "reviews": null,
+    "owner": { "name": "Jamimae and Janine (chefs)", "email": null },
+    "exists": true,
+    "notes": "CONFIRMS the L4 feed's 'may already have sites' flag = TRUE. Rhodies HAS its own website (rhodiesfoodtruck.com) plus DoorDash/Grubhub, FB (RhodiesFoodTruckLLC) and IG (@rhodiesf_t). Based at 406 Baker St, serves Gaston + Cleveland counties. Lower priority as a site-build B2 (already has a functional site); possible A2/other-service angle only. Google review count not surfaced."
+  },
+  {
+    "id": "chubbys-bbq-kings-mountain",
+    "name": "Chubby's BBQ",
+    "niche": "BBQ restaurant (P4)",
+    "town": "Kings Mountain",
+    "phone": "(704) 762-1227",
+    "websiteStatus": "live",
+    "website": "https://chubbys-km.com/",
+    "reviews": { "count": 25, "rating": null },
+    "owner": { "name": "Steven and Ashley Daniels", "email": "ChubbysBBQ50@gmail.com" },
+    "exists": true,
+    "notes": "CONFIRMS the L4 feed's 'may already have sites' flag = TRUE. Brand-new brick-and-mortar - opened April 9, 2026 at 238 S Cherokee St, downtown KM. Owns TWO domains (chubbys-km.com + chubbys-bbq.com). Got real local press (Shelby Star, Kings Mountain Today, Hoodline) = notability. FB (ChubbysBBQCatering) shows ~25 reviews / 100% recommend. Already has a site, so low priority for a site-build; better as a relationship/other-service contact. Named owners + email public."
+  }
+]

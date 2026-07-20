@@ -1,0 +1,202 @@
+[
+  {
+    "id": "griffin-brothers-shelby",
+    "exists": true,
+    "realWebsite": "griffinbros.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 1615, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CHAIN/FRANCHISE — Griffin Brothers Tires, Wheels & Auto Repair, a ~10-location Charlotte-area chain. Shelby store at 301 E Marion St, (704) 487-9081 (ex-Dixon Tire, acquired 2008). Chain reportedly sold to an Alabama firm. Web is corporate (griffinbros.com / griffintireandauto.com); review count is a Birdeye aggregate. P12 corporate-controlled web = DROP."
+  },
+  {
+    "id": "maxwell-b-hamrick-insurance-boiling-springs",
+    "exists": true,
+    "realWebsite": "mbhamrickins.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Frank Hamrick", "email": "fhamrick@mbhamrickins.com" },
+    "gbpClosed": false,
+    "notes": "Independent insurance agency since 1953, 116 N Main St, Boiling Springs (town confirmed). Grew by acquiring local agencies (Dover 1990, Cline/Fallston 1992, Hardin/Spindale 1996). Owned domain mbhamrickins.com but root URL returned 404 on fetch — verify live; possible dead/thin site (= Route A gap angle). Contact fhamrick@mbhamrickins.com (Frank Hamrick). P8 professional."
+  },
+  {
+    "id": "davis-bors-automotive-cherryville",
+    "exists": true,
+    "realWebsite": "davisbrothersauto.net",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Randy and Mike Davis" },
+    "gbpClosed": false,
+    "notes": "Name is 'Davis Brothers Automotive' (not Bors). TOWN CORRECTION — located in LINCOLNTON NC (109 Dave Warlick Dr), not Cherryville. Est. 1975 by Randy & Mike Davis. Phone 704-732-2620. Has owned site davisbrothersauto.net + active FB. P3 auto."
+  },
+  {
+    "id": "paradise-car-wash-gastonia",
+    "exists": true,
+    "realWebsite": "paradisecarwash.net",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Gastonia confirmed, 205 N Myrtle School Rd (Paradise Car Wash Inc, est. 2005). Owned site paradisecarwash.net (detailing packages). A related 'Paradise Car Wash 2' listing also exists. Gaston County = Tier-3 metro edge, lower local-trust priority."
+  },
+  {
+    "id": "wilsons-barber-shop-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 17, "rating": 4.5 },
+    "owner": { "name": "Jim Wilson" },
+    "gbpClosed": false,
+    "notes": "Shelby confirmed, 1017 S Lafayette St, (704) 487-6616. Owner Jim Wilson, 2 employees (BBB file since 2007). Directory/Nextdoor listings only, no owned site. P5 barber, B2."
+  },
+  {
+    "id": "just-teazn-hair-nail-salon-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Bostic confirmed, 3460 NC Hwy 226, (828) 248-1130. Directory-only (Yelp/Nextdoor), no owned site or clear active social found (a same-name 'Just Teaz'n' FB salon is in Milford IA — different business). P5 salon."
+  },
+  {
+    "id": "high-country-salon-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 15, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Bostic confirmed, 2630 Bostic Sunshine Hwy, (828) 245-9090. Social-only — active Instagram @highcountrysalon; Birdeye shows 15 reviews. No owned site. Classic B2 (IG-DM booking). P5 salon."
+  },
+  {
+    "id": "allen-properties-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Shelby, 305 S Dekalb St — real estate / property management (BBB lists under apartments). FB page 'Allen Property' only, no owned site. Listings show phone 704-692-3670 (query gave 704-693-3670 — verify). Owner not confirmed (a Sheila Allen realtor appears in Shelby but link unverified). Note a separate 'Allen Properties in Kings Mountain' listing exists — possible entity confusion."
+  },
+  {
+    "id": "the-wash-tub-ellenboro",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Ellenboro confirmed, 504 Main St, (828) 429-5745. Laundromat + self-serve car wash (leans laundromat). Local FB only, no owned site. NOTE: washtub.com is an unrelated national car-wash chain, NOT this business. Low capacity (24hr self-serve)."
+  },
+  {
+    "id": "horns-tire-auto-ellenboro",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 109, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Ellenboro confirmed, 370 Main St ('Horns Tire and Auto Inc'), (828) 453-7444. Strong: ~109 reviews at ~4.8-4.9 (Birdeye). FB only, no owned site (a horns-tire-auto.edan.io page is auto-generated, not owned). High-reviews + no-site = priority combo. P3 auto, B2."
+  },
+  {
+    "id": "colfax-gin-coal-ellenboro",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "DEFUNCT — historic Colfax Cotton Gin (built 1928, operated ~80 yrs then closed). Town of Ellenboro acquired the property; being redeveloped as a public 'Cotton Gin Park.' Not an active, targetable business. DROP."
+  },
+  {
+    "id": "iron-ink-tattoos-piercing-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "SunShine McCurry" },
+    "gbpClosed": false,
+    "notes": "Bostic confirmed, 109 US-74 Business, (828) 247-1017. Owner/artist SunShine McCurry, operating since 1997 (billed as Rutherford County's oldest tattoo parlor, Grade-A health rating). Social-only — FB 'Iron/Ink Tattoos and Body Piercing' + IG @sunshinemccurry. No owned site. Named owner reachable via IG DM."
+  },
+  {
+    "id": "bostic-motors-inc-bostic",
+    "exists": true,
+    "realWebsite": "6-5liter.com",
+    "liveSiteGrade": "C+",
+    "reviews": null,
+    "owner": { "name": "Jeff Aiello" },
+    "gbpClosed": false,
+    "notes": "Bostic confirmed, 176 N Main St, (828) 453-7779. President Jeff Aiello. NICHE MISLABEL — listed as a used-car dealer, but the active operation is BMI, a 6.5L diesel-engine remanufacturer/parts shipper (national/intl). Owned site 6-5liter.com (dated, C+, phone-order only, no ecommerce) + eBay store. No local review mass found. Not a typical local-service P3 target."
+  },
+  {
+    "id": "saras-casar",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 4, "rating": null },
+    "owner": { "name": "Sara McNeilly" },
+    "gbpClosed": false,
+    "notes": "Casar confirmed, 5760 Casar Rd, (704) 538-0720. Owner Sara McNeilly. Directory-only (Birdeye 4 reviews). A sarassalon.com / sarassalon.weebly.com exists but appears to be a different 'Sara's' — unverified, treat as no owned site. P5, low capacity."
+  },
+  {
+    "id": "barbaras-house-of-beauty-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Barbara's House of Beauty & Tanning Center, 4009 Polkville Rd, (704) 538-3416, est. 1987. TOWN NOTE: listed as both Shelby 28150 and Polkville (on Polkville Rd, rural Shelby/Polkville line). Social-only (FB + IG), no owned site. P5 salon."
+  },
+  {
+    "id": "pattersons-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNFINDABLE after 2 searches — no 'Patterson's' auto business in Earl NC surfaced (Patterson Auto Sales results are Wilmington/Raleigh, unrelated). Earl is a tiny SC-border hamlet; may be a defunct or informal country garage. Left null per lesson (rural + unfindable)."
+  },
+  {
+    "id": "autobell-car-wash-cherryville",
+    "exists": true,
+    "realWebsite": "autobell.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CHAIN/FRANCHISE — Autobell Car Wash, large Charlotte-HQ regional chain (~80 locations across NC/SC/VA/GA). Corporate-controlled web (autobell.com). P12 DROP."
+  },
+  {
+    "id": "cowan-tire-forest-city",
+    "exists": true,
+    "realWebsite": "cowantire.com",
+    "liveSiteGrade": "C+",
+    "reviews": { "count": 190, "rating": 4.9 },
+    "owner": { "name": "C. Hunt Cowan" },
+    "gbpClosed": false,
+    "notes": "Forest City location confirmed (247 W Main St, (828) 245-1201); multi-location (also Rutherfordton HQ + Spindale). Owner C. Hunt Cowan, VP Sallie Cowan. CARFAX 4.9/190 reviews. Site cowantire.com runs on Net Driven (tire-industry vendor platform, C+, dated, vendor-locked) = strong 'you don't own your site' Route-A angle. HIGH capacity (longevity, multi-loc, review mass). P3."
+  },
+  {
+    "id": "r-s-service-center-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Chris Robbins" },
+    "gbpClosed": false,
+    "notes": "DUPLICATE ENTITY — R-S Speedy Lube & Service Center is ONE business (started as a car wash, now oil-change/auto/inspection/tire), covering OSM rows 19-22 (Service Center / Speedy Lube / Car Wash / Inspections). TOWN CORRECTION: actually in RUTHERFORDTON (841 Railroad Ave, 28139), not Forest City. Owner Chris Robbins. FB only, no owned site. Same findings apply to r-s-speedy-lube-forest-city."
+  },
+  {
+    "id": "r-s-speedy-lube-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Chris Robbins" },
+    "gbpClosed": false,
+    "notes": "DUPLICATE of r-s-service-center-forest-city — same single business (R-S Speedy Lube & Service Center, 841 Railroad Ave, Rutherfordton NC 28139, (828) 286-0981, owner Chris Robbins). One of 4 OSM entries for the same shop. TOWN CORRECTION: Rutherfordton, not Forest City. FB only, no owned site."
+  }
+]

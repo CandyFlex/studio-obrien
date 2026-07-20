@@ -1,0 +1,402 @@
+[
+  {
+    "id": "iron-city-pharmacy-earl",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Blacksburg, SC (301 W Cherokee St, 29702), NOT Earl NC. 'Iron City' is Blacksburg's nickname; OSM mislabeled a border-town SC business as Earl. Real independent pharmacy but SC = OUT OF TERRITORY (Part 2 needs a warm intro). No dedicated website found (Yelp/Healthgrades/NPI only). DROP (out of territory)."
+  },
+  {
+    "id": "the-dog-shop-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED after 2 searches. No groomer named 'The Dog Shop' surfaces for Earl or Grover NC (only generic Cleveland County groomer directories). Possibly defunct or an OSM mislabel. Zero verifiable footprint - skip until a real signal appears."
+  },
+  {
+    "id": "tack-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED. No business named 'Tack' with any directory/social footprint in Earl NC. Tiny town, likely stale OSM node. Skip."
+  },
+  {
+    "id": "iron-city-ministries-earl",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Ministry / religious nonprofit ('Iron City' again ties to Blacksburg SC border area). Category hard disqualifier. DROP."
+  },
+  {
+    "id": "supreme-management-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED. No consumer-facing footprint; name reads like a property-mgmt/holding LLC with no directory or social presence in Earl. Skip."
+  },
+  {
+    "id": "kirbys-flowers-gifts-earl",
+    "exists": true,
+    "realWebsite": "https://www.kirbysflowersandgiftsllc.com",
+    "liveSiteGrade": "C",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Blacksburg, SC (103 W Cherokee St, 29702), NOT Earl/Bessemer City - it delivers into Grover (28073)/Kings Mountain (28086) NC zips, hence the mislabel. Real independent florist WITH a functional, clean-but-thin templated website (lower gap). SC = OUT OF TERRITORY. DROP (out of territory + has site)."
+  },
+  {
+    "id": "gunnys-convenience-store-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience/fuel store, Grover. Convenience - LOW non-target. DROP."
+  },
+  {
+    "id": "abc-liquor-store-earl",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NC ABC (state-run liquor store) = government. DROP."
+  },
+  {
+    "id": "the-barn-market-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED. Could not confirm a 'Barn Market' in Earl/Grover NC; thebarnmarket.com appears to be an unrelated/other-state business, and the nearby 'Red Barn Market' is Correll Farms in Cleveland NC (different). Skip until confirmed."
+  },
+  {
+    "id": "coin-laundry-earl",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Coin laundromat. Non-target. DROP."
+  },
+  {
+    "id": "bin-raiders-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Kings Mountain (205 Walker St, 28086), NOT Grover. Discount bin/liquidation store, FB/IG-only, no website. Real but low-value tail niche (liquidation retail). Social-only web gap; marginal target at best."
+  },
+  {
+    "id": "gigis-flowers-more-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Grover NC - FB-only (facebook.com/gigisflowers.more), no dedicated website. DISTINCT from the Stokesdale NC 'Gigi's Flowers & More LLC' (8302 Belews Creek Rd) - do not conflate. Real independent florist, social-only = clean web gap. Owner not surfaced. Solid B2 candidate."
+  },
+  {
+    "id": "hammy-downs-grover",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "5.0 stars, ~53 reviews",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Grover NC (101 Mulberry Rd, 28073). Children's consignment, family-owned, FB-only (also shows a 'Shelby NC' FB tag). Excellent reviews (5.0/53) but consignment = low-revenue tail niche. Social-only web gap. Owner not surfaced."
+  },
+  {
+    "id": "toms-family-mart-kings-mountain",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience/family mart, Kings Mountain. Convenience - LOW non-target. DROP."
+  },
+  {
+    "id": "caromont-family-medicine-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.caromonthealth.org",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Part of CaroMont Health regional hospital system (Gastonia). Corporate/system-controlled web. P12 hard disqualifier. DROP."
+  },
+  {
+    "id": "cherryville-laundromat-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Laundromat. Non-target. DROP."
+  },
+  {
+    "id": "klassy-kids-consignment-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Judy McSwain" },
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (126 W Main St / 105 W Church St, 28021). Children's consignment boutique, sole proprietor Judy McSwain (BBB A+, in business ~since 2001), FB-only. Named owner + social-only web gap = clean route, but consignment = low-revenue tail niche."
+  },
+  {
+    "id": "tas-drug-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.tasdrug.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (500 W Church St, 28021). Independent pharmacy with 3 locations - Cherryville, Maiden, West Lincoln (the 'TAS Vale/West Lincoln' group is the SAME entity; do not double-target). Real target but HAS its own multi-location website = lower gap. Site quality not inspected."
+  },
+  {
+    "id": "american-legion-storage-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Self-storage facility. Storage = non-target. DROP."
+  },
+  {
+    "id": "cherryville-chamber-of-commerce-cherryville",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Chamber of Commerce = org, DROP as an outreach target. FLAG as a FEED/SOURCE for the intel system - its member directory is a curated local-business lead list worth scraping."
+  },
+  {
+    "id": "kingdom-fitness-cherryville",
+    "exists": true,
+    "realWebsite": "https://kingdomfitnessnc.weebly.com",
+    "liveSiteGrade": "D",
+    "reviews": "~22 reviews (Birdeye)",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (326 E Main St, 28021), 24hr key-access gym; second location in Kings Mountain. Weak DIY Weebly template = real, obvious web gap. Strong REAL gym target (revenue proxy + fixable gap). Owner not surfaced."
+  },
+  {
+    "id": "retro-toys-and-collectibles-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "5.0 stars, ~44 reviews",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (400 E Main St, 28021). New/used toys & collectibles, FB-only + Wizards WPN store locator, no website. Excellent reviews (5.0/44). Social-only web gap; hobby retail = modest revenue but genuine independent target."
+  },
+  {
+    "id": "the-great-outdoors-cherryville",
+    "exists": true,
+    "realWebsite": "https://www.teamgreatoutdoors.com",
+    "liveSiteGrade": "B-",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Cherryville (112 N Cherry St, 28021). Family-owned sporting goods / tackle / firearms + boat repair, since 1999. Has a working Shopify store = lower gap. FIREARMS-retail sensitivity flag. Real but low web gap."
+  },
+  {
+    "id": "main-street-vintage-lawndale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Lawndale NC (Instagram active, recently relocating 'across' town). Small vintage/antique shop, social-only. DISTINCT from 'Main Street Vintage' in Norwood NC. Real small target with a web gap; reviews/owner not surfaced."
+  },
+  {
+    "id": "clayton-homes-patterson-springs",
+    "exists": true,
+    "realWebsite": "https://www.claytonhomes.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "National manufactured-home chain (Berkshire Hathaway). Corporate-controlled web. P12 hard disqualifier. DROP."
+  },
+  {
+    "id": "karpa-spindale",
+    "exists": true,
+    "realWebsite": "https://www.karpa.us",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Karpa of S. Florida, Inc. (295 E Main St, Spindale) - a technology/software/IT firm that also sells MARKETING and web services. Not a client; effectively a COMPETITOR. DROP."
+  },
+  {
+    "id": "living-word-independent-ministry-spindale",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Church / independent ministry. Category hard disqualifier. DROP."
+  },
+  {
+    "id": "dapper-dogs-on-main-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "4.4 stars, ~13 reviews",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Spindale (303 E Main St, 28160). Pet groomer (dogs + cats), FB + MoeGo online-booking only, no standalone website. Real groomer target - booking/social-only = clean web gap. Newer business (LLC). Owner not surfaced."
+  },
+  {
+    "id": "changing-lives-fitness-spindale",
+    "exists": true,
+    "realWebsite": "http://changinglivesfitness.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Spindale (307 E Main St, 28160). Fitness clinic - group classes, Zumba, boot camp (trainer 'Mike'). Has its own website = lower gap. Real gym. NOTE: #70 'Xtreme Boot Camp' is the SAME business (see below) - merge, do not double-target."
+  },
+  {
+    "id": "changing-lives-xtreme-boot-camp-spindale",
+    "exists": true,
+    "realWebsite": "http://changinglivesfitness.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "DUPLICATE of #69 changing-lives-fitness-spindale. 'Xtreme Boot Camp' is a PROGRAM of Changing Lives Fitness Clinic (same 307 E Main St, Spindale), not a separate business. Merge into #69; do NOT count or target twice. DROP as duplicate."
+  },
+  {
+    "id": "chase-corner-ministries-community-outreach-and-thrift-forest-city",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Ministry + community-outreach thrift (religious nonprofit), Forest City. Category hard disqualifier. DROP."
+  },
+  {
+    "id": "waco-stop-shop-waco",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience/fuel stop, Waco NC. Convenience - LOW non-target. DROP."
+  },
+  {
+    "id": "trading-post-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "AMBIGUOUS/UNVERIFIED. Top match is the 'Trading Post' at Kings Mountain State Park (park gift shop, actually on the SC side) = park/government, not a target. No independent KM-town retail 'Trading Post' confirmed. Likely DROP; skip until a real listing surfaces."
+  },
+  {
+    "id": "shelton-fireworks-grover",
+    "exists": true,
+    "realWebsite": "https://sheltonfireworks.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CHAIN confirmed. Shelton Fireworks is a ~14-location regional chain (nearest store Blacksburg SC). NOTE: the fireworks store actually at the Grover NC state-line address (2526 Blacksburg Rd) is TNT Fireworks, also a national chain. Either way = corporate chain. P12 hard disqualifier. DROP."
+  },
+  {
+    "id": "cool-springs-gym-forest-city",
+    "exists": true,
+    "realWebsite": "https://coolspringsfitness.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "AMBIGUOUS name. Most likely = Cool Springs Fitness, a family-owned private gym (pools, pickleball, classes) with a real working website = lower gap. Possible conflation with 'Larry K. Ross Gymnasium' (public rec gymnasium) tagged 'cool-springs-gym' on visitncsmalltowns - if the OSM node is the public gym it's a DROP. Real private gym exists but has a site (low gap)."
+  },
+  {
+    "id": "mountain-treasures-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://mountaintreasuresnc.weebly.com",
+    "liveSiteGrade": "D",
+    "reviews": "FB ~2,100 likes",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED Kings Mountain (738 Ray St, 28086, near Crowders Mountain). Antique / reclaimed-goods / rustic decor shop. Weak DIY Weebly site + strong FB following (~2,100 likes) = real, obvious web gap. Solid antiques target. Owner not surfaced."
+  },
+  {
+    "id": "church-street-antiques-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "UNVERIFIED after 2 searches. Not present in any Kings Mountain antique directory (KM has Mountain Treasures, Rare Bird Red, Imperial Mercantile, Bill's Antiques - no 'Church Street Antiques'). 'Church St Antiques & Other Cool Stuff' is in Hertford NC (different town). Possibly defunct or OSM mislabel. Skip."
+  },
+  {
+    "id": "abc-store-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NC ABC (state-run liquor store) = government. DROP."
+  },
+  {
+    "id": "lincolnton-animal-hospital-cherryville",
+    "exists": true,
+    "realWebsite": "https://lincolntonanimalhospital.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": { "name": "Dr. Karen Miller" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Lincolnton NC (112 N Generals Blvd, 28092), NOT Cherryville - name was right, OSM town wrong. Established veterinary hospital since 1983, vet Dr. Karen Miller (NCSU DVM). Has its own website = lower gap. Real vet but out of the Cleveland-County core (Lincoln County) + already has a site."
+  },
+  {
+    "id": "lincoln-county-department-of-social-services-cherryville",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Lincoln County Dept. of Social Services = government agency (and a Lincoln County office, so the 'Cherryville' town tag is likely wrong - Cherryville is Gaston County). DROP."
+  }
+]

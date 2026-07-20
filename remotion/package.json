@@ -1,0 +1,27 @@
+{
+  "name": "studio-obrien-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website-preview animations exported to MP4/WebM (desktop 19:10 + mobile 9:19.5). Mirrors the coded /preview animation for ads/social.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:desktop": "remotion render DesktopPreview out/preview-desktop.mp4 --codec=h264",
+    "render:mobile": "remotion render MobilePreview out/preview-mobile.mp4 --codec=h264",
+    "render:desktop-webm": "remotion render DesktopPreview out/preview-desktop.webm --codec=vp8",
+    "render:mobile-webm": "remotion render MobilePreview out/preview-mobile.webm --codec=vp8",
+    "render:all": "npm run render:desktop && npm run render:mobile",
+    "still:desktop": "remotion still DesktopPreview out/preview-desktop.png --frame=300",
+    "still:mobile": "remotion still MobilePreview out/preview-mobile.png --frame=250"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.4.0"
+  }
+}

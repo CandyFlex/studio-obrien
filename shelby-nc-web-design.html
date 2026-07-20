@@ -74,30 +74,41 @@
   .nav-cta svg{width:14px;height:14px}
   @media(max-width:720px){.nav-links{display:none}.nav-in{height:58px}}
 
-  /* HERO */
-  .hero{position:relative;overflow:hidden;padding:clamp(66px,11vw,136px) 0 clamp(52px,7vw,92px);text-align:center}
-  .hero::before{content:'';position:absolute;top:-24%;left:50%;transform:translateX(-50%);width:min(1000px,120%);height:120%;background:radial-gradient(50% 45% at 50% 40%,rgba(52,211,153,.13),transparent 70%);pointer-events:none;z-index:0}
-  .hero .wrap{position:relative;z-index:1}
-  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--g);margin-bottom:26px}
-  .hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
-  .hero .display{font-family:'Inter Tight',sans-serif;font-weight:760;font-size:clamp(40px,6.4vw,76px);line-height:1.03;letter-spacing:-.034em;max-width:20ch;margin:0 auto 24px;text-wrap:balance}
-  .hero .display em{font-style:normal;color:var(--g)}
-  .hero-sub{font-size:clamp(16px,1.9vw,20px);color:var(--muted);max-width:60ch;line-height:1.62;margin:0 auto 36px;text-wrap:pretty}
-  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:clamp(40px,5vw,56px)}
+  /* HERO (The Tape) */
+  .hero{position:relative;overflow:hidden;padding:clamp(48px,7.5vw,92px) 0 0}
+  .hero-loc{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--g);margin-bottom:clamp(18px,2.6vw,30px);opacity:0;animation:heroRise .7s var(--ease) .1s forwards}
+  .hero-loc::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+  .hero h1{font-family:'Inter Tight',sans-serif;font-weight:780;font-size:clamp(44px,7.6vw,108px);line-height:.96;letter-spacing:-.04em;color:#fff;margin:0;text-wrap:balance}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+  .hero h1 .ln>span{display:block;transform:translateY(112%);animation:heroMask .9s var(--ease) forwards}
+  .hero h1 .ln:nth-child(1)>span{animation-delay:.18s}
+  .hero h1 .ln:nth-child(2)>span{animation-delay:.32s}
+  .hero h1 em{font-style:italic;font-weight:520;color:var(--g);letter-spacing:-.03em}
+  .hero-sub{font-size:clamp(15.5px,1.8vw,19px);color:var(--muted);max-width:56ch;line-height:1.62;margin:clamp(20px,2.8vw,32px) 0 clamp(24px,3vw,36px);text-wrap:pretty;opacity:0;animation:heroRise .8s var(--ease) .6s forwards}
+  .hero-sub strong{color:#e6e8ea;font-weight:600}
+  .hero-sub a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  .hero-sub a:hover{border-bottom-color:var(--g)}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:clamp(44px,6vw,72px);opacity:0;animation:heroRise .8s var(--ease) .75s forwards}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:6px;min-height:52px;border:1px solid transparent;transition:transform .2s var(--ease),box-shadow .3s,background .2s,border-color .2s,color .2s}
   .btn svg{width:18px;height:18px;flex-shrink:0}
   .btn-primary{background:var(--g);color:#06231a}
   .btn-primary:hover{background:var(--g-lite);transform:translateY(-2px);box-shadow:0 12px 34px rgba(52,211,153,.28)}
   .btn-ghost{background:transparent;color:var(--fg);border-color:var(--b-2)}
   .btn-ghost:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
-  .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.4vw,20px);max-width:1000px;margin:0 auto}
-  .proof-item{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--surface-2);border:1px solid var(--b-2);border-radius:18px;padding:clamp(22px,2.2vw,30px) 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
-  .proof-item:hover{transform:translateY(-5px);border-color:rgba(52,211,153,.45);box-shadow:0 24px 54px -26px rgba(52,211,153,.5),inset 0 1px 0 rgba(255,255,255,.06)}
-  .proof-ic{width:52px;height:52px;border-radius:15px;margin:0 auto 16px;background:radial-gradient(circle at 50% 28%,rgba(52,211,153,.3),rgba(52,211,153,.06));box-shadow:0 8px 22px -8px rgba(52,211,153,.55),inset 0 0 0 1px rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center}
-  .proof-ic svg{width:23px;height:23px;color:var(--g-lite)}
-  .proof-n{font-family:'Inter Tight',sans-serif;font-weight:680;font-size:15.5px;letter-spacing:-.012em;color:#fff;line-height:1.2;text-wrap:balance}
-  .proof-l{font-size:12.5px;color:var(--dim);margin-top:6px;line-height:1.42}
-  @media(max-width:600px){.proof{grid-template-columns:repeat(2,1fr);gap:16px}.hero-cta-row .btn{flex:1 1 100%}}
+  /* the tape */
+  .tape{position:relative;margin:0;background:var(--g);padding:12px 0;overflow:hidden;opacity:0;animation:heroTape .8s var(--ease) .9s forwards}
+  .tape-track{display:flex;white-space:nowrap;width:max-content;animation:tapeScroll 52s linear infinite}
+  .tape span{font-family:'Inter Tight',sans-serif;font-weight:720;font-size:15px;letter-spacing:.01em;color:#06231a;padding:0 26px;position:relative}
+  .tape span::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:rgba(6,35,26,.55)}
+  @keyframes tapeScroll{to{transform:translate3d(-50%,0,0)}}
+  @keyframes heroMask{to{transform:translateY(0)}}
+  @keyframes heroRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes heroTape{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){
+    .hero h1 .ln>span,.hero-loc,.hero-sub,.hero-cta-row,.tape{animation:none!important;opacity:1!important;transform:none!important}
+    .tape-track{animation:none!important}
+  }
+  @media(max-width:600px){.hero-cta-row .btn{flex:1 1 100%}}
 
   /* SECTION FRAMEWORK */
   section{padding:clamp(52px,7vw,92px) 0;position:relative}
@@ -107,35 +118,60 @@
   h2.sec-title em{font-style:normal;color:var(--g)}
   .sec-head p{font-size:clamp(15px,1.7vw,18px);color:var(--muted);margin-top:16px;line-height:1.6;text-wrap:pretty;max-width:56ch}
 
-  /* LOCAL INTRO (prose, not cards) */
-  .local .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
-  .local-copy p{font-size:clamp(15px,1.7vw,17px);color:var(--muted);line-height:1.75;margin-bottom:16px;max-width:60ch}
+  /* LOCAL INTRO (full-bleed map behind, copy left, gradient seam) */
+  .local{position:relative;overflow:hidden;background:var(--bg-2);border-bottom:1px solid rgba(255,255,255,.04);padding:0}
+  .local-map{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .local-map iframe{position:absolute;top:0;left:0;width:100%;height:calc(100% + 46px);border:0;filter:grayscale(.35) contrast(1.06)}
+  .local-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(100deg,var(--bg-2) 0%,rgba(14,15,17,.97) 30%,rgba(14,15,17,.78) 46%,rgba(14,15,17,.22) 64%,rgba(14,15,17,0) 76%)}
+  .local .wrap{position:relative;z-index:2;padding-top:clamp(56px,7.5vw,100px);padding-bottom:clamp(56px,7.5vw,100px);pointer-events:none}
+  .local-copy{max-width:580px;pointer-events:auto}
+  .local-copy h2{margin-bottom:18px}
+  .local-copy p{font-size:clamp(15px,1.7vw,17px);color:var(--muted);line-height:1.75;margin-bottom:16px;max-width:56ch}
   .local-copy p strong{color:#e6e8ea;font-weight:600}
   .local-copy p:last-child{margin-bottom:0}
-  .map-card{border:1px solid var(--b);border-radius:12px;overflow:hidden;background:var(--surface)}
-  .map-card iframe{display:block;width:100%;aspect-ratio:4/3;border:0;filter:grayscale(.3) contrast(1.05)}
-  .map-meta{display:flex;flex-direction:column;gap:9px;padding:18px 20px;border-top:1px solid var(--b)}
-  .map-meta div{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#cfd3d8;line-height:1.45}
-  .map-meta svg{width:17px;height:17px;color:var(--g);flex-shrink:0;margin-top:1px}
-  .map-meta a{color:var(--g);text-decoration:none;font-weight:600}
-  .map-meta a:hover{text-decoration:underline}
-  @media(max-width:800px){.local .wrap{grid-template-columns:1fr;gap:32px}}
+  .local-meta{position:absolute;right:clamp(14px,2vw,26px);bottom:16px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+  .local-meta a,.local-meta span{display:inline-flex;align-items:center;gap:7px;background:rgba(10,10,11,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--b-2);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:600;color:#fff;text-decoration:none}
+  .local-meta svg{width:14px;height:14px;color:var(--g);flex-shrink:0}
+  .local-meta a:hover{border-color:var(--g)}
+  @media(max-width:840px){
+    .local-map{position:relative;inset:auto;height:300px;order:2}
+    .local-scrim{display:none}
+    .local{display:flex;flex-direction:column}
+    .local .wrap{padding-bottom:28px;pointer-events:auto}
+    .local-meta{position:static;justify-content:flex-start;padding:14px clamp(18px,4vw,40px) 20px;order:3}
+  }
 
-  /* SERVICES (glow cards, 2-col, icon-left) */
-  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .svc{display:flex;gap:20px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--b-2);border-radius:18px;padding:clamp(24px,2.4vw,30px);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
-  .svc:hover{transform:translateY(-5px);border-color:rgba(52,211,153,.45);box-shadow:0 24px 54px -26px rgba(52,211,153,.5),inset 0 1px 0 rgba(255,255,255,.06)}
-  .svc-ic{flex-shrink:0;width:52px;height:52px;border-radius:14px;background:radial-gradient(circle at 50% 28%,rgba(52,211,153,.3),rgba(52,211,153,.06));box-shadow:0 8px 22px -8px rgba(52,211,153,.55),inset 0 0 0 1px rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center}
-  .svc-ic svg{width:23px;height:23px;color:var(--g-lite)}
-  .svc h3{font-family:'Inter Tight',sans-serif;font-size:18.5px;font-weight:660;letter-spacing:-.015em;color:#fff;margin:0 0 9px}
-  .svc p{font-size:14px;color:var(--muted);line-height:1.6;margin:0}
-  .svc p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
-  .svc p a:hover{border-bottom-color:var(--g)}
-  @media(max-width:720px){.svc-grid{grid-template-columns:1fr}}
+  /* SERVICES (specimen poster) */
+  .svcspec{position:relative;overflow:hidden;background-image:repeating-linear-gradient(0deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px),repeating-linear-gradient(90deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px)}
+  .svcspec::after{content:'';position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 45%,transparent 40%,var(--bg) 100%);pointer-events:none}
+  .svcspec .wrap{position:relative;z-index:1}
+  .svcspec-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5.5vw,72px)}
+  .svcspec-head p{font-size:clamp(14.5px,1.6vw,16.5px);color:var(--muted);line-height:1.65;max-width:46ch;justify-self:end;text-wrap:pretty}
+  .spec{border-top:1px solid var(--b-2)}
+  .spec-row{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:clamp(18px,3vw,48px);padding:clamp(16px,2.2vw,26px) 0;border-bottom:1px solid var(--b-2);text-decoration:none;transition:border-color .3s}
+  .spec-row:hover{border-color:rgba(52,211,153,.4)}
+  .spec-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(30px,4.9vw,68px);line-height:1;letter-spacing:-.04em;color:#fff;white-space:nowrap;transition:transform .35s var(--ease),color .3s}
+  .spec-row:nth-child(even) .spec-name{color:transparent;-webkit-text-stroke:1.5px rgba(244,245,246,.55)}
+  .spec-row.mint .spec-name{color:var(--g);font-style:italic;font-weight:560;letter-spacing:-.03em;-webkit-text-stroke:0}
+  .spec-row:hover .spec-name{transform:translateX(14px)}
+  .spec-row:nth-child(even):hover .spec-name{color:var(--g);-webkit-text-stroke:0}
+  .spec-desc{font-size:clamp(12.5px,1.25vw,14.5px);color:var(--muted);line-height:1.6;max-width:34ch;text-align:right;flex-shrink:1}
+  .spec-desc b{display:block;color:#e6e8ea;font-weight:600;margin-bottom:2px}
+  @media(max-width:760px){.svcspec-head{grid-template-columns:1fr}.svcspec-head p{justify-self:start}}
+  @media(max-width:700px){
+    .spec-row{flex-direction:column;align-items:flex-start;gap:8px}
+    .spec-name{white-space:normal;font-size:clamp(28px,8vw,40px)}
+    .spec-desc{text-align:left;max-width:56ch}
+  }
+  @media(prefers-reduced-motion:reduce){.spec-name{transition:none}}
 
 
   /* PROCESS (image-led cards, matching homepage) */
+  #process{padding-top:clamp(28px,3.5vw,48px)}
   .prc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.8vw,28px);align-items:start}
+  .prc-foot{margin-top:clamp(28px,3.5vw,48px);text-align:center}
+  .prc-foot p{font-size:clamp(15px,1.7vw,18px);color:var(--muted);line-height:1.65;max-width:62ch;margin:0 auto;text-wrap:pretty}
+  .prc-foot b{color:#e6e8ea;font-weight:600}
   .prc-card{position:relative;display:block;overflow:hidden;border-radius:clamp(14px,1.1vw,20px);aspect-ratio:5/7;background:#0c1411;border:1px solid #1c2a23;isolation:isolate}
   .prc-card:nth-child(even){margin-top:clamp(28px,5vw,72px)}
   .prc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:transform .8s var(--ease)}
@@ -149,52 +185,86 @@
   @media(max-width:860px){.prc-grid{grid-template-columns:repeat(2,1fr)}.prc-card{aspect-ratio:3/4}.prc-num{font-size:clamp(52px,10vw,88px)}}
   @media(max-width:520px){.prc-grid{grid-template-columns:1fr}.prc-card,.prc-card:nth-child(even){margin:0 auto;width:84%;aspect-ratio:5/7}}
 
-  /* CITIES (linked nav cards) */
-  .city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-  .city{display:block;border:1px solid var(--b);border-radius:10px;padding:22px 20px;background:var(--surface);text-decoration:none;transition:border-color .2s,transform .2s var(--ease),background .2s}
-  a.city:hover{border-color:var(--g);transform:translateY(-3px);background:var(--surface-2)}
-  .city.here{border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.05)}
-  .city h3{font-family:'Inter Tight',sans-serif;font-size:17px;font-weight:640;color:var(--g);margin-bottom:6px;display:flex;align-items:center;gap:7px}
-  .city p{font-size:13.5px;color:var(--muted);line-height:1.55}
-  .city .arr{margin-left:auto;color:var(--dim);transition:transform .2s,color .2s}
-  a.city:hover .arr{color:var(--g);transform:translateX(3px)}
+  /* CITIES (marquee junction, centered) */
+  .cities{text-align:center}
+  .cty-eyebrow{font-family:'Inter Tight',sans-serif;font-weight:640;font-size:clamp(15px,1.6vw,18px);color:var(--muted);letter-spacing:-.01em;margin-bottom:clamp(22px,3vw,38px)}
+  .cty-eyebrow b{color:var(--g);font-weight:640}
+  .marquee{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(17px,3.1vw,44px);line-height:1.1;letter-spacing:-.035em;white-space:nowrap;margin:0 auto}
+  .marquee .sep{color:var(--g);margin:0 .3em;font-weight:800}
+  .marquee a{color:#fff;text-decoration:none;white-space:nowrap;-webkit-text-stroke:1.5px transparent;transition:color .3s var(--ease),-webkit-text-stroke-color .3s var(--ease)}
+  .marquee a:hover{color:transparent;-webkit-text-stroke-color:rgba(244,245,246,.55)}
+  .marquee .home{color:var(--g);font-weight:800;white-space:nowrap;-webkit-text-stroke:1.5px transparent;transition:color .3s var(--ease),-webkit-text-stroke-color .3s var(--ease)}
+  .marquee .home:hover{color:transparent;-webkit-text-stroke-color:rgba(52,211,153,.55)}
+  .cty-foot{margin-top:clamp(30px,4vw,52px)}
+  .cty-foot .hair{height:1px;background:var(--b-2);max-width:520px;margin:0 auto clamp(16px,2vw,22px)}
+  .cty-foot p{font-size:clamp(14px,1.5vw,16.5px);color:var(--muted);line-height:1.6;max-width:60ch;margin:0 auto;text-wrap:pretty}
+  @media(max-width:700px){.marquee{white-space:normal;text-wrap:balance;font-size:clamp(30px,9vw,48px);line-height:1.18}.marquee .sep{margin:0 .22em}}
+  @media(prefers-reduced-motion:reduce){.marquee a,.marquee .home{transition:none}}
 
-  /* TESTIMONIALS */
-  .tst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-  .tst{border:1px solid var(--b);border-radius:12px;padding:24px 22px;background:var(--surface)}
-  .tst .stars{display:flex;gap:3px;margin-bottom:14px}
-  .tst .stars svg{width:16px;height:16px;color:var(--g);fill:var(--g)}
-  .tst blockquote{font-size:14.5px;color:#d7dade;line-height:1.7;margin-bottom:16px;border:0;padding:0}
-  .tst .author{display:flex;align-items:center;gap:11px}
-  .tst .author img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--b-2)}
-  .tst .author-name{font-weight:650;font-size:13.5px;color:#fff}
-  .tst .author-role{font-size:11.5px;color:var(--dim)}
+  /* WORK MOSAIC (full-bleed cropped window, slow vertical drift, front-page cards) */
+  .mosaic-sec{padding:0}
+  .mosaic{position:relative;height:clamp(460px,58vw,700px);overflow:hidden;display:flex;gap:clamp(14px,1.8vw,26px);max-width:1320px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .mosaic-col{flex:1 1 0;min-width:0}
+  .mosaic-col:nth-child(1){margin-top:-70px}
+  .mosaic-col:nth-child(2){margin-top:-170px}
+  .mosaic-col:nth-child(3){margin-top:-110px}
+  .mosaic-track{display:flex;flex-direction:column;will-change:transform;animation:mzUp var(--dur,110s) linear infinite}
+  .mosaic-col.down .mosaic-track{animation-name:mzDown}
+  .mosaic-set{display:flex;flex-direction:column}
+  .mz-card{background:#1d1d1d;box-shadow:0 6px rgba(0,0,0,.4);margin-bottom:clamp(14px,1.8vw,26px)}
+  .mz-card img{width:100%;height:auto;display:block}
+  .mz-name{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.2px;line-height:1.4;color:#fff;padding:11px 14px}
+  @keyframes mzUp{to{transform:translate3d(0,-50%,0)}}
+  @keyframes mzDown{from{transform:translate3d(0,-50%,0)}to{transform:translate3d(0,0,0)}}
+  @media(max-width:640px){.mosaic{height:min(72vw,430px)}.mosaic-col:nth-child(3){display:none}.mosaic-col:nth-child(2){margin-top:-120px}}
+  @media(prefers-reduced-motion:reduce){.mosaic-track{animation:none!important}}
 
-  /* FAQ (centered panel accordion) */
-  .faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-  .faq details{border:1px solid var(--b);border-radius:14px;background:var(--surface);padding:0 clamp(18px,2vw,24px);transition:border-color .25s,background .25s}
+  /* FAQ (the counter: sticky rail + accordion) */
+  .counter{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,5vw,72px);align-items:start}
+  .rail{position:sticky;top:96px}
+  .rail .lede{margin-top:16px;font-size:clamp(15px,1.6vw,17px);color:var(--muted);max-width:32ch}
+  .ask{margin-top:clamp(24px,3vw,34px);border:1px solid var(--b);border-radius:16px;background:var(--surface);padding:clamp(20px,2.4vw,26px)}
+  .ask h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em;color:#fff}
+  .ask p{margin-top:6px;font-size:14px;color:var(--muted)}
+  .ask-actions{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+  .ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border:1px solid var(--b-2);border-radius:11px;background:transparent;color:var(--fg);font-size:14.5px;font-weight:600;text-decoration:none;transition:border-color .25s,background .25s,color .25s}
+  .ghost:hover{border-color:rgba(52,211,153,.5);background:var(--surface-2);color:#fff}
+  .ghost svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+  .faq{display:flex;flex-direction:column;gap:12px}
+  .faq details{border:1px solid var(--b);border-radius:14px;background:var(--surface);overflow:hidden;transition:border-color .3s var(--ease),background .3s var(--ease)}
   .faq details[open]{border-color:rgba(52,211,153,.32);background:var(--surface-2)}
-  .faq summary{list-style:none;cursor:pointer;padding:19px 0;font-family:'Inter Tight',sans-serif;font-size:16.5px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:color .2s}
+  .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(16px,2vw,20px) clamp(18px,2.2vw,24px);font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(15.5px,1.5vw,18px);letter-spacing:-.01em;color:#fff}
   .faq summary::-webkit-details-marker{display:none}
-  .faq summary:hover{color:var(--g-lite)}
-  .faq summary .pm{flex-shrink:0;width:22px;height:22px;position:relative;transition:transform .25s var(--ease)}
-  .faq summary .pm::before,.faq summary .pm::after{content:'';position:absolute;background:var(--g);border-radius:2px}
-  .faq summary .pm::before{top:10px;left:3px;right:3px;height:2px}
-  .faq summary .pm::after{left:10px;top:3px;bottom:3px;width:2px;transition:transform .25s var(--ease)}
-  .faq details[open] summary .pm::after{transform:scaleY(0)}
-  .faq details[open] summary .pm{transform:rotate(180deg)}
-  .faq p{font-size:14.5px;color:var(--muted);line-height:1.7;padding:0 0 22px;margin:0}
-  .faq p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  .faq .pm{position:relative;flex:0 0 auto;width:16px;height:16px}
+  .faq .pm::before,.faq .pm::after{content:'';position:absolute;left:0;top:50%;width:16px;height:2px;background:var(--g);border-radius:2px;transition:transform .35s var(--ease),opacity .3s var(--ease)}
+  .faq .pm::before{transform:translateY(-50%)}
+  .faq .pm::after{transform:translateY(-50%) rotate(90deg)}
+  .faq details[open] .pm::after{transform:translateY(-50%) rotate(0deg);opacity:0}
+  .faq details[open] .pm::before{transform:translateY(-50%) rotate(180deg)}
+  .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+  .faq details[open] .ans{grid-template-rows:1fr}
+  .ans-inner{overflow:hidden}
+  .ans p{padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,22px);font-size:14.5px;line-height:1.65;color:var(--muted);text-wrap:pretty}
+  .ans p a{color:var(--g);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}
+  .ans p a:hover{border-bottom-color:var(--g)}
+  @media(max-width:760px){.counter{grid-template-columns:1fr;gap:clamp(28px,7vw,40px)}.rail{position:static}.rail .lede{max-width:none}}
+  @media(prefers-reduced-motion:reduce){.faq details,.faq .pm::before,.faq .pm::after,.ans{transition:none}}
 
-  /* CTA BAND */
-  .cta{position:relative;overflow:hidden;border:1px solid var(--b-2);border-radius:22px;padding:clamp(48px,6vw,84px) clamp(28px,5vw,72px);background:linear-gradient(160deg,var(--surface-2),var(--surface));text-align:center}
-  .cta h2{font-family:'Inter Tight',sans-serif;font-weight:740;font-size:clamp(26px,3.7vw,42px);line-height:1.08;letter-spacing:-.028em;margin-bottom:16px;text-wrap:balance;color:#fff}
-  .cta h2 em{font-style:normal;color:var(--g)}
-  .cta > p{font-size:clamp(15px,1.7vw,17px);color:var(--muted);max-width:52ch;margin:0 auto 30px;line-height:1.6}
-  .cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-  .cta-actions .btn{margin:0}
-  .cta .cta-note{font-size:13px;color:var(--dim);margin:40px 0 0;max-width:none}
-  @media(max-width:520px){.cta-actions .btn{flex:1 1 100%}}
+  /* CTA (the last word, centered specimen close) */
+  .close{position:relative;overflow:hidden;padding:clamp(64px,8.5vw,116px) 0;
+    background-image:
+      repeating-linear-gradient(0deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px),
+      repeating-linear-gradient(90deg,rgba(52,211,153,.035) 0 1px,transparent 1px 84px)}
+  .close::after{content:'';position:absolute;inset:0;background:radial-gradient(90% 75% at 50% 45%,transparent 40%,var(--bg) 100%);pointer-events:none}
+  .close .wrap{position:relative;z-index:1;text-align:center}
+  .close h2{font-family:'Inter Tight',sans-serif;font-weight:790;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-.04em;color:#fff;text-wrap:balance;max-width:25ch;margin:0 auto}
+  .close h2 em{font-style:italic;font-weight:560;color:var(--g);letter-spacing:-.03em}
+  .close-hair{height:1px;background:var(--b-2);max-width:640px;margin:clamp(26px,3.4vw,40px) auto clamp(22px,2.8vw,32px)}
+  .close-say{font-size:clamp(15px,1.7vw,17.5px);color:var(--muted);line-height:1.65;max-width:54ch;margin:0 auto clamp(24px,3vw,36px);text-wrap:pretty}
+  .close-say strong{color:#e6e8ea;font-weight:600}
+  .close-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .close-note{display:block;font-size:13px;color:var(--dim);margin-top:18px}
+  @media(max-width:600px){.close-btns .btn{flex:1 1 100%}}
 
   /* FOOTER (utility strip) */
   .foot{border-top:1px solid var(--b);padding:clamp(28px,3.5vw,40px) 0 26px;background:var(--bg-2)}
@@ -322,73 +392,72 @@
 
 <main id="main">
 
-<!-- HERO -->
+<!-- HERO (The Tape) -->
 <header class="hero">
-  <h1 class="sr-only">Web Design &amp; Development in Shelby, NC</h1>
   <div class="wrap">
-    <span class="hero-tag reveal">Shelby &middot; Cleveland County, North Carolina</span>
-    <p class="display reveal">Web design in Shelby, built to bring in <em>real work</em>.</p>
-    <p class="hero-sub reveal">Custom websites, SEO, and branding for the uptown shops, restaurants, trades, and professional practices of Cleveland County. No templates, no lock-in, and you own every line of it. See the full <a href="/">Shelby NC web design portfolio</a> for recent work.</p>
-    <div class="hero-cta-row reveal">
+    <span class="hero-loc">Shelby &middot; Cleveland County, North Carolina</span>
+    <h1>
+      <span class="ln"><span>Web design in Shelby</span></span>
+      <span class="ln"><span>that <em>gets you found.</em></span></span>
+    </h1>
+    <p class="hero-sub">Custom sites for the shops, restaurants, trades, and practices of Cleveland County. Hand-coded around your business, ranked on Google, and <strong>owned by you outright</strong>. See the full <a href="/">Shelby NC web design portfolio</a> for recent work.</p>
+    <div class="hero-cta-row">
       <a href="/contact" class="btn btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Start a project
       </a>
       <a href="/website-cost-calculator" class="btn btn-ghost">Get a free estimate</a>
     </div>
-    <div class="proof reveal" role="list" aria-label="What you get">
-      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="proof-n">You own everything</div><div class="proof-l">Code, domain, and hosting</div></div>
-      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="proof-n">You launch fast</div><div class="proof-l">Live in fourteen days</div></div>
-      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="proof-n">You rank locally</div><div class="proof-l">Local SEO from launch</div></div>
-      <div class="proof-item" role="listitem"><div class="proof-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/></svg></div><div class="proof-n">You skip templates</div><div class="proof-l">Coded to your brand</div></div>
+  </div>
+  <div class="tape" aria-hidden="true">
+    <div class="tape-track">
+      <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Kings Mountain</span><span>Google Business Profile</span><span>Boiling Springs</span><span>Branding</span><span>Forest City</span><span>Website Migration</span><span>Rutherfordton</span>
+      <span>Custom Websites</span><span>Shelby</span><span>Local SEO</span><span>Kings Mountain</span><span>Google Business Profile</span><span>Boiling Springs</span><span>Branding</span><span>Forest City</span><span>Website Migration</span><span>Rutherfordton</span>
     </div>
   </div>
 </header>
 
-<!-- LOCAL INTRO -->
-<section class="local band">
+<!-- LOCAL INTRO (full-bleed map) -->
+<section class="local">
   <div class="wrap">
     <div class="local-copy reveal">
-      <h2 class="sec-title" style="margin-bottom:18px">Built for <em>uptown Shelby</em> and the county it anchors.</h2>
+      <h2 class="sec-title" style="text-align:left">Built for <em>uptown Shelby</em> and the county it anchors.</h2>
       <p>Shelby is the seat of Cleveland County, and it shows on the square: the 1907 courthouse, the storefronts of a Main Street America district, the crowds for a show at the <strong>Don Gibson Theatre</strong> or the <strong>Earl Scruggs Center</strong>. It is a working town with a real downtown, and the businesses here deserve a website that looks the part.</p>
       <p>We build for the people who actually run this place: the restaurant off the square, the contractor covering the county, the law office and the clinic, the shop trying to pull customers from Kings Mountain and the Charlotte commute. Every site is designed and coded around <strong>your</strong> business, not stamped out of a template.</p>
     </div>
-    <div class="map-card reveal">
-      <iframe title="Shelby, NC service area map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52126.14791282843!2d-81.5755558!3d35.2923349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856f2b45e0a6191%3A0x60c65f00f0b5e5e7!2sShelby%2C+NC!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="map-meta">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Serving <strong>Shelby</strong>, Kings Mountain, Boiling Springs, Forest City, Rutherfordton &amp; the Charlotte metro</span></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:hello@studioobrien.com">hello@studioobrien.com</a></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+17049743372">(704) 974-3372</a></div>
-      </div>
-    </div>
+  </div>
+  <div class="local-map">
+    <iframe title="Shelby, NC service area map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52126.14791282843!2d-81.5755558!3d35.2923349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856f2b45e0a6191%3A0x60c65f00f0b5e5e7!2sShelby%2C+NC!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="local-scrim" aria-hidden="true"></div>
+  <div class="local-meta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Serving Shelby, Kings Mountain, Boiling Springs &amp; Forest City</span>
+    <a href="mailto:hello@studioobrien.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@studioobrien.com</a>
+    <a href="tel:+17049743372"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(704) 974-3372</a>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section>
+<!-- SERVICES (specimen poster) -->
+<section class="svcspec">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">What we do for Shelby businesses</h2>
-      <p>One studio for the whole build, the way an agency would cover it, without the agency overhead. Every service below is done in-house and built to bring you work.</p>
+    <div class="svcspec-head reveal">
+      <h2 class="sec-title" style="text-align:left">What we do for <em>Shelby businesses</em></h2>
+      <p>One studio for the whole build, the way an agency would cover it, without the agency overhead. Every service is done in-house and built to bring you work.</p>
     </div>
-    <div class="svc-grid reveal">
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/></svg></span><div><h3>Custom website design</h3><p>A custom website, hand-coded from scratch for your Shelby business. No Wix or Squarespace template. Every page and word is built around how you actually sell and who you serve.</p></div></div>
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><div><h3>Local SEO</h3><p>On-page and technical SEO plus a local strategy built to rank you across Cleveland County. We target the keywords your customers really search, so you land in Google's local results. See our <a href="/blog/local-seo-guide">Local SEO guide</a>.</p></div></div>
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><h3>Google Business Profile</h3><p>Full Google Business Profile setup and optimization so you appear in the Map Pack when nearby customers search. Categories, photos, posts, and a review strategy, all handled for you.</p></div></div>
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Brand &amp; identity</h3><p>A logo, color palette, and typography that make you look as established online as you are on the square. One consistent identity across your website, signage, and social.</p></div></div>
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-3-3M20 16H8l3 3"/></svg></span><div><h3>Website migration</h3><p>Moving off Wix, Squarespace, or an aging WordPress site? We migrate your content and preserve your rankings, so you upgrade the design without losing the traffic you earned. See the <a href="/blog/web-design-redesign-guide">redesign guide</a>.</p></div></div>
-      <div class="svc"><span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3z"/><path d="M13.5 6.5l3 3"/></svg></span><div><h3>Copywriting that converts</h3><p>Every headline and button written to turn visitors into phone calls and booked jobs. Clear, specific copy for your Shelby customers. No lorem ipsum, no filler, no jargon.</p></div></div>
+    <div class="spec reveal">
+      <a class="spec-row" href="/small-business-websites"><span class="spec-name">Custom websites</span><span class="spec-desc"><b>Hand-coded, no templates</b>Every page and word built around how you actually sell. No Wix, no Squarespace.</span></a>
+      <a class="spec-row" href="/seo-services"><span class="spec-name">Local SEO</span><span class="spec-desc"><b>Ranked across the county</b>On-page, technical, and local strategy for the keywords your customers really search.</span></a>
+      <a class="spec-row mint" href="/google-business-profile-setup"><span class="spec-name">Google Business Profile</span><span class="spec-desc"><b>Into the Map Pack</b>Categories, photos, posts, and reviews, handled so nearby searches find you first.</span></a>
+      <div class="spec-row"><span class="spec-name">Brand &amp; identity</span><span class="spec-desc"><b>Look as good as your work</b>Logo, palette, and type. One identity across site, signage, and social.</span></div>
+      <a class="spec-row" href="/website-redesign-migration"><span class="spec-name">Migrations</span><span class="spec-desc"><b>Move without losing rank</b>Off Wix, Squarespace, or aging WordPress with your content and rankings intact.</span></a>
+      <div class="spec-row"><span class="spec-name">Copy that converts</span><span class="spec-desc"><b>Words that get calls</b>Every headline and button written to turn visitors into booked jobs. No filler.</span></div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section id="process">
+<section id="process" aria-label="How we work">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">How we work</h2>
-      <p>Four steps from first call to live site. No standing meetings, no phone tag.</p>
-    </div>
     <div class="prc-grid reveal">
       <article class="prc-card">
         <img class="prc-img" src="portfolio/process-discovery.webp" alt="Mapping a Shelby business's goals, audience, and the pages the site needs to rank and convert" loading="lazy" width="1080" height="1935">
@@ -411,113 +480,150 @@
         <div class="prc-body"><h3 class="prc-name">Launch &amp; local SEO</h3><p class="prc-desc">Your site goes live, you own it, and locals find you on Google.</p></div>
       </article>
     </div>
+    <div class="prc-foot reveal">
+      <p>That's the whole process: <b>plan it, design it, build it, launch it.</b> One call to get started, no standing meetings, no phone tag &mdash; and when it goes live, the site is yours outright.</p>
+    </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- WORK MOSAIC -->
+<section class="band mosaic-sec" aria-label="Recent website builds by Studio O'Brien">
+  <div class="mosaic reveal">
+    <div class="mosaic-col" style="--dur:110s">
+      <div class="mosaic-track">
+        <div class="mosaic-set">
+          <div class="mz-card"><img src="portfolio/takumi.webp" alt="Takumi, Japanese restaurant website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Takumi</div></div>
+          <div class="mz-card"><img src="portfolio/crownline.webp" alt="Crownline Electric, electrician contractor website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Crownline Electric</div></div>
+          <div class="mz-card"><img src="portfolio/milpa.webp" alt="Milpa, Mexican taqueria website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Milpa</div></div>
+          <div class="mz-card"><img src="portfolio/clover.webp" alt="Clover Dental, dental practice website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Clover Dental</div></div>
+        </div>
+        <div class="mosaic-set" aria-hidden="true">
+          <div class="mz-card"><img src="portfolio/takumi.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Takumi</div></div>
+          <div class="mz-card"><img src="portfolio/crownline.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Crownline Electric</div></div>
+          <div class="mz-card"><img src="portfolio/milpa.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Milpa</div></div>
+          <div class="mz-card"><img src="portfolio/clover.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Clover Dental</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mosaic-col down" style="--dur:130s">
+      <div class="mosaic-track">
+        <div class="mosaic-set">
+          <div class="mz-card"><img src="portfolio/qccomfort.webp" alt="Queen City Comfort, HVAC contractor website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Queen City Comfort</div></div>
+          <div class="mz-card"><img src="portfolio/hwaro.webp" alt="Hwaro, Korean BBQ restaurant website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Hwaro</div></div>
+          <div class="mz-card"><img src="portfolio/piedmont.webp" alt="Piedmont Concrete, concrete and masonry website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Piedmont Concrete</div></div>
+          <div class="mz-card"><img src="portfolio/thalassa.webp" alt="Thalassa, Greek taverna website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Thalassa</div></div>
+        </div>
+        <div class="mosaic-set" aria-hidden="true">
+          <div class="mz-card"><img src="portfolio/qccomfort.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Queen City Comfort</div></div>
+          <div class="mz-card"><img src="portfolio/hwaro.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Hwaro</div></div>
+          <div class="mz-card"><img src="portfolio/piedmont.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Piedmont Concrete</div></div>
+          <div class="mz-card"><img src="portfolio/thalassa.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Thalassa</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mosaic-col" style="--dur:120s">
+      <div class="mosaic-track">
+        <div class="mosaic-set">
+          <div class="mz-card"><img src="portfolio/cardinal.webp" alt="Cardinal Pest Control, pest control website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Cardinal Pest Control</div></div>
+          <div class="mz-card"><img src="portfolio/qcland.webp" alt="Queen City Landscaping, landscaping website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Queen City Landscaping</div></div>
+          <div class="mz-card"><img src="portfolio/lucciola.webp" alt="Lucciola, Italian osteria website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Lucciola</div></div>
+          <div class="mz-card"><img src="portfolio/slims.webp" alt="Slim's Bar and Grill, restaurant website design by Studio O'Brien" loading="lazy" width="800" height="415"><div class="mz-name">Slim's Bar &amp; Grill</div></div>
+        </div>
+        <div class="mosaic-set" aria-hidden="true">
+          <div class="mz-card"><img src="portfolio/cardinal.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Cardinal Pest Control</div></div>
+          <div class="mz-card"><img src="portfolio/qcland.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Queen City Landscaping</div></div>
+          <div class="mz-card"><img src="portfolio/lucciola.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Lucciola</div></div>
+          <div class="mz-card"><img src="portfolio/slims.webp" alt="" loading="lazy" width="800" height="415"><div class="mz-name">Slim's Bar &amp; Grill</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES (marquee junction) -->
+<section class="cities">
+  <div class="wrap">
+    <h2 class="sr-only">Serving Cleveland County &amp; beyond</h2>
+    <p class="cty-eyebrow reveal">Rooted in Shelby, serving Cleveland County <b>&amp; beyond</b>.</p>
+    <div class="marquee reveal">
+      <span class="home">Shelby</span> <span class="sep">&bull;</span> <a href="/kings-mountain-nc-web-design">Kings Mountain</a> <span class="sep">&bull;</span> <a href="/forest-city-nc-web-design">Forest City</a> <span class="sep">&bull;</span> <a href="/rutherfordton-nc-web-design">Rutherfordton</a>
+    </div>
+    <div class="cty-foot reveal">
+      <div class="hair"></div>
+      <p>Same build in every town: custom code, local SEO, a site you own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (the counter) -->
 <section class="band">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">What clients say</h2>
-    </div>
-    <div class="tst-grid reveal">
-      <div class="tst">
-        <div class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <blockquote>"The restaurant itself is beautiful, but our old site made it look like a chain. Jarred built something that finally matches the atmosphere inside these walls. Now people book before they even walk in."</blockquote>
-        <div class="author">
-          <img src="portfolio/avatar-marcus.webp" alt="Marcus Reed" loading="lazy" width="38" height="38">
-          <div><div class="author-name">Marcus Reed</div><div class="author-role">Owner, Ember &amp; Oak Steakhouse</div></div>
-        </div>
-      </div>
-      <div class="tst">
-        <div class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <blockquote>"Our users live on their phones and the old site was unusable on mobile. Jarred rebuilt the entire front end, it looks incredible and actually works where our audience is."</blockquote>
-        <div class="author">
-          <img src="portfolio/avatar-sarah.webp" alt="Sarah Lin" loading="lazy" width="38" height="38">
-          <div><div class="author-name">Sarah Lin</div><div class="author-role">Founder, Gameshelf</div></div>
+    <div class="counter">
+      <div class="rail reveal">
+        <h2 class="sec-title" style="text-align:left">Questions we hear from Shelby owners</h2>
+        <p class="lede">Straight answers, no runaround.</p>
+        <div class="ask">
+          <h3>Ask something else</h3>
+          <p>Not seeing your question? Tell us what you are working with and we will get you a real answer.</p>
+          <div class="ask-actions">
+            <a class="ghost" href="/contact">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Start a project
+            </a>
+            <a class="ghost" href="tel:+17049743372">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (704) 974-3372
+            </a>
+          </div>
         </div>
       </div>
-      <div class="tst">
-        <div class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <blockquote>"The walkthrough video sold me. I could see exactly what I was getting before anything went live. Revisions were painless."</blockquote>
-        <div class="author">
-          <img src="portfolio/avatar-david.webp" alt="David Kim" loading="lazy" width="38" height="38">
-          <div><div class="author-name">David Kim</div><div class="author-role">Creative Director, Koji Studio</div></div>
-        </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>How much does a website cost? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>Every project is custom-quoted based on scope. We build from scratch, with no templates, so pricing reflects what your business actually needs. Reach out for a straight number, or get an instant <a href="/website-cost-calculator">no-email estimate</a> first.</p></div></div>
+        </details>
+        <details>
+          <summary>How long does it take? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>Most projects go from first call to live site in about 14 days. Complex builds take longer, but you get a clear timeline upfront.</p></div></div>
+        </details>
+        <details>
+          <summary>Do I own my website? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>Yes. You own your domain, hosting, source code, and every asset. No monthly fees unless you want ongoing support. It is your business, it should be your website.</p></div></div>
+        </details>
+        <details>
+          <summary>Do you work with businesses outside Shelby? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>Yes. We serve Cleveland County, Kings Mountain, Boiling Springs, Forest City, Rutherfordton, Gastonia, and throughout North Carolina, all done remotely with recorded walkthroughs.</p></div></div>
+        </details>
+        <details>
+          <summary>What kind of businesses do you build for? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>Uptown restaurants and retail, trades and contractors, professional practices, nonprofits, and small manufacturers across Cleveland County.</p></div></div>
+        </details>
+        <details>
+          <summary>What if I already have a website? <span class="pm"></span></summary>
+          <div class="ans"><div class="ans-inner"><p>We handle migrations from Wix, Squarespace, WordPress, or any platform, preserving your SEO and moving your content so nothing breaks in the transition.</p></div></div>
+        </details>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CITIES -->
-<section>
+<!-- CTA (the last word) -->
+<section class="close">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Serving Cleveland County &amp; beyond</h2>
-      <p>Rooted in Shelby, working across the region. Explore a nearby town:</p>
+    <h2 class="reveal">Losing customers to a website that <em>doesn't sell?</em></h2>
+    <div class="close-hair reveal" aria-hidden="true"></div>
+    <p class="close-say reveal">Let's fix that. I build custom websites for Shelby businesses that turn visitors into <strong>phone calls and booked jobs</strong>. Tell me what you're working with, and I'll show you what's possible.</p>
+    <div class="close-btns reveal">
+      <a href="/contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start a project
+      </a>
+      <a href="tel:+17049743372" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (704) 974-3372
+      </a>
     </div>
-    <div class="city-grid reveal">
-      <div class="city here"><h3>Shelby, NC</h3><p>Uptown shops, restaurants, and county-seat professional services. Sites that bring customers through the door.</p></div>
-      <a href="/kings-mountain-nc-web-design" class="city"><h3>Kings Mountain, NC <span class="arr">&rarr;</span></h3><p>Tourism near the battleground and state park, retail, and food spots that need mobile-first design.</p></a>
-      <a href="/forest-city-nc-web-design" class="city"><h3>Forest City, NC <span class="arr">&rarr;</span></h3><p>Main Street storefronts and growing small businesses that want an online presence to match.</p></a>
-      <a href="/rutherfordton-nc-web-design" class="city"><h3>Rutherfordton, NC <span class="arr">&rarr;</span></h3><p>A historic county seat where local businesses tell their story with clean, modern design.</p></a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="band">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Questions we hear from Shelby owners</h2>
-    </div>
-    <div class="faq reveal">
-      <details open><summary>How much does a website cost? <span class="pm"></span></summary><p>Every project is custom-quoted based on scope. We build from scratch, with no templates, so pricing reflects what your business actually needs. Reach out for a straight number, or get an instant <a href="/website-cost-calculator">no-email estimate</a> first.</p></details>
-      <details><summary>How long does it take? <span class="pm"></span></summary><p>Most projects go from first call to live site in about 14 days. Complex builds take longer, but you get a clear timeline upfront.</p></details>
-      <details><summary>Do I own my website? <span class="pm"></span></summary><p>Yes. You own your domain, hosting, source code, and every asset. No monthly fees unless you want ongoing support. It is your business, it should be your website.</p></details>
-      <details><summary>Do you work with businesses outside Shelby? <span class="pm"></span></summary><p>Yes. We serve Cleveland County, Kings Mountain, Boiling Springs, Forest City, Rutherfordton, Gastonia, and throughout North Carolina, all done remotely with recorded walkthroughs.</p></details>
-      <details><summary>What kind of businesses do you build for? <span class="pm"></span></summary><p>Uptown restaurants and retail, trades and contractors, professional practices, nonprofits, and small manufacturers across Cleveland County.</p></details>
-      <details><summary>What if I already have a website? <span class="pm"></span></summary><p>We handle migrations from Wix, Squarespace, WordPress, or any platform, preserving your SEO and moving your content so nothing breaks in the transition.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section>
-  <div class="wrap">
-    <div class="cta reveal">
-      <h2>Losing customers to a website that <em>doesn't sell</em>?</h2>
-      <p>Let's fix that. I build custom websites for Shelby businesses that turn visitors into phone calls and booked jobs. Tell me what you're working with, and I'll show you what's possible.</p>
-      <div class="cta-actions">
-        <a href="/contact" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Start a project
-        </a>
-        <a href="tel:+17049743372" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          (704) 974-3372
-        </a>
-      </div>
-      <p class="cta-note">Free quote. Most builds launch in about 14 days.</p>
-    </div>
+    <span class="close-note reveal">Free quote. Most builds launch in about 14 days.</span>
   </div>
 </section>
 

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "mi-pueblito-shelby",
+    "exists": true,
+    "realWebsite": "https://www.mipubs.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED same group as the Forest City Mi Pueblito. mipubs.com is a shared multi-location site (Rutherfordton orig 1995, Shelby 213 W Warren St, Forest City, Marion) with per-location menu pages incl /shelby-online-menu. MULTI-LOCATION GROUP, good site already exists = weak/skip target (has web covered). Shelby loc 704-482-5155, info@mipubs.com. Appears Wix-built."
+  },
+  {
+    "id": "kellys-seafood-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 247, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Family-owned since 1959/1960, 1204 E Dixon Blvd Shelby. Only FB + directory/aggregator listings (res-discover, wheree, weeblyte, restaurantji) = NO owned site. Review count non-Google: Restaurantji 247, Yelp 38, Tripadvisor 3.9/#21of86. Longevity + real customer base + no site = strong B2/A2 gap target."
+  },
+  {
+    "id": "133-west-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://133west.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 90, "rating": 4.5 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Historic downtown Kings Mountain, 133 W Mountain St, $$$ upscale southern. Owned site exists (133west.com). Reviews non-Google: Yelp 90, TA 4.5/#13of36. KM casino-corridor established (downtown, price level $$$) = capacity signals. Site not graded."
+  },
+  {
+    "id": "larkins-restaurant-bar-grill-union-mills",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NO independent 'Larkins Bar & Grill' found operating in Union Mills - OSM label appears stale/misattributed. Namesakes: (1) Larkin's Carolina Grill, Columbus NC (155 W Mills St) - CLOSED, now Sully's Place; (2) Larkins Group / Larkin's on the Lake (Lake Lure) + Larkin's Greenville SC - a real upscale GROUP (larkinsrestaurants.com, larkinsgvl.com), founded Mark & Larkin Hammond 1998. GROUP/CHAIN + no local independent = DISQUALIFY."
+  },
+  {
+    "id": "main-street-dental-partners-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.mainstreetdentalpartners.com",
+    "liveSiteGrade": "flawed",
+    "reviews": null,
+    "owner": { "name": "Michael Marshall, DMD" },
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: located Rutherfordton (334 N Main St, 28139), NOT Forest City. INDEPENDENT (Dr. Michael Marshall, DMD; opened 1997) - NOT a DSO/corporate group = qualifies on P7. Site is a dental-vertical VENDOR template: footer credits 'Dental Website Design by TheDocSites' = vendor-locked, don't-own-your-site angle (the P7 play). High-value dental target."
+  },
+  {
+    "id": "main-street-market-rutherfordton",
+    "exists": true,
+    "realWebsite": "https://www.localroco.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Deli by day / 'Bread & Wine' wine bar by night, 187 N Main St Rutherfordton. Owned site localroco.com (also a square.site ordering page). 50% of profit donated to Blue Ridge Hope (mission-driven). Reviews non-Google: Tripadvisor 4.0/#9of22. Site exists, not graded."
+  },
+  {
+    "id": "small-town-coffee-roasters-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.smalltowncoffeeroasters.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Small-batch roaster + espresso bar, also serves BluMonkey Belgian waffles (IG @blumonkey_coffee). TOWN AMBIGUOUS: iCafe/VisitNCSmallTowns list Forest City; FB/IG tag Rutherfordton - confirm exact town before touch. Owned site exists. Not graded."
+  },
+  {
+    "id": "slims-bar-grill-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 337, "rating": 4.7 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Downtown Forest City build-your-own-burger bar, opened ~2018-19; MOVED to bigger location Sept 2025 (growth/investment signal). Only FB + aggregators = NO owned site. Reviews non-Google: FB 337 (98%), TA 4.7/#7of47. Strong B2 gap target (high engagement, no site). Note: memory flags Slim's as a portfolio case-study candidate."
+  },
+  {
+    "id": "carolina-crossing-grover",
+    "exists": true,
+    "realWebsite": "https://carolinacrossingsgrover.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 201, "rating": 4.8 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "218 S Main St Grover, ~18 yrs in business, home-style (pizza/BBQ/Italian). Owned site exists (carolinacrossingsgrover.com). Reviews non-Google: FB 201 (96%), TA #1of2 in Grover. Grover = I-85 southern/KM growth corridor. Site not graded."
+  },
+  {
+    "id": "238-cherokee-grill-kings-mountain",
+    "exists": true,
+    "realWebsite": "https://www.238-cherokeegrill.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 3.9 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Upscale-casual American w/ full bar, 222 S Railroad Ave, founded 2010, beside Patriot Park in downtown KM. Owned site (Wix-style) + Toast online ordering = established. Reviews non-Google: TA 3.9/#1of37 KM. KM casino-corridor establishment signals present (14+ yrs, full bar, downtown). Site not graded."
+  },
+  {
+    "id": "hannahs-coffee-house-shelby",
+    "exists": true,
+    "realWebsite": "https://www.hannahscoffeehouse.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 194, "rating": 4.6 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Shelby since 2013, 1024 E Marion St; serves Broad River Roasters beans, garden/greenhouse space. NOTABILITY: featured in Our State magazine. Owned site exists (hannahscoffeehouse.com, /who-we-are slug = likely Wix). Reviews non-Google: Restaurantji 194, TA 4.8, Overlook 4.5. Site not graded."
+  },
+  {
+    "id": "the-depot-cafe-lattimore",
+    "exists": true,
+    "realWebsite": "https://www.thedepotcafenc.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 384, "rating": 4.7 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Southern breakfast/lunch in Lattimore's historic depot, 202 Price St; meals under $10. Owned site thedepotcafenc.com; contact email surfaced: thedepotcafe@gmail.com. Reviews non-Google: 4.7 from 384, Restaurantji 153. Lattimore = tiny Cleveland County town (Storefront-first). Site not graded."
+  },
+  {
+    "id": "hope-house-coffee-forest-city",
+    "exists": true,
+    "realWebsite": "https://hopehousecoffee.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "NONPROFIT confirmed - 501(c)3 'Coffee with a Cause', 1066 S Broadway St Forest City; started in a church basement, shares profits with community agencies; won Rutherford Chamber 'Spirit of the Community Award'. Two-lane drive-thru. NONPROFIT/MINISTRY = changes the play (goodwill/mission angle, not full-build pitch). Owned site exists (Wix-style)."
+  },
+  {
+    "id": "flyboy-pizza-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.flyboypizza.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (Dreamland Event Center, ~1mi N off Rock Rd toward airport), NOT Forest City. Aviation-themed pizzeria (real airplane inside). SAME OWNERS as Flygirl Brewing - the two MERGED Mar 2026, share phone (828) 395-2230 & venue. Owned site flyboypizza.com + Toast ordering. Not graded."
+  },
+  {
+    "id": "flygirl-brewing-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.flygirlbrewing.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (206 Fashion Circle), NOT Forest City. Aviation-themed brewery+pizzeria on Thermal Belt rail trail; installing 5-bbl brewhouse (Deutsche Beverage) = investment/growth signal. SAME OWNERS/MERGED with Flyboy Pizza Mar 2026, shared phone (828) 395-2230. Owned site flygirlbrewing.com. Not graded."
+  },
+  {
+    "id": "corner-bbq-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 24, "rating": null },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: Rutherfordton (694 N Washington St, 28139), NOT Forest City. Small drive-up/takeout BBQ (chopped pork sandwiches), covered outdoor seating only. Only Yelp/TA/menupix listings = NO owned site. Reviews thin: Yelp 24. Low-capacity, small operator - Storefront-first if pursued."
+  },
+  {
+    "id": "dans-bessemer-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": null, "rating": 4.1 },
+    "owner": { "name": "Dan Boling" },
+    "gbpClosed": false,
+    "notes": "Breakfast/lunch diner, 615 Gastonia Hwy Bessemer City; LONGEVITY 45+ yrs, founded/run by Dan Boling. Only FB + aggregators = NO owned site. Reviews non-Google: TA 4.1. Bessemer City = Gaston County edge. Longevity + no site = solid B2 gap target; owner name surfaced (Dan Boling)."
+  },
+  {
+    "id": "taqueria-juquilita-spindale",
+    "exists": true,
+    "realWebsite": "https://taqueriajuquilitanc.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Authentic Mexican, 375 E Main St Spindale; homemade tortillas, tacos de cabeza/menudo. Owned site taqueriajuquilitanc.com + online ordering. Relatively new (FB page est. 2023). Spindale = lower-income Rutherford County (Storefront-first tier). Site exists, not graded."
+  },
+  {
+    "id": "carolina-farmhouse-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 58, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Southern comfort food, 2270 US-74 ALT / College Ave, Forest City; cube steak/fried chicken/pies, arcade games. Only Yelp/menupix/zmenu/IG = NO owned site. Reviews non-Google: Restaurantji 58, 4.3. B2 gap target (real spot, no site)."
+  },
+  {
+    "id": "west-end-car-wash-cherryville",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Car wash / auto detailing, 609 W Church St Cherryville; est. 2014 per BBB, 5 employees, phone 704-435-6623. Only FB + directory aggregators (wusaw/cmac/citysquares/ezlocal) = NO owned site. No reliable review count found. P3 auto, phone-only reachability - low-mid capacity."
+  }
+]

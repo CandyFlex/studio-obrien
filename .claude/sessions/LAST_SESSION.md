@@ -1,31 +1,56 @@
-# Session Handoff — 2026-07-12 (Queen City Comfort retro pass + logo + form)
+# Session Handoff — 2026-07-15 (Portfolio showcase refresh — LOCAL DRAFT, paused for Jarred review)
 
 ## What changed
-All in `queen-city-comfort/index.html` (qc-override block + inline swaps), modeled on live stansac.com screenshots:
-- **Retro pass:** photos (section-2 / testimonials / section-8) clipped into Stan's-style wobbly trapezoids via SVG `clipPath` defs `#qcClipR`/`#qcClipL` (objectBoundingBox, injected before `.wrapper`), max-height 420px, drop-shadow; offset hand-drawn outline = same path stroked, as bg-image on container `::before` (gold / soft-teal / deep-teal).
-- **Star patterns:** atomic 4-point star SVG tiles on offer coupons (+ dashed inset outline) and footer; value-props section → cream `#f6f0e2` with 2 big corner starbursts (dots-on-tips later removed per user — long lines only).
-- **Icon chips:** teal rounded squares rotated -3°, gold outline ::before rotated +6° offset down-right (needs `z-index:0` on chip), gold sparkle ::after top-right.
-- **Logo (final = Logo 02 of 5 mockups in `logo-designs.html`):** Yellowtail script "Queen City" (Google Fonts link in head), -2° tilt, 41px header / 30px mobile, "COMFORT CO." gold caps pulled in from the tail. User first picked 03 (slab+plate), then switched.
-- **Finance card SVG:** contactless arcs removed, 0%/APR* moved to x=222/270 (was overlapping).
-- **Request Service band:** now financing.jpg (residential condenser) under teal overlay + the FULL Gravity Forms form unhidden (`#gform_wrapper_5{display:block !important}` — GF JS never runs in static clone) + custom-styled Service Needed select. Matches Stan's form layout.
-- **Footer:** "Site by Studio O'Brien" added after Privacy Policy (new standing rule in memory: `studio_signature_footer`).
-- Memory `qcc_hvac_clone.md` updated throughout; committed to git this session.
+**Nothing is live. All work is in a LOCAL working copy: `portfolio-local.html`** (generated from
+`index.html`, which is UNTOUCHED). Jarred is going to review/adjust, then we finalize + port to
+`index.html` and deploy. The generator is `production/build-local-layout.mjs` — re-run
+`node production/build-local-layout.mjs` to rebuild the local copy after edits.
+
+Captured 6+6 built sites server-side (Playwright, load-gated: networkidle + fonts.ready + image
+decode) into `preview/portfolio-review/` (`<slug>-hero.png` + `-full.png`). Converted the keepers to
+webp via ffmpeg (libwebp) into `portfolio/` (production-ready assets, 84–724K each).
+
+The refreshed showcase (5 changes, all in the local copy):
+- **A. Top grid (#portfolio):** dense 20 cards / 8 businesses (old projects removed). Businesses:
+  Crownline Electric, Cardinal Pest, Piedmont Concrete, Queen City Comfort, Queen City Landscaping
+  (the 5 new trades) + Gameshelf + Dark Thoughts + Clover Dental. Trades×3, others×2. Distribution
+  is spread so NO business repeats in a column or row, instances ≥2 rows apart (see COLS in generator).
+- **B. Storefront (green "local business" section, `#storefront-project`):** Black Creek → **Ben's
+  Smokehouse** (uses `portfolio/bens-full.webp`). Section now = Carolina Arcade, Slim's, Ben's.
+- **C. The "computer" (`.wt-section` laptop + phone, "See your site on every screen"):** reels swapped
+  Dark Thoughts → **Crownline Electric** (`portfolio/crownline-reel.webp` desktop,
+  `crownline-reel-mobile.webp` phone).
+- **D. Scrolling backdrop (`.show-fall`) behind laptop:** old projects → new sites (repeats OK).
+- **E. Reel animation:** laptop 48s→**110s**, phone 20s→**210s** (phone now slower than laptop),
+  keyframes reversed to `0 → -50%` so it scrolls **top→down** (hero first, footer last).
+
+Local-only fixups baked into the generator so it renders under file://: strips `?v=` cache-busters and
+rewrites root-absolute `/asset` paths to relative (both break on file://, not on the live server).
 
 ## Verification
-- Tested: every visual change Playwright-verified against http://127.0.0.1:8787 (batch screenshots, sections compared to stansac.com reference shots in scratchpad).
-- Untested: form is display-only (no backend — submits to nonexistent WP; would need Formspree or similar to go live). Site not deployed anywhere; local only. Yellowtail/Google Fonts needs internet.
+- Tested: rendered `portfolio-local.html` headless at 1440 — grid, laptop (Crownline on both screens),
+  and Storefront (Ben's) all screenshotted and confirmed; zero 404s; all webp load. Grid spread verified
+  by the placement table.
+- Untested: the reel SPEED/DIRECTION (110s/210s/top-down) is motion — verified in CSS only, not watched
+  live. Jarred should eyeball it in a browser. Mobile/responsive breakpoints of the new grid not checked.
 
 ## Next action (and why)
-- User said "save and move on." Nothing owed. If QCC resumes: candidates are mobile pass (shapes/logo at small widths only spot-checked via CSS sizes, not screenshotted), wiring the form, or deleting mockup pages `logo-designs.html`/`review-designs.html` (user hasn't answered; keep for now).
+- **Jarred reviews `portfolio-local.html` and gives adjustments** (his words: "save this… adjust… then
+  clean up everything"). Do NOT port to `index.html` or deploy until he signs off.
+- After sign-off: port A–E into real `index.html` (same edits the generator makes), update the noscript
+  fallback + SEO image list (still reference old projects — not yet touched), then `vercel deploy --prod`.
+- Open question he flagged: Ben's sits under the Storefront "Concept" tag but is a REAL Spindale business
+  — may want relabel (e.g. "Live · BBQ"). Grid is 8 biz / 20 cards (some ×3) — he may want fewer repeats.
 
 ## Do NOT
-- Do NOT touch the minified theme `main.css` — ALL restyling goes in the `<style id="qc-override">` block.
-- Do NOT "clean up" the wobbly photo shapes back to plain rounded rects — retro IS the direction (user-driven). Keep clip path + outline path in sync if reshaping.
-- Do NOT re-add balls/dots to the starburst tips, the crown-circle logo, or the contactless arcs on the finance card — all removed per user.
-- Do NOT re-hide `#gform_wrapper_5`.
-- impeccable hook findings on this file (~117) are the scraped theme's own values + QCC brand palette — classified intentional all session; don't churn on them.
+- Do NOT edit `index.html` for this work yet — everything stays in `portfolio-local.html` until approved.
+- Do NOT delete `preview/portfolio-review/` PNGs or the `portfolio/*.webp` new assets — source for the port.
+- Do NOT re-open the browser to "show" him — just tell him to refresh `portfolio-local.html` (memory rule).
+- Queen City Air was DROPPED (kept Queen City Comfort as the single HVAC piece) — don't re-add it.
+- Terry Black's / stansac were excluded (real-biz clones); don't wire them into the portfolio.
 
 ## Blockers / carried items
-- Preview server: `python -m http.server 8787` from `queen-city-comfort/` (was running in background this session; restart if dead). Hard-refresh rule applies (cache).
-- Playwright scripts: CJS + `NODE_PATH="$(npm root -g)"` (ESM import fails); scroll before full-page shots (lazy images).
-- O'Brien portfolio site work (geo re-index Day 2/3, GBP post) still pending from earlier sessions — see `obrien_geo_reindex_progress` memory.
+- Playwright runs via GLOBAL install (`npm root -g`/playwright); scripts import it by absolute path.
+  ffmpeg is the Gyan winget build (full path in `production/build-local-layout.mjs` sibling scripts). No
+  sharp installed — webp conversion is ffmpeg libwebp.
+- Electric brand renamed CWG → "Crownline Electric" in the source site; capture slug is still `cwg-electric`.

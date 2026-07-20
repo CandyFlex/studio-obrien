@@ -1,0 +1,282 @@
+{
+  "niche": "law-professional",
+  "date": "2026-07-09",
+  "keywords": [
+    "lawyer shelby nc",
+    "law firm shelby nc",
+    "cpa shelby nc",
+    "accounting shelby nc"
+  ],
+  "perKeyword": [
+    {
+      "term": "lawyer shelby nc",
+      "paidCount": 0,
+      "paidDomains": [],
+      "localPackSlots": 0,
+      "localPackFull": false,
+      "competition": {
+        "dirs": 0,
+        "grade": "STRONG"
+      },
+      "advertiserAlsoOrganic": false,
+      "top10": [
+        {
+          "pos": 1,
+          "domain": "justia.com",
+          "url": "https://www.justia.com/lawyers/north-carolina/shelby"
+        },
+        {
+          "pos": 2,
+          "domain": "teddyandmeekins.com",
+          "url": "https://www.teddyandmeekins.com/"
+        },
+        {
+          "pos": 3,
+          "domain": "kinglawoffices.com",
+          "url": "https://kinglawoffices.com/office-locations/north-carolina/shelby"
+        },
+        {
+          "pos": 4,
+          "domain": "lawyers.law.cornell.edu",
+          "url": "https://lawyers.law.cornell.edu/lawyers/north-carolina/shelby"
+        },
+        {
+          "pos": 5,
+          "domain": "hpbdlaw.com",
+          "url": "https://www.hpbdlaw.com/"
+        },
+        {
+          "pos": 6,
+          "domain": "rlutzlaw.com",
+          "url": "https://www.rlutzlaw.com/"
+        },
+        {
+          "pos": 7,
+          "domain": "deatonandbiggers.com",
+          "url": "https://www.deatonandbiggers.com/"
+        },
+        {
+          "pos": 8,
+          "domain": "yelp.ca",
+          "url": "https://www.yelp.ca/search?cflt=lawyers&find_loc=Shelby%2C+NC"
+        },
+        {
+          "pos": 9,
+          "domain": "lawshelby.com",
+          "url": "https://www.lawshelby.com/shelby-civil-litigation-lawyer/"
+        },
+        {
+          "pos": 10,
+          "domain": "haynesatlaw.com",
+          "url": "https://www.haynesatlaw.com/"
+        }
+      ],
+      "gapScore": 0
+    },
+    {
+      "term": "law firm shelby nc",
+      "paidCount": 0,
+      "paidDomains": [],
+      "localPackSlots": 0,
+      "localPackFull": false,
+      "competition": {
+        "dirs": 0,
+        "grade": "STRONG"
+      },
+      "advertiserAlsoOrganic": false,
+      "top10": [
+        {
+          "pos": 1,
+          "domain": "lawshelby.com",
+          "url": "https://www.lawshelby.com/"
+        },
+        {
+          "pos": 2,
+          "domain": "justia.com",
+          "url": "https://www.justia.com/lawyers/north-carolina/shelby"
+        },
+        {
+          "pos": 3,
+          "domain": "teddyandmeekins.com",
+          "url": "https://www.teddyandmeekins.com/"
+        },
+        {
+          "pos": 4,
+          "domain": "rlutzlaw.com",
+          "url": "https://www.rlutzlaw.com/"
+        },
+        {
+          "pos": 5,
+          "domain": "kinglawoffices.com",
+          "url": "https://kinglawoffices.com/office-locations/north-carolina/shelby"
+        },
+        {
+          "pos": 6,
+          "domain": "deatonandbiggers.com",
+          "url": "https://www.deatonandbiggers.com/"
+        },
+        {
+          "pos": 7,
+          "domain": "nicholegreenelaw.com",
+          "url": "https://www.nicholegreenelaw.com/"
+        },
+        {
+          "pos": 8,
+          "domain": "yelp.com",
+          "url": "https://www.yelp.com/biz/cerwin-law-firm-shelby-2"
+        },
+        {
+          "pos": 9,
+          "domain": "luptakandchapman.com",
+          "url": "https://luptakandchapman.com/"
+        },
+        {
+          "pos": 10,
+          "domain": "haynesatlaw.com",
+          "url": "https://www.haynesatlaw.com/"
+        }
+      ],
+      "gapScore": 0
+    },
+    {
+      "term": "cpa shelby nc",
+      "paidCount": 0,
+      "paidDomains": [],
+      "localPackSlots": 0,
+      "localPackFull": false,
+      "competition": {
+        "dirs": 2,
+        "grade": "MEDIUM"
+      },
+      "advertiserAlsoOrganic": false,
+      "top10": [
+        {
+          "pos": 1,
+          "domain": "nextlevelcpa.com",
+          "url": "https://www.nextlevelcpa.com/"
+        },
+        {
+          "pos": 2,
+          "domain": "galeelmorecpa.com",
+          "url": "https://www.galeelmorecpa.com/"
+        },
+        {
+          "pos": 3,
+          "domain": "facebook.com",
+          "url": "https://www.facebook.com/ErinBordersCPA/"
+        },
+        {
+          "pos": 4,
+          "domain": "yelp.com",
+          "url": "https://www.yelp.com/search?cflt=accountants&find_loc=Shelby%2C+NC"
+        },
+        {
+          "pos": 5,
+          "domain": "littlepllc.com",
+          "url": "https://littlepllc.com/"
+        },
+        {
+          "pos": 6,
+          "domain": "galeelmorecpa.com",
+          "url": "https://www.galeelmorecpa.com/contact-us"
+        },
+        {
+          "pos": 7,
+          "domain": "carolinacpas.com",
+          "url": "https://www.carolinacpas.com/"
+        },
+        {
+          "pos": 8,
+          "domain": "cpadirectory.com",
+          "url": "https://cpadirectory.com/accounting-firms/north-carolina/shelby-nc/e-brent-stewart/125297"
+        },
+        {
+          "pos": 9,
+          "domain": "mapquest.com",
+          "url": "https://www.mapquest.com/us/north-carolina/don-e-jones-cpa-401637424"
+        },
+        {
+          "pos": 10,
+          "domain": "littlepllc.com",
+          "url": "https://littlepllc.com/staff/"
+        }
+      ],
+      "gapScore": 0
+    },
+    {
+      "term": "accounting shelby nc",
+      "paidCount": 0,
+      "paidDomains": [],
+      "localPackSlots": 0,
+      "localPackFull": false,
+      "competition": {
+        "dirs": 1,
+        "grade": "STRONG"
+      },
+      "advertiserAlsoOrganic": false,
+      "top10": [
+        {
+          "pos": 1,
+          "domain": "nextlevelcpa.com",
+          "url": "https://www.nextlevelcpa.com/"
+        },
+        {
+          "pos": 2,
+          "domain": "bcdtax.com",
+          "url": "https://www.bcdtax.com/"
+        },
+        {
+          "pos": 3,
+          "domain": "yelp.com",
+          "url": "https://www.yelp.com/search?cflt=accountants&find_loc=Shelby%2C+NC"
+        },
+        {
+          "pos": 4,
+          "domain": "galeelmorecpa.com",
+          "url": "https://www.galeelmorecpa.com/contact-us"
+        },
+        {
+          "pos": 5,
+          "domain": "numbersofshelby.com",
+          "url": "https://numbersofshelby.com/"
+        },
+        {
+          "pos": 6,
+          "domain": "littlepllc.com",
+          "url": "https://littlepllc.com/"
+        },
+        {
+          "pos": 7,
+          "domain": "facebook.com",
+          "url": "https://www.facebook.com/ErinBordersCPA/"
+        },
+        {
+          "pos": 8,
+          "domain": "mapquest.com",
+          "url": "https://www.mapquest.com/us/north-carolina/bcd-income-tax-accounting-270834436"
+        },
+        {
+          "pos": 9,
+          "domain": "carolinacpas.com",
+          "url": "https://www.carolinacpas.com/"
+        },
+        {
+          "pos": 10,
+          "domain": "cpadirectory.com",
+          "url": "https://cpadirectory.com/accounting-firms/north-carolina/shelby-nc/e-brent-stewart/125297"
+        }
+      ],
+      "gapScore": 0
+    }
+  ],
+  "aggregate": {
+    "total": 4,
+    "weakCount": 0,
+    "adsatCount": 0,
+    "pctWeak": 0,
+    "pctAdSat": 0,
+    "meanAdSlots": 0,
+    "meanGapScore": 0,
+    "passed": false
+  }
+}

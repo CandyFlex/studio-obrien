@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "date": "2026-07-16",
+    "method": "Headless Chromium via global Playwright (Node), real Chrome UA + JS execution. MCP Playwright extension browser was unavailable (extension not installed in user's Chrome profile), so grading used a headless real browser instead of WebFetch. Desktop 1280x900 + mobile iPhone emulation at 375x812; DOM signals + full screenshots inspected visually.",
+    "liveSiteGradeScale": "weak = dated/not mobile/vendor-locked; flawed = decent but a real gap; good = current/professional; dead = domain/site not functioning"
+  },
+  "grades": [
+    {
+      "domain": "bmmdental.com",
+      "business": "Blanton Miller & Moore Dentistry (Rutherfordton)",
+      "loaded": true,
+      "liveSiteGrade": "good",
+      "mobileOk": true,
+      "vendorLock": "PBHS ('Dental Website Design by PBHS (c) 2026' in footer) - WordPress-based dental-industry vendor template. Classic P7 'you don't own your site' angle, not a no-site pitch.",
+      "observation": "Current and professional: responsive hamburger nav, accessibility widget, (c)2026 footer, no mobile overflow. But it is a generic PBHS dental template with a mismatched stock mountain-range hero (no local/practice photography). Site quality is genuinely 'good'; the only real opening is the vendor lock."
+    },
+    {
+      "domain": "fcfdentistry.com",
+      "business": "Forest City Family Dentistry (Dr. Jeffrey D. Hall)",
+      "loaded": true,
+      "liveSiteGrade": "flawed",
+      "mobileOk": true,
+      "vendorLock": "Likely Wix (page structure + zero-width-space artifacts; not conclusively fingerprinted). Not a locked dental-vendor template.",
+      "observation": "JS-rendered and it DOES render responsively at 375px (clean stacked layout, real photo of their actual office sign, no horizontal overflow). Real gaps though: empty <h1> / no semantic top heading, no <footer>, viewport meta is the non-standard 'width=1024', thin content, plain dated styling. Decent but clearly gappy = flawed. (Earlier cycle flagged it as 'JS-only needs browser grade' - now graded: responsive, mediocre.)"
+    },
+    {
+      "domain": "newgrassbrewing.com",
+      "business": "Newgrass Brewing (Shelby, award-winning brewery)",
+      "loaded": true,
+      "liveSiteGrade": "dead",
+      "mobileOk": null,
+      "vendorLock": null,
+      "observation": "STRONG FINDING: domain resolves (Cloudflare) but the WordPress site returns HTTP 410 with 'This site has been archived or suspended.' - title 'WordPress > Error'. The award-winning brewery currently has NO working website. This is a live-domain / dead-site situation, not a 403 block. High-value target."
+    },
+    {
+      "domain": "theshelbycafe.com",
+      "business": "Shelby Cafe (1922 institution, ~2300 reviews)",
+      "loaded": true,
+      "liveSiteGrade": "good",
+      "mobileOk": true,
+      "vendorLock": "Toast (restaurant ordering platform + site builder). Generic Toast template: 'Order with App / Order Online' interstitial popup, Toast-hosted ordering/rewards. (c)2026. A2 'you don't own your site / locked to Toast' angle, NOT a no-site pitch.",
+      "observation": "Current, clean, modern and fully mobile-responsive (hamburger nav, stacked hero, no overflow). Real food photography. Genuinely 'good' as a site - the only angle is that it is 100% Toast-templated and vendor-locked."
+    },
+    {
+      "domain": "440barandgrill.com",
+      "business": "440 Bar & Grill (Grover)",
+      "loaded": false,
+      "liveSiteGrade": "dead",
+      "mobileOk": null,
+      "vendorLock": null,
+      "observation": "DNS NXDOMAIN in a real browser too (net::ERR_NAME_NOT_RESOLVED; nslookup = 'Non-existent domain'). Domain unregistered / not resolving. Confirmed dead - no site exists at this domain."
+    },
+    {
+      "domain": "rutherfordheatingandair.com",
+      "business": "Rutherford Heating & Air (Spindale/Forest City HVAC)",
+      "loaded": true,
+      "liveSiteGrade": "weak",
+      "mobileOk": true,
+      "vendorLock": null,
+      "observation": "Self-hosted WordPress (generator 'WordPress 7.0.1', no builder lock). It IS technically responsive (renders fine at 375px, hamburger, no overflow) - but visually dated mid-2010s: carousel hero with arrow nav, flat green/yellow buttons, thin generic body copy, and copyright frozen at 2020 (years seen 2019-2020). Confirms the prior 'dated mid-2010s' grade -> weak on the 'dated' criterion despite being mobile-capable."
+    },
+    {
+      "domain": "doggettheatandair.com",
+      "business": "Doggett Heat and Air (Bostic HVAC)",
+      "loaded": false,
+      "liveSiteGrade": "dead",
+      "mobileOk": null,
+      "vendorLock": null,
+      "observation": "DNS NXDOMAIN in real browser (net::ERR_NAME_NOT_RESOLVED; nslookup = 'Non-existent domain'). Confirms the Cycle-0 'appeared LAPSED' flag: the domain no longer resolves. Dead / lapsed - strong no-site angle if the business is still operating."
+    }
+  ],
+  "sos": {
+    "loads": false,
+    "controls": "None reachable. The target search page never renders - it is intercepted by a Cloudflare Turnstile bot-management interstitial ('Just a moment... / Performing security verification / This page is displayed while the website verifies you are not a bot', Ray ID present). HTTP 403 with a __cf_chl_rt_tk challenge token appended to the URL. The only form element present is the hidden 'cf-turnstile-response' input; zero <select> and no date/county/entity-type filters ever load.",
+    "testSearch": "Could not run one. After navigating and waiting 16s in a real (headless) Chromium with a genuine Chrome UA, the page was STILL on the 'Just a moment...' challenge (stillChallenge=true, 0 selects, 1 input = the turnstile token). The actual Business Registration Changes search form never appeared, so no test query could be entered.",
+    "automatable": "no (headless) - Cloudflare Turnstile blocks automated real-browser Playwright, same as it 403s headless fetch. PARTIAL AT BEST only via the persistent-profile MCP extension browser driving the user's already-open, logged-in real Chrome (Turnstile is more likely to pass there, possibly with a one-time human challenge-solve) - but that path could NOT be tested this cycle because the Playwright Chrome extension is not installed. Recommendation: treat SoS new/dissolved filings as a MANUAL lookup (human in real Chrome), consistent with the Cycle-2 L4 finding that SoS is browser-only and bot-blocked."
+  }
+}

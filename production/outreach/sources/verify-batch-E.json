@@ -1,0 +1,202 @@
+[
+  {
+    "id": "china-wall-forest-city",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No business named 'China Wall' found in Forest City NC after two search attempts. Area Chinese spots are China & Hibachi (464 W Main), Dragon Palace (115 Ryan Dr), and China Restaurant. Likely defunct or a misnamed record - treat as null."
+  },
+  {
+    "id": "clover-grill-kings-mountain",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Clover Grill in Kings Mountain NC. The only Clover Grill (clovergrill.com) is in Clover, SC - out of NC territory and a different town. Record is misattributed to KM."
+  },
+  {
+    "id": "randalls-ellenboro-restaurant-ellenboro",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 362, "rating": 4.1 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-style restaurant, 277 Main St, (828) 453-9411. No owned website - only an auto-generated edan.io directory page plus Yelp/YellowPages/Nextdoor. Reviews 4.1/362 (RestaurantGuru). B2 Storefront candidate."
+  },
+  {
+    "id": "fagans-farm-restaurant-ellenboro",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 110, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Farm-to-table restaurant + produce store, 368 New House Rd, (828) 589-5081; open Wed-Sat only. #1 of 4 restaurants in Ellenboro on Tripadvisor (4.3, thin count). No owned site - menu-world.com aggregator + FB/Yelp only. Review count from Restaurantji."
+  },
+  {
+    "id": "fatz-cafe-shelby",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": true,
+    "notes": "CHAIN - Fatz Cafe / Fatz Southern Kitchen was a regional chain that filed bankruptcy and abruptly closed ALL locations Aug 23 2023. Shelby location (1235 E Dixon Blvd) permanently closed. Hard disqualifier (closed + chain)."
+  },
+  {
+    "id": "dragon-palace-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 203, "rating": 4.2 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-owned Chinese, local favorite since 1989. 115 Ryan Dr, (828) 287-5707. Google 4.2. No owned website - only directory pages (menu-res.com, goto-where) and a FB page. Review count from Restaurantji."
+  },
+  {
+    "id": "super-china-buffet-forest-city",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 819, "rating": 3.8 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Yelp marks CLOSED as of July 2025 (143 Plaza Dr). FB page still up. Historical RestaurantGuru 3.8/819. Treat as closed - verify GBP before any touch. gbpClosed left null (closure sourced from Yelp, not confirmed on Google)."
+  },
+  {
+    "id": "la-loma-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 100, "rating": 4.3 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Authentic Mexican, established 2018. 420 S Broadway St, (828) 382-0092. Facebook 4.3/100. No owned website - FB (LaLomaFCNC) + directory listings only. B2 Storefront candidate."
+  },
+  {
+    "id": "dawgs-sports-bar-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Sports bar & grill, 121 Earl Rd Shelby, (704) 406-9988. Registered as 'Dawgs Sports Bar LLC'. Active FB (dawgssportsbar) + Instagram (@dawgssportsbarandgrill), no website. Review count not captured in search. Tier-1 Shelby B2 Storefront candidate."
+  },
+  {
+    "id": "shelby-cafe-shelby",
+    "exists": true,
+    "realWebsite": "https://theshelbycafe.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 2324, "rating": 4.4 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NOTABLE Shelby institution - downtown diner since 1922, 220 S Lafayette St; WRAL feature, famous liver mush, ranked #2 of 85 in Shelby on Tripadvisor. Has a real owned site (theshelbycafe.com) but it returned 403 on fetch so grade could not be verified. Google 4.4; count is RestaurantGuru aggregate. High capacity signal (longevity + notability + review mass)."
+  },
+  {
+    "id": "newgrass-brewing-co-shelby",
+    "exists": true,
+    "realWebsite": "https://newgrassbrewing.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 88, "rating": 4.0 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "NOTABLE downtown brewery, 213 S Lafayette St (1909 former Hudson Dept Store), live music + beer garden. 2026 Best of NC Regional Winner (breweries). Has a real owned site (newgrassbrewing.com) but fetch hit a redirect loop / 410 so grade unverified - worth a manual look. Reviews from Yelp (88/4.0); Restaurantji shows 232."
+  },
+  {
+    "id": "hunt-brothers-pizza-shelby",
+    "exists": true,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "FRANCHISE/CHAIN - Hunt Brothers is a national convenience-store pizza franchise operating inside gas stations / mini-marts (Kebo Convenience, Crest Quick Stop, Cruize-Thru Grab & Go, Crossroads Mini Mart, etc.). Corporate web (huntbrotherspizza.com). Hard disqualifier per P12 - drop."
+  },
+  {
+    "id": "el-taco-loco-forest-city",
+    "exists": true,
+    "realWebsite": "https://eltacolocorestaurant.com",
+    "liveSiteGrade": null,
+    "reviews": { "count": 94, "rating": 4.7 },
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Family-owned Mexican / food truck, 535 S Broadway St, (828) 351-8224. Google 4.7 (RestaurantGuru 4.6/94). Owns domain eltacolocorestaurant.com but the hosting account is SUSPENDED (403) - site is currently DOWN. Strong outreach angle (site dead + high rating). Grade null because site could not load."
+  },
+  {
+    "id": "lunch-box-ellenboro",
+    "exists": false,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Yelp marks CLOSED as of Feb 2026. Burgers/sandwiches, 117 S Glenn Dr, (828) 453-9322. FB page (The Lunch Box) still exists. Treat as closed. gbpClosed left null (sourced from Yelp, not Google)."
+  },
+  {
+    "id": "dixie-diner-kings-mountain",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Dixie Diner found in Kings Mountain NC after multiple searches. Only NC Dixie Diner is in Hendersonville (1724 Brevard Rd). Likely defunct or a misnamed record - treat as null."
+  },
+  {
+    "id": "el-preferido-mexican-restaurant-kings-mountain",
+    "exists": false,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "El Preferido is in Clover, SC (1809 US-321, York County) - not Kings Mountain NC. Shows up only in KM 'nearby' listings. Out of NC territory. Has a weeblyte directory page + FB; Yelp shows 41 reviews. Misattributed to KM."
+  },
+  {
+    "id": "images-sign-service-llc-bostic",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": { "count": 7, "rating": 5.0 },
+    "owner": { "name": "Brian Collier" },
+    "gbpClosed": null,
+    "notes": "Full-service sign shop, established 1993, 440 US-74 Bostic, (828) 248-9800. Contact/owner name Brian Collier (directory/chamber listings; reviews also mention 'Bryon and Michelle' - verify via NC SoS entity search). FB page (imagessignservice) only, no owned website. B2B / trades referral-relevant. Reviews 5.0/7 (directory)."
+  },
+  {
+    "id": "bantam-chef-pizza-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Bantam Chef location found in Earl NC. 'Bantam Chef Pizza' operates in Gastonia NC (3033 Union Rd) and Blacksburg SC; related 'Bantam Chef' diners in Marion NC (open) and Burnsville/West Jefferson (both closed). Small regional CHAIN - possible P12 disqualifier. No Earl NC unit confirmed."
+  },
+  {
+    "id": "joy-wok-earl",
+    "exists": null,
+    "realWebsite": null,
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "No Joy Wok in Earl NC. Nearest is Joy Wok II in Columbus NC (Polk County, 155 W Mills St, 828-894-5566). Likely misnamed/misplaced record - treat as null."
+  },
+  {
+    "id": "440-bar-and-grill-grover",
+    "exists": true,
+    "realWebsite": "https://www.440barandgrill.com",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": null,
+    "notes": "Bar & grill, opened Nov 2022, Grover NC (Cleveland County confirmed). Domain 440barandgrill.com appears in search listings but did NOT resolve on fetch (DNS ENOTFOUND) - verify whether live before grading. Active Instagram (@440sportsandgrill). Also listed as '440 Bar and Grill - Blacksburg SC' on FB (Grover borders Blacksburg at the state line). Review count not captured."
+  }
+]

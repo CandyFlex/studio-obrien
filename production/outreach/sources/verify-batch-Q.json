@@ -1,0 +1,372 @@
+[
+  {
+    "id": "southern-carpets-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Independent flooring retailer, 1512 W Main St, Forest City, (828) 245-0310, ~31 yrs. Directory listings (retailflooringstores, BBB, Nextdoor) cite domain http://www.southern4floors.com but that domain FAILS DNS (ENOTFOUND) - dead/lapsed, effectively no live site. REAL TARGET: established flooring showroom with brand lines (Shaw/Mohawk/Armstrong) and no working website. Good prospect."
+  },
+  {
+    "id": "robbins-paint-carpet-forest-city",
+    "exists": true,
+    "realWebsite": "https://forestcity.abbeycarpet.com/",
+    "liveSiteGrade": "C",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Paint + flooring retailer, 206 Commercial St, Forest City, (828) 245-8801. Benjamin Moore dealer + Abbey Carpet & Flooring franchise. Web presence is the corporate Abbey Carpet franchise micro-site (forestcity.abbeycarpet.com) - templated, not a custom/independent build; also FB page 'Robbins Paint and Floor'. REAL TARGET but note the franchise template may limit appetite for a custom site."
+  },
+  {
+    "id": "hardins-drug-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.hardinsdrug.com/",
+    "liveSiteGrade": "C-",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Independent pharmacy, locally owned since 1973, Forest City (720 S Church St / also listed 1281 US-221A). Site is on Wix, copyright ©2019 - dated, sparse, basic template, minimal recent investment. RxLocal app integration. No soda-fountain confirmation found. REAL TARGET: legacy independent drug store with an aging DIY-Wix site - solid redesign angle."
+  },
+  {
+    "id": "lifestyles-wellness-spa-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.lifestylewellnessspa.com/",
+    "liveSiteGrade": "B+",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Real name 'Lifestyle Wellness & Spa' (singular). Rutherford County's largest fitness/wellness center, opened 1988, 247 Oak St Ste 145, Forest City, (828) 248-2947. Site is on Wix, ©2025, modern & professionally executed (clean nav, good imagery, CTAs, testimonials, book-a-tour). LOWER PRIORITY: already has a current, well-built site."
+  },
+  {
+    "id": "autumn-lanes-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "24-lane bowling center + pro shop, arcade/game room, pool tables, cosmic bowling, dining, Dollar Days. 1766 College Ave, Forest City, (828) 286-9149. Only footprint is Facebook + directory scrapers (autumn-lanes.com-place.com is a spam directory, NOT a real site). NO real website. STRONG TARGET: events/parties/leagues business with zero web presence."
+  },
+  {
+    "id": "mighty-dollar-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Discount/dollar variety store category - LOW non-target (thin margins, no site need). DROP."
+  },
+  {
+    "id": "daily-courier-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.thedigitalcourier.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "The Daily Courier - Forest City/Rutherford County newspaper (owned by Champion Media / regional group). Category DROP as a client, but flag as an INTEL/PR FEED for L4 (local business news, closures, new openings, ad advertisers = target list)."
+  },
+  {
+    "id": "hospice-resale-shop-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Nonprofit hospice-benefit resale/thrift shop. Category hard disqualifier. DROP."
+  },
+  {
+    "id": "js-discount-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Discount/variety store - LOW non-target. DROP."
+  },
+  {
+    "id": "forest-city-abc-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Government-run NC ABC (state liquor) store. Public/gov entity. DROP."
+  },
+  {
+    "id": "callison-recreation-center-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Municipal recreation center (Town of Forest City). Government-owned; web lives under townofforestcity.com. DROP."
+  },
+  {
+    "id": "tri-city-mall-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Retail property/shopping center (management, not a single business). Property category. DROP (tenants could be individually mined later)."
+  },
+  {
+    "id": "mcmahans-funeral-home-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.mcmahansfuneralhome.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: McMahan's Funeral Home & Crematory is at 249 S Main St, RUTHERFORDTON NC 28139 (828-287-4715), NOT Forest City - serves all Rutherford County. Has a working website (mcmahansfuneralhome.com), typical funeral-industry template (not fetched/graded). Independent funeral home = real category, but it already has a site; medium priority."
+  },
+  {
+    "id": "bodymasters-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN NOTE: Yelp lists 'Bodymasters Athletic Club - Forest City' but the active FB page + Apple/Yahoo listings place BodyMasters Fitness Center at 426 Oak St, SPINDALE NC (828-287-5720) - likely one border-area club. Independent gym: full weight room, women-only + tanning, indoor track. Uses a 3rd-party membership portal (bmotion.followproject.com) but NO real marketing website; footprint is FB/Yelp only. REAL TARGET (confirm exact location/town)."
+  },
+  {
+    "id": "thrifty-motel-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": "2.9 stars / ~77 reviews",
+    "owner": "Paul Withrow (owner/manager per BBB)",
+    "gbpClosed": false,
+    "notes": "Independent budget motel, 946-948 W Main St, Forest City, (828) 245-0444. Owner Paul Withrow; under new mgmt / ongoing remodel. Only 'site' is a free WordPress.com blog (thriftymotel.wordpress.com). LOW: independent but budget-tier, weak reviews (2.9), thin budget. Low priority."
+  },
+  {
+    "id": "grindstaffs-interiors-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.grindstaffs.com/",
+    "liveSiteGrade": "C+",
+    "reviews": "~15 Yelp reviews (plus large FB following)",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "KNOWN regional furniture destination - 80,000+ sq ft showroom, nationwide delivery + interior design, 1007 W Main St, Forest City, (828) 245-4263. Has an established e-commerce-style site at grindstaffs.com (Cloudflare-protected, returned 403 to fetch so not fully graded; appears functional/transactional but dated 'discount furniture' styling). High-capacity business; already has a real site, so pitch = redesign/modernization rather than net-new. Notable target."
+  },
+  {
+    "id": "frame-house-galley-gifts-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Frame House Gallery & Gifts - custom picture framing + gift shop since 1986, 991 W Main St, Forest City, (828) 287-3663. Exclusive publisher/distributor of D. Morgan art; also Simply Southern tees, collegiate, flags. Footprint is Facebook + directories only - NO website. REAL TARGET: long-running framing/gifts shop with no web presence."
+  },
+  {
+    "id": "rutherford-life-services-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Nonprofit (services for individuals with intellectual/developmental disabilities). Category disqualifier. DROP."
+  },
+  {
+    "id": "anglers-choice-marine-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.anglerschoicemarine.com/",
+    "liveSiteGrade": "C",
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: primary/HQ store is 291 Oakland Rd, SPINDALE NC (828-286-2290), NOT Forest City; also Lexington NC + Martinsville VA. Multi-brand boat dealer (Triton/Tracker/Ranger/Nitro/Mako etc.), claims #1 Triton dealer in US, ~30 yrs. Has a working but dated dealer site (classic .asp DMS template, anglerschoicemarine.com). Big-ticket business - already has a functional site; modernization pitch possible but multi-location dealer may use OEM/vendor web tools. Medium."
+  },
+  {
+    "id": "oakland-feed-seed-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "TOWN CORRECTION: 770 Oakland Rd, SPINDALE NC 28160 (828-286-0617), NOT Forest City. Independent feed & seed / farm supply, ~37 yrs; feed, hay, fertilizer, pet supplies. Footprint = Facebook + Instagram only, NO website. REAL TARGET: long-running independent feed store, zero web presence."
+  },
+  {
+    "id": "waters-florist-forest-city",
+    "exists": true,
+    "realWebsite": "https://www.watersflorist.net/",
+    "liveSiteGrade": null,
+    "reviews": "4.2 stars / ~41 reviews",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Independent florist, 637 US-221A, Forest City, (828) 245-4388. Has watersflorist.net (not fetched; florists typically run FTD/Teleflora wire-service template storefronts rather than custom sites). Mixed reviews (4.2/41). REAL category but likely locked into a floral-network e-comm template - medium/low custom-site appetite."
+  },
+  {
+    "id": "bd-thrift-loan-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": "Martha Ann Harrell (President) & Danny Dotson (VP)",
+    "gbpClosed": false,
+    "notes": "B&D Thrift Store & Loan / B&D Pawn Shop, 596 S Broadway St, Forest City, ~40 yrs (since 1985), ~5 employees. Pawn/thrift/loan category = LOW non-target. No website. DROP / low priority."
+  },
+  {
+    "id": "ohm-food-mart-forest-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Convenience store / food mart - LOW non-target (no site need). DROP."
+  },
+  {
+    "id": "matthews-gym-forest-city",
+    "exists": true,
+    "realWebsite": "https://matthewsgym.com/",
+    "liveSiteGrade": "D",
+    "reviews": null,
+    "owner": "Matthew (owner/trainer; Gold Standard PT since 2009, 25+ yrs)",
+    "gbpClosed": false,
+    "notes": "Family-owned local gym, 201 Oak St, Forest City, (828) 382-0284, 24/7 member access, no contracts. Site is WordPress, ©2020, dated/basic AND appears COMPROMISED - injected Vietnamese gambling spam links throughout the page (hacked or unmaintained). STRONG TARGET: real independent gym with a neglected, security-compromised site - excellent 'your site is hacked, let's rebuild it' angle."
+  },
+  {
+    "id": "cleveland-mall-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Enclosed shopping mall / retail property in Shelby (management entity, not a single business). Property category. DROP."
+  },
+  {
+    "id": "shelby-vaccum-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Shelby Vacuum - vacuum sales/service/repair, 103 Pine St, Shelby NC 28152, (704) 471-9979, ~29 yrs. Specialty independent retailer; footprint = YellowPages/BBB/directories only, NO website. Small but real independent target (niche specialty retail); low-mid priority."
+  },
+  {
+    "id": "got-books-shelby",
+    "exists": true,
+    "realWebsite": "https://www.gotbooksonline.com/",
+    "liveSiteGrade": null,
+    "reviews": "4.8 stars / ~311 reviews",
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Indie bookstore, 814 S Washington St, Shelby, (704) 466-3492, opened 2005. 80,000+ items (books/comics/CDs/vinyl), coffee cafe, hosts events (open mic, author signings, paint & sip). Excellent reputation (4.8/311). Already has a working site (gotbooksonline.com with buy/trade + testimonials pages). LOWER PRIORITY: strong existing web + social presence."
+  },
+  {
+    "id": "hamricks-boiling-springs",
+    "exists": true,
+    "realWebsite": "https://www.hamricks.com/",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "CONFIRMED CHAIN: Hamrick's Inc., family-owned department-store chain since 1945, HQ Gaffney SC, ~21 stores across SC/NC/GA/TN/VA with corporate site + private labels. The Boiling Springs location is a chain outlet. DROP (regional chain, corporate-managed web)."
+  },
+  {
+    "id": "bessemer-city-recreation-office-bessemer-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Municipal Parks & Recreation office (City of Bessemer City). Government entity. DROP."
+  },
+  {
+    "id": "susies-day-care-bessemer-city",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Susie's Day Care, Inc. - 3-star licensed childcare center, 220 W Alabama Ave, Bessemer City, (704) 629-4386, family-owned 40+ yrs, capacity 52 (ages 1-12), accepts subsidy. Facebook + childcare-directory listings only, NO website. Marginal target: real independent business but daycare with subsidized model + low custom-site appetite. Low priority."
+  },
+  {
+    "id": "affordable-suites-of-america-gastonia",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Affordable Suites of America - extended-stay motel CHAIN (corporate-managed web at affordablesuites.us). DROP."
+  },
+  {
+    "id": "affordable-suites-of-america-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Affordable Suites of America - extended-stay motel CHAIN (Shelby location). Corporate web. DROP."
+  },
+  {
+    "id": "express-inn-and-suites-gastonia",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Budget independent/franchise motel - LOW motel category (thin budget, book via OTAs). DROP / low priority."
+  },
+  {
+    "id": "tri-city-motel-spindale",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Independent budget motel, Spindale. LOW motel category (thin budget). DROP / low priority."
+  },
+  {
+    "id": "woodspring-suites-charlotte-shelby-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "WoodSpring Suites - national extended-stay CHAIN (Choice Hotels brand, corporate web at woodspring.com). DROP."
+  },
+  {
+    "id": "atrium-student-health-clinic-boiling-springs",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Atrium Health student health clinic on the Gardner-Webb University campus (Boiling Springs). Large health system + university - both corporate-managed. DROP."
+  },
+  {
+    "id": "the-hospice-thrift-store-shelby",
+    "exists": true,
+    "realWebsite": "NONE",
+    "liveSiteGrade": null,
+    "reviews": null,
+    "owner": null,
+    "gbpClosed": false,
+    "notes": "Nonprofit hospice-benefit thrift store (Shelby). Category disqualifier. DROP."
+  }
+]
