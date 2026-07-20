@@ -109,6 +109,14 @@ judge against these, don't move the goalposts after):**
 
 ## PRESENT — current state + how to check it (facts beat vibes)
 
+**2026-07-20 (cycle 3b) — FORWARD PLAN written: `GROWTH-STRATEGY.md`.** Three
+pillars: (1) MAP PACK primary — complete the claimed GBP (5.0/6 reviews,
+under-optimized, absent from packs) + review engine; (2) ONE non-derivative
+cost pillar, optional, gated on Jarred's real project numbers + the uniqueness
+doctrine (>=3 non-derivative sources or it doesn't ship); (3) off-search
+(directories + Storefront flywheel). Pricing = educational cost resource, NOT
+a price list. C2 pass condition updated to map-pack entry + reviews executed.
+
 **2026-07-20 (cycle 3) — THE DATA REFRAME (wide-net pull).** Full evidence:
 `research/data-reframe-2026-07-20.md`. Jarred challenged whether we were
 staring at a niche Claude selected vs the whole opportunity. We cast the wide
