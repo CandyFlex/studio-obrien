@@ -15,20 +15,32 @@ before any paid pull.
 ## The chain
 
 ### Stage 0 — Candidate intake
-Where targets come from: SEO-STRATEGY FUTURE queue · keywords_cleaned.csv
-top picks · PAA questions from serp-snapshots · Jarred's research drops ·
-GSC queries we get impressions for but no clicks.
+Where targets come from: SEO-STRATEGY FUTURE queue · **`kw-research.mjs`
+--expand of a money seed (real phrase-match long-tails, not the masked CSV)** ·
+PAA questions from serp-snapshots · Jarred's research drops · **GSC query
+dimension (`gsc-queries.mjs`) — terms we already get impressions for.**
 Artifact: `00-candidate.md` (the query/topic + why it's on deck).
+Retargeted 2026-07-20 (data-reframe): candidates now lead with the PRICING
+cluster + real-volume commercial terms, not 0-volume geo towns. Note the
+CHANNEL per candidate — organic article, map-pack/GBP, or both — because the
+research differs (below).
 
 ### Stage 1 — Search-power evidence (the winnable test)
-Pull the live SERP: serp-track snapshot if covered, else WebSearch + (when
-localization matters) a batched Apify google-search-scraper run.
-Record: top 10 domains, format that ranks, map pack present?, AI overview
-present?, full PAA set.
-**GATE 1 — KILL IF:** page 1 is 5+ strong direct answers from real
-authorities. **PASS IF:** forums/directories/thin national content/weak
-freelancer pages hold slots.
-Artifact: `01-serp.md` (+ raw JSON).
+**Step 1a — VOLUME KILL GATE (new, cheap, first):** `node production/
+kw-research.mjs --seeds "<candidate>"`. If DataForSEO Labs returns **no volume
+data or volume ~0, the target DIES here** — this is the gate that would have
+killed "web design shelby nc" before we ever built for it. Record volume +
+keyword_difficulty + intent. Prefer difficulty <=25 with real volume; high-kd
+terms are map-pack/long-haul, flag accordingly.
+**Step 1b — SERP shape:** pull the live SERP (serp-track snapshot if covered,
+else the DataForSEO SERP; for a LOCAL/near-me candidate use `maps-track.mjs`
+to read the PACK, not just organic). Record: top 10 domains, format that ranks,
+**map pack present + its review bar**, AI overview present?, full PAA set.
+**GATE 1 — KILL IF:** volume is ~0 (1a), OR page 1 is 5+ strong direct answers
+from real authorities. **PASS IF:** real volume AND forums/directories/thin
+national/weak freelancer pages hold slots (organic), or a beatable review bar
+holds the pack (local).
+Artifact: `01-serp.md` (+ raw JSON, + the kw-research overview row).
 
 ### Stage 2 — Competitor autopsy
 WebFetch the top 3-5 real contenders. For each: structure (H2s), what they

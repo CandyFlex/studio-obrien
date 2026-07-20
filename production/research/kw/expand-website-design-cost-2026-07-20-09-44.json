@@ -1,0 +1,498 @@
+{
+  "stamp": "2026-07-20-09-44",
+  "seed": "website design cost",
+  "rows": [
+    {
+      "keyword": "free portfolio website",
+      "volume": 301000,
+      "competition": "MEDIUM",
+      "difficulty": 24,
+      "intent": "informational"
+    },
+    {
+      "keyword": "wix website builder",
+      "volume": 201000,
+      "competition": "LOW",
+      "difficulty": 48,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "web development",
+      "volume": 201000,
+      "competition": "LOW",
+      "difficulty": 70,
+      "intent": "informational"
+    },
+    {
+      "keyword": "website builder",
+      "volume": 165000,
+      "competition": "LOW",
+      "difficulty": 100,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "temu website",
+      "volume": 110000,
+      "competition": "HIGH",
+      "difficulty": 72,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "domain registration",
+      "volume": 110000,
+      "competition": "LOW",
+      "difficulty": 100,
+      "intent": "transactional"
+    },
+    {
+      "keyword": "wordle website",
+      "volume": 110000,
+      "competition": "LOW",
+      "difficulty": 84,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "website hosting",
+      "volume": 90500,
+      "competition": "LOW",
+      "difficulty": 72,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "fanfiction net website",
+      "volume": 74000,
+      "competition": "LOW",
+      "difficulty": 42,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "dogpile website",
+      "volume": 74000,
+      "competition": "LOW",
+      "difficulty": 11,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "genius lyrics website",
+      "volume": 74000,
+      "competition": "LOW",
+      "difficulty": 63,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "behance portfolio website",
+      "volume": 49500,
+      "competition": "LOW",
+      "difficulty": 33,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "free website builder",
+      "volume": 49500,
+      "competition": "MEDIUM",
+      "difficulty": 100,
+      "intent": "informational"
+    },
+    {
+      "keyword": "website design",
+      "volume": 49500,
+      "competition": "MEDIUM",
+      "difficulty": 100,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "etsy website",
+      "volume": 49500,
+      "competition": "HIGH",
+      "difficulty": 73,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "website history google",
+      "volume": 40500,
+      "competition": "LOW",
+      "difficulty": 54,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "domain names",
+      "volume": 40500,
+      "competition": "HIGH",
+      "difficulty": 83,
+      "intent": "informational"
+    },
+    {
+      "keyword": "web name domain search",
+      "volume": 40500,
+      "competition": "HIGH",
+      "difficulty": null,
+      "intent": "informational"
+    },
+    {
+      "keyword": "wordpress blog hosting",
+      "volume": 33100,
+      "competition": "LOW",
+      "difficulty": 93,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "wix website",
+      "volume": 33100,
+      "competition": "MEDIUM",
+      "difficulty": 26,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "apa website citation",
+      "volume": 33100,
+      "competition": "LOW",
+      "difficulty": 41,
+      "intent": "informational"
+    },
+    {
+      "keyword": "google website",
+      "volume": 33100,
+      "competition": "LOW",
+      "difficulty": 85,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "classmates website",
+      "volume": 33100,
+      "competition": "LOW",
+      "difficulty": 36,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "how to make a website",
+      "volume": 33100,
+      "competition": "MEDIUM",
+      "difficulty": 83,
+      "intent": "informational"
+    },
+    {
+      "keyword": "domain name registration",
+      "volume": 33100,
+      "competition": "LOW",
+      "difficulty": 100,
+      "intent": "transactional"
+    },
+    {
+      "keyword": "godaddy domain",
+      "volume": 33100,
+      "competition": "MEDIUM",
+      "difficulty": 33,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "buy domain",
+      "volume": 27100,
+      "competition": "HIGH",
+      "difficulty": 100,
+      "intent": "transactional"
+    },
+    {
+      "keyword": "needoh website",
+      "volume": 27100,
+      "competition": "HIGH",
+      "difficulty": 0,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "website checker",
+      "volume": 27100,
+      "competition": "LOW",
+      "difficulty": 67,
+      "intent": "informational"
+    },
+    {
+      "keyword": "website maker",
+      "volume": 27100,
+      "competition": "MEDIUM",
+      "difficulty": 100,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "cite website",
+      "volume": 27100,
+      "competition": "LOW",
+      "difficulty": 69,
+      "intent": "informational"
+    },
+    {
+      "keyword": "wordpress hosting",
+      "volume": 27100,
+      "competition": "LOW",
+      "difficulty": 68,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "turnitin website",
+      "volume": 27100,
+      "competition": "LOW",
+      "difficulty": 41,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "lfucg jail website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 10,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "dark horizons website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 10,
+      "intent": null
+    },
+    {
+      "keyword": "white house website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 92,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "starbucks website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 78,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "target website",
+      "volume": 22200,
+      "competition": "HIGH",
+      "difficulty": 74,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "gore website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 26,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "freelancer website",
+      "volume": 22200,
+      "competition": "MEDIUM",
+      "difficulty": 97,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "the useless website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 3,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "laliga website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 71,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "dating website okcupid",
+      "volume": 18100,
+      "competition": "LOW",
+      "difficulty": 43,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "yeezy website",
+      "volume": 18100,
+      "competition": "MEDIUM",
+      "difficulty": 9,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "the knot website",
+      "volume": 18100,
+      "competition": "LOW",
+      "difficulty": 33,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "freelancer portfolio website",
+      "volume": 18100,
+      "competition": "LOW",
+      "difficulty": 2,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "how to create a website",
+      "volume": 18100,
+      "competition": "MEDIUM",
+      "difficulty": 100,
+      "intent": "informational"
+    },
+    {
+      "keyword": "com domain registration",
+      "volume": 18100,
+      "competition": "LOW",
+      "difficulty": 100,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "web design company",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 88,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "mcdonalds website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 77,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "doj website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 65,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "iplt20 website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 51,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "domain registration services",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 100,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "brooks website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 8,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "hses website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 42,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "website meaning",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 36,
+      "intent": "informational"
+    },
+    {
+      "keyword": "apa citation website 2 authors",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 14,
+      "intent": "informational"
+    },
+    {
+      "keyword": "squarespace website builder",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 28,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "mla website citation",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 31,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "omoggle website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": null,
+      "intent": "navigational"
+    }
+  ],
+  "winnable": [
+    {
+      "keyword": "free portfolio website",
+      "volume": 301000,
+      "competition": "MEDIUM",
+      "difficulty": 24,
+      "intent": "informational"
+    },
+    {
+      "keyword": "dogpile website",
+      "volume": 74000,
+      "competition": "LOW",
+      "difficulty": 11,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "needoh website",
+      "volume": 27100,
+      "competition": "HIGH",
+      "difficulty": 0,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "lfucg jail website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 10,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "dark horizons website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 10,
+      "intent": null
+    },
+    {
+      "keyword": "the useless website",
+      "volume": 22200,
+      "competition": "LOW",
+      "difficulty": 3,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "yeezy website",
+      "volume": 18100,
+      "competition": "MEDIUM",
+      "difficulty": 9,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "freelancer portfolio website",
+      "volume": 18100,
+      "competition": "LOW",
+      "difficulty": 2,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "brooks website",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 8,
+      "intent": "navigational"
+    },
+    {
+      "keyword": "apa citation website 2 authors",
+      "volume": 14800,
+      "competition": "LOW",
+      "difficulty": 14,
+      "intent": "informational"
+    }
+  ]
+}

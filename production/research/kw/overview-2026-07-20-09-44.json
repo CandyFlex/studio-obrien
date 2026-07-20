@@ -1,0 +1,56 @@
+{
+  "stamp": "2026-07-20-09-44",
+  "seeds": [
+    "website design cost",
+    "cost to build a website",
+    "web design cost",
+    "small business website cost",
+    "website design price",
+    "how much does a website cost"
+  ],
+  "rows": [
+    {
+      "keyword": "how much does a website cost",
+      "volume": 1900,
+      "competition": "MEDIUM",
+      "difficulty": 8,
+      "intent": "informational"
+    },
+    {
+      "keyword": "web design cost",
+      "volume": 1600,
+      "competition": "MEDIUM",
+      "difficulty": 23,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "website design cost",
+      "volume": 1600,
+      "competition": "MEDIUM",
+      "difficulty": 12,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "website design price",
+      "volume": 1600,
+      "competition": "MEDIUM",
+      "difficulty": 18,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "cost to build a website",
+      "volume": 1000,
+      "competition": "MEDIUM",
+      "difficulty": 17,
+      "intent": "commercial"
+    },
+    {
+      "keyword": "small business website cost",
+      "volume": 210,
+      "competition": "MEDIUM",
+      "difficulty": 25,
+      "intent": "commercial"
+    }
+  ],
+  "missing": []
+}

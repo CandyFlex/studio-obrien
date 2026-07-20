@@ -56,6 +56,27 @@ The pack answers the 15-22k/mo "near me" demand, the competition is weak
 and we're absent. Proximity/review-driven, NOT domain-authority-driven =
 winnable for a new local site in a way organic is not.
 
+**Full baseline (maps-track.mjs, 8 packs, `maps-snapshots/maps-2026-07-20-09-45.json`):**
+- **ABSENT from 8/8 packs** (4 near-me terms x Shelby + Gastonia).
+- **Shelby review ceiling = 12** (Grace & Grit at #1). Most of the pack sits at
+  0-4 reviews; several #1-3 slots have ZERO reviews.
+- **A #1 with 0 reviews exists** (Scarlett's Web, Inc. tops the Gastonia pack
+  with 0 reviews) — proof that proximity + a well-optimized profile can rank
+  BEFORE reviews accumulate. The GBP setup itself is the first ranking lever;
+  reviews then cement it. This lowers the "chicken-and-egg" risk I flagged.
+- Toughest competitors are Charlotte-adjacent (Web Design Charlotte 68 rev, Go
+  Digitals 40 rev) and only surface in the Gastonia pack; Shelby proper is soft.
+- (Maps returns some junk businesses — "gaming studio", "Rick And Morty" — normal
+  scraper noise; the real agencies are unambiguous.)
+
+**Pricing target family (kw-research.mjs, `research/kw/`):** "how much does a
+website cost" 1,900/mo **kd 8** (informational, best single target); "website
+design cost" family 1,600/mo **kd 12** (+ dozens of phrase variants Google
+clusters into one page); "how much does it cost to design a website" 1,300/mo
+kd 19; "average website design cost" 320/mo kd 6-13; "website design cost
+calculator" 260/mo kd 11 (we own the calculator). One pricing page/cluster can
+target ~3,000+/mo aggregate at kd 6-25 — evidence-backed, assets already owned.
+
 ## THE REFRAME (evidence-backed)
 1. **Organic search is not the near-term channel.** ~0 volume on our geo
    terms, 2 clicks/90d, blog buried page 8-9. Not a ranking bug — a demand/

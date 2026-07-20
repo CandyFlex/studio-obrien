@@ -1,0 +1,655 @@
+{
+  "stamp": "2026-07-20-09-45",
+  "provider": "dataforseo-maps",
+  "target": "studioobrien.com",
+  "report": [
+    {
+      "keyword": "web designer near me",
+      "location": "Shelby",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 33,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 12
+        },
+        {
+          "rank": 2,
+          "title": "Spencer Technology Group",
+          "domain": "spencertechgroup.org",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 3,
+          "title": "D-Stokes NC Gaming Studio",
+          "domain": "",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 4,
+          "title": "Dragonfly Marketing",
+          "domain": "dragonflymarketing.cc",
+          "rating": 3.7,
+          "reviews": 3
+        },
+        {
+          "rank": 5,
+          "title": "The Awen Group",
+          "domain": "www.awenmarketing.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 6,
+          "title": "Archangel Solutions",
+          "domain": "",
+          "rating": 5,
+          "reviews": 4
+        },
+        {
+          "rank": 7,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 18
+        },
+        {
+          "rank": 8,
+          "title": "Electric Films, LLC",
+          "domain": "electricfilmcine.com",
+          "rating": 4.8,
+          "reviews": 21
+        },
+        {
+          "rank": 9,
+          "title": "Kim Anderson Marketing",
+          "domain": "",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 10,
+          "title": "Multitask Graphics and Assistance",
+          "domain": "multitaskgraphicsandassistance.com",
+          "rating": 5,
+          "reviews": 3
+        }
+      ]
+    },
+    {
+      "keyword": "website design near me",
+      "location": "Shelby",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 35,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 12
+        },
+        {
+          "rank": 2,
+          "title": "Dragonfly Marketing",
+          "domain": "dragonflymarketing.cc",
+          "rating": 3.7,
+          "reviews": 3
+        },
+        {
+          "rank": 3,
+          "title": "Excite Tech",
+          "domain": "excitetech.com",
+          "rating": 5,
+          "reviews": 2
+        },
+        {
+          "rank": 4,
+          "title": "The Awen Group",
+          "domain": "www.awenmarketing.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 5,
+          "title": "Archangel Solutions",
+          "domain": "",
+          "rating": 5,
+          "reviews": 4
+        },
+        {
+          "rank": 6,
+          "title": "Spencer Technology Group",
+          "domain": "spencertechgroup.org",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 7,
+          "title": "Walker Woodworking | Design Showroom",
+          "domain": "walkerwoodworking.com",
+          "rating": 4.9,
+          "reviews": 59
+        },
+        {
+          "rank": 8,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 18
+        },
+        {
+          "rank": 9,
+          "title": "ChatterBox Creative",
+          "domain": "www.chatterbox-creative.com",
+          "rating": 4.7,
+          "reviews": 15
+        },
+        {
+          "rank": 10,
+          "title": "Multitask Graphics and Assistance",
+          "domain": "multitaskgraphicsandassistance.com",
+          "rating": 5,
+          "reviews": 3
+        }
+      ]
+    },
+    {
+      "keyword": "web design agency near me",
+      "location": "Shelby",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 20,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 12
+        },
+        {
+          "rank": 2,
+          "title": "Dragonfly Marketing",
+          "domain": "dragonflymarketing.cc",
+          "rating": 3.7,
+          "reviews": 3
+        },
+        {
+          "rank": 3,
+          "title": "The Awen Group",
+          "domain": "www.awenmarketing.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 4,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 18
+        },
+        {
+          "rank": 5,
+          "title": "Archangel Solutions",
+          "domain": "",
+          "rating": 5,
+          "reviews": 4
+        },
+        {
+          "rank": 6,
+          "title": "Electric Films, LLC",
+          "domain": "electricfilmcine.com",
+          "rating": 4.8,
+          "reviews": 21
+        },
+        {
+          "rank": 7,
+          "title": "LB & CO. BRANDING",
+          "domain": "www.lbcobranding.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 8,
+          "title": "Keel & Co LLC",
+          "domain": "www.keelandco.com",
+          "rating": 5,
+          "reviews": 7
+        },
+        {
+          "rank": 9,
+          "title": "Epitome Digital Marketing",
+          "domain": "epitomedigitalmarketing.com",
+          "rating": 5,
+          "reviews": 12
+        },
+        {
+          "rank": 10,
+          "title": "Shelby Web Company",
+          "domain": "www.shelbywebco.com",
+          "rating": 5,
+          "reviews": 4
+        }
+      ]
+    },
+    {
+      "keyword": "website designer",
+      "location": "Shelby",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 49,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 12
+        },
+        {
+          "rank": 2,
+          "title": "Dragonfly Marketing",
+          "domain": "dragonflymarketing.cc",
+          "rating": 3.7,
+          "reviews": 3
+        },
+        {
+          "rank": 3,
+          "title": "Spencer Technology Group",
+          "domain": "spencertechgroup.org",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 4,
+          "title": "Excite Tech",
+          "domain": "excitetech.com",
+          "rating": 5,
+          "reviews": 2
+        },
+        {
+          "rank": 5,
+          "title": "D-Stokes NC Gaming Studio",
+          "domain": "",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 6,
+          "title": "The Awen Group",
+          "domain": "www.awenmarketing.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 7,
+          "title": "Archangel Solutions",
+          "domain": "",
+          "rating": 5,
+          "reviews": 4
+        },
+        {
+          "rank": 8,
+          "title": "Grace & Grit Marketing",
+          "domain": "graceandgritmarketing.com",
+          "rating": 5,
+          "reviews": 18
+        },
+        {
+          "rank": 9,
+          "title": "Walker Woodworking | Design Showroom",
+          "domain": "walkerwoodworking.com",
+          "rating": 4.9,
+          "reviews": 59
+        },
+        {
+          "rank": 10,
+          "title": "Kim Anderson Marketing",
+          "domain": "",
+          "rating": null,
+          "reviews": 0
+        }
+      ]
+    },
+    {
+      "keyword": "web designer near me",
+      "location": "Gastonia",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 100,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Scarlett's Web, Inc.",
+          "domain": "scarletts-web.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 2,
+          "title": "Sumner Group",
+          "domain": "www.sumnergroup.com",
+          "rating": 5,
+          "reviews": 8
+        },
+        {
+          "rank": 3,
+          "title": "Rick And Morty On Newsbreak",
+          "domain": "www.newsbreak.com",
+          "rating": 5,
+          "reviews": 1
+        },
+        {
+          "rank": 4,
+          "title": "Joyful Rising Writing & Marketing",
+          "domain": "joyfulrisingwriting.com",
+          "rating": 5,
+          "reviews": 7
+        },
+        {
+          "rank": 5,
+          "title": "Go Digitals LLC",
+          "domain": "godigitals.co",
+          "rating": 5,
+          "reviews": 40
+        },
+        {
+          "rank": 6,
+          "title": "ONYX Digital Space Marketing Agency",
+          "domain": "onyxdigitalspace.com",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 7,
+          "title": "MoonRay Designs",
+          "domain": "www.moonray.net",
+          "rating": 4.3,
+          "reviews": 6
+        },
+        {
+          "rank": 8,
+          "title": "Responsive Technology Partners",
+          "domain": "www.responsivetechnologypartners.com",
+          "rating": 4,
+          "reviews": 4
+        },
+        {
+          "rank": 9,
+          "title": "Donald Norris Jr",
+          "domain": "donald-norris-jr.ueniweb.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 10,
+          "title": "Sites on Polaris",
+          "domain": "www.sitesonpolaris.com",
+          "rating": 5,
+          "reviews": 28
+        }
+      ]
+    },
+    {
+      "keyword": "website design near me",
+      "location": "Gastonia",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 41,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Scarlett's Web, Inc.",
+          "domain": "scarletts-web.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 2,
+          "title": "Sumner Group",
+          "domain": "www.sumnergroup.com",
+          "rating": 5,
+          "reviews": 8
+        },
+        {
+          "rank": 3,
+          "title": "Go Digitals LLC",
+          "domain": "godigitals.co",
+          "rating": 5,
+          "reviews": 40
+        },
+        {
+          "rank": 4,
+          "title": "ONYX Digital Space Marketing Agency",
+          "domain": "onyxdigitalspace.com",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 5,
+          "title": "MoonRay Designs",
+          "domain": "www.moonray.net",
+          "rating": 4.3,
+          "reviews": 6
+        },
+        {
+          "rank": 6,
+          "title": "Joyful Rising Writing & Marketing",
+          "domain": "joyfulrisingwriting.com",
+          "rating": 5,
+          "reviews": 7
+        },
+        {
+          "rank": 7,
+          "title": "Sites on Polaris",
+          "domain": "www.sitesonpolaris.com",
+          "rating": 5,
+          "reviews": 28
+        },
+        {
+          "rank": 8,
+          "title": "Donald Norris Jr",
+          "domain": "donald-norris-jr.ueniweb.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 9,
+          "title": "Southern Belle Marketing, LLC",
+          "domain": "www.southernbellemarketing.com",
+          "rating": 5,
+          "reviews": 1
+        },
+        {
+          "rank": 10,
+          "title": "Website and Social Media Solutions, LLC",
+          "domain": "wordpressandsocialmediasolutions.com",
+          "rating": 5,
+          "reviews": 15
+        }
+      ]
+    },
+    {
+      "keyword": "web design agency near me",
+      "location": "Gastonia",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 100,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Scarlett's Web, Inc.",
+          "domain": "scarletts-web.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 2,
+          "title": "Sumner Group",
+          "domain": "www.sumnergroup.com",
+          "rating": 5,
+          "reviews": 8
+        },
+        {
+          "rank": 3,
+          "title": "Go Digitals LLC",
+          "domain": "godigitals.co",
+          "rating": 5,
+          "reviews": 40
+        },
+        {
+          "rank": 4,
+          "title": "ONYX Digital Space Marketing Agency",
+          "domain": "onyxdigitalspace.com",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 5,
+          "title": "Joyful Rising Writing & Marketing",
+          "domain": "joyfulrisingwriting.com",
+          "rating": 5,
+          "reviews": 7
+        },
+        {
+          "rank": 6,
+          "title": "Sites on Polaris",
+          "domain": "www.sitesonpolaris.com",
+          "rating": 5,
+          "reviews": 28
+        },
+        {
+          "rank": 7,
+          "title": "Southern Belle Marketing, LLC",
+          "domain": "www.southernbellemarketing.com",
+          "rating": 5,
+          "reviews": 1
+        },
+        {
+          "rank": 8,
+          "title": "Website and Social Media Solutions, LLC",
+          "domain": "wordpressandsocialmediasolutions.com",
+          "rating": 5,
+          "reviews": 15
+        },
+        {
+          "rank": 9,
+          "title": "Web Design Charlotte",
+          "domain": "webdesigncharlotte.net",
+          "rating": 4.9,
+          "reviews": 68
+        },
+        {
+          "rank": 10,
+          "title": "Microhound Web Design",
+          "domain": "www.microhound.com",
+          "rating": 4.9,
+          "reviews": 73
+        }
+      ]
+    },
+    {
+      "keyword": "website designer",
+      "location": "Gastonia",
+      "ourRank": null,
+      "ourSamples": [
+        null
+      ],
+      "packSize": 100,
+      "top": [
+        {
+          "rank": 1,
+          "title": "Scarlett's Web, Inc.",
+          "domain": "scarletts-web.com",
+          "rating": null,
+          "reviews": 0
+        },
+        {
+          "rank": 2,
+          "title": "Sumner Group",
+          "domain": "www.sumnergroup.com",
+          "rating": 5,
+          "reviews": 8
+        },
+        {
+          "rank": 3,
+          "title": "Web Design Charlotte",
+          "domain": "webdesigncharlotte.net",
+          "rating": 4.9,
+          "reviews": 68
+        },
+        {
+          "rank": 4,
+          "title": "MoonRay Designs",
+          "domain": "www.moonray.net",
+          "rating": 4.3,
+          "reviews": 6
+        },
+        {
+          "rank": 5,
+          "title": "Go Digitals LLC",
+          "domain": "godigitals.co",
+          "rating": 5,
+          "reviews": 40
+        },
+        {
+          "rank": 6,
+          "title": "Joyful Rising Writing & Marketing",
+          "domain": "joyfulrisingwriting.com",
+          "rating": 5,
+          "reviews": 7
+        },
+        {
+          "rank": 7,
+          "title": "ONYX Digital Space Marketing Agency",
+          "domain": "onyxdigitalspace.com",
+          "rating": 5,
+          "reviews": 3
+        },
+        {
+          "rank": 8,
+          "title": "Charlotte Web Design",
+          "domain": "charlotteweb.design",
+          "rating": 5,
+          "reviews": 40
+        },
+        {
+          "rank": 9,
+          "title": "Next Wave Services",
+          "domain": "www.nextwaveservices.com",
+          "rating": 5,
+          "reviews": 51
+        },
+        {
+          "rank": 10,
+          "title": "Carolinas Web Design",
+          "domain": "carolinaswebdesign.com",
+          "rating": 4.8,
+          "reviews": 24
+        }
+      ]
+    }
+  ]
+}
