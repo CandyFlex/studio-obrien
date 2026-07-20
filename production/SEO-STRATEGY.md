@@ -73,6 +73,23 @@ ARTICLE-ENGINE law; it stays law.
   the whole theory with the data in hand.
 Each checkpoint gets a dated line in PRESENT when it's called.
 
+**Pre-registered pass conditions (written 2026-07-20, BEFORE the data —
+judge against these, don't move the goalposts after):**
+- **C1 (2026-08-02) PASSES if:** GSC shows >=1 click on a geo page or blog
+  article query (homepage clicks don't count — 6 already exist). FAIL →
+  CTR title/meta pass on the top-10-impression pages, per ladder.
+- **C2 (2026-08-30) PASSES only if BOTH:** (a) >=1 tracked long-tail term
+  holds page 1-2 across >=2 snapshot readings (stability rule — one reading
+  is a sample), AND (b) >=3 Signal-executed lines in OPS-LOG by then show
+  real links/distribution actually happened. If (b) is false, the verdict is
+  "experiment not yet run" — fix signal execution before judging content.
+- **Scale triggers (earned, not scheduled):** article cadence scales only
+  after quality column = 5 AND one piece holds page 1-2; keyword tracking
+  scales only after 2 consecutive clean stable weekly snapshots; autonomous
+  scheduled cycles only after 3 clean manual cycles AND the cloud auditor
+  has landed >=1 report. Meta-layer (new docs/instruments) is FROZEN —
+  improvements target output friction only.
+
 ---
 
 ## PAST — what has shipped (the record)
@@ -105,6 +122,13 @@ p29.4** — clicks are off zero (C1 signal arriving early); belmont geo p7.0 on
 1 impression. Chain: lincolnton-retrofit passed Gates 1+2 (soft SERP; opening
 = pricing vacuum + unanswered cost-PAA + local specificity parity with
 maidenwebdesign, the real #1). Artifacts in `research/lincolnton-retrofit/`.
+DECISION (same day, system audit): SERP provider switching Apify → Serper.dev
+(~$0.07/reading w/ 2,500 free credits vs $0.50 minimum/run; makes the
+multi-sample consensus the volatility rule requires affordable). serp-track
+v2 auto-uses serper once the key exists (`~/.config/studioobrien/
+serper-key.txt` — Jarred signs up at serper.dev, free); Apify stays as
+fallback. Signal-executed line now mandatory in OPS-LOG (diag enforces);
+C1/C2 pass conditions pre-registered below; meta-layer frozen.
 
 **2026-07-20 — first Apify SERP snapshot** (run 1, preserved as
 `serp-2026-07-20-run1.bak`): first observed rank = **#13 "web design

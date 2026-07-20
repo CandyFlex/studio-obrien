@@ -130,6 +130,7 @@ else {
   log(`\n[OPS-LOG] last cycle entry: ${last || "none"} (${age === Infinity ? "-" : age + "d ago"})`);
   if (age > 7) actions.push("ops cycle overdue (>7d): run the loop and log it, including one system improvement");
   if (last && !/system improvement/i.test(txt.slice(txt.lastIndexOf("## Cycle")))) actions.push("last cycle entry has no 'System improvement' line: every cycle must improve the system");
+  if (last && !/signals? executed/i.test(txt.slice(txt.lastIndexOf("## Cycle")))) actions.push("last cycle entry has no 'Signal executed' line: doctrine says Google ranks signals — every cycle must move one (link, distribution, GBP, page ship) or say why not");
 }
 
 // --- 7. Improvement matrix (auto-scored dimensions; paste row into OPS-LOG) ---

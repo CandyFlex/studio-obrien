@@ -4,6 +4,11 @@ Append-only. One entry per working cycle (target: weekly). The diagnostic
 (`node production/system-diag.mjs`) opens every cycle; this log closes it.
 An entry is not complete without a **System improvement** line: every cycle
 must leave the machine better than it found it, or say honestly why not.
+Nor without a **Signal executed** line (added 2026-07-20): doctrine rule #1
+is that Google ranks signals, not prose — so every cycle must move at least
+one real signal (a link pursued/earned, a distribution post, GBP work, a
+page shipped/changed) or say honestly why not. Ledger entries, artifacts,
+and instruments do NOT count as signals.
 
 Entry template:
 ```
@@ -12,6 +17,7 @@ Entry template:
 - Deltas vs last cycle: (ranks, clicks, impressions — facts only)
 - Chain state: (targets advanced/killed/shipped this cycle)
 - Decisions: (what changed and why, incl. checkpoint calls)
+- Signal executed: (the real-world signal moved this cycle — or why not)
 - System improvement: (the one thing fixed/upgraded in the system itself)
 - Matrix: | date | data N | chain N | quality N | signals N | outcomes N | improvement N |
 - Next cycle opens with: (the first action)
