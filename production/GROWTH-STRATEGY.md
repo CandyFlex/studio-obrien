@@ -122,6 +122,18 @@ one of the thousand pages it averages into mush.
 
 ---
 
+## PROGRESS (updated 2026-07-20)
+- ✅ **Pillar 1 GBP COMPLETE** — description, 3 categories (Website designer +
+  Internet marketing service + Graphic designer), full services per category,
+  service area, hours (Mon-Fri 9-5), contact. Photos = Jarred's remaining item.
+- ✅ **Review engine delivered** (`gbp/review-engine.md`) — one-click link,
+  templates, habit. Jarred to start asking (incl. past clients).
+- ✅ **Pillar 3 citations LIVE** — Bing Places, Nextdoor, Yelp set up. Apple +
+  Thumbtack skipped (Jarred's call). Facebook exists (migrated from old site —
+  TODO: align NAP + link in GBP socials).
+- ▶ **Next:** Storefront spec site (needs a business named) OR article-fix
+  sweep (Claude-solo, lifts the quality floor). Cost page still optional/gated.
+
 ## WHAT ACTUALLY GETS BUILT (ordered, owner-tagged)
 
 | # | Build | Pillar | Owner | Blocker / input needed |
