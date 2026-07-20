@@ -50,6 +50,18 @@ Prices stay blank (no published pricing). Descriptions below are in-voice:
 - Restaurant Website Design — Websites for local restaurants with menus, hours, and directions front and center, built to bring diners in.
 - Small Business Websites — Straightforward websites for local small businesses that need to get found on Google and get the call.
 
+## Internet marketing service — DISTINCT services (no web-design repeats)
+Add the ones that are real for you; prices blank. Top 4 match what Studio
+O'Brien demonstrably does (reviews, citations, content, analytics):
+- Review & Reputation Management — Helping you steadily earn real Google reviews and respond to them, so your business looks as trusted as it is.
+- Local Listings & Citations — Getting your business listed correctly across Google, Yelp, and the directories that customers and search engines trust.
+- Content & Blog Writing — Helpful, plain-spoken articles that answer what your customers are searching for and bring them to you.
+- Google Analytics & Tracking Setup — Setting up the tools that show where your customers come from and what's actually working, so decisions aren't guesses.
+- Social Media Profile Setup — Setting up and squaring away your Facebook, Instagram, and Google profiles so your business looks consistent everywhere people check. (only if real)
+- Conversion Optimization — Tuning your existing site so more of the people who visit actually call or reach out. (only if real)
+Note: SEO Optimization + GBP Setup deliberately NOT repeated here (they live
+under Website designer). Optional tidy: move SEO here as "Local SEO".
+
 Live services as configured (2026-07-20): Custom Web Design, SEO Optimization,
 Google Business Profile Setup, UI/UX Design, Website Migration, Branding &
 Identity, Copywriting, Restaurant Website Design, Small Business Websites.
