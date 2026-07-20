@@ -38,10 +38,27 @@ about what your business really needs.
 - Website Maintenance   ← only if you actually offer it; delete if not
 
 ## Categories
+Rule: each category is a door Google can send searchers through. Add every one
+that's genuinely true; skip every stretch. Primary carries the most ranking
+weight — leave it as Website designer.
 - Primary: **Website designer** (already set — correct, leave it)
-- Optional secondary (only if genuinely accurate): "Internet marketing service"
-  or "Marketing agency" — lets you surface for local-marketing searches too.
-  Skip if it feels like a stretch.
+- Add **Internet marketing service** (you do local SEO + GBP setup — real)
+- Add **Graphic designer** ONLY if you do logos/branding
+- Add **Website hosting company** ONLY if you host client sites
+- Optional: "Marketing agency"/"Marketing consultant" if you want general
+  marketing leads (positioning leans "studio" not "agency" — your call)
+
+## Where to edit each field
+Sign in to the Google account that owns the profile, then Google "Studio
+O'Brien" (edit tools appear at the top of results) OR Maps app → account circle
+→ Your Business Profile → Edit profile. Then:
+- Categories → "Business category" (primary + Add another)
+- Description → "About" → Business description
+- Services → the Services section/tab
+- Service area → "Location and areas" → Service area
+- Hours → "Hours"
+- Phone/website → "Contact"
+- Photos → main profile → Photos → Add photos
 
 ---
 
