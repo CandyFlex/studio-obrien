@@ -3,6 +3,11 @@
 Companion to ROADMAP.md. That file says *why*; this file says *what gets built
 next*. One item moves to "in progress" at a time per track. Update as things ship.
 
+Reprioritized 2026-07-19 with Jarred: Ridgeline Roofing archetype KILLED
+(concept stays in preview/, never wire it in). Portfolio showcase refresh is
+DONE. New emphasis: content cadence, case studies, client-readiness docs,
+and outreach activation.
+
 ---
 
 ## Track A — Spec sites for real local businesses (Storefront + pitch)
@@ -20,70 +25,82 @@ one and the build starts.
 
 Selection criteria for which to build FIRST (score each 1–3, highest total wins):
 visible location people recognize · no website at all (not just a bad one) ·
-owner reachable through someone you know · photogenic product/space ·
-business type that matches a portfolio gap below (double win).
+owner reachable through someone you know · photogenic product/space.
 
-## Track B — Portfolio archetype expansion (generic businesses, show range)
+## Track B — Blog / web posts (lead-gen content, DeepSeek-drafted)
 
-Current portfolio is food-heavy: steakhouse, bar & grill, BBQ, bakery, plus
-arcade, coastal resort, designer portfolio, book, game dashboard. The money
-niches for local lead-gen that are MISSING, in build order:
+Now the lead build track. 30+ posts exist covering GBP, reviews, restaurants,
+local SEO, speed. Next posts, in order:
 
-| Priority | Archetype | Why first | Status |
-|----------|-----------|-----------|--------|
-| 1 | **Trades / contractor** (roofing or HVAC) | Highest-value local clients; nothing in portfolio proves we speak their language; pairs with future /contractor-trades-website-design page | concept approved 2026-07-02 (preview/ridgeline-roofing.html); HOLD grid wiring + deploy until built out as a complete project, per Jarred |
-| 2 | **Auto repair / detail shop** | Every town has three; heavy phone-call intent; strong visual material (cars, shop) | queued |
-| 3 | **Salon / barbershop / spa** | Booking-driven; underserved locally; broadens audience beyond male-coded trades | queued |
-| 4 | **Landscaping / lawn care** | Seasonal quote-driven; before/after imagery sells itself | queued |
-| 5 | **Professional (law / accounting)** | Higher budgets, but slower sales cycle — after the volume niches | backlog |
-| 6 | **Fitness / gym / studio** | Schedule + membership patterns; rounds out range | backlog |
+| # | Working title | Target reader | Status |
+|---|--------------|---------------|--------|
+| 1 | What a contractor website needs to win jobs in small-town NC | trades owner | outline next |
+| 2 | The Storefront Project: why we build free concept sites for local businesses | community/press | outline next |
+| 3 | Your auto shop's phone rings from Google, not Facebook | auto shop owner | queued |
+| 4 | Salon booking: stop losing appointments to Instagram DMs | salon owner | queued |
+| 5 | Before/after: what changed when [Storefront business] got a real website | everyone | blocked on first Track A build |
 
-Build definition per piece: hero + 2–3 sections as a polished standalone page,
-two exported webp crops (card + full for lightbox), wired into the portfolio
-grid with honest labeling (these are concept/archetype pieces, same as now).
-One archetype per session, verified at 375/768/1440 before wiring in.
+Flow (Claude-native, no provider drafting — see production/ARTICLE-ENGINE.md):
+strategy check (SEO-STRATEGY.md) → outline w/ question-shaped H2s → Jarred
+approves → Claude drafts into the template → `article-eval.mjs` gate
+(AEO/GEO/SEO/voice, zero FAILs) → judgment rubric (≥4 avg) → registry before
+AND after → index card + clusters + sitemap → deploy → tracked in
+SEO-STRATEGY.md PRESENT watchlist.
 
-## Track C — Blog (lead-gen content, DeepSeek-drafted)
+## Track C — Case studies (the proof engine)
 
-30 posts already exist covering GBP, reviews, restaurants, local SEO, speed.
-Gaps that tie to Tracks A/B and future industry landing pages:
+Standard = the Concept C "Storyboard" template (case-studies/crownline-electric-c.html,
+arcade shipped). Community spots only. Due now:
 
-| # | Working title | Target reader | Feeds |
-|---|--------------|---------------|-------|
-| 1 | What a contractor website needs to win jobs in small-town NC | trades owner | archetype #1 + future industry page |
-| 2 | Your auto shop's phone rings from Google, not Facebook | auto shop owner | archetype #2 |
-| 3 | The Storefront Project: why we build free concept sites for local businesses | community/press | Storefront credibility + backlinks |
-| 4 | Salon booking: stop losing appointments to Instagram DMs | salon owner | archetype #3 |
-| 5 | What "you own your website" actually means (and why most owners don't) | any owner | differentiator, FAQ expansion |
-| 6 | Before/after: what changed when [Storefront business] got a real website | everyone | Track A case study (blocked until first build ships) |
+| # | Case study | Source project | Status |
+|---|-----------|----------------|--------|
+| 1 | Slim's Bar & Grill | slims build | next |
+| 2 | Ben's Smokehouse | bens-smokehouse/ | queued |
 
-Flow: Claude writes the outline + voice notes → DeepSeek drafts in ONE batched
-call (2–3 posts per call, ~$0.10 baseline each — never one call per small task)
-→ Claude edits for voice/accuracy/no-em-dashes → wired into /blog with matching
-template, schema, and internal links → sitemap updated → deployed.
+Template rules live in the case-study memory: CSS-window crop math,
+laptop-only rule for comp-only projects, honest concept labeling.
 
-## Track E — Outbound (runs from production/outreach/)
+## Track D — Client-readiness (docs before clients, not after)
 
-The outreach operating system lives in `production/outreach/` —
-`OUTREACH-SYSTEM.md` (doctrine + weekly rhythm), `CRM.md` (every target,
-every touch, every re-approach date), `INFRA-CHECKLIST.md` (gates),
-`SOCIAL-PLAYBOOK.md`, `email-templates/`. Current gate: Layer 1
-(jarred@studioobrien.com + SPF/DKIM/DMARC) blocks all cold email.
+The essentials for handling inbound clientele, in build order:
 
-## Track D — Research handoff (Jarred → Claude)
+| # | Deliverable | What it is | Status |
+|---|-------------|-----------|--------|
+| 1 | **Essential Offerings Sheet** (`production/OFFERINGS.md` → client-facing page/PDF later) | The studio's services, what's included, starting-at pricing posture, timeline expectations. One source of truth Jarred can quote from. | next |
+| 2 | **Client Intake Protocol** (`production/CLIENT-INTAKE.md`) | What happens when someone emails/calls: response window, discovery questions, qualification (fit test from POSITIONING.md), quote flow, red flags. | next |
+| 3 | **Onboarding & Delivery Protocol** (`production/CLIENT-DELIVERY.md`) | Kickoff → build → review → launch → handoff (ownership transfer checklist: domain, hosting, accounts) → post-launch support terms. | queued |
+
+Voice for all three: capable neighbor, plain language, no agency-speak.
+These feed the contact flow and outreach replies; keep them consistent.
+
+## Track E — Outreach activation (runs from production/outreach/)
+
+System already built: `OUTREACH-SYSTEM.md` (doctrine + weekly rhythm),
+`CRM.md`, `INFRA-CHECKLIST.md`, `SOCIAL-PLAYBOOK.md`, `email-templates/`.
+
+**Gate: Layer 1 infrastructure — jarred@studioobrien.com mailbox + SPF/DKIM/
+DMARC. This is Jarred's move and it blocks all cold email.**
+
+What proceeds WITHOUT the gate (Claude-side, next):
+- CRM first-wave target list verified/refreshed (LocalIntel data)
+- Templates re-checked against current site (About/editorial links, offerings sheet once it exists)
+- Social playbook first-week posts drafted
+
+## Track F — Research handoff (Jarred → Claude)
 
 Anything you gather — voice notes, screenshots of competitor sites, a list of
 businesses from driving around, overheard complaints about some Wix site —
 gets dropped as files or pasted text with one line of context. Claude
-structures it into: intake docs (Track A), archetype briefs (Track B), or
-post outlines (Track C). Raw is fine; structure is the studio's job.
+structures it into intake docs (Track A), post outlines (Track B), or
+case-study material (Track C). Raw is fine; structure is the studio's job.
 
 ---
 
 ## Immediate next actions
-1. **[C]** Build Ridgeline out as a complete project (scope set by Jarred), then he pushes examples himself
-2. **[J]** Name the Track A businesses (even just first names of towns/types)
-3. **[C→D]** Draft blog posts #1 + #3 in one DeepSeek batch once outlines approved
-4. **[J]** First intake filled = first real spec site built
+1. **[C]** Develop post #1 (contractor) through ARTICLE-ENGINE end-to-end
+2. **[C]** AEO retrofit sweep: run article-eval.mjs across blog/*.html, rank, fix top movers
+3. **[C]** Client Intake Protocol draft (OFFERINGS.md done, awaiting Jarred's two policy confirms)
+4. **[C]** Slim's case study on the storyboard template
+5. **[J]** GSC Request-Indexing days 2-3 (~12 geo URLs/day) + mailbox/DNS auth + Track A names
 
-*Last updated: 2026-07-02 (archetype #1 concept approved, complete-project build pending)*
+*Last updated: 2026-07-19 (Ridgeline killed, showcase refresh done, client-readiness track added)*

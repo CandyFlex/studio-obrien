@@ -92,11 +92,11 @@ clients, numbers.** Run `/humanizer` on the draft before ship. Hard bans:
 - [ ] `node .claude/skills/impeccable/scripts/detect.mjs --json blog/{{slug}}.html`
       is clean.
 
-## 7. Who drafts what (token model)
+## 7. Who drafts what
 
-- **Opus (main):** the outline/chop, ambiguous calls, final QA against this list.
-- **Sonnet subagent:** drafts the prose into the template from an approved
-  outline + the dump. One article per agent; hand it this spec + the template.
-- **Haiku / DeepSeek / script:** slug creation, card+cluster insertion, schema
-  fills, find/replace, image `webp` conversion — mechanical, no judgment.
-- The parent reviews the agent's returned file, not its reasoning. Batch dumps.
+**Claude develops articles end-to-end** (outline, draft, edit, wire-in).
+Provider/subagent drafting (DeepSeek, cc-fleet) is RETIRED from this pipeline
+(Jarred, 2026-07-19). Every article passes the two gates in
+`production/ARTICLE-ENGINE.md` before ship: the mechanical evaluator
+(`production/article-eval.mjs`, AEO/GEO/SEO/voice) and the judgment rubric.
+Scripts remain fine for pure mechanics (webp conversion, registry rebuild).
