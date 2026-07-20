@@ -112,11 +112,14 @@ UNKNOWN, not zero.
 - GA data only exists from July 2 onward (CSP blocked it before); lead all
   trend analysis with GSC, not GA.
 
-**The pull ritual (run at each session start, ~2 min):**
-1. `node production/gsc-report.mjs` — impressions/clicks/queries/pages.
-2. When index coverage matters: `node production/gsc-index-audit.mjs`.
-3. When tracking specific targets: `node production/serp-track.mjs`.
-4. Log anything decision-changing as a line in this section with the date.
+**The cycle ritual (run at each session start):**
+1. `node production/system-diag.mjs` — the one-command audit: SERP freshness
+   + rank deltas + junk detection, GSC freshness, chain state (serial
+   vetting), article-quality sweep (`--full`), checkpoint deadlines, ops-log
+   discipline. It prints the next actions; do them.
+2. Data pulls as the diag directs (gsc-report / serp-track / index-audit).
+3. Close the cycle with an entry in `production/OPS-LOG.md` — incomplete
+   without a **System improvement** line (the self-improving requirement).
 
 **Blog ranking watchlist (start tracking per-article):** after each GSC pull,
 note the top query per money article + its position band. Articles that sit
