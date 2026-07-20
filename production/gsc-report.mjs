@@ -12,10 +12,27 @@
   Run: node production/gsc-report.mjs
   Reports: sitemap errors, top pages (28d), and per-URL index/coverage status.
 */
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createSign } from 'node:crypto';
 import { homedir } from 'node:os';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Every pull self-saves to production/gsc-reports/ so system-diag sees GSC
+// freshness without anyone remembering to redirect stdout (added 2026-07-20).
+const REPORT_DIR = join(dirname(fileURLToPath(import.meta.url)), 'gsc-reports');
+const captured = [];
+for (const m of ['log', 'error']) {
+  const orig = console[m].bind(console);
+  console[m] = (...a) => { captured.push(a.join(' ')); orig(...a); };
+}
+process.on('exit', () => {
+  try {
+    mkdirSync(REPORT_DIR, { recursive: true });
+    const stamp = new Date().toISOString().slice(0, 16).replace(/[T:]/g, '-');
+    writeFileSync(join(REPORT_DIR, `gsc-${stamp}.txt`), captured.join('\n') + '\n');
+  } catch {}
+});
 
 const KEY_PATH = process.env.GSC_SA_KEY || join(homedir(), '.config', 'studioobrien', 'gsc-sa-key.json');
 const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';

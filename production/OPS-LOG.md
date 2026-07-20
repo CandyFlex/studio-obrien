@@ -63,3 +63,37 @@ advances chain research artifacts, and leaves decisions queued for Jarred.
 - Next cycle opens with: `node production/system-diag.mjs --full` (first
   full article sweep), re-run the 2 junk keywords, then Stage 0-1 on the
   lincolnton retrofit target.
+
+## Cycle 2026-07-20b [on-demand]
+- Data pulled: SERP re-run (junk keywords now clean readings; 12 keywords,
+  ~$0.50) + one accidental duplicate run (~$0.50 wasted — a `--help` probe on
+  serp-track fired a real pull; scripts have no arg guard). First GSC pull
+  saved to disk (`gsc-reports/gsc-2026-07-20.txt`). First `--full` article
+  sweep saved.
+- Deltas vs last cycle: **clicks off zero — homepage 6c/209i/p29.4 (28d)**,
+  13 days before the C1 checkpoint. VOLATILITY finding: 3 same-day SERP
+  readings disagree (lincolnton #13 → unranked ×2; kings-mtn #25 in one run
+  only) = post-recrawl flicker, not stable rank. New rule in RESEARCH-CHAIN:
+  one reading is a sample, never "our rank". Article sweep baseline: 6 of 34
+  articles carry hard FAILs (worst: restaurant-website-guide, local-seo-guide).
+- Chain state: lincolnton-retrofit advanced to stage 3/6 — Gate 1 PASS (soft
+  SERP: directories + a location farm + wrong-town freelancers), Gate 2 PASS
+  (opening: page-1 pricing vacuum + nobody answers the SERP's own cost-PAA +
+  local-specificity parity with maidenwebdesign, the real #1). Artifacts in
+  `research/lincolnton-retrofit/00-02`.
+- Decisions: canonical snapshot for 7/20 = run 3 (clean); runs 1-2 preserved
+  as `-run1/-run2.bak`. Junk-actor bug closed (did not recur on re-run).
+- System improvement: **data-preservation fix** — serp-track snapshots now
+  timestamped (same-day re-runs can never overwrite a reading again; today's
+  overwrite destroyed run 1 until recovered from git) + gsc-report now
+  self-saves every pull to `gsc-reports/` (diag sees GSC freshness
+  automatically).
+- Matrix: | 2026-07-20b | data 5 | chain 4 | quality 0 | signals 1 | outcomes 2 | improvement 4 |
+  (quality 0 = 6 failing articles — the falling column; signals 1 = no
+  distribution/links executed for anything shipped yet; outcomes 2 = clicks
+  off zero is real progress but no stable rank held.)
+- Next cycle opens with: lincolnton-retrofit 03-language (PAA phrasings +
+  GSC queries) → 04 uniqueness → 05 retrofit brief for Jarred; quality
+  column says schedule the AEO retrofit of the 6 failing articles right
+  after. NOTE: cloud auditor's first report (due ~7:26am ET 7/20) had not
+  landed in production/auto-audit/ as of this cycle — check it.

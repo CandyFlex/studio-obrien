@@ -125,8 +125,11 @@ const domainOf = (url) => { try { return new URL(url).hostname.replace(/^www\./,
   }
 
   if (!existsSync(SNAP_DIR)) mkdirSync(SNAP_DIR, { recursive: true });
-  const date = new Date().toISOString().slice(0, 10);
-  const out = join(SNAP_DIR, `serp-${date}.json`);
+  // date+time in the name: same-day re-runs must never overwrite an earlier
+  // reading (lost one on 2026-07-20; ranks flicker, every reading is evidence)
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[T:]/g, '-');
+  const date = stamp.slice(0, 10);
+  const out = join(SNAP_DIR, `serp-${stamp}.json`);
   writeFileSync(out, JSON.stringify({ date, target: TARGET, report }, null, 2));
   console.log(`Snapshot saved: ${out}`);
   console.log('Re-run weekly; compare ourRank across snapshots to see movement.');

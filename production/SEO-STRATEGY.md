@@ -92,15 +92,27 @@ Each checkpoint gets a dated line in PRESENT when it's called.
 
 ## PRESENT — current state + how to check it (facts beat vibes)
 
-**2026-07-20 — first Apify SERP snapshot** (`serp-snapshots/serp-2026-07-20.json`):
-first confirmed rank = **#13 "web design lincolnton nc"** (geo page; page 2 =
-retrofit+boost candidate per C2 playbook). Other money terms: not in top ~29,
-BUT the SERPs above us are soft (Thumbtack/Yelp/Facebook/small freelancers) =
-winnable per doctrine. PAA harvested (AEO targets): cost-to-hire-a-designer
-cluster, "is web design still worth it", "is local SEO worth it". DATA BUG:
-"web design shelby nc" + "web design kings mountain nc" returned generic-web
-junk (actor parsing artifact) — re-run before trusting; Shelby reading is
-UNKNOWN, not zero.
+**2026-07-20 (later, cycle 2) — junk re-run + volatility finding + FIRST CLICKS.**
+Three same-day Apify readings (run1 = `-run1.bak`, run2 = `-run2.bak`, run3 =
+`serp-2026-07-20.json` canonical): the junk artifact did NOT recur (Shelby
+readings now genuine: not in top ~13-30, Yelp/Thumbtack/jessicaleigh on top —
+soft). But ranks FLICKER run-to-run: lincolnton #13 (run1) → out of top 30
+(runs 2-3); kings-mountain #25 (run2 only). Read: post-recrawl re-evaluation,
+not stable positions. RULE: a single SERP reading is a sample, not a fact;
+never report a rank off one run. **GSC 28d (first saved pull,
+`gsc-reports/gsc-2026-07-20.txt`): homepage 6 CLICKS / 209 impressions /
+p29.4** — clicks are off zero (C1 signal arriving early); belmont geo p7.0 on
+1 impression. Chain: lincolnton-retrofit passed Gates 1+2 (soft SERP; opening
+= pricing vacuum + unanswered cost-PAA + local specificity parity with
+maidenwebdesign, the real #1). Artifacts in `research/lincolnton-retrofit/`.
+
+**2026-07-20 — first Apify SERP snapshot** (run 1, preserved as
+`serp-2026-07-20-run1.bak`): first observed rank = **#13 "web design
+lincolnton nc"** (geo page). Other money terms: not in top ~29, BUT the SERPs
+above us are soft (Thumbtack/Yelp/Facebook/small freelancers) = winnable per
+doctrine. PAA harvested (AEO targets): cost-to-hire-a-designer cluster, "is
+web design still worth it", "is local SEO worth it". Junk-artifact bug on 2
+keywords resolved by re-run same day (see cycle-2 entry above).
 
 **Snapshot (last updated 2026-07-19):**
 - Impressions up ~18x since early July; **clicks still ~0** (as of 7/14 pull).

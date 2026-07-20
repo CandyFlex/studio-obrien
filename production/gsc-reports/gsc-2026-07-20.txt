@@ -1,0 +1,44 @@
+Service account: gsc-reporter@studioobrien-seo-51528.iam.gserviceaccount.com 
+
+Property: sc-domain:studioobrien.com 
+
+=== SITEMAPS ===
+  https://studioobrien.com/sitemap-images.xml
+    downloaded=2026-07-20 errors=0 warnings=0 pending=false
+  https://studioobrien.com/sitemap.xml
+    downloaded=2026-07-10 errors=0 warnings=0 pending=false
+
+=== TOP PAGES (28d: clicks / impressions / ctr / avg position) ===
+     6c    209i   2.9% p 29.4  https://studioobrien.com/
+     0c      3i   0.0% p 34.3  https://studioobrien.com/about
+     0c      1i   0.0% p  7.0  https://studioobrien.com/belmont-nc-web-design
+     0c      6i   0.0% p 42.2  https://studioobrien.com/bessemer-city-nc-web-design
+     0c     19i   0.0% p 35.5  https://studioobrien.com/blog
+     0c      2i   0.0% p  7.0  https://studioobrien.com/blog/ada-compliance-website-lawsuits-small-business
+     0c      1i   0.0% p  6.0  https://studioobrien.com/blog/ai-search-local-business-discovery-2026
+     0c      3i   0.0% p 12.3  https://studioobrien.com/blog/clusters
+     0c      2i   0.0% p  9.0  https://studioobrien.com/blog/core-web-vitals-local-seo-ranking
+     0c      1i   0.0% p 10.0  https://studioobrien.com/blog/cut-restaurant-no-shows-68-percent
+     0c     11i   0.0% p 14.1  https://studioobrien.com/blog/editorial-standards
+     0c      2i   0.0% p  6.0  https://studioobrien.com/blog/ftc-fake-review-rules-small-business
+     0c      1i   0.0% p  2.0  https://studioobrien.com/blog/google-business-profile-category-ranking
+     0c      2i   0.0% p 59.0  https://studioobrien.com/blog/google-business-profile-photos-increase-calls
+     0c      4i   0.0% p 11.5  https://studioobrien.com/blog/google-map-ranking-distance-small-towns
+
+=== URL INDEX STATUS ===
+  /
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-16  robots=ALLOWED
+  /blog/how-to-choose-web-design-company
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+  /blog/who-owns-your-website-domain-source-code
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+  /blog/website-builder-vs-custom-cost
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+  /blog/wix-squarespace-seo-limits
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+  /blog/small-business-website-cost-2026
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+  /blog/why-cheap-websites-cost-more
+    verdict=PASS  coverage="Submitted and indexed"  lastCrawl=2026-07-04  robots=ALLOWED
+
+Done.

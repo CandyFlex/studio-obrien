@@ -75,10 +75,13 @@ target. The chain is a loop, not a line.
 ## Standing infrastructure rules
 
 - **Weekly ritual:** `node production/serp-track.mjs` + `node
-  production/gsc-report.mjs`; log deltas in SEO-STRATEGY PRESENT. Known
-  issue 2026-07-20: two keywords ("web design shelby nc", "web design kings
-  mountain nc") returned parsing junk from the actor; re-run/verify before
-  trusting their readings.
+  production/gsc-report.mjs`; log deltas in SEO-STRATEGY PRESENT. (Junk-actor
+  issue of 2026-07-20 resolved by same-day re-run; did not recur.)
+- **One reading is a sample, not a fact.** 2026-07-20: three same-day runs
+  gave three different rank pictures (#13 → unranked → unranked). Report
+  rank MOVEMENT across snapshots, never a single reading as "our rank".
+  Snapshots are now timestamped (serp-YYYY-MM-DD-HH-MM.json) so re-runs
+  never overwrite an earlier reading.
 - **Batch every paid pull.** One actor run, many queries. Save raw JSON.
 - **Artifacts are append-only evidence.** Future sessions read them instead
   of re-researching; registry + research/ dir are the institutional memory.
