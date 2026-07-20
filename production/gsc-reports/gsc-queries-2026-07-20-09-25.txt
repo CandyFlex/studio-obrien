@@ -1,0 +1,84 @@
+Service account: gsc-reporter@studioobrien-seo-51528.iam.gserviceaccount.com
+Property: sc-domain:studioobrien.com | window: 2026-04-21..2026-07-20 (90d)
+
+=== QUERIES WE ALREADY APPEAR FOR (72 total, top 40 by impressions) ===
+  impr  clicks  ctr    pos   band   query
+    69      0   0.0%   56.3   pg3+  web design shelby
+    49      0   0.0%   82.3   pg3+  seo migration problems
+    25      0   0.0%   21.2   pg3+  studioobrien.com
+    15      0   0.0%   84.9   pg3+  mobile local search
+    13      0   0.0%   88.5   pg3+  burien website creation
+    12      0   0.0%   47.6   pg3+  how many websites can i have on squarespace
+    12      0   0.0%    2.0   TOP3  web design
+    12      0   0.0%    1.3   TOP3  web designer
+    12      0   0.0%    5.7    pg1  web development
+    10      0   0.0%   94.7   pg3+  burien web developer
+    10      0   0.0%   87.1   pg3+  burien website building
+    10      0   0.0%    1.0   TOP3  website design near me
+     9      0   0.0%   85.9   pg3+  local seo and rank velocity hq
+     6      1  16.7%    7.5    pg1  obrien
+     6      0   0.0%   72.8   pg3+  local seo rank velocity advantage
+     6      0   0.0%   85.3   pg3+  website design company hickory
+     6      0   0.0%   84.3   pg3+  website design matthews nc
+     5      0   0.0%   93.8   pg3+  burien web design
+     5      0   0.0%   86.8   pg3+  local seo with rank velocity hq
+     4      1  25.0%    1.0   TOP3  studio
+     4      0   0.0%   91.3   pg3+  custom website design near me
+     4      0   0.0%   77.3   pg3+  google business profile setup waynesville
+     4      0   0.0%    3.3    pg1  website designer
+     4      0   0.0%   93.8   pg3+  website optimization town ‘n’ country
+     3      0   0.0%   91.0   pg3+  landing page design charlotte nc
+     3      0   0.0%   90.7   pg3+  responsive website design charlotte
+     3      0   0.0%   64.0   pg3+  site migration seo recovery time
+     3      0   0.0%    2.3   TOP3  website design
+     2      0   0.0%    5.5    pg1  "authority builders" -noida
+     2      0   0.0%   27.5   pg3+  branding gastonia
+     2      0   0.0%   92.0   pg3+  burien best web design
+     2      0   0.0%   79.0   pg3+  how do i recover lost rankings after a site migration
+     2      0   0.0%   38.5   pg3+  how long does it take for seo to recover after migrating a website
+     2      0   0.0%   93.0   pg3+  mobile local search statistics
+     2      0   0.0%   88.5   pg3+  outdated b2b website hurting sales
+     2      0   0.0%   66.5   pg3+  rank velocity hq advantage in local seo
+     2      0   0.0%   94.5   pg3+  responsive web design charlotte nc
+     2      0   0.0%   30.0   pg3+  stanly county web design
+     2      0   0.0%   17.5    pg2  stanly county website design
+     2      0   0.0%   29.0   pg3+  web design gastonia nc
+
+=== PAGE-2 OPPORTUNITIES (pos 11-20, >=2 impr) — cheapest wins (1) ===
+     2i  pos  17.5  stanly county website design
+
+=== STRIKING DISTANCE (pos 4-10, >=2 impr) — CTR/link nudge to top 3 (4) ===
+     4i  pos   3.3  website designer
+     2i  pos   5.5  "authority builders" -noida
+    12i  pos   5.7  web development
+     6i  pos   7.5  obrien
+
+=== TOP QUERY -> PAGE (top 25 by impressions) ===
+    49i  pos  82.3  seo migration problems  ->  /blog/website-migration-seo-traffic-loss
+    49i  pos  62.0  web design shelby  ->  /shelby-nc-web-design
+    24i  pos  45.0  web design shelby  ->  /
+    15i  pos  84.9  mobile local search  ->  /blog/mobile-optimization-local-search-small-business
+    13i  pos  88.5  burien website creation  ->  /
+    12i  pos  47.6  how many websites can i have on squarespace  ->  /blog/wix-squarespace-seo-limits
+    12i  pos   2.0  web design  ->  /
+    12i  pos   1.3  web designer  ->  /
+    12i  pos   5.7  web development  ->  /
+    10i  pos  94.7  burien web developer  ->  /
+    10i  pos  87.1  burien website building  ->  /
+    10i  pos  10.5  studioobrien.com  ->  /small-business-websites
+    10i  pos   1.0  website design near me  ->  /
+     9i  pos  85.9  local seo and rank velocity hq  ->  /blog/review-velocity-vs-total-count-local-seo
+     8i  pos  17.5  studioobrien.com  ->  /blog/editorial-standards
+     8i  pos  16.9  studioobrien.com  ->  /newton-nc-web-design
+     7i  pos  14.3  studioobrien.com  ->  /morganton-nc-web-design
+     7i  pos  13.3  studioobrien.com  ->  /stanley-nc-web-design
+     6i  pos   7.5  obrien  ->  /
+     6i  pos  72.8  local seo rank velocity advantage  ->  /blog/review-velocity-vs-total-count-local-seo
+     6i  pos  12.3  studioobrien.com  ->  /forest-city-nc-web-design
+     6i  pos  22.3  studioobrien.com  ->  /google-business-profile-setup
+     6i  pos  88.5  web design shelby  ->  /small-business-websites
+     6i  pos  97.0  web design shelby  ->  /website-redesign-migration
+     6i  pos  85.3  website design company hickory  ->  /hickory-nc-web-design
+
+Totals: 72 distinct queries, 385 impressions, 2 clicks (90d).
+Done.

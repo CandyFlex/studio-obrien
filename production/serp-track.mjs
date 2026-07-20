@@ -39,20 +39,30 @@ const TARGET = 'studioobrien.com';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SNAP_DIR = join(HERE, 'serp-snapshots');
 
-// Money keywords — explicit-geo terms carry their own localization.
+// Money keywords — RE-POINTED 2026-07-20 after the data reframe
+// (research/data-reframe-2026-07-20.md). DataForSEO Labs proved the old
+// geo-town terms ("web design shelby nc") have ~0 real search volume; the
+// masked "50/mo" CSV hid it. Now tracking terms with REAL volume + winnable
+// difficulty, led by the pricing cluster (kd 12-17, we own the calculator +
+// cost articles). "near me" terms are really MAP-PACK demand — track those in
+// the maps tracker (build next), not here. A couple geo kept for continuity.
 const KEYWORDS = [
+  // pricing cluster — real volume, LOW difficulty, we own the assets
+  'website design cost',
+  'cost to build a website',
+  'web design cost',
+  'small business website cost',
+  'website design price',
+  // agency / commercial-hire — real volume
+  'web design agency',
+  'website design service',
+  // charlotte = the one geo with real volume (kd 25)
+  'web design charlotte nc',
+  'web design near me',
+  'website designer near me',
+  // continuity / branded watch (near-zero volume, kept to catch movement)
   'web design shelby nc',
   'web designer shelby nc',
-  'website design shelby nc',
-  'web design cleveland county nc',
-  'web design gastonia nc',
-  'web design hickory nc',
-  'web design kings mountain nc',
-  'web design lincolnton nc',
-  'web design charlotte nc',
-  'small business website designer nc',
-  'restaurant website designer nc',
-  'local seo shelby nc',
 ];
 
 // For implicit "near me" terms, serper accepts a plain-text location

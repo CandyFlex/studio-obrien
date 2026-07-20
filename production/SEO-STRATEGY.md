@@ -109,6 +109,32 @@ judge against these, don't move the goalposts after):**
 
 ## PRESENT — current state + how to check it (facts beat vibes)
 
+**2026-07-20 (cycle 3) — THE DATA REFRAME (wide-net pull).** Full evidence:
+`research/data-reframe-2026-07-20.md`. Jarred challenged whether we were
+staring at a niche Claude selected vs the whole opportunity. We cast the wide
+net (GSC query dimension + the 1,277-kw scored CSV + DataForSEO Labs + a Maps
+pack probe). It overturned the core assumption:
+- **Organic search delivers ~0**: 72 queries / 385 impressions / **2 clicks in
+  90 days** (both branded). We "rank" top-3 for head terms at 10-12 impr/90d =
+  a mirage. Blog buried page 8-9. Not a ranking bug — an authority/demand
+  ceiling. This is the C3 pivot scenario arriving early.
+- **Labs unmasked volume**: "web design shelby nc" / "local seo shelby nc" have
+  **NO volume data** — we optimized terms nobody searches. Real volume: "near
+  me" 15-22k/mo (kd 53-72), and the **PRICING cluster — "website design cost"
+  1,600/mo kd 12, "cost to build a website" 1,000/mo kd 17 — real volume, LOW
+  difficulty, commercial, and we own the calculator + cost articles.**
+- **Map pack is the battleground**: "web designer near me" @ Shelby = 33
+  results, leader has **12 reviews**, several have none, **we're absent.**
+  Winnable (proximity/review-driven, not DR-driven); organic is not.
+- **Cannibalization**: 5+ of our pages split "web design shelby" impressions.
+- **Tooling**: consolidate on DataForSEO backbone (SERP have + Labs adopt +
+  Maps build-next + Business Data/Backlinks later); Apify Maps Scraper for bulk
+  competitor/lead extraction only. serp-track keyword list RE-POINTED off the
+  0-volume geo heads onto the pricing/commercial/near-me terms.
+- **PIVOT AWAITING JARRED**: lead with GBP/map pack + pricing/AEO content +
+  off-search; demote geo/organic-head effort to maintenance; consolidate shelby
+  pages. Channel-strategy change — recommended, needs his ratification + his GBP.
+
 **2026-07-20 (later, cycle 2) — junk re-run + volatility finding + FIRST CLICKS.**
 Three same-day Apify readings (run1 = `-run1.bak`, run2 = `-run2.bak`, run3 =
 `serp-2026-07-20.json` canonical): the junk artifact did NOT recur (Shelby
