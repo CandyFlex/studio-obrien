@@ -122,13 +122,18 @@ p29.4** — clicks are off zero (C1 signal arriving early); belmont geo p7.0 on
 1 impression. Chain: lincolnton-retrofit passed Gates 1+2 (soft SERP; opening
 = pricing vacuum + unanswered cost-PAA + local specificity parity with
 maidenwebdesign, the real #1). Artifacts in `research/lincolnton-retrofit/`.
-DECISION (same day, system audit): SERP provider switching Apify → Serper.dev
-(~$0.07/reading w/ 2,500 free credits vs $0.50 minimum/run; makes the
-multi-sample consensus the volatility rule requires affordable). serp-track
-v2 auto-uses serper once the key exists (`~/.config/studioobrien/
-serper-key.txt` — Jarred signs up at serper.dev, free); Apify stays as
-fallback. Signal-executed line now mandatory in OPS-LOG (diag enforces);
-C1/C2 pass conditions pre-registered below; meta-layer frozen.
+DECISION (same day, system audit): SERP provider moving off Apify to make
+the multi-sample consensus the volatility rule requires affordable. Jarred
+signed up for **DataForSEO** ($1 free trial ≈ 500 live readings; ~$0.024 per
+12-keyword reading, live advanced). serp-track v3 auto-picks provider
+dataforseo > serper > apify by which key exists; DataForSEO needs
+`~/.config/studioobrien/dataforseo.txt` as one line "login:password" (the
+API password from the dashboard, NOT the account login). Serper.dev remains
+a coded alternative, Apify the fallback. FIRST REAL PULL MUST BE SMOKE-TESTED:
+the DataForSEO response mapping (items[] type=organic/people_also_ask/
+related_searches) is written to docs, not yet verified live. Signal-executed
+line now mandatory in OPS-LOG (diag enforces); C1/C2 pass conditions
+pre-registered below; meta-layer frozen.
 
 **2026-07-20 — first Apify SERP snapshot** (run 1, preserved as
 `serp-2026-07-20-run1.bak`): first observed rank = **#13 "web design
