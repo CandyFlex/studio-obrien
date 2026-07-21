@@ -84,9 +84,12 @@ After a naming direction is picked:
    who needs to develop a process for this").
 Goal state: actionable · repeatable · scalable · profitable.
 
-## Pick to proceed
-- A **world** (1–4) or a **mix** (name the slots you want from each).
-- The **model name** (Growth Tracks / Build Your Plan / …).
-Then we build the graphical pages in that voice.
+## CHOSEN (2026-07-20): WORLD 1 — "Plain Outcomes"
+- **System:** The Local Growth Plan
+- **Tracks:** Get Found · Get Growing · Get Known
+- **Community:** Main Street Grant
+- **Monthly:** Your Growth Plan
+- **Model name:** Build Your Plan
+All collateral + pages use these names.
 
 *Created 2026-07-20.*

@@ -1,0 +1,9 @@
+{
+  "projectId": "6b5d7cbc-8895-464b-ac49-f97c3bc50f30",
+  "shape": "tokens-only",
+  "namespace": "StudioObrien",
+  "source": {
+    "tokens": "DESIGN.md + index.css + fonts.css",
+    "note": "Hand-produced tokens-only bundle (no component library). Rebuild ds-bundle/ by hand from these sources; there is no converter run for this repo."
+  }
+}

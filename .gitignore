@@ -22,3 +22,8 @@ build_*_test.py
 services-c-refined.html
 services-dark-rework.html
 index-v2-preview-animation.html
+
+# design-sync build output
+ds-bundle/
+.ds-sync/
+.design-sync/.cache/
